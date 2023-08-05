@@ -1,0 +1,10 @@
+pika>=1.2.0
+jsonschema>=3.2.0
+msgpack>=1.0.2
+pydantic>=1.8.2
+regex
+click
+ubai-client>=1.0.1
+
+[:python_version < "3.8"]
+typing_extensions
