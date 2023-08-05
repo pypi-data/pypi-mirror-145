@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: machetli
+Version: 0.1
+Summary: Locate bugs in your program
+Home-page: https://github.com/aibasel/minimizer
+Author: Lucas Galery Käser
+Author-email: lucas.galerykaeser@gmail.com
+License: GPL3+
+Project-URL: Documentation, https://minimizer.readthedocs.io/
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE.md
+
+Minimizer
+=========
+
+The **Minimizer** is a Python package for reproducing characteristics of a program (such as bugs) with modified instances. It is meant to be helpful for debugging complex programs and narrowing down where specific behaviors are caused.
+
+Originally, the Minimizer was developed to be used with the `Fast Downward <http://www.fast-downward.org>`_ planning system. The subpackage **planning** provides a collection of modules for more convenient use with solvers.
+
+**Code**: https://github.com/aibasel/minimizer
+
+**Documentation**: https://minimizer.readthedocs.io
+
+
