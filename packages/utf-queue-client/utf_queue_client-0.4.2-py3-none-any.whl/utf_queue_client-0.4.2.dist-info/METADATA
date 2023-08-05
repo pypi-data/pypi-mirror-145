@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: utf-queue-client
+Version: 0.4.2
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: Joe Savage
+Author-email: joe.savage@silabs.com
+License: UNKNOWN
+Keywords: UTF,
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Requires-Dist: pika (>=1.2.0)
+Requires-Dist: jsonschema (>=3.2.0)
+Requires-Dist: msgpack (>=1.0.2)
+Requires-Dist: pydantic (>=1.8.2)
+Requires-Dist: regex
+Requires-Dist: click
+Requires-Dist: ubai-client (>=1.0.1)
+Requires-Dist: typing-extensions ; python_version < "3.8"
+
+No description provided
+
+
