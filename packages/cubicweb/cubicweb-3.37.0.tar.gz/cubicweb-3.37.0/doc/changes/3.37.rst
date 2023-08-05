@@ -1,0 +1,34 @@
+3.37.0 (2022-03-31)
+===================
+Breaking changes
+----------------
+
+- cubicweb.web.BaseWebConfiguration and cubicweb.web.WebConfigurationBase
+  have been merged into cubicweb.web.WebConfiguration
+- cubicweb.web.CubicWebPyramidConfiguration had been removed
+- you can nomore use -c option when creating a CW instance, since
+  there is now only one kind of configuration: all-in-one.conf
+
+🎉 New features
+--------------
+
+- add attributes constraints in exported schema
+- depends on yams 0.48
+- doc: mostly add links of issues
+
+👷 Bug fixes
+-----------
+
+- unittest_devctl: give all debugging informations
+
+🤖 Continuous integration
+------------------------
+
+- use templates
+
+🤷 Various changes
+-----------------
+
+- refactor!: merge BaseWebConfiguration into WebConfiguration
+- refactor!: remove -c option to 'cubicweb-ctl create' to only use all-in-one
+- refactor!: remove unused CubicWebPyramidConfiguration
