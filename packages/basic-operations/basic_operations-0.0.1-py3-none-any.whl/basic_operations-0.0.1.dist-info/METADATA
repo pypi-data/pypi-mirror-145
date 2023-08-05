@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: basic-operations
+Version: 0.0.1
+Summary: The package is used to basic mathematics operations
+Home-page: https://github.com/roqueds/basic_operations_package
+Author: Matheus Roque
+Author-email: mroque@outlook.com.br
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# basic_operations
+
+Description. 
+The package basic_operations is used to:
+	- Addition operation
+	- Subtraction operation
+	- Multiplication operation
+	- Division operation
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install basic_operations
+
+```bash
+pip install basic_operations
+```
+
+## Usage
+
+```python
+from operation import addition, subtraction, multiplication, division
+operation.addition(x,y)
+operation.subtraction(x,y)
+operation.multiplication(x,y)
+operation.division(x,y)
+```
+
+## Author
+Matheus Roque
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
