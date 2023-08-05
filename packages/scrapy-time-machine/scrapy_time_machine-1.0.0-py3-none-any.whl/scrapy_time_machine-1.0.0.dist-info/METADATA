@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: scrapy-time-machine
+Version: 1.0.0
+Summary: A downloader middleware that stores the current request chain to be crawled at another time.
+Home-page: https://github.com/heylouiz/scrapy-time-machine
+Author: Luiz Francisco Rodrigues da Silva
+Author-email: luizfrdasilva@gmail.com
+License: MIT license
+Keywords: scrapy cache middleware
+Platform: Any
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Scrapy (>=2.0.0)
+
+# scrapy-time-machine
+
+Run your spider with a previously crawled request chain.
+
+## Why?
+
+Lets say your spider crawls some page everyday and after some time you notice that an important information was added and you want to start saving it.
+
+You may modify your spider and extract this information from now on, but what if you want the historical value of this data, since it was first introduced to the site?
+
+With this extension you can save a snapshot of the site at every run to be used in the future (as long as you don't change the request chain).
+
+## Sample project
+
+There is a sample Scrapy project available at the [examples](examples/project/) directory.
+
+
