@@ -1,0 +1,51 @@
+# Pursuit Library - SSO
+
+This package provides SSO functions for Django.
+
+
+## Configuration
+
+Create a `SSO_CONFIG` object in your `settings.py`:
+
+```
+SSO_CONFIG = {
+    "saml2": {
+        "entityid": "saml_entity_id",
+        "organization": {
+            "name": "organization_name",
+            "verbose_name": "Organization Name"
+        },
+        "contacts": [
+            {
+                "name": "Contact 1",
+                "email": "contact1@mydomain.com"
+            }
+        ],
+        "idp": [
+            {
+                "id": "idp_id",
+                "entity": "idp_entity_id",
+                "metadata": "https://url/to/idp/metadata.xml",
+                "debug_identity": {
+                    "email": "user@example.com",
+                    "first_name": "John",
+                    "last_name": "Doe"
+                }
+            }
+        ]
+    },
+    "default_redirect": "home:index",
+    "get_or_create_user": get_or_create_user
+}
+```
+
+The `get_or_create_user` finds an existing user or create a new one based on the IDP's response:
+
+```py
+def get_or_create_user(idp: str, user_data) -> User:
+    get_user_from_db(user_data)
+```
+
+## Debugging
+
+When debugging on a local machine, you can define `SSO_DEBUG = True` in your `settings.py` to bypass the remote IDP, and instead use the `debug_identity` object.
