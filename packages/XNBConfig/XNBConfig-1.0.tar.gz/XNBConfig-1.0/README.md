@@ -1,0 +1,81 @@
+# XNBConfig
+> By This is XiaoDeng
+## 介绍
+XNBConfig 提供了一个类似于 易语言配置项相关操作 的Python3读写json的新姿势，同时还提供了自己的读写函数；可以用较短的代码实现 json 创建、读写，让代码更整洁！
+
+## 编译步骤
+### GIT（最新）
+1. 克隆仓库
+2. 将`XNBConfig`移动到项目文件夹内
+3. 导入：
+```python
+import XNBConfig as conf
+```
+### PIP（最快）
+1. `pip install xnbconfig`
+2. 导入：
+```python
+import XNBConfig as conf
+```
+
+## 函数列表
+> 因为懒得打，XNBConfig简称conf
+
+### conf.read(file,key,default = "",encode = "utf-8") => int/str/False(失败)
+- 参数：
+	- file：文件名 -str
+	- key：读取键的名称 -str
+	- default：默认值（当`key`不存在时，赋值值于此）
+	- encode：编码 -str
+- 作用：读取某json文件的指定键的值
+- 返回：该json内key值
+### conf.write(file,key,value,encode="utf-8") => True/False(失败)
+- 参数：
+	- file：文件名 -str
+	- key：写入键的名称 -str
+	- value：值
+	- encode：编码 -str
+- 作用：创建/写入指定json文件的键值
+- 返回：布尔值：操作结果（成功/失败）
+### conf.openjson(file,encoding="utf-8")
+- 参数：
+	- file：文件名
+	- encoding：文件编码
+- 作用：打开一个文件
+- 返回：<class 'XNBConfig.openjson'>
+### <class 'XNBConfig.openjson'>.readall(json = True) => str/json
+- 参数：
+	- json：返回json格式
+- 作用：读取整个文件
+- 返回：
+	- json=True：字典
+	- json=False：字符串
+### <class 'XNBConfig.openjson'>.add(key,value)
+- 参数：
+	- key：键
+	- value：值
+- 作用：写入键值到json
+- 返回：更改后的值
+### <class 'XNBConfig.openjson'>.getvalue(key,value = "")
+- 参数：
+	- key：同`conf.read(key)`
+	- value：默认值
+- 作用：读取值
+- 返回：值
+
+## 贡献名单
+> 程序
+>> 这里是小邓
+
+> README.md修正
+>> StarWorld
+
+> 起名
+>> FZZkill
+
+## TODO
+- [] 更灵活的json格式
+- [] 中文函数（待定）
+
+
+
