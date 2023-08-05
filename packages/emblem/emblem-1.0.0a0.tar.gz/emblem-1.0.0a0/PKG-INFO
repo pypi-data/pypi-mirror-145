@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: emblem
+Version: 1.0.0a0
+Summary: shields.io + colormaps
+Home-page: https://github.com/alopezrivera/emblem
+Author: Antonio Lopez Rivera
+Author-email: antonlopezr99@gmail.com
+License: UNKNOWN
+Description: # Emblem
+        
+        [shields.io](https://shields.io/) from the command line, plus niceties. Test coverage badges for now.
+        
+        ```
+        emblem 80% --label "Coverage badges for now" --colors lightgrey purple --logo latex --fname ./test.svg
+        ```
+        
+        ![](test.svg)
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
