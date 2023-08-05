@@ -1,0 +1,110 @@
+---
+format_version: "1.0"
+
+revision: 
+    date: "2020-02-24"
+    authors:
+        - {$ref: "authors/Wayne_Crawford.author.yaml#author"}
+instrumentation:
+    operator: {$ref: "operators/INSU-IPGP.operator_info.yaml#operator"}
+    equipment:
+        model: "SPOBS"
+        type: "Short Period Ocean Bottom Seismometer"
+        description: "Guralp short-period OBS"
+        manufacturer: "Guralp"
+        vendor: "Guralp"
+            
+    channels:
+       default:
+           datalogger:
+               equipment:
+                   model: "Guralp"
+                   type: "Guralp"
+                   description: "Guralp"
+                   manufacturer: "Guralp"
+                   vendor: "Guralp"
+               
+               response_stages:
+                   -
+                       description : "Guralp Digitizer"
+                       input_units : { name: "V", description: "Volts"}
+                       output_units : { name: "counts", description: "Digital Counts"}
+                       input_sample_rate: 100 #make sure this is OK, I see no decimation factor
+                       gain : 
+                           frequency: 0
+                           value: 1529051 #  counts/V (from 0.654 uV/ Count)
+                       filter:
+                           type : "Analog"
+                           
+               sample_rate: 100
+               delay_correction: 0
+               configuration_default: "default"
+               configuration_definitions:
+                   "default":
+                       configuration_description: "default"
+                   "1247 gain":
+                       configuration_description: "1247 gain"
+                       response_modifications: 
+                           "*": {gain: {value: 1533742}}
+                               
+           sensor:
+               equipment:
+                   model: "?????"
+                   type: "Geophone"
+                   description: "Guralp SPOBS acceleration sensor"
+                   manufacturer: "Guralp"
+                   vendor: "Guralp"
+               seed_codes:
+                   band_base: "S"
+                   instrument: "H"
+               response_stages:
+                   -
+                     description : "Guralp SPOBS seismometer" # optionel
+                     input_units :  {name: "m/s", description: "VELOCITY"}
+                     output_units : {name: "V", description: "VOLTS"}
+                     gain : 
+                       value: 1247.3
+                       frequency: 10
+                     filter:
+                       type: "PolesZeros"
+                       transfer_function_type: "LAPLACE (RADIANS/SECOND)"
+                       zeros:
+                           - [0.0, 0.0]
+                           - [0.0, 0.0]
+                           - [1700, 0.0]
+                       poles:
+                           - [-0.0707, 0.0707]
+                           - [-0.0707, -0.0707]
+                           - [-322.2, 0]
+                           - [-98.00, 130.0]
+                           - [-98.00, -130.0]
+               configuration_default: "1247 gain"
+               configuration_definitions:    
+                   "753 gain":
+                        response_modifications: 
+                            "*": 
+                               gain:
+                                  value: 753.27 
+                   "762 gain":
+                        response_modifications: 
+                            "*": {gain: {value: 762.16}}
+                   "1247 gain":
+                        response_modifications: 
+                            "*": {gain: {value: 1247.3}}
+                       
+       "1":
+           orientation_code : {"H": {azimuth.deg: [0, 180]} }
+       "2":
+           orientation_code: {"2": {azimuth.deg: [12, 0]} } # E-W channel
+           
+       "3":
+           orientation_code: {"1": {azimuth.deg: [79, 0] } } # N-S channel
+           
+       "4":
+           orientation_code: {"3": {dip.deg: [70, 0] } } # vertical channel
+           
+                  
+                    
+notes: 
+   - " used to show how to change response stages"
+   - "NO RESPONSE PROVIDED IN CHANNEL 3 VALUES ARE WORTHLESS!"
