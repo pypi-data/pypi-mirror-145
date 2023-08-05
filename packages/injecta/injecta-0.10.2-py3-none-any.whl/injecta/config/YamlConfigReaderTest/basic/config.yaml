@@ -1,0 +1,9 @@
+imports:
+  - sub_config.yaml
+  - sub_config2.yaml
+
+parameters:
+  param_level1: 123
+  merged_param:
+    level1: 1
+  param_to_overwrite: 111

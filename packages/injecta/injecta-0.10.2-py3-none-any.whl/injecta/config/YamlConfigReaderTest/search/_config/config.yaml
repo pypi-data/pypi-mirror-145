@@ -1,0 +1,8 @@
+imports:
+  - search:
+      include: '../mypackage/**/*.yaml'
+
+parameters:
+  param_level1: 123
+  merged_param:
+    level1: 1
