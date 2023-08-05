@@ -1,0 +1,6 @@
+name: cuda
+channels:
+  - conda-forge
+dependencies:
+  - cudatoolkit >=11,<12
+  - cudnn >=8,<9
