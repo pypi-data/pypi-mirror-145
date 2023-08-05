@@ -1,0 +1,61 @@
+###########################################################################
+#                            6351 - PreciSo input file                   #
+###########################################################################
+
+# Matrix name latticeParameter[m] atomicVolume[m3] molarMass[Kg/mol]
+matrix Al 4.05e-10 1.66e-29 26.981e-3
+
+# "chimistryArray" is writen is the order of elements
+# Element name content[wt_pct] molarMass[Kg/mol] diffusion_D0[m2/s] diffusion_Q[J/mol]
+element Mg 0.58 24.3e-3 2.2e-4 130000
+element Si 0.77 28.1e-3 2.2e-4 130000
+
+# Precipitate name atomiqueVolume[m3] surfaceEnergy[J/m2] solubilityProduct_A solubilityProduct_B precipitateShapes (aspectRatio if not sphere) nucleationtype(+ nothing if homogeneous, +heterogeneousNucleationCoeffcient, number of nucleation sites if heterogeneous) Element1 ChemistryCoefficient1 Element2 ChemistryCoefficient2 Element3 ChemistryCoefficient3...
+
+precipitate beta'' 1.921e-29 10.055 3825.679695 -11.70300108 0 RodFunction 0.5 3.2 homogeneous Mg 4 Si 4 Al 2
+
+precipitate beta' 1.921e-29 0.1319 7797.484817 -14.491794 0 RodFunction 0.1 2 homogeneous Mg 5 Si 6
+
+
+savethermodynamics results-6351-170 10
+classManagementType lin
+targetClassNumber 200
+savedistribution distribution-6351-170 100
+
+#initialDistrib beta'' distribution-6351-T6beta''Exp.dat beta' distribution-6351-T6beta'Exp.dat
+
+#initialDistrib beta'' distribution-6351-T6beta''_0.dat beta' distribution-6351-T6beta'_0.dat
+
+
+temperatureProfile 0.001 500.0 10000000.0 500.0
+
+
+nodes 1
+
+minDissolutionLimit 2e-10 
+maxDissolutionLimit 4e-10
+#criterion solContent
+criterion rstar
+    
+#mechanicModel /1=Rod/
+mechanicModel  1
+
+#SSconstant  /element/ /unit/  /StrengthConst/
+SSconstant  Si   MPa_Wpct  29
+SSconstant  Mg   MPa_Wpct 66.3
+
+
+#precipitateConstants  /Name/  /critialRad/  /arrangement/  /youngModulus/  /poissCoef/ /hard1/ /hard2/ /hard3/ /k_sh/
+precipitateConstants  beta'      1.8e-009   triangularPath  71.5e9   0.33   0  0  0  0
+precipitateConstants  beta'' 2.7e-009   triangularPath  71.5e9   0.33   0  0  0  0
+#0.0291
+
+#dislocations  /initialDensity/ /strength/ /betaff/ 
+dislocations  0    0.5   0.35
+
+#cristalloConstants /sigma_0/ /M/ /a0/  /lattice/
+cristalloConstant  10000000  2.0  4.05e-010  cfc
+
+grainSize 40.1254e-6 0 0 0
+young 273 71.5e9 
+poisson 273 0.33
