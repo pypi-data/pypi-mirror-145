@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<registry>
+  <!-- resources definition -->
+  <records prefix="plone.resources/collective-z3cform-select2-widget"
+           interface="Products.CMFPlone.interfaces.IResourceRegistry"
+           remove="True">
+  </records>
+
+  <records prefix="plone.resources/collective-z3cform-select2-faceted"
+           interface="Products.CMFPlone.interfaces.IResourceRegistry"
+           remove="True">
+  </records>
+
+  <!-- bundle definition -->
+  <records prefix="plone.bundles/collective-z3cform-select2"
+           interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           remove="True">
+  </records>
+</registry>
