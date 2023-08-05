@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: cligraphy
+Version: 0.1.1
+Summary: Cligraphy Command line tools
+Author: Netflix, Inc.
+Author-email: 
+License: Apache 2.0
+Platform: UNKNOWN
+Requires-Dist: argcomplete (>=1.0.0)
+Requires-Dist: attrdict (>=2.0.0)
+Requires-Dist: cachetools (>=3.1.1)
+Requires-Dist: certifi (>=2015.11.20)
+Requires-Dist: colorclass (>=2.2.0)
+Requires-Dist: colorlog (>=2.6.0)
+Requires-Dist: coverage (>=4.0.3)
+Requires-Dist: decorator
+Requires-Dist: filelock (>=2.0.5)
+Requires-Dist: future (>=0.15.2)
+Requires-Dist: logilab-common (>=1.1.0)
+Requires-Dist: nose (>=1.3.7)
+Requires-Dist: paramiko (>=1.16.0)
+Requires-Dist: pathlib
+Requires-Dist: pytz (>=2015.7)
+Requires-Dist: PyYAML (>=3.12)
+Requires-Dist: redis (>=2.10.5)
+Requires-Dist: requests (>=2.11.1)
+Requires-Dist: requests-cache (>=0.4.10)
+Requires-Dist: setproctitle (>=1.1.9)
+Requires-Dist: sh (>=1.11)
+Requires-Dist: six (>=1.10.0)
+Requires-Dist: subprocess32 (>=3.2.7)
+Requires-Dist: termcolor (>=1.1.0)
+Requires-Dist: terminaltables (>=3.0.0)
+Requires-Dist: tzlocal (>=1.2)
+Requires-Dist: black
+Requires-Dist: check-manifest
+Requires-Dist: flake8
+Requires-Dist: pytest
+Requires-Dist: pycodestyle
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: check-manifest ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pycodestyle ; extra == 'dev'
+
+Cligraphy Command line tools
+
