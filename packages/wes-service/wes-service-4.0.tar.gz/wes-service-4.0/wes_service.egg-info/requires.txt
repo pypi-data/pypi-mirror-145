@@ -1,0 +1,12 @@
+connexion<3,>=2.0.2
+ruamel.yaml>=0.15.78
+schema-salad
+
+[arvados]
+arvados-cwl-runner
+
+[cwltool]
+cwlref-runner
+
+[toil]
+toil[cwl]==5.6.0
