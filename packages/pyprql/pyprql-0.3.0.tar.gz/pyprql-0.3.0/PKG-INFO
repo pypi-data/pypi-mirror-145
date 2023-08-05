@@ -1,0 +1,133 @@
+Metadata-Version: 2.1
+Name: pyprql
+Version: 0.3.0
+Summary: Python Implementation of Pipelined Relational Query Language (PRQL)
+Home-page: https://github.com/qorrect/PyPrql
+License: Apache-2.0
+Author: qorrect
+Author-email: charlie.fats@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Typing :: Typed
+Requires-Dist: Pygments (>=2.11.2,<3.0.0)
+Requires-Dist: SQLAlchemy (>=1.4.32,<2.0.0)
+Requires-Dist: click (>=8.0.4,<9.0.0)
+Requires-Dist: enforce-typing (>=1.0.0,<2.0.0)
+Requires-Dist: fuzzyfinder (>=2.1.0,<3.0.0)
+Requires-Dist: icecream (>=2.1.2,<3.0.0)
+Requires-Dist: lark (>=1.1.2,<2.0.0)
+Requires-Dist: prompt-toolkit (>=3.0.28,<4.0.0)
+Requires-Dist: rich (>=12.0.0,<13.0.0)
+Project-URL: Repository, https://github.com/qorrect/PyPrql
+Description-Content-Type: text/markdown
+
+# PyPrql
+
+Python implementation of [PRQL](https://github.com/max-sixty/prql).
+
+Documentation of PRQL is at https://github.com/max-sixty/prql
+
+### Installation
+```
+    pip install pyprql
+```
+
+## CLI
+
+Usage:
+
+```bash
+    pyprql 'connection_string'
+    pyprql 'postgresql://user:password@localhost:5432/database'    
+```
+Examples:
+
+```bash
+    pyprql 'sqlite:///chinook.db'
+```
+Try it out:
+
+```
+curl https://github.com/qorrect/PyPrql/blob/main/resources/chinook.db?raw=true -o chinook.db 
+pyprql "sqlite:///chinook.db"
+
+PRQL> show tables 
+```
+
+## pyprql.to_sql 
+
+```elm
+query='''
+from employees
+filter country = "USA"
+derive [
+  gross_salary: salary + payroll_tax,
+  gross_cost:   gross_salary + benefits_cost
+]
+filter gross_cost > 0
+aggregate by:[title, country] [
+    average salary,
+    sum     salary,
+    average gross_salary,
+    sum     gross_salary,
+    average gross_cost,
+    sum_gross_cost: sum gross_cost,
+    row_count: count salary
+]
+sort sum_gross_cost
+filter row_count > 200
+take 20
+'''
+```
+
+---
+
+```python
+
+from pyprql import to_sql
+sql = to_sql(query)
+print(sql)
+```
+
+---
+
+```sql
+SELECT AVG(salary),
+       SUM(salary),
+       AVG(salary + payroll_tax),
+       SUM(salary + payroll_tax),
+       AVG(salary + payroll_tax + benefits_cost),
+       SUM(salary + payroll_tax + benefits_cost) as sum_gross_cost,
+       COUNT(salary)                             as row_count,
+       salary + payroll_tax                      as gross_salary,
+       (salary + payroll_tax) + benefits_cost    as gross_cost
+FROM `employees` employees_e
+WHERE country="USA" AND (gross_salary+benefits_cost)>0
+GROUP BY title, country
+HAVING row_count >200
+ORDER BY sum_gross_cost
+LIMIT 20
+
+```
+
+#### Differences from the spec
+
+The parser is only able to parse casts in select statements insde of `[ ]`, so
+
+```sql
+select foo | as float
+```
+
+will fail, it must be wrapped in brackets as a single item list.
+
+```sql
+select [ foo | as float ]
+```
+
