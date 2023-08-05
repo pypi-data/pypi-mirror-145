@@ -1,0 +1,20 @@
+requests
+xmltodict
+
+[async]
+aiohttp[speedups]
+
+[async:sys_platform == "linux"]
+uvloop
+
+[build]
+build
+wheel
+
+[dev]
+pytest
+python-dotenv
+
+[publish]
+twine
+wheel
