@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: naacl-utils
+Version: 0.4.1
+Summary: UNKNOWN
+Home-page: https://github.com/naacl2022-reproducibility-track/naacl-utils
+Author: Allen Institute for Artificial Intelligence
+Author-email: petew@allenai.org
+License: Apache
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: packaging
+Requires-Dist: beaker-py (==0.2.8)
+Requires-Dist: click (<8.1,>=8.0)
+Requires-Dist: click-help-colors (<0.10,>=0.9.1)
+Requires-Dist: rich (<12.1,>=12.0)
+Provides-Extra: dev
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: mypy (==0.942) ; extra == 'dev'
+Requires-Dist: black (==22.3.0) ; extra == 'dev'
+Requires-Dist: isort (==5.10.1) ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: twine (>=1.11.0) ; extra == 'dev'
+Requires-Dist: setuptools ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+
+# NAACL Utils
+
+A command line tool to help authors submit Docker images to the [NAACL Reproducibility Track](https://naacl2022-reproducibility-track.github.io/).
+
+*Requires [Docker](https://www.docker.com/) and Python 3.7 or newer.*
+
+Instructions for using the tool are in [the Dockerization tutorial](https://github.com/naacl2022-reproducibility-track/naacl2022-reproducibility-track.github.io/blob/main/_tutorial/04_submitting.md).
+
+
