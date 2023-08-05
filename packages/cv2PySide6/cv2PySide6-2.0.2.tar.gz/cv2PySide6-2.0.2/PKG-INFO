@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: cv2PySide6
+Version: 2.0.2
+Summary: Package for video display with OpenCV-Python and PySide6
+Home-page: https://github.com/JSS95/cv2PySide6
+Author: Jisoo Song
+Author-email: jeesoo9595@snu.ac.kr
+Maintainer: Jisoo Song
+Maintainer-email: jeesoo9595@snu.ac.kr
+License: LGPL
+Keywords: GUI
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Multimedia :: Graphics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: test
+Provides-Extra: test-ci
+Provides-Extra: full
+License-File: LICENSE.txt
+
+Python package to combine `OpenCV-Python` and `PySide6`.
+
+# Introduction
+
+`cv2PySide6` is a package to display image or video from `numpy.ndarray` using `PySide6`.
+It helps the user to process the image with `cv2` and visualize the result with `PySide6` GUI.
+
+# Installation
+
+Before you install, be careful for other Qt-dependent packages installed in your environment.
+For example, non-headless `OpenCV-Python` modifies the Qt dependency thus making `PySide6` unavailable.
+
+`cv2PySide6` can be installed using `pip`.
+
+```
+$ pip install cv2PySide6
+```
+
+# How to use
+
+## Single image
+
+`NDArrayLabel` is a label which can directly display `numpy.ndarray` object.
+To display single array, pass it directly to `NDArrayLabel.setArray()` method.
+
+## Video
+
+`NDArrayVideoPlayerWidget` provides video widget with play/stop buttons and slider.
+It wraps internal video pipeline which converts video frame to numpy array, process, and display.  
+To customize video source object, use `NDArrayVideoPlayerWidget.setVideoPlayer()` method.
+To customize array processor, use `NDArrayVideoPlayerWidget.setArrayProcessor()` method.
+
+## Camera
+
+`NDArrayCameraWidget` provides video screen with internal video pipeline.  
+To customize camera session, use `NDArrayCameraWidget.setMediaCaptureSession()` method.
+To customize array processor, use `NDArrayCameraWidget.setArrayProcessor()` method.
+
+# Examples
+
+Use cases are provided in [examples](https://github.com/JSS95/cv2PySide6/tree/master/cv2PySide6/examples) directory.
+
+
