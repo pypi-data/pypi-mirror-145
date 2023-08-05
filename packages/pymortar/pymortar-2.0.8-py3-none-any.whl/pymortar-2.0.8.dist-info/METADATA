@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: pymortar
+Version: 2.0.8
+Summary: 
+Author: Gabe Fierro
+Author-email: gtfierro@mines.edu
+Requires-Python: >=3.7.1,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: brickschema (>=0.6.0a6,<0.7.0)
+Requires-Dist: googleapis-common-protos (>=1.52.0,<2.0.0)
+Requires-Dist: pandas (>=1.3,<2.0)
+Requires-Dist: pyarrow (>=5.0,<6.0)
+Requires-Dist: python-snappy (>=0.6.0,<0.7.0)
+Requires-Dist: rdflib (>=6.1,<7.0)
+Requires-Dist: requests (>=2.25.0,<3.0.0)
+Requires-Dist: toml (>=0.10.2,<0.11.0)
