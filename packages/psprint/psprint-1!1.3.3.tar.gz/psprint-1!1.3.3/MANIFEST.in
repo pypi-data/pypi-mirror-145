@@ -1,0 +1,14 @@
+include *.txt
+include *.rst
+include *.yml
+include .*rc
+include LICENSE
+recursive-include docs *.bat
+recursive-include docs *.jpg
+recursive-include docs *.svg
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs *.txt
+recursive-include docs Makefile
+recursive-include psprint *.yml
+recursive-exclude docs _*/**
