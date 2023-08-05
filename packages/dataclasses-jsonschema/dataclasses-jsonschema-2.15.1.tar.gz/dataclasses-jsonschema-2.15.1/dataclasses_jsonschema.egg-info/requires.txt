@@ -1,0 +1,14 @@
+python-dateutil
+jsonschema
+
+[:python_version < "3.7"]
+dataclasses
+
+[:python_version < "3.8"]
+typing_extensions
+
+[apispec]
+apispec
+
+[fast-validation]
+fastjsonschema
