@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: geoenrich
+Version: 0.1
+Summary: A package to enrich your geo-referenced data (eg. species occurrences) with environmental data.
+Home-page: https://github.com/morand-g/geoenrich
+Author: Gaétan Morand (UMR Marbec)
+Author-email: gaetan.morand@ird.fr
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/morand-g/geoenrich/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: English
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# **geoenrich**
+
+# Package description
+This package provides functionalities to enrich georeferenced events (such as species occurrences) with environmental data from satellites or models. It is intended for large numbers of occurrences: local storage is implemented to avoid redundant requests to remote servers. All downloaded environmental data are stored locally in netCDF files and can be retrieved as multidimensional numpy arrays to be used in any way.
+
+The package provides functions to retrieve occurrence data directly from GBIF, or open a custom DarwinCore archive from any source. These occurrences are then stored into csv databases that record the netCDF coordinates for the relevant subsets of each environmental variables.
+
+All environmental variables used for enrichment must have latitude and longitude dimensions. The package also handles time and depth dimensions.
+
+Documentation on [Read the Docs](https://geoenrich.readthedocs.io).
+
+## Installation
+
+Installation instructions [in the documentation](https://geoenrich.readthedocs.io/en/latest/install.html).
+
+## Using the plugin
+
+A Jupyter Notebook tutorial is available at the [root of the repository](Geoenrich%20tutorial.ipynb).
+
+## Issues and further developments
+
+### User suggestions
+
+Please feel free to raise issues or suggest improvements in the [Issues tab](https://github.com/morand-g/geoenrich/issues).
+
+### Planned improvements
+
+#### Depth requests
+
+There are currently only two options regarding the depth dimension : only surface data, or data for all depths.
+We plan to add an option to download data for any range of depth.
+
+#### Temporary netCDF files copies
+
+To improve reliability we will make temporary backups of netCDF files being written in, to be able to recover data in case writing is interrupted or fails.
+
+#### Variable statistics.
+
+For each occurrence, we will return average, standard deviation, minimum and maximum of the variable in the bounding box.
+
+
