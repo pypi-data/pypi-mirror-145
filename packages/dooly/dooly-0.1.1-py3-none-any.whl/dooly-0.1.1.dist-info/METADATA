@@ -1,0 +1,110 @@
+Metadata-Version: 2.1
+Name: dooly
+Version: 0.1.1
+Summary: A library that handles everything with 🤗 and supports batching to models in PORORO
+Home-page: https://github.com/jinmang2/DOOLY
+Author: jinmang2
+Author-email: jinmang2@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Requires-Dist: filelock
+Requires-Dist: huggingface-hub (<1.0,>=0.1.0)
+Requires-Dist: datasets
+Requires-Dist: numpy (>=1.17)
+Requires-Dist: torch (>=1.0)
+Requires-Dist: packaging (>=20.0)
+Requires-Dist: pyyaml (>=5.1)
+Requires-Dist: regex
+Requires-Dist: requests
+Requires-Dist: tokenizers (!=0.11.3,>=0.11.1)
+Requires-Dist: transformers (>=4.8.2)
+Requires-Dist: tqdm (>=4.27)
+Requires-Dist: dataclasses ; python_version < "3.7"
+Provides-Extra: all
+Requires-Dist: fugashi (>=1.0) ; extra == 'all'
+Requires-Dist: ipadic (<2.0,>=1.0.0) ; extra == 'all'
+Requires-Dist: jieba ; extra == 'all'
+Requires-Dist: mecab ; extra == 'all'
+Requires-Dist: whoosh ; extra == 'all'
+Requires-Dist: pororo ; extra == 'all'
+Requires-Dist: boto3 ; extra == 'all'
+Requires-Dist: black (~=22.0) ; extra == 'all'
+Requires-Dist: flake8 (>=3.8.3) ; extra == 'all'
+Provides-Extra: convert
+Requires-Dist: pororo ; extra == 'convert'
+Requires-Dist: boto3 ; extra == 'convert'
+Provides-Extra: ja
+Requires-Dist: fugashi (>=1.0) ; extra == 'ja'
+Requires-Dist: ipadic (<2.0,>=1.0.0) ; extra == 'ja'
+Provides-Extra: mecab
+Requires-Dist: mecab ; extra == 'mecab'
+Provides-Extra: quality
+Requires-Dist: black (~=22.0) ; extra == 'quality'
+Requires-Dist: flake8 (>=3.8.3) ; extra == 'quality'
+Provides-Extra: search
+Requires-Dist: whoosh ; extra == 'search'
+Provides-Extra: zh
+Requires-Dist: jieba ; extra == 'zh'
+
+# DOOLY 🦕
+PORORO에는 아래 세 가지 단점이 존재합니다.
+- 일부 task의 batch화 불가능
+- 내부 tokenize 과정 및 모듈 구조 확인이 어려움
+- fairseq dependency
+
+Dooly는 위 단점 세 가지를 개선한 라이브러리입니다.
+- 모든 task를 batch화하여 inference 가능
+- task별 tokenizer, model을 모듈로 분리하여 출력값 확인 가능
+- 모든 것을 huggingface transformers로 처리
+
+## How to use?
+아래와 같이 간단하게 사용 가능합니다
+
+- requirements (v0.1.1 -> setup으로 해결)
+    - `mecab`, `fugashi`, `ipadic`, `whoosh`, `nltk`
+```
+$ pip install transformers datasets torch tokenizers dataclasses numpy
+```
+
+- install
+
+```
+$ pip install dooly
+```
+
+- how to use
+    - PORORO와 동일하게 사용할 수 있습니다.
+```python
+from dooly import Dooly
+
+ner = Dooly(task="ner", lang="ko")
+```
+
+## Support Tasks
+- Back Translation Data Augmentation
+- Dependency Parsing
+- Machine Reading Comprehension
+- Machine Translation
+- Named Entity Recognition
+- Natural Language Inference
+- Pos Tagging
+- Question Generation
+- Word Embedding
+- Word Sense Disambiguation
+- Zero Shot Topic Classification
+
+
+
+## Reference
+- https://github.com/kakaobrain/pororo
+
+
