@@ -1,0 +1,155 @@
+Metadata-Version: 2.1
+Name: collective.dms.batchimport
+Version: 1.3.0
+Summary: Batch import of files into the Documents Management System
+Home-page: http://svn.plone.org/svn/collective/
+Author: Cédric Messiant
+Author-email: cedricmessiant@ecreall.com
+License: gpl
+Description: .. contents::
+        
+        This package can read OS directories to find files to import. A metadata file can be
+        associated to each file.
+        
+        It creates for each file a dms item containing the file as a dmsmainfile.
+        
+        Introduction
+        ============
+        
+        This package provides a configuration view, where you can define:
+        
+        * a path to a directory to process, called the root directory
+        * a path to a directory, where to move processed files
+        * a table where filename prefixes can be associated to portal types
+        
+        The root directory can contain a directory structure that will be followed to place
+        in imported dms content.
+        This directory structure must already exist in Plone.
+        
+        Each file can be joined to a metadata file in json format (A directory like
+        containing attributes).
+        
+        Example files structure:
+        
+        * "folder 1" / "file1.pdf"
+        * "folder 1" / "file1.pdf.metadata"
+        * "folder 1" / "folder2" / "file2.pdf"
+        
+        
+        Tests
+        =====
+        
+        This add-on is tested using Travis CI. The current status of the add-on is :
+        
+        .. image:: https://secure.travis-ci.org/collective/collective.dms.batchimport.png
+            :target: http://travis-ci.org/collective/collective.dms.batchimport
+        
+        
+        
+        Contributors
+        ============
+        
+        - Gauthier Bastien, IMIO
+        - Stéphan Geulette, IMIO
+        - Vincent Fretin, Ecreall
+        - Cédric Messiant, Ecreall
+        - Frédéric Peters, Entr'ouvert
+        - David Convent, Entr'ouvert
+        
+        Changelog
+        =========
+        
+        1.3.0 (2022-04-01)
+        ------------------
+        
+        - Corrected UnicodeEncodeError.
+        - Removed prefix from filename
+        - Sort filenames naturally
+        - Used filename as title if no metadata
+        - Added script to add metadata (nothing done for now)
+          [sgeulette]
+        
+        1.2.5 (2020-10-07)
+        ------------------
+        
+        - Test portal type more generically.
+          [sgeulette]
+        
+        1.2.4 (2017-05-30)
+        ------------------
+        
+        - Set internal_reference_no if not set.
+          [sgeulette]
+        - Added dmsmainfile portal type parameter at creation.
+          [sgeulette]
+        
+        1.2.3 (2016-04-15)
+        ------------------
+        
+        - Removed useless message.
+          [sgeulette]
+        
+        1.2.2 (2014-11-28)
+        ------------------
+        
+        - Removed a fake attribute present in the dict passed to createContentInContainer.
+          [sgeulette]
+        
+        
+        1.2.1 (2014-11-27)
+        ------------------
+        
+        - Return created objects
+          [sgeulette]
+        
+        
+        1.2 (2014-10-24)
+        ----------------
+        
+        - Added specific role and permission to call batchimport view
+          [sgeulette]
+        
+        
+        1.1 (2014-03-24)
+        ----------------
+        
+        - Remove useless parameter
+          [sgeulette]
+        - Don't force title
+          [sgeulette]
+        - Skip useless directories
+          [sgeulette]
+        - Apply default_value only if necessary
+          [sgeulette]
+        - Pep8 corrections
+          [sgeulette]
+        
+        1.0 (2014-03-20)
+        ----------------
+        - Improvements
+          [Frédéric Péters]
+        - Use adopt_user to create document and main file
+          [sgeulette]
+        - add a new @@fileimport endpoint
+          [cedricmessiant]
+        - Added configlet
+          [Frédéric Péters]
+        - Some improvements
+          [sgeulette]
+        - Read and import of files
+          [Frédéric Péters, David Convent]
+        - Package created using templer
+          [cedricmessiant]
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: 4.2
+Classifier: Framework :: Plone :: 4.3
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Provides-Extra: test
