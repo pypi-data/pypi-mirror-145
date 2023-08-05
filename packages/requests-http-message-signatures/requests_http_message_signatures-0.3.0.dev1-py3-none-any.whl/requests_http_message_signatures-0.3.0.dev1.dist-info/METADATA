@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: requests-http-message-signatures
+Version: 0.3.0.dev1
+Summary: 
+Author: Funkwhale Collective
+Author-email: maintainers@funkwhale.audio
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: cryptography (>=1.8.2)
+Requires-Dist: requests (>=2,<3)
