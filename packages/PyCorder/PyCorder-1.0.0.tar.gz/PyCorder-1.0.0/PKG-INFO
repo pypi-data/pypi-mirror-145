@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: PyCorder
+Version: 1.0.0
+Summary: A audio recorder for python.
+Author: LUA9
+Maintainer: LUA9
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+
+# Installation
+```shell
+pip install PyCorder
+```
+
+# Usage
+```python
+import PyCorder
+
+rec = PyCorder.MicRecorder()
+rec.save('save', 'wav')
+```
+
