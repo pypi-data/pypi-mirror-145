@@ -1,0 +1,9 @@
+
+[:python_version <= "3"]
+typing==3.10.0.0
+
+[:python_version == "2.7"]
+minio==6.0.*
+
+[:python_version >= "3.6"]
+minio==7.1.1
