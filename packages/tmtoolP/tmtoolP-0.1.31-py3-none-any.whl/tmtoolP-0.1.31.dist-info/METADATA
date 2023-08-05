@@ -1,0 +1,103 @@
+Metadata-Version: 2.1
+Name: tmtoolP
+Version: 0.1.31
+Summary: tmtool
+Home-page: https://github.com/meihaoyidian/tm-pip-tools
+Author: TM-QA
+Author-email: vida112728@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.8.0
+Description-Content-Type: text/markdown
+Requires-Dist: yagmail
+Requires-Dist: faker
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+Requires-Dist: pymysql
+
+
+# tm-pip-tools
+工具集合
+
+### 上传pypi
+```
+python setup.py bdist_wheel
+twine upload dist/*
+```
+### 安装(Python 版本>=3.8.0)
+```
+pip install --upgrade tmtoolP
+```
+
+### 使用
+
+#### 发送邮件
+```
+from tmtool.tools import Tool
+tool = Tool()
+
+tool.mail_from_user_host = '发件地址host'
+tool.mail_from_user = '发件人邮箱号'
+tool.mail_from_user_pwd = '发件人密码'
+
+tool.send_mail_msg(to_user='收件人邮箱地址（这里是列表，可填写多个）', title='邮件标题', content='邮件内容')
+```
+
+#### 格式转换
+```
+tool.json_dumps({"test": "python字典"})  # 字典转字符串
+tool.json_loads('{"test": "python字典"}')  # 字符串转字典
+
+tool.xml_to_dict('<xml><data>字符串</data></xml>')  # xml转字典
+tool.dict_to_xml({"test": "python字典"})  # 字典转xml
+```
+
+#### 企业微信机器人
+```
+from tmtool.tools import Tool
+tool = Tool()
+
+tool.qy_wechat_token = '7fdda192-cfcb-4eb5-87a5-b341574562d5'
+
+# @ 所有人
+tool.send_qy_wechat_msg("自测内容，忽略！", at_all=['@all'])
+# @ 指定人
+tool.send_qy_wechat_msg("自测内容，忽略！", at_all=['18600967174'])
+# @ 指定多人
+tool.send_qy_wechat_msg("自测内容，忽略！", at_all=['18600967174', '15210205078'])
+```
+
+#### 时间转换
+```
+tool.time_stamp()       # 10位秒级时间戳
+tool.time_stamp('ms')   # 13位毫秒时间戳
+
+tool.get_now_time()     # 获取当前时间
+
+tool.date_to_time_stamp('2022-03-25 00:00:00')  # 时间字符串转为时间戳
+tool.time_stamp_to_date(1732312234)             # 时间戳转为时间字符串
+```
+
+#### 随机数据
+```
+tool.random_phone()  # 随机手机号
+tool.random_name()  # 随机姓名
+tool.random_ssn()  # 随机身份证
+
+tool.random_string(16)  # 随机位数的字符串
+tool.random_number(8)  # 随机位数的数字
+```
+
+### http请求
+```
+tool.http_client(url='', data={}, method='GET')  # get请求
+
+tool.http_client(url='', data={}, method='POST')  # post请求 -(暂无header #TODO) 
+
+tool.trans_data_to_url(url='接口地址', data={})  # 把参数拼接到url上
+```
+
+
