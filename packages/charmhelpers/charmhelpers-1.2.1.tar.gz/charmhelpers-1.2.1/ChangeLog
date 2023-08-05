@@ -1,0 +1,3701 @@
+CHANGES
+=======
+
+v1.2.1
+------
+
+
+v1.2.0
+------
+
+* Resolve type change in Ceph Quincy for enabled\_manager\_modules
+* contrib.os.context: Consume PCI module from c-h
+* contrib: Add \`hardware\` package with \`pci\` module
+* Add service\_type to keystone-authtoken section (#687)
+* collect stdout from ansible-playbook execution (#678)
+* Make ansible-playbook verbose (#677)
+* Adding new function for enabling service (#676)
+* Fix handling of profile-name
+
+v1.1.0
+------
+
+* Add profile-name param (#673)
+* Remove tempita as it doesn't seem to be required anymore (#674)
+* Utilities for configuring deferred restarts NRPE checks (#669)
+* Escape special chars in nrpe command arguments (#648)
+* Support HAproxy https health checks (#662)
+* Add do\_action\_package\_upgrade function (#668)
+*  Ensure get\_os\_codename\_install\_source() for bug/665
+* Change relation\_set() to use a cached --file detection fn (#340)
+* contrib/ovs/ovsdb: Allow passing extra args to tool (#604)
+* Remove \_\_future\_\_ imports as no longer needed
+* Remove py27 and pre py35 support
+
+v1.0.0
+------
+
+* Add log statement to gain visibility on resolved addresses. (#661)
+* Fix get\_mon\_map() for octopus and later
+
+0.20.24
+-------
+
+* Make ows\_check\_services\_running() public (#658)
+* Make apt\_cache().dpkg\_list() public (#657)
+* Fix test failure when local time is not UTC (#656)
+* undeprecate action-\* functions (#459)
+* Avoid using a private attribute which is allowed to change without notice
+*  Add force\_upgrade parm to openstack-upgrade action (#649)
+* Add jammy release (#650)
+* Replace the last couple of yaml.load() calls
+* ceph: make ceph-common version checks optional (#644)
+* Ease KeepAliveTimeout in line with keystoneauth1.session.Session
+* Add function for retrieving subordinate services (#643)
+
+v0.20.23
+--------
+
+* Added watermark\_scale\_factor tuning (#609)
+* Spelling fixes
+* Add impish to the list of Ubuntu releases
+* Fix failing unit tests
+* Fix virtualenv creation on bionic (#529)
+* Add support for pmd-socket-cores (#538)
+* Use paramertierised sets for lookups rather than hardcoded lists (#464)
+* Add enable-fwaas to neutron api context (#635)
+* More retries on 'apt-get install' (#628)
+* Fix version\_compare exception message (#632)
+* Include internal endpoint information in IdentityServiceContext (#633)
+* contrib/openstack: Fix haproxy log socket path
+* Set no\_proxy in the command environment for add-apt-repository (#627)
+* fix broken link to charm install (#625)
+* Add missing Xena bits (#624)
+* Base DPDK socket mem on sockets not NUMA nodes
+* Allow local testing on Pop\!\_OS (#622)
+* Confirm wrong data-port format raises ValueError (#621)
+* Drop Amulet support (#618)
+* Bump jinja2 from 2.11 to 2.11.3
+* Remove erroneous comment
+* Adds context switch for neutron-dhcp-agent
+* Add some Impish/Xena/Yoga bits (#619)
+* Fix docstring missing '>'
+* Add a base openstack code name as a source for add\_source()
+* Set WSGI env with lang=C.UTF-8
+
+v0.20.22
+--------
+
+* Update the build status badge for github actions (#611)
+* Fix typo (#610)
+* Revert "Set cmd\_env for trusty and xenial only (#573)"
+* Fix duplicating other charms deferred event messages (#599)
+* Add hirsute to the list of known UBUNTU\_RELEASES
+* Supporting application level relation data (#566)
+* Use inspect.getfullargspec when using python 3 (#399)
+* Add GitHub Actions workflow (#578)
+* #367 Allow passing additional jinja2.Environment variables to \`render\` function (#592)
+* Add code to manage deferred hooks (#593)
+* Remove the wallaby codenames from package lookups
+* Fix typo on cinder -> wallaby
+* Add hirsute and wallaby identifiers for OpenStack
+* Add code to manage deferred restarts. (#579)
+* contrib/openstack: Add helpers for principal subordinate package information exchange (#590)
+* Update restart\_on\_change to act as a Decorator or context manager (#589)
+
+v0.20.21
+--------
+
+* Set cmd\_env for trusty and xenial only (#573)
+* Add unit tests for sequence\_status\_check\_functions() (#585)
+* Add function for generating OVS external-ids (#583)
+* Add helper for sequencing charm status checks (#584)
+* Fix typos
+* Ensure cache is only on apt-install not on file read
+* Extra work to fully silence the apt install
+* Fix error log notification of openstack-release pkg
+* Extend restart\_on\_changed\_helper (#572)
+* Fix issues around py38 (groovy) and amulet module (#576)
+* merge MAX\_DEFAULT\_WORKERS and MAX\_DEFAULT\_WORKERS\_CONTAINER
+* Cap the number of workers always when multiplier is not set
+* Refactoring around \_manage\_ca\_certs() (#570)
+* Issue564: add None check for max\_check\_attempts in nrpe check (#565)
+* add function to retrieve version of installed package
+* Add JUJU\_DEPARTING\_UNIT support (#563)
+* Fix (new) local\_address() to work with pre-2.9 juju (#562)
+* Stop getting {public,private}-address from unit-get (#561)
+
+v0.20.20
+--------
+
+* Use bindings for certificate requests (#556)
+* Update ubuntu\_apt\_pkg.py (#559)
+* Add support for new openstack-release package
+* Pin pip to < 20.3 as requirements.txt is broken for 20.3.1 - temporary fix (#558)
+* Run actual tests of \_calculate\_workers and \_num\_cpus
+* Add connect\_timeout to the MySQLHelper class (#550)
+*  Add 'is\_ssl\_enabled' for bug 1851610 to check if (#546)
+* contrib/openstack: Add more detail to SR-IOV context
+* Add PkgVersion (#547)
+* Add http\_proxy to environment for add\_apt\_repository to address #544 (#545)
+* Add max\_check\_attempts support for nrpe checks (#539)
+* Ensure we mock out the lsb\_rlease calls
+* Update keystone\_juju\_ca\_cert var to be clearer
+* Remove keystone\_juju\_ca\_cert.crt if ssl\_ca config option is not set
+* Correct name of CA cert file
+* update region\_name on [placement] (#534)
+
+v0.20.19
+--------
+
+* Handle Unicode decode errors on \`ip\` output gracefully
+* Partially revert "Updates for the Cinder Ceph Replication spec (#526)" (#532)
+* Updates for the Cinder Ceph Replication spec (#526)
+* Fix race in checking closed ports on pause (#524)
+* Make mysql.get\_allowed\_hosts prefix aware (#531)
+* core/host: Speedup chownr by avoiding a couple of syscalls (#527)
+* Guarantee all SAN addresses are symlinked to certs (#520)
+* Fix SubordinateConfigContext complete
+* Add swift 2.26.0 version for victoria (#517)
+
+v0.20.18
+--------
+
+* Send unit name alongside ceph requets (#489)
+* Add groovy in UBUNTU\_RELEASES (#512)
+* Make EC profiles immutable (#513)
+* Add helper to send application name to ceph-mons
+* contrib/unison: Fix ownership for authorized\_keys and known\_hosts (#487)
+* contrib/ovs: Handle ovs-vsctl's duality on list type fields (#511)
+* ovs: Fix error in patch\_ports\_on\_bridge (#509)
+* contrib/ovs: Add helper for iterating over patch ports on bridge (#496)
+* contrib/openstack: Add bluestore compression get\_kwargs method (#508)
+* contrib/ceph: Include common properties when comparing op equality (#507)
+* contrib/ceph: Update ErasurePool op initialization
+
+v0.20.17
+--------
+
+* Ansible: add proxy settings support (#503)
+* Add support for Erasure Coded pools (#498)
+* contrib/ceph: Add BlueStore Compression context and section template
+* contrib/ceph: Add common op validation method to Pool classes
+* contrib/ceph: Add update method for pools
+* contrib/ceph: Allow \`update\_pool\` to set multiple properties
+* contrib/ceph: Teach Pool classes to initialize themselves from op
+* contrib/ceph: Teach CephBrokerRq to initialize itself from raw request
+* contrib/ceph: Add BlueStore compression options to broker request
+* contrib/ceph: Share handling of common create args
+* contrib/ceph: Share common post pool creation code
+* contrib/ceph: Tidy up long lines and update docstring format (#502)
+* Pin path version (#499)
+* Clean-up around adding linux bridges to OVS bridges (#449)
+* BugFix: snap services always use systemd, even in trusty (#494)
+* Fix directory /etc/nagios/nrpe.d/  issue (#492)
+* Add useful traces around peer readiness detection (#476)
+* contrib/ovs: Fix deletion of virtual bridge ports (#491)
+* Refresh cipher suites and protocols (#485)
+
+v0.20.16
+--------
+
+* Reuse connection in MySQLHelper (#478)
+* Add Victoria/Groovy release and version details (#490)
+* Optimise and replace subprocess calls with os.chown/os.chmod
+* Fix ownership for authorized\_keys and known\_hosts #487
+* core.hookenv.Config: Handle invalid state files (#484)
+* openstack/context: allow adding unmapped interface to bridge (#483)
+* Gate on 'password' from rabbit units for amqp ctxt (#482)
+
+v0.20.15
+--------
+
+* Drop Environment classifier
+* Switch to using pbr (#480)
+* openstack/context: Fix handling of linux bond interfaces (#479)
+* Fix typos (#477)
+* Add swift 2.25.0 version for ussuri (#473)
+
+v0.20.14
+--------
+
+* v0.20.14 release
+* ceph autoscaler: set min pg num for pools (#471)
+* ovn: Fix argument passing to ovn\_appctl (#470)
+
+v0.20.13
+--------
+
+* 0.20.13 release
+* openstack: Add context for SRIOV configuration (#468)
+
+v0.20.12
+--------
+
+* Release 0.20.12
+* Allow specifying port for mysql and shared-db context (#469)
+* openstack: Move bridge port interface mapping to charm helpers (#448)
+
+v0.20.11
+--------
+
+* v0.20.11 release
+* Handle older versions of hvac library (#467)
+* Fix exception from vaultlocker code due to upstream change (#466)
+* status\_set refinements (#465)
+* Handle exceptions in containers when setting sysctl keys (#462)
+* ovs/ovsdb: Improve SimpleOVSDB API (#451)
+* non-active local unit state in application status (#458)
+* Small refactor of the status check functions (#457)
+* Add support for setting application status (#456)
+* Add methods for passing & rendering osd-setting (#444)
+* Add common functions for sharing unit state (#454)
+* Update mysql router permissions (#455)
+* Move state check from keystone (#453)
+* Add hook context to unit test helper (#452)
+* Fix add\_ovsbridge\_linuxbridge's return contract (#447)
+* Extend add\_ovsbridge\_linuxbridge with the possibility to set additional data to the corresponding port (#446)
+* Move OVS/OVN helpers from charm-layer-ovn (#443)
+* Be more defensive when checking Vault (#445)
+* Improve env\_proxy\_settings()'s documentation (#413)
+* Code has moved from launchpad to github (#414)
+* Handle loopback devices with deleted backing files (#441)
+* Change Ansible PPA to upstream PPA (#403)
+* replace ansible extra-vars parsing with json (#425)
+* Update Ansible docs and examples (#404)
+
+v0.20.10
+--------
+
+* v0.20.10 release
+* Unpinning Jinja2 and PyYAML (#435)
+* Adjust to new OpenStack Ussuri major version for horizon (#436)
+
+v0.20.9
+-------
+
+* v0.20.9 release
+* Ensure python3-hvac is installed for charms with encypt option (#431)
+* os\_utils: Allow override of source configuration key (#432)
+* Methods to allow charms to detect endpoint changes (#430)
+* Support for python3.8 and python3.4 (#423)
+* Detect elementaryOS as Ubuntu to allow local testing (#426)
+* DHCPAgentContext for Neutron Plugin API charms (#422)
+* Add the EXECUTE grant for mysql router users (#424)
+
+v0.20.8
+-------
+
+* v0.20.8 release
+* Add get\_managed\_services\_and\_ports (#421)
+* Fix apt hardening module (#416)
+* Add is\_db\_maintenance\_mode (#420)
+* Add Ussuri/Focal release and version details (#419)
+* Add is\_db\_initialised & set\_db\_initialised helpers (#418)
+* HostInfoContext: Fix retrieval of a hosts primary FQDN (#415)
+* Make linter happy (#411)
+* Add missing sphinx dependency (#412)
+* Add function to remove deprecated checks (#409)
+* Allow auth\_strategy to be defined in api section (#410)
+* Update the charm\_helpers\_sync README (#406)
+* openstack: add notification\_topics option (#405)
+* Rework vault token management (#401)
+
+v0.20.7
+-------
+
+* Release 0.20.7
+* Add function-get/set/fail methods alongside the action ones (#394)
+* MySQL Helper Singleton (#397)
+
+v0.20.6
+-------
+
+* Release 0.20.6
+* MySQL configuration handling (#395)
+* Use juju ssh for get\_ubuntu\_release\_from\_sentry (#396)
+* Policyd library changes to support openstack-dashboard (#393)
+
+v0.20.5
+-------
+
+* Release 0.20.5
+* ufw: add support for new keywords as well as a function to retrieve rules (#390)
+* Duplicate resource retry fix from reactive (#392)
+* Add section-placement (#389)
+* Update swift versions for train (#388)
+* Fix the py35 issue with json not accepting bytestrings (#387)
+* Fix policyd on trusty (py34 issue) (#386)
+* Add support for the action-log hook command (#385)
+* Update the policyd docstrings due to charm changes (#382)
+* Fix policyd on py35 (#384)
+
+v0.20.4
+-------
+
+* Prepare 0.20.4 release
+* Stop duplicate ops being added to CephBrokerRq (#381)
+* Allow OpenStack deployments from PPA packages (#380)
+* MySQL 8 features (#377)
+* Fix policyd helper where when the config value is set to false (#379)
+
+v0.20.3
+-------
+
+* v0.20.3 release
+* Add policyd override helpers (#368)
+* Resource parameter order is important in Eoan (#373)
+* Complete Eoan Enablement (#372)
+* Conditionally add port\_forwarding to l3\_extension\_plugins (#370)
+* Allow enabling the pg autoscaler when the module is enabled (#343)
+* Change openstack amulet helper to use OS\_ env var format (#369)
+
+v0.20.2
+-------
+
+* v0.20.2 release
+* get\_system\_env: Search should be case sensitive (#365)
+* fetch: Override apt execution environment (#360)
+
+v0.20.1
+-------
+
+* 0.20.1
+* Remove \`\`psutil\`\` from c-h setup (#359)
+
+v0.20.0
+-------
+
+* 0.20.0
+* Replace \`\`python-apt\`\` functionality (#341)
+* Add context with info about running host (#357)
+* Use "rabbit\_use\_ssl" instead of "ssl" for ocata config (#355)
+* Add getter helpers to contrib ovs module (#353)
+* Allow the current password to be passed in. (#354)
+* Optionally configure haproxy (#351)
+
+v0.19.16
+--------
+
+* 0.19.16
+* Use pymysql >= Queens (#348)
+* Add helper to get the percona entry for amulet (#349)
+* Adding function to check if relation has proper broker\_rsp (#347)
+* Add service\_{project,domain}\_id keys to Ident ctxt (#346)
+
+v0.19.15
+--------
+
+* Release 0.19.15
+* Make NRPE.add\_check(shortname=...) optional again (#345)
+
+v0.19.14
+--------
+
+* Release 0.19.14
+* Preserve old keymap entries on NRPE.write (#311)
+* Make ConfigParser not strict (#338)
+* Update tests to actually be run (#339)
+* Make XFS inode size configurable (#313)
+* ovs: Allow IPFIX configuration tuning (#335)
+* Set unit\_name when requesting certificates. (#334)
+* Add relation support for firewall group logging (#333)
+* Fix vendor\_data py3 issue of PR #324 (#332)
+* Fix wrong usage of relation\_get in \*\_broker\_action\_done (#327)
+* Ensure CephContext will correctly be incomplete (#329)
+* openstack: Add data for train release (#328)
+* adding newton & above release support for nuage (#305)
+* Add source keys before the apt list entry. (#326)
+* Add Contexts for Nova Vendor Metadata (#324)
+* openstack: add send\_notifications\_to\_logs option (#323)
+* openstack: rename physical-network-mtus, global-physnet-mtu for jinja (#322)
+* openstack: add global-physnet-mtu to NeutronAPIContext  (#317)
+* Openstack port resolver should filter out non-existent ports (#320)
+* Fix typo in filter\_installed\_packages call (#318)
+* Fix issue with ceph-radosgw unit-tests (#316)
+* Bug/1786186 (#315)
+* Switch test runner to tox and update travis-ci definition (#301)
+* openstack: oslo messaging notification (#310)
+* Re-enable pgrep\_full (#309)
+* contrib/openstack: Return status on process certificates (#308)
+
+v0.19.13
+--------
+
+* 0.19.13 release
+* stein: Add swift 2.21.0 (#307)
+* enable disco (#306)
+* Added context generator for logrotate (#303)
+* Allow specifying ownership of certificate files (#302)
+* Update Keystone expectations to meet security guide (#299)
+* Added an "ignore" option to sysctl\_create (#300)
+* Catch NoNetworkBinding for VIPs in resolve\_address (#298)
+* Add LUKS helpers to charmhelpers (#296)
+* Adding arch method in host (#295)
+
+v0.19.12
+--------
+
+* 0.19.12 release
+* Use the same gpg command (#290)
+* Fix openstack-upgrade-available detection to work with new versions of apt.version\_compare() (#292)
+
+v0.19.11
+--------
+
+* 0.19.11 release
+* Add getrange command to unitdata CLI (#273)
+* Fixing \`cmp\_pkgrevno\` Ceph bug (#288)
+* Update swift version for stein (#287)
+* Add support for creating erasure coded pool and setting \`\`max\_objects\`\` quota (#284)
+
+v0.19.10
+--------
+
+* 0.19.10 release
+* Add OpenStack version filter to audits (#286)
+* Handle new juju charm proxy settings and https keyserver URLs (#248)
+* Allow an audit to be excluded via configuration (#282)
+* Add section-oslo-messaging-rabbit for Ocata+ (#283)
+* Catch NoNetworkBinding in addition to NotImplementedError (#281)
+
+v0.19.9
+-------
+
+* 0.19.9 release
+* Add OpenStackSecurityGuide auditing (#274)
+* Add support for \`\`app\_name\`\` in \`\`add\_op\_create\_pool\`\` (#280)
+* Update ceph helpers for device class support (#279)
+* Remove target directory before sync (#277)
+* Fix typos (#275)
+* Move contrib.python to fetch.python (#272)
+* Allow None state from charm\_func\_with\_configs (#270)
+* Introduce get\_distrib\_codename helper (#268)
+
+v0.19.8
+-------
+
+* 0.19.8 release
+* Add get\_installed\_semantic\_versioned\_packages (#269)
+
+v0.19.7
+-------
+
+* 0.19.7 release
+* Fix ceph update keyring (#266)
+
+v0.19.6
+-------
+
+* release 0.19.6
+* Use default sqlalchemy driver prior to stein (#264)
+* nrpe: Allow services with '@' in name (#263)
+* Fix a couple of docstring typos (#262)
+* Use pymysql driver for mysql sqlalchemy dialect (#261)
+* Separate certificates with lineseparator in bundles (#260)
+
+v0.19.5
+-------
+
+* Release 0.19.5
+* Spelling (#258)
+* Dedicated VIP/CIDR fallback settings method. (#259)
+* Add monitoring to vip resources in OpenStack (#257)
+* Expose resource group names (#256)
+* Add openstack series support for stein (#255)
+* Charms can specify additional delete & group info (#253)
+* Refactor vip resource creation for iface'less use (#250)
+* Update copy\_nrpe\_checks() for optional c-h directory (#247)
+* Extra config when generating Openstack HA settings (#249)
+* Extract common code to pause/resume services (#245)
+* Fix loopback devices helper for PY3 (#244)
+* Add "host" option to "connect" method (#240)
+* Add "proposed" to get\_os\_codename\_install\_source function (#242)
+* Update amulet helper origin list for ceilometer-agent (#239)
+
+v0.19.4
+-------
+
+* Release 0.19.4
+* Consistently render haproxy.conf (#237) (#238)
+* Add helpers for extracting certs from relation. (#235)
+* Make the harden and pausable\_restart\_on\_change lazy (#234)
+* core/host: fix changing permissions in write\_file (#233)
+* Add helpers to get expected peer and related units from goal-state (#226)
+* Render perms (#231)
+* Add {series} support to \_add\_apt\_repository (#230)
+
+v0.19.3
+-------
+
+* Release 0.19.3
+* Adding "log" support to Neutron API context (#228)
+* Enable the apache audit checks to also be PY3 compatible (#227)
+* Ensure auth\_uri/auth\_url include v3 API version (#225)
+* Add OpenStack context that provides versions (#224)
+* Allow glance image hypervisor type to be unset (#223)
+* Allow cirros image virt type to be set (#222)
+* Refactor install\_ca\_cert to core.host (#220)
+* Generalized glance\_create\_image (#221)
+* Remove unnecessary charm relation option (#219)
+* CompareHostReleases needs cosmic series support (#216)
+* fetch: add helper to determine installed packages (#215)
+* Quieten down unit tests (#214)
+* Write all configs on series upgrade complete (#213)
+* Add helpers for common series upgrade tasks (#212)
+* Adding new parameters into Neutron ctxt to make NSG logging configurable (#211)
+* Fix docs rendering on RTD (#210)
+
+v0.19.2
+-------
+
+* Release 0.19.2
+* Add helper for apt autoremove (#209)
+* ensure max lenght of message in log func (#208)
+* Add 2.19.0 to rocky swift versions (#207)
+* Fix get\_ceph\_pools for mimic (#206)
+* Use glance client v2 (#205)
+* Support multiple WSGI vhosts in Openstack (#201)
+* Series Upgrade Helpers (#200)
+* Add functions for managing ssh assets in OpenStack (#197)
+* Add unit\_doomed call to inform about removed units (#199)
+* Rename service\_name, add helpers for model name and UUID (#196)
+
+v0.19.1
+-------
+
+* v0.19.1
+* Retry importing key on failure. (#194)
+* Allow a src directory passed to copy\_nrpe\_checks (#193)
+* Don't update updatedb.conf file if not available (#191)
+* Add remaining series support for rocky (#190)
+* Support multi amqp or shared-db relations in ctxts (#188)
+* LP: #1748433 Ansible version changed from 2.0 to 2.5 and there is sev… (#181)
+* ovs: long interface names and existing wiring (#186)
+* Add "select" function to "MySQLHelper" class (#185)
+
+v0.19.0
+-------
+
+* 0.19.0 release
+* Add set\_Open\_vSwitch\_column\_value (#182)
+* update deployment to use Amulet supported storage (#183)
+* Support the goal-state command (#180)
+
+v0.18.11
+--------
+
+* Re-release .10 as .11 due to missing tags
+
+v0.18.10
+--------
+
+* 0.18.10 release
+* Add support for certs relation in OpenStack charms (#173)
+* Explicitly set api\_version in get\_default\_keystone\_session (#177)
+* Allow forcing keystone preferred-api-version (#176)
+* Retry keystone\_wait\_for\_propagation() on exception (#175)
+* Revert "Adds operator.socket (#115)" (#174)
+* vaultlocker: Use secret\_id's (#171)
+* Reload UFW (#170)
+* remove escapes from enable\_ipfix (#169)
+
+v0.18.9
+-------
+
+* 0.18.9 release
+* Adds operator.socket (#115)
+* Make get\_os\_codename\_install\_source() independent of the series where it's executed (#156)
+* Fixes #104 - setup.py: exclude tests and tools directories (#104)
+* Support python dict in sysctl\_create (#15)
+* Add notification\_format (#145)
+* Enable IPFIX monitoring on OVS bridges (#168)
+* Do not parse config state file if empty (#166)
+* Add misc extra bits for vaultlocker work (#165)
+* Update pool creation to set app-name (#163)
+* Add logging of any decode Exception in config() (#161)
+* Add helpers for vaultlocker (#159)
+* Add support for more arguments in EnsureDirContext (#158)
+* core/services : fix handling of ports (#155)
+* Enable proxy header parsing (#157)
+* Cache config-get data (#147)
+* Fixes LP#1761840: add\_ovsbridge\_linuxbridge fails for missing \`source\` in e/n/i  (#153)
+* Bug/1761305/ensure apache ssl (#151)
+
+v0.18.8
+-------
+
+* Bump version and changelog for 0.18.8 release
+* Allow s390x in fetch (#150)
+* Read in ca certificate as binary for PY3 (#146)
+* Fix keystone\_wait\_for\_propagation test helper (#144)
+* Account for password field name change in PXC 5.7 (#99)
+* Handle non-zero unit numbered leader (#138)
+* storage: Add create\_logical\_volume helper (#141)
+
+v0.18.7
+-------
+
+* Bump version and changelog for release
+* Fix network get (#118)
+* Fix JSON serializable error using default (#136)
+* Add egress\_subnets helper to access egress-subnets on a relation (#116)
+* Allow Service Manager applications to handle the ICMP protocol (#108)
+* Minor fix for changelog format in docs (#134)
+
+v0.18.6
+-------
+
+* Bump version for release and add changelog to docs (#133)
+* Ensure keys in cashed func args are sorted (#132)
+* Doc updates (#131)
+* update amulet helper to fix cinder authentication with keystone v3 (#122)
+* Update get\_ca to include identity-credentials (#124)
+* Update IdentityService context for service\_domain\_id (#121)
+* Service catalogue validators to convert to v3 (#119)
+* Add code to retrieve keystone session and client (#120)
+* Add 2.17.0 for queens swift versions (#117)
+* Allow passing of expected number of EPs (#113)
+* Add Volume API Context (#65) (#111)
+
+v0.18.5
+-------
+
+* Release 0.18.5
+* contrib/network: don't panic if an interface is deleted during get\_address\_in\_network (#107)
+* Add string template rendering to core/templating (#102)
+* Handle no network binding exception gracefully (#97)
+* Support use of HAProxy context in dashboard charm (#98)
+* Add from\_string template rendering capability (#87)
+* add EnsureDirContext (#88)
+
+v0.18.4
+-------
+
+* Fix regression in NRPE haproxy check (#95)
+* Make HAProxyContext network spaces aware (#92)
+* Fix file permissions on config cache and unitdata (#94)
+* Fix Swift package version check (#93)
+* Add helpers for hacluster interface type (#82)
+* dfs: drop venv specific parts from wsgi template (#89)
+* Drop OpenStack deploy-from-source helpers (#85)
+* Fix for pool\_set function and validator handling of strings (#80)
+* Fix presentation use of domain for identity-credentials (#79)
+* Add OpenStack Context for identity-credentials interface type (#78)
+* Handle profile creation in luminous (#71)
+* Add support for setting object prefix permissions (#76)
+* Ensure all keys checked when comparing broker obj (#75)
+* Ensure json file only changed if necessary (#74)
+* Update HAProxy default timeout values (#73)
+* Use volumev3 for Openstack >= Pike (#65) (#66)
+* Add funcs for listing & extending logical volumes (#72)
+* Ceph Luminous Amulet Test Updates (#69)
+* Add bionic to ubuntu host helpers (#67)
+* Fix get\_swift\_codename() to work with PY3 (#62)
+* Fix up ceph library exception logging for py3 (#64)
+* Release: 0.18.3 (#61)
+* py3: encode content in write\_file (#60)
+* Honor AMULET\_SETUP\_TIMEOUT (#59)
+* SSL File writing should use byte mode (#58)
+* Add queens to openstack amulet helpers (#55)
+* Add remaining series support for queens (#54)
+* Remove EOL comparison in get\_expected\_pools test helper (#52)
+* Change get\_os\_codename\_package() to work with Py3 (#51)
+* Properly wait for \_auto\_wait\_for\_status (#49)
+* Enable the repo: line for charm-helpers sync to take a branch (#48)
+* Small change for ceph py3 compatibility (#46)
+* Update bytes\_from\_string to default toi bytes (#45)
+* Py3 save script rc (#44)
+* Drop persistence of neutron plugin to disk (#43)
+* Update cinder helpers for v2+ compatability (#42)
+* Update NRPE to not restart the nrpe-server on update-status hooks (#36)
+* Ingress address function (#35)
+* authenticate\_cinder\_admin return client by api ver (#41)
+* Update get\_ceph\_expected\_pools for Pike and Luminous (#40)
+* py3: Ensure haproxy backends are sorted (#39)
+* py3: wrap iteritems calls with six.iteritems (#38)
+* py3: Encode template before writing to file (#37)
+* open/close\_port supports ICMP protocol; network\_get supports Juju 2.0.2 (#33)
+* Update c.storage.linux.ceph to support Py3 properly \_+ pep8 (#34)
+* Add support for snap branch usage (#31)
+* Update pools returned by get\_ceph\_expected\_pools (#29)
+* Enable IPv6 check in haproxy template file (#19)
+* Ensure that unison users do not password expire (#24)
+* Add function to control password expiry (#23)
+
+v0.18.2
+-------
+
+* Release 0.18.2
+* Add common cache section for OpenStack services (#21)
+* Add support for a general network-get helper (#20)
+* Fix mismatch between 'internal' and 'int' in DNSHA (#18)
+* Drop use of SharedDBContext in Neutron plugin config (#16)
+* Change snap openstack-origin to snap:channel/track (#13)
+* Remove override=False in ApacheSSLContext.call (#14)
+* More detailed HACKING.md and cleanup (#5)
+* Fix ssl certs for os-\*-hostname override. (#10)
+* Snap helper fixes (#12)
+* update readme to include python benefits (#11)
+* Refactor charm-helpers-sync for git usage (#9)
+* Modulo Distribution (#8)
+* Correctly detect haproxy stats credentials (#6)
+* #3: Add \`opened\_ports()\` function
+* #2: Migration updates
+* [jamespage, r=tinwood] Add remove\_alternative helper
+* Add remove\_alternative helper
+* [shaner,r=ajkavanagh] Fixes parsing of currently loaded apache modules
+* v0.18.1
+* [xtrusia,r=stub] Fix hookenv.principal\_unit failure, attempting to read metadata of non-cohosted charm
+* v0.18.0
+* Changing FileNotFoundError exception to os.path.exists
+* Fixing FileNotFoundError
+* Fixing FileNotFoundError
+* [shaner,r=] Fixes parsing of currently loaded apache modules
+* [shaner,r=] Fixes parsing of currently loaded apache modules
+* [joeborg, r=tinwood] Adding test coverage for FilePermissionAudit
+* [stub, r=tinwood] A feature of the PostgreSQL charm had stopped working, as charm-helpers was attempting to do more validation of GPG key formats and the PG charm happens to add comments to its keys so they don't get mixed up
+* Pass more keys to GPG to allow it to validate; log WARNINGS on insecure usage
+* [tinwood, r=thedac] Update the core.host.write\_file(...) function to do less work
+* [thedac,r=billy-olsen] Allow IPv4/IPv6 Dual Stack
+* Pull in upstream
+* Fix break in write\_file() -- missing DEBUG import
+* Change the debug logs in write\_file() back to DEBUG from TRACE
+* Update the core.host.write\_file(...) function to do less work
+* [jamespage, r=thedac,tinwood] Refactoring ApacheSSLContext for network-space support
+* [coreycb, r=thedac] Add 2.15.0 to swift list of releases for pike
+* Add 2.15.0 to swift list of releases for pike
+* [gnuoy, r=james-page] Change name of OpenStack extensions
+* Change name of OpenStack extensions
+* [gnuoy,r=james-page] Add support for qos driver in Neutron
+* Refactoring for network-space support
+* Update NeutronAPIContext to handle enable-qos
+* [james-page,r=tinwood] Fix compat between os-\*-hostname and SSL
+* Fix compatibility between hostname config options, SSL and VIP's
+* [tasdomas,r=tinwood] Add JUJU\_CHARM\_DIR as first lookup in charm\_dir()
+* [mthaddon,r=stub] Test servicenames accept dots and uppercase
+* Add checks for dots and upper case service names
+* Merge/rebase
+* [icey,r=james-page,r=petevg] Make rbd-features optional
+* update tests
+* fix making default-rbd-features required on ceph
+* [hloeung,r=stub,ajkavanagh] Expose new JUJU\_PRINCIPAL\_UNIT hook environment variable
+* Update charm\_dir tests
+* [trivial] add new template for oslo notifications openstack configuration
+* [pjcd,r=stub] Allow '.' in service names monitored by Nagios
+* nrpe: accept "." in service names, to monitor services installed by snaps, LP:1693296
+* Allow IPv4/IPv6 Dual Stack
+* config() can return None, which has no method startswith
+* Make metadata\_unit() an internal helper for now. We can revisit whether this is for general use in the future
+* Fixed docstring
+* Fixed principal\_unit() to be more explicit about what it returns. Also fixed path handling in metadata\_unit()
+* Inspect all relations for principal unit
+* Add support for principal unit
+* [thedac, r=petevg] Charm snap helper updates
+* Avoid NoneType error
+* Fix unit tests
+* [stub,r=ajkavanagh] Lower apt retries to alleviate hook retry backlogs
+* Snap Upgrades
+* [tinwood, r=stub,thedac] Remove E402 ingore for pep8 to improve code checking
+* [tinwood, r=thedac] Fix breakage in tests that merge r765 created
+* Fix breakage in tests that merge r765 created
+* Adding test coverage for FilePermissionAudit
+* [icey, r=thedac] Update rbd default features
+* Remove E402 ingore for pep8 to improve code checking
+* [tinwood, r=jamespage]
+* Fix lint and other errors introduced in last few merges
+* Lower retry count to avoid permanent lock from update-status and optimistic hook retries
+* Look at JUJU\_CHARM\_DIR first
+* Look at JUJU\_CHARM\_DIR as well, when reporting the charm dir
+* [thedac, r=coreycb,tinwood] OpenStack Charm snap helpers
+* Fix release name typos in CLOUD\_ARCHIVE\_POCKETS
+* Fix release name typos in CLOUD\_ARCHIVE\_POCKETS
+* [zhhuabj,r=ajkavanagh]
+* [freyes, r=niedbalski] Add support to change a user's password in MySQL
+* Typo fixes
+* [peter-sabaini,r=stub] Helper module for bcache devices
+* First FilePermissionAudit shoud use Apache path from config, not hardcoded
+* update to use relation data
+* Cleanup test and some doc bits
+* v0.17.0
+* When the OpenStack clouds get bigger, more messaging transactions will happen, which will cause more load on rabbitmq server. In order to mitigate this, polling\_interval rpc\_response\_timeout and report\_interval values are important to adjust accordingly to the size of OpenStack cluster
+* [billy-olsen, r=niedbalski] Ensure the config\_flags\_parser returns an OrderedDict
+* Update rbd default features
+* Ensure the config\_flags\_parser returns an OrderedDict
+* [niedbalski, r=freyes,ajkavanagh] Partial fix required for LP:#1699565
+* Modified file to update\_json\_file
+* Add the update\_policy method
+* Fixes per review and unit tests
+* Add support to change a user's password in MySQL
+* Set pymsql in database context
+* [freyes,r=niedbalski,ajkavanagh] Fix for test\_is\_ipv6\_disabled
+* [freyes, r=niedbalski,ajkavanagh]  Invoke apt-get only if there missing packages
+* Invoke apt-get only if there missing packages
+* Fix test\_is\_ipv6\_disabled()
+* Clean up and unit tests
+* Openstack snap helpers
+* [niedbalski,r=freyes] Fix for LP: #1697002
+* [thedac, r=hopem,ajkavanagh]
+* Normalize client.Client for v2 and v3
+* Update use of client.service\_catalog with sessions
+* Modify the haproxy.cfg template to use the default unix listen socket created by rsyslog on /e/rsyslog.d/49-haproxy.conf
+* [hopem, r=wolsen,tinwood]
+* use default charm kvstore
+* fixed global func call
+* Adds action helper functions to contrib.storage.linux.ceph
+* [thedac, r=hopem,wolsen]
+* Avoid collision between project\_name and tenant
+* Use keystoneauth1 sessions
+* [jhebden, mskalka, thedac, r=tinwood] Decode subprocess output for python3 in ipv6 check
+* Only perform UTF-8 decode if python3
+* [thedac, r=wolsen] Fix Keystone version suffix selection
+* Fix Keystone version suffix selection
+* [jhebden, mskalka, thedac] Decode subprocess output for python3 in ipv6 check
+* [tinwood,r=\*] Support for Ubuntu ports and refactoring of OpenStack utils to have a single source of truth for 'source' configuration options
+* v0.16.0
+* [paulgear,r=stub] Ensure service enabling actually enables systemd services rather than just unmask them
+* Make service work more as documented on systemd
+* [r=barryprice,stub] Add servicegroups to nrpe comments so they can be auto-parsed by nagios without need for export files
+* Make the warning a bit stronger at barryprice's urging
+* merge
+* Use backticks, no single quotes, for database names
+* Fix quoting of database name in MySQL syntax
+* Correctly quote db\_name to avoid parse failures when the db\_name contains the character '-'
+* Match switch 2.13.0 to pike + ocata
+* Match switch 2.13.0 to pike + ocata
+* Updates for Pike and Queens openstack support
+* Add queens to fetch helper as well
+* Update fetch helper for pike as well
+* Misc other updates for artful
+* Add openstack series support for pike and queens
+* Add bcache support module
+* Add a warning to the nrpe files
+* Add dns-domain to NeutronAPIContext
+* Add dns-domain to NeutronAPIContext
+* Add a servicegroups comment to all nrpe checks so we can automatically populate them without needing the rsync/export dance
+* Refactor worker multiplier code
+* Make things more pythonic
+* Tidy docstrings
+* Refactor worker multiplier codebase to support use with eventlet and WSGI based OpenStack applications
+* [thedac, r=tinwood] Fix minor bugs in contrib/openstack
+* [thedac, r=tinwood] Pass a cidr network to get\_relation\_ip
+* Add comment
+* Fix minor bugs in contrib/openstack
+* Simplify to only cidr\_network
+* Switch to using auto-detection of IPv6 support for memcache configuration
+* Remove spurious extra line missed during refactor
+* Revised version of ipv4 support in the MemcacheContext
+* Switch back to IPv4 by default for memcache configuration; Support IPv6 using prefer-ipv6 configuration option
+* Add ipv4 support to the MemcacheContext
+* Pass an access-network directly to get\_relation\_ip
+* Add ARM 64 arch to proposed pockets for OpenStack
+* v0.15.0
+* Unmask instead of enable too
+* Disable doesn't stick
+* bring upto date to r704
+* Remove duplicated code in fetch module(s)
+* Remove redundant plugins() funct from c.f.ubuntu.py
+* [chrome0, r=niedbalski] Fixes LP: #1678128
+* [chrome0, r=] When searching for network, check all ipv4 addr for an iface
+* [thedac, r=billy-olsen] Allow for backend haproxy options
+* Allow for non 'option' options
+* [james-page,r=icey] Rework default worker-multiplier behaviour
+* Rework default worker-multiplier behaviour
+* [ben-kaehne,r=stub] Nagios service checks using exit status, rather than sniffing output
+* Allow backend haproxy options
+* [billy-olsen, r=thedac] Enable the haproxy admin socket by default in OpenStack usages
+* [james-page,r=tinwood] Add support for direct passing of key to ensure\_ceph\_keyring
+* Add support for direct passing of key to ensure\_ceph\_keyring
+* Enable the haproxy admin socket by default in OpenStack usages
+* [ajkavanagh, r=thedac] Re-organize alphanumeric comparisons
+* Provide "not-implemented" version of CompareHostReleases() for Centos
+* Fix incorrect import for amulet/utils.py
+* Move/rename some of the fix-alpha functions around
+* [ivoks,r=hopem]
+* [vds,r=hopem]
+* Added ssh\_tmout to profile context
+* Disable Indexes and FollowSymLinks by default
+* [joeborg,r=hopem]
+* [vds,r=hopem]
+* [ajkavanagh, r=1chb1n] Improve error handling for BasicStringComparator
+* Simpified conditions of \_take\_actions
+* Tests fixed
+* First test fixed, second test still broken
+* Fixed broken test
+* Adding template
+* Better check
+* Fixing cut/paste typo
+* Added profile.d template, defaults and checks for timing out ssh sessions
+* Improve the error handling of items not in the BasicStringComparator list so that a developer gets better error message during debugging/integration of the feature in a charm
+* Hardning Apache ciphers
+* [r=hopem,mskalka]
+* v0.14.0
+* fixed unittest errors as per MP comments
+* final changes
+* add servertokens to apache hardening final
+* add servertokens to apache hardening
+* [trivial] fixup yakkety naming again
+* [trivial] fixup yakkety naming
+* Provide classes to support relative comparisons of Ubuntu and OpenStack releases
+* Fix up confusing code so that it's easier to read + fix some overlong lines in
+* Fix up confusing code so that it's easier to read + fix some overlong lines in context.py
+* Provide a fix to Bug #1659575 - fixing alphanumeric comparisons of versions
+* [niedbalski, r=freyes] Partial fix required for LP:#1671861
+* Additional fixes to the \_get\_address\_from\_network function
+* Additional fix
+* Partial fix for LP: #1671861
+* [stub,r=tvansteenburgh] Fix trusty init system detection
+* [freyes,r=stub] Verify that the nagios user exists before attempting to run a check
+* Updated comments to reflect the new logic of the check
+* Check if /var/lib/nagios exists
+* trusty's init system is always upstart, even if systemd packages are pulled in
+* [jamespage, r=thedac] Rework mysql helper to directly use leader storage
+* [thedac, r=jamespage] Add generic network space aware get\_relation\_ip
+* Verify if nagios user exists before attempting to run a check
+* [thedac,r=stub] Juju 2 support for contrib.amulet tools
+* Add network space aware get\_relation\_ip
+* [niedbalski,r=mattrae] Additional tests fix for LP:#1635067
+* Fix tests for ovs add\_linuxbridge function
+* [mattrae, r=niedbalski,wolsen] Partial fix required for LP: #1635067
+* documenting functions and removing unneeded close()
+* Unit test Fixes
+* address review comments, sensible defaults, drop fatal from from \_run\_with\_retries to simplify logic
+* lints
+* - rename -APT\_NO\_LOCK\_RETRY\_COUNT -> CMD\_RETRY\_COUNT - Retry add-apt-repository CMD\_RETRY\_COUNT (30) times instead of 3 - update unit tests
+* Translate to built in amulet action functions
+* comment fix
+* lints
+* update retry\_message for add-apt-repository. Fix Unit tests. Add unit test for retries on add-apt-repository
+* parameterize retry\_message
+* [joeborg, r=thedac] Snap fetch module
+* refactor run\_apt\_command into a retry\_command which can be called for add-apt-repository too
+* [freyes, r=chris.macnaughton,niedbalski] Partial fix for #1642430
+* Drop use of peer storage helper in mysql helper
+* Adding custom exception
+* Make it explicit the support is for 2.1
+* Add additional configuration option handling for tuning MySQL deployments
+* Ensure privs are flushed after adding new grants
+* Add other innodb config options and associated unit tests
+* Add tuning-level parsing to MySQL helpers
+* Ensur that priviledges are flushed when new grants are made in the database
+* [paulgear,r=stub] Execute nagios service checks immediately on installation
+* Implement Stuart's recommendations
+* Fix Juju 2.x support for amulet utils
+* Fixing tests under \`make test\` conditions
+* [niedbalski,r=freyes,shaner] Partial fix required for LP: #1667478
+* Moving Snap helper into fetch module:  - Wrapping call to snap in try / except to cope with lock.  - Adjusting tests to cope with change of location and libraries mocked.  - Re-organising docs to make fetch a bit more readable
+* [corey.bryant, r=1chb1n] Update OpenStack Amulet helper for Ocata nova client
+* Properly test the identityservicecontext class
+* This commit adds the following changes:
+* [jamespage,r=niedbalski] Default the minimum of 512MB or 50% of ram unless otherwise specified by the charm user
+* [niedbalski,r=billy-olsen,shaner] Partial fix for LP: #1667478
+* Amend NOTE
+* Correcting typo in doc string
+* A few updates before landing: Removing fixed options for snap\_install. Adding snap\_refresh. Updating docs to include examples. Finishing tests using mock
+* Nova client updates to handle Ocata client authentication
+* Modified docstrings
+* Changes to the auth\_url schema
+* auth\_url
+* Modified the base class
+* Remove keystoneclient-auth
+* Remove apt\_update
+* Add the ability to authenticate using username/password, not just token
+* Added functions for endpoint formatting
+* [niedbalski] Add a helper class to interact with keystone. LP: #1667478
+* Add missing dnspython to test\_requirements.txt
+* mysql: Ensure sane defaults, fixup tests
+* Adding snap support for classic charms
+* [thedace,r=coreycb,r=james-page] Ensure AMQP context handles changes in port
+* [thedac] Fix AMQP context to handle change in port
+* Make the list space separated instead of comma separated
+* Add tests to validate IP:PORT values in ceph-public-address
+* Allow ceph-public-address to contain a list of IPs
+* [coreycb, r=thedac] Add transport\_url to AMQPContext for cells v2
+* Add 2.13.0 to swift list of releases for ocata
+* Add 2.13.0 to swift list of releases for ocata
+* [freyes,r=stub] Update contrib modules to install Python3 apt dependencies
+* [thedac, gnuoy, r=ajkavanagh] expect\_ha function checks for VIP or dns-ha settings
+* Minor fixes ontop of thedac expect\_ha mp
+* [thedac] expect\_ha function checks for VIP or dns-ha settings
+* Verify python version to decide which package to install
+* expect\_ha function checks for VIP or dns-ha settings
+* Fixes old url for charm tools in docs
+* fixed URL for charm tools
+* Allow key name to be provided when requesting access to a pool group
+* Allow key\_name to be provided when requesting pool access
+* version bump
+* Add transport\_url to AMQPContext for cells v2
+* Add helper functions to change preferred-api-version of keystone
+* [billy-olsen,r=niedbalski] Add method for querying file ownership. Fixes LP: #1662591
+* Add pool grouping features to broker
+* Handle platform.linux\_platform() reporting "debian"
+* [billy-olsen,r=] Add method for querying file ownership
+* Update unit tests
+* [fnordahl] Add helper functions to change preferred-api-version of Keystone
+* Add pool grouping features to broker
+* Handle platform.linux\_platform() reporting "debian"
+* [billy-olsen, r=niedbalski] Partially fixes LP:#1662591
+* [c=fnordahl,r=gnuoy] Add more flexible authenticate\_keystone function                      Retain existing authenticate\_keystone\_\* functions as                      compability layer with calls to new function
+* [billy-olsen,r=] Allow passing of parameters to upstart scripts
+* [c=fnordahl,r=gnuoy] Add more flexible authenticate\_keystone function                      Retain existing authenticate\_keystone\_\* functions as                      compability layer with calls to new function
+* dropping log level to DEBUG
+* swap names of veth pair to make debugging easier
+* making veth persistent by adding to interfaces.d
+* Add unit tests for multiple neutron-plugin subordinates
+* version bump
+* [cmars] Add functions to charmhelpers.core.hookenv related to Juju Metrics (https://jujucharms.com/docs/stable/developer-metrics)
+* Catch EnvironmentError exception, covers subclasses such as IOError and OSError
+* Add metrics functions to charmhelpers.core.hookenv
+* adding levels to log statements
+* updating add\_ovsbridge\_linuxbridge to be idempotent
+* cleanup formatting
+* changing is\_linuxbridge\_interface to use os.path.exists and adding tests
+* [tribaal,r=stub] Fix the test suite under all supported distros
+* Fix lint error. Tests run and pass again
+* Drop distribute. Unpin six
+* Fix issues with writing updatedb.conf; add test case
+* update to overridable updatedb\_path
+* add test to catch typo
+* fix typo
+* version bump
+* Add helper for managing updatedb PRUNEPATHS
+* Add a path to the UpdateDB PrunePath
+* [coreycb, r=thedac] Add 2.12.0 to swift list of releases for ocata
+* adding tests for add\_ovsbridge\_linuxbridge
+* [thedac,r=marco,r=corecyb] Do not Traceback on failure to resolve DNS
+* [james-page, r=1chb1n] Ensure that chownr follows symlinks for recursive file permission changes
+* Add 2.12.0 to swift list of releases for ocata
+* also bring up linuxbridge\_port, otherwise the veth will show 'LOWERLAYERDOWN' in ip link show
+* forgot to import glob
+* Ensure that chownr follows symlinks for recursive file permission changes
+* Fixes bug lp#1631170 - nagios check marks services as not running when they are
+* Merge/resolve conflicts for main branch r658
+* Merge/resolve conflicts with main branch r648
+* Merge/resolve conflicts with main branch r631
+* Merge/resolve conflicts to main branch 628
+* Add back in DEBUG to c/o/utils.py
+* Merge/resolve conflicts with main 627
+* Reworking of the ports\_fetch code and the dbuliga CentOS support
+* [mattyw,r=stub] Helpers for opening and closing port ranges
+* hookenv: Added support for opening and closing port ranges with open\_ports() and close\_ports()
+* [corey.bryant, r=gnuoy] Add WSGI context and template for OpenStack APIs
+* Adding functions to create an ovs bridge and check if an interface is a linux bridge
+* Add unit test for git\_determine\_\*()
+* Add unit test for WSGI context
+* Add WSGI context and template for OpenStack APIs
+* [gnuoy, r=ajkavanagh] Add option package var to Memcache context to allow contect to lookup Openstack release without using Openstack-origin which may not be present. enable\_memcache also had to be extended to take a package option to support this
+* Add TODO as a reminder to switch to using a more rebust method for determining OpenStack release order
+* Add option package var to Memcache context to allow contect to lookup Openstack release without using Openstack-origin which may not be present. enable\_memcache also had to be extended to take a package option to support this
+* [hloeung,r=stub] Add timeout to rsync and capture rsync error messages
+* Fixed stderr output of check\_output()
+* [trivial] Fixed TypeError: sequence item 1: expected str instance, int found
+* [gnuoy, r=ajkavanagh] Fixes for amulet memcache service checks. 1) Use 'service' not 'status' for checking status of memcached on pre-systemd systems as its not an upstart script. 2) Trusty memcache uses ip6-localhost as its listen address because it does not understand ::1
+* Fixes for amulet memcache service checks. 1) Use 'service' not 'status' for checking status of memcached on pre-systemd systems as its not an upstart script. 2) Trusty memcache uses ip6-localhost as its listen address because it does not understand ::1
+* core/host: Update rsync() adding option to specify how long rsync should run before it times out
+* Add WSGI context and template for OpenStack APIs
+* [gnuoy, r=thedac] Fix context for memcache so an IPv6 that works on Trustys memcache is used
+* Fix copy/pasta error
+* Fix context for memcache so an IPv6 that works on Trustys memcache is used
+* [gnuoy, r=tinwood] Add helper for testing Memcache for Openstack API services
+* Fixed up style after mp feedback
+* core/host: Update rsync() to also catch rsync errors
+* Add helper for testing Memcache for Openstack API services
+* [gnuoy, r=james-page] Put framework inplace for enabling memcache in OpenStack API charms
+* Fix locations for ocata UCA
+* Fix up Ocata cloud-archive pockets
+* Add header to memcached.conf to show it is Juju managed Install python-memcache incase the OpenStack service does not have it down as a dependancy Enable memcache on Mitaka+ for consistancy
+* Added formatting options needed by  Python Memcached
+* Put framework inplace for enabling memcache in OpenStack API charms
+* [corey.bryant, r=1chb1n] Add 2.11.0 to swift list of releases for ocata
+* Add 2.11.0 to swift list of releases for ocata
+* [fnordahl, r=gnuoy] Updated version that fix compability with relation changes in charm-keystone
+* [fnordahl,r=] Only request service\_domain relation data when using api\_version > 2
+* [fnordahl,r=] Fix PEP8 errors left over by previous commits..
+* [timkuhlman,r=stub] Ensure newlines in /etc/modules
+* Add newline to modules added to /etc/modules
+* [1chb1n, r=thedac] Update OpenStack Amulet test helpers
+* Keep Kilo
+* Update OpenStack Amulet test helpers
+* Add ocata targets
+* [fnordahl,r=] Add service\_domain to IdentityServiceContext
+* [fnordahl,r=] Add service\_domain to IdentityServiceContext
+* Add support for OpenStack ocata
+* [jamespage, zulcss, r=gnuoy] Add check to determine if running inside a container
+* Remove ambiguity in container detection
+* Expand is\_container support for upstart and systemd use cases
+* Be more explicit in the eception catch
+* [trivial] add comment to contrib/openstack/templates/openstack\_https\_frontend.conf
+* version bump
+* [lathiat, r=niedbalski] Fixes LP: #1484489
+*   [r=johnsca,a=lazypower] Simon Kollberg 2016-10-24 Use the --all flag when fetching the charm config
+* Configure apache2 to handle SSL certificates with chained intermediate roots
+* Add check to determine if running inside a container
+* Use the --all flag when fetching the charm config
+* Do not Traceback on failure to resolve DNS
+* [gabor.meszaros, r=ivoks, r=gnuoy] Configure Apache SSL termination on a load balancer
+* [gnuoy, thedac Quote service to examine as it might contain whitespace in systemd land
+* Update unit tests
+* Quote service to examine as it might contain whitespace in systemd land
+* Add helper for creation of flavors by amulet tests
+* Add create\_flavor helper for amulet
+* Configure Apache SSL termination on a load balancer
+* [gnuoy, r=james-page] Allow the module cached version of os\_release to be bypassed. Useful when doing a charm upgrade and the os\_release has changed since the module was imported
+* Fix missing full stop from comment
+* Move reseting os\_release cache out into a seperate function as per mp feedback
+* Allow the module cached version of os\_release to be bypassed. Useful when doing a charm upgrade and the os\_release has changed since the module was imported
+* [coreycb, r=1chb1n] Enable stable/newton and master (ocata) DFS branches
+* Enable stable/newton and master (ocata) DFS branches
+* Add lxd to use\_source list
+* Use public-address in OpenStack Amulet keystone address helper
+* Use public-address in OpenStack Amulet keystone address helper
+* Add percona-cluster charm to list of use\_source charms
+* Add percona-cluster to master use\_source list for OpenStack Amulet tests
+* Re-instate previous revert; its OK when tests don't race
+* Revert changes to keystone private-address resolution
+* Update OpenStack Amulet helper to get keystone ip from sentry info instead of relation data
+* Update OpenStack Amulet helper to get keystone ip from sentry info instead of relation data
+* [gnuoy, r=james-page] Add the ability to pass in the use\_source and no\_origin lists to stop having to raise changes to charm-helpers everytime a new service is added to an amulet test which should be added to the list
+* Make the no\_origin and use\_source additive options additive to prevent the same list having to be replicated in charms
+* [coreycb, r=thedac] Add 2.10.0 to swift list of releases for newton
+* Add 2.10.0 to swift list of releases for newton
+* Add the ability to pass in the use\_source and no\_origin lists to stop having to raise changes to charm-helpers everytime a new service is added to an amulet test which should be added to the list
+* Refactor AppArmorContext
+* Refactor use of AppArmorContext a bit to make use easier
+* Enable access network for DNS HA
+* Fix access-network
+* [nobuto,r=stub] Terminate and enter error state if execd preinstall hooks fail
+* set universal\_newlines=True to get the same log output with py2 and py3
+* fix lint, removing unnecessary import
+* unset die\_on\_error=True to ensure the default value is correctly applied
+* Don't ignore errors in execd\_run and record error messages by default
+* [gnuoy, trivial] lint fix
+* [ivoks, r=gnuoy] Pass an IP to ssh\_ip instead of listen\_to
+* Update nuage driver for >= mitaka
+* Enable access network for DNS HA
+* Added Nuage Neutron plugin information for mitaka release when neutron-plugin is vsp
+* Fix typo
+* Add doc string
+* [ivoks, r=gnuoy] Since some values raise ValueError instead of netaddr.core.AddrFormatError exception, this change allows is\_ip() to catch both exceptions
+* Pass an IP to ssh\_ip instead of listen\_to
+* Catch wrong values in is\_ip()
+* Add fetch helper for determining the upstream version of a package
+* Refactor openstack.utils to use get\_upstream\_version
+* Add fetch helper for determining the upstream version of a package
+* [trivial] Add mapping for yakkety->newton for amulet helpers
+* Add amulet targets for xenial/yakkety + newton
+* Add amulet targets for xenial/yakkety + newton
+* Fixup template strings for UCA and proposed pockets in fetch.ubuntu
+* Fixup associated unit tests
+* Fixup template strings for UCA and proposed pockets in fetch.ubuntu
+* Add helper for setting application version for openstack charms
+* Add unit test for os\_application\_version\_set
+* Don't use codename if version detected
+* Add helper for setting application version for openstack charms
+* Update rabbitmq amulet test helper connection success logic
+* Update rabbitmq amulet test helper connection success logic
+* version bump
+* Fix setuptools
+* version bump
+* [lazypower, r=stub] Expose application\_version\_set hook tool
+* Refactor the application-version-set stanza to only log if not on a 2.0+ host
+* Added application-version-set hookenv command + simple test
+* [axino,thedac,r=stub] Support 'primary' extension to nrpe-external-master Nagios interface
+* Explicitly set when a charm is the primary charm (vs a subordinate charm) in the npre-external-master relation. For use when multiple charms primary and subordinate are related to nrpe{,-external-master} on the same unit. The default is set to True as this is the case 99% of the time. Only subordinate charms which are related to nrpe{,-external-master} need to set primary=False on the relation
+* [dbuliga] Added support for CentOS
+* Add unit test to cover multiple subordinates attatched to the same principle relation and supplying different config
+* Move the deprecate function to charmhelpers.\_\_init\_\_.py
+* Further refactor to move all functionality to charmhelpers/fetch/add\_source()
+* Refactor configure\_installation\_source() and add\_source() + fix bug 1611134
+* [thedac, 1chb1n] Add support for Mitaka NSX
+* Add support for Mitaka NSX
+* Using getenv method instead of mocking os.environ
+* Implemented changes. Addressed review comments
+* Added Support for CentOS and unit tests. Addressed review comments
+* Set a minimum PG count of 2, to avoid math domain errors in small OSD setups
+* Set a minimum PG count of 2, to avoid math domain errors in small OSD setups
+* [gnuoy, trivial] Lint fix
+* [ajkavanagh r=gnuoy] Add a v3 version of service catalog checking
+* Remove obsolete testing code
+* Fix another small typo in the function
+* Fix spelling error on new function signature
+* Add validate\_v3\_endpoint\_data() function
+* Fix another annoying error in the v3 function
+* Fix list bug in new keystone catalog veriifcation code for v3
+* Add a v3 version of service catalog checking
+* [axino, r=stub] nrpe: make add\_init\_service\_checks support systemd
+* [axino] nrpe: make add\_init\_service\_checks support systemd
+* [corey.bryant, r=gnuoy] Install networking-hyperv when deploying neutron-api from source
+* [1chb1n, r=gnuoy] Consume env var AMULET\_SETUP\_TIMEOUT if set
+* Adjust default value approach
+* Use env var AMULET\_SETUP\_TIMEOUT if set
+* [gnuoy, r=jamespage] Only write out CA cert if it has changed
+* Only write out CA cert if it has changed
+* Increase amulet deploy helper timeout
+* nrpe add\_init\_service\_checks: Add immediate\_check option
+* Install networking-hyperv when deploying neutron-api from source
+* [thedac, r=gnuoy] Make apt\_install fatal=True for dnspython install
+* Make apt\_install fatal=True for dnspython install
+* Add 2.9.0 to list of releases for newton
+* [fginther, r=stub] Install python3-jinja2 when running Python3
+* Install python3-jinja2 when installing jinja2 under python3
+* [stub,r=james-page] Make fetch.apt\_cache() quiet by default
+* Disable apt progress reporting by default
+* [niedbalski, r=] Fix broken tests for py2.7
+* [billy-olsen, r=niedbalski, cholcombe] Partially fixes bug LP: #1492742
+* Fix comments per code review feedback
+* Misc updates for deploy from source
+* Switch yakkety typo to newton
+* [billy-olsen, r=thedac] Allow float for worker-multiplier
+* [billy-olsen, r=] Allow float for worker-multiplier
+* Determine openstack release based on openstack-origin-git
+* [thedac, r=1chb1n] Send LSB release to apparmor context templates
+* Drop kilo DFS default because upper constraints doesn't work in kilo for openstack-dashboard and glance
+* Add flag to disable upper constraints
+* [chris.macnaughton, r=1chb1n] Add ceph-proxy to source charms for openstack amulet helper
+* Add ceph-proxy to source charms
+* Add option to allow location of user home directory to be provided when creating users
+* Add test for adduser with --home
+* [trivial] Support nrpe for testing on wily and xenial
+* Add home\_dir parameter to adduser()
+* flake8 fixes
+* version bump
+* [james-page] Re-license charm-helpers inline with agreed licensing approaches for charms, interfaces and layers
+* Relicense project as Apache 2.0
+* Send LSB release to apparmor context templates
+* Add missing openstack.ha package to setup.py
+* Misc fixes and improvements for deploy-from-source
+* Fixes for apparmor support for openstack contrib module
+* Make OS Apparmor context keys usable in templates
+* Fix unit tests for deploy from source
+* Drop icehouse from deploy from source defaults
+* Ensure upper-constraints.txt exists before using it
+* Partial support for kilo-eol tag
+* Clone/install nova git repo on neutron-gateway
+* Add check to cap the number of placement groups that will be created
+* Set upper constraints for openstack when deploying from source
+* Improve systemd unit file generation for deploy from source
+* Fixes for deploy from source for openstack
+* [gnuoy, r=james-page] Decode result of check\_output in network\_get\_primary\_address
+* Rebase
+* Updates for DNS-HA support in non-api OpenStack charms
+* Revert changes to amulet test helper for nrpe charm - it's a subordinate so it much match series
+* Decode result of check\_output in network\_get\_primary\_address
+* Use git project names when indexing GIT\_DEFAULT\_REPOS
+* Change percent\_data to weight
+* [james-page, r=1chb1n] Update OpenStack Amulet test helper
+* Drop use of precise nrpe charm; turns out it does not have the required interfaces to support testing
+* Add percent\_data to the CephBrokerRq create pool op's parameter list
+* [billy-olsen,r=] Improve Ceph pg num calculations
+* More DNS HA helpers
+* [freyes, r=stub] Mock contrib.network.ufw.modprobe in tests as required
+* Mock 'modprobe' for ufw tests
+* [stub] Add test to bzr revno fetcher, fix casting of bzr revno
+* [chris-gondolin, r=stub] Option to specify a revno when fetching from a bzr repo
+* [george-edison55, r=stub] Fix fetch.install\_remote() when multiple handlers match the URL
+* [marcoceppi, r=stub] Fix bzr branch installer
+* Use git project names when indexing GIT\_DEFAULT\_REPOS
+* [thedac, r=tinwood] DNS HA Helpers
+* Throw exceptions immediately for Incomplete or Incorrect HA configurations
+* Use XOR for vip or dns but not both
+* Enable default git repo generation if a default openstack-origin-git value is specified
+* [jamespage,r=1chb1n] Update amulet helpers to deploy charms from the charm store
+* test coverage
+* create parent if not-existant
+* Simpler config side\_effect
+* DNS HA Helpers
+* Rejig handling for base charms for stable and master branch testing
+* Deal with not all charms supporting all series
+* Switch back to location
+* Switch amulet tests to use charms from the charm store instead of deploying from bzr branches
+* [jamesbeedy] Added uid and gid specification functionality for adduser and addgroup. [mbruzek] Added a newline to fix lint
+* [trivial] context should use set().difference not set().symmetric\_difference when validating keys
+* Adding tests, fixing the new methods and other flake8 cleanup
+* Add keyword argument for password in user tests
+* syntax
+* cleanup
+* Added uid and gid specification functionality for adduser and addgroup
+* Fix lint errors
+* Ensure is\_ip detects both IPv4 and IPv6 addresses
+* Ensure is\_ip detects IPv4 and IPv6 addresses
+* Add support for fallback matching on major.minor version for Swift
+* Add support for swift development version matching
+* Enable default git repo generation if a default openstack-origin-git value is specified
+* [hopem,r=jamespage]
+* Add support for Netwon and Ocata OpenStack release
+* [hopem,r=]
+* Add ocata as well while we're at it
+* Drop semantic version checking to major version only
+* Add version numbers for Newton
+* Rebase
+* Add support for generation of systemd unit files for OpenStack deploy from source
+* Add an empty line to init\_source file before appending template to it
+* Use format() in service\_file assignment
+* Add function to generate systemd init files for OpenStack deploy from source
+* Refactor service\_running to determine init approach
+* Fix ipv6 address recongition under xenial
+* Avoid conditional for sysv init check
+* Refactor service\_running to determine init approach
+* Base newton updates
+* add more docstring
+* [hopem,r=]
+* [thedac,r=tinwood] Actively check for stopped message(s) in service\_running
+* Make service\_running unit tests more robust
+* Enhance the comment
+* Actively check for stopped message(s) in service\_running
+* Add support for mitaka/neutron 8.1.x series
+* Adding Neutron 8.1 for Mitaka in PACKAGE\_CODENAMES
+* Switch is\_device\_mounted to use lsblk
+* [hopem,r=gnuoy]
+* [hopem,r=]
+* Return false in the case where lsblk gives an error
+* modify is\_device\_mounted to use lsblk
+* [gnuoy, r=james-page] Add openstack mitaka compatible template for keystone-authtoken
+* Add openstack mitaka compatible template for keystone-authtoken
+* [xfactor973, r=1chb1n] Add mandatory flag for ceph jewel and above
+* Add mandatory flag for ceph jewel and above
+* [xfactor973, r=1chb1n]  Add the final update\_pool call in Ceph pool creation to set the replica count (bug 1565120)
+* Bugfix. Forgot to add the final update\_pool call in Ceph pool creation to set the replica count
+* [trivial] Add 2.7.0 to the list of swift mitaka releases
+* Allow custom functions to be used to restart services in the restart\_on\_change functions
+* Fix double call to restart function and other fixes from tinwoods review
+* Allow custom functions to be used to restart services in the restart\_on\_change functions. Ideally these functions should only be used in the short-term
+* [chris.macnaughton, r=1chb1n]  Trivial lint fix
+* fix lint error in comment
+* [chris.macnaughton, r=1chb1n]  Allow the validate\_unit\_process\_ids test helper to accept a list of valid values
+* fix test
+* add negative proofs
+* [jamespage, r=thedac] Add support for specifying the datapath type of an ovs bridge
+* [coreycb, r=thedac] Add support for keystone liberty release 8.1.0
+* Add support for keystone liberty release 8.1.0
+* [thedac, r=jamespage]  Apparmor context class for OpenStack charms
+* [gnuoy,r=hopem]
+* When checking if a System V service is running, query service --all-status which keeps track of the services and their return codes
+* Add InternalEndpointContext to contrib.openstack.context
+* add unit test
+* [hopem,r=] Add InternalEndpointContext to contrib.openstack.context
+* Remove python3 setting, add comments for manual disable
+* [jamespage, r=thedac] Add extra-binding awareness to openstack api endpoint resolver
+* Drop network\_get until juju actually implements it
+* Add new unit tests for network\_get based networking binding
+* Fix current unit tests for network\_get usage
+* Use self() rather than self.\_\_call\_\_()
+* Set self.ctxt as a property
+* [r=beisner,a=lazypower] Anton Skriptsov 2016-03-22 add NexentaEdge's charms to no\_origin list
+* Move mitaka check into base AA class
+* Fix call to manually\_disable\_aa\_profile()
+* Apparmor context class for OpenStack charms
+* [chriss] Adds the option to specify a revno when fetching from a bzr repo
+* Add support for specifying the datapath type of an ovs bridge
+* add NexentaEdge's charms to no\_origin list
+* [trivial] contrib.hardening default use\_pam=no
+* Tweak fallback resolution path
+* Deal with vips and extra bindings as well
+* Add extra-binding awareness to openstack api endpoint resolver
+* [hopem, r=gnuoy] contrib.hardening fixups (mostly unit test fixes)
+* [hopem,r=]
+*   [r=lazypower] Chris Holcombe 2016-03-18 Add parameters to the run action utility in amulet
+* Add parameters to the run action utility in amulet
+* [gnuoy, trivial] lint fix
+* [wolsen, hopem, r=gnuoy] This merge proposal adds the base for hardening the host OS and SSH as utility libraries which can be imported into any charm. This also adds the stubs for MySQL and Apache, which will come in later merge proposals
+* [gnuoy, r=wolsen] The settings in keystone\_authtoken do not depend on keystone api version in releases over > juno. See details in Bug #1557223
+* Fixes
+* Refactor apache context to audits infrastructure
+* Bug fixes:
+* ssh check fixes
+* ssh check fixes
+* ssh check fixes
+* ssh check fixes
+* ssh check fixes
+* ssh check fixes
+* [ajkavanagh, r=gnuoy] Fix lp:1555643 - c.o.amulet.utils imports removed novaclient.v1\_1 module
+* review updates
+* The settings in keystone\_authtoken do not depend on keystone api version in releases over > juno. See details in Bug #1557223
+* use /etc/sysctl.d/99-juju-hardening.conf
+*   [r,a=lazypower] Chris Holcombe 2016-03-09 Ceph command should really be rados command for the flush cache tier
+* add hardening README
+* add informating header to defaults/ files
+* very minor cleanup
+* fix section run ordering
+* fix settings cache
+* logfix
+* fix apache perms check
+* fix apache/templates/hardening.conf
+* fix apache actions
+* fix apache user
+* cleanup, add docstrings, minor code optimise
+* cleanups
+* fix decorator hardening ordering
+* Ensure that keystone api version defaults to 2, not 3
+* validate\_users should assume keystone api version to be 2 because if it is above that it will be explicitly set
+* [trivial] Add swift 2.6.0 to the openstack mitaka series
+* Fix octal mode for umask
+* Fix typo
+* sysctl check cleanup
+* more fix & cleanup
+* Fix lp:1555643 - c.o.amulet.utils imports removed novaclient.v1\_1 module
+* added more unit tests and fix mysql hardening
+* added more unit tests and fix mysql hardening
+* added apache hardening
+* fix mysql defaults
+* Add mysql hardening audits
+* version bump
+* [marcoceppi] Support resource-get command
+* Ceph command should really be rados command for the flush cache tier
+* Enable Keystone v3 api in amulet
+* logfix
+* rename overrides file to hardening.yaml and cache settings
+* host and ssh fixes based on review feedback
+* set use\_pam to True by default since upstream are planning to do the same
+* add support for user-provided config
+* add support for user-provided config
+* add support for user-provided config
+* template cleanup
+* [ajkavanagh, r=gnuoy] Fixes broken \*\_unit\_paused\_set() functions in contrib/openstack/utils.py that were merged by mistake
+* Fix buggy \*\_unit\_paused\_set() functions with tests and fix some PEP8 formatting
+* ssh harderner fixes
+* ssh harderner fixes
+* [gnuoy, trivial] whitespace lint fix
+* [ajkavanagh, r=gnuoy] Support pause/resume functionality for OpenStack charms. Pause and resume are baked into set\_os\_workload\_status() and also perform additional checks using service\_running() and port listening checks
+* Check for template updates
+*   [r,a=lazypower] Chris Holcombe 2016-03-04 Typo in the ceph config-key commands.  This removes the extra ceph parameter that should not be there
+* logfix
+* added rendering unit tests
+* Support resource-get command
+* Simplify the list comprehensions around message generation as per gnuoy's suggestions.  They were a little unreadable
+* more
+* more
+* more
+* more
+* added ssh audit specs
+* added ssh audit specs
+* added ssh audit specs
+* Add support for Juju 2.0 network spaces
+* added ssh audit specs
+* more
+* Drop surplus line
+* Add base support for network-get for Juju 2.0
+* start of ssh config contents audit
+* Enable Keystone v3 api in amulet
+* more
+* more
+* more
+* more
+* more
+* more
+* more
+* more
+* more
+* Typo in the ceph config-key commands.  This removes the extra ceph parameter that should not be there
+* more
+* more
+* fix ssh defaults yaml
+* more
+* more
+* more
+* fix
+* more
+* add start of ssh hardeing
+* fix u/t
+* use hierarchical defaults
+* [hopem,billy-olsen, r=] Adds initial hardening framework
+* don't delete virtuial packatge since its not actually installed
+* don't delete virtuial packatge since its not actually installed
+* don't delete virtuial packatge since its not actually installed
+* Gotta flush the unitdata.kv() if you want it to persist
+* True != False
+* Fixup sysctl file permission checks (disagreement between 2 conflicting checks)
+* ceph: support use of monitor cluster as a key/value store
+* allow validate\_unit\_process\_ids to accept a list
+* Fix sysctl settings not getting applied properly. Also fix linespacing in securetty
+* catch sysctl -p exception
+* add apt config audit
+* add apt config audit
+* more
+* more
+* more
+* added logs
+* remove run-on-import and added single point of entry
+* bug-fix
+* Refactoring continued
+* The refactoring continues - almost done
+* Some more refactoring work
+* Allow is\_unit\_paused\_set() to fail to False to aid with testing
+* Add more unit tests and fix the CalledProcessError message
+* Fix function description
+* Merged parent
+* Add @pausable\_restart\_on\_change(...) decorator + tests
+* Fix SSL cipher suites to enforce TLS v1 or better
+* Refactor to reduce code duplication and simplify namespaces
+* Update driver details for PLUMgrid >= liberty
+* Removing neutron-plugin-plumgrid from server-packages
+* more
+* add boilerplates for ssh, mysql and apache
+* Drop session tickets
+* Fix SSL cipher suites and protocols to something secure
+* more
+* Updates and unit tests
+* cleanup
+* Changing neutron driver for plumgrid for liberty
+* more apt
+* more apt
+* more apt
+* renaming apt module to ns conflict
+* activate apt\_hardening
+* more apt
+* more apt
+* more apt
+* Add pause\_unit() and resume\_unit() to contrib/openstack/utils.py
+* Refactor of set\_os\_workload\_status(...) to include unit\_paused check and verify that the services/ports are actually stopped
+* Add functions to allow using the ceph monitor cluster as a key value store
+* Add function to generate systemd init files for OpenStack deploy from source
+* more
+* more
+* more
+* more
+* more
+* more
+* more
+* more
+* more
+* Add in check\_actually\_paused() and tests to allow checking that services are really stopped that should be
+* more
+* more
+* more
+* more
+* more u/t
+* log
+* add suid/guid harden
+* Add in billy's checks
+* Rebase/merge with trunk
+* Add unit tests
+* Refactor set\_os\_workload\_status() to be a bit simpler for checking running services and open ports.  This is to make it easier to do the pause and resume functionality in Maintenance Mode
+* more
+* Add a remove erasure profile function
+* Sync with ed's changes
+* Add a remove erasure profile function.  Also fix up a few type related bugs where I was using a int where a string should have been and also where I needed the length of the list not the list itself
+* sync upstream
+* more
+* Drop check on midonet-origin - for liberty we always need networking-midonet
+* Drop check on midonet-origin - for liberty we always need networking-midonet
+* few fixes and added some unit tests
+* [ajkavanagh, r=thedac,gnuoy]  Add service running and ports open checks to set\_os\_workload\_status()   This adds optional checks to the set\_os\_workload\_status(...) function to   make sure that the services that the charm says should be running are   actually running (according to service\_running()) and also, optionally,   that the ports that are supposed to be open are open (on 0.0.0.0) and   have something listening to them
+* [billy-olsen,r=] Initial addition of checks to hardening
+* [hopem,r=]
+* [gnuoy, r=wolsen] Add support for keystone v3
+* Changed the failed state to blocked if a service is not actually running that should be running. Implemented simple list of strings of service names (properly) to the set\_os\_workload\_status(...) function
+* Make no changes to old v2 config
+* Support keyid or embedded key when configuring sources
+* import\_pgp\_key() > import\_key()
+* [hopem,r=]
+* midonet: select the right Neutron plugin OS >= liberty
+* Merged lp:charm-helpers in
+* Bring branch up-to-date with current devel tip
+* Corrected the license
+* midonet: select the right Neutron plugin OSt >= liberty
+* [ajkavanagh, r=gnuoy] Mod to charmhelpers.contrib.python.packages to stop importing pip from adding wheels to the path
+* Mod to charmhelpers.contrib.python.packages to stop importing pip from adding wheels to the path
+* Updated template
+* The charm should decide whether to render the section not the section itself
+* Fix username
+* Add Keystone Password config
+* Support number of cpu detection on Ubuntu 16.04
+* Fix support for CPU detection on 16.04
+* Add service running and ports open checks to set\_os\_workload\_status() This adds optional checks to the set\_os\_workload\_status(...) function to make sure that the services that the charm says should be running are actually running (according to service\_running()) and also, optionally, that the ports that are supposed to be open are open (on 0.0.0.0) and have something listening to them
+* [trivial] Add ceph-mon to the list of charms that use the source configuration option
+* fix code for when midonet-origin is not set
+* fix lack of midonet-origin for liberty specific behavior
+* Add test for the midonet kilo and liberty special behavior
+* MidoNet: Add Kilo and Liberty support
+* Ensure that any errors from git are correctly handled as UnhandledSource errors
+* Ensure that any errors from external calls to git are handled correctly
+* Account for percona cluster's status message in service\_running
+* Account for percona cluster's status message in service\_running
+* openstack: Optimize headers installs for DKMS requirement only
+* Tie install of headers package directly to use of DKMS packages for OVS
+* [hopem,r=gnuoy]
+* add cinder-backup to openstack amulet no\_origin blacklist
+*   [r=lazypower]Matthew Bruzek 2016-01-15 Adding docstrings to all methods and classes in the host module. Normalizing
+* Adding docstrings to all methods and classes in the host module. Normalizing the docstrings to the pypi recommendations
+* Add support for the same swift version in multiple releases of openstack
+* Fix lint errors and add unit test updates
+* Enable OpenStack Mitaka version of swift
+* [corey.bryant, r=gnuoy]
+* Only use git --depth option with git clone
+* [corey.bryant, r=gnuoy]
+* Add git clone depth option to OpenStack deploy from source
+* Misc fixes for haproxy template and context in openstack helpers
+* Add complete support for systemd managed services
+* Bind stats to localhost only, ensure that random, persistent password is used for access
+* optimize is systemd
+* Feedback from review
+* Tweak
+* Drop else for System ValueError raise
+* Tidy lint
+* Add some unit tests
+* Rebase
+* Initial systemd support
+* Restore previous behavior
+* Fixup stats configuration in haproxy template for new haproxy
+* [james-page, r=gnuoy] Update >= liberty version detection to deal with patch release, tidy swift version code and fixup unit tests
+* Update openstack version detection code for liberty patch releases, tidy swift code and fixup unit test coverage
+* [jjo, r=gnuoy] parse haproxy monitoring CSV instead of HTML, fixes lp#1521279
+* Update amulet helpers for mitaka release
+* update openstack amulet test helpers for mitaka recognition
+* Add support for multiple subnet configuration when resolving local addresses
+* added unit tests
+* Add support for OpenStack Mitaka
+* Update for mitaka versions
+* [hopem,r=]
+* [johnsca, r=stub] Python 3 support for git and bzr using cli tools
+* Converted giturl to use CLI and be idempotent
+* Merged upstream changes
+* version bump
+* [mbruzek] Correcting the 'peers' key in the charmhelpers code
+* Fixing the tests to use "peers" rather than "peer"
+* Correcting the 'peers' key in the charmhelpers code
+* Fixed git & bzr install failure handling
+* Fixes from review
+* Merged upstream changes
+* [deej, r=johnsca] Correctly open file in binary mode in fetch/archiveurl.py
+* py3 support: Use CLI bzr instead of bzrlib
+* Download ArchiveURLs in binary mode for compatibility with python3
+* Drop use of expectedFailure, sortout raising of exceptions and use of assertRaises
+* Additional ceph utilities
+* Drop use of expectedFailure, sortout raising of exceptions and use of assertRaises
+* [lazypower] Adds the payload tracking commands to charmhelpers.core.hookenv
+* Adds payload tracking to charmhelpers.core.hookenv
+* Update default of haproxy connect and queue timeouts
+* Add haproxy context for new timeout values. Fix template whitespace
+* [pjdc, r=stub] Fix get\_nagios\_hostcontext
+* [blr, r=stub] Support for pip constraints files in contrib.python.packages
+* [johnsca, r=stub] Allow templates to access relations with a hyphen in their names via new ctx context variable
+* [johnsca, r=stub] Return the rendered template, and support None for target to not write to file
+* Git dependency for Python3, and run Git tests with Python3
+* git Python3 support
+* Python 3 has been supported by GitPython for about a year
+* Fixes LP:1522130 Set sane defaults for haproxy timeout connect
+* Version 0.6.0
+* [jjo, r=] parse haproxy monitoring CSV instead of HTML, fixes lp#1521279
+* Remove duplicated fns
+* [johnsca, r=stub] Add primary and secondary group parameters to host.adduser
+* Improved default primary\_group handling to avoid errors
+* Add doc string and explicit -g default to avoid "group exists" error
+* Changed param names and added test
+* [brad.marshall, r=stub] Skip the nrpe checks for a couple of specific init scripts from neutron-gateway
+* Add primary and secondary groups params to host.adduser
+* Tidy optional paramaters in storage helpers
+* Use None for default values in storage helpers
+* version bump
+* [marcoceppi] Add dest support to bzr
+* Add dest support to bzr
+* [niedbalski, r=freyes] Fix for LP: #1518001
+* [hopem,r=wolsen]
+* add pg\_num param to add\_op\_create\_pool() in CephBrokerRq (LP 1517846)
+* Adds the LibvirtConfigFlags context
+* [hopem,r=]
+* [hopem,r=]
+* [hopem,r=gnuoy]
+* [hopem,r=]
+* [hopem,r=gnuoy]
+* [hopem,r=]
+* Switch to more compatible six for python 2 and 3 basestring support
+* [chad.smith, r=stub] Make service\_pause and service\_resume idempotent. A stopped service may be paused and a running service resumed
+* [bradm] Skip the nrpe checks for a couple of specific init scripts from neutron-gateway
+* Add basestring from the past
+* fix logic on service\_pause to call stop only when service is \*not\* running. Add/fix unit tests
+* update service\_resume and service\_pause to check if service\_running before calling stop or start
+* Make service\_resume and service\_pause idempotent
+* [niedbalski,r=freyes] Fix for bug LP: #1510666
+* [plumgrid-team, r=gnuoy] Change in neutron plugins dictionary for PLUMgrid OpenStack Plugin
+* [gnuoy, r=james-page] Three more charms to exclude from setting openstack-origin
+*   [r,a=lazypower] Cory Johns 2015-11-09 Fix unitdata subcommand for chlp
+* Fix unitdata subcommand for chlp
+* Three more charms to exclude from setting openstack-origin
+* Tidy up docstring
+* Extend services framework to support remote restarts and openstack style template search paths
+* Add unit tests
+* Fix template loading
+* Extend services framework to support remote restarts and openstack template search path
+* docstrings
+* Additional ceph utilities and small PEP nit fixes on test files
+* Adds the method is\_mapped\_loopback\_device for fixing LP: #1510666
+* [paulgear, r=stub] Remove nrpe checks when no longer needed
+* Update test suite for changes in nrpe structure
+* Change in neutron plugins dictionary for PLUMgrid OpenStack Plugin
+* Add support for pip constraints to pip\_install\_requirements
+* [pjdc,r=timkuhlman] if hostname is not specified, read it from the relation in preference to constructing it ourselves
+* Add clarifying comments
+* Use endswith instead of re.search
+* Do not raise exception if export directory does not exist
+* [stub] Higher level interface to relation and leadership data, per https://code.launchpad.net/~stub/charm-helpers/context/+merge/265508
+* [stub] Fix/improve test\_lsmod
+* [stub] Rendering a template should not make the target directory world readable as a side effect, per https://code.launchpad.net/~stub/charm-helpers/bug-1478940-dont-reset-directory-perms/+merge/266088
+* [stub] Get total system RAM, per https://code.launchpad.net/~stub/charm-helpers/meminfo/+merge/265939
+* [stub] Fix apt\_mark log message, per https://code.launchpad.net/~stub/charm-helpers/packagestatus/+merge/263906
+* Fix lint
+* Do not raise exception if export directory does not exist
+* Add support for removing specific Nagios checks; remove some repeated paths
+* [thedac, r=gnuoy] Because our set\_os\_workload\_status call back function often runs set\_os\_workload\_status recursively we get duplicate messages like the following:
+* [1chb1n, r=gnuoy] Add logger to openstack/amulet/deployment.py
+* update logging
+* update rmq cluster wait
+* add logging
+* Add logger to openstack/amulet/deployment.py
+* [gnuoy, r=james-page] Dynamically increase vm.max\_map\_count if it is less then 2 \* vm.nr\_hugepages
+* Dynamically increase  vm.max\_map\_count if it is less then 2 \* vm.nr\_hugepages
+* [1chb1n, r=gnuoy]
+* fix timeout parameter
+* fix lint
+* add auto wait for service status
+* [merlijn-sebrechts, r=stub] Option for chownr to change ownership of root directory
+* Avoid duplicate 'Incomplete relations:' messages when using the callback function in set\_os\_workload\_status
+* Added chownr topdir option
+* nrpe.NRPE.\_\_init\_\_(): if hostname is not specified, read it from the relation in preference to constructing it ourselves
+* nrpe: get\_nagios\_hostcontext: check for nagios\_host\_context, not nagios\_hostname
+* [trivial] Add swift 2.5.0 to the range for liberty
+* Fix required for LP: #1504346
+* [freyes, r=niedbalski] Fixes bug LP: #1503891
+* Replace subordinate\_config with subordinate\_configuration in docstring and log messages
+* Add support for Midonet SDN to OpenStack helpers
+* Add MidoNet support for OpenStack
+* [hopem,r=gnuoy] Allow multiple ports to be configured on thje same bridge
+* fix py3 ordering issue
+* [niedbalski,r=billy-olsen] Fix required for LP: #1442443
+* Fix required for LP: #1442443
+* [hopem,r=]
+* [hopem,r=gnuoy] For any vlan port specified in openstack context make sure to apply underlying device mtu first
+* [hopem,r=gnuoy] Add support for configuring rbd cache to contrib.openstack.context.CephContext
+* avoid duplicate ports in list
+*     [hopem,r=gnuoy]
+* [hopem,r=]
+* Update keystone authtoken section to use api\_version
+* Update NetworkServiceContext for v3 keystone as well
+* Add support for passing api\_version from keystone to related units
+* [axwalk] Add storage\_list and storage\_get
+* Fix tautological tests
+* Add storage\_get, storage\_list to hookenv
+* [corey.bryant, r=gnuoy] Mostly this is fixing the assertion for test\_set\_os\_workload\_status\_mixed() since the ordering of the 2nd parameter can vary. Other than that just mocking out some juju\_log calls
+* added unit tests
+* [hopem,r=]
+* Deal with mocked call\_args ordering in test\_set\_os\_workload\_status\_mixed() and mock out juju\_log
+* [corey.bryant,r=james-page] Add support for openstack managed upgrade action helper
+* update thresholds based on review
+* Fixed a couple of other places where this problem is likely to happen
+* Make sure the packages are actually installed (pass fatal=True)
+* Run apt\_update before running apt\_install in case the apt index is not up to date
+* update config\_updated\_since re: lp 1474030
+* [gnuoy, r=jamespage] Add option to hugepage\_support to have shmmax set and add a function to convert human readable representation of quantity of bytes (eg 1G) to int to support the former
+* Add function to convert human readable representation of quantity of bytes (eg 1G) to int
+* Add option to hugepage\_support to have shmmax set
+* Fix up test\_openstack\_upgrade\_traceback()
+* Add action-managed upgrade code after merge
+* Sync charm-helpers trunk
+* Drop action-managed upgrade code temporarily for merge
+* [thedac, r=gnuoy] Object oriented workload status for openstack charms
+* Unit is ready
+* More renames
+* [gnuoy,r=james-page]
+* more unit test updates
+* unit tests for do\_action\_openstack\_upgrade()
+* Rename incomplete\_contexts incomplete\_relation\_data
+* call upgrade\_callback
+* Parameter rename
+* Parameter rename
+* Lint updates
+* Updates from initial review
+* Add do\_action\_openstack\_upgrade for performing action managed openstack upgrade
+* Allow amulet test to request specific branches for other services
+* Allow amulet test to specify constraints
+* Rename and add charm specific function to avoid clobbering
+* Some tidyup
+* [1chb1n, r=thedac,gnuoy] Add amulet & openstack/amulet helpers for rabbitmq-server tests; resolve misc. race conditions in amulet helpers
+* Modify fake command to include --incude-data
+* Message is always present.  Remove code for dealing with missing messages
+* [1chb1n,r=wolsen,r=james-page]
+* Add --include-data to status-get
+* fix no message test case
+* Add tests for old juju versions
+* Add support for SysV init scripts to service\_pause/resume
+* Add status-get to contrib.amulet.utils.AmuletUtils
+* [trivial] Add swift 2.4.0 to liberty version map
+* Change how ops injection works in light of review comments
+* [trivial] Add version map for openstack dashboard for OpenStack Liberty
+* Add more info about CephBrokerRq and CephBrokerRsp
+* Remove unit-targeted-reponses as the same info can be derived from the broker request
+* Set logging levels
+* Tidy up to hopefully make thinks clearer
+* [niedbalski, r=freyes] Initial support for infiniband, fixes LP: #1492031
+* Addressed @freyes comments
+* Initial implementation of mellanox helpers
+* Tidy up and add \_\_eq\_\_ to CephBrokerRq for more elegant equivalence testing
+* [niedbalski, r=freyes] Fixes LP: #1491870
+* Added author field
+* Added update\_initramfs method
+* Make use of the new charmhelpers.core.kernel module instead of local additions
+* Added kernel module for modprobe/rmmod/lsmod/is\_module\_loaded methods
+* Fix docstrings
+* [~james-page, r=gnuoy] Fixup two issues:
+* Fixup misc issues with package version detection
+* [james-page, r=gnuoy] Add misc bits and pieces for plumgrid support
+* Add plumgrid plugin support for openstack
+* re-merge lp:~1chb1n/charm-helpers/amulet-svc-restart-race for updates
+* update comments, pgrep\_full conditional
+* clarify comment, fix typo, update add\_rmq\_test\_user per review
+* lint cleanup
+* rebase
+* Re-sync updated tests/charmhelpers fix re: service\_restarted\_since bug 1474030
+* Update rmq test helpers:  - update file\_contents\_safe returns;  - close amqp connections and channels when done;  - add port check logic to rmq validation helpers;  - increase debug feedback re: pika queue declare;  - switch to durable queues re: pika hang issue
+* Revert style change to test
+* Less ugly version
+* Initial (ugly) version
+* adjust debug user feedback
+* update logic
+* refactor \_get\_proc\_start\_time to use existing helper to retreive PID via pidof
+* [niedbalski,r=freyes] Fix for LP: #1489053
+* addressing freyes comment
+* contrib.network.ip.get\_hostname: try a gethostbyaddr resolution as a last resource, otherwise return empty
+* Switch to always returning status and message (tribaal's review)
+* Fix typo in docstring
+* Add with\_message keyword argument to status\_get() helper to retain backwards compatibility whilst allowing charms to get back what they set
+* Add exception handling to retry logic in service\_restarted\_since re: bug 1474030.  Add deprecation warn re: service\_restarted amulet helper, in favor of validate\_service\_changed\_config
+* Add unit tests for ceph broker update
+* FakeRelation get args updated to match relation\_get and support added for relation-get with out specifying an attribute
+* Add exception handling to retry logic in service\_restarted\_since re: bug 1474030
+* add deprecation warn re: service\_restarted amulet helper, in favor of validate\_service\_changed\_config
+* Fix lint
+* Fix bug if ceph has sent no response yet
+* Another bug fix
+* Delimit new broker response key with '-' to be consistent with other charms
+* Doc strings and support for legacy ceph
+* Another minor bug fix
+* Fix typo in log name function
+* Fix typo
+* Move more ceph broker function to shared area
+* More ceph broker helpers
+* Check for none in broker req comparison
+* Add function to check if two broker requests are equivalent
+* Fix typo
+* More logging
+* Fix typo
+* Add a bit more logging
+* Add request id processing to  ceph broker
+* rebase
+* s/rq-id/request-id/ for clarity. Update unit test to not depend on dict ordering
+* Add unit test for CephContext change
+* Fix up ceph unit tests for rq-id
+* Stop incomplete units from overwriting data from units with complete data
+* Pass req-ids in cepg broker exchange
+* [hopem,r=gnuoy] Add support to core.host.list\_nics() to allow for listing all nics i.e. unfiltered. Ensure that neutron resolve\_ports only resolves physical interfaces
+* fix unit test
+* \*fix\* py3 unit test error
+* more unit test
+* added multimac unit test
+* Remove unnecessary shebang
+* ensure master is bond
+* Add support for identiying bonded nics and resolving their master
+* [hopem,r=]
+* rebase, resolve conflicts
+* Add docstring
+* Add two small functions. One to check user existence and the other to mount a filesystem via fstab
+* Capture stdout/stderr around tests that expect to run amulet.raise\_status and verify the message
+* Enable a functools partial to be passed to TemplateCallback and call it if the file being rendered changes
+* Use six.iteritems() to fix Py3 test failure (tribaal's review)
+* Add expect\_success flag to get\_unit\_process\_ids
+* get\_process\_id\_list looks for scripts, and can expect failure
+* deal with race conditions in amulet.file\_contents usage;  add resilience to connect\_amqp\_by\_unit
+* Fix tests for Python3, add tests for wait\_on\_action
+* Add missing \_\_init\_\_.py
+* Add tests for run\_action
+* Add helpers for amulet tests running actions
+* fix rmq cluster validation amulet helper, remove unnecessary lsb release debug dump
+* update \_determine\_branch\_locations, add force\_series\_current mechanism.  ie. always use trusty/nrpe instead of precise/nrpe, even when on series precise
+* update and organize rmq amulet test helpers
+* add amulet helpers for rmq tests
+* Merged lp:~adam-collard/charm-helpers/fix-amulet-utils-validate-services-by-name [a=adam-collard] [r=tribaal]
+* Add test files
+* Revert Makefile change
+* Fix validate\_services\_by\_name
+* [james-page, r=gnuoy] Add support for independent Openstack project versioning in >= liberty
+* [1chb1n,r=james-page] Update fetch helper to support liberty UCA
+* ignore nrpe in amulet helper for setting openstack-origin
+* add nrpe to amulet helper for base charm url calculation
+* lint cleanup
+* update amulet helper re: pid validation (add bool comparison capability)
+* update amulet helper re: apache2 (openstack-dashboard) service checks
+* add liberty to fetch/init
+* version bump
+* [johnsca] Removed import of cli in hookenv, as it was causing issues when charmhelpers is partially sync'd and CLI not included
+* Removed cli import from hookenv; removed broken attempt to support kwargs in cmdline.subcommand
+* [johnsca] Added missing contrib packages to setup.py. [johnsca] Added install\_requires section to setup.py to insure dependencies are met when installing
+* Removed version pins and netifaces to ensure that it installs properly on new trusty and precise images
+* Added install\_requires section to setup.py to ensure dependencies are met when installing from pypi
+* Added all missing contrib packages to setup.py so they will be included in pypi releases
+* [tealeg] corrects the name of override files used by core.host.service\_pause and core.host.service\_resume to match the documented standards
+* Remove .conf part of the override file names used in core.host.service\_pause and core.host.service\_resume, as this dosen't match the documented file name standard for override files
+* [james-page, r=gnuoy]
+* Fixup use of relation\_get when migrating from peer storage to leader storage
+*   [r,a=lazypower] Cory Johns 2015-07-31 Make cmdline import in hookenv conditional to deal with partially syncd charmhelpers   Cory Johns 2015-07-31 [merge] Merged upstream
+* Make cmdline import in hookenv conditional to deal with partially syncd charmhelpers
+* Merged upstream
+* Version bump to 0.4.0
+* [johnsca] Added some new helpers for actions, metadata introspection, and CLI, that became useful when working on charms.reactive
+* Add ability to override unitdata DB file via env, and added unsetrange
+* [gnuoy, r=jame-page] Fix multiple subordinate configs when they have different section keys
+* Made import of cli subcommands from hookenv explicit
+* Added tests for new / modified helpers
+* Added some more helpers to hookenv and cli
+* Add action\_name, etc helpers, update hook\_name to use env var if present
+* Fix multiple subordinate configs when they have different section keys
+* [gnuoy,r=james-page] Add support for using multiple subordinate context with nova-compute
+* Rendering a template should not make the target directory world readable
+* Test filename and mode too
+* Add a peer relation shortcut to the Relations() instance
+* Allow multiple subordinates to send config for the same principle config file
+* mocking open sucks
+* Remove debug
+* Total system RAM
+* Documentation strings
+* [stub] Open temp file in text mode, so string writes work under Python3
+* Edge cases: departed or broken
+* Rebase
+* Install python-jinja2 during imports, if necessary
+* [daniel-thewatkins, r=stub] Support more key types to contrib.unison and add cleanup from departed hooks
+* charmhelpers.contrib.unison: Add support for ecdsa keys
+* unison: Add all known keys for each host
+* unison: Add handling for peer departed hook
+* [niedbalski,r=freyes] Added a sed function to search/replace patterns on files
+* Addressed @freyes comments
+* [daniel-thewatkins] Detect full disk mounts correctly in is\_device\_mounted
+* [stub] deepcopy Config state to avoid mutating shared instances
+* leader tests
+* context.Relations tests
+* wip
+* context module, providing Pythonic access to relation and leadership data
+* peer\_relation\_id() in hookenv, and twiddles
+* deepcopy state to avoid mutating shared instances
+* Silence test log spam
+* Install python-jinja2 during imports, if necessary
+* Clean up and fix tests
+* Object oriented workload status
+* Reference commit
+* Split calls to zap-disk and clear inline with Ceph
+* No keystone common
+* Ensure that only the actual upstream version is picked
+* [corey.bryant] Upgrade pip before deploying OpenStack from source
+* Drop local package versionmap for now
+* Add support for individual project package versioning for liberty
+* [freyes, r=niedbalski] Restrict mock to >=1.0.1 and <1.1.0
+* Restrict mock to >=1.0.1 and <1.1.0
+* Default init\_dir to None for better forwards compatability (ack's review)
+* Added a sed function to search/replace patterns on files
+* Version bump
+* Add service\_pause/service\_resume helpers
+* Upgrade pip before deploying OpenStack from source
+* Drop installation of any packages from within the core Neutron context; this will be handled in charm specific subclasses
+* Issue warning message for unsuccessful install\_remote() attempts
+* remove unnecessary whitespace
+* Improve the Exception that's raised, add test coverage
+* Fix assert for error calling (fcorrea's review)
+* Fix version of mock that's installed to avoid problems with six.wraps
+* Drop call to ensure packages, this will be handled in subclasses based on local charm configuration
+* Fix broken tests
+* [hopem,r=]
+* Use functools wraps, which fixes scoping problems with multiple decorators
+* [freyes,r=niedbalski] Charmhelpers fix required for Bug #1423439
+* Workload status setting decorator and functions based on openstack contexts for openstack charms
+* Issue warning message for unsuccessful install\_remote() attempt
+* ufw: allow rules to be inserted in a given index
+* Stop telling lies
+* Updates for ceph/cinder amulet tests
+* Trim leading spaces from ceph templates
+* [stub] Rework apt\_hold into apt\_hold, apt\_unhold, and general apt\_mark
+* Rework apt\_hold into apt\_hold, apt\_unhold and general apt\_mark
+* [paolo-de-rosa,r=niedbalski]  Added mysql innodb\_flush\_log\_at\_trx\_commit option
+* Added mysql innodb\_flush\_log\_at\_trx\_commit option
+* Add ufw.default\_policy() to manipulate the firewall's def policy
+* Clean up sphinx warnings/errors
+* [johnsca] Improvements for API docs
+* Improvements to the API docs
+* clean up debug feedback; clarify comments
+* rebase
+* switch to amulet.raise
+* clarify create\_cinder\_volume parameter validation
+* clarify validate\_config\_data; clean up validate\_unit\_process\_ids
+* lint cleanup
+* [stub] Simplify the Config object
+* [stub] Add coordinator module
+* [corey.bryant, r=mikemc, r=gnuoy]
+* rm ceilometer-agent from origin ignore list; it supports openstack-origin
+* add subordinate charms to origin ignore list
+* Update names to make the source clearer in the test
+* Mirror Config.\_prev\_dict in the main dict, avoiding weird failures
+* remove leading spaces in ceph conf template pieces
+* Drop any arbitrary keyword options that have null value
+* Allow for pip\_install(proxy=None) to be specified
+* rebase
+* Update create\_cinder\_volume functionality, add validation. Update create\_cirros\_image to use generic resource status methods, add validation. Simplify delete\_image to use generic resource\_delete method. Simplify delete\_instance to use generic resource\_delete method. These changes preserve existing behavior
+* [corey-bryant, r=niedbalski, billy-olsen] Use python from virtualenv when updating from global requirements
+* add authenticate\_swift\_user (for radosgw basic checks)
+* Add validate\_list\_of\_identical\_dicts Refactor get\_ceph\_expected\_pools for optional radosgw presence Add get\_ceph\_pools
+* Add methods to check units for expected running processes: add get\_process\_id\_list add get\_unit\_process\_ids add validate\_unit\_process\_ids
+* Use python from virtualenv when updating from global requirements
+* Upgrade setuptools in deploy from source virtualenv
+* Pass lock to the overrideable grant methods and emit lock state at hook start
+* update validate\_config\_data - enable use of boolean comparison methods add check\_commands\_on\_units - check lists of commands against lists of units add authenticate\_cinder\_admin add create\_cinder\_volume
+* Fixup lint in amulet charm-helpers
+* fix e501 lint in amulet/utils.py
+* Link bug
+* Fix coordinator coverage
+* leader-set should not blindly log everything, including secrets
+* Tweaks the SharedDBContext slightly to allow overriding of the relation name the context is looking for when built. This is a pre-requisite of adding in mysql support to ceilometer since the mongodb claims the shared-db namespace
+* \* Prep helpers for Wily/Liberty; resolve additional Vivid issues
+* light cleanup and comment correction
+* add file\_to\_url
+* Add Wily/Liberty awareness
+* Return validate\_services to original functionality Add create\_or\_get\_keypair Update comments and docstrings
+* [saviq] Add support for globs in restart\_on\_changed
+* Final bits and pieces for Calico SDN Support
+* add get\_ubuntu\_releases - uses distro\_info to create a list property containing Ubuntu release codenames, in order of release
+* [freyes, r=gnuoy] Patch to improve charmhelpers.contrib.hahelpers.cluster:is\_crm\_dc() to consider the case when the current DC is NONE
+* Hook to record release timestamps, allowing me to enforce mandatory delays between operations
+* When Current DC is NONE raise CRMDCNotFound
+* Fix import under py2
+* delint
+* typo
+* Complete tests
+* tests, wip
+* tests, wip
+* Fix tests
+* le enablement in cluster and peerstorage helpers
+* wip
+* wip
+* wip
+* wip
+* [billy-olsen, r=niedbalski] Fixes LP bug: #1398182
+* Per niedbalski's review remove jinja2 dependency and use simple string formatting. Additionally break out the override check into its own function
+* Add templating to the os-public-hostname override per jjo's bug comment
+* wip
+* wip
+* wip
+* Fix leader\_set under py3
+* wip
+* wip
+* wip
+* wip
+* Add version check
+* coordinator, WIP
+* atstart and atend callback registration
+* [niedbalski,r=freyes,billy-olsen,msplivalo] Fixes lp: #1461669
+* Move log to any size
+* Fixes LP: #1461669
+* Switch config option to os-public-hostname
+* Fix unit tests which were failing due to random ordering of the migration list
+* Bug fixes and lint
+* More tidy up
+* Rejig peer leader\_get
+* Add check for le to elected leader check
+* Allow configs to be None and default to http if it isn't found for the protocol scheme
+* Move public address override into resolve\_address
+* Detect full disk mounts correctly in is\_device\_mounted
+* Merged peer storage le migration
+* wip
+* rename openstack/amulet/utils status and delete methods
+* Fix lint
+* add openstack/amulet/utils generic status checker and thing deleter.  add debug logging to utils
+* After studying the code across the OpenStack charms, it seems a better place for the override is to place it in the canonical\_url method. This has the advantage of capturing more places besides endpoint URLs (e.g. also for console hosts etc) and requires fewer changes to most of the OpenStack charms
+* [wolsen,r=] Change contrib.openstack.ip endpoint functions to specify an override of an address rather than the endpoint value itself
+* Properly handle None
+* Don't encode None as a string
+* Add support for relation-set --file
+* Add mention of 'glob' module to restart\_on\_change
+* Abstract path\_hash for easier mocking
+* Add support for globs in restart\_on\_change
+* Expose juju version to charms and give them a version comparison tool
+* OpenStack deploy-from-source
+* Set depth default to None for git clone method
+* Reverting commit 373 due to regressions in hacluster charm relation
+* Quick framework fix for relations with hyphens in name
+* [hopem, r=gnuoy] network-vlan-ranges parser needs to support physnet specified without range
+* Add basic hookenv support for leadership-election
+* [johnsca] Fix issues with provide\_data in services framework
+* sync trunk
+* fix py3 compat
+* Removed class type check
+* Fixed issues with provide\_data in services framework (also fixed linting error with version file)
+* [gnuoy, r=james-page,adam-collard] Fix is\_crm\_dc return false if the cluster is not yet formed as it is not leader if there is no cluster up
+* Fix is\_crm\_dc return false if the cluster is not yet formed as it is not leader if there is no cluster up
+* [gnuoy,r=james-page] Implement freyes suggestion of using pacemaker Designated Controller as a way to determine leadership. See https://bugs.launchpad.net/charms/+source/percona-cluster/+bug/1452365/comments/9
+* Fix unit test for is\_crm\_leader to use DC\_RESOURCE\_NAME
+* Use constant for DC resource string and add doc string
+* Allow charms to use the current DC, as reported by crm status, to determine leadership
+*  Merge lp:~bjornt/charm-helpers/relation-set-file [a=bjornt] [r=tribaal]
+* Pass relation data as a file if supported
+* [johnsca] Added CLI wrapper for unitdata
+* Don't use canonical squid proxy url
+* Update \_git\_yaml\_load()
+* Introduce \_git\_yaml\_load()
+* Merged trunk in
+* [stub,r=gnuoy] This is an integration branch containing the last few months worth of outstanding merge proposals. If you review and land this, all my other outstanding ones will automatically get flagged as merged
+* [gnuoy,r=stub] Added support for status-set and status-get
+* Add py3 fixes as per stubs mp review comment
+* Only create venv if dir doesn't exist
+* Added support for status-set and status-get
+* Drop unused param from git\_pip\_venv\_dir
+* Add git\_pip\_venv\_dir
+* Unit test updates
+* Pass venv path to pip\_install
+* Tidy code and tests
+* Add hookenv primitives for leader-election hook commands
+* Update git pip venv path
+* Fix lint error
+* Allow pip venv to be installed in specified path
+* Generalize function to fetch value for key
+* Add git\_http\_proxy
+*     [hopem,r=gnuoy]
+* Update Python virtualenv support
+* unit tests and upda6es
+* [hopem,r=]
+* Add Python virtualenv support
+* Unit test update
+* Fix lint error
+* [hopem,r=]
+* Determine branch while git cloning
+* Add depth parameter name to git clone
+* Add depth option to git clone
+* Remerge py3 branch
+* Add test demonstrating the behavior of the in operator
+* Remerge py3 branch
+* Remerge bug-1413596-remote\_unit-fix
+* version bump
+* [aisrael] Fix an incompatibility with Python3 involving the loading of local modules
+* Fix python3 incompatibility
+* version bump
+* [aisrael] Add set\_composite\_score() method for benchmarking
+* Fix example
+* Make start/finish/composite methods static add unit test add cli command for composite
+* Add support for composite score
+* Add new Calico dependencies
+* Drop ignore
+* Add proxy and ignore-installed options to openstack pip install
+* [beisner,r=james-page] amulet - allow no\_value options in configparser, regarding mysql my.cnf https://bugs.python.org/issue7005
+* amulet - allow no\_value options in configparser, regarding mysql my.cnf https://bugs.python.org/issue7005;  also fix 1 lint trailing whitespace issue
+* [beisner,r=james-page] Fix order of openstack releases in amulet helpers
+* openstack amulet deployment.py - fix \_get\_openstack\_release order
+* [beisner,r=james-page] Align amulet testing to series for OpenStack charms
+* amulet openstack deployment.py - logging not implemented, revert debug log attempt
+* amulet openstack deployment.py - also fix series logic for stable deploys
+* amulet openstack deployment.py - re-adjust logic to preserve precise series when needed
+* amulet openstack deployment.py - add series to base\_charms lp: string, avoid picking up the precise mysql charm
+* amulet utils - add unit and cmd debug output for validate\_services
+* [gnuoy,r=james-page] Support passing monitor definition yaml to the nagios subordinate attached via the nrpe-external-master relation so it can proxy it to nagios rather than having a nagios relation to both the principle and the subordinate
+* [niedbalski, r=dosaboy,freyes]  Added oslo-messaging-flags for oslo.messaging specific options. Fixes LP: #1445025
+* Addressed @dosaboy comments
+* Added oslo-messaging-flags for oslo.messaging specific options. Fixes LP: #1445025
+* [beisner,r=james-page] Update amulet deployment helper for utopica and vivid
+* update amulet get\_openstack\_release
+* [coreycb,r=james-page] Save/restore os.environ state around calls to deploy from source
+* [niedbalski, r=billy-olsen] Fixes stderr outputs for ssl commands introduced by latest contrib/ssl/test\_service.py change
+* Restore original environment after pip install
+* Fixes sterr outputs for ssl commands introduced by contrib/ssl/test\_service.py
+* [billy-olsen, r=niedbalski] Reverted regression introduced in revision 353
+* Add unit test coverage for contrib/ssl/service
+* [wolsen,r=] Change ssl service to write files as text, not binary
+* [1chb1n] Allow rabbitmq-server to be used as a next charm in amulet testing, by removing from the base\_services which are forced to cs:
+* allow rabbitmq-server to be used as a next charm in amulet testing
+* [beisner,r=james-page] place debug logging of actual and expected values in \_validate\_dict\_data
+* [billy-olsen, r=niedbalski] Fix python3 errors in the charmhelpers.contrib.ssl module
+* [niedbalski, r=billy-olsen]  Added 'on' , 'off' to strutils.bool\_from\_string
+* Added 'on' , 'off' to strutils.bool\_from\_string
+* [wolsen,r=] Fix python3 errors in the charmhelpers.contrib.ssl module
+* [coreycb,r=jamespage] Add multi-config file support for deploy from git
+* [smukkamala,narindergupta,r=james-page] Add Nuage VSP support for OpenStack
+* Let log\_file be optional in git.upstart
+* place debug logging of actual and expected values in \_validate\_dict\_data
+* Add unit test for nuage context
+* Allow multiple config files in git.upstart
+* [thedac] Log to stderr if juju-log not available
+* Send log output to stderr if juju-log is not available
+* That should be ENOENT not EEXIST
+* Missing juju-log should not cause failures in unit tests
+* sod byte strings
+* Don't convert back to real string at the last minute
+* subprocess output is byte string, so write bytes
+* Write text files in text mode, and generate a password for host.adduser
+* migration fix
+* more l/e peer migrate fixes
+* fix relation/leader\_get logic
+* added leader-get settings migration
+* [coreycb,r=james-page] Add proxy support in git deployment format
+* Add http(s)\_proxy keys to openstack-origin-git yaml
+* synced trunk
+* [gnuoy,r=james-page] Add support for using the identity interface with other relation names
+* Add unit test
+* Allow the relation name to be set in the IdentityServiceContext
+* [jamespage,r=gnuoy] Rename snippets for 0mq, move to new kilo naming
+* Rename zeromq snippet
+* [coreycb,r=james-page] Misc fixes in deploy from source code
+* Fixup unit test
+* Drop hookenv import
+* Simplify config\_value\_changed() and git\_install\_requested()
+* [coreycb,r=james-page] Misc fixes for openstack deploy from git support
+* Add config\_file and log\_file to git.upstart template
+* sync trunk charm-helpers
+* Use new entry points for matchmaker drivers
+* [gnuoy,r=james-page] Rectoring to support dvr feature for openstack neutron
+* [jamespage,r=gnuoy] template snippets for openstack charms
+* Tidy
+* Add new template snippets for openstack
+* add missing neutron\_security\_groups key and fix py3 lint
+* Add tests for NetworkServiceContext
+* Move multiple neutron contexts from the quatnum gateway charm to charmhelpers as they need to be shared with the neutron openvswitch charm
+* Added CLI wrapper for unitdata
+* [r=bloodearnest] Write ansible host vars to a file readable by owner only
+* Adds support for simple poor-mans actions to be used with ansible
+* Ensure ansible host vars are written read-write able only to owner
+* Update config\_value\_changed() check
+* Add extra log to config\_value\_changed()
+* Add/modify git\*() unit tests
+* [niedbalski, r=aisrael]  Fixes regression reported by bug LP: #1434109
+* [niedbalski] Fixes regression reported by bug LP: #1434109, adds unit tests
+*     [hopem,r=gnuoy, r=billy-olsen]
+* Add git upstart template
+* Add config\_option\_changed(), fix in unitdata, and various minor comment updates
+* use internal addr or vip for CN if cert/key provided by confoig
+* [hopem,r=]
+* Simplify openstack git clone and pip install, add git\_src\_dir(), add \_get\_openstack\_release\_string()
+* version bump
+* Return the rendered template, and support None for target to not write to file
+* [aisrael] Add benchmark support
+* Make benchmark pass py3 tests Fix mysql to pass py3 lint Disable mysql test, which fails horribly under py3, and add a README to explain
+* It looks like a working (though only 29% complete) test was written for mysql support, but the missing \_\_init\_\_.py prevented it from being run. Adding it now, because it's better than no testing
+* 100% coverage. Implements patch\_open and FakeRelation from tests.helper
+* lint fix
+* More test/benchmarky stuff
+* Support passing monitor definition yaml to the nagios subordinate attached via the nrpe-external-master relation so it can proxy it to nagios rather than having a nagios relation to both the principle and the subordinate
+* First pass at adding unit tests
+* Tweak return values
+* Add #noqa to import statements to pass \`make lint\`. Dynamically-loaded code is dynamic
+* Add unit test for relation\_clear
+* Enable juno and kilo for openstack amulet
+* Add relation\_clear to hookenv
+* Don't divereted calls with no relation id to leader\_set - this is valid for in hook execution
+* [adam-collard, r=gnuoy] Switch pwgen() code to using random.SystemRandom() instead of the default PRNG
+* [corey.bryant, r=gnuoy] Allow test\_action\_set() to pass if parameter order changes
+* 
+* Use random.SystemRandom() for generating passwords
+* Allow test\_action\_set() to pass if parameter order changes
+* Test lowercased openstack-origin-git in git\_install\_requested()
+* [hopem,james-page,r=james-page] Refactor port detection code into charmhelpers for neutron reuse
+* removing the link issues
+* [corey.bryant, r=gnuoy] Fixup action\_fail per sparkiegeek's comments
+* Fixup action\_fail per sparkiegeek's comments
+* [corey.bryant, r=gnuoy] Add functions to use juju action utilities
+* Add functions to use juju action utilities
+* fix peer\_echo()
+* optional force for peer\_echo()
+* fix peerstorage wrappers
+* fix peerstorage wrappers
+* leader stuff raises OSError not CalledProcessError if not installed
+* Rebase
+* Ensure relation\_set is called with relation id
+* peer\_echo() => noop if l/e enabled
+* removed cache() from leader-get
+* added logs to leader-get/set
+* Fixup miuse of relation\_id
+* use leader-get/set for peer ops
+* added leader-set and leader-get
+* added leader-set and leader-get
+* Add unit tests for impacted is\_leader touchpoints
+* Try using juju leadership for leadership determination
+* Add is\_leader helper to hookenv
+* Add atomic/locking operations to git cloning
+* Allow charms to specify git clone destination directory
+* Allow openstack requirements git repo to be optional
+* Perform openstack git cloning based on input dictionary rather than input yaml file
+* Add benchmark-start and benchmark-finish commands via chlp Re-enable chlp
+* [jjo, r=niedbalski] Fixes LP bug: #1386791
+* [jjo, r=] add wait-timeout config
+* [billy-olsen, r=niedbalski, freyes] Fixes bug LP: #1423341
+* more
+* more
+* more
+* cleanupo
+* merge trunk
+* Add benchmark support
+* [james-page,r=gnuoy] Fixup race condition for MySQL + access-network
+* Ensure that incomplete context during db access network setup are detected correctly
+* [hopem, r=niedbalski] Fixes Bug LP: #1425999
+* more
+* adde parse mappings
+* adde parse mappings
+* switch to ip.get\_host\_ip()
+* sync trunk
+* [niedbalski, r=billy-olsen] Moves host<->ip translation logic to charmhelpers/contrib/network/ip.py
+* Minor lints
+* Minor lints
+* Moves host<->ip translation logic to charmhelpers/contrib/network/ip.py
+* [hopem,jamespage,r=]
+* Moves static class attributes for prevent LP bug: #1412410
+* Moves static class attributes for prevent LP bug: #1412410
+* [niedbalski, r=freyes,mario-splivalo] Fixes bug LP: #1425528
+* Adding a warn for "dataset-size" option deprecation
+* Adding a warn for "dataset-size" option deprecation
+* [hopem, r=niedbalski] Fixes bug LP: #1423153
+* tuning-level option is not available on the percona-cluster charm
+* tuning-level option is not available on the percona-cluster charm
+* Addressing @freyes comment
+* Addressing @freyes comment
+* - Addressing comments from Mmike, using 50% of available memory for setting innodb buffers - Removed query cache ( not supported on percona-cluster ) - Removed the preferred engine setting because only InnoDB is supported
+* exclude root passwd file from peer migration if root pass alread available
+* modfied the charm-helpers rather than individual charms. As other openstack charms shoudl sync to this charm-helpers
+* Fixes bug LP: #1425528
+* fixed comments
+* more
+* more
+* more
+* more
+* Fixes contrib.database mysql passwd handling back compat
+* [hopem, r=gnuoy] Adds support for Openstack PKI token signing to the IdentityServiceContext. Required for LP #1309667
+* synced lp:charm-helpers
+* [james-page,r=gnuoy] Add redis support for zeromq helpers
+* Rebase
+* Rebase
+* synced lp:charm-helpers
+* [wolsen,r=]
+* [hopem,r=]
+* [gnuoy, r=jamespage] Add amulet utils for service and config file mtime checking and pgrep bug fix
+* Add usage info to new amulet test function (and fix lint)
+* [gnuoy, trivial] Fix unit test for previous commit
+* [bradm, r=gnuoy] Fix the case of the empty nagios\_servicegroup meaning we end up with a check with an empty service group
+* [bradm] Fixing logic around empty nagios\_servicegroup config
+* Revert service\_restarted as the new functions replace it
+* [bradm] Nicer way of expressing the nagios servicegroup fix, thanks to gnuoy
+* Add functions for checking service and config changes after an arbitraty time
+* [bradm] Handle nagios\_servicegroup being defined but an empty string
+* [wolsen,r=]
+* [zulcss,r=james-page] Add support for swift 2.2.2
+* [stub, r=niedbalski] Fixes Bug LP: #1423046
+* Handle blank lines in fstab file
+* Update tests to demonstrate Bug #1423046
+* Fix more logging message
+* Fix typo in log message
+* Improve logging
+* Up sleep time in retry loop to avoid blocking hook execution
+* Add some logging
+* [bradm, r=gnuoy]  Add functions to copy nrpe checks, and add haproxy checks
+* [bradm, r=gnuoy] Fix nrpe class to default to nagios\_context if nagios\_servicegroup is not set
+* [bradm] Make Check.write{,\_service\_config} have nagios\_servicegroups as a required functional parameter
+* [bradm] Fix nrpe class to default to nagios\_context if nagios\_servicegroup is not set
+* [bradm] Added shutil and glob imports
+* [billy-olsen,r=niedbalski] Add method for common endpoint\_url override logic in openstack.ip
+* [bradm] Add functions to copy nrpe checks, and add haproxy checks
+* [bradm] Add nrpe haproxy checks
+* Add support for swift 2.2.2
+* Stop get\_proc\_start\_time  from returning the start time of the pgrep itself and add retry option to service\_restarted
+* [hopem, r=gnuoy] Use bool\_from\_string() in hahelpers.cluster.https()
+* Use bool\_from\_string() in hahelpers.cluster.https()
+* [hopem, r=gnuoy] fixes bool\_from\_string unicode support
+* fixes bool\_from\_string unicode support
+* [hopem,r=gnuoy]
+* simplified
+* [hopem,r=]
+* [gnuoy,r=corey.bryant,james-page] Skip setting openstack-origin or source in amulet tests for certain openstack charms because they don't expose either option
+* Skip setting openstack-origin or source in amulet tests for certain openstack charms because they don't expose either option
+* [wolsen,r=]
+* [freyes, r=niedbalski] Fixes Bug LP: #1418578
+* [billy.olsen,r=niedbalski] Fixes bug LP: #1420963
+* [wolsen,r=]
+* [hazmat, r=bcsaller,stub] Add a k/v storage library for unit local data
+* merge trunk
+* add py3 pycache to ignores
+* [hopem, r=gnuoy] Created contrib.database.mysql for common db code. Currently will be used between mysql and percona-cluster charms
+* remove phys nic set mtu code
+* move NeutronPortContext into ch
+* code tidyup
+* synced next
+* ufw: add soft\_fail argument to allow raise (or not) exception when ipv6 support is being disabled
+* update license header
+* provide ootb integration helpers and docs
+* doc update
+* [hopem,r=gnuoy]
+* [hopem,r=]
+* more
+* more
+* more
+* more
+* more
+* Created contrib.database.mysql for common db code. Currently will be used between mysql and percona-cluster charms
+* [niedbalski, r=freyes] Fixes regression on tests introduced LP Bug: #1417754
+* [freyes, r=niedbalski] This patch sets the \`perms\` argument while calling host.mkdir(). Fixes Bug LP: #1417754
+* [stub, r=niedbalski] Make host.write\_file write binary file and fixes LP Bug: #1396243
+* templating: set perms of parent directory to 755
+* [freyes, r=niedbalski] Complementary fix for LP Bug: #1403567
+* set\_nic\_mtu
+* merge trunk
+* [paulgear, r=stub] Remove hard-coding of bond interface types in check for VLAN raw device separator
+* [peter-sabaini, r=niedbalski] Make sysctl.create() more resilient against malformed parameters. Fix test and doc
+* Make sysctl.create() more resilient against malformed parameters. Fix test and doc
+* [hopem,r=gnuoy] Fix contrib.unison lint errors
+* Add tests for VLAN on eth device & MTU on bond device
+* [hopem,r=]
+* ufw: add universal\_newlines to check\_output
+* Commit after merge
+* [stub,r=niedbalski,freyes] Fixes LP bug: #1415020
+* Python 3 fixes - bytestrings and implicit casting
+* [xianghui, r=gnuoy] Remove the limitation of binding VIP with HA to support neutron-gateway legacy HA
+* Do not hard code bond interface type in check for VLAN separator (@)
+* remote\_unit() returns None if $JUJU\_REMOTE\_UNIT is not set
+* Switched license to LGPL after gathering approval from all contributors (directly or through their canonical employment contract). [tribaal, r=hazmat]
+* Removed blank lines at EOF
+* Removed trailing whitespaces
+* add more tests to get coverage up
+* address review comments, add more documentation
+* [tub, r=nick-moffitt] Fix jinja2 bootstrap under Python 3
+* [jacekn, r=stub] Make bzr branch fetching idempotent
+* [nick-moffitt, r=stub] Handle GitCommandError when fetching git branches
+* [everlast, r=stub] More docs for cmp\_pkgrevno()
+* [rcj, r=stub] host.lchownr() to compliment existing host.chownr()
+* [hloeung, r=stub] Fix permissions bug in host.mkdir()
+* Bootstrap jinja2 correctly under Python 3
+* add kv data helper backed by sqlite
+* Put heartbeat stuff in right section
+* Set heartbeat configuration for redis to something sane
+* [mariosplivalo, r=niedbalski] Add --upgrade option to pip\_install
+* Added option to pip\_install to provide --upgrade, if needed
+* Add support for redis
+* Another bugfix to fetch bzr support
+* Updated to my bugfix, ensure local branch has working tree
+* Fix a bug in fetch module bzr handling where it would fail on 2nd attempt to fetch the same branch
+* [jamespage,r=gnuoy] Add support for a default backend based on the private addresses of the unit
+* Fixup broken test
+* Rebase
+* [cbjchen, r=hopem,gnuoy] Add delete\_keyring as part of fix for bug/1359220
+* [hopem,r=gnuoy] Default apachessl context needs to use singlemode=True when determining ports
+* [gnuoy,r=jamespage] Add get nagios hostname function for setting up nrpe checks
+* [hopem,r=]
+* Add get nagios hostname function for setting up nrpe checks
+* [jamespage,r=gnuoy] Add keys for kilo openstack release
+* [gnuoy,r=jamespage] Add functions to simplify setup of nrpe service checks
+* Add function descriptions
+* Fix lint and add unit\_tests
+* Add nrpe service checks and supporting functions
+* tag
+* Preserve ordering of services
+* Add hookenv.unit\_public\_ip to match unit\_private\_ip
+* Improve tracebacks when using the @cached decorator
+* REmove double key
+* Add missing bits
+* Add keys for kilo openstack release
+* sync lp:charm-helpers
+* cleanup
+* Added copyright headers to tools/
+* Some shebangs got moved after the copyright/license block. Duh
+* Mechanical addition of copyright notices and license headers to all python files
+* [hopem,r=gnuoy] Allow unison methods to return False if any commands fail
+* [hopem,r=]
+* tidy up delete\_keyring function
+* Removed the AGPL text and added both the GPL and the LGPL full texts instead, as required by the LGPL. The README file was changed to reflect the change of license
+* [hopem, r=gnuoy] only add ipv6 addresses to haproxy.conf if ipv6 enable
+* Check if IPv6 is available, and if ip6\_tables is loaded
+* fixed indentation
+* only add ipv6 addresses to haproxy.conf if ipv6 enabled
+* okay, GitCommandError objects have a 'message' property instead of 'strerror'
+* handle the situation where an https:// url was successfully downloaded to the spot where you think you're going to clone
+* [cory-benfield,r=james-page] Misc updates fo calico neutron plugin
+* [freyes] Disable IPv6 in ufw when it's not available in the machine
+* Disable IPv6 in ufw when it's not available in the machine
+* [hopem, r=niedbalski] Retry is\_crm\_elected method if CRMResourceNotFound is raised. - Fixed LP: #1396246
+* fixed review comments
+* fixed doctring
+* [hopem, r=]
+* [hopem, r=]
+* Support quantum-gateway legacy HA
+* Fixed host.mkdir() to set permissions and to always ensure correct ownership of directory
+* [corey.bryant, r=niedbalski] Fix bug LP: #1361463
+* Only execute host.mkdir else if path doesn't exist
+* Assert that mkdir is called if force specified and file of same name exists
+* Fix host.mkdir logic to create directory if force specified and if same named file exists, and fix host.mkdir to only chown an existing directory when force is specified
+* Tidy a test
+* [dosaboy,r=james-page] Add support for client helper for Ceph Broker
+* Add Config.get()
+* [duyleruan, r=niedbalski] Fixes bug LP: #1400469
+* [niedbalski, r=freyes,billy-olsen,corey.bryant] Added SysctlCtxt for any charm that requires the config('sysctl') flag for tunning the system
+* [stub, r=niedbalski] Fixes bug LP: #1397134
+* - Added SysctlCtxt for any charm that requires the config('sysctl') flag for tunning the system. - Added tests for covering this change
+* - Use charm\_dir()
+* - Replaced StringIO for BytesIO since the first doesn't plays well with 'with' statements
+* - Adds the 'metadata' method for getting the current metadata.yaml as a python object. - Adds the 'charm\_name' method for getting the current charm name as is described on metadata.yaml. - Adds test for cover the change
+* Set owner and group to mkdir in templating.render
+* [freyes, r=niedbalski] Fix py3 compatibility error on repr() call
+* [freyes, r=niedbalski] Fix PATH when using 'env' argument
+* Fix test\_logs\_messages\_object failing in Python 2
+* Set PATH when using 'env' argument in subprocess calls
+* set\_nic\_mtu
+* [niedbalski, r=freyes] Fixes LP: #1255933 and LP: #1392451
+* [freyes, r=niedbalski] Add module to manage grant/revoke access to services using ufw
+* Check if uwf is enabled before enabling it, if it's disabled before disable it
+* [tests] added test for hookenv.log with passing object
+* Add IPv6 test
+* Add module to manage grant/revoke access to services using ufw
+* [corey.bryant r=niedbalski] Added git support for openstack utils
+* Change groupname to group\_name in add\_group() and add test\_git\_clone\_and\_install\_single\_with\_update() per niedbalski's review comments
+* Allow peer\_retrieve\_by\_prefix to cope with an empty peer relation
+* Simplify to use yaml.load() instead of yaml.load\_all()
+* Sync module \_\_init\_\_.py files in patch to target
+* Add unit tests for git support
+* Fix whitelist/blacklist logic in \_git\_clone\_and\_install\_single()
+* Simplify \_git\_clone\_and\_install\_subset()
+* Change name of calico service to Felix
+* Update git\_install\_requested() and add\_group() per niedbalski's review
+* Fix import path to work with Python3
+* Fix import path to work with Python3
+* [gnuoy,r=mthaddon] add default servicegroup of 'juju' to nagios config if one isn't defined
+* Fix copy pasta error in docstring
+* Set a default for nagios\_servicegroups to stop charms which do not have that as a config option exploding
+* [core/hookenv] Fix LP: #1255933
+* [charmhelpers/core/host] import apt\_cache just if no pkgcache has been specified
+* [hopem, r=gnuoy] cleanup contrib.openstack.ip
+* fixed lint issue in openstack.utils
+* more cleanup, fixed sphinx docstring syntax
+* [gnuoy, r=jamespage] Add singlenode\_mode to openstack haproxy context and to helper functions to allow charm to request an haproxy setup with a single unit backend
+* Merged trunk in
+* minor change
+* fix nits and move disable/enable\_services functions to charm-helpers
+* Add git support
+* Sync lp:charm-helpers
+* Fix Python3 service\_available()
+* Tests are good
+* Fix host.write\_file to operate in binary mode
+* [stub, r=niedbalski,tvansteenburgh] The Return of Python 3 Support
+* [gnuoy, r=jamespage] Add singlenode\_mode to openstack haproxy context and to helper functions to allow charm to request an haproxy setup with a single unit backend
+* merge trunk, revert reversion
+* Revert reversion
+* Don't need simplejson
+* Python3.2 backport for precise
+* [niedbalski, r=stub] reverted to r256, while python-3 proposal https://code.launchpad.net/~stub/charm-helpers/py3-2/+merge/242653 is under review
+* Need modern distribute under precise
+* antique six
+* Revert Py3 syntax hidden by mocking
+* Fix reliance on implicit casts, such as treating subprocess.check\_output result as text instead of bytes
+* Add singlenode\_mode to openstack haproxy context and to helper functions to allow charm to request an haproxy setup with a single unit backend
+* Bootstrap yaml package
+* Bootstrap six on import
+* precise versions where possible
+* Backport to six 1.1
+* Revert embedded six
+* Embed six 1.8 to avoid issues with precise
+* fetch handlers are filtered elsewhere
+* Manually locate UserDict for compatibility with legacy six version
+* Enforce trusty versions of runtime dependencies, where possible
+* [stub, r=tvansteenburgh] Python 3 support
+* Ignore .venv directories
+* delint
+* Simplify test
+* Fix python3 bootstrap packages
+* six is not in the template namespace
+* [shivrao, r=niedbalski] Lowest value for worker-multiplier should be 0 , fixes LP: #1394778
+* [shivrao, r=niedbalski] Lowest value for worker-multiplier should be 0 , fixes LP: #1394778
+* Handle blank lines in fstab file
+* Calico requires nova-api-metadata as well
+* delint
+* All tests passing under both Python2 and Python3
+* wip
+* wip
+* wip
+* dict order
+* dict order
+* StringIO
+* urlparse
+* hashlib.algorithms
+* cleanup contrib.openstack.ip
+* worker-multiplier default should be 0
+* added unit tests
+* Rebase
+* Tidy template
+* synced t/next
+* [hopem, r=gnuoy] Code cleanup to get closer to consistent style based on openstack coding guidelines. No functional changes
+* Mostly Python3 compatible
+* delint python2
+* Only bother to run tests when code is lint free
+* Python3 targets, and strip unnecessary and py3 incompatible dependencies
+* safe dict get
+* added ceph broker wrapper classes to contrib.storage.linux.ceph
+* Lint and tidyup for ceph helpers
+* missing commas
+* Cleanup contrib.storage.linux.ceph
+* Add a function to delete keyring
+* added import commas back in
+* [xianghui, r=hopem, r=jamespage] Should allow unison to be executed with a user belongs to multiple groups, since some directory may have the permissions of that user with a different group from the result get from pwd.getpwnam(user)
+* [hopem,r=]
+* [dosaboy,r=james-page] Tidy and refactoring of openstack/ip helpers
+* fixed u/t to reflect previous commit
+* Use ValueError instead of generic Exception
+* [hopem,r=]
+* Fix mutable variable and loop
+* rebase
+* Support default backend use in haproxy templates/context
+* Better test deps handling
+* sync lp:charm-helpers
+* [hopem, r=niedbalski] Fixes bug #1385162
+* added more unit tests incl. ipv6
+* do not import fetch if not needed
+* Fixes bug #1385162
+* Make installs make? Probably not
+* Add missing deps, make sure pip is latest
+* Install python-apt with apt-get instead
+* Make test targets implicitly install deps
+* [hopem,r=gnuoy] Extended OSConfigFlagContext to support configurable flag names thus allowing for multiple user-defined sets of flags per context
+* [hopem,r=]
+* [cory-benfield,r=james-page] Add support for Calico neutron plugin
+* Add Calico as a recognized Neutron plugin
+* [chris-gondolin, r=niedbalski] Adds nagios\_servicegroups support to nrpe for allowing alarms to be a bit more selective
+* [jacekn, r=niedbalski] Add optional hostname parameter to NRPE class
+* [shivrao, r=niedbalski] adding changes for supporting n1kv config flags
+* Excludes key in get\_hacluster\_config
+* [mattyw] Make unknown source a no-op instead of error
+* added the test I forgot to in the previous commit
+* if the source is unknown log and ignore rather than raise
+* Add one more unit test
+* Replace group with gid, sync charm-helpers, fix ut
+* [niedbalski] lint and test cleanup
+* [niedbalski]
+* [niedbalski] fixes "make tests" by adding a correct mock\_ifaddresses, however tests should not directly rely on subprocess execution
+* [niedbalski] make lint fixes
+* [cjohnston, r=niedbalski]  Update tarmac\_tests.sh to check for required packages prior to running tests
+* Update tarmac\_tests.sh to check for required packages prior to running tests
+* [jamespage, r=niedbalski] General tidy of useless log messages
+* General tidy of useless log messages
+* [mattyw] Added Config.keys()
+* [mattyw, r=niedbalski] Added a GitUrlFetchHandler class based on the BaseFetchHandler that is able to clone github repos over https
+* [gnuoy,r=james-page] The (inadvertent?) removal of distro as a valid source has broken a number of openstack charms. This mp restores it and adds a unit\_test to check for it
+* The (inadvertent?) removal of distro as a valid source has broken a number of openstack charms. This mp restores it
+* Disable notifications when using zmq as they are mostly broken
+* Notifications should default to False not be absent
+* Fixed unit tests now zmq notification are disabled
+* Disable notification when using zmq
+* [gnuoy,r=jamespage] Add 0mq support to charmhelpers/contrib/openstack
+* Use functools.wraps to preserve  attributes of the function being wrapped (\_\_doc\_\_  etc)
+* Fix loooong line
+* Add os\_requires\_version function which is a decorator for hook to specify minimum supported release
+* [yaguang,r=dosaboy,r=james-page] Default ceph replicas to 3 and ensure its passed everywhere
+* Minor issue fix
+* [cjohnston, r=niedbalski, r=mbruzek] Add support for proper output from ip addr show label with bonding interfaces
+* Add support for proper output from ip addr show label with bonds
+* Merged trunk in
+* added tests and fixed problems in gitfetch
+* improved keys function and added a test
+* added a keys function to the hookenv config class
+* [xianghui,t=dosaboy,r=james-page] provider IPv6 netmask in decimal formal
+* added support for git scheme and defining the branch to clone
+* Use Decimal for IPv6 netmask, or haproxy acl can't parse the format
+* we don't need this comment
+* gitfetch working on github https locations
+* added giturl.py
+* [jamespage,r=gnuoy] Add general context for worker process configuration
+* Add general context for worker process configuration
+* Fixup HAProxy context for use with MAAS, where private-address is actually a hostname
+* Ensure that IP address is used in HAProxy helper as its used for calculating the netmask for the dst acls
+* [niedbalski] Added sysctl file for creating sysctl config files
+* - Addressing @mbruzzek observations
+* [trivial] Add 2.1.0 and 2.2.0 to swift juno versions
+* [jamespage,r=dosaboy] Add missed code patch in get\_address\_from\_network to deal with non-fatal detections with no fallback
+* Add missed code patch in get\_address\_from\_network to deal with non-fatal detections with no fallback
+* [jamespage,r=gnuoy] Rework haproxy helpers to deal with multiple https backends
+* Rebase post ipv6 landing
+* [xianghui,dosaboy,r=james-page,t=dosaboy] Add IPv6 support across a number of helpers
+* Improve cluster hosts check for fallback
+* Tidy lint on touched code
+* Fixup timeout testse
+* Rebase on parent
+* synced bzr+ssh://bazaar.launchpad.net/+branch/charm-helpers/
+* In order to support cases where primary interface may not be eth0, get\_ipv6\_addr will infer iface from private-addr by doing reverse lookup
+* add support for relation\_prefix to sync\_db\_with\_multi\_ipv6\_addresses()
+* [corey.bryant, r=gnuoy] Lint fixes
+* - Added sysctl module for handling/update entries
+* Refactor tests for new haproxy template format
+* Cleanup template a bit
+* Trim whitespace
+* Tweak acl names
+* Remove whitespace
+* Fixup network in template
+* Update haproxy again
+* Tidy formatting
+* TODO: update unit tests
+* Fixup templates
+* Refactor haproxy context helper to support HTTPS+HA with multiple network configurations
+* Enable source config option for ceph-osd and ceph-radosgw Amulet tests
+* sync\_db\_with\_multi\_ipv6\_addresses() now takes db and user as args
+* fixed unit test
+* [cory.bryant,r=gnuoy] Allow OpenStack tests to specify whether stable or next charms are being tested. And use a dictionary for \_add\_services()
+* sync\_db\_with\_multi\_ipv6\_addresses needs to json encode its hosts list before sending to relation. Relation will have to decode
+* synced lp:charm-helpers
+* Allow OpenStack tests to specify whether stable or next charms are being tested.  And use a dictionary for \_add\_services() (thanks gnuoy)
+* Add python-pip to README.test
+* few more changes
+* [gnuoy,r=james-page] Fixup haproxy template syntax issues
+* Fix use of '-' in http timeout variables in a haproxy template which causes explosions
+* if checking for dynamic, check eui64 mac, oherwise return all scope global
+* synced lp:charm-helpers and resolved merge conflicts
+* Improve get\_ipv6\_address() to ensure that addresses returned are:
+* [james-page,r=gnuoy] Add support for multiple HTTPS endpoint signing from keystone
+* Sync db with multiple hosts for IPv6
+* [corey.bryant, r=gnuoy] OpenStack amulet tests are currently broken for the dev branches. This is because we are mixing next branch (the current branch that is being tested) with stable branches (all other charms are branched from the charm store). This patch fixes that
+* Select ipv6 global dynamic address, sync db with all local ipv6 addresses
+* [trivial] Whitespace lint fix
+* [heut2008, r=tribaal,gnuoy,hopem] Support custom timeout value for haproxy
+* [corey.bryant, r=james.page, r=gnuoy] Fix amulet download of cirros image
+* Extend timeout limit for amulet deployment
+* Set general BindHostContext for OpenStack services
+* Support unset cn, add test case
+* Fixup backwards compat, tidy lint
+* Allow branch locations to be specified for amulet tests.  Also enable testing of openstack dev branches
+* Rebase on trunk
+* Version bump: 0.2.2
+* Docs cleanup; link docs version to package version
+* [johnsca] Fixed bug in host.service\_available that was misreporting some stopped services as unavailable
+* [jamespage] Add option to Hooks helper to override implicit\_save of configuration object
+* Use os.path.join() to determine cirros image's local\_path
+* Add better tests
+* Add option to Hooks helper to override implicit\_save of configuration object
+* Fix amulet download of cirros image
+* reduced format\_ipv6\_addr log to WARNING when unable to format address
+* synced lp:charm-helpers
+* Fixed bug in host.service\_available that was misreporting some stopped services as unavailable
+* Ensure ca\_cert is decoded
+* Temp fixup
+* Generate external ports list for apache configuration
+* Add support for multiple https endpoints with keystone self signed certifications for a single service
+* Format auth\_host for ipv6
+* Excludes vip
+* version bump
+* Include services as a package. Seriously
+* version bump
+* [johnsca] Added additional context helpers for the services framework, and refactored download & checksum helpers
+* get one ipv6 addr from list
+* Sync from trunk
+* [trivial] Whitespace lint fix
+* [gnuoy,r=dpb,tribaal,hopem] Added a generic function for returning a list of addresses assigned to a given nic. Added a partial wrapper to retrieve ipv4 addresses Added a ipv6 wrapper to filter out local addresses
+* Format ipv6 addr for Cephcontext
+* General context to handle format ipv6 addr
+* bug fix
+* Merged in trunk and resolved conflicts
+* More ip test tidyup
+* Add function for query bridge setup and tidyup tests
+* [xianghui,r=gnuoy] Format ipv6 address if needed
+* Add docstring
+* Remove debug left in error
+* Add  get\_ipv4\_addr and make get\_ipv4\_addr and get\_ipv6\_addr use the same (new) generic function
+* Use format '[%s]', return None if ipv6 addr is invalid
+* Delete unused info
+* Add format\_ipv6\_addr() for end user
+* Fix unison can't synchronize ca for keystone ssl
+* Upstream 205
+* Fixed typo in docstring
+* Added slightly easier way of passing checksum to install\_remote
+* Change ansible relations format away from the hookenv.relations format which is difficult to use in templates
+* Refactored checksum hashing and added support for #hash=checksum on install\_remote
+* Merged upstream
+* Added tests for new contexts
+* Jinja2 needs strings rather than booleans when rendering the templates
+* Fix typo in notifications zmq topic
+* Stop enabling notification by default and only enable them if there is a relationship with a messaging system
+* Create NotificationDriverContext rather than get\_enable\_notification
+* Add function to determine if notifications should be enabled
+* Add helper to read zmq matchmaker file
+* Adds simple fetch to charmhelpers.fetch.archiveurl
+* Added common contexts to services.helpers and improved docs
+* Fix config lookups so that user-saved values are returned properly
+* Add ZeroMQ relation support in openstack helpers
+* Fix typo
+* Simplify \_prev\_dict lookup
+* Make config lookups work for user-saved values
+* Support specify rbd pool replication count
+* remove dangling pdb
+* added extra test for invalid args
+* add simple action helper for ansible based actions
+* adding changes for supporting n1kv
+* [trivial] Add swift 2.0.0 to list of supported versions for juno
+* Added extra test
+* Add a function to get the ipv4 address from an interface
+* [tribaal,r=gnuoy] This branch refactors the documentation of the peerstorage contrib module, to make it easier to understand how the module is used
+* [chriss] Fix tests for nrpe with nagios\_sericegroups
+* [tvansteenburgh] Add implcit save on success to Config, per https://code.launchpad.net/~tvansteenburgh/charm-helpers/config-implicit-save/+merge/224678
+* Create hosts.lchownr() as a variant that doesn't follow links
+* Remove no-op tests
+* Change how Config is implicitly saved
+* [gnuoy] Trivial whitespace lint fix
+* [gnuoy, r=corey.bryant, r=tribaal] Add function to build and return an apt cache. Configure existing functions which need an apt cache to use new function
+*   Cory Johns 2014-08-18 Added narrative docs for services framework
+* Add unit tests for haproxy timeout options
+* merging Michael's fixes
+* [stub] Allow add\_source and configure\_sources to add GPG keys securely
+* Add docstrings
+* Fix broken tests
+* [gnuoy,r=tribaal] Add helper to perform relation set and store the dict in the peer db. These functions will be used to address Bug #1355848
+* Adds suggested docstring from tribaal for archiveurl class
+* Remove old comment
+* Add function to build and return an apt cache. Configure existing functions which need an apt cache to use new function
+* \* Remove mutable defaults from new peer functions and from core.hookenv.relation\_set \* Improve peer\_store\_and\_set doc string
+* Changed/added documentation to make usage of the peerstorage module more obvious
+* Added peer\_retrieve\_by\_prefix function to return all k/v pairs from the peer db given a prefix and filter using {inc,exc}\_list
+* Strike pdb from the record
+* Adds simple downloader with mandatory MD5 or SHA1 validation, and tests
+* Added narrative docs for services framework
+* Allow user to decide whether peer\_storage failure is fatal to test\_peer\_store\_and\_set\_no\_relation\_fatal
+* Some charm (mysql for one) assume that peer\_store will throw an exception if the peer raltion is not ready so revert to old behaviour
+* Make peer\* commands reutrn gracefully if the peer relation is not present rather than throwing an exception. Makes the functions easier to use
+* Add function to both perform relation set and store the data that was set in the peer db
+* fixed wrong type in env dict
+* add unbuffered logging for ansible
+* change relations data structure in ansible template context to be more useful
+* [chriss] Added a nagios\_servicegroups option so that we can be a bit more selective about alarms
+* [gnuoy,r=james-page] Ensure source package cache is also held in memory to prevent races
+* filter\_installed\_packages keeps the pkg cache in memory to avoid apt lock problems. It should do this for both the source cache and the package cache. This is likely the cause of Bug #1354471
+* Support custom timeout value for haproxy
+* Fix trivial issue
+*   Tim Van Steenburgh 2014-08-05 Sync docs with recent branches
+* Sync docs with recent branches
+*   Cory Johns 2014-08-05 Fixed documentation typos, per review   Cory Johns 2014-07-10 Cleanup based on review   Cory Johns 2014-07-09 Added services framework
+* Support haproxy for ipv6
+* Fixed documentation typos, per review
+*   Christopher Glass 2014-07-31 Removed jujugui code. The code was not using common charmhelprs mecha..
+*   Christopher Glass 2014-08-01 Added documentation to hahelpers.cluster
+*   Christopher Glass 2014-08-01 Removed useless filtering of installed packages.   Christopher Glass 2014-08-01 Add a jinja templating helper in contrib.templating. This will al..
+* If prefer ipv6 addr only, fallback to ipv6
+* Remove relation set 'hostname' on AMQP
+* MV get\_ipv6\_addr() to network/ip.py
+* Added documentation to hahelpers.cluster
+* Removed useless filtering of installed packages
+* Add a jinja templating helper in contrib.templating. This will allow removal of copy-pasted code in several charms
+* [r=noodles] Merge for bloodearnest - Make ansible context have a more useful relations dict structure
+* [tribaal, r=gnuoy] Make the is\_device\_mounted() helper accept partitions as well as devices
+* Added an extra test for an edge case
+* Make the is\_device\_mounted() helper accept partitions as well as devices. This allows for calling code not to care about wether the device is a partition or a root device:
+* Removed jujugui code. The code was not using common charmhelprs mechanisms, its tests were failing and as far as I could look, seemed like dead code
+* Add ut and solved ut errors and conflicts
+* Make ansible context have a more useful relations dict structure
+* [coreycb,r=james-page] Misc updates for timeout issues in openstack amulet testing
+* Fix flake8 issues
+* Only ignore the line with flake8, not the whole file
+* Increase timeout to wait for all hooks to finish execution on deployment
+* Fail amulet test if charm's root directory name doesn't match local service name.  Also removed self.this\_service since it's unused
+* Make sleep time an optional parameter for service\_restarted().  This allows the caller to optionally decide how long to wait before verifying that the service has restarted
+* Wait a reasonable amount of time for image/instance create/delete to complete before returning
+* [gnuoy,r=james-page]  Add a function to return a dict of peers and their private-addresses
+* Remove surplus round brackets
+* relation\_list and relation\_ids both return [] if none a represent so don't to guard against none. Allow the address key to be overridden
+* Fix conflict with trunk
+* Add a function to return a dict of peers and their private-addresses
+* [gnuoy,r=james-page] Add LogLevel context to openstack helpers
+* [gnuoy,r=jamespage] 1) Extra helpers in the contrib.network.ip help 2) Updates to shared-db context helper 3) Support for ceph-public-address in the ceph context helper 4) New helpers for resolving Canonical URL's for endpoints based on public, admin, internal, HA configuration status and charm network configuration options. 5) IPv4 and IPv6 frontends for haproxy template
+* Use partials for misc functions
+* Ensure fe80 is used with startswith rather than in
+* Rework tests to cover IPv6, update link\_local exclusion for ipv6
+* [jamespage,r=gnuoy] Use in-memory cache for apt version comparisions to avoid FS races
+* Updated loglevel context to cope with variables being unset
+* Add context for tweaking loglevels for openstack charms
+* Use in-memory cache for apt version comparisions to avoid FS races
+* [Hui Xiang] Allow rabbitmq-server client to get its ipv6 address
+* Revert changes in cluster helper
+* Rebase on trunk
+* [Hui Xiang] Allow ceph-client to get ipv6 address from 'host-ip'
+* [Hui Xiang] Replace 'use-ipv6' with 'prefer-ipv6'
+* [trivial] tidy lint
+* [gsamfira,r=james-page] Add promisc option to ovs helper
+* Drop vip\_iface  and vip\_cidr from configuration for ha - these are discoverable
+* Rebase on trunk
+* added unit test for promisc flag
+* StringIO isn't going to work here
+* Allow full keys to be passed to add\_source()
+* Make add\_source() raise an exception with unparsable source
+* Cleanup based on review
+* Added services framework
+* Add promisc flag to add\_bridge\_port
+* Exercise IPv6 a bit in ip tests
+* Patchup failing context test
+* [hoepm] Adding sections to context, added unit test coverage
+* Add formatting to URL's only
+* fixed coverage whole in unit test
+* Address, not network
+* Deal with IPv6 formatting
+* Fixup IPv6 handling
+* Add base IPv6 support to ip helper
+* Use internal network for local private address for HA proxy configuration
+* Drop blank lines
+* [hopem,r=]
+* Make HAProxy template suppport IPv4 and IPv6
+* Add openstack ip helper for vip, https and network split configurations
+* Drop VIP helper
+* Add helpers for determining interface and netmask requirements for VIPS
+* Resync helpers
+* Use prefix for get and well as set
+* Deal with relations with prefixes
+* Rebase on trunk helpers
+* [coreycb,r=james-page] Ensure openstack-origin is set consistently during testing
+* Revert last change to charm-helpers as it breaks unit tests
+* Enable list of commands to be run when validating services on a unit
+* Tidy doc comments
+* Add is\_address\_in\_network helper
+* Make SharedDBContext aware of access-network relation data and required behaviours
+* Fix openstack-origin setting and add source config option
+* Enable choice between pgrep full command line matching and process name matching
+* Increase timeout for waiting on instance creation to become active
+* Fix incorrect indexing of dictionary in error message
+* Add a function get\_ipv6\_addr() to let service charm get an ipv6 address. And could return a url containing ipv6 address if service charm have set the use-ipv6 config.  MP:224793
+* Rebase on trunk
+* [stub] Stop configure\_sources() from breaking when configuration was not provided
+* Make Config implicitly save itself
+* [tvansteenburgh] Adds basic API documentation for the package, along with make targets for building and publishing it (see HACKING for details)
+* [corey.bryant,r=james-page] Add helper to manage instances and images
+* Add openstack Amulet utility methods for using images/instances
+* [gnuoy,r=james-page] Fixup parameter order for backwards compatibility
+* Reordered params for AMQPContext after last change broke backwards compatability
+* [gnuoy,r=james-page] Allow AMQPContext to work with relations with a name other than amqp
+* Add unit tests for changes
+* Exit gracefully from get\_os\_codename\_install\_source if no src is specified
+* Allow AMQPContext to work with relations with a name other than amqp
+* [xianghui] add get\_ipv6\_addr() funtion for ipv6
+* Add test for address overriding
+* Fixup tests
+* Rationalize ceph-public-address key
+* [gnuoy] Revert updates pushed in error
+* Quit get\_os\_codename\_install\_source gracefully if src is None
+* Update AMQPContext to support amqp relations that have a name other than amqp
+* [trivial] Revert change to EMPTY\_VG\_IN\_PVDISPLAY
+* [shivrao,r=james-page,r=niedbalski] Add support for n1kv neutron plugin
+* [corey.bryant,r=james-page] Add helper classes for writing amulet tests in Charms
+* Add utility helper classes for Amulet deployment testing
+* Add deployment helper classes for Amulet deployment testing
+* Added unit tests coverage for n1kv plugin context
+* [jamespage, r=gnuoy] Fixup problem with fstab parsing if tabs are used instead of spaces
+* Fixup handling of fstab files which use tabs instead of spaces as delimiters
+* Changes to support Cisco N1kv
+* Sync from upstream. Revision 162
+* [ev] Lazily import apt\_pkg, allowing modules to be imported on non-Debian platforms
+* [niedbalski] Improve charm\_helpers\_sync. Lightweight checkouts, and using makedirs to allow syncing to deeper paths
+* Added getting-started/examples/contributing docs
+* Lazily load apt so that charm-helpers can be used on other platforms
+* Jorge Niedbalski R. 2014-05-23 hostname variable used Jorge Niedbalski R. 2014-05-23 Added a test for validate MR #218072 Jacek Nykis 2014-05-02 Add optional hostname parameter to NRPE class
+* Add HACKING doc
+* Basic formatting cleanup
+* Update description; remove cli from docs for now
+* Add docs skeleton
+* Add support for use of ceph\_public\_address for network splits in ceph charms
+* Improve the docs
+* Stop fetch.configure\_sources() exploding by default
+* Tests triggering lp:1269780
+* [niedbalski] Added charm-helpers/core/fstab class for add/remove/find entries within the /etc/fstab file
+* [niedbalski] Added charmhelpers.contrib.python.debug
+* [jamespage,r=gnuoy] Updates for juno openstack release
+* Initial juno updates
+* - Code cleanup according to @mbruzek observations:       - Entries aren't being compared anymore as strings, just Fstab.Entrys       - Class methods : add, remove\_by\_mountpoint now accepts a path parameter to avoid \ 	forced write on /etc/fstab
+* Added test for UUID/LABEL entries
+* Support for UUID,LABEL entries on fstab
+* Fixes pep8 - whitespace
+* [cjohnston,r=james-page]  Add Jinja2 as a test requirement package
+* - Changed bzr branch to bzr checkout --lightweight - Changed mkdir to makedirs for composed paths
+* Add support for providing a custom ansible install location
+* [r=noodles] Merge cjohnston's test-requirements improvements
+* Add Jinja2 as a test requirement package
+* Update nose version requirement
+* Merged test from niedbalski
+* hostname variable used
+* Added a test for validate MR #218072
+* Added fstab\_remove/fstab\_add functions to core/host.py
+* - Added charm-helpers/core/fstab class for add/remove/find entries within the /etc/fstab file. = Added tests/core/test\_fstab for test the core/fstab 98% coverage. - Modified the host.mount, host.unmount methods to support persistence on /etc/fstab file - Modified the tests/test\_host file for assert persist=True calls
+* Initial fstab support added
+* [tribaal,r=james-page] Use in-memory cache when querying apt to avoid filesystem races
+* [tvansteenburgh] Add Config wrapper around charm config dictionary
+* [gnuoy,r=james-page] Add helper for comparing package versions
+* Add function to compare installed package version against a supplied revno
+* [tribaal] In case the passed device path does not exist, do not bother checking if it's a block device (return False instead of raising). [tribaal] Add a "is\_device\_mounted" function to the storage utils on linux. This will be used in the cinder charm, and should replace the similar "device\_mounted" function in the ceph charm. The Ceph charm function does not actually work, but since ceph does the right thing and skips devices with mounted partitions, we haven't noticed
+* [tribaal] This branch refactors the fetch/\_\_init\_\_.py file to use a common \_run\_apt\_command that retries in case the apt lock cannot be acquired
+* Set "Dir::Cache::pkgcache" to "" before initializing the cache
+* Reverting changes
+* \* Switched to using the apt library instead of apt\_pkg directly. \* Added memonly=True to force the cache to be built in-memory. \* Fixed tests
+* [ahasenack] Fix list\_lvm\_volume\_group() to handle PVs that are not part of a volume group
+* test + fix
+* Added a few more requirements to README.test
+* [james-page,r=gnuoy] Fixup support for NSX plugin for openstack icehouse
+* Use search instead of match
+*   Patrick Hetu 2014-05-09 fixes: lp:1318036
+* fixes: lp:1318036
+* Added log when retrying APT commands
+* Added test to make sure it retries
+* Made the code nicer
+* Refactored the apt command call to retry if it can't get the apt lock
+* Added more tests around the is\_block\_device function
+* Minor changes per code review
+* Added a new function to the storage library to test whether a device is mounted or not (and tests)
+* Add Config wrapper around charm config dictionary
+* If a path does not exist, don't bother checking if it's a block device (it will raise)
+* Rebase
+* [gnuoy,r=james-page] More tests for openstack charm-helpers
+* Add nsx neutron plugin and map nvp to it for icehouse
+* Fallback to always using nvp even for nsx
+* Fixup handling for nsx nvp renames
+* Detect and understand nsx plugin
+* NVP->VMware NSX rename for icehouse
+* Add optional hostname parameter to NRPE class
+* Added charmhelpers.contrib.python.debug. 	- Added debug.set\_trace(addr, port) for setting a remote python debugger session. 	- Added tests for cover the set\_trace method
+* [niedbalski] Fixed test\_requirements.txt
+* [arges] Ensure fetch import keys from keyserver.ubuntu.com over port 80
+* [niedbalski] Fixes lp:1311979
+* Fixes lp:1311979
+* Fixed test\_requirements.txt.   	- Added bzr   	- Fixed netifaces version 0.6 ( 0.8 isn't working properly and the project isn't being mantained )
+* Remove debug from charmhelpers/contrib/openstack/utils.py
+* Tidyup FakeDNS tests
+* Fix lint
+* Add check for cert install for charmhelpers.contrib.hahelpers.apache
+* Improve context test coverage
+* Fix lint
+* Increase test coverage
+* Ensure fetch import keys from keyserver.ubuntu.com over port 80
+* [rharper,r=james-page] sgdisk is sometimes unreliable;  add in calls to dd to completely wipe MBR and GPT end tables to ensure a 'clean' disk
+* [r=bloodearnest] Simplify the relations dict provided in the ansible helpers to just use hookenv.relations() and add current\_relation to context
+* [r=noodles] Add unit private/public ips to default templating context for ansible helper
+* Remove comment
+* Simplify current\_relation
+* Add current\_relation dict to template context
+* [jamespage,r=gnuoy] Rebase, add new swift version for icehouse
+* Rebase, add new swift version for icehouse
+* [gnuoy,r=james-page] Add lots more unit tests for openstack contrib
+* Add network\_manager test case for havana and minor tidy up
+* Import test coverage for charmhelpers.contrib.openstack.context and charmhelpers.contrib.openstack.neutron
+* More os context tests
+* Tidyup
+* Tidyup
+* 100% coverage and flake free
+* First round of patches
+* Use fresh relations directly from hookenv.relations() on each hook run (to avoid book-keeping departed relations)
+* [james-page] Look for tenant\_id in identity context
+* Add note about tenant\_id
+* Look for tenant\_id in identity context
+* Rebase
+* New neutron tests
+* [yolanda.robla,r=james-page] Add PostgreSQL content and tests to OpenStack helpers
+* resync
+* [james-page,hazmat] SSL for ostack and a service CA
+* Rebase on trunk
+* sgdisk is sometimes unreliable;  add in calls to dd to completely wipe MBR and GPT end tables to ensure a 'clean' disk.  This change clears up cinder and ceph installs to large disks (1TB+) on physical systems
+* [james-page] WIP for icehouse release of openstack [marcoceppi] Resolved merge conflict charmhelpers/contrib/openstack/neutron.py @@ -68,7 +85,11
+* [james-page] Tweaks to AMQP context for HA changes [yolanda.robla] New peerstorage helper which is useful for storing and replicating passwords etc.. across peers in a cluster. [yolanda.robla] Fix to get\_hostname to make fqdn flag work properly
+* [james-page] Use neutron packages for neutron based openstack
+* typo in error log
+* adding postgresql context
+* [hopem] fixed ceph.conf template formatting
+* [hopem] fixed ceph.conf template formatting
+* Pep8
+* Tweak syslog fixes
+* Rebase on trunk
+* [gnuoy,r=chris-gondolin] Currently ArchiveUrlFetchHandler works for ftp uri that include a username and password but not http or https. This mp add that support for http & https
+* Add support to ArchiveUrlFetchHandler for http and https uris that have username and password in them
+* [james-page,r=marcoceppi] Fixup zap of disks
+* Rework ha-vip-only to support not being set in rabbitmq-server
+* fixes for get\_hostname\_with\_hostname not fqdn
+* Check before pop
+* fixing tests
+* only set ha queues if true
+* Add option to run dist-upgrade via apt\_upgrade
+* Add basic support for apt-get upgrade
+* [ivoks] collect\_authed\_hosts() requires an argument
+* Add --clear to sgdisk zap to ensure disk is completely cleared
+* fixes in amqp context
+* Rebase on parent
+* get ha\_vip\_only properly
+* fix in relation\_get for ha queues
+* specifying relationship in ha queues
+* Resync from trunk
+* [yolanda.robla,r=james-page] Skip add\_source if source is None
+* add unit testing to peerstorage, minor fixes in charmhelper
+* Initial charm-helper for peerstorage
+* merging trunk
+* skipping add\_source if no source is sent
+* Fixup unison helper calls
+* Use VIP for Apache when clustered
+* When clustered, Apache should use VIP for ServerName, instead of IP of the host
+* collect\_authed\_hosts() requires an argument
+* [hopem,r=james-page] Fix port for neutron url
+* [hopem] fixed neutron\_url bad port
+* [hopem] fixed neutron\_url badwq port
+* [michael.nelson] Include all relations for current relation type (supporting peer relations)
+* Fixup neutron port
+* Add ssl\_dir options for neutron db contexts
+* merge jp's service/auth protocol from rel on identity
+* Add support for ssl\_ca config value for externally provided signing certificate
+* [james-page,r=hazmat]
+* Add service and auth protocol handing to the identity service context
+* merge trunk
+* reapply haproxy->apache endpoint trunk merge
+* [hopem,t=hopem,r=james-page]
+* synced charmhelpers trunk
+* [hopem,r=james-page]
+* Ensure relation-type doesn't have hyphens (so that it can be keyed in jinja2)
+* [hopem] Add support for neutron\_url in nova.conf
+* Add 1.13.0 swift -> icehouse
+* revert trunk merge as it renamed determine\_haproxy\_port which broke ssl charm branches
+* [hopem] fixed ceph context possible config race
+* revert the post\_execute ctx method introduction, simple reorder resolved
+* introduce second phase of context execution, and delay amqpcontext cert write out
+* Fixup syslog helper for ceph
+* Add 1.12.0 to icehouse list
+* Rebase on trunk
+* merge master/trunk
+* update shared db test to be a bit more robust
+* get rid of empty value init, jinja does the right thing by default
+* helper method fix reapply
+* remove extraneous log parameter
+* extract db ssl cert handling for reuse with custom contexts in charms
+* break early if amqp ssl dir not supplied
+* helper methods on service ssl ca
+* rabbitmq ssl support
+* service ca for charm-helpers
+* abort if ssl dir not configured
+* suport client cert gen
+* ostack mysql ssl ca support
+* [hopem] added support for ceph-client 'use\_syslog' config
+* [ed-hope-morley] added support for ceph-client 'use\_syslog' config
+* [yolanda.robla] Add checks for ha queue config from rabbitmq
+* changed 'False' type from ha queues
+* [trivial] part 2; drop patch of cleanup from previous commit
+* [trivial] tidy lint, fixup failing test due to missing patch of config
+* [ivoks] Re-order haproxy/apache2/service port pipleline to ensure end-to-end SSL
+* Remove determine\_haproxy\_port()
+* Fix tests
+* When services are reconfigured to change ports on the fly, they all need to be stopped first before being started
+* For HA of SSL connection, apache needs to be behind haproxy and haproxy should not terminate SSL
+* [ed-hope-morley] added support for ceph-client 'use\_syslog' config
+* [ed-hope-morley] added support for ceph-client 'use\_syslog' config
+* [ivoks] Add generic syslogconfig context for openstack charms
+* [raharper] Add support for specifying a private ppa via https.  Fix key import, apt-key import isn't a command anymore, instead use the advanced 'adv' mode
+* Add unit test
+* Add SyslogContext to OpenStack
+* [ivoks] Add neutron\_alchemy\_flags and rearange parameters
+* REFACTOR: factor out the updating of relation data
+* No hyphens in keys for relation data
+* Always include the relations key in the context
+* Ensure relations are updated
+* Include all relations for current relation type (supporting peer relations)
+* adding rabbitmq\_ha\_queues and ha-vip-only features
+* added ha\_queues and check ha-vip-only
+* Add missing :
+* Add neutron\_alchemy\_flags and rearange parsing flags a bit
+* [yolanda.robla] Add unison helper and associated tests
+* fixes in docstring
+* lint fixes, test updates
+* removing shebang
+* refreshed with latest code
+* replaced unison.utils for unison
+* adding unison helper
+* Add two fetch test cases for https urls
+* Fix lint errors fetch/\_\_init\_\_.py
+* Update fetch testcase with new apt-key invocation
+* Add support for 3.13 based kernels -> use native ovs
+* [yolanda.robla] Add option for fqdn or hostname only to get\_hostname
+* Add support for specifying a private ppa via https.  Fix key import, apt-key import isn't a command anymore, instead use the advanced 'adv' mode
+* removing is True from get\_hostname fqdn comparison
+* fix tests
+* add unit ips to templating context
+* updated get\_hostname and added test
+* flag to only grab first part on get\_hostname
+* Update to ml2 plugin package for icehouse upwards
+* [yolanda.robla] Add better support for active/active rabbitmq configurations
+* updated tests for rabbitmq
+* only sending rabbitmq\_hosts when there are more than 1
+* sending rabbitmq\_hosts if is not clustered and there are more than one
+* updated comparison to check if rabbit is clustered
+* [trivial] tidy lint warnings
+* [Jian Wien] Add basic support for querying configured network interfaces
+* only sending rabbitmq\_hosts when is active/active
+* Add support for swift 1.11.0
+* Add network.ip.get\_address\_in\_network to get an IPv4 address in specified network
+* [Edward Hope-Morley] Add support for openstack comma-separated config values
+* Fixup neutron package names
+* Detect icehouse, use ml2 plugin for neutron
+* Detect icehouse, use ml2 plugin for neutron
+* Use neutron packages for neutron based openstack
+* [Edward Hope-Morley] Always use --mbrtogpt when zapping disks
+* fixed unit test
+* Adding --mbrtogpt to our sgdisk zap-all call
+* [ivoks] Import keys from keyserver.ubuntu.com over port 80
+* Add support for openstack comma-separated config values
+* Use HPK protocol on port 80, instead of 11371. This will allow importing archive keys in environments that allow ouside access only on port 80
+* [james-page] Add initial support for openstack icehouse
+* Add support for icehouse cloud archive pockets
+* [gnuoy,r=moon127] \* Fix to tests broken by previous nrpe update \* Function with test to get the hardware address for a given nic
+* Fix copy/pasta error in test\_get\_nic\_hwaddr (s/mtu/hwaddr)
+* Add function (with test) to return MAC address for a given interface
+* Fix tests after previous merges that changed the nagios search path broke them
+* [thedac,r=mthaddon] NRPE checks should not be run from / or the charm directory. Juju core permissions will not allow the nagios user to read from the charm directory
+* NRPE checks should not be run from / or the charm directory. Juju core permissions will not allow the nagios user to read from the charm directory
+* [thedac,r=mthaddon] When using NRPE with custom checks use /usr/local/lib/nagios/plugins for non-packaged custom checks
+* [r=jamespage] Missing import for ansible support
+* For non-packaged custom checks use /usr/local/lib/nagios/plugins
+* Added missing import
+* [Michael Nelson] Option to ensure no hyphens in yaml keys
+* Ansible writes out config/reln data without hyphens in keys
+* Option to ensure no hyphens in yaml keys
+* [Michael Nelson] Remove unused import of saltstack in the ansible helper. [James Page] Tidy flake8 in tests
+* Remove unused import of saltstack in the ansible helper
+* [r=jamespage] Add tags to the ansible support and provide AnsibleHooks() helper
+* [gnuoy,r=mthaddon] Add support for listing nics and setting nic mtu value
+* Add support for listing nics and setting nic mtu value
+* [Scott Moser] apt\_install: make apt-get more non-interactive
+* fix tests to expect 'env' arg to 'apt-get install'
+* Fix old names s/Config/State
+* Rename s/handled\_hooks/default\_hooks
+* Add the AnsibleHooks helper
+* Remove extra quotes from tags
+* Include templating package in setup.py
+* Remove references to saltstack in helper
+* REFACTOR: move juju\_config\_to\_yaml helper
+* Merged latest trunk
+* [jamespage] Neutorn Helper updates for NVP plugin
+* [jamespage] Folsom ceph support
+* [jamespage] Alternatives helper
+* [jamespage] Add is\_relation\_made helper and lint cleanup
+* [jamespage] Adds support for cloud archive sources to fetch helper
+* GREEN: ansible apply\_playbook can take optional tags
+* RED: ansible apply\_playbook can take optional tags
+* If available, use ceph\_public\_addr instead of private-address
+* [smoser] cloud-archive' recognized as a 'apt-add-repository
+* make 'cloud-archive' recognized as a 'apt-add-repository' source
+* apt\_install: make apt-get more non-interactive
+* [gandelman-a] contrib.openstack.utils: Add ensure\_block\_device() + clean\_storage()
+* Fixup call -> check\_output
+* Add support for ceph argonaut which lacks support for osd query via api
+* Adds 'distro-proposed' as an optional openstack origin, allowing charms to install from the respective distro proposed pocket, and correctly determine intended versions based on associated distro release
+* Fix writeout of distro proposed URL
+* contrib.openstack.utils: Enabling setup and version inspection for distro-proposed
+* Rebase on trunk
+* Fixup tests
+* Rework a bit for lists
+* Add support for multiple key checks in is\_relation\_made
+* Rebase on trunk
+* [noodles] relation\_get returns None if called outside a relation hook
+* relation\_get returns None if called outside a relation hook
+* [james-page] contrib.network.ovs: Support for new upstart versions of OVS
+* Rebase on trunk
+* Matthew Wedgwood
+* ensure\_ceph\_keyring helper from adam\_g
+* Rebase on parent
+* [trivial] fixup missed test failure for apt\_hold tests
+* Add apt\_hold helper from Liam Young
+* Update ovs helper for new upstart integration in later versions of openvswitch package
+* Rebase against parent branch
+* Consolidation of test helpers from adam\_g
+* Tidy lint
+* Tidy my formatting
+* Add is\_relation\_made helper
+* Rebase on master branch
+* Add default configurations to neutron context
+* Add support to neutron context for NVP
+* Update neutron helper to support use in server and agents + support for NVP
+* charmhelpers/contrib/openstack: Bulk update Havana / Saucy / python-redux
+* Adds new SubordinateConfigContexts, updates tests
+* Reorder list for neutron package
+* neutron: Ensure correct headers for running kernel are installed
+* Update for swift havana release 1.10.0
+* fetch.add\_source accepts the 'deb ' prefix also (which is handled differently by add-apt-repository)
+* GREEN: configure\_sources can add a single source without a key
+* RED: configure\_sources can add a single source without a key
+* Switch check to look for existing link
+* Drop unlink from alternatives install
+* Alternatives helper
+* Updates to neutron helper and context to support install of dkms package prior to switch packages
+* Add 24 compatible apache https template
+* Standardize docstring quoting in core
+* Add support for short version proposed, raise SourceConfigError when invalid pocket name is supplied
+* Clean up or add documentation for all core functions
+* [jamespage] Misc fixes for ceph pool creation functions
+* Fixup string passing to subprocess, pass service name to get\_osds, correct call to ceph osd pool set
+* Adds contrib.storage.linux.ceph:ensure\_ceph\_keyring()
+* Add comments
+* Checkin ensure\_ceph\_keyring() and tests
+* tests: Use a single set of mock\_open/patch\_open functions defined in tests/helpers.py
+* [jamespage] Move ceph helpers to contrib.storage.linux
+* Rebase on trunk, fixup test errors
+* Rebase with trunk, fixup and add test cases for rabbitmq relations
+* Rework contexts to return as soon as they find good data
+* Remove debug
+* Add openstack.utils.get\_hostname() for reverse dns lookup
+* Fix import of dns.resoler
+* Drop debug
+* Add get\_host\_ip() and is\_ip() for use in nova-c-c + nova-compute. Updates tests
+* Move check for /etc/ceph earlier
+* contexts: Also innspect ceph relation for key
+* Add pocket validation to cloud: sources, support compatibility with cloud:precise-grizzly style sources as found in openstack helpers, support use of cloud:grizzly style sources (precise can be implicit)
+* Removed some old lint from fetch/test\_fetch.py
+* Add ability to hold apt packages
+* [jacekn] contrib.ssl module which can create selfsigned SSL certificates
+* UpstreamVersion -> upstream\_version (this did not work on saucy)
+* Added more error checking to contrib.ssl.generate\_selfsigned function
+* Added docstring to the generate\_selfsigned function. Improved the function to accept single cn argument and partial subject dict
+* [jacekn] Fixed bug where BzrUrlFetcheHandler was failing on systems without python-bzrlib
+* Added contrib.ssl module and tests
+* Rebase
+* Also ensure /etc/ceph exists during ceph context generation
+* Ensure ceph-common gets installed if a ceph context is complete
+* Propagate return value from service() calls
+* Fixup use of UpstreamVersion -> upstream\_version
+* Tidy lint in test\_linux\_ceph
+* Rebase on trunk
+* Tools for exposing helpers on the command-line
+* Fixed bug where BzrUrlFetcheHandler was failing on systems without python-bzrlib
+* [mew] Relocate apt-related tests to the fetch test suite and fix log mocks
+* Fixed indexing error in parameter inspection. Silenced parse\_args output during tests
+* Relocate apt-related tests to the fetch test suite and fix log mocks
+* [jacekn] Helper for purging apt packages. Bzr repo support for fetch
+* Added BzrUrlFetchHandler class and tests
+* Added fetch.apt\_purge function and tests
+* Propagate return value from service() calls
+* Move apt-related helpers to fetch module
+* Merged charm-helpers into bug-1185743-add-pwgen
+* charm\_helpers\_sync: Merge sync hints to allow including non-py files during sync
+* Drop skip\_if\_sticky
+* Update tests for sticky relations wrapper
+* Add skip\_if\_sticky wrapper
+* More tests
+* More tests
+* More tests
+* More tests
+* Ensure ca-certificates db updated after installing Keystone CA
+* Render config templates before opening destionation file
+* Neutron context: Ensure packages early
+* Update Config Flag context
+* Fix typo in glance context
+* Add OSConfigFlagContext
+* https(): Inspect for blank relation settings also
+* Do not assocaite quantum plugins with a Neutron context, let charms do that
+* Fixes
+* Do not set firewall driver in ovs context, let template handle it
+* [ahasenack] Wait in a limited loop for the ceph device to become available
+* Added nose slow attribute to the slow tests
+* Pass network manager to plugin attribute from base context
+* Fix overloading namespace
+* Allow neutron\_plugin\_attribute() users to specify network\_manager, which will let this be shared between nova-c and nova-c-c
+* Checkin neutron context and utils
+* Cached os\_release()
+* Better logging when template is not found
+* Optional parameters for SharedDBContext
+* OSTemplating: Fallback to searching for templates by a munged variation of its full path.  Resolving by config file basename happens first.  This will allow a single charm to maintain templates multiple configs with the same basename, eg: /etc/nova/api-paste.ini and /etc/neutron/api-paste.ini
+* Added test test\_device\_is\_formatted\_if\_it\_appears()
+* - added timeout option to make\_filesystem() - added tests
+* Rebase on trunk
+* ceph: wait for block device to be available before attempting to format it
+* [gandelman-a] Fixes all remaining lint issues, so we can start hopefully gating on Checking for Python syntax... OK == 0
+* Move apt-related helpers to fetch
+* More newer lint fixes
+* Fix lint in newer tests
+* Include CLI when charmhelpers is installed
+* Completed tests
+* merge from trunk
+* [michael.nelson] Adds ansible support to charm-helpers
+* [jamespage]
+* Add password generating helper
+* [michael.nelson] Namespace the relationship data stored in the salt grains file and make it persistent
+* Add comment about juju relation data in templates
+* Added docstring
+* Use \_\_ to separate relation vars for ansible, and s/-/\_/ for relation types in vars
+* Allow different separators for the relation data
+* Update vars path
+* Update juju\_config\_to\_yaml to match reality (host.config no longer returns a Serializable)
+* Write out ansible vars before running playbook
+* Refactor juju\_config\_2\_grains for re-use
+* Don't use get\_unit\_hostname when generating canonical\_url - use private-address
+* Add --yes to add\_source's call to add\_apt\_repository
+* Use local connection
+* Add apply\_playbook
+* Use charmhelpers.fetch
+* [gandelman-a]
+* [gandelman-a]
+* contrib.openstack.utils: Add ensure\_block\_device() + clean\_storage()
+* Update OpenStack templates: Remove whitespace from rendered template
+* contrib.openstack.context: Add ImageServiceContext() and tests
+* Removed host.apt\_add\_repository
+* Remove all magic from host.py. Resolves #119956
+* [michael.nelson] ensure that the /etc/salt dir exists before writing out grains
+* [fixup] Fixup broken test from merge of changes to save\_rc\_script
+* [trivial] fixup missing comma from previous merge
+* Fixup juju-core compatibility in save\_rc\_script
+* contrib.storage.linux.loopback: Fix create\_loopback() to actually return full path of new device
+* additional test coverage and small tweaks
+* setup.cfg: Include tools/ in coverage
+* Clean up all remaining lint
+* Tidy flake8 warnings from core packages and associated tests
+* Add versions for swift/havana
+* User charm\_dir to determine juju\_rc\_path, and make sure it is created
+* Remove unit\_name buildout as it is no longer required
+* Merged bug-1195649-fix-write-file into bug-1185743-add-pwgen
+* Merged charm-helpers into bug-1195649-fix-write-file
+* Add missing ceph.py
+* Initial refactoring of ceph helper
+* Add correct swift versions for havana
+* [gandelman-a]
+* [james-page]
+* [gandelman-a]
+* [gandelman-a]
+* charm\_helpers\_sync: Allow passing hints for including extra non-.py files in the sync, using standard filename pattern matching
+* Add some docs to templating.py
+* Use logging constants in os templating.py
+* Convert openstack release constants to ordered dict.  Generate template search list from release constants
+* Capitalize openstack constatns, add icehouse
+* apache.py: update log usage
+* drop hahelpers.utils. Add some ceph tests for code thats currently used
+* Add core.host.service\_running() to query running state of a service
+* make sure juju\_rc\_path is created. use charm\_dir too
+* ceph.py: Remove execute() for direct subprocess usage. Usage host.log instead of local juju\_log
+* Drop haproxy.py, this will now be handled by template contexts
+* Drop unused code from apache.py
+* Fix log vs juju\_log usage
+* Existing grains are updated from new config, rather than new config updated from existing grains
+* Merged bug-1195649-fix-write-file into bug-1185743-add-pwgen
+* Merged charm-helpers into bug-1195649-fix-write-file
+* [mew]Fixes for retrieving software from external sources. Includes support for tar.gz, tar.bz2, and zip archives via http, https, or ftp
+* Tidy flake8 warnings from test\_execd and hookenv
+* Cleanup flake8 warnings from test\_hookenv.py
+* Use log() instead of print
+* Up test coverage on OS contexts to 100%
+* Minor lint
+* Completely mock out jinja2 from OS templating unit tests
+* Checkin templating + context helpers
+* Cleanup, mostly. Added a few new tests
+* Sync tests from working branch
+* get\_os\_codename\_package(): Ensure we correctly handle case where package is available in cache but uninstalled
+* Remove all magic from host.py, Bug #1199956
+* Remove all magic from host.py, Bug #1199956
+* Move implicit rendering out of write\_file and into a helper, per Bug #1195634
+* hahelpers lint cleanup
+* Drop openstack shell helpers.  Rename openstack\_utils.py -> utils.py
+* contrib.hahelpers.utils: Late-import libraries that might be apt-get installed
+* Drop openstack\_utils's local juju\_log function, update imports post-hahelpers rename
+* Create 'fetched' directory if it does not exist
+* Rename hahelpers utils
+* hahelpers: Remove use of localized helpers, add some apache\_utils tests
+* [gandelman-a]
+* [gandelman-a] Add contrib.hacluster.cluster\_utils.get\_hacluster\_config() + cluster\_utils tests
+* Fixup some edge cases for local relations
+* get\_os\_codename\_package(): Take into account instances where package is known to cache but not installed
+* lint fix
+* Use apt\_pkg.version\_compare() instead of distutil's StrictVersions
+* Clean lint
+* Drop commented-out import
+* Ensure ansible hosts file written with localhost
+* Add ansible to installed packages
+* Support for installing ansible
+* Merged bug-1195649-fix-write-file into bug-1185743-add-pwgen
+* Add missing test
+* Merged bug-1195649-fix-write-file into bug-1185743-add-pwgen
+* Move python templating to contrib per review feedback
+* Merged ensure\_etc\_salt\_exists into namespace-relation-data
+* Remove no-longer-relevant test comment
+* Add pwgen helper
+* Removed an unnecessary change left from the merge
+* Merged trunk and resolved conflict
+* Move implicit template rendering out of write\_file and into helper
+* Merged fix-executution-environment into bug-1182959-no-implicit-serializable-magic
+* Merged hook-magic into fix-executution-environment
+* Merged charm-helpers into hook-magic
+* [adam\_g]
+* Better document canonical\_url()
+* Document canonical\_url() better
+* Fix config setting in canonical\_url()
+* Fix config setting in canonical\_url()
+* Add cluster\_utils.canonical\_url()
+* Use patch.object instead of concatenating strings
+* Add helper to check openstack upgrade availability
+* Add tests for hahelpers.cluster\_utils. Add get\_hacluster\_config()
+* Add some missing hookenv test coverage
+* Add core.hookenv.service\_name()
+* Cleanup whitespace
+* Update apache context to support multiple port mappings per config
+* Update tests for using searching from common templates dir
+* Also search helpers dir for templates, check in common templates
+* Allow users to avoid error\_out if inspecting version of a non-installed OS package
+* Allow resetting templating engine's openstack release
+* fix stupid confusing bugs in downloads and archive extraction. update tests to catch them
+* Add openstack upgrade availability detection to helpers
+* [james-page] Add support for 'proposed' as a valid source configuration
+* [stub] wrapping results with Serializable is surprising and more harm than help
+* [nick-moffit] merge from nick's branch
+* [gandleman-a] utility script for syncing parts of lp:charm-helpers into a local charm
+* [stub]
+* Add 'proposed' as a valid option for add source
+* [jamespage] Add OpenvSwitch helpers
+* Fix silly list declaration
+* contexts: Add Apache2SSLContexts + tests
+* hahelpers: Add get\_hacluster\_config()
+* hahelpers: Add get\_hacluster\_config()
+* [thedac] Fix volume\_map dictionary check. Correct hookenv and host imports in volumes.py
+* Fix volume\_map dictionary check. Correct hookenv and host imports
+* Add OpenvSwitch helpers
+* Merged fix-executution-environment into bug-1182959-no-implicit-serializable-magic
+* Add test for execution\_environment outside of a relation hook
+* Stop execution\_environment from exploding when not in a relation hook
+* If no explicit name, register hook using both the function name and the function name with underscores replaced with hypens
+* Add support for uncompressed tar archives
+* Fix tests
+* Update README with more a  descriptive use case
+* Add tests, rename to charm\_helpers\_sync and make importable
+* merge from trunk
+* Begin testing the command-wrapping decorators.  Fixed the optional argument syntax to include dashes
+* fix tests
+* Merged bug-1192845-fix-serializable into bug-1182959-no-implicit-serializable-magic
+* Merged bug-1192837-relation-unset into bug-1192845-fix-serializable
+* Merged charm-helpers into bug-1192837-relation-unset
+* Fixes to fetch and move archive handling to payload module
+* Fix and add test for hookenv.charm\_dir
+* [jamespage] Redux of configure\_source code in fetch helper
+* Tidy lint
+* Fixup failing test for cloud: type
+* Rebase against trunk
+* [gandelman-a]
+* flakes cleanup, add missing \_\_init\_\_.py
+* merge lp:charm-helpers
+* Check-in initial openstack storage helpers as contrib.storage.linux
+* Really fixup cloud archive stuff
+* Fixup cloud: handling
+* Rebase against trunk
+* Fixup configure\_source/add\_source functions; add tests
+* [gandelman-a]
+* Update /etc/default/haproxy ENABLED=1 from HAProxyContext
+* Add contrib.openstack.context. HAProxyContext
+* host.core.restart\_on\_change(): Ensure restarts happen as described in map
+* [stub] Misc fixes around use of Serializable including:
+* Repair broken test to really catch when service restarted multiple times
+* Track completed contexts in templating system
+* Convert context functions to context objects
+* [james-page] Refactoring of service control code in host helper
+* Make restart on failed reload optional, add/update tests to cover this
+* Add output formatting to the cli object's base options, so that the values returned by a command function may be serialised in a handful of supported output formats
+* Re-activated two tests that had been deactivated for debugging
+* Added host.apt\_add\_repository
+* Added missing patcher.stop
+* GREEN: previous grains are retained
+* RED: previous grains are retained
+* GREEN: relation data in grains is prefixed with relation type
+* RED: relation data in grains is prefixed with relation type
+* Move test to more relevant place
+* Fix changed relation\_get
+* Resolve conflicts
+* Confirm string results are usable strings
+* Make Serializable pickleable and only wrap dictionary results
+* Mark slow test and add make target for fast tests
+* GREEN: create the grains dir if it doesn't exist
+* RED: create the grains dir if it doesn't exist
+* Returning base types is less surprising than magic
+* Allow relation\_set to unset too
+* Merged charm-helpers into bug-1192837-relation-unset
+* Add charm-helpers-sync
+* command line interface that works. placement of subcommand module isn't right, but it's illustrative
+* [james-page] Various refactoring + additions to hookenv
+* [michael.nelson] Don't use salt-minion (which installs and runs salt-minion daemon)
+* [trivial] lint error cleanups
+* [michael.nelson] Add declarative machine state support using saltstack
+* [stub] Ensure that hookenv.relations also returns data that has been set by the local unit
+* Added service\_(restart,reload) host helpers and simplified service function to just use 'service' command
+* Add salt-call wrapper
+* Install salt-common rather than salt-minion (which installs the salt-minion daemon)
+* Add ceph contexts, increase ability of test\_os\_contexts.FakeRelation
+* [james-page] Import fixes for charmhelpers.contrib.hahelpers
+* Add core.hookenv.service\_name()
+* contrib.openstack.context: Update keystone context to act on all relations+units
+* Moved fileutils contents to charmhelpers.fetch.archive
+* Fix fetch plugin system. It's now explicit rather than automagical. pep8 fixes. Ignore long lines when linting
+* Make hookenv.relations() return local unit data too
+* s/saltstates/saltstack
+* Flush key for local\_unit on relation\_set
+* Also cache config helper
+* Added test form Serializable missing attribute
+* Rationalize relation\_get tests
+* Add cached annotation to other hookenv calls
+* Added cached function, normalized unit\_get
+* Move declarative->saltstates
+* contexts: Inpsect all units for all relations in context generation
+* context: Consider blank string missing context data
+* Add WIP openstack templating stuff
+* WIP add infrastructure for subcommand definition
+* [gandelman-a] new function host.filter\_installed\_packages and host.apt\_update
+* Updated TODO
+* Include the contrib module so that setup install adds the \_\_init\_\_.py
+* Added declarative to setup.py pkgs
+* Add docstring
+* Optional from\_ppa for install\_declarative\_support()
+* Initial declarative support (to test with own charm)
+* Imports within hahelpers where broken
+* Add restart\_on\_change helper
+* Check restart calls a different way
+* Patchout hashlib, add multiservice test
+* Tidy up lint
+* Sortout indent on comment
+* Revert changes to utils.py
+* Initial integration into core.host with first set of tests
+* Rename filter\_required\_packages -> filter\_installed\_packages
+* Do not raise if package unavailable
+* Add inteli\_restart helper for conditional configuration file change based restarts of services
+* [trivial] ordering of directory listing is unimportant
+* [gnuoy] Added a system\_user option to add\_user and a trivial apt\_update function
+* More coverage for fetch module
+* Remove apt\_update code as gandelman-a already has a super/faster/stronger mp for this
+* [michael.nelson] Fix bug causing execd to run the wrong path. Simplify tests
+* Add tests for apt\_update and creating a system user
+* core/host.py: Add filter\_required\_packages()
+* core/host.py: Add apt\_update() and tests
+* Add function for running apt\_update
+* Add ability to create system user
+* Add docstrings
+* Don't error when exec.d directory doesn't exist
+* rename var
+* Hide stderr when testing errors
+* Get rid of most patches for exec.d tests
+* Added non-mocked test to show failure
+* Remove base class and use addCleanup()
+* added a README based on my notes on how to make argparse/inspect/Cmd all work together nicely
+* tested and implemented the describe\_arguments function in commandant, to prepare inspect.getargspec() results for passing to add\_argument() on an argparse parser
+* Split storage utils into {utils, loopback, lvm}.py
+* Add contrib.storage.linux + tests
+* [gandelman-a] Splits openstack utilities into their own directory. Adds test coverage for openstack utils
+* Rebase on lp:charm-helpers
+* [r=hloeung] Provide an easy way to get the unit's IP
+* Include new submodules from previous commits
+* [michael.nelson] Include contrib subpackages in setup.py, add doc about testing requirements
+* Use existing unit\_get function
+* fix tests for r14 commit
+* [nick-moffitt] set structured data without going the hacky route of poking strings into os.environ
+* [nick-moffitt] subprocess.check\_output() returns a bare string, rather than an exception-like object
+* Provide an easy way to get the unit's IP
+* [r=hloeung] Accommodate relation setting keys that are not valid python identifiers
+* add tests
+* Accommodate relation setting keys that are not valid python identifiers
+* Framework for fetching file trees from arbitrary URLs
+* checkin newly named openstack tests
+* Split openstack utils + hahelpers, finish up openstack test coverage
+* Allow passing custom data to the context dictionary used by write\_file (and render\_template\_file, by extension)
+* subprocess.check\_output() returns a bare string, rather than an exception-like object
+* [mew] Refactor charmsupport and charmhelpers(legacy) code in to core modules for charmhelpers
+* [agy] Fix upstart detection, initscript tests, and README (for testing)
+* Fix upstart script detection to include '.conf' suffix. Fix initscript tests. Update README.test with additional python dependencies
+* Use .env as there's already a bzrignore entry
+* Add contrib packages to setup.py
+* Add simple test\_requirements.txt to enable running tests in a venv
+* Fix json parsing bug, add relations() method to grab ALL the relations
+* remove obsolete modules
+* pep8 cleanup on openstack helper tests
+* Rename hahelpers -> openstackhelpers. Add some test coverage
+* Include Hooks class in hookenv for concise hooks setup in charms
+* remove redundant code from contrib.charmhelpers
+* Improve test coverage for execd
+* list a charm's supported relations. improve test coverage. update copyright
+* Remainder of charmsupport hookenv.py not moved into core
+* Refactor legacy charmhelpers and beginnings of charmsupport
+* trivial doc cleanup
+* Fixup for juju-gui
+* Initial import from juju-gui
+* Fixup of ha-helpers
+* Initial import of ha-helpers
+* Fixup for charmhelpers
+* Initial import of charmhelpers
+* Fixup for charmsupport, adopt package infrastructure
+* Initial import of charmsupport
+* Project structure
+* Initial commit
