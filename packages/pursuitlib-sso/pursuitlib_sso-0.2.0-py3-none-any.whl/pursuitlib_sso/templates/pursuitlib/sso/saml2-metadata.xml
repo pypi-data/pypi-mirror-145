@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+{% load pursuitlib pursuitlib_sso %}
+<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"
+                     entityID="{{ config.entityid }}">
+    <md:SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="true" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+        <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+        <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+                                     Location="{% sso_url 'sso:saml2_acs' %}"
+                                     index="1" />
+    </md:SPSSODescriptor>
+    <md:Organization>
+       <md:OrganizationName xml:lang="en-US">{{ config.organization.name }}</md:OrganizationName>
+       <md:OrganizationDisplayName xml:lang="en-US">{{ config.organization.verbose_name }}</md:OrganizationDisplayName>
+       <md:OrganizationURL xml:lang="en-US">{{ "/"|full_url }}</md:OrganizationURL>
+    </md:Organization>
+
+    {% if config.contacts != None %}
+        {% for contact in config.contacts %}
+    <md:ContactPerson contactType="{{ contact.type }}">
+        <md:GivenName>{{ contact.name }}</md:GivenName>
+        <md:EmailAddress>{{ contact.email }}</md:EmailAddress>
+    </md:ContactPerson>
+        {% endfor %}
+    {% endif %}
+</md:EntityDescriptor>
