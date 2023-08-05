@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: slurm-tui
+Version: 0.1.3
+Summary: Slurm Text User Interface using the Slurm REST API in Python.
+Home-page: https://github.com/holtgrewe/slurm_tui
+Author: Manuel Holtgrewe
+Author-email: manuel.holtgrewe@bih-charite.de
+License: MIT license
+Keywords: slurm
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+# Slurm TUI
+
+Slurm Text User Interface using the Slurm REST API in Python.
+
+- Free software: MIT license
+- Documentation: https://github.com/bihealth/slurm-tui
+
+## Usage Example
+
+
+```
+# slurm-tui --server=http://hpc-slurmrestd scancel
+[I 220401 14:43:28] args = {
+    "verbose": false,
+    "force_jwt_token": false,
+    "api_version": "v0.0.37",
+    "server": "http://hpc-slurmrestd",
+    "command": "scancel"
+    }
+[I 220401 14:43:30] Which job to kill? Enter to select, Ctrl-C to cancel
+    1317509 -- bash
+    1317802 -- bash
+    1320066 -- bash
+    1320250 -- bash
+    1320256 -- snakejob.ngs_mapping_bwa_run.86.sh
+    1370797 -- foo
+> 1370958 -- foo [Enter]
+[I 220401 14:43:32] Deleted job 1370958
+[I 220401 14:43:32] All done, have a nice day!
+```
+
+
+# Changelog
+
+## 0.1.0 (2022-04-01)
+
+
+### Features
+
+* adding simple graphical scancel ([2bd6fb7](https://www.github.com/bihealth/slurm-tui/commit/2bd6fb79e1e389511d088acba57c9d907b2a79a5))
+* fetch JWT token on startup ([6878fba](https://www.github.com/bihealth/slurm-tui/commit/6878fbad031f1e3fd66067477b97767ef5c70545))
+
+
