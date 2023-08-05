@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: package-processing-image
+Version: 0.0.2
+Summary: Estudos de pacotes - Image Processing 
+Home-page: https://github.com/snitraMnolraM/package-processing-Image
+Author: Marlon_Martins
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: setuptools (~=41.2.0)
+Requires-Dist: scikit-image (~=0.18.2)
+Requires-Dist: matplotlib (~=3.4.2)
+Requires-Dist: numpy (~=1.21.1)
+
+# package-processing-Image
+
+## Description.
+
+Bootcamp Cognizant Cloud Data Engineer - DIO
+
+Descrição O pacote "package-processing-image" é usado para:
+
+Módulo "Processamento":
+
+Correspondência de histograma; Similaridade estrutural; Redimensionar imagem;
+
+Módulo "Utils":
+
+Ler imagem; Salvar imagem; Plotar imagem; Resultado do gráfico; Plotar histograma;
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package-processing-Image
+
+```bash
+pip install package-processing-image
+```
+
+## Usage
+
+```python
+from processing_image.utils import io, plot
+from processing_image.processing import combination, transformation
+```
+
+## Author
+Marlon Martins
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
