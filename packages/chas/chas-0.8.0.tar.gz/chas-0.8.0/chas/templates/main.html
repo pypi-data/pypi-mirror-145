@@ -1,0 +1,50 @@
+<!doctype html>
+<head>
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='semantic.css') }}"/>
+    <title>Chas</title>
+</head>
+<body>
+<table class="ui celled table">
+    <thead>
+        <tr><th>Name</th>
+        <th>Expression</th>
+        <th>Description</th>
+        <th>Next run</th>
+        <th>Last run</th>
+        <th>Last status</th>
+        <th>Run</th></tr>
+    </thead>
+    <tbody>
+    {% for job in chas.get_jobs() %}
+        <tr>
+            <td data-label="Name">{{ job.name }}</td>
+            <td data-label="Expression">{{ job.registered_expression }}</td>
+            <td data-label="Description">{{ job.description }}</td>
+            {% if job.next_run is string %}
+                <td data-label="Next run">{{ job.next_run }}</td>
+            {% else %}
+                <td data-label="Next run">{{ job.next_run.strftime("%d-%m-%Y %H:%M:%S") }}</td>
+            {% endif %}
+            {% if job.last_run is string %}
+                <td data-label="Last run">{{ job.last_run }}</td>
+            {% else %}
+                <td data-label="Last run">{{ job.last_run.strftime("%d-%m-%Y %H:%M:%S") }}</td>
+            {% endif %}
+            <td data-label="Last status">{{ job.last_state.status }}
+                {% if job.last_state.detail is not none %}
+                ({{ job.last_state.detail }})
+                {% endif %}
+            </td>
+            <td data-label="Run">
+                <form class="form_job_run">
+                    <input type="hidden" name="job_name" value="{{ job.name }}" />
+                    <input type="submit" value="Run" {% if job.manual == false %}disabled{% endif %}></input>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>    
+</table>
+<script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
