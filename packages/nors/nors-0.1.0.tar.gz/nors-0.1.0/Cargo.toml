@@ -1,0 +1,13 @@
+[package]
+name = "nors-py"
+version = "0.1.0"
+authors = ["booink.work@gmail.com"]
+edition = "2021"
+
+[lib]
+name = "nors_py"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.16.2", extension-module = ["extension-module"], default = ["extension-module"] }
+nors = { path = "../../" }

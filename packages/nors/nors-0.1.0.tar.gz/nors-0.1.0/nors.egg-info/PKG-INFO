@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: nors
+Version: 0.1.0
+Summary: nors is a Rust program for counting the number of rows and records in a CSV file.
+Home-page: https://github.com/booink/nors/tree/main/bindings/python3
+Author: Booink
+Author-email: booink.work@gmail.com
+License: UNKNOWN
+Keywords: csv,counter,wc
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Rust
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS :: MacOS X
+Description-Content-Type: text/markdown
+
+# nors
+
+nors is a counting the number of rows and records in a CSV file.
+
+## Install
+
+```sh
+pip install nors
+```
+
+## Usage
+
+```python
+from nors import count
+
+print(count("10_lines_and_records.csv"))
+{'lines': 10, 'csv_records': 10}
+```
+
+
