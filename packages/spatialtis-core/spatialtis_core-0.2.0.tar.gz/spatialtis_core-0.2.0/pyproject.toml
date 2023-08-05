@@ -1,0 +1,11 @@
+[build-system]
+requires = ["maturin>=11.0"]
+build-backend = "maturin"
+
+[project]
+name = "spatialtis_core"
+dependencies = [
+    'numpy',
+    'pandas',
+    'scipy',
+]
