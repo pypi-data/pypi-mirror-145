@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: mapfost
+Version: 4.3.1
+Summary: Implementation of the autofocus method MAPFoSt. Publication: Binding J, Mikula S, Denk W. Low-dosage Maximum-A-Posteriori Focusing and Stigmation. Microsc Microanal. 2013
+Home-page: https://github.com/pypa/mapfost
+Author: Rangoli Saxena
+Author-email: rangolisaxena90@gmail.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/pypa/mapfost/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+## mapfost
+
+mapfost is a python implementation of the autofocus method MAPFoST introduced in the publication Binding J, Mikula S, Denk W. Low-dosage Maximum-A-Posteriori Focusing and Stigmation. Microsc Microanal. 2013
+
+## Installation
+
+Use the package manager pip to install mapfost
+
+```bash
+pip install mapfost
+```
+
+## Usage
+
+```python
+
+import mapfost as mf
+
+res = mf.est_aberr([test_im1, test_im2])
+```
+## Example
+
+run the script <em>run_sample.py</em>
+```python
+mf.test_installation()
+```
+
+Expected output is a scipy.optimize.minimize object (as shown below).\
+The <b>x</b> key in the following object is the estimated aberration vector.
+```python
+ hess_inv: <3x3 LbfgsInvHessProduct with dtype=float64>
+      jac: array([ 195312.50118701, -195312.50118701,  390624.9980372 ])
+  message: 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH'
+     nfev: 24
+      nit: 5
+     njev: 6
+   status: 0
+  success: True
+        x: array([-1.10622, -1.31151,  0.58894])
+...Installation Test Successful...
+[-1.10622 -1.31151  0.58894]
+```
+
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
