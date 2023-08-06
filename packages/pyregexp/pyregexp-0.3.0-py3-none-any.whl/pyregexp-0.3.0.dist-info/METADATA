@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: pyregexp
+Version: 0.3.0
+Summary: Simple regex library
+Home-page: https://github.com/lorenzofelletti/pyregex
+Download-URL: https://github.com/lorenzofelletti/pyregex/archive/v0.2.4.tar.gz
+Author: Lorenzo Felletti
+License: MIT
+Keywords: regex,regexp,engine
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Text Processing :: General
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# pyregex(p)
+
+## What is it
+
+Pyregex(p) is a backtracking Regex Engine complete with all major regular-expressions' features.
+
+It is composed of a Lexer, a Parser (a TDRD parser) and finally the Engine.
+
+Features implemented includes:
+| Feature | Syntax |
+|-|-|
+| match start | ^... |
+| match end | ...$ |
+| escaping | \\ |
+| grouping | (...) |
+| named group | (?\<name\>...) | 
+| non-capturing group | (?:...) |
+| alternative | a\|b |
+| wildcard | . |
+| space | \s |
+| quantifiers | ? \* + |
+| curly brace quantification | {exact} {min,max} {,max} {min,} |
+| range element | [^a-zA-Z059] |
+
+
+## Play with the engine:
+
+```Python
+from pyregexp.engine import RegexEngine
+
+reng = RegexEngine()
+
+reng.match('^my_(beautiful_)+regex', '^my_beautiful_beautiful_beautiful_regex')
+```
+
+
