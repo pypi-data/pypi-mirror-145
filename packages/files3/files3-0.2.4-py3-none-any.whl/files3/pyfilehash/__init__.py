@@ -1,0 +1,1 @@
+from files3.pyfilehash.pyfilehash import *
