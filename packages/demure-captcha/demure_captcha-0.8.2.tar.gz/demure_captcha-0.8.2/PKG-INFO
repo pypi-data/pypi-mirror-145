@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: demure_captcha
+Version: 0.8.2
+Summary: Simple but customize captcha generator( image + voice )
+Home-page: https://github.com/grdvsng/demure_captcha
+Author: Trishkin Sergey
+Author-email: grdvsng@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# DEMURE_CAPTCHA
+Simple liight-weight package for generate image and auidio captcha
+
+# SUMMARY
+#### Install
+```shell
+python3 -m pip install demure_captcha
+```
+#### Console
+```shell
+python3 -m demure_captcha --length 10 --useIntegers True --width 300 --height 300 --format file
+# Created files with audio and video
+>>> %AppData%\Local\Temp\0c7e4ddf-885b-4651-905e-b7efd758fc8d.png
+>>> %AppData%\Local\Temp\0c7e4ddf-885b-4651-905e-b7efd758fc8d.mp3
+
+python3 -m demure_captcha --length 10 --useIntegers True --width 300 --height 300 --format json
+# Base64 strings
+>>>{ "mp3": "rewwgwrrrwggrwrg...", "png": "wfweewggewegwg..." }
+```
+#### Pakage
+```python
+from demure_captcha import generate
+
+captcha = generate( width=300, height=300 )
+
+captcha.image.show( )
+print( captcha.save( ) )
+print( captcha.save( 'tmp/captcha' ) )
+```
+# Example captcha
+![mp3](example-captcha.mp3)
+![png](example-captcha.png)
+
+
