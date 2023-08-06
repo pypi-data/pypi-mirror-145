@@ -1,0 +1,59 @@
+Metadata-Version: 2.1
+Name: datashare-network-client
+Version: 0.4.0
+Summary: Client Datashare Network Library
+Home-page: https://github.com/ICIJ/datashare-network-client
+License: UNKNOWN
+Keywords: datashare,api,network,cryptography
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Security :: Cryptography
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: Authlib (==1.0.0)
+Requires-Dist: aioconsole (==0.4.1)
+Requires-Dist: aiohttp (==3.8.1)
+Requires-Dist: click (==8.0.4)
+Requires-Dist: datashare-network-core (==0.13.0)
+Requires-Dist: elasticsearch (==7.9.1)
+Requires-Dist: httpx
+Requires-Dist: sscred (==0.2.1)
+
+# datashare network client library  [![CircleCI](https://circleci.com/gh/ICIJ/datashare-network-client/tree/main.svg?style=svg&circle-token=f53a35915c04a1014e6a1f358904e54366af91a6)](https://circleci.com/gh/ICIJ/datashare-network-client/tree/main)
+
+This is the client library for the protocol described in the EPFL paper:
+
+[DATASHARENETWORK A Decentralized Privacy-Preserving Search Engine for Investigative Journalists](https://arxiv.org/pdf/2005.14645.pdf)
+
+This is a work in progress.
+
+## Testing
+
+```shell
+$ make test
+```
+
+## Database
+
+To run the migrations on `dsnet.db` :
+
+```shell
+$ /path/to/alembic upgrade head 
+```
+
+If you change the models, then please run : 
+
+```shell
+$ alembic revision --autogenerate -m "migration description"
+```
+
+It will generate a new migration step file in `migrations/versions` that you can add with your commit.
+
+
