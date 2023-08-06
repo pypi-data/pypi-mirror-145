@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: embedding-lenses
+Version: 0.10.0
+Summary: 
+Author: edugp
+Author-email: edugp91@gmail.com
+Requires-Python: >=3.7,<3.10
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: black (>=21.10b0,<22.0)
+Requires-Dist: bokeh (==2.4.1)
+Requires-Dist: datasets (==1.14.0)
+Requires-Dist: flake8 (>=4.0.1,<5.0.0)
+Requires-Dist: huggingface-hub (==0.0.19)
+Requires-Dist: numba (>=0.54.1,<0.55.0)
+Requires-Dist: numpy (==1.20.0)
+Requires-Dist: scikit-learn (==0.24.2)
+Requires-Dist: sentence-transformers (==2.0.0)
+Requires-Dist: streamlit (==1.8.1)
+Requires-Dist: transformers (==4.11.3)
+Requires-Dist: umap-learn (>=0.5.2,<0.6.0)
+Requires-Dist: watchdog (==2.1.3)
