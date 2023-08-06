@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: xbench
+Version: 0.0.3
+Summary: Document Extraction Benchmark (xbench)
+Home-page: https://github.com/impira/extraction-benchmark
+Author: Impira Engineering
+Author-email: engineering@impira.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/impira/extraction-benchmark/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic
+Requires-Dist: typing
+Requires-Dist: typing-extensions
+Requires-Dist: faker (==8.13.2)
+Requires-Dist: openpyxl
+Requires-Dist: Pillow (>=8)
+Requires-Dist: pdf2image
+Requires-Dist: numpy
+Requires-Dist: impira (==0.1.7)
+Requires-Dist: boto3
+Requires-Dist: textract-trp
+Requires-Dist: requests
+Requires-Dist: myst-parser (>=0.15)
+Requires-Dist: sphinx (>=4.3)
+
+# EXtraction BENCHmark (xbench)
+
+**XBench** is a Swiss Army Knife for working with document processing tools on the command line. It is developed by [Impira](https://www.impira.com/) but strives to be neutral and support a wide variety of platforms over time. It includes utilities for generating synthetic documents, evaluating documents against different services, saving their results, recreating them in other services, and comparing (benchmarking) their results.
+
+See the [XBench docs](https://impira.github.io/xbench/index.html) for more information on how to install and use XBench.
+
+
