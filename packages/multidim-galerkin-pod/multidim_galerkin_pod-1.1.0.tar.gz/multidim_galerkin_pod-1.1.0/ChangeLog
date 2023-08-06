@@ -1,0 +1,91 @@
+CHANGES
+=======
+
+1.1.0
+-----
+
+* gitignore
+* files for pip and pbr
+* breaking change: compute PCE weights for more dists
+* for the next v
+
+v1.0.3
+------
+
+* v1.0.3
+* uncommented the verbose part
+* dev version bump
+* new dev version
+* the plain pod wrt mass matrix
+* hide the matplotlib calls for server use
+* minor bug fix
+* fixed another naming
+* upd tests with new naming
+* setup.py for pip
+* rename to multidim
+* now tests on master
+* fix gitlab CI
+* rmv test setup
+* merged massmat-hosvd
+* catching cases in dense branch
+* upds
+* mvd fnctns to tsu
+* file for tensor related things
+* can now transform the intervals -- unit test pass
+* rmd the variables from the yml
+* move to the source
+* now also testing gauss qr N=4
+* rename ci job
+* better pwd
+* py path
+* py path
+* py path
+* python path
+* now the right vals
+* right name for nose
+* minimized the yml again
+* minimized the yml
+* py3 now with image
+* rm python3 in ci
+* updat gl ci
+* updat gl ci
+* updat gl ci
+* gitlab ci
+* try to make it fail
+* Update .gitlab-ci.yml
+* Update .gitlab-ci.yml
+* Add .gitlab-ci.yml
+* heres the source
+* generate gaussian qr for uniform distribution -- unittests -- pass
+* starting soon
+* testing file
+* \_\_init\_\_.py
+* Dont use full SVD matrices for computing pod modes
+* mrgd
+* new func for one norm
+* no saving -- need to revise this anyways
+* script to generate mass matrice via dolfin
+* new testdic -- unittest -- pass
+* lil transpose for consistency
+* major fix in a branch of \`ldfnp\`
+* some upds
+* add the \`C\` -- bug in termival treatment
+* improved treatment of initial/terminal values
+* mergd
+* nicer warning
+* another exception handling for elder scipy
+* another exception handling for elder scipy
+* another exception handling for elder scipy
+* another exception handling for elder scipy
+* dense branch fix
+* mrgd
+* exception handling for elder scipy w/o \`spsolve\_triangular\`
+* rmd the solve/multipl by L.T
+* need a real chol factor -- rmd Ft multipl befor aux basis vector
+* space\_time\_norm added
+* fix for the dense branch -- option to get a lower-triangular chol-fac (though computed with dense routines)
+* made \`dou\` a bit more optional
+* cholmod in \`time\_int\_semil\`
+* ldfnp now with triangular solves !!!
+* modules for including cholmod sparse matrix factorization
+* started the repo with \`genpod\_utils\`
