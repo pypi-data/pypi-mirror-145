@@ -1,0 +1,10 @@
+redislite
+pytest
+
+[build]
+bump2version
+
+[tests]
+redis
+types-redis
+pytest-mypy
