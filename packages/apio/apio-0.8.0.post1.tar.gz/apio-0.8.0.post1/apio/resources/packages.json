@@ -1,0 +1,224 @@
+{
+  "examples" : {
+    "repository": {
+      "name": "apio-examples",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "%V",
+      "compressed_name": "apio-examples-%V",
+      "uncompressed_name": "apio-examples-%V",
+      "package_name": "examples",
+      "extension": "zip"
+    },
+    "description": "Verilog examples"
+  },
+
+  "scons" : {
+    "repository": {
+      "name": "tool-scons",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "scons-%V",
+      "uncompressed_name": "scons-%V",
+      "package_name": "tool-scons",
+      "extension": "tar.gz"
+    },
+    "description": "Scons tool"
+  },
+
+  "oss-cad-suite" : {
+    "repository": {
+      "name": "tools-oss-cad-suite",
+      "organization": "FPGAwars"
+    },
+    "release" : {
+      "tag_name": "v%V",
+      "compressed_name": "tools-oss-cad-suite-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "tools-oss-cad-suite",
+      "extension": "tar.gz"
+    },
+    "description": "YosysHQ/oss-cad-suite"
+  },
+
+  "yosys" : {
+    "repository": {
+      "name": "toolchain-yosys",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-yosys-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-yosys",
+      "extension":  "tar.gz"
+    },
+    "description": "Yosys toolchain"
+  },
+
+  "ice40" : {
+    "repository": {
+      "name": "toolchain-ice40",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-ice40-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-ice40",
+      "extension":  "tar.gz"
+    },
+    "description": "Lattice ICE40 toolchain"
+  },
+
+  "ecp5" : {
+    "repository": {
+      "name": "toolchain-ecp5",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-ecp5-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-ecp5",
+      "extension":  "tar.gz"
+    },
+    "description": "Lattice ECP5 toolchain"
+  },
+
+  "iverilog" : {
+    "repository": {
+      "name": "toolchain-iverilog",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-iverilog-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-iverilog",
+      "extension": "tar.gz"
+    },
+    "description": "Icarus Verilog toolchain"
+  },
+
+  "system" : {
+    "repository": {
+      "name": "tools-system",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "tools-system-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "tools-system",
+      "extension": "tar.gz"
+    },
+    "description": "System tools"
+  },
+
+  "gtkwave" : {
+    "repository": {
+      "name": "tool-gtkwave",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "tool-gtkwave-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "tool-gtkwave",
+      "extension": "tar.gz",
+      "available_platforms": [
+        "windows", "windows_x86", "windows_amd64"
+      ]
+    },
+    "description": "GTKWave tool"
+  },
+
+  "drivers" : {
+    "repository": {
+      "name": "tools-drivers",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "tools-drivers-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "tools-drivers",
+      "extension": "tar.gz",
+      "available_platforms": [
+        "windows", "windows_x86", "windows_amd64"
+      ]
+    },
+    "description": "Drivers tools"
+  },
+
+  "verilator" : {
+    "repository": {
+      "name": "toolchain-verilator",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-verilator-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-verilator",
+      "extension": "tar.gz"
+    },
+    "description": "Verilator toolchain"
+  },
+
+  "fujprog" : {
+    "repository": {
+      "name": "toolchain-fujprog",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-fujprog-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-fujprog",
+      "extension": "tar.gz"
+    },
+    "description": "Programmer for ULX2/3S boards"
+  },
+
+  "icesprog" : {
+    "repository": {
+      "name": "toolchain-icesprog",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-icesprog-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-icesprog",
+      "extension": "tar.gz",
+      "available_platforms": [
+        "windows_amd64", "windows_x86", "linux_i686", "linux_x86_64", "darwin_x86_64"
+      ]
+    },
+    "description": "iCESugar board programmer"
+  },
+
+  "dfu" : {
+    "repository": {
+      "name": "toolchain-dfu",
+      "organization": "FPGAwars"
+    },
+    "release": {
+      "tag_name": "v%V",
+      "compressed_name": "toolchain-dfu-%P-%V",
+      "uncompressed_name": "",
+      "package_name": "toolchain-dfu",
+      "extension": "tar.gz",
+      "available_platforms": [
+        "linux_x86_64", "windows_amd64", "darwin_x86_64"
+      ]
+    },
+    "description": "Device Firmware Upgrade Utilities"
+  }
+
+}
