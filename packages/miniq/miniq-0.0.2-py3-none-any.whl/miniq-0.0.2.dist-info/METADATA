@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: miniq
+Version: 0.0.2
+Summary: Python lib for miniQ
+Home-page: https://github.com/ac5tin/miniq-lib-python
+Author: Austin Chang
+Author-email: austinchang4@gmail.com
+License: MIT
+Keywords: miniq,queue
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: grpcio (==1.44.0)
+Requires-Dist: protobuf (==3.20.0)
+
+# miniQ Python Lib
+Basic client for working with miniQ
+
