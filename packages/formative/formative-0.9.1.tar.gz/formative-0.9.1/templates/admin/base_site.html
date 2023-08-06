@@ -1,0 +1,75 @@
+{% extends 'admin/base.html' %}
+{% load jazzmin utils %}
+
+{% block extrastyle %}
+  <style>
+    @media (max-width: 1200px) {
+      .sidebar-mini.sidebar-collapse .main-sidebar,
+      .sidebar-mini.sidebar-collapse .main-sidebar::before {
+        margin-left: -250px;
+      }
+      .sidebar-mini.sidebar-collapse .content-wrapper,
+      .sidebar-mini.sidebar-collapse .main-footer,
+      .sidebar-mini.sidebar-collapse .main-header {
+        margin-left: 0!important;
+      }
+    }
+    
+    .modal.modal-wide .modal-dialog {
+      width: 70%;
+    }
+    .modal.modal-wide iframe.related-iframe {
+      height: 625px;
+    }
+    
+    #changelist .btn.float-right {
+      margin-left: 0.5em;
+    }
+    
+    .inline-deletelink {
+        font-family: "Font Awesome 5 Free";
+        width: 16px;
+        height: 16px;
+        margin-bottom: 6px;
+        border: 0px none;
+    }
+    .inline-deletelink::before {
+      content: "\f057";
+    }
+    
+    span.helptext {
+      font-size: 0.8em;
+      color: #859099;
+      font-style: italic;
+    }
+  </style>
+{% endblock %}
+
+{% block footer %}
+  {% if not is_popup %}
+    <footer class="main-footer {{ jazzmin_ui.footer_classes }}">
+      <div class="float-right d-none d-sm-inline">
+        <b>Formative v{% get_formative_version %}</b>
+        Jazzmin v{% get_jazzmin_version %}
+      </div>
+      &nbsp;
+    </footer>
+    {% if jazzmin_settings.show_ui_builder %}
+      {% include 'jazzmin/includes/ui_builder_panel.html' %}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% block extrajs %}
+  <script>
+    $(document).ready(function () {
+      var plugin = $('[data-widget=pushmenu]');
+      var opts = plugin.data('lte.pushmenu');
+      if (opts) {
+        opts['_options']['autoCollapseSize'] = 1200;
+        plugin.data('lte.pushmenu', opts);
+        if (document.body.clientWidth < 1200) plugin.PushMenu('collapse');
+      }
+    });
+  </script>
+{% endblock %}

@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: formative
+Version: 0.9.1
+Summary: Self-hosted web app for collecting form responses and files
+Home-page: https://github.com/johncronan/formative
+License: LGPL-2.1
+Keywords: forms,form,builder,django,formative
+Author: John Kyle Cronan
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.1
+Classifier: Framework :: Django :: 3.2
+Classifier: Framework :: Django :: 4
+Classifier: Framework :: Django :: 4.0
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
+Classifier: Topic :: Multimedia
+Classifier: Topic :: Office/Business :: Groupware
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Provides-Extra: reviewpanel
+Requires-Dist: backports.zoneinfo; python_version >= "3.8" and python_version < "3.9"
+Requires-Dist: django (>=4.0,<5.0)
+Requires-Dist: django-better-admin-arrayfield (>=1.4.2,<2.0.0)
+Requires-Dist: django-environ
+Requires-Dist: django-jazzmin
+Requires-Dist: django-localflavor (>=3.1,<4.0)
+Requires-Dist: django-polymorphic
+Requires-Dist: django-webpack-loader
+Requires-Dist: django-widget-tweaks
+Requires-Dist: ffmpeg-python
+Requires-Dist: gunicorn
+Requires-Dist: markdown
+Requires-Dist: markdown-link-attr-modifier (>=0.2.0,<0.3.0)
+Requires-Dist: pikepdf (>=5.1.1)
+Requires-Dist: pillow
+Requires-Dist: psycopg2
+Requires-Dist: redis
+Requires-Dist: reviewpanel (>=0.6.1,<0.7.0); extra == "reviewpanel"
+Requires-Dist: whitenoise (>=6.0.0,<7.0.0)
+Project-URL: Repository, https://github.com/johncronan/formative
+Description-Content-Type: text/markdown
+
+**Formative** is a self-hosted web app for collecting form responses and
+files. For application forms, you can use it together with
+[reviewpanel](https://github.com/johncronan/reviewpanel) to review and score
+applicant submissions.
+
+Development of Formative was funded by
+[Public Media Institute](https://publicmediainstitute.com), with support from
+[The Andy Warhol Foundation for the Visual Arts](https://warholfoundation.org).
+

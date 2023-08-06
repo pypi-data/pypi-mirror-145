@@ -1,0 +1,43 @@
+{% extends "admin/change_form.html" %}
+{% load i18n admin_urls %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb float-sm-right">
+<li class="breadcrumb-item">
+  <a href="{% url 'admin:index' %}">
+    <i class="fa fa-tachometer-alt"></i> {% trans 'Home' %}
+  </a>
+</li>
+<li class="breadcrumb-item">
+  <a href="{% url 'admin:app_list' app_label=opts.app_label %}">
+    {{ opts.app_config.verbose_name }}
+  </a>
+</li>
+<li class="breadcrumb-item">
+  <a href="{% url 'admin:formative_form_changelist' %}">Forms</a>
+</li>
+<li class="breadcrumb-item">
+  {# TODO clean this up in the view funcs #}
+  {% with original_page=original.page %}
+  {% with p=page|default_if_none:original_page %}
+  {% if p %}
+  <a href="{% url 'admin:formative_formblock_formlist' form_id %}?page={{ p }}">
+  {% else %}
+    {% if form_id %}
+    <a href="{% url 'admin:formative_formblock_formlist' form_id %}">
+    {% else %}
+    <a href="{% url 'admin:formative_formblock_formlist' original.form.id %}">
+    {% endif %}
+  {% endif %}
+    {% with original_form_name=original.form.name %}
+    {{ form_name|default:original_form_name }}
+    {% endwith %}
+  </a>
+  {% endwith %}
+  {% endwith %}
+</li>
+<li class="breadcrumb-item">
+  {% if add %}{% trans 'Add form block' %}{% else %}{{ original }}{% endif %}
+</li>
+</ol>
+{% endblock %}
