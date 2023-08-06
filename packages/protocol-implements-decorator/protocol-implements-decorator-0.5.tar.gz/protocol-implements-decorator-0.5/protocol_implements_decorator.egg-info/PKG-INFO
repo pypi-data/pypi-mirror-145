@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: protocol-implements-decorator
+Version: 0.5
+Summary: Adds '@implements' decorator to aid in explicit use of protocols.
+Home-page: UNKNOWN
+Author: rbroderi
+Author-email: richard@sanguinesoftware.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8,<4.0
+
+# protocol_implements_decorator
+
+Adds the "implements" decorator to make using protocols easier and more explicit
+
+
+## Description
+
+Adds the @implements decorator.
+This will cause a runtime NotImplementedError if the class does not implement all parts of the protocol.
+Also adds the get_protocols_implemented method to the class providing a list of all protocols the decorated class adhears to.
+
