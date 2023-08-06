@@ -1,0 +1,474 @@
+2022-03-20 08:43:29,810 - DeepNLPF.base - INFO - Plugin installed: stanza
+2022-03-20 09:33:13,116 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 09:33:13,128 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'stanza': {'processors': ['tokenize', 'mwt', 'pos', 'lemma', 'ner', 'depparse']}}}
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Output: file
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Format: json
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 09:33:13,129 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 09:35:17,968 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 09:35:17,968 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'stanza': {'processors': ['tokenize', 'mwt', 'pos', 'lemma', 'ner', 'depparse']}}}
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Output: file
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Format: json
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 09:35:17,969 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'stanza': {'processors': ['tokenize', 'mwt', 'pos', 'lemma', 'ner', 'depparse']}}}
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Output: file
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Format: json
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 09:38:38,682 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'stanza': {'processors': ['tokenize', 'mwt', 'pos', 'lemma', 'ner', 'depparse']}}}
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Output: file
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Format: json
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 09:40:54,214 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 09:40:56,879 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 09:40:57,549 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 09:40:58,034 - DeepNLPF.base - INFO - Plugin Tool: stanza
+2022-03-20 09:41:00,049 - DeepNLPF.base - INFO - Output file in: /home/fasr/deepnlpf_data/output/dataset_623720d95008c518b03e6055/document_623720d97bbd82bb84ea1029/stanza.json
+2022-03-20 09:41:00,051 - DeepNLPF.base - INFO - --------------------- End ---------------------
+2022-03-20 15:36:00,852 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:36:00,852 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:36:00,853 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:36:04,459 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:36:05,276 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:36:05,690 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:37:45,232 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:37:45,232 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:37:45,232 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:37:45,233 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:37:48,755 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:37:49,381 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:37:50,001 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:52:03,669 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:52:03,669 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:52:03,670 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:52:07,414 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:52:09,049 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:52:09,426 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:56:35,796 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:56:38,603 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:56:39,251 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:56:39,623 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:57:03,780 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:57:03,781 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:57:06,567 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:57:07,208 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:57:07,617 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:57:23,076 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:57:23,076 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:57:23,077 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:57:26,693 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:57:27,306 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:57:27,720 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:58:09,473 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:58:09,474 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:58:12,272 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:58:12,914 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:58:13,306 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:58:42,552 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:58:42,552 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:58:42,553 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:58:46,249 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:58:46,884 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:58:47,296 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 15:59:16,520 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Output: file
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Format: json
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 15:59:16,521 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 15:59:19,516 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 15:59:20,154 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 15:59:20,563 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:03:02,623 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:03:06,233 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:03:06,842 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:03:07,274 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:05:34,145 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:05:34,145 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:05:34,145 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:05:34,146 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:05:37,901 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:05:38,534 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:05:38,917 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:06:12,929 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:06:12,929 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:06:12,929 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:06:12,930 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:06:16,442 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:06:17,061 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:06:17,484 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:07:49,411 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:07:49,411 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:07:49,412 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:07:52,996 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:07:53,605 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:07:53,997 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:09:20,634 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:09:20,635 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:09:23,531 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:09:24,304 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:09:24,834 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:09:57,536 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:09:57,537 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:09:57,537 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:09:57,537 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:10:00,408 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:10:01,048 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:10:01,436 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:10:14,083 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:10:14,084 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:10:16,760 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:10:17,372 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:10:17,775 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:11:03,722 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:11:03,722 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:11:03,722 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:11:03,722 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:11:03,722 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:11:03,723 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:11:03,723 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:11:03,723 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:11:03,723 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:11:03,723 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:11:06,365 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:11:06,958 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:11:07,343 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:12:35,986 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:12:35,986 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:12:35,986 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:12:35,987 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:12:39,765 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:12:40,383 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:12:40,780 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:17:23,483 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:17:23,483 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:17:23,484 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:17:27,107 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:18:43,500 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:18:43,501 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:18:43,501 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:18:43,501 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:18:46,280 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:20:58,146 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:21:00,976 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:24:53,107 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:24:53,107 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:24:53,107 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:24:53,107 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:24:53,107 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:24:53,107 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:24:53,108 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:24:53,108 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:24:53,108 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:24:53,108 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:24:56,737 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:26:04,637 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:26:04,637 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:26:04,637 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:26:04,637 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:26:04,637 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:26:04,637 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:26:04,638 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:26:04,638 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:26:04,638 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:26:04,638 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:26:08,329 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:32:07,613 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:32:07,614 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:32:10,270 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Input pipeline type format: py
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Custom Pipeline: 
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:32:26,155 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:32:26,156 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:32:26,156 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:32:29,198 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'stanza': {'processors': ['tokenize', 'mwt', 'pos', 'lemma', 'ner', 'depparse']}}}
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:34:18,374 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:34:18,375 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:34:21,116 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:35:59,428 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:35:59,429 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:35:59,429 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:35:59,429 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'stanza': {'processors': ['tokenize', 'mwt', 'pos', 'lemma', 'ner', 'depparse']}}}
+2022-03-20 16:35:59,429 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:35:59,430 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:35:59,430 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:35:59,430 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:35:59,430 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:35:59,430 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:36:03,250 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:36:04,558 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:36:05,240 - DeepNLPF.base - INFO - Plugin Tool: stanza
+2022-03-20 16:36:08,829 - DeepNLPF.base - INFO - Output file in: /home/fasr/deepnlpf_data/output/dataset_6237822426fdd72d0aaa5990/document_62378224ba0c0b4ddb0151e5/stanza.json
+2022-03-20 16:36:08,831 - DeepNLPF.base - INFO - --------------------- End ---------------------
+2022-03-20 16:37:24,868 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:37:24,868 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:37:24,869 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:37:28,607 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:37:29,251 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:37:29,621 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:38:01,944 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:38:01,944 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:38:01,945 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:38:05,556 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:38:06,206 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:38:06,686 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:38:49,225 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:38:49,226 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:38:52,088 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:38:52,708 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:38:53,100 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:39:21,449 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:39:21,449 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:39:21,449 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:39:21,449 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:39:21,449 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:39:21,450 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:39:21,450 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:39:21,450 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:39:21,450 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:39:21,450 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:39:25,118 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:39:25,740 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:39:26,158 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-20 16:41:31,602 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-20 16:41:31,602 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-20 16:41:31,602 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Use DB: None
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Output: file
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Format: json
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-20 16:41:31,603 - DeepNLPF.base - INFO - Boost: ray
+2022-03-20 16:41:35,258 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-20 16:41:35,861 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-20 16:41:36,258 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-03-29 05:42:26,766 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-03-29 05:42:26,767 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-03-29 05:42:26,767 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Use DB: None
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Output: file
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Format: json
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-03-29 05:42:26,768 - DeepNLPF.base - INFO - Boost: ray
+2022-03-29 05:42:30,619 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-03-29 05:42:32,207 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-03-29 05:42:32,563 - DeepNLPF.base - INFO - Plugin Tool: ace
+2022-04-02 19:02:09,423 - DeepNLPF.base - INFO - --------------------- Start ---------------------
+2022-04-02 19:02:09,424 - DeepNLPF.base - INFO - Input data type: raw_text
+2022-04-02 19:02:09,424 - DeepNLPF.base - INFO - Input pipeline type format: json
+2022-04-02 19:02:09,424 - DeepNLPF.base - INFO - Custom Pipeline: {'lang': 'en', 'tools': {'ace': {'processors': ['parsing']}}}
+2022-04-02 19:02:09,424 - DeepNLPF.base - INFO - Use DB: None
+2022-04-02 19:02:09,424 - DeepNLPF.base - INFO - Output: file
+2022-04-02 19:02:09,425 - DeepNLPF.base - INFO - Format: json
+2022-04-02 19:02:09,425 - DeepNLPF.base - INFO - Tool NLP base: stanza
+2022-04-02 19:02:09,425 - DeepNLPF.base - INFO - Pool: 666f6f2d6261722d71757578
+2022-04-02 19:02:09,425 - DeepNLPF.base - INFO - Boost: ray
+2022-04-02 19:02:14,866 - DeepNLPF.base - INFO - Pre-processing - Execute Sentence Split in texto raw.
+2022-04-02 19:02:16,628 - DeepNLPF.base - INFO - Number of documents to process: 1
+2022-04-02 19:02:17,288 - DeepNLPF.base - INFO - Plugin Tool: ace
