@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: xraylarch
+Version: 0.9.59
+Summary: Synchrotron X-ray data analysis in python
+Home-page: http://xraypy.github.io/xraylarch/
+Author: Matthew Newville and the X-rayLarch Development Team
+Author-email: newville@cars.uchicago.edu
+License: BSD
+Download-URL: http://xraypy.github.io/xraylarch/
+Platform: Windows
+Platform: Linux
+Platform: Mac OS X
+Classifier: Intended Audience :: Science/Research
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: packaging
+Requires-Dist: pip
+Requires-Dist: pyyaml
+Requires-Dist: pytest
+Requires-Dist: termcolor
+Requires-Dist: scipy (>=1.5)
+Requires-Dist: numpy (>=1.18)
+Requires-Dist: matplotlib (>=3.0)
+Requires-Dist: sqlalchemy (>=1.0)
+Requires-Dist: h5py (>=2.8)
+Requires-Dist: pillow (>=8.3.2)
+Requires-Dist: imageio
+Requires-Dist: peakutils
+Requires-Dist: requests
+Requires-Dist: scikit-image
+Requires-Dist: scikit-learn
+Requires-Dist: asteval (>=0.9.26)
+Requires-Dist: lmfit (>=1.0.3)
+Requires-Dist: uncertainties (>=3.1)
+Requires-Dist: pyshortcuts (>=1.8.1)
+Requires-Dist: xraydb (>=4.4)
+Requires-Dist: silx (>=0.15.2)
+Requires-Dist: hdf5plugin
+Requires-Dist: numdifftools
+Requires-Dist: psutil
+Requires-Dist: pymatgen
+Requires-Dist: fabio
+Requires-Dist: pyfai
+Requires-Dist: pycifrw
+Requires-Dist: importlib-metadata
+Requires-Dist: wxutils (>=0.2.3)
+Requires-Dist: wxmplot (>=0.9.43)
+
+UNKNOWN
+
