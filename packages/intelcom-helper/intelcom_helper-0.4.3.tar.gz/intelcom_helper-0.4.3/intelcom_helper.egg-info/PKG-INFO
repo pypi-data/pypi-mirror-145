@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: intelcom-helper
+Version: 0.4.3
+Summary: Code used frequently at Intelcom
+Home-page: UNKNOWN
+Author: Simon Prudhomme
+Author-email: sphomme@intelcomexpress.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+
+Code used frequently at Intelcom by Data Science Team
+
+To build the package, run:
+> python setup.py sdist bdist_wheel
+> 
+> twine upload dist/*  
+
