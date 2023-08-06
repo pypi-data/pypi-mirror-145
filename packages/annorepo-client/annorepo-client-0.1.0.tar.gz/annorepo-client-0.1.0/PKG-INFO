@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: annorepo-client
+Version: 0.1.0
+Summary: A Python client for accessing an AnnoRepo server
+Home-page: https://github.com/brambg/annorepo-python-client
+License: MIT
+Author: Bram Buitendijk
+Author-email: bram.buitendijk@di.huc.knaw.nl
+Requires-Python: >=3.6,<4.0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Project-URL: Bug Tracker, https://github.com/brambg/annorepo-python-client/issues
+Project-URL: Repository, https://github.com/brambg/annorepo-python-client
+Description-Content-Type: text/markdown
+
+# annorepo-client
+
+A Python client for accessing an [AnnoRepo](https://github.com/brambg/annorepo) server
+
+## installing
+
+### using poetry
+
+```
+poetry add annorepo-client
+```
+
+### using pip
+
+```
+poetry add annorepo-client
+```
+
+
+
+## contributing
+
+See [CONTRIBUTING](CONTRIBUTING.md)
