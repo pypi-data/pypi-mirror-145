@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: belaweb
+Version: 0.13.1a1
+Summary: UNKNOWN
+Home-page: https://github.com/letuananh/belaweb
+Author: Le Tuan Anh
+Author-email: tuananh.ke@gmail.com
+License: MIT License
+Project-URL: Bug Tracker, https://github.com/letuananh/belaweb/issues
+Project-URL: Source Code, https://github.com/letuananh/belaweb
+Description: # BELA Dashboard
+        
+        BELA Dashboard is a web-based user interface for visualising and analysing BELA transcripts.
+        To learn how to create BELA transcripts, please refer to the [BELA convention documentation](https://blipntu.github.io/belacon/).
+        
+        BELA Dashboard uses the [Python bela package](https://github.com/letuananh/bela) to process transcripts under the hood.
+        Users who want to perform batch processing or data extraction can use [bela](https://github.com/letuananh/bela) package directly using Python scripts.
+        
+        ## Installation
+        
+        **belaweb** is available on [PyPI](https://pypi.org/project/belaweb/) and can be installed using pip:
+        
+        ```bash
+        pip install belaweb
+        ```
+        
+        ## Development
+        
+        To run belaweb locally for testing, there is a minimal WSGI application available at https://github.com/letuananh/belaweb
+        
+        ```bash
+        # activate a Python (virtual) environment with belaweb package installed
+        cd belaweb-wsgi-min
+        ./manage.py runserver
+        ```
+        
+        Then access belaweb locally using a browser: http://localhost:8000/bela/gui/
+        
+        ## License
+        
+        **belaweb** package is licensed under MIT License.
+        The following packages are included:
+        
+        - [Chart.js v2.9.4](https://www.chartjs.org/docs/2.9.4/) - MIT License
+        
+Keywords: nlp,annotation,text,corpus,linguistics,ELAN,transcription
+Platform: any
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Natural Language :: Chinese (Simplified)
+Classifier: Natural Language :: Malay
+Classifier: Natural Language :: Tamil
+Classifier: Environment :: Plugins
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown

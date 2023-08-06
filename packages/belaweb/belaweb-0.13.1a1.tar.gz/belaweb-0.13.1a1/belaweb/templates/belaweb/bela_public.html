@@ -1,0 +1,645 @@
+{% extends 'sunshine/base_blank.html' %}
+{% load sunshinetags %}
+{% load static %}
+
+{% block style%}
+    {% if SUNSHINE_ENV == 'DEV' %}
+    <link href="{% static 'sunshine/css/sb-admin-2-dev.min.css' %}" rel="stylesheet">
+    <style>
+     .bg-gradient-primary {
+       background-image: linear-gradient(180deg,#600600 10%,#ee0000 100%);
+     }
+    </style>
+    {% elif SUNSHINE_ENV == 'UAT' %}
+    <link href="{% static 'sunshine/css/sb-admin-2-uat.min.css' %}" rel="stylesheet">
+    <style>
+     .bg-gradient-primary {
+       background-image: linear-gradient(180deg,#006600 10%,#00ee00 100%);
+     }
+    </style>
+    {% else %}
+    <link href="{% static 'sunshine/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    {% endif %}
+<style>
+ .important {
+   color: black;
+ }
+ .person_name {
+   color: black;
+   font-weight: bold;
+ }
+ .minor_stats {
+   margin: 10px;
+ }
+ .chart-pie {
+   margin-bottom: 20px;
+ }
+ .language-legends {
+   margin-bottom: 20px;
+ }
+ .translation {
+   font-family: "Courier New", Courier, monospace;
+ }
+</style>
+{% endblock%}
+
+{% block content %}
+<div class="container-fluid" style="padding-top: 10px">
+  <!-- Page Heading -->
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'belaweb_public' %}">BELA Dashboard</a></li>
+        {% if elanfile %}
+        <li class="breadcrumb-item active" aria-current="page">{{ elanfile.original_name }}</li>
+        {% endif %}
+      </ol>
+    </nav>
+
+  <!-- Content Row -->
+  <div class="row"  id="belavue">
+    <!-- Content Column -->
+    <div class="col-lg-12 mb-12">
+
+     <!-- Upload card -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Upload</h6>
+        </div>
+        <div class="card-body">
+          <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{ form.elanfile }}
+            <button class="btn btn-primary" type="submit" value="Upload">Upload <i class="fas fa-cloud-upload-alt"></i> </button>
+          </form>
+        </div>
+      </div>          
+
+      {% if elanfile is not None %}
+
+      <!-- Stats card -->
+      <div v-if="belacon_version" class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary float-left">Statistics</h6>
+          <span class="float-right text-light">
+            <a class="btn btn-sm btn-primary" data-toggle="collapse" data-target=".statistics-div" >
+              <i class="fas fa-compress" :class=""></i> <span>Toggle</span>
+            </a>
+          </span>
+        </div>
+        <div class="card-header statistics-div collapse show">{{ elanfile.original_name }}
+          <span v-if="error_count > 0" class="badge badge-danger">Errors: [[ error_count ]]</span>
+        </div>
+        <div class="card-body statistics-div collapse show">
+          <div class="row">
+            <!-- pie chart -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+              <div class="chart-pie pt-4 pb-2">
+              <canvas id="languagePieChart"></canvas>
+              </div>              
+            </div>
+            <!-- language summary table -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+              {% comment %}
+              <table class="table">
+              <thead>
+              <tr>
+              <th v-for="item in languages.all"><span :style="{color: item.color}">[[item.text]]</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                <td v-for="item in languages.all"><span :style="{color: item.color}">[[item.duration]] secs</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              {% endcomment %}
+
+              <div class="minor_stats">
+                <div class="row important">
+                  <div class="col-sm-4 col-md-4 col-lg-3 col-xl-6 text-bold">Utterance count</div>
+                  <div class="col-sm-8 col-md-8 col-lg-9 col-xl-6">[[ sentcount ]]</div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4 col-md-4 col-lg-3 col-xl-6 text-bold">Annotation count</div>
+                  <div class="col-sm-8 col-md-8 col-lg-9 col-xl-6">[[ anncount ]]</div>
+                </div>
+              </div>
+              
+              <div class="card language_legends">
+                <div class="card-body">
+                <div class="row" v-for="item in languages.all">
+                  <div class="col-sm-8 col-md-7 col-lg-7 col-xl-5 text-bold"><span :style="{color: item.color}">[[item.text]]</span></div>
+                  <div class="col-sm-4 col-md-5 col-lg-5 col-xl-7"><span :style="{color: item.color}">[[item.duration]] secs</span></div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <!-- Other stats -->
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-4">
+              <div class="chart-area">
+                <canvas id="languageBarChart"></canvas>
+              </div>
+
+              {% comment %}
+              <!-- errors -->
+              <div v-if="errors">
+                <div v-for="error in errors" class="alert alert-danger" role="alert">
+                  [[ error ]]
+                </div>
+              </div>
+              <!-- errors end -->
+              {% endcomment %}
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col">
+              <h3>Language Mix</h3>
+              <div v-if="langmix_bar" class="progress" style="height: 30px; margin-bottom: 20px">
+                <div v-for="chunk in langmix_bar.chunks" class="progress-bar" :style="{'width': chunk[1] + '%', 'background-color': chunk[2]}" :title="chunk[0]"></div>
+              </div>
+              <div v-else>
+                <div class="mt-2">- No language mix bar is available -</div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <table class="table table-hover">
+            <thead class="thead-light">
+            <tr>
+            <th>Person</th>
+            <th>Duration<br/>(seconds)</th>
+            <th>Utterances</th>
+            <th>Words</th>
+            <th>MLU</th>
+            <th>Turns</th>
+            <th>Languages</th>
+            <th>Tiers</th>
+                </tr>
+              </thead>
+            <tbody>
+            <tr v-for="person in people">
+            <td><span class="person_name">[[ person.name ]]</span><br/>([[ person.code ]])</td>
+            <td>[[ person.duration ]]</td>
+            <td>[[ person.utterance_count ]]</td>
+            <td>[[ person.wordcount ]]</td>
+            <td>[[ person.MLU ]]</td>
+            <td><span v-if="person.turns">[[ person.turns ]]</span></td>
+            <td>
+              <span v-for="item in person.languages.all" :style="{color: item.color}">
+                [[item.text ]] ([[item.duration]] secs)&nbsp;&nbsp;&nbsp;
+              </span>
+
+              <div class="progress" style="height: 8px;">
+                <div v-for="item in person.languages.all"
+                     :style="{width: (100 * item.duration / person.duration) + '%', 'background-color': item.color}"
+                     :aria-valuenow="100 * item.duration / person.duration"
+                     :title="item.text" 
+                     class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </td>
+            <td>[[ person.tiers.join(", ") ]]</td>
+                </tr>
+              </tbody>
+            </table>            
+          </div>
+        </div>
+      </div>
+
+      <!-- Lexicon card -->
+      <div v-if="belacon_version" class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary float-left">Lexicon</h6>
+          <span class="float-right text-light">
+            <a class="btn btn-sm btn-primary" data-toggle="collapse" data-target="#lexstats-div" >
+              <i class="fas fa-compress" :class=""></i> <span>Toggle</span>
+            </a>
+          </span>
+        </div>
+        <div class="card-body collapse" id="lexstats-div">
+          <div class="row mb-1">
+            <div class="form-check">
+              <input type="checkbox" id="chkOnlySpecialLex" v-model="special_lex_only">
+              <label for="checkbox">Highlight unknown words</label>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" id="chkShowLexTable" v-model="table_mode">
+              <label for="checkbox">Show Lexicon Table</label>
+            </div>
+            <div class="form-check" v-if="!table_mode">
+              <input type="checkbox" id="chkShowLexFreq" v-model="show_freq">
+              <label for="checkbox">Show Frequency</label>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <!-- start lexicon stats -->
+            <div class="col">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" v-for="profile in lexstats.stats">
+                <a class="nav-link" :id="profile.name + '-tab'" data-toggle="tab" :href="'#' + profile.name" role="tab" :aria-controls="profile.name" aria-selected="true">[[ profile.name ]]</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="lexicon-tab" data-toggle="tab" href="#lexicon" role="tab" aria-controls="lexicon" aria-selected="true">Lexicon</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <!-- Stat cards -->
+              <div v-for="profile in stats" class="tab-pane fade" :id="profile.name" role="tabpanel" :aria-labelledby="profile.name + '-tab'">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Statistics - [[ profile.name ]]</h6>
+                  </div>
+                  <div class="card-body">
+                    <table class="table table-hover">
+                      <thead class="thead-light">
+                        <tr>
+                          <th>Language</th>
+                          <th>Types</th>
+                          <th>Tokens</th>
+                          <th>Ratio</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="row in profile.stats.languages">
+                          <td>[[ row.language ]]</td>
+                          <td>[[ row.types ]]</td>
+                          <td>[[ row.tokens ]]</td>
+                          <td>[[ row.ratio ]]</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Lexicon -->
+              <div class="tab-pane fade" id="lexicon" role="tabpanel" aria-labelledby="lexicon-tab">
+                <!-- lexicon tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" v-for="langlex in lexstats.all.lexicon" v-if="langlex.vocabs.length > 0">
+                    <a class="nav-link" :id="make_id(langlex.language) + '-lex-tab'" data-toggle="tab" :href="'#' + make_id(langlex.language) + '-lex'" role="tab" :aria-controls="make_id(langlex.language) + '-lex'" aria-selected="false">[[ langlex.language ]]</a>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <!-- language lexicon panel (word & freq) -->
+                  <div v-for="langlex in all.lexicon" class="tab-pane fade" :id="make_id(langlex.language) + '-lex'" role="tabpanel" :aria-labelledby="make_id(langlex.language) + '-lex-tab'">
+                    <div class="card shadow mb-4">
+                      <div class="card-header">[[ langlex.language ]] ([[ langlex.vocabs.length ]])</div>
+                      <div class="card-body">
+                        [[ lexstats.message ]]
+                        <table v-if="table_mode" class="table table-hover table-sm">
+                          <thead class="thead-light">
+                            <tr>
+                              <th><a @click="sort_word(langlex.vocabs)">Word</a></th>
+                              <th><a @click="sort_freq(langlex.vocabs)">Frequency</a></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="lex in langlex.vocabs">
+                              <td><a @click="show_examples(lex)" :title="'Speakers: ' + lex.speakers.join(', ') + '\n--\n' + lex.sents.join('\n')">[[ lex.word ]]</a></td>
+                              <td>[[ lex.freq ]]</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div v-else>
+                          <div class="d-flex flex-wrap">
+                            <div v-for="lex in langlex.vocabs" class="px-3">
+                              <span class="font-weight-bold badge badge-info" v-if="lex.special_code"
+                                    :title="'Speakers: ' + lex.speakers.join(', ') + '\n--\n' + lex.sents.join('\n')">
+                                [[ lex.word ]]
+                              </span>
+                              <span class="font-weight-bold text-danger" v-else-if="special_lex_only && lex.unknown_word"
+                                    :title="'Speakers: ' + lex.speakers.join(', ') + '\n--\n' + lex.sents.join('\n')">
+                                [[ lex.word ]]
+                              </span>
+                              <span class="font-weight-bold text-dark" v-else
+                                    :title="'Speakers: ' + lex.speakers.join(', ') + '\n--\n' + lex.sents.join('\n')">
+                                [[ lex.word ]]
+                              </span>
+                          <span v-if="show_freq">([[ lex.freq ]])</span>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- end of lexicon table/word list -->
+                        <div class="chart-area" style="height: 30%; width: 100%">
+                          <canvas :id="'myChart_' + langlex.language.replace(/:/g, '_')"></canvas>
+                        </div>
+                </div>
+              </div>              
+            </div>
+          </div>
+
+          {% comment %}
+
+          {% endcomment %}
+        </div>
+            </div>
+            </div>
+            <!-- end lexicon stats -->
+          </div>
+      </div>
+      </div>
+      
+      <!-- Transcript card -->
+      <div v-if="belacon_version" class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary float-left">
+            Full Transcript
+            <span class="badge badge-warning" v-if="belacon_version==1">BELA-con [[belacon_version]].0</span>
+            <span class="badge badge-primary" v-if="belacon_version==2">BELA-con [[belacon_version]].0</span>
+            <span v-if="error_count > 0" class="badge badge-danger">Errors: [[ error_count ]]</span>
+          </h6>
+          <span class="float-right text-light">
+            <a class="btn btn-sm btn-primary" data-toggle="collapse" data-target="#transcript-div" >
+              <i class="fas fa-compress" :class=""></i> <span>Toggle</span>
+            </a>
+          </span>
+        </div>
+        <div class="card-body collapse" id="transcript-div">
+          <div class="row mb-1">
+            <div class="form-check">
+              <input type="checkbox" id="chk_error_only" v-model="error_only">
+              <label for="chk_error_only">Show errors only{% comment%}: [[ error_only ]]{% endcomment %}</label>
+              <span v-if="error_count == -1" class="badge badge-secondary">Error count: N/A in BELA-con 1.0</span>
+              <input type="checkbox" v-if="belacon_version==2" id="chk_show_trans" v-model="show_translation">
+              <label for="chk_show_trans" v-if="belacon_version==2">Show translation</label>
+
+              <input type="checkbox" v-if="belacon_version==2" id="chk_turns_only" v-model="turns_only">
+              <label for="chk_turns_only" v-if="belacon_version==2">Show turns only</label>
+            </div>
+          </div>
+
+          {% if BELA_DOCUMENTATION_OFFICIAL_URL %}
+          <div class="row ml-2 mb-2">
+            <a href="{{ BELA_DOCUMENTATION_OFFICIAL_URL }}"
+               target="_blank">{{ BELA_DOCUMENTATION_OFFICIAL_URL }}</a>
+          </div>
+          {% endif %}
+
+          <!-- errors -->
+          <div class="row mb-2" v-if="errors">
+            <div class="col">
+              <div v-for="error in errors" class="row">
+                <div class="col-12">
+                  <div class="alert alert-danger" role="alert">
+                    [[ error ]]
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- errors end -->
+          
+          <div class="row" v-for="chatline in chatlog">
+            <div class="col-12 my-3" v-if="turns_only && chatline.is_turnA && !chatline.is_turnB">
+              ...
+            </div>
+            <div v-if="(!error_only || chatline.is_error) && (!turns_only || (chatline.is_turnA || chatline.is_turnB))"
+                 :class="{'border-left-info': chatline.is_turnA, 'border-left-warning': chatline.is_turnB}"
+                 class="col-sm-1">
+              <span class="person_name" v-if="!chatline.is_continue">
+                <i v-if="chatline.is_turnB" class="fas fa-angle-double-right"></i>
+                [[ chatline.speaker_name ]]
+                <i v-if="chatline.is_turnA" class="fas fa-angle-double-down"></i>
+                <span></span>
+              </span>
+            </div>
+            <div v-if="(!error_only || chatline.is_error) && (!turns_only || (chatline.is_turnA || chatline.is_turnB))" class="col-sm-5" :class="{'text-right': chatline.is_baby}">
+              <span v-if="chatline.chunks.length > 0" v-for="chunk in chatline.chunks"  :style="{color: chunk.color}">[[ chunk.text ]]
+                <span v-if="chunk.is_error || chunk.errors.length > 0">
+                  <span class="text-danger" v-for="chunk_error in chunk.errors"> !!([[ chunk_error ]])!! </span>
+                  <br/>
+                </span>
+              </span>
+              <span v-if="chatline.chunks.length == 0 && chatline.text">
+                <span class="text-light bg-dark">[[ chatline.text ]]</span>
+              </span>
+              <span class="bg-light translation" v-if="chatline.trans && show_translation">(Eng: "[[ chatline.trans ]]")</span>
+              <span v-if="chatline.is_error">
+                <div v-for="error in chatline.errors">
+                  <span class="text-danger">!![[error]]!!</span>
+                </div>
+              </span>
+            </div>
+            <div v-if="(!error_only || chatline.is_error) && (!turns_only || (chatline.is_turnA || chatline.is_turnB))" class="col-sm-2"></div>
+            <div v-if="(!error_only || chatline.is_error) && (!turns_only || (chatline.is_turnA || chatline.is_turnB))" class="col-sm-4">
+              <!-- #eaecf4 -->
+              <div class="progress">
+                <div v-if="chatline.is_baby && chatline.rremainder" class="progress-bar" role="progressbar" style="background-color: #eaecf4"
+                     :style="{width: chatline.rremainder + '%'}" :aria-valuenow="chatline.rremainder" aria-valuemin="0" aria-valuemax="100"></div>
+                <div v-for="chunk in chatline.chunks" class="progress-bar" :title="chunk.language" role="progressbar"
+                     :style="{width: chunk.rduration + '%', 'background-color': chunk.color}" :aria-valuenow="chunk.rduration" aria-valuemin="0" aria-valuemax="100"></div>
+                <div v-if="!chatline.is_baby && chatline.rremainder" class="progress-bar" role="progressbar" style="background-color: #eaecf4"
+                     :style="{width: chatline.rremainder + '%'}" :aria-valuenow="chatline.rremainder" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+      {% endif %}
+
+      <!-- BELA info card -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary float-left">BELA Info</h6>
+        </div>
+        <div class="card-body bela-info-div collapse show">
+          {% if elanfile is not None %}
+          <div v-if="!belacon_version" class="row mb-2">
+            <div class="col text-danger">
+              <h3>Error</h3>
+              This ELAN file could not be parsed with current BELA online engine,
+              please report this to the development team for further investigation.
+            </div>
+          </div>
+          {% endif %}
+
+          <div class="row mb-2">
+            <div class="col">
+              <span class="badge badge-primary">BELA engine version</span> {{ BELA_VERSION }}<br/>
+              <span class="badge badge-primary">BELA dashboard version</span> {{ BELA_DASHBOARD_VERSION }}<br/>
+              <span class="badge badge-primary">BELA dashboard build</span> {{ BELA_DASHBOARD_BUILD }}<br/>
+              <div class="mt-2">
+                <a href="{{ BELA_SOURCE_REPO }}" target="_blank">BELA Dashboard</a> is an opensource project for visualising and analysing BELA transcripts.<br/>
+                The documentation for creating multilingual transcripts using BELA convention is available at <a href="{{ BELA_DOCUMENTATION_OFFICIAL_URL }}" target="_blank">{{ BELA_DOCUMENTATION_OFFICIAL_URL }}</a><br/>
+                If you encounter any issues, please consider to log
+                <a href="{{ BELA_ISSUE_URL }}" target="_blank">
+                  a bug report here.
+                </a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+  </div><!-- End of Content Row -->
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'vendor/vue/vue.min.js' %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static 'sunshine/js/common.js' %}"></script>
+<!-- Page level plugins -->
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+<script src="{% static 'vendor/bela-dashboard/bela-dashboard.js' %}"></script>
+
+<script>
+ function drawPieChart(data, labels, colors){
+   // draw a pie chart
+   var ctx = document.getElementById("languagePieChart");
+   var myPieChart = new Chart(ctx, {
+     type: 'doughnut',
+     data: {
+       labels: labels,
+       datasets: [{
+         data: data,
+         backgroundColor: colors,
+         hoverBackgroundColor: colors,
+         hoverBorderColor: "rgba(234, 236, 244, 1)",
+       }],
+     },
+     options: {
+       maintainAspectRatio: false,
+       tooltips: {
+         backgroundColor: "rgb(255,255,255)",
+         bodyFontColor: "#858796",
+         borderColor: '#dddfeb',
+         borderWidth: 1,
+         xPadding: 15,
+         yPadding: 15,
+         displayColors: false,
+         caretPadding: 10,
+       },
+       legend: {
+         display: false
+       },
+       cutoutPercentage: 80,
+     },
+   });
+ }
+</script>
+<script>
+ var belavue = new Vue({
+   delimiters: ['[[', ']]'],
+   el: '#belavue',
+   data:  {{ data|jsonify|safe }},
+   methods: {
+     sort_word: function(vocabs) {
+       if (this.lexstats.sorting_mode != "word") {
+         this.lexstats.sorting_mode = "word";
+         vocabs.sort(function (a,b){
+           return a.word.localeCompare(b.word);
+         });         
+       }
+       else {
+         this.lexstats.sorting_mode = "word_rev";
+         vocabs.sort(function (a,b){
+           return b.word.localeCompare(a.word);
+         });         
+       }
+     },
+     sort_freq: function(vocabs) {
+       if (this.lexstats.sorting_mode != "freq"){
+         this.lexstats.sorting_mode = "freq";
+         vocabs.sort(function(a,b){
+           return a.freq - b.freq;
+         });
+       }
+       else {
+         this.lexstats.sorting_mode = "freq_rev";
+         vocabs.sort(function(a,b){
+           return b.freq - a.freq;
+         });         
+       }
+     },
+     make_id: function(text){
+       return text.replace(/ /g, '-').replace(/:/g, '_');
+     },
+     show_examples: function(lex) {
+     },
+     lexicon2wordfreq: function(langlex) {
+       var result = {words: [], freqs: []}
+       langlex.vocabs.forEach(function(lex, index){
+         result.words.push(lex.word);
+         result.freqs.push(Math.log(lex.freq));
+       });
+       return result;
+     }
+   },
+   computed: {
+     stats: function(){ return this.lexstats.stats },
+     all: function(){ return this.lexstats.all },
+     transcript_div_icon: function() {
+       return ($("#transcript-div").hasClass("collapse")) ? "fa-toggle-on" : "fa-toggle-off";
+     }
+   },
+   mounted: function() {
+     drawPieChart(this.languages.durations, this.languages.languages, this.languages.colors);
+     // prepare language bar chart data
+     var languageNames = this.languages.languages;
+     var languageColors = this.languages.colors;
+     var languageVectorMap = new Map();  // map a language name to a specific language vector
+     var datasets = [];  // each dataset is 1 language
+     this.languages.languages.forEach(function(language, index){
+       var dataset = {label: language, data: [], backgroundColor: languageColors[index]};
+       languageVectorMap[language] = dataset;
+       datasets.push(dataset);
+     });
+     var personNames = [];
+     this.people.forEach(function(person, index){
+       if (person.duration == 0) {
+         return;
+       }
+       personNames.push(person.name);
+       var personLanguageMap = {};
+       person.languages.all.forEach(function(language, langIdx){
+         personLanguageMap[language.text] = language.duration;
+       });
+       console.log(person.name + " language map: " + JSON.stringify(personLanguageMap));
+       console.log("Language names: " + JSON.stringify(languageNames));
+       // push language values to dataset
+       languageNames.forEach(function(language, index){
+         console.log(person.name + " " + language + " duration: " + personLanguageMap[language] + " Found: " + (language in personLanguageMap));
+         if (language in personLanguageMap){
+           languageVectorMap[language].data.push(personLanguageMap[language]);
+         }
+         else {
+           languageVectorMap[language].data.push(0);
+         }
+       });
+     });
+     console.log("Data sets:" + JSON.stringify(datasets));
+     var ctx = document.getElementById('languageBarChart').getContext('2d');
+     var languageBarChartObject = new Chart(ctx, {
+       type: 'horizontalBar',
+       data: {
+         labels: personNames, datasets: datasets
+       },
+       options: {
+         maintainAspectRatio: false,
+         layout: {
+           padding: {left: 10, right: 25, top: 25, bottom: 0}
+         },
+         scales: {
+           xAxes: [{stacked: true, scaleLabel: {labelString: '(seconds)', display: true}}],
+           yAxes: [{stacked: true}]
+         }
+       }
+     });
+     
+     // draw language bar chart
+     // draw lexicon charts
+     var that = this;
+     this.lexstats.all.lexicon.forEach(function(langlex, index){
+       var wordfreq = that.lexicon2wordfreq(langlex);
+       var canvasID = 'myChart_' + langlex.language.replace(/:/g, '_');
+       wordfreqChart(canvasID, wordfreq.words, wordfreq.freqs);
+     });
+     // end of lexicon charts
+   }
+ });
+</script>
+{% endblock %}

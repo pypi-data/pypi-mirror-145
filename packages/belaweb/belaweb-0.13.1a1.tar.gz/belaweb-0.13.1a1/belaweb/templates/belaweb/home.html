@@ -1,0 +1,151 @@
+{% extends 'sunshine/base.html' %}
+{% block content %}
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">BELA Dashboard</h1>
+    {# un-comment this when we want to allow users to download reports #}
+    {% comment %}
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+    {% endcomment %}
+  </div>
+  
+  <!-- Content Row -->
+  <div class="row">
+    <!-- Content Column -->
+    <div class="col-lg-12 mb-12">
+      
+      <!-- Upload card -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Upload</h6>
+        </div>
+        <div class="card-body">
+          <form enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{ form.elanfile }}
+            <button class="btn btn-primary" type="submit" value="Upload">Upload <i class="fas fa-cloud-upload-alt"></i> </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Files card -->
+      {% if elanfiles %}
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">My ELAN Files</h6>
+        </div>
+        <div class="card-body">
+          <table class="table table-sm table-hover">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Filename</th>
+                <th scope="col">Created</th>
+                <th scope="col">Command</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for elanfile in elanfiles %}
+              <tr>
+                <th scope="row"><a href="{% url 'belaweb_visualize' %}{{ elanfile.content }}">{{ elanfile.original_name }}</a></th>
+                <td>{{ elanfile.created_at }}</td>
+                <td>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" data-filesign="{{ elanfile.content }}" data-filename="{{elanfile.original_name}}">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- BELA-con link -->
+      {% if BELA_DOCUMENTATION_URL %}
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">BELA-con</h6>
+        </div>
+        <div class="card-body">
+          
+          <a href="{{ BELA_DOCUMENTATION_URL }}"
+             target="_blank">{{ BELA_DOCUMENTATION_URL }}</a>
+          {% if BELA_DOCUMENTATION_USERNAME %}
+          <div class="row">
+            <div class="col-2">Username</div>
+            <div class="col-10">{{ BELA_DOCUMENTATION_USERNAME }}</div>
+          </div>
+          {% endif %}
+          {% if BELA_DOCUMENTATION_PASSWORD %}
+          <div class="row">
+            <div class="col-2">Password</div>
+            <div class="col-10">{{ BELA_DOCUMENTATION_PASSWORD }}</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- BELA engine info box -->
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">BELA info</h6>
+        </div>
+        <div class="card-body">
+              <span class="badge badge-primary">BELA engine version</span> {{ BELA_VERSION }}<br/>
+              <span class="badge badge-primary">BELA dashboard version</span> {{ BELA_DASHBOARD_VERSION }}<br/>
+              <span class="badge badge-primary">BELA dashboard build</span> {{ BELA_DASHBOARD_BUILD }}<br/>
+              {% if SAFE_MODE %}
+              <span class="badge badge-success">Safe-mode: ON</span>
+              {% else %}
+              <span class="badge badge-danger">Safe-mode: OFF</span>
+              {% endif %}
+        </div>
+      </div>
+      <!-- end main content div -->
+      
+    </div>
+  </div><!-- End of Content Row -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Warning: Delete confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure to delete the file: <span class="text-danger" id="filename_span"></span>
+        {% comment %}<br/>(<span id="filesign_span"></span>){% endcomment %}
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-danger" role="button" id="btnDeleteFile" aria-pressed="true">Delete</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+ $(function(){
+   $('#deleteModal').on('show.bs.modal', function (event) {
+     var button = $(event.relatedTarget); // Button that triggered the modal
+     var filesign = button.data('filesign');
+     var filename = button.data('filename');
+     var modal = $(this);
+     modal.find('.modal-body #filename_span').html(filename);
+     modal.find('.modal-body #filesign_span').html(filesign);
+     modal.find('.modal-footer #btnDeleteFile').attr("href", '{% url 'belaweb_deletefile' %}' + filesign);
+   });
+ }); 
+</script>
+{% endblock %}
