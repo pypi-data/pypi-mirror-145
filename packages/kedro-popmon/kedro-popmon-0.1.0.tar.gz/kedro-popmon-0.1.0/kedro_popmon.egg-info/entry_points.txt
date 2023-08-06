@@ -1,0 +1,6 @@
+[kedro.hooks]
+kedro_popmon = kedro_popmon.framework.kedro_popmon:hooks
+
+[kedro.project_commands]
+kedro_popmon = kedro_popmon.framework.cli.cli:commands
+
