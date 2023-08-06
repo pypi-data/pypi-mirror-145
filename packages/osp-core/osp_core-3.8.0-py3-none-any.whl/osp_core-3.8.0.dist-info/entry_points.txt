@@ -1,0 +1,8 @@
+[console_scripts]
+ontology2dot = osp.core.tools.ontology2dot:run_from_terminal
+owl2yml = osp.core.tools.owl2yml:run_from_terminal
+pico = osp.core.pico:terminal
+yaml2camelcase = osp.core.tools.yaml2camelcase:run_from_terminal
+
+[wrappers]
+osp-core = osp.core.session.core_session:CoreSession
