@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/openutx/static/image/fav.ico">
+<link href="https://cdn.jsdelivr.net/gh/openutx/static/css/report.css" rel="stylesheet">
+<!-- surprise form lijiawei -->
+<html>
+
+<head>
+    <title>UTX Statistics</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #f6fcff;
+        }
+
+        a:hover {
+            color: #94c3ee;
+            text-decoration: underline;
+        }
+
+        body {
+            font-family: "微软雅黑";
+            color: #f6fcff;
+            background-color: #12182A;
+        }
+
+        .fail {
+            color: #ec5e5e;
+            width: 7 emem;
+            text-align: center;
+        }
+
+        .success {
+            color: #4be64b;
+            width: 7 emem;
+            text-align: center;
+        }
+
+        .details-col-elapsed {
+            width: 7em;
+            text-align: center;
+            height: 50px;
+        }
+
+        .details-col-msg {
+            width: 7em;
+            text-align: center;
+            background-color: #121C34;
+            height: 50px;
+        }
+
+        .nav {
+            width: 800px;
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .text, .list {
+            display: inline-block;
+        }
+
+        .list .item {
+            list-style: none;
+            display: inline-block;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .list .item:hover {
+            color: #94c3ee;
+        }
+
+        .list .item.active {
+            color: #94c3ee;
+        }
+
+        .table {
+            margin: 20px auto 0;
+            border: 1px #f6fcff;
+            background-color: #121C34;
+            display: none;
+        }
+
+        .table.active {
+            display: table;
+        }
+
+        .text {
+            text-align: center;
+        }
+
+        #td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <div>
+        <h1 class="title">UTX Statistics</h1>
+    </div>
+    <div class="nav">
+        <div class="text">运行设备：</div>
+        <ul class="list">{% for all in results %}{% if loop.first %}
+            <li class="item active">{{all['devices']}}</li>
+            {% else %}
+            <li class="item">{{all['devices']}}</li>
+            {% endif %} {% endfor %}
+        </ul>
+    </div>
+    {% for all in results %} {% if loop.first %}
+    <table width="800" border="thin" cellspacing="0" cellpadding="0" class="table active">{% else %}
+        <table width="800" border="thin" cellspacing="0" cellpadding="0" class="table">{% endif %}
+            <tr width="600">
+                <th width="300" class='details-col-msg'>测试用例</th>
+                <th class='details-col-msg'>执行结果</th>
+            </tr>
+            {% for r in all['result'] %}
+            <tr>
+                <td class='details-col-elapsed'><a href="../../logs/{{all['devices']}}/{{r.name}}/log.html"
+                                                   target="view_window">{{r.name}}</a></td>
+                <td class="{{'success' if r.result else 'fail'}}" id="td">{{"成功" if r.result else "失败"}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
+</div>
+<script>
+    document.querySelectorAll('.item').forEach((item, index) => {
+        item.addEventListener('click', (i) => {
+            // item.className = 'item active'
+            document.querySelectorAll('.table').forEach((titem, tindex) => {
+                if (index === tindex) {
+                    document.querySelectorAll('.item')[tindex].className = 'item active'
+                    titem.className = 'table active'
+                } else {
+                    document.querySelectorAll('.item')[tindex].className = 'item'
+                    titem.className = 'table'
+                }
+            })
+
+        })
+    })
+</script>
+<div class="footer" style="text-align:center;">
+    <div class="footer-content">
+        <div class="foo">
+            <span lang="en">© 2019 - 2022 UTX, Inc. All Rights Reserved.</span>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
