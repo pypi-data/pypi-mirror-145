@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "contig_tools"
+version = "0.3.6"
+description = ""
+authors = ["Anthony Underwood <anthony.p.underwood@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+setuptools = "^61.3.0"
+Cython = "^0.29.28"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
