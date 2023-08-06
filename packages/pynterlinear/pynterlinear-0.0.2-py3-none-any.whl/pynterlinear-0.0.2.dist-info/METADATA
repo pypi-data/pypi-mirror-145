@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: pynterlinear
+Version: 0.0.2
+Summary: Formatting IGT with python.
+Home-page: https://github.com/fmatter/pynterlinear
+Author: Florian Matter
+Author-email: florianmatter@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/fmatter/pynterlinear/issues
+Keywords: interlinear glossed text,linguistics
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: python-docx
+Requires-Dist: pyperclip
+Provides-Extra: dev
+Requires-Dist: bump2version ; extra == 'dev'
+Requires-Dist: coverage[toml] ; extra == 'dev'
+Requires-Dist: prospector[with_pyroma] ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme ; extra == 'dev'
+Requires-Dist: sphinx-autoapi ; extra == 'dev'
+Requires-Dist: tox ; extra == 'dev'
+Requires-Dist: myst-parser ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Provides-Extra: publishing
+Requires-Dist: twine ; extra == 'publishing'
+Requires-Dist: wheel ; extra == 'publishing'
+
+# pynterlinear
+
+![License](https://img.shields.io/github/license/fmatter/pynterlinear)
+[![Documentation Status](https://readthedocs.org/projects/pynterlinear/badge/?version=latest)](https://pynterlinear.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://github.com/fmatter/pynterlinear/workflows/tests/badge.svg)](https://github.com/fmatter/pynterlinear/actions?query=workflow%3Atests)
+[![Codecov](https://img.shields.io/codecov/c/github/fmatter/pynterlinear)](https://app.codecov.io/gh/fmatter/pynterlinear/)
+[![PyPI](https://img.shields.io/pypi/v/pynterlinear.svg)](https://pypi.org/project/pynterlinear)
+![Versions](https://img.shields.io/pypi/pyversions/pynterlinear)
+
