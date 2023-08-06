@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: teramesh-hardware-tester
+Version: 0.8.0
+Summary: Scripts to test Teramesh hardware.
+Home-page: https://gitea.cluster.teramesh.cn/i-DRC/teramesh-hardware-tester
+Author: Michael Sayapin
+Author-email: michael.sayapin@i-drc.com
+License: Proprietary
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: Other/Proprietary License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Testing :: Acceptance
+Classifier: Topic :: System :: Hardware
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Requires-Dist: asciimatics (<2,>=1.13)
+Requires-Dist: click (<9,>=8.0)
+Requires-Dist: esptool (<4,>=3.2)
+Requires-Dist: pyserial (<4,>=3)
+Requires-Dist: uModbus (<2,>=1)
+Provides-Extra: all
+Requires-Dist: RPi.GPIO (~=0.7) ; extra == 'all'
+Requires-Dist: fastapi (==0.70.1) ; extra == 'all'
+Requires-Dist: ipdb ; extra == 'all'
+Requires-Dist: ipython ; extra == 'all'
+Requires-Dist: jinja2 (==3.0.3) ; extra == 'all'
+Requires-Dist: uvicorn (==0.16.0) ; extra == 'all'
+Requires-Dist: zest.releaser[recommended] ; extra == 'all'
+Provides-Extra: dev
+Requires-Dist: ipdb ; extra == 'dev'
+Requires-Dist: ipython ; extra == 'dev'
+Requires-Dist: zest.releaser[recommended] ; extra == 'dev'
+Provides-Extra: rpi
+Requires-Dist: RPi.GPIO (~=0.7) ; extra == 'rpi'
+Provides-Extra: ui
+Requires-Dist: fastapi (==0.70.1) ; extra == 'ui'
+Requires-Dist: jinja2 (==3.0.3) ; extra == 'ui'
+Requires-Dist: uvicorn (==0.16.0) ; extra == 'ui'
+
+
+
+# Hardware Tester v.0.3-beta
+
+## Prerequisites
+
+If on RPi, `pip install teramesh-hardware-tester[rpi]`, otherwise `pip install teramesh-hardware-tester`.
+
+If NOT on RPi, skip `-x test_relays`.
+
+## List tests
+
+    teramesh-hardware-test --no-tests-execute
+
+## Run all tests on USB1
+
+    teramesh-hardware-test -p /dev/ttyUSB1
+
+## Run ONLY test_comms on USB1
+
+    teramesh-hardware-test -p /dev/ttyUSB1 -i test_comms
+
+## Run everything EXCEPT test_buzz on USB1
+
+    teramesh-hardware-test -p /dev/ttyUSB1 -x test_buzz
+
+# Hardware Configurer
+
+Used to set mesh config via CLI:
+
+    $ teramesh-configure --help
+    Usage: teramesh-configure [OPTIONS]
+
+    Options:
+      -p, --port TEXT                 USB port to open serial to.  [required]
+      -b, --baudrate INTEGER          Port baudrate.
+      --router-ssid TEXT              [required]
+      --router-password TEXT          [required]
+      --router-bssid TEXT
+      --mesh-id TEXT                  [required]
+      --mesh-password TEXT            [required]
+      --mesh-type TEXT                One of: idle, root, node, leaf, sta.
+      --channel INTEGER               0 for auto or 1-13 for set channel.
+      --channel-switch-disable / --no-channel-switch-disable
+      --router-switch-disable / --no-router-switch-disable
+      --mqtt-uri TEXT                 [required]
+      --help                          Show this message and exit.
+
+

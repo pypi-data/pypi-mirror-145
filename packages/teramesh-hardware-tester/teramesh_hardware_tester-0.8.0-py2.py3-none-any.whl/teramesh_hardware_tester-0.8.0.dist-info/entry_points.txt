@@ -1,0 +1,9 @@
+[console_scripts]
+teramesh-burn-efuses = teramesh_hardware_tester.efuser:run_efuser
+teramesh-configure = teramesh_hardware_tester.configurer:run_configurer
+teramesh-dump-config = teramesh_hardware_tester.dumper:run_dumper
+teramesh-hardware-test = teramesh_hardware_tester.tester:run_tester
+teramesh-modbus-server = teramesh_hardware_tester.modbus_server:run_modbus_server
+teramesh-modbus-test = teramesh_hardware_tester.modbuser:run_modbuser
+tht-ui = teramesh_hardware_tester.server:main
+
