@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: AioFastGet
+Version: 0.0.6
+Summary: AsyncioFastGetFrame
+Home-page: https://github.com/me/myproject
+Author: dalyer
+Author-email: 954742660@qq.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.5.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aioredis (==1.3.1)
+Requires-Dist: aiohttp (==3.8.1)
+Requires-Dist: cchardet (==2.1.7)
+
+
+01、Installation
+-----
+
+```bash
+pip install AioFastGet
+```
+
+
+
+## 02、Notice
+
+> 后期如何使用？
+>  1：默认redis 库是 aioredis==1.3.1 要安装这个版本的异步redis
+>  2：
+>      （1）继承这个类，
+>      （2）然后将url通过_addurl 添加进来
+>      （3）写一个接受返回结果的async函数
+>      （4）启动crawl_main方法
+>  3：可以更改参数
+>      指定redis_key/redis_db/_max_workers/_poptype = 'FIFO'  ##先进先出
+
+
+
+## 03、Eexmple
+
+```python
+from AioFastGet import RedisUrlPool
+import asyncio
+
+class GetFast(RedisUrlPool):
+    def __init__(self):
+        super(GetFast,self).__init__(host="192.168.100.79", db=0, password="abcde", port=6381)
+        self._redisKey = "BaiduList"   ##指定网络池的key
+        self._max_workers = 2          ##开始多少个任务
+
+    async def load_url(self):
+        """加载url item"""
+        for i in range(10):
+            # 访问http://www.httpbin.org/delay/2 是需要2秒才能返回内容。
+            # 我们可以加载十个请求链接，按传统的方式是大概需要20多秒才能完成这10个请求
+            # 可以自己拿起手表计算下，我们访问了10个请求花了多长的时间
+            url_item = {"url":"http://www.httpbin.org/delay/2","backfunc":"parse_baidu"}
+            await self._addurl(url_item)
+
+
+    async def parse_baidu(self,r):
+        """解析对应的回调函数"""
+        print(r.keys())
+        print("收到html长度：",len(r['html']))
+
+    async def run(self):
+        await self.load_url()     ##加载url
+        await self.crawl_main()   ##启动爬虫程序
+
+
+if __name__ == '__main__':
+    baidu = GetFast()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(baidu.run())
+```
+
+
+
