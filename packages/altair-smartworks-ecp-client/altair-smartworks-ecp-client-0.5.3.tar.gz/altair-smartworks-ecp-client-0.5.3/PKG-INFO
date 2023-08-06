@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: altair-smartworks-ecp-client
+Version: 0.5.3
+Summary: Altair SmartWorks IoT Edge Compute Platform client
+Home-page: https://gitlab.com/swx-main/smartworks-iot/pocs/people-counter/ecp-python-client
+License: MIT
+Author: Javier Holgueras Crespo
+Author-email: jholgueras@europe.altair.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: docs
+Requires-Dist: aio-pika (>=7.1.0,<8.0.0)
+Requires-Dist: loguru (>=0.6.0,<0.7.0)
+Requires-Dist: orjson (>=3.6.7,<4.0.0)
+Requires-Dist: pydantic (>=1.9.0,<2.0.0)
+Project-URL: Bug Tracker, https://gitlab.com/swx-main/smartworks-iot/pocs/people-counter/ecp-python-client/-/issues
+Project-URL: Documentation, https://swx-main.gitlab.io/smartworks-iot/pocs/people-counter/ecp-python-client/
+Project-URL: Repository, https://gitlab.com/swx-main/smartworks-iot/pocs/people-counter/ecp-python-client
+Description-Content-Type: text/markdown
+
+Altair SmartWorks IoT Edge Compute Platform client
+

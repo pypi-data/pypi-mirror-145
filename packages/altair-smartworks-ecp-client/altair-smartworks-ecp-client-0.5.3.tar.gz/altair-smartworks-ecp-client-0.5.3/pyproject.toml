@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "altair-smartworks-ecp-client"
+version = "0.5.3"
+description = "Altair SmartWorks IoT Edge Compute Platform client"
+authors = ["Javier Holgueras Crespo <jholgueras@europe.altair.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://gitlab.com/swx-main/smartworks-iot/pocs/people-counter/ecp-python-client"
+documentation = "https://swx-main.gitlab.io/smartworks-iot/pocs/people-counter/ecp-python-client/"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+packages = [
+    { include = "smartworks" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aio-pika = "^7.1.0"
+pydantic = "^1.9.0"
+orjson = "^3.6.7"
+loguru = "^0.6.0"
+
+[tool.poetry.dev-dependencies]
+Sphinx = "^4.4.0"
+sphinx-rtd-theme = "^1.0.0"
+pylint = "^2.13.3"
+devtools = "^0.8.0"
+mypy = "^0.942"
+
+[tool.poetry.extras]
+docs = [
+    "sphinx",
+    "sphinx-rtd-theme",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://gitlab.com/swx-main/smartworks-iot/pocs/people-counter/ecp-python-client/-/issues"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pylint.format]
+max-line-length=120
+max-attributes=12
