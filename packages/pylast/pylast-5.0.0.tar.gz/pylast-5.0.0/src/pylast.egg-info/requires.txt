@@ -1,0 +1,11 @@
+httpx
+
+[:python_version < "3.8"]
+importlib-metadata
+
+[tests]
+flaky
+pytest
+pytest-cov
+pytest-random-order
+pyyaml
