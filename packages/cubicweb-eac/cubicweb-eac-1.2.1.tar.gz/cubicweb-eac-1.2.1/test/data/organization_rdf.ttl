@@ -1,0 +1,9 @@
+@prefix schema: <http://schema.org/> .
+
+<http://testing.fr/cubicweb/{{eid}}> a schema:Organization ;
+    schema:dissolutionDate "2050-05-02" ;
+    schema:foundingDate "2010-01-01" ;
+    schema:name "Entreprise" ;
+    schema:parentOrganization "Toto Cie" ;
+    schema:subOrganization "Titi Cie" ;
+    schema:url "http://testing.fr/cubicweb/{{eid}}" .
