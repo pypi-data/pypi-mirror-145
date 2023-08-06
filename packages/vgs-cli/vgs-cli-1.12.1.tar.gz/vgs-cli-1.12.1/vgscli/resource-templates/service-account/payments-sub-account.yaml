@@ -1,0 +1,11 @@
+apiVersion: 1.0.0
+kind: ServiceAccount
+data:
+  name: payments-sub-account
+  annotations:
+    "vgs.io/vault-id": "{{ vault_id }}"
+    "vgs.io/sub-account": "{{ sub_account }}"
+  scopes:
+    - financial-instruments:write
+    - transfers:write
+
