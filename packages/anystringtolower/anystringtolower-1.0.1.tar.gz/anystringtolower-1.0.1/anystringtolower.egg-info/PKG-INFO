@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: anystringtolower
+Version: 1.0.1
+Summary: Transform any string with accent and without accent to lower case
+Home-page: https://github.com/VolkenoMakers/anystringtolower
+Author: VOLKENO
+Author-email: contact@volkeno-tank.com
+License: MIT
+Keywords: core package
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Description-Content-Type: text/markdown
+License-File: LICENCE
+
+===
+TRANSFORM ANY STRING TO LOWER
+===
+
+Transform any string with accent and without accent to lower case
+
+Detailed documentation is in the "docs" directory.
+
+## Quick start
+
+1. Install the module:
+
+   pip install anystrintolower
+
+2. EXAMPLE
+
+   from anystringtolower.job import stringToLower
+
+   string= 'Ã Ã©ÃªÃ¶HELLO'
+
+   lower_string = stringToLower(string)
+
+   print(lower_string)
+
+   You should have something like this in outpout :
+   _aeeohello_
+
+
