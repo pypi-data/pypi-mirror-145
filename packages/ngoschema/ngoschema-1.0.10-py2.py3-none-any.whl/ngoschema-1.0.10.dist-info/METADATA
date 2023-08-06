@@ -1,0 +1,96 @@
+Metadata-Version: 2.1
+Name: ngoschema
+Version: 1.0.10
+Summary: automatic class-based binding to JSON schemas and toolkit for Domain-Driven Design.
+Home-page: https://github.com/numengo/python-ngoschema
+Author: Cédric ROMAN
+Author-email: roman@numengo.com
+License: GNU General Public License v3
+Keywords: json-schema, schema, class_builder, data_validation, type_checking, mixins, object_serialization, code_generation
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Utilities
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: pathlib
+Requires-Dist: future
+Requires-Dist: click
+Requires-Dist: jsonschema (>=4.0.0a6)
+Requires-Dist: ngofile
+Requires-Dist: attrs
+Requires-Dist: dpath
+Requires-Dist: pyrsistent
+Requires-Dist: simple-settings[redis,yaml]
+Requires-Dist: appdirs
+Requires-Dist: wrapt
+Requires-Dist: jinja2
+Requires-Dist: arrow
+Requires-Dist: inflection
+Requires-Dist: slugify
+Requires-Dist: jsonpickle
+Requires-Dist: six
+Requires-Dist: requests
+Requires-Dist: ruamel.yaml
+Requires-Dist: python-magic (==0.4.15)
+Requires-Dist: xmldict
+Requires-Dist: redis
+Requires-Dist: sqlalchemy
+
+========
+Overview
+========
+
+
+
+Description
+===========
+
+I'm Cedric ROMAN.
+
+``ngoschema`` aims at automate the building of classes based on a `JSON schema
+<https://spacetelescope.github.io/understanding-json-schema/index.html>`_.
+
+User can declare all class attributes in a schema (along with their type, default
+value) and the class will be built with accessors to check and validate data.
+
+User can add methods and override setters/getters, but the library provides a
+boiler plate to automatically create the class, nicely instrumented (with loggers,
+exception handling, type checking, data validation, serialization, etc...).
+
+The classbuilder allows to easily load definitions based on a canonical name and a namespace.
+
+Instance of these classes can be iterated and behave as standard collections.
+
+``ngoschema`` aims at being a toolkit for Domain-Driven Design and Model-Driven Architecture.
+
+The library is build on top of `python-jsonchema
+<http://python-jsonschema.readthedocs.io/en/latest/validate/>`_, a python
+implementation for JSON schema validation.
+
+* Free software: GNU General Public License v3
+
+
+
+Changelog
+=========
+
+0.1.0 (2018-06-04)
+------------------
+
+* First release on PyPI.
+
+
