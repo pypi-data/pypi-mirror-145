@@ -1,0 +1,5 @@
+CONFIG_PATH_KEY = "MF_CONFIG_DIR"
+CONFIG_DWH_URL = "dwh_url"
+CONFIG_DWH_PASSWORD = "dwh_password"
+CONFIG_DWH_SCHEMA = "dwh_schema"
+CONFIG_MODEL_PATH = "model_path"
