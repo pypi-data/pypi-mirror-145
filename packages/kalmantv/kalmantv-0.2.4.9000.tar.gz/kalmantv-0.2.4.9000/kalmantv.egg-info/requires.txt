@@ -1,0 +1,14 @@
+cython>=0.29
+numpy>=1.22
+scipy>=1.2.1
+numba>=0.51.2
+eigenpip
+
+[docs]
+sphinx
+sphinx_rtd_theme
+recommonmark
+
+[tests]
+pandas
+tox
