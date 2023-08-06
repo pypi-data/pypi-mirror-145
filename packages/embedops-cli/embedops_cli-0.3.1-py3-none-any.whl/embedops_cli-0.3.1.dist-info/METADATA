@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: embedops-cli
+Version: 0.3.1
+Summary: EmbedOps Command Line Tools
+Home-page: https://embedops.io
+Author: Dojo Five, LLC
+Author-email: embedops@dojofive.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Environment :: Console
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Topic :: Software Development :: Embedded Systems
+Classifier: License :: Free To Use But Restricted
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: dynaconf (==3.1.7)
+Requires-Dist: setuptools (>=21.0.0)
+Requires-Dist: flask (>=2.0.2)
+Requires-Dist: python-dotenv (>=0.19.0)
+Requires-Dist: click (==7.1.2)
+Requires-Dist: pyyaml (==5.4.1)
+Requires-Dist: docker (==5.0.3)
+Requires-Dist: requests (==2.26.0)
+Requires-Dist: certifi (>=14.05.14)
+Requires-Dist: six (>=1.10)
+Requires-Dist: python-dateutil (>=2.5.3)
+Requires-Dist: urllib3 (>=1.15.1)
+
+UNKNOWN
+
