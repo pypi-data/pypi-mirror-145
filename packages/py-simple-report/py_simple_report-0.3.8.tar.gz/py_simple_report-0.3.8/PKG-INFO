@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: py_simple_report
+Version: 0.3.8
+Summary: py_simple_report: Produce elemnts of figure files and number/pecentage contained csv file for a report.
+Home-page: https://github.com/toshiakiasakura/py_simple_report
+Author: Toshiaki Asakura
+Author-email: aflu.blossompaws@gmail.com
+Maintainer: Toshiaki Asakura
+Maintainer-email: aflu.blossompaws@gmail.com
+License: MIT
+Download-URL: https://github.com/toshiakiasakura/py_simple_report
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Classifier: Topic :: Multimedia :: Graphics
+Classifier: Framework :: Matplotlib
+Requires-Python: >=3.7
+License-File: LICENSE
+
+# py_simple_report
+[![python](https://img.shields.io/pypi/pyversions/py-simple-report)](https://www.python.org/)
+[![PyPI](https://img.shields.io/pypi/v/py-simple-report.svg)](https://pypi.org/project/py-simple-report/)
+[![license](https://img.shields.io/pypi/l/py-simple-report?color=blue)](https://github.com/toshiakiasakura/py-simple-report/blob/main/LICENSE)
+
+## Installation
+`pip install py-simple-report`
+
+It is noted that from jupyter notebook/lab, `!pip install py-simple-report` causes error of ` ModuleNotFoundError: No module named 'matplotlib_inline'` so that please pip from a terminal.
+
+## Documentation
+- https://toshiakiasakura.github.io/py_simple_report/
+
+Usage notebook can be found in `docs_src/notebooks`
+
+
