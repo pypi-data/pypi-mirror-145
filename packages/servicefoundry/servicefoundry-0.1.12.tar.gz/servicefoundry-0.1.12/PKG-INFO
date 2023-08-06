@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: servicefoundry
+Version: 0.1.12
+Summary: Generate deployed services from code
+Home-page: https://github.com/innoavator/servicefoundry
+Author: Abhishek Choudhary
+Author-email: abhichoudhary06@gmail.com
+Requires-Python: >=3.6.2,<4.0.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Jinja2 (>=3.0.3,<4.0.0)
+Requires-Dist: PyJWT (>=2.3.0,<3.0.0)
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: click (>=8.0.4,<9.0.0)
+Requires-Dist: fastapi (>=0.75.0,<0.76.0)
+Requires-Dist: importlib-metadata (>=4.2,<5.0)
+Requires-Dist: importlib-resources (>=5.2.0,<6.0.0)
+Requires-Dist: mistune (>=0.8.4,<0.9.0)
+Requires-Dist: prometheus_client (>=0.13.1,<0.14.0)
+Requires-Dist: python-socketio[client] (>=5.5.2,<6.0.0)
+Requires-Dist: questionary (>=1.10.0,<2.0.0)
+Requires-Dist: requests (>=2.27.1,<3.0.0)
+Requires-Dist: rich (>=12.0.0,<13.0.0)
+Requires-Dist: rich-click (>=1.2.1,<2.0.0)
+Project-URL: Repository, https://github.com/innoavator/servicefoundry
+Description-Content-Type: text/markdown
+
+# Install
+
+Install dependencies:
+
+```python
+poetry install
+```
+
+Build:
+
+```python
+poetry build
+```
+# Testing
+
+```
+poetry run pytest
+```
+

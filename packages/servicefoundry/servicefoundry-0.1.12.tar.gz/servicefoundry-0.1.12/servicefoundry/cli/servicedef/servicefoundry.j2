@@ -1,0 +1,34 @@
+version: 1
+name: {{service_name}}
+
+build:
+    {{build_type}}:
+    {% for key, value in build_dict.items() -%}
+        {{key}}: {{value}}
+    {% endfor %}
+
+deploy:
+    {{deploy_type}}:
+        namespace: ${stage.space}
+        port: 80
+        cpu: 0.5
+        cpu_limit: 0.5
+        memory: 512000000
+        memory_limit: 1024000000
+        instances: 1
+        env:
+            NUM_THREADS: 10
+        health_check:
+            endpoint: ./health
+            period_seconds: 10
+            initial_delay: 50
+        metrics_endpoint: ./metrics
+
+stages:
+    {% for stage, variable in stage_params.items() -%}
+    {{stage}}:
+        {% for key, value in variable.items() -%}
+        {{key}}: {{value}}
+        {% endfor %}
+    {% endfor %}
+
