@@ -1,0 +1,17 @@
+FROM {{ python_version }}
+
+COPY . ./app
+
+{% if requirement_txt_file %}
+COPY {{ requirement_txt_file }} ./requirements.txt
+
+RUN pip install -r ./requirements.txt
+{% endif %}
+
+{% for package in packages %}
+RUN pip install {{ package }}
+{% endfor %}
+
+WORKDIR app
+
+ENTRYPOINT {{ run_command }}
