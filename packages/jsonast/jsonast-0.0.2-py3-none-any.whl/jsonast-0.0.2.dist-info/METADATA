@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: jsonast
+Version: 0.0.2
+Summary: 
+Home-page: https://github.com/sasano8/jsonast
+License: MIT
+Author: sasano8
+Author-email: y-sasahara@ys-method.com
+Requires-Python: >=3.8,<=3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Dist: jsonml (>=0.0.3,<0.0.4)
+Project-URL: Repository, https://github.com/sasano8/jsonast
+Description-Content-Type: text/markdown
+
+# json ast
+<!--
+[![Version](https://img.shields.io/pypi/v/asy)](https://pypi.org/project/asy)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+-->
+
+# Requirement
+
+- Python 3.8+
+
+# Feature
+
+- Specializing in dealing with tree structures
+- Fully compatible with json
+- Can be output as xml
+- Can be output as jsonml
+
+# Motivation
+
+- Where are the standard structures for annotated tree structures?
+- `xml` is the most common, but it would be nice to have a `json` compatible and highly readable structure.
+- `jsonml` is hard to see.
+- `jsonlogic` is good for operations, but not good for grammar.
+
+# Contribute
+
+```
+poetry install
+pre-commit install
+source .venv/bin/activate
+make
+```
+
