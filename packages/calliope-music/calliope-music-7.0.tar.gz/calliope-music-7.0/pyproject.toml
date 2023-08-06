@@ -1,0 +1,31 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py37,py10
+isolated_build = true
+
+[testenv]
+deps =
+  coverage
+  mutagen
+  pytest
+  pytest-benchmark
+  pytest-cov
+  pytest-pep8
+# The `-r sx` flag shows skipped tests.
+commands = pytest tests/ -r sx --cov {envsitepackagesdir}/calliope --junitxml report.xml
+commands_post = coverage xml
+extras =
+  bandcamp
+  musicbrainz
+  select
+  spotify
+  youtube
+"""
