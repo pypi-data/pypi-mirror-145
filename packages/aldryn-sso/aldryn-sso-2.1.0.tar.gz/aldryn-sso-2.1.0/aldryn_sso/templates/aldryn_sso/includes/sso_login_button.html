@@ -1,0 +1,64 @@
+{% load i18n %}
+{% url 'simple-sso-login' as sso_login_url %}
+
+<a class="btn btn-primary btn-block"
+    href="{{ sso_login_url }}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}">
+    {% trans "Log in with Divio" %}
+</a>
+
+{% if aldryn_sso_enable_auto_sso_login %}
+    <script type="text/javascript">
+        (function() {
+            var xhr = new XMLHttpRequest();
+
+            if (!xhr) {
+                showLoginButton();
+                return;
+            }
+
+            xhr.open('GET', '{{ sso_login_url }}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}');
+            xhr.withCredentials = true;
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.onreadystatechange = handleResponse;
+            xhr.send();
+
+            function handleResponse() {
+                if (xhr.readyState === 4) {
+                    xhr.onreadystatechange = null;
+
+                    if (xhr.status === 200) {
+                        if (JSON.parse(xhr.response).is_authenticated === true) {
+                            document.location.reload(true);
+                        }
+                    } else {
+                        // It is very likely that the request was redirected to the
+                        // login form on the sso server and we got a CORS error.
+                        // That is ok, it just means we're not logged in there yet.
+                        showLoginButton();
+                    }
+                }
+            }
+
+            function showLoginButton() {
+                addClass(document.getElementsByClassName("sso-login-loader")[0], 'hidden');
+                removeClass(document.getElementsByClassName("sso-login-screen")[0], 'hidden');
+            }
+
+            function hasClass(el, cls) {
+                return !!el.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+            }
+
+            function addClass(el, cls) {
+                if (!hasClass(el, cls)) el.className += " " + cls;
+            }
+
+            function removeClass(el, cls) {
+                if (hasClass(el, cls)) {
+                    var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+                    el.className = el.className.replace(reg, ' ');
+                }
+            }
+        })();
+    </script>
+{% endif %}
+
