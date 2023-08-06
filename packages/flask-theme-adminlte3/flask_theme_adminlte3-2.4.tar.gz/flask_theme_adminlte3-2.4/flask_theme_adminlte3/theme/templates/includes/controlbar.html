@@ -1,0 +1,30 @@
+<!--| includes/control.html |-->
+
+{% if menu and menu.second_sidebar_menu %}
+{% set second_sidebar_menu = menu.second_sidebar_menu() %}
+{% endif %}
+
+{% if second_sidebar_menu %}
+<div
+  class="p-3 control-sidebar-content os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-overflow os-host-overflow-y os-host-transition">
+  {% if second_sidebar_menu.title %}
+  <h5>{{second_sidebar_menu.title }}</h5>
+  {% endif %}
+  <nav class="mt-2">
+    {% block second_sidebar_nav %}
+      {% from "macros/menu.html" import sidebar_menu %}
+
+      {% set nav_classes %}
+        {{ config.THEME_CONTROLBAR_CHILD_INDENT|default(config.THEME_SIDEBAR_CHILD_INDENT)|if_true(' nav-child-indent') }}
+        {{ config.THEME_CONTROLBAR_COMPACT|default(config.THEME_SIDEBAR_COMPACT)|if_true(' nav-compact') }}
+        {{ config.THEME_CONTROLBAR_FLAT_STYLE|default(config.THEME_SIDEBAR_FLAT_STYLE)|if_true(' nav-flat') }}
+        {{ config.THEME_CONTROLBAR_LEGACY_STYLE|default(config.THEME_SIDEBAR_LEGACY_STYLE)|if_true(' nav-legacy') }}
+        {{ config.THEME_CONTROLBAR_SMALL_TEXT|default(config.THEME_SIDEBAR_SMALL_TEXT)|if_true(' text-sm') }}
+      {% endset %}
+
+      {{ sidebar_menu(menu=second_sidebar_menu,id="controlbar",nav_classes=nav_classes)}}
+    {% endblock second_sidebar_nav %}
+  </nav>
+</div>
+{% endif %}
+<!--|END|-->

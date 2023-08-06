@@ -1,0 +1,15 @@
+{% from 'macros/menu.html' import sidebar_menu %}
+
+{% set sidebar_menu_items = menu.sidebar_menu() if menu else None %}
+{% if sidebar_menu_items %}
+
+  {% set nav_classes %}
+    {{ config.THEME_SIDEBAR_CHILD_INDENT|if_true(' nav-child-indent') }}
+    {{ config.THEME_SIDEBAR_COMPACT|if_true(' nav-compact') }}
+    {{ config.THEME_SIDEBAR_FLAT_STYLE|if_true(' nav-flat') }}
+    {{ config.THEME_SIDEBAR_LEGACY_STYLE|if_true(' nav-legacy') }}
+    {{ config.THEME_SIDEBAR_SMALL_TEXT|if_true(' text-sm') }}
+  {% endset %}
+
+  {{ sidebar_menu(menu=sidebar_menu_items,id="sidebar",nav_classes=nav_classes) }}
+{% endif %}

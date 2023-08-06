@@ -1,0 +1,83 @@
+  <!--| includes/navigation.html |-->
+<nav class="main-header navbar navbar-expand-md
+{{ config.THEME_NAVBAR_COLOR|navbar_skin }}
+{{ config.THEME_NAVBAR_NO_BORDER|if_true(' border-bottom-0') }}
+{{ config.THEME_NAVBAR_SMALL_TEXT|if_true(' text-sm') }}">
+{% if config.THEME_LAYOUT_TOP_NAV %}<div class="container">{% endif %}
+{% block navbar_top %}
+  {% if config.THEME_LAYOUT_TOP_NAV %}
+    {% with class_attr='navbar-brand', home_page=url_for('pages',route='/') %}
+      {% include 'includes/sidebar/logo.html' %}
+    {% endwith %}
+  {% endif %}
+
+  {% if config.THEME_SIDEBAR_ENABLED %}
+    <div class="navbar-nav navbar-no-expand order-1">
+      <a class="nav-item nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+    </div>
+  {% endif %}
+
+  <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+    <div class="order-2">
+      {% block search_form %}
+        {% if config.THEME_TOPBAR_SEARCH_ENABLED %}
+          {% include config.THEME_TOPBAR_SEARCH_TEMPLATE %}
+        {% endif %}
+      {% endblock search_form %}
+    </div>
+    <ul class="navbar-nav order-1">
+      {% block navbar_left %}
+        {% include config.THEME_TOPBAR_NAV_TEMPLATE %}
+      {% endblock navbar_left %}
+    </ul>
+  </div>
+
+  <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+    {% block navbar_right %}
+
+      {% include config.THEME_TOPBAR_NOTIFICATIONS_TEMPLATE %}
+
+      {% if config.THEME_LANGUAGE_SWITCHER_ENABLED %}
+        {% import 'macros/language_menu.html' as lang_menu %}
+        {{ lang_menu.language_menu(current_locale, available_languages) }}
+      {% endif %}
+
+      {% include config.THEME_TOPBAR_USER_MENU_TEMPLATE %}
+
+      <li class="nav-item d-sm-none">
+        <a class="nav-link" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" href="#" role="button">
+          <i class="fas fa-caret-down"></i>
+        </a>
+      </li>
+
+      {% if config.THEME_DARKMODE_SWITCH_ENABLED %}
+      <li class="nav-item">
+        <div class="theme-switch-wrapper nav-link">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </li>
+      {%endif%}
+
+      {% if config.THEME_FULLSCREEN_SWITCH_ENABLED %}
+          <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+          </li>
+      {% endif %}
+      
+      {% if config.THEME_CONTROLBAR_ENABLED %}
+        <li class="nav-item">
+          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+            <i class="fas fa-th-large"></i>
+          </a>
+        </li>
+      {% endif %}
+    {% endblock navbar_right %}
+  </ul>
+{% endblock navbar_top %}
+{% if config.THEME_LAYOUT_TOP_NAV %}</div>{% endif %}
+</nav>

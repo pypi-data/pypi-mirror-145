@@ -1,0 +1,11 @@
+{% if current_user and current_user.is_authenticated %}
+    {% if config.THEME_MESSAGES_ENABLED %}
+    {# menu.messages_menu(get_incoming_messages()) #}
+    {% endif %}
+    {% if config.THEME_NOTIFICATIONS_ENABLED %}
+        {# menu.notifications_menu(get_notifications()) #}
+    {% endif %}
+    {% if config.THEME_TASKS_ENABLED %}
+        {# menu.tasks_menu(get_tasks()) #}
+    {% endif %}
+{% endif %}

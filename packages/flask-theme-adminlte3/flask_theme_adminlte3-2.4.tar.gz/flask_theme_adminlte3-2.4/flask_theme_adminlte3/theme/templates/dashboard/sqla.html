@@ -1,0 +1,50 @@
+{% macro list_databases(sqla) %}
+<div class="card collapsed-card">
+    <div class="card-header border-transparent">
+      <h3 class="card-title">Databases of {{sqla.db.get_app().name}}</h3>
+      <div class="card-tools">
+        {{ card_tools(self) }}
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table m-0">
+          <thead>
+            <tr>
+              <th>Bind Key</th>
+              <th>DATABASE_URI</th>
+              <th>Tables</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              {% for bind_key, connector in sqla.connectors.items() %}
+                {% if gateway %}
+                {% set sqliteui_url = gateway.url('/db/'~bind_key) if '/db/'~bind_key in config.DEFAULT_APPS else '#' %}
+                {% endif %}
+            <tr>
+              <td><a href="{{ sqliteui_url or '#' }}">{{bind_key}}</a></td>
+              <td>{{connector.get_uri()}}</td>
+              <td
+                >{%for t in connector.get_engine().table_names()%}
+                <a href="{{sqliteui_url or '#' ~ '/' ~ t}}">
+                  {{t}}
+                </a>
+                  {% if not loop.last %},{%endif%}
+                {% endfor %}
+              </td>
+
+            </tr>
+              {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.card-body -->
+    <!-- /.card-footer -->
+  </div>
+
+{%endmacro%}

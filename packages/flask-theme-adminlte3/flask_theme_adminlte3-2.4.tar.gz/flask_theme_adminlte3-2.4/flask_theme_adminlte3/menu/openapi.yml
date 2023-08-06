@@ -1,0 +1,99 @@
+openapi: 3.0.1
+info:
+  title: Menus Specification
+  description: >-
+    This is the specification for the menus displayed by the application
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 3.0.23
+tags:
+  - name: menus
+paths:
+  /:
+    get:
+      summary: List all menus
+      description: Retrieves a dictionary of all menu.
+      operationId: list
+      responses:
+        default:
+          description: Default error sample response
+      tags:
+        - menus
+    post:
+      summary: Updates entire menu file
+      description: Update all menus
+      operationId: update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: menu_item
+              $ref: '#/components/schemas/MenuItem'
+      
+      tags:
+        - menus
+      responses:
+        default:
+          description: Default error sample response
+          
+          
+components:
+  schemas: 
+    Menu:
+      description: A list of MenuItems
+      title: Menu
+      type: array
+      items:
+        $ref: '#/components/schemas/MenuItem'
+    MenuItem:
+      title: Menu Item
+      type: object
+      required: [title,url]
+      properties:
+        title:
+          description: Displayed title of the item
+          example: Goto Google
+          type: string
+        help:
+          description: Hoverover hint
+          type: string
+          example: An example menu item that links to google
+        icon:
+          description: CSS classes for the icon.
+          type: string
+          example: fab fa-google
+        url:
+          type: string
+          format: uri
+          example: https://google.com
+        parent:
+          description: The parent menu item
+          $ref: '#/components/schemas/MenuItem'
+        item_type:
+          description: The type of menu item
+          enum: [LINK, HEADER, DROPDOWN_DIVIDER]
+          default: LINK
+        badge:
+          description: Displayed badge.
+          type: object
+          example:
+           text: 8 calls
+           color: red
+          properties:
+            text:
+              description: displayed text
+              type: string
+            color:
+              description: the css style color
+              type: string
+        items:
+          description: "list of children menu items"
+          type: array
+          items: 
+            $ref: '#/components/schemas/MenuItem'
+          example:
+            - title: Anothher Menu Item
+              url: https://google.com
+              help: another link to google
+              icon: fab fa-google

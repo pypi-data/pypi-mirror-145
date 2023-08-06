@@ -1,0 +1,30 @@
+  <!--| includes/sidebar.html |-->
+{% if config.THEME_SIDEBAR_ENABLED %}
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar elevation-4 {{ config.THEME_SIDEBAR_COLOR | sidebar_skin(config.THEME_SIDEBAR_LIGHT) }}">
+    
+    <!-- Brand Logo -->
+    {% include config.THEME_SIDEBAR_LOGO_TEMPLATE %}
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      {% if config.THEME_SIDEBAR_USER_MENU_ENABLED %}
+        {% include config.THEME_SIDEBAR_USER_MENU_TEMPLATE %}
+      {% endif %}
+
+      <!-- SidebarSearch Form -->
+      {% if config.THEME_SIDEBAR_SEARCH_ENABLED %}
+        {% include config.THEME_SIDEBAR_SEARCH_TEMPLATE %}
+      {% endif %}
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        {% include config.THEME_SIDEBAR_NAV_TEMPLATE %}
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+{%endif%}{# config.THEME_SIDEBAR_ENABLED #}
+<!--|END|-->

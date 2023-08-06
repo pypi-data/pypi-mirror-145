@@ -1,0 +1,71 @@
+<!--| includes/javascript.html |-->
+{% if config.THEME_ASSETS_ENABLED %}
+
+<script type="text/javascript" src="{{ url_for('theme.static',filename='js/theme.js') }}"></script>
+
+{% else %}
+<script src="{{ url_for('theme.static', filename='plugins/jquery/jquery.min.js') }}"></script>
+
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ url_for('theme.static', filename='plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('theme.static', filename='plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('theme.static', filename='plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<script src="{{ url_for('theme.static', filename='dist/js/adminlte.min.js') }}"></script>
+{% endif%}
+
+
+{% if config.THEME_DEMO_ENABLED and config.THEME_CONTROLBAR_ENABLED %}
+<!--script async src="{{ url_for('theme.static', filename='demo/demo.js') }}"></script-->
+<script async src="{{ url_for('theme.static', filename='demo/demo3_2.js') }}"></script>
+{% endif %}
+
+{% if config.THEME_DARKMODE_SWITCH_ENABLED %}
+<!-- darkmode theme switch -->
+<script>
+  var toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+  var currentTheme = localStorage.getItem('theme');
+  var mainHeader = document.querySelector('.main-header');
+
+  if (currentTheme) {
+    if (currentTheme === 'dark') {
+      if (!document.body.classList.contains('dark-mode')) {
+        document.body.classList.add("dark-mode");
+      }
+      if (mainHeader.classList.contains('navbar-light')) {
+        mainHeader.classList.add('navbar-dark');
+        mainHeader.classList.remove('navbar-light');
+      }
+      toggleSwitch.checked = true;
+    }
+  }
+
+  function switchTheme(e) {
+    if (e.target.checked) {
+      if (!document.body.classList.contains('dark-mode')) {
+        document.body.classList.add("dark-mode");
+      }
+      if (mainHeader.classList.contains('navbar-light')) {
+        mainHeader.classList.add('navbar-dark');
+        mainHeader.classList.remove('navbar-light');
+      }
+      localStorage.setItem('theme', 'dark');
+    } else {
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove("dark-mode");
+      }
+      if (mainHeader.classList.contains('navbar-dark')) {
+        mainHeader.classList.add('navbar-light');
+        mainHeader.classList.remove('navbar-dark');
+      }
+      localStorage.setItem('theme', 'light');
+    }
+  }
+
+  toggleSwitch.addEventListener('change', switchTheme, false);
+</script>
+{% endif %}
