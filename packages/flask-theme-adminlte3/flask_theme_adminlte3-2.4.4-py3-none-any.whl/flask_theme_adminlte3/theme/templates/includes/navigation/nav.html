@@ -1,0 +1,50 @@
+
+{% macro navbar_menu(menu) -%}
+{% for item in menu %}
+  {% if item.type == item.TYPE_LINK %}
+    <li class="text-center text-nowrap nav-item {% if item.is_active() %} active{% endif %}{% if item.has_children() %} dropdown{% endif %}">
+      <div class="d-inline d-sm-inline d-xl-inline">
+      {% if item.has_children() %}
+        {{ navbar_dropdown(item=item) }}
+      {% else %}
+        <a class="nav-link {{item._class}}" href="{{ item.url }}" title="{{ item.help }}">
+          <i class="nav-icon {% if item.icon %}{{ item.icon }}{% endif %}"></i>
+          {{ item.title }}
+        </a>
+      {% endif %}
+    </div>
+    </li>
+  {% endif %}
+{% endfor %}
+{%- endmacro %}
+
+
+
+{% macro navbar_dropdown(item, is_submenu=0) -%}
+  <a id="menu_item_{{ item.id }}" class="{% if is_submenu %}dropdown-item{% else %}nav-link{% endif %} dropdown-toggle" href="{{ item.url }}" title="{{ item.help }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+    {{ item.title }}
+  </a>
+  <ul aria-labelledby="menu_item_{{ item.id }}" class="dropdown-menu border-0 shadow">
+    {% for child in item.children %}
+      {% if child.type == child.TYPE_LINK %}
+        <li class="nav-item {% if child.has_children() %}dropdown-submenu dropdown-hover{% endif %}">
+          {% if child.has_children() %}
+            {{ navbar_dropdown(item=child, is_submenu=1) }}
+          {% else %}
+            <a class="dropdown-item" href="{{ child.url }}" title="{{ child.help }}">
+              <i class="nav-icon {% if child.icon %}{{ child.icon }}{% endif %}"></i>
+              {{ child.title }}
+            </a>
+          {% endif %}
+        </li>
+      {% elif child.type == child.TYPE_DROPDOWN_DIVIDER %}
+        <li class="dropdown-divider"></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{%- endmacro %}
+
+{% set navbar_menu_items = menu.navbar_menu() if menu else None %}
+{% if navbar_menu_items %}
+  {{ navbar_menu(menu=navbar_menu_items) }}
+{% endif %}

@@ -1,0 +1,34 @@
+{% macro list_users(users) %}
+<!-- USERS LIST -->
+<div class="card collapsed-card">
+    <div class="card-header">
+    <h3 class="card-title">Latest Members</h3>
+    <div class="card-tools">
+        <span class="badge badge-danger">{{users|length}} New Members</span>
+        {{ card_tools(self) }}
+    </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+    <ul class="users-list clearfix">
+
+        {% for u in users %}
+        <li>
+        <img src="http://www.gravatar.com/avatar/e64c7d89f26bd1972efa854d13d7dd61?s=100&d=mp&r=g"
+            alt="{{u.email}}'s Image">
+        <a class="users-list-name" href="{{url_for('user.edit_view',id=u.id)}}">{{u.email}}</a>
+        <span class="users-list-date">{{u.created_at|default('When?')}}</span>
+        </li>
+        {% endfor %}
+
+    </ul>
+    <!-- /.users-list -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+    <a href="{{url_for('user.index_view')}}">View All Users</a>
+    </div>
+    <!-- /.card-footer -->
+</div>
+<!--/.card -->
+{%endmacro%}
