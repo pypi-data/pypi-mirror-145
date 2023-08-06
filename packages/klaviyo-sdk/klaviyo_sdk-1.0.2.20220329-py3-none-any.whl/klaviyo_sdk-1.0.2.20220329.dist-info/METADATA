@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: klaviyo-sdk
+Version: 1.0.2.20220329
+Summary: Klaviyo Python SDK
+Home-page: https://github.com/klaviyo/klaviyo-python-sdk
+Author: Klaviyo Developers
+Author-email: developers@klaviyo.com
+License: UNKNOWN
+Project-URL: API Docs, https://developers.klaviyo.com/en/reference/api-overview
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: certifi (>=14.05.14)
+Requires-Dist: six (>=1.10)
+Requires-Dist: python-dateutil (>=2.5.3)
+Requires-Dist: setuptools (>=21.0.0)
+Requires-Dist: urllib3 (>=1.15.1)
+Requires-Dist: tenacity (>=8.0.0)
+Requires-Dist: requests (>=2.26.0)
+
+A Python library for Klaviyo's API
+
+## Installation
+
+You can install this library using the `pip` tool.
+
+Depending on your system configuration, you will need to run the following shell command:
+
+`pip install klaviyo-sdk`
+
+OR 
+
+`pip3 install klaviyo-sdk`
+
+## Import
+
+To import this package, run the following Python command:
+
+`import klaviyo_sdk`
+
+## Using this Library
+
+Documentation specific to this library can be found [here](https://github.com/klaviyo/klaviyo-python-sdk)
+
+## Using the Klaviyo API
+
+Documentation for Klaviyo's API can be found [here](https://developers.klaviyo.com/en/reference/api-overview)
+
+NOTE: sample API calls featured in the API docs do NOT use this library or others; rather, they make outright HTTP calls.
+
+## Setting up a Klaviyo Account
+
+Sign up for a free Klaviyo account [here](https://www.klaviyo.com/)
+
+
+
+
+
