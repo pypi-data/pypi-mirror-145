@@ -1,0 +1,49 @@
+import datetime
+from aiohttp import web
+from homeassistant.components import frontend as frontend, http as http
+from homeassistant.config_entries import ConfigEntry as ConfigEntry
+from homeassistant.const import STATE_OFF as STATE_OFF, STATE_ON as STATE_ON
+from homeassistant.core import HomeAssistant as HomeAssistant
+from homeassistant.helpers.config_validation import PLATFORM_SCHEMA as PLATFORM_SCHEMA, PLATFORM_SCHEMA_BASE as PLATFORM_SCHEMA_BASE, time_period_str as time_period_str
+from homeassistant.helpers.entity import Entity as Entity
+from homeassistant.helpers.entity_component import EntityComponent as EntityComponent
+from homeassistant.helpers.template import DATE_STR_FORMAT as DATE_STR_FORMAT
+from homeassistant.helpers.typing import ConfigType as ConfigType
+from homeassistant.util import dt as dt
+from typing import Any
+
+_LOGGER: Any
+DOMAIN: str
+ENTITY_ID_FORMAT: Any
+SCAN_INTERVAL: Any
+
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool: ...
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool: ...
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool: ...
+def get_date(date: dict[str, Any]) -> datetime.datetime: ...
+def normalize_event(event: dict[str, Any]) -> dict[str, Any]: ...
+def extract_offset(summary: str, offset_prefix: str) -> tuple[str, datetime.timedelta]: ...
+def is_offset_reached(start: datetime.datetime, offset_time: datetime.timedelta) -> bool: ...
+
+class CalendarEventDevice(Entity):
+    @property
+    def event(self) -> Union[dict[str, Any], None]: ...
+    @property
+    def state_attributes(self) -> Union[dict[str, Any], None]: ...
+    @property
+    def state(self) -> Union[str, None]: ...
+    async def async_get_events(self, hass: HomeAssistant, start_date: datetime.datetime, end_date: datetime.datetime) -> list[dict[str, Any]]: ...
+
+class CalendarEventView(http.HomeAssistantView):
+    url: str
+    name: str
+    component: Any
+    def __init__(self, component: EntityComponent) -> None: ...
+    async def get(self, request: web.Request, entity_id: str) -> web.Response: ...
+
+class CalendarListView(http.HomeAssistantView):
+    url: str
+    name: str
+    component: Any
+    def __init__(self, component: EntityComponent) -> None: ...
+    async def get(self, request: web.Request) -> web.Response: ...
