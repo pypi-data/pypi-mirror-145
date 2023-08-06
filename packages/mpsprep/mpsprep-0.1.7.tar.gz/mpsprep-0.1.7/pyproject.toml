@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "mpsprep"
+version = "0.1.7"
+description = "State preparation for quantum computing using the Matrix Product States approach."
+authors = ["Prithvi Gundlapalli, Junyi Lee"]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.10"
+scipy = ">=1.5"
+matplotlib = ">=3"
+tqdm = ">=4.3"
+numpy = ">=1.18"
+
+[tool.poetry.dev-dependencies]
+coverage = ">=6"
+tox = ">=3.24"
+flake8 = ">=4"
+pytest-cov = "^3.0.0"
+pytest = "^7.1.1"
+pylint = "^2.13.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
