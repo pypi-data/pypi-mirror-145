@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+
+<html lang="ger">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Examples of document structure features in pydata-sphinx-theme." lang="de" name="description" xml:lang="de" />
+
+    <title>Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen &#8212; stanpy 0.2.2 documentation</title>
+    
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
+    
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+    
+      
+  
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung" href="straight_beam_constant_cs.html" />
+    <link rel="prev" title="Querschnittswerte" href="cross_section.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ger">
+    
+      
+      <link rel="icon" sizes="16x16" href="../_static/_static/img/stanpy_logo.png">
+      
+    
+      
+      <link rel="icon" sizes="32x32" href="../_static/favicon-32x32.png">
+      
+    
+      
+      <link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon-180x180.png">
+      
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/stanpy_logo.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../readme.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../installation.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../history.html">
+  Release notes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../authors.html">
+  Credits
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../changelog.html">
+  Changelog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/<your-org>/<your-repo>" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://gitlab.tuwien.ac.at/" rel="noopener" target="_blank" title="GitLab"><span><i class="fab fa-gitlab"></i></span>
+            <label class="sr-only">GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/stanpy/" rel="noopener" target="_blank" title="PyPi"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPi</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross_section.html">
+   Querschnittswerte
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="straight_beam_constant_cs.html">
+   Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="straight_beam_non_constant_cs.html">
+   Der gerade Stab, veränderlicher Querschnitt Theorie I. und II. Ordnung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reduction_method.html">
+   Reduktionsverfahren (Übertragungsmatrizenverfahren)
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex01-rechtecksquerschnitt">
+   EX01 Rechtecksquerschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex02-zusammengesetzter-rechtecksquerschnitt">
+   EX02 Zusammengesetzter Rechtecksquerschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex03-i-querschnitt">
+   EX03 I-Querschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex04-h-querschnitt">
+   EX04 H-Querschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex05-kasten-querschnitt">
+   EX05 Kasten-Querschnitt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex06-verstarkter-i-querschnitt">
+   EX06 - Verstärkter I Querschnitt
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="querschnittswerte-fur-stabe-mit-veranderlichen-querschnittsabmessungen">
+<h1>Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen<a class="headerlink" href="#querschnittswerte-fur-stabe-mit-veranderlichen-querschnittsabmessungen" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>todos: validate, Abbildungen, Definition der Vektoren h und b, Funktion für I, H, HEB, HEA, ...</p>
+</div>
+<p>In diesem Abschnitt werden die Querschnittswerte für verschieden zusammengesetzte Rechtecksquerschnitte mit veränderlichen Querschnittsabmessungen berechnet.</p>
+<section id="ex01-rechtecksquerschnitt">
+<h2>EX01 Rechtecksquerschnitt<a class="headerlink" href="#ex01-rechtecksquerschnitt" title="Permalink to this headline">¶</a></h2>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># m</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>  <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span> <span class="o">+</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="n">ha</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+
+<span class="n">cs_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">hx</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_props</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(0) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(l) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="n">l</span><span class="p">))</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">),</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 0.005*x + 0.06,
+ &#39;I_y&#39;: poly1d([2.60416667e-07, 9.37500000e-06, 1.12500000e-04, 4.50000000e-04]),
+ &#39;I_z&#39;: poly1d([-3.04931861e-20,  4.13970550e-21,  1.66666667e-05,  2.00000000e-04]),
+ &#39;eta_y&#39;: array([1.00000000e+00, 2.50000000e-01, 2.08333333e-02, 5.78703704e-04]),
+ &#39;eta_z&#39;: array([ 1.00000000e+00,  8.33333333e-02,  2.06985275e-17, -1.52465931e-16]),
+ &#39;y_s&#39;: 0.1,
+ &#39;z_s&#39;: 0.0125*x + 0.15}
+I_y(0) =  0.00045
+I_y(l) =  0.0010666666666667248
+</pre></div>
+</div>
+<img alt="../_images/cross_section_height_0_1.png" src="../_images/cross_section_height_0_1.png" />
+</div>
+</div>
+</section>
+<section id="ex02-zusammengesetzter-rechtecksquerschnitt">
+<h2>EX02 Zusammengesetzter Rechtecksquerschnitt<a class="headerlink" href="#ex02-zusammengesetzter-rechtecksquerschnitt" title="Permalink to this headline">¶</a></h2>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># m</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.02</span>  <span class="c1"># m</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>  <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span> <span class="o">+</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="n">ha</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+
+<span class="n">b_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="n">h_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">hx</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+<span class="n">zsi_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="n">hx</span><span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="n">hx</span> <span class="o">+</span> <span class="n">t</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># von OK</span>
+<span class="n">ysi_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">b</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># von Links</span>
+
+<span class="n">cs_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b_v</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h_v</span><span class="p">,</span> <span class="n">y_si</span><span class="o">=</span><span class="n">ysi_v</span><span class="p">,</span> <span class="n">z_si</span><span class="o">=</span><span class="n">zsi_v</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_props</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(0) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(l) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="n">l</span><span class="p">))</span>
+
+<span class="n">h_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">zsi_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zsi_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 0.0003*x + 0.0116,
+ &#39;I_y&#39;: poly1d([1.56250000e-08, 1.81250000e-06, 3.87500000e-05, 2.32066667e-04]),
+ &#39;I_z&#39;: poly1d([-1.19769549e-19,  1.35528443e-20,  3.60000000e-09,  2.67098667e-05]),
+ &#39;eta_y&#39;: array([1.00000000e+00, 1.66977880e-01, 7.81025567e-03, 6.73297903e-05]),
+ &#39;eta_z&#39;: array([ 1.00000000e+00,  1.34781654e-04,  5.07409658e-16, -4.48409385e-15]),
+ &#39;y_s&#39;: (3.0e-5*x + 0.00116)/(0.0003*x + 0.0116),
+ &#39;z_s&#39;: (0.0001*x + (0.0003*x + 0.0036)*(0.0125*x + 0.17) + 0.00136)/(0.0003*x + 0.0116)}
+I_y(0) =  0.0002320666666666666
+I_y(l) =  0.00041706666666665803
+</pre></div>
+</div>
+<img alt="../_images/cross_section_height_1_1.png" src="../_images/cross_section_height_1_1.png" />
+</div>
+</div>
+</section>
+<section id="ex03-i-querschnitt">
+<h2>EX03 I-Querschnitt<a class="headerlink" href="#ex03-i-querschnitt" title="Permalink to this headline">¶</a></h2>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># m</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.02</span>  <span class="c1"># m</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>  <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span> <span class="o">+</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="n">ha</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+
+<span class="n">b_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="n">h_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+<span class="n">zsi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AI_z</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h_v</span><span class="p">)</span> <span class="c1"># von OK</span>
+<span class="n">ysi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AI_y</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b_v</span><span class="p">)</span>  <span class="c1"># von Links</span>
+
+<span class="n">cs_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b_v</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h_v</span><span class="p">,</span> <span class="n">y_si</span><span class="o">=</span><span class="n">ysi_v</span><span class="p">,</span> <span class="n">z_si</span><span class="o">=</span><span class="n">zsi_v</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_props</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(0) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(l) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="n">l</span><span class="p">))</span>
+
+<span class="n">h_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">zsi_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zsi_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 0.0003*x + 0.01112,
+ &#39;I_y&#39;: poly1d([1.56250000e-08, 1.73750000e-06, 3.30700000e-05, 1.74642667e-04]),
+ &#39;I_z&#39;: poly1d([-1.22009140e-22, -1.35521929e-20,  3.60000000e-09,  2.67041067e-05]),
+ &#39;eta_y&#39;: array([1.00000000e+00, 1.89358080e-01, 9.94888611e-03, 8.94684002e-05]),
+ &#39;eta_z&#39;: array([ 1.00000000e+00,  1.34810726e-04, -5.07494710e-16, -4.56892799e-18]),
+ &#39;y_s&#39;: (3.0e-5*x + 0.001112)/(0.0003*x + 0.01112),
+ &#39;z_s&#39;: (0.0001*x + (0.0003*x + 0.00312)*(0.0125*x + 0.15) + 0.0012)/(0.0003*x + 0.01112)}
+I_y(0) =  0.00017464266666666672
+I_y(l) =  0.00033572266666666577
+</pre></div>
+</div>
+<img alt="../_images/cross_section_height_2_1.png" src="../_images/cross_section_height_2_1.png" />
+</div>
+</div>
+</section>
+<section id="ex04-h-querschnitt">
+<h2>EX04 H-Querschnitt<a class="headerlink" href="#ex04-h-querschnitt" title="Permalink to this headline">¶</a></h2>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># m</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.02</span>  <span class="c1"># m</span>
+<span class="n">ba</span><span class="p">,</span> <span class="n">bb</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>  <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span> <span class="o">+</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="n">ha</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+<span class="n">bx</span> <span class="o">=</span> <span class="n">ba</span> <span class="o">+</span> <span class="p">(</span><span class="n">bb</span> <span class="o">-</span> <span class="n">ba</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+
+<span class="n">b_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+<span class="n">h_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">bx</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">bx</span><span class="p">])</span>
+<span class="n">zsi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AH_z</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h_v</span><span class="p">)</span>  <span class="c1"># von OK</span>
+<span class="n">ysi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AH_y</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b_v</span><span class="p">)</span>  <span class="c1"># von Links</span>
+
+<span class="n">cs_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b_v</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h_v</span><span class="p">,</span> <span class="n">y_si</span><span class="o">=</span><span class="n">ysi_v</span><span class="p">,</span> <span class="n">z_si</span><span class="o">=</span><span class="n">zsi_v</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_props</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(0) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I_y(l) = &quot;</span><span class="p">,</span> <span class="n">cs_props</span><span class="p">[</span><span class="s2">&quot;I_y&quot;</span><span class="p">](</span><span class="n">l</span><span class="p">))</span>
+
+<span class="n">b_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">h_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">zsi_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zsi_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">ysi_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ysi_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">ysi_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 0.0013*x + 0.01512,
+ &#39;I_y&#39;: poly1d([5.20833333e-08, 1.87500000e-06, 2.25036000e-05, 9.00374400e-05]),
+ &#39;I_z&#39;: poly1d([1.71875000e-07, 5.86250000e-06, 6.67033333e-05, 2.53176000e-04]),
+ &#39;eta_y&#39;: array([1.00000000e+00, 2.49936027e-01, 2.08246703e-02, 5.78463063e-04]),
+ &#39;eta_z&#39;: array([1.00000000e+00, 2.63466258e-01, 2.31558284e-02, 6.78875565e-04]),
+ &#39;y_s&#39;: (5.0e-6*x + (0.0003*x + 0.00312)*(0.0125*x + 0.15) + (0.0005*x + 0.006)*(0.025*x + 0.29) + 6.0e-5)/(0.0013*x + 0.01512),
+ &#39;z_s&#39;: ((0.0003*x + 0.00312)*(0.0125*x + 0.15) + 2*(0.0005*x + 0.006)*(0.0125*x + 0.15))/(0.0013*x + 0.01512)}
+I_y(0) =  9.003744000000004e-05
+I_y(l) =  0.00021338517333335038
+</pre></div>
+</div>
+<img alt="../_images/cross_section_height_3_1.png" src="../_images/cross_section_height_3_1.png" />
+</div>
+</div>
+</section>
+<section id="ex05-kasten-querschnitt">
+<h2>EX05 Kasten-Querschnitt<a class="headerlink" href="#ex05-kasten-querschnitt" title="Permalink to this headline">¶</a></h2>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># m</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.02</span>  <span class="c1"># m</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>  <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span> <span class="o">+</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="n">ha</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+
+<span class="n">b_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="n">h_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+<span class="n">zsi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AK_z</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h_v</span><span class="p">)</span>  <span class="c1"># von OK</span>
+<span class="n">ysi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AK_y</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b_v</span><span class="p">)</span>  <span class="c1"># von Links</span>
+
+<span class="n">cs_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b_v</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h_v</span><span class="p">,</span> <span class="n">y_si</span><span class="o">=</span><span class="n">ysi_v</span><span class="p">,</span> <span class="n">z_si</span><span class="o">=</span><span class="n">zsi_v</span><span class="p">)</span>
+
+<span class="n">h_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">zsi_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zsi_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cross_section_height_4_0.png" src="../_images/cross_section_height_4_0.png" />
+</div>
+</div>
+</section>
+<section id="ex06-verstarkter-i-querschnitt">
+<h2>EX06 - Verstärkter I Querschnitt<a class="headerlink" href="#ex06-verstarkter-i-querschnitt" title="Permalink to this headline">¶</a></h2>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># m</span>
+<span class="n">s</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="mf">0.012</span><span class="p">,</span> <span class="mf">0.02</span>  <span class="c1"># m</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span>  <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span> <span class="o">+</span> <span class="p">(</span><span class="n">hb</span> <span class="o">-</span> <span class="n">ha</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span> <span class="o">*</span> <span class="n">x</span>  <span class="c1"># m</span>
+
+<span class="n">b_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<span class="n">h_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">])</span>
+<span class="n">h_i</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">b_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">])</span>
+<span class="n">h_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">hx</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">h_i</span><span class="p">,</span> <span class="n">h_i</span><span class="p">,</span> <span class="n">h_i</span><span class="p">,</span> <span class="n">h_i</span><span class="p">])</span>
+<span class="n">zsi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AI_zp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h_v</span><span class="p">)</span>  <span class="c1"># von OK</span>
+<span class="n">ysi_v</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">AI_yp</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">b_v</span><span class="p">)</span>  <span class="c1"># von Links</span>
+
+<span class="n">cs_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b_v</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h_v</span><span class="p">,</span> <span class="n">y_si</span><span class="o">=</span><span class="n">ysi_v</span><span class="p">,</span> <span class="n">z_si</span><span class="o">=</span><span class="n">zsi_v</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cs_props</span><span class="p">)</span>
+
+<span class="n">h_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+<span class="n">zsi_v_fun</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">lambdify</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">zsi_v</span><span class="p">,</span> <span class="s1">&#39;numpy&#39;</span><span class="p">)</span>
+
+<span class="n">offset</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_cs</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">b_v</span><span class="p">,</span> <span class="n">h_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">ysi_v</span><span class="p">,</span> <span class="n">zsi_v_fun</span><span class="p">(</span><span class="n">l</span><span class="p">),</span> <span class="n">dy</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">offset</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">hx</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span> <span class="o">+</span> <span class="n">offset</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 0.0003*x + 0.01752,
+ &#39;I_y&#39;: poly1d([1.56250e-08, 2.73750e-06, 5.33700e-05, 2.80136e-04]),
+ &#39;I_z&#39;: poly1d([6.86038785e-20, 5.42103834e-20, 3.60000000e-09, 1.39832640e-04]),
+ &#39;eta_y&#39;: array([1.00000000e+00, 1.90514607e-01, 9.77203930e-03, 5.57764800e-05]),
+ &#39;eta_z&#39;: array([1.00000000e+00, 2.57450621e-05, 3.87680468e-16, 4.90614198e-16]),
+ &#39;y_s&#39;: (4.5e-5*x + 0.002628)/(0.0003*x + 0.01752),
+ &#39;z_s&#39;: (0.00018*x + (0.0003*x + 0.00312)*(0.0125*x + 0.15) + 0.00216)/(0.0003*x + 0.01752)}
+</pre></div>
+</div>
+<img alt="../_images/cross_section_height_5_1.png" src="../_images/cross_section_height_5_1.png" />
+</div>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cross_section.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Querschnittswerte</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="straight_beam_constant_cs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, David Zhou.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

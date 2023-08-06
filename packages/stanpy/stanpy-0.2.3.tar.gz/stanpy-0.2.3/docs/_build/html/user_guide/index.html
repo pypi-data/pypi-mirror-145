@@ -1,0 +1,375 @@
+
+<!DOCTYPE html>
+
+<html lang="ger">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="A collection of examples for demonstrating the features of the stanpy." lang="en" name="description" xml:lang="en" />
+
+    <title>User Guide &#8212; stanpy 0.2.2 documentation</title>
+    
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
+    
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+    
+      
+  
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Querschnittswerte" href="cross_section.html" />
+    <link rel="prev" title="Getting started" href="../installation.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ger">
+    
+      
+      <link rel="icon" sizes="16x16" href="../_static/_static/img/stanpy_logo.png">
+      
+    
+      
+      <link rel="icon" sizes="32x32" href="../_static/favicon-32x32.png">
+      
+    
+      
+      <link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon-180x180.png">
+      
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/stanpy_logo.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../readme.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../installation.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../history.html">
+  Release notes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../authors.html">
+  Credits
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../changelog.html">
+  Changelog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/<your-org>/<your-repo>" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://gitlab.tuwien.ac.at/" rel="noopener" target="_blank" title="GitLab"><span><i class="fab fa-gitlab"></i></span>
+            <label class="sr-only">GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/stanpy/" rel="noopener" target="_blank" title="PyPi"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPi</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross_section.html">
+   Querschnittswerte
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross_section_height.html">
+   Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="straight_beam_constant_cs.html">
+   Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="straight_beam_non_constant_cs.html">
+   Der gerade Stab, veränderlicher Querschnitt Theorie I. und II. Ordnung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reduction_method.html">
+   Reduktionsverfahren (Übertragungsmatrizenverfahren)
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#was-ist-stanpy">
+   Was ist stanpy?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inhaltsverzeichnis">
+   Inhaltsverzeichnis
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p>Verwende stanpy in einem Projekt mit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+</pre></div>
+</div>
+<section id="was-ist-stanpy">
+<h2>Was ist stanpy?<a class="headerlink" href="#was-ist-stanpy" title="Permalink to this headline">¶</a></h2>
+<p>Stanpy ist (in einem ersten Schritt) ein kleines Package zur Lösung gerader Stabzüge mit konstanter oder linear veränderlichen Querschnittsabmessungen nach Theorie I. oder II. Ordnung.
+Gelöst werden die Problemstellung mithilfe des Reduktionsverfahrens der Baustatik.</p>
+</section>
+<section id="inhaltsverzeichnis">
+<h2>Inhaltsverzeichnis<a class="headerlink" href="#inhaltsverzeichnis" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cross_section.html">Querschnittswerte</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cross_section.html#ex01-rechtecksquerschnitt">EX01 Rechtecksquerschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section.html#ex02-zusammengesetzter-rechtecksquerschnitt">EX02 Zusammengesetzter Rechtecksquerschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section.html#ex03-i-querschnitt">EX03 I-Querschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section.html#ex04-h-querschnitt">EX04 H-Querschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section.html#ex05-kasten-querschnitt">EX05 Kasten-Querschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section.html#ex06-verstarkter-i-querschnitt">EX06 - Verstärkter I Querschnitt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cross_section_height.html">Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cross_section_height.html#ex01-rechtecksquerschnitt">EX01 Rechtecksquerschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section_height.html#ex02-zusammengesetzter-rechtecksquerschnitt">EX02 Zusammengesetzter Rechtecksquerschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section_height.html#ex03-i-querschnitt">EX03 I-Querschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section_height.html#ex04-h-querschnitt">EX04 H-Querschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section_height.html#ex05-kasten-querschnitt">EX05 Kasten-Querschnitt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cross_section_height.html#ex06-verstarkter-i-querschnitt">EX06 - Verstärkter I Querschnitt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="straight_beam_constant_cs.html">Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_constant_cs.html#ex01-einfeldtrager-gleichlast">EX01 Einfeldträger Gleichlast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_constant_cs.html#ex02-einfeldtrager-einzellast">EX02 Einfeldträger Einzellast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_constant_cs.html#ex03-todo-testing">EX03 (todo: testing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_constant_cs.html#ex04-stabkonstruktion-theorie-ii">EX04 Stabkonstruktion Theorie II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_constant_cs.html#grundlagen">Grundlagen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="straight_beam_non_constant_cs.html">Der gerade Stab, veränderlicher Querschnitt Theorie I. und II. Ordnung</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_non_constant_cs.html#ex01-stabkonstruktion-r-qs">EX01 Stabkonstruktion - R-QS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_non_constant_cs.html#ex02-stabkonstruktion-i-qs">EX02 Stabkonstruktion - I-QS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="straight_beam_non_constant_cs.html#grundlagen">Grundlagen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reduction_method.html">Reduktionsverfahren (Übertragungsmatrizenverfahren)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reduction_method.html#ex01-stabkonstruktion">EX01 Stabkonstruktion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction_method.html#ex02-stabkonstruktion">EX02 Stabkonstruktion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction_method.html#ex03-stabkonstruktion">EX03 Stabkonstruktion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reduction_method.html#grundlagen">Grundlagen</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../installation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Getting started</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cross_section.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Querschnittswerte</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, David Zhou.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

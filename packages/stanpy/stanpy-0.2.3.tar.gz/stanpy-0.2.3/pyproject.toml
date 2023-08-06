@@ -1,0 +1,15 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+]
+install_requires=["numpy>=1.22",
+    "sympy>=1.10",
+    "scipy"]
+
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 120
+target-version = ['py36']
+skip-string-normalization = true
