@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: metrictrees
+Version: 0.0.1
+Summary: A collection of metric trees
+Home-page: https://github.com/Dobatymo/metrictrees
+Author: Dobatymo
+License: UNKNOWN
+Description: # metrictrees
+        
+        A collection of metric trees.
+        
+        ## Install
+        
+        `pip install metrictrees`
+        
+        ## Available trees
+        
+        - `metrictrees.bktree.BKTree`: A metric tree which supports discrete metrics.
+        
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown; charset=UTF-8
