@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: jointforces
+Version: 1.0.0
+Summary: A Python package to conduct 3D Traction Force Microcopy on multicelluar aggregates (spheroids).
+Home-page: UNKNOWN
+Author: Christoph Mark, David Böhringer
+Author-email: christoph.mark@fau.de
+License: The MIT License (MIT)
+Keywords: piv,contractility,material simulation,biophysics
+Platform: UNKNOWN
+License-File: LICENSE
+Requires-Dist: saenopy (>=0.7.1)
+Requires-Dist: gmsh-sdk (>=4.5.0)
+Requires-Dist: numpy (>=1.16.2)
+Requires-Dist: pandas (>=1.2.0)
+Requires-Dist: matplotlib (>=2.2.2)
+Requires-Dist: scipy (>=1.1.0)
+Requires-Dist: scikit-image (>=0.14.2)
+Requires-Dist: openpiv (>=0.23.4)
+Requires-Dist: tqdm (>=4.26.0)
+Requires-Dist: natsort (>=5.1.0)
+Requires-Dist: dill (>=0.2.9)
+Requires-Dist: roipoly (>=0.5.2)
+Requires-Dist: openpyxl
+Requires-Dist: pyyml
+Requires-Dist: matplotlib-scalebar
+
+UNKNOWN
+
