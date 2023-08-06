@@ -1,0 +1,70 @@
+# **Lumped Models (LuMod) for Hydrology**
+
+**LuMod** is an easy to use set of Lumped Models for hydrological simulation in Python language.
+
+Compared with other source codes that pretend to be fast, **LuMod** was created to facilitate the modeling and the results processing. Moreover, some features of **LuMod** are compiled with [numba](http://numba.pydata.org/) to increase simulation speed.
+
+
+## **Documentation**
+
+Full documentation and examples are available here: [LuMod-Docs](https://zaul_ae.gitlab.io/lumod-docs)
+
+Installation is available from PyPI: [LuMod project](https://pypi.org/project/lumod/)
+
+## **Key Features**
+
+**LuMod** incorporates well know hydrological models with different structures:
+
+* **MILC**: One layer Lumped version of the MISDc model adapted for continous daily simulation.
+* **HYMOD**: Rainfall-Runoff Model based on the Probability-Distributed Model concept that runs at daily timestep.
+* **HBV**: Modified version of the Hydrologiska Byråns Vattenbalansavdelning (HBV) model.
+* **GR4J**: Well known daily rain-runoff model that depends of four parameters.
+* **GR2M**: Monthly rain-runoff model that depends of two parameters.
+* **GR1A**: One parameter annual rain-runoff model.
+* **MonteCarlo**: Random-based simulation for parameters optimization and uncertainty analysis.
+
+## **Quick installation**
+
+The easier way to install **LuMod** is using [PyPI](https://pypi.org/):
+
+```bash
+pip install lumod
+```
+
+## **Basic Example**
+
+**LuMod** was thought to be easy to use and compatible with libraries dedicated to DataScience, so it works with Pandas and Matplotlib to facilitate the analysis of simulations.
+
+```python
+# Import modules
+import pandas as pd
+import matplotlib.pyplot as plt
+import lumod
+from lumod import tools
+
+# Load example data
+info, forcings = lumod.load_example(2)
+
+# Create a model
+model = lumod.models.GR4J(area=info.area, lat=info.lat)
+print(model)
+
+# Run your model
+simulations = model.run(forcings)
+
+# Validate your model
+tools.plots.model_evaluation(forcings.prec, forcings.qt, simulations.qt)
+```
+
+## **Citation**
+
+*Coming Soon*
+
+## **Author**
+
+**Main Developer**
+
+Saúl Arciniega Esparza, Ph.D., Full Time Associate Professor at the [Faculty of Engineering](https://www.ingenieria.unam.mx/) at the [National Autonomous University of Mexico](https://www.unam.mx/), working on the [Hydrogeology Group](https://www.ingenieria.unam.mx/hydrogeology/).
+
+[LinkedIn](https://www.linkedin.com/in/saularciniegaesparza/) | [Twitter](https://twitter.com/zaul_arciniega) | [ResearchGate](https://www.researchgate.net/profile/Saul-Arciniega-Esparza)
+
