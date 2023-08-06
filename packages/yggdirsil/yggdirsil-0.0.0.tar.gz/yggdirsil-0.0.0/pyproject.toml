@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "yggdirsil"
+version = "0.0.0"
+description = "Your cloud-based files, within reach."
+authors = ["Orlando Ospino Sánchez <oroschz@outlook.com>"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
