@@ -1,0 +1,47 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "kusto-tool"
+authors = [{name = "Alex Kyllo", email = "alex.kyllo@gmail.com"}]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+dependencies = ["azure-kusto-data", "loguru", "Jinja2", "pandas"]
+
+[project.optional-dependencies]
+azure-cli = ["azure-cli"]
+dev = [
+    "black",
+    "pylint",
+]
+doc = [
+    "furo",
+    "sphinx",
+    "sphinx-autobuild",
+    "sphinx_rtd_theme",
+]
+test = [
+    "pytest",
+    "nox",
+    "coverage",
+    "pytest-cov",
+    "pytest-mock",
+]
+
+[project.urls]
+Home = "https://github.com/alexkyllo/kusto-tool"
+
+[tool]
+[tool.isort]
+profile = "black"
+[tool.pytest]
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+[tool.coverage]
+[tool.coverage.run]
+source = ["src/"]
+[tool.flit.module]
+name = "kusto_tool"
