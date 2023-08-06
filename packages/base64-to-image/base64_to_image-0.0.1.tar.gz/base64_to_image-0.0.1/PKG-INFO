@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: base64_to_image
+Version: 0.0.1
+Summary: Image to base64 and back.
+Home-page: https://github.com/ternaus/base64ToImageConverters
+Author: Vladimir Iglovikov
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: tests
+License-File: LICENSE
+
+# Library for converting RGB / Grayscale numpy images from to base64 and back.
+
+## Installation
+```
+pip install -U image_to_base_64
+```
+
+## Conversion
+
+### RGB to base 64
+```
+base64 = rgb2base64(rgb_image, image_format)
+```
+where image format is `JPEG`, `PNG`
+
+### Grayscale to base 64
+
+```
+base64 = grayscale2base64(grayscale_image)
+```
+
+### Base64 to RGB image
+
+```
+rgb_image = base64_to_rgb(base64)
+```
+
+### Base64 to Grayscale image
+```
+grayscale_image = base64_to_grayscale(base64)
+```
+
+
+#### Issues
+For some reason I cannot convert `RGB` image to `JPEG` representation in base 64 and back without losses.
+=> test only for `PNG` and not `JPEG`
+
+
