@@ -1,0 +1,98 @@
+# QETools
+
+It is a command line helper to run comman quantum espresso calculations.
+
+Usage:
+``` 
+qetools -c [CALCULATION] [OTHER ARGS]
+```
+
+Info:
+
+By default PBE, PBESOL and LDA (all ONCV) pseudo-potentials are downloaded.
+
+Arguments:
+
+## **-c [CALCULATION]**
+
+ **encut, kgrid, vacuum** - respective convergences.
+
+ **vc-relax** - variable cell relaxation.
+     
+ **pressure** - to get structure at required (compressed) pressure. 
+
+    - *-rp* required pressure in kbars.
+
+    - *-ic* intial compression factor (default 0.9).
+
+ **eos** - fits equation of state using ASE.
+
+    - *-ns* number of structures to consider for fitting (default 10).
+
+ **harmonic** - energy vs. displacement plot for selected atoms in selected directions.
+
+    - *-aid* index of atom(s) to displace, by default all unique atoms will be displaced.
+
+    - *-dd* direction of displacement, default ( -dd 0 1 2 ).
+
+ **scf** - single point energy calculation (All the below calculations require completed 'scf' calculation).
+
+ **nscf** - to be done after 'scf' calculation, with finer grid.
+     
+ **bands** - electronic band structure calculation, by default ase.dft.bandpath will be used, saves plot.
+
+ **dos** - electronic dos calculation, saves plot.
+
+ **ph_pre** - setting up phonon calculation (must).
+
+ **ph_mid** - creates a script which can be run on multiple jobs for ph.x calcuations.
+
+ **ph_post** - after ph_mid or ph_pre, completes phonon calculation, returns flfrc file.
+
+ **ph_bands** - phonon bandstructure.
+
+ **ph_dos** - phonon density of states.
+
+ **epw_pre** - setting up for EPW calculation (to be done after 'scf', 'ph_post').
+
+ **epw_post** - Performs EPW calculation.
+ 
+## Others
+
+**-e [ENCUT][Ry]** (default 50).
+
+**-k [KGRID]** (default 4 4 4).
+
+**-v [VACUUM][ANG]** (default 10)
+    * *-vdr* vacuum direction 1,2,3 for x,y,z direction (must for vacuum calcs)
+**-t [THRESHOLD]** (default 0.01)
+
+**-ppn [NODES]** (default available/2)
+
+**-ppd [PSEUDOPOTENTIAL DIRECTORY]** lda, pbe, pbesol can be used to use default potentials. Otherwise expects path where PPs are present in the format 'Cu.UPF' (default pbe).
+
+**-f** ASE readable structure file.
+
+**-emin, -emax** y-axis limits for electronic bandstructure plot.
+
+**-asr** acoustic sum rule for ph_post, (default simple).
+
+**-nq** number of q(k) points in bandstructures.
+
+**-bp** bandpath for bandstructures like 'GXLMK', default from ase.bandpath.
+
+**-npool** npool for epw related calcs.
+
+**-par** parameters file in the following format (for pw.x, ph.x, dos.x, epw.x)
+
+---
+```
+ecutwfc 80
+calculation scf
+...
+```
+---
+
+
+Example: qetools -c scf -e 80 -k 4 4 4 -f si.cif -ppd lda -ppn 8 -par parameters.txt
+
