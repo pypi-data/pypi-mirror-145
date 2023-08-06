@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "magicpyden"
+version = "0.1.4"
+description = "Async Python API wrapper for MagicEden"
+readme = "README.md"
+keywords = ["async", "api", "magic eden"]
+authors = ["Christian Pérez Villanueva <perez.villanueva.christian34@gmail.com>"]
+
+[project.urls]
+repository = "https://github.com/ChristianPerez34/magicpyden"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+aiohttp = {extras = ["speedups"], version = "^3.8.1"}
+pydantic = "^1.9.0"
+inflection = "^0.5.1"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+pytest-asyncio = "^0.18.2"
+pre-commit = "^2.17.0"
+bandit = "^1.7.4"
+wemake-python-styleguide = "^0.16.1"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
