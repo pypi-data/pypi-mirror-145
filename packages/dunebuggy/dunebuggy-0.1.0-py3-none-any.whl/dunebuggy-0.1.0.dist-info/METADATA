@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: dunebuggy
+Version: 0.1.0
+Summary: A lightweight (unofficial) Python SDK for Dune.xyz
+Home-page: https://github.com/rysuds/dunebuggy
+License: MIT
+Author: rysuds
+Author-email: ryan.sudhakaran@gmail.com
+Requires-Python: >=3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: httpx (>=0.18.2)
+Requires-Dist: numpy (==1.20.1)
+Requires-Dist: pandas (>=1.2.4)
+Requires-Dist: pydantic (>=1.8.2)
+Requires-Dist: sqlparse (>=0.4.2,<0.5.0)
+Project-URL: Repository, https://github.com/rysuds/dunebuggy
