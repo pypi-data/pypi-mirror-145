@@ -1,0 +1,13 @@
+# examples/keyed_array_merge/layers/layer2.yaml
+mergedb: # Configuration Object
+  inherit:
+    - layers/layer1.yaml
+  merge_rules:
+    keyed_array:
+      - path: ['subdict']
+        attribute: 'array'
+        key: 'id'
+subdict: # Content
+  array:
+    - id: 1
+      name: Changed

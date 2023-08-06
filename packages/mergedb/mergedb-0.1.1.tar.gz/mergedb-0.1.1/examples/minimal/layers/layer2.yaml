@@ -1,0 +1,9 @@
+# examples/minimal/layers/layer2.yaml
+---
+mergedb:
+  knockout: '~'
+  inherit:
+    - layers/layer1.yaml
+options:
+  2: True
+  3: '~'

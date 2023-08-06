@@ -1,0 +1,10 @@
+# Cumulus_Switches/switch2.yaml
+---
+meta:
+  device:
+    ssh:
+      hostname: 192.168.122.42
+    default_management_protocol: ssh
+    driver: cumulus
+  system:
+    hostname: switch2
