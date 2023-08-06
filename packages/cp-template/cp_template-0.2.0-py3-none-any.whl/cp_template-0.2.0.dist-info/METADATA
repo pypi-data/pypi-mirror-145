@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: cp-template
+Version: 0.2.0
+Summary: A tool to copy templated directories
+Home-page: https://github.com/breuleux/cp-template
+License: MIT
+Author: Olivier Breuleux
+Author-email: breuleux@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: coleo (>=0.3.0,<0.4.0)
+Requires-Dist: pystache (>=0.6.0,<0.7.0)
+Project-URL: Repository, https://github.com/breuleux/cp-template
+Description-Content-Type: text/markdown
+
+
+# cp-template
+
+
+This is a very simple utility to generate directories based on templates.
+
+
+## Install
+
+
+```bash
+pip install cp-template
+```
+
+
+## Usage
+
+
+Suppose you have the following directory structure (**Note: the {{}}s are part of the filenames**)
+
+```
+{{project}}/
+  .gitignore
+  README.md        # File contains "{{project}} by {{author}}"
+  {{project}}/
+    __init__.py
+```
+
+Then you can run the following command:
+
+```
+cp-template './{{project}}' project=pineapple author=me
+```
+
+And it will generate this in the current directory:
+
+```
+pineapple/
+  .gitignore
+  README.md        # File contains "pineapple by me"
+  pineapple/
+    __init__.py
+```
+
+More features will be added as I need them, but feel free to make PRs to contribute some.
+
