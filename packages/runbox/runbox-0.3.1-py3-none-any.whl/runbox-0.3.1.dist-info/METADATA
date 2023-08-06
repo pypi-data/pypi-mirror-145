@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: runbox
+Version: 0.3.1
+Summary: Compile and run untrusted code in docker
+License: MIT
+Author: Burenin Artem
+Author-email: burenotti@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: aiodocker (>=0.21.0,<0.22.0)
+Requires-Dist: aiohttp (>=3.8.1,<4.0.0)
+Requires-Dist: pydantic (>=1.9.0,<2.0.0)
