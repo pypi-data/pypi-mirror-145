@@ -1,0 +1,38 @@
+# -*- coding: utf-8 -*-
+from setuptools import setup
+
+packages = \
+['gcloud', 'gcloud.aio', 'gcloud.aio.storage']
+
+package_data = \
+{'': ['*']}
+
+install_requires = \
+['aiofiles>=0.6.0,<1.0.0',
+ 'gcloud-aio-auth>=3.6.0,<5.0.0',
+ 'pyasn1-modules>=0.2.1,<0.3.0']
+
+extras_require = \
+{':python_version < "3.0"': ['rsa>=3.1.4,<4.4.0'],
+ ':python_version >= "3.0" and python_version < "3.6"': ['rsa>=3.1.4,<4.6.0'],
+ ':python_version >= "3.6"': ['rsa>=3.1.4,<5.0.0']}
+
+setup_kwargs = {
+    'name': 'gcloud-aio-storage',
+    'version': '7.0.1',
+    'description': 'Python Client for Google Cloud Storage',
+    'long_description': '(Asyncio OR Threadsafe) Python Client for Google Cloud Storage\n==============================================================\n\n    This is a shared codebase for ``gcloud-aio-storage`` and\n    ``gcloud-rest-storage``\n\n|pypi| |pythons-aio| |pythons-rest|\n\nInstallation\n------------\n\n.. code-block:: console\n\n    $ pip install --upgrade gcloud-{aio,rest}-storage\n\nUsage\n-----\n\nTo upload a file, you might do something like the following:\n\n.. code-block:: python\n\n    import aiofiles\n    import aiohttp\n    from gcloud.aio.storage import Storage\n\n\n    async with aiohttp.ClientSession() as session:\n        client = Storage(session=session)\n\n        async with aiofiles.open(\'/path/to/my/file\', mode="r") as f:\n            contents = await f.read()\n            status = await client.upload(\n                \'my-bucket-name\',\n                \'path/to/gcs/folder\',\n                output,\n            )\n            print(status)\n\nNote that there are multiple ways to accomplish the above, ie,. by making use\nof the ``Bucket`` and ``Blob`` convenience classes if that better fits your\nuse-case.\n\nOf course, the major benefit of using an async library is being able to\nparallelize operations like this. Since ``gcloud-aio-storage`` is fully\nasyncio-compatible, you can use any of the builtin asyncio method to perform\nmore complicated operations:\n\n.. code-block:: python\n\n    my_files = {\n        \'/local/path/to/file.1\': \'path/in/gcs.1\',\n        \'/local/path/to/file.2\': \'path/in/gcs.2\',\n        \'/local/path/to/file.3\': \'different/gcs/path/filename.3\',\n    }\n\n    async with Storage() as client:\n        # Prepare all our upload data\n        uploads = []\n        for local_name, gcs_name in my_files.items():\n            async with aiofiles.open(local_name, mode="r") as f:\n                contents = await f.read()\n                uploads.append((gcs_name, contents))\n\n        # Simultaneously upload all files\n        await asyncio.gather(\n            *[\n                client.upload(\'my-bucket-name\', path, file_) for path, file_ in uploads\n            ]\n        )\n\nYou can also refer `smoke test`_ for more info and examples.\n\nNote that you can also let ``gcloud-aio-storage`` do its own session\nmanagement, so long as you give us a hint when to close that session:\n\n.. code-block:: python\n\n    async with Storage() as client:\n        # closes the client.session on leaving the context manager\n\n    # OR\n\n    client = Storage()\n    # do stuff\n    await client.close()  # close the session explicitly\n\nFile Encodings\n~~~~~~~~~~~~~~\n\nIn some cases, ``aiohttp`` needs to transform the objects returned from GCS\ninto strings, eg. for debug logging and other such issues. The built-in\n``await response.text()`` operation relies on `chardet`_ for guessing the\ncharacter encoding in any cases where it can not be determined based on the\nfile metadata.\n\nUnfortunately, this operation can be extremely slow, especially in cases where\nyou might be working with particularly large files. If you notice odd latency\nissues when reading your results, you may want to set your character encoding\nmore explicitly within GCS, eg. by ensuring you set the ``contentType`` of the\nrelevant objects to something suffixed with ``; charset=utf-8``. For example,\nin the case of ``contentType=\'application/x-netcdf\'`` files exhibiting latency,\nyou could instead set ``contentType=\'application/x-netcdf; charset=utf-8``. See\n`#172`_ for more info!\n\nEmulators\n~~~~~~~~~\n\nFor testing purposes, you may want to use ``gcloud-aio-storage`` along with a\nlocal GCS emulator. Setting the ``$STORAGE_EMULATOR_HOST`` environment variable\nto the address of your emulator should be enough to do the trick.\n\nFor example, using `fsouza/fake-gcs-server`_, you can do:\n\n.. code-block:: console\n\n    docker run -d -p 4443:4443 -v $PWD/my-sample-data:/data fsouza/fake-gcs-server\n    export STORAGE_EMULATOR_HOST=\'0.0.0.0:4443\'\n\nAny ``gcloud-aio-storage`` requests made with that environment variable set\nwill query ``fake-gcs-server`` instead of the official GCS API.\n\nNote that some emulation systems require disabling SSL -- if you\'re using a\ncustom http session, you may need to disable SSL verification.\n\nCustomization\n-------------\n\nThis library mostly tries to stay agnostic of potential use-cases; as such, we\ndo not implement any sort of retrying or other policies under the assumption\nthat we wouldn\'t get things right for every user\'s situation.\n\nAs such, we recommend configuring your own policies on an as-needed basis. The\n`backoff`_ library can make this quite straightforward! For example, you may\nfind it useful to configure something like:\n\n.. code-block:: python\n\n    class StorageWithBackoff(gcloud.aio.storage.Storage):\n        @backoff.on_exception(backoff.expo, aiohttp.ClientResponseError,\n                              max_tries=5, jitter=backoff.full_jitter)\n        async def copy(self, *args: Any, **kwargs: Any):\n            return await super().copy(*args, **kwargs)\n\n        @backoff.on_exception(backoff.expo, aiohttp.ClientResponseError,\n                              max_tries=10, jitter=backoff.full_jitter)\n        async def download(self, *args: Any, **kwargs: Any):\n            return await super().download(*args, **kwargs)\n\nContributing\n------------\n\nPlease see our `contributing guide`_.\n\n.. _#172: https://github.com/talkiq/gcloud-aio/issues/172\n.. _backoff: https://pypi.org/project/backoff/\n.. _chardet: https://pypi.org/project/chardet/\n.. _contributing guide: https://github.com/talkiq/gcloud-aio/blob/master/.github/CONTRIBUTING.rst\n.. _fsouza/fake-gcs-server: https://github.com/fsouza/fake-gcs-server\n.. _smoke test: https://github.com/talkiq/gcloud-aio/blob/master/storage/tests/integration/smoke_test.py\n\n.. |pypi| image:: https://img.shields.io/pypi/v/gcloud-aio-storage.svg?style=flat-square\n    :alt: Latest PyPI Version (gcloud-aio-storage)\n    :target: https://pypi.org/project/gcloud-aio-storage/\n\n.. |pythons-aio| image:: https://img.shields.io/pypi/pyversions/gcloud-aio-storage.svg?style=flat-square&label=python (aio)\n    :alt: Python Version Support (gcloud-aio-storage)\n    :target: https://pypi.org/project/gcloud-aio-storage/\n\n.. |pythons-rest| image:: https://img.shields.io/pypi/pyversions/gcloud-rest-storage.svg?style=flat-square&label=python (rest)\n    :alt: Python Version Support (gcloud-rest-storage)\n    :target: https://pypi.org/project/gcloud-rest-storage/\n',
+    'author': 'Vi Engineering',
+    'author_email': 'voiceai-eng@dialpad.com',
+    'maintainer': None,
+    'maintainer_email': None,
+    'url': 'https://github.com/talkiq/gcloud-aio',
+    'packages': packages,
+    'package_data': package_data,
+    'install_requires': install_requires,
+    'extras_require': extras_require,
+    'python_requires': '>=3.6,<4.0',
+}
+
+
+setup(**setup_kwargs)
