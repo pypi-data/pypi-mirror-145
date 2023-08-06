@@ -1,0 +1,37 @@
+# GitHub Actions workflow for mmtwfs testing and continuous integration.
+#
+# This file performs testing using tox and tox.ini to define and configure the test environments.
+
+name: CI Tests
+
+on:
+  push:
+    branches:
+    - main
+    tags:
+    - '*'
+  pull_request:
+
+# Use the OpenAstronomy re-usable workflow that handles the dirty work of setting up
+# workers and running tox.
+jobs:
+  test:
+    uses: OpenAstronomy/github-actions-workflows/.github/workflows/tox.yml@v1
+    with:
+      envs: |
+        - linux: codestyle
+          pytest: false
+        - linux: py39-alldeps-cov
+          name: py39
+        - macos: py39
+          name: py39-macos
+        - linux: py38-astropylts
+          name: py38-astropyLTS
+        - linux: build_docs
+        - linux: linkcheck
+#        - linux: py310-astropydev-numpydev
+#          name: py310-dev
+#          continue-on-error: true
+      coverage: 'codecov'
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV }}

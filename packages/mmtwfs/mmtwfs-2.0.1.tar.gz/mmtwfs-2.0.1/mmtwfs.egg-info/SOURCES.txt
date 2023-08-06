@@ -1,0 +1,127 @@
+.dockerignore
+.gitignore
+.readthedocs.yml
+AUTHORS.rst
+CHANGES.rst
+CITATION.cff
+Dockerfile
+LICENSE.rst
+MANIFEST.in
+README.rst
+pyproject.toml
+setup.cfg
+setup.py
+tox.ini
+.github/workflows/docker.yml
+.github/workflows/mmtwfs-tests.yml
+.github/workflows/publish-to-pypi.yml
+docs/Makefile
+docs/authors_for_sphinx.rst
+docs/conf.py
+docs/index.rst
+docs/license.rst
+docs/make.bat
+docs/_static/mmtwfs.ico
+docs/_templates/autosummary/base.rst
+docs/_templates/autosummary/class.rst
+docs/_templates/autosummary/module.rst
+docs/mmtwfs/api_docs.rst
+docs/mmtwfs/binospec.rst
+docs/mmtwfs/f9.rst
+docs/mmtwfs/hecto.rst
+docs/mmtwfs/index.rst
+docs/mmtwfs/mmirs.rst
+docs/mmtwfs/tips_tricks_caveats.rst
+docs/mmtwfs/usage.rst
+mmtwfs/__init__.py
+mmtwfs/_astropy_init.py
+mmtwfs/config.py
+mmtwfs/conftest.py
+mmtwfs/custom_exceptions.py
+mmtwfs/f9topbox.py
+mmtwfs/secondary.py
+mmtwfs/telescope.py
+mmtwfs/utils.py
+mmtwfs/version.py
+mmtwfs/wfs.py
+mmtwfs/zernike.py
+mmtwfs.egg-info/PKG-INFO
+mmtwfs.egg-info/SOURCES.txt
+mmtwfs.egg-info/dependency_links.txt
+mmtwfs.egg-info/entry_points.txt
+mmtwfs.egg-info/not-zip-safe
+mmtwfs.egg-info/requires.txt
+mmtwfs.egg-info/top_level.txt
+mmtwfs/data/Surf2ActTEL_32.bin
+mmtwfs/data/actuator_coordinates.dat
+mmtwfs/data/bcv_node_coordinates.dat
+mmtwfs/data/f5zernfield.tab
+mmtwfs/data/f5zernfield_flatsurface.tab
+mmtwfs/data/f5zernfield_std_curvedsurface.TXT
+mmtwfs/data/f5zernfield_std_flatsurface.TXT
+mmtwfs/data/mmirszernfield.tab
+mmtwfs/data/null.TXT
+mmtwfs/data/ref_images/LED2sec_22.fits
+mmtwfs/data/ref_images/binospec_ref.fits
+mmtwfs/data/ref_images/f5_hecto_ref.fits
+mmtwfs/data/ref_images/f5_mask.fits
+mmtwfs/data/ref_images/f9_new_ref.fits
+mmtwfs/data/ref_images/f9_ref.fits
+mmtwfs/data/ref_images/flwo12_mask.fits
+mmtwfs/data/ref_images/flwo15_mask.fits
+mmtwfs/data/ref_images/mmirs_camera1_ref.fits
+mmtwfs/data/ref_images/mmirs_camera2_ref.fits
+mmtwfs/data/ref_images/mmirs_mask.fits
+mmtwfs/data/ref_images/newf9_mask.fits
+mmtwfs/data/ref_images/oldf9_mask.fits
+mmtwfs/data/test_data/1195.star.p2m18.fits
+mmtwfs/data/test_data/AST45_p1000.frc
+mmtwfs/data/test_data/TREX_p500_0000.fits
+mmtwfs/data/test_data/auto_wfs_0037_ave.fits
+mmtwfs/data/test_data/f9wfs_20200225-205600.fits
+mmtwfs/data/test_data/mmirs_blank.fits
+mmtwfs/data/test_data/mmirs_bogus.fits
+mmtwfs/data/test_data/mmirs_wfs_0150.fits
+mmtwfs/data/test_data/mmirs_wfs_rename_0566.fits
+mmtwfs/data/test_data/test_newf9.fits
+mmtwfs/data/test_data/wfs_ff_cal_img_2017.1113.111402.fits
+mmtwfs/scripts/fix_csvs.py
+mmtwfs/scripts/fix_mmirs_exposure_time.py
+mmtwfs/scripts/reanalyze.py
+mmtwfs/scripts/rename_mmirs_files.py
+mmtwfs/tests/__init__.py
+mmtwfs/tests/test_secondaries.py
+mmtwfs/tests/test_telescope.py
+mmtwfs/tests/test_wfs.py
+mmtwfs/tests/test_zernike.py
+notebooks/61" Curvature Wavefront Sensing.ipynb
+notebooks/Background and spot detection.ipynb
+notebooks/Bino Engineering.ipynb
+notebooks/Curvature Wavefront Sensing.ipynb
+notebooks/F9 reposition WFS image.ipynb
+notebooks/FLWO WFS.ipynb
+notebooks/MMIRS CWFS.ipynb
+notebooks/Modal Dither.ipynb
+notebooks/New F9 Testing.ipynb
+notebooks/PupilVignette-MMIRSWFS.ipynb
+notebooks/Skycam pixel mask.ipynb
+notebooks/WFS testing.ipynb
+notebooks/baseline tests.ipynb
+notebooks/bcv dev.ipynb
+notebooks/bino seeing 2018-11-02.ipynb
+notebooks/bino_guider_seeing.ipynb
+notebooks/dome seeing.ipynb
+notebooks/f9_bad_pixel.fits
+notebooks/f9wfs pixel mask.ipynb
+notebooks/fix mmirs exposure time.ipynb
+notebooks/hecto recenter.ipynb
+notebooks/model stability.ipynb
+notebooks/poppy dev.ipynb
+notebooks/reanalyze.ipynb
+notebooks/reanalyze_win10.ipynb
+notebooks/scipy_debug.ipynb
+notebooks/slope debug.ipynb
+notebooks/wavefront_fitting.ipynb
+notebooks/wfs match.ipynb
+notebooks/zernike testing.ipynb
+notebooks/zgrad.py
