@@ -1,0 +1,13 @@
+docutils
+html5lib
+nbconvert
+nbformat
+pytest>=7.0
+requests
+
+[cache]
+requests-cache~=0.5.2
+
+[test]
+requests-cache~=0.5.2
+pre-commit
