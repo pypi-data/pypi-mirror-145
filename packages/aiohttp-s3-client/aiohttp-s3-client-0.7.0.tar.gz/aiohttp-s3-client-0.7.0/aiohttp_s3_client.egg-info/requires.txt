@@ -1,0 +1,14 @@
+aiomisc<16,>=14
+aiohttp<4
+aws-request-signer==1.0.0
+
+[develop]
+coverage!=4.3
+coveralls
+mypy
+pylava
+pytest
+pytest-aiohttp
+pytest-cov
+pytest-timeout
+tox>=2.4
