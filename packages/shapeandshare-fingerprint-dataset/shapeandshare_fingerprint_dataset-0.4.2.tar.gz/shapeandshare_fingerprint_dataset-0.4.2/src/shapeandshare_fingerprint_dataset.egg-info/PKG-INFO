@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: shapeandshare-fingerprint-dataset
+Version: 0.4.2
+Summary: Generates file hash reports
+Author: Joshua C. Burt
+Author-email: joshburt@shapeandshare.com
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Generates File Hash Reports
+
+A simple utility to generate hash reports.
+
+### Example
+```python
+import logging
+
+from shapeandshare.fingerprint.dataset import DataSet
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+
+    data_set: DataSet = DataSet(name="dataset", search_path=".")
+    data_set.hash()
+    data_set.generate_dataframe()
+```
+
+
