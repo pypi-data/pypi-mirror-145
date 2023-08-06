@@ -1,0 +1,31 @@
+xotl.tools>=2.2.1
+xotless<4.0,>=3.8.0
+tzdata
+hypothesis~=6.39
+immutables>=0.17
+
+[:python_version < "3.9"]
+backports.zoneinfo
+typing_extensions
+
+[dev]
+tox
+pytest
+hypothesis<7.0,>=6.39
+pytest-cov
+Sphinx<5.0,>=4.4.0
+mypy==0.941
+flake8-bugbear==22.1.11
+flake8~=4.0.1
+black~=22.1.0
+isort~=5.10.1
+types-backports
+coverage
+ipython
+ipdb
+
+[dev:python_version < "3.9"]
+pytz
+
+[pytz]
+pytz
