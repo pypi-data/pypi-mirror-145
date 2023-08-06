@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: hugedict
+Version: 1.2.1
+Summary: A dictionary-like object that is friendly with multiprocessing and uses key-value databases (e.g., RocksDB) as the underlying storage.
+Home-page: https://github.com/binh-vu/hugedict
+License: MIT
+Author: Binh Vu
+Author-email: binh@toan2.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: lbry-rocksdb-optimized (>=0.8.1,<0.9.0)
+Requires-Dist: pybloomfiltermmap3 (>=0.5.5,<0.6.0)
+Requires-Dist: zstandard (>=0.16.0,<0.17.0)
+Project-URL: Repository, https://github.com/binh-vu/hugedict
