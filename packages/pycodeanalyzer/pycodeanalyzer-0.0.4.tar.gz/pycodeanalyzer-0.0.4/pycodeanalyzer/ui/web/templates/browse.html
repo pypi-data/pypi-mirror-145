@@ -1,0 +1,44 @@
+    <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>PyCodeAnalyzer</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}"/>
+        <link rel="stylesheet"
+            href="{{ url_for('static', filename='css/libs/highlight.11.5.0.default.min.css') }}">
+        <script src="{{ url_for('static', filename='js/libs/highlight.11.5.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/libs/jquery.1.12.4.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/libs/socket.io.4.4.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/libs/mermaid.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/keepalive.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/browse.js') }}"></script>
+    </head>
+    <body>
+        <div class="center main-container">
+            <h1>PyCodeAnalyzer</h1>
+            <div class="horizontal-navbar-container">
+                <ul class="navbar horizontal">
+                    <li class="horizontal-navbar" ><a href="/browse/classes">Classes</a></li>
+                    <li class="horizontal-navbar" ><a href="/browse/enums">Enums</a></li>
+                    <li class="horizontal-navbar" ><a href="/browse/functions">Functions</a></li>
+                    <li class="horizontal-navbar" ><a href="/browse/files">Files</a></li>
+                    <li class="horizontal-navbar" ><a href="/browse/search">Search</a></li>
+                </ul>
+            </div>
+            <div class="vertical-navbar-container">
+                <ul class="navbar vertical" id="ItemList">
+                </ul>
+            </div>
+            <div class="navcontent" >
+                <h2 id="ItemName">Welcome</h2>
+                <div id="ItemDesc">
+                    Please select an item to see it here.
+                </div>
+                <div id="ItemDiag" class="mermaid scrollable diag">
+                    flowchart TD
+                    SelectItem --> Enjoy
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
