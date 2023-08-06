@@ -1,0 +1,197 @@
+Metadata-Version: 2.1
+Name: ironman
+Version: 0.6.0
+Summary: SoC Firmware for L1Calo
+Home-page: https://github.com/kratsg/ironman
+Author: Giordon Stark, Emily Smith
+Author-email: gstark@cern.ch, emsmith@cern.ch
+License: MIT
+Project-URL: Documentation, https://ironman.readthedocs.io/
+Project-URL: Source, https://github.com/kratsg/ironman
+Project-URL: Tracker, https://github.com/krasg/ironman/issues
+Keywords: physics software-on-chip SoC bitbake slow-control ipbus
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: System :: Hardware
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: Twisted (>=15.4.0)
+Requires-Dist: zope.interface (==4.1.3)
+Requires-Dist: construct (==2.9.39)
+Requires-Dist: pyyaml (>=4.2b1)
+Provides-Extra: complete
+Requires-Dist: Sphinx (<4) ; extra == 'complete'
+Requires-Dist: black ; extra == 'complete'
+Requires-Dist: bump2version ; extra == 'complete'
+Requires-Dist: check-manifest ; extra == 'complete'
+Requires-Dist: flake8 ; extra == 'complete'
+Requires-Dist: pre-commit ; extra == 'complete'
+Requires-Dist: pytest-cov (>=2.5.1) ; extra == 'complete'
+Requires-Dist: pytest (~=6.0) ; extra == 'complete'
+Requires-Dist: repoze.sphinx.autointerface ; extra == 'complete'
+Requires-Dist: sphinx-rtd-theme ; extra == 'complete'
+Requires-Dist: twine ; extra == 'complete'
+Provides-Extra: develop
+Requires-Dist: Sphinx (<4) ; extra == 'develop'
+Requires-Dist: black ; extra == 'develop'
+Requires-Dist: bump2version ; extra == 'develop'
+Requires-Dist: check-manifest ; extra == 'develop'
+Requires-Dist: flake8 ; extra == 'develop'
+Requires-Dist: pre-commit ; extra == 'develop'
+Requires-Dist: pytest-cov (>=2.5.1) ; extra == 'develop'
+Requires-Dist: pytest (~=6.0) ; extra == 'develop'
+Requires-Dist: repoze.sphinx.autointerface ; extra == 'develop'
+Requires-Dist: sphinx-rtd-theme ; extra == 'develop'
+Requires-Dist: twine ; extra == 'develop'
+Provides-Extra: docs
+Requires-Dist: Sphinx (<4) ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ; extra == 'docs'
+Requires-Dist: repoze.sphinx.autointerface ; extra == 'docs'
+Provides-Extra: lint
+Requires-Dist: black ; extra == 'lint'
+Requires-Dist: flake8 ; extra == 'lint'
+Provides-Extra: test
+Requires-Dist: pytest (~=6.0) ; extra == 'test'
+Requires-Dist: pytest-cov (>=2.5.1) ; extra == 'test'
+
+Ironman
+=======
+
+|PyPI version| |Docs|
+
+|Build Status| |codecov| |Code Health|
+
+What is Ironman?
+----------------
+
+Ironman is a general purpose software toolbox to be run on L1Calo
+hardware with embedded processors (SoCs).
+
+Look how easy it is to use
+
+.. code:: python
+
+    >>> import ironman
+    >>> # Get your stuff done
+    >>> ironman.engage()
+
+Features
+--------
+
+-  Be awesome
+-  Make things faster
+
+Getting Started
+---------------
+
+Installing
+~~~~~~~~~~
+
+Install ironman by running
+
+::
+
+    pip install ironman
+
+Developing
+~~~~~~~~~~
+
+If it is your first time...
+
+::
+
+    git clone git@github.com:kratsg/ironman
+    cd ironman && mkvirtualenv ironman
+    pip install -r requirements.txt
+
+and then afterwards...
+
+::
+
+    workon ironman
+    python setup.py develop
+    ... do work here ...
+    pip uninstall ironman
+
+Testing
+^^^^^^^
+
+::
+
+    tox
+
+or with
+
+::
+
+    py.test
+
+Contributing
+~~~~~~~~~~~~
+
+-  `Issue Tracker <https://github.com/kratsg/ironman/issues>`__
+-  `Source Code <https://github.com/kratsg/ironman>`__
+
+Support
+~~~~~~~
+
+If you are having issues, let us know.
+
+Releasing
+~~~~~~~~~
+
+1. Do some work on your package (i.e. fix bugs, add features, etc)
+2. Make sure the tests pass. Run ``pytest``.
+3. Update the ``__version__`` number via ``bump2version``.
+4. Push to the default branch.
+
+Tutorial
+--------
+
+Since we will be predominantly using Twisted within the Zynq to manage
+the Reactor workflow ("callbacks"), I suggest reading through `this
+tutorial <http://krondo.com/?page_id=1327>`__ on your own time to get up
+to speed on how it works and some details of sockets.
+
+I'm following the guide based on ``sandman``
+`here <https://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/>`__
+
+To Do
+-----
+
+-  split udp and tcp into different, separate protocols:
+   http://stackoverflow.com/questions/33224142/twisted-protocol-that-simultaneously-handles-tcp-and-udp-at-once
+
+Ideas
+-----
+
+-  make it like twisted.web - we build Request objects which need to
+   find Resource objects that provide actions (maybe too complicated,
+   try and simplify?)
+   `link <http://twistedmatrix.com/trac/browser/trunk/twisted/web>`__
+
+.. |PyPI version| image:: https://badge.fury.io/py/ironman.svg
+   :target: https://badge.fury.io/py/ironman
+.. |Docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
+   :target: http://ironman.readthedocs.org/en/latest/intro.html
+.. |Build Status| image:: https://travis-ci.org/kratsg/ironman.svg?branch=master
+   :target: https://travis-ci.org/kratsg/ironman
+.. |codecov| image:: https://codecov.io/gh/kratsg/ironman/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/kratsg/ironman
+.. |Code Health| image:: https://landscape.io/github/kratsg/ironman/master/landscape.svg?style=flat
+   :target: https://landscape.io/github/kratsg/ironman/master
+
+
