@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: pyperclip-termux
+Version: 0.0.2
+Summary: pyperclip patch for termux-api
+Home-page: https://github.com/kittyandrew/pyperclip-termux
+Author: BlackCatDevel0per
+Author-email: bcdev@mail.ru
+License: Apache 2.0
+Keywords: pyperclip termux
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: pyperclip
+
+# pyperclip-termux
+Small patch for python scripts with [pyperclip](https://github.com/asweigart/pyperclip), using [termux-api](https://github.com/shajul/termux-api)
+
