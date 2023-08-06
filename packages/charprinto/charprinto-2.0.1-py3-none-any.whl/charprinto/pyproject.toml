@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "Charprinto"
+version = "2.0.1"
+description = ""
+authors = ["AverseABFun <averse.abfun@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://averseabfun-demo.readthedocs.io/en/master/"
+repository = "https://github.com/AverseABFun/Charprint"
+keywords = ["Charprinto", "Charprint","charprint","charprinto", "char"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+]
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+flake8-markdown = 'charprint_markdown:main'
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
