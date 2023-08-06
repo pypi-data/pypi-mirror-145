@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: ytclip-server
+Version: 1.0.4
+Summary: Server to run ytclip.
+Home-page: https://github.com/zackees/ytclip-server
+Author: Zach Vorhies
+Author-email: dont@email.me
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Environment :: Console
+Requires-Python: >=3.6.0
+Description-Content-Type: text/markdown
+Requires-Dist: flask
+Requires-Dist: ytclip
+Requires-Dist: flask-executor
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+
+# ytclip-server
+
+Docker http server running [ytclip](https://github.com/zackees/ytclip)
+
+# Docker Production test
+
+  * `git clone https://github.com/zackees/ytclip-server`
+  * `cd ytclip-server`
+  * `docker-compose up`
+  * Now open up `http://127.0.0.1:80/`
+
+# Demo
+
+  * `pip install ytclip-server`
+  * `ytclip-server --port 1234`
+  * Now open up `http://127.0.0.1:1234` in a browser.
+
+# Full Tests
+
+  * `git clone https://github.com/zackees/ytclip-server`
+  * `cd ytclip-server`
+  * `tox`
+
