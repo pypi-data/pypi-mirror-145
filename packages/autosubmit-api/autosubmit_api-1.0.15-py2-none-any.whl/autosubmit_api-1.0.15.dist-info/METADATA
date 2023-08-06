@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: autosubmit-api
+Version: 1.0.15
+Summary: An extension to the Autosubmit package that serves its information as an API
+Home-page: https://earth.bsc.es/gitlab/wuruchi/autosubmit_api
+Author: Wilmer Uruchi
+Author-email: wilmer.uruchi@bsc.es
+License: GNU GPL
+Keywords: autosubmit,API
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 2.7
+Requires-Python: >=2.6, !=3.*
+Requires-Dist: bscearth.utils (==0.5.2)
+Requires-Dist: Flask (==1.1.1)
+Requires-Dist: Flask-Cors (==3.0.8)
+Requires-Dist: Flask-Jsonpify (==1.5.0)
+Requires-Dist: Flask-RESTful (==0.3.7)
+Requires-Dist: gunicorn (==19.9.0)
+Requires-Dist: mock (==3.0.5)
+Requires-Dist: networkx (==2.2)
+Requires-Dist: numpy
+Requires-Dist: paramiko (==1.15.0)
+Requires-Dist: portalocker (==0.5.7)
+Requires-Dist: pydotplus (==2.0.2)
+Requires-Dist: regex
+Requires-Dist: requests (==2.22.0)
+Requires-Dist: graphviz (==0.13)
+
+UNKNOWN
+
+
