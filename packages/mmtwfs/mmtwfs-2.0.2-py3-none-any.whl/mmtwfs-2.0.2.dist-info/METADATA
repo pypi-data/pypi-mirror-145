@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: mmtwfs
+Version: 2.0.2
+Summary: Wavefront sensing and active optics management tools for the MMT Observatory
+Home-page: https://github.com/MMTObservatory/mmtwfs
+Author: T. E. Pickering (MMT Observatory)
+Author-email: te.pickering@gmail.com
+License: BSD-3
+Platform: UNKNOWN
+Requires-Python: >=3.8
+License-File: LICENSE.rst
+License-File: AUTHORS.rst
+Requires-Dist: astropy
+Requires-Dist: matplotlib
+Requires-Dist: photutils
+Requires-Dist: scikit-image
+Requires-Dist: poppy
+Requires-Dist: lmfit
+Requires-Dist: ccdproc
+Requires-Dist: astroscrappy
+Requires-Dist: dnspython
+Requires-Dist: parse
+Requires-Dist: pytz
+Requires-Dist: coloredlogs
+Provides-Extra: docs
+Requires-Dist: sphinx-astropy ; extra == 'docs'
+Provides-Extra: extra
+Requires-Dist: jupyter ; extra == 'extra'
+Provides-Extra: test
+Requires-Dist: tox ; extra == 'test'
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-astropy ; extra == 'test'
+Requires-Dist: nose ; extra == 'test'
+Requires-Dist: coverage ; extra == 'test'
+Requires-Dist: codecov ; extra == 'test'
+
+
+mmtwfs
+======
+
+Wavefront analysis and active optics management tools for the MMTO.
+
+
+.. image:: https://zenodo.org/badge/DOI/10.5281/zenodo.1255356.svg
+   :target: https://doi.org/10.5281/zenodo.1255356
+   :alt: DOI
+
+
+
+.. image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat
+   :target: http://www.astropy.org
+   :alt: Powered by AstroPy
+
+
+
+.. image:: https://github.com/MMTObservatory/mmtwfs/workflows/CI%20Tests/badge.svg
+   :target: https://github.com/MMTObservatory/mmtwfs/actions
+   :alt: CI Status
+
+
+
+.. image:: https://codecov.io/gh/MMTObservatory/mmtwfs/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/MMTObservatory/mmtwfs
+   :alt: Coverage Status
+
+
+
+.. image:: https://readthedocs.org/projects/mmtwfs/badge/?version=latest
+   :target: http://mmtwfs.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+
+
