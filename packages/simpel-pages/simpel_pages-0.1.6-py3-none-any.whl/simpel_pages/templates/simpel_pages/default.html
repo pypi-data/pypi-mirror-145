@@ -1,0 +1,17 @@
+{% extends 'simpel_pages/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <article>
+    <h1><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+    {% if object.content %}
+      <div>
+        {{ object.content|safe }}
+      </div>
+    {% endif %}
+  </article>
+  {% if object.parent %}
+    <div><strong>{% trans "Back to" %}</strong>: <a href="{{ object.parent.get_absolute_url }}">{{ object.parent.title }}</a></div>
+  {% endif %}
+  {% block extra_content %}{% endblock extra_content %}
+{% endblock content %}

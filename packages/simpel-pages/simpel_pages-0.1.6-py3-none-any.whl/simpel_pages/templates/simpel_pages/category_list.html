@@ -1,0 +1,21 @@
+{% extends 'simpel_pages/base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans "Categories" %}</h1>
+  <div>
+    {% for category in object_list %}
+      <section>
+        <h2><a href="{{ category.get_absolute_url }}">{{ category|title }}</a></h2>
+        {% if category.description %}
+          <div>{{ category.description }}</div>
+        {% endif %}
+      </section>
+    {% empty %}
+      {% include 'simpel_pages/includes/no_results.html' %}
+    {% endfor %}
+    {% if is_paginated %}
+      {% include 'simpel_pages/includes/pagination.html' %}
+    {% endif %}
+  </div>
+{% endblock content %}

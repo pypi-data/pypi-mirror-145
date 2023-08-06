@@ -1,0 +1,43 @@
+{% extends 'simpel_pages/base.html' %}
+{% load i18n pages_widget_tags %}
+
+{% block content %}
+  <article>
+    <h1><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h1>
+    {% if object.content %}
+      <div>
+        {{ object.content|safe }}
+      </div>
+    {% endif %}
+    {% if object.category %}
+      <div><strong>{% trans "Category" %}</strong>: <a href="{% url 'serve_category' slug=object.category.slug %}">{{ object.category|title }}</a></div>
+    {% endif %}
+    {% if object.tags.count %}
+      <div>
+        <strong>{% trans "Tags" %}:</strong>
+        {% for tag in object.tags.all %}
+          <a href="{% url 'serve_tag' slug=tag.slug %}">{{ tag|title }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if object.readers.count %}
+      <div>
+        <strong>{% trans "Readers" %}:</strong>
+        {% for reader in object.readers.all %}
+          <a href="#">{{ reader.get_full_name|title }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </article>
+  {% if object.parent %}
+    <div><strong>{% trans "Back to" %}</strong>: <a href="{{ object.parent.get_absolute_url }}">{{ object.parent.title }}</a></div>
+  {% endif %}
+  {% block extra_content %}
+    {% category_list "Category" %}
+    {% tags_list "Tags" %}
+    {% popular_pages "Popular Pages" %}
+    {% recent_pages "Recent Pages" %}
+    {% related_pages "Related Pages by Category" object  %}
+    {% related_pages "Related Pages by Tags" object by="tags" %}
+  {% endblock extra_content %}
+{% endblock content %}

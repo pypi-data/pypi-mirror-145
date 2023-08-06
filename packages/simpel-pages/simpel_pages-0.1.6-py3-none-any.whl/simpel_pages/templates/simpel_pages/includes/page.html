@@ -1,0 +1,27 @@
+<article>
+  <h2><a href="{{ page.get_absolute_url }}">{{ page.title }}</a></h2>
+  {% if page.content %}
+    <div>
+      {{ page.content|safe }}
+    </div>
+  {% endif %}
+  {% if page.category %}
+    <div><strong>Category</strong>: <a href="{{ page.category.get_absolute_url }}">{{ page.category|title }}</a></div>
+  {% endif %}
+  {% if page.tags.count %}
+  <div>
+    <strong>Tags:</strong>
+    {% for tag in page.tags.all %}
+      <a href="{{ tag.get_absolute_url }}">{{ tag|title }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+  {% if page.readers.count %}
+  <div>
+    <strong>Readers:</strong>
+    {% for reader in page.readers.all %}
+      <a href="#">{{ reader.get_full_name|title }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</article>

@@ -1,0 +1,16 @@
+{% extends 'simpel_pages/base.html' %}
+
+{% block content %}
+  <h1>{{ object|title }}</h1>
+  {% if object.description %}
+    <div>{{ object.description|safe }}</div>
+  {% endif %}
+  {% for page in object_list %}
+    {% include 'simpel_pages/includes/page.html' with page=page %}
+  {% empty %}
+      {% include 'simpel_pages/includes/no_results.html' %}
+  {% endfor %}
+  {% if is_paginated %}
+    {% include 'simpel_pages/includes/pagination.html' %}
+  {% endif %}
+{% endblock content %}
