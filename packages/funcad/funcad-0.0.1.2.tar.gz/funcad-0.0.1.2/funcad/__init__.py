@@ -1,0 +1,1 @@
+from funcad import funcad
