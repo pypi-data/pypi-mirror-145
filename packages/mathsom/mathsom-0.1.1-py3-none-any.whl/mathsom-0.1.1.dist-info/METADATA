@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: mathsom
+Version: 0.1.1
+Summary: Personal library for math related problems
+Home-page: https://github.com/oliverm91/mathsom
+Author: Oliver Mohr B.
+Author-email: oliver.mohr.b@gmail.com
+License: UNKNOWN
+Keywords: solvers,solver,interpolations,interpolation,numerics,derivatives,integrals
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Natural Language :: English
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+
+# mathsom
+
+Math related library meant for personal use.
+
+## Contents:
+- Solvers (function can contain more than one input): 
+  - Newton Rhapson method (numerical differentiation)
+  - Bisection method
+- Numerical methods (function can contain more than one input):
+  - Single variable differentiation
+  - Single variable integration
+- Interpolations (uses external libraries for performance, but handles different kind of inputs/outputs):
+  - Linear
+  - LogLinear
+  - CubicSpline 
+- Auxiliar functions:
+  - Function standarization: convert function with multiple inputs to function with one input and other variable as constants f(x, y, z) -> g(x)
+
+## Requirements:
+- Python: >=3.8
+- Packages: numpy scipy
+
+ ## ToDo:
+- ~~Test files.~~
+  - ~~Auxiliar functions test.~~
+  - ~~Interpolation test.~~
+  - ~~Numerics test.~~
+  - ~~Solver test.~~
+- ~~`__init__.py` files.~~
+- ~~`setup.py` file.~~
+- ~~testpypi publication.~~
+- ~~test testpypi pip install in empty enviroment~~
+- ~~pypi publication.~~
+
+
