@@ -1,0 +1,64 @@
+[build-system]
+requires = [
+    "robotpy-build<2023.0.0,>=2022.2.1",
+    "wpilib<2023.0.0,>=2022.4.1.6",
+    "robotpy-wpimath<2023.0.0,>=2022.4.1.3",
+]
+
+[tool.robotpy-build]
+base_package = "pathplannerlib"
+
+[tool.robotpy-build.wrappers."pathplannerlib".maven_lib_download]
+artifact_id = "PathplannerLib-cpp"
+group_id = "com.pathplanner.lib"
+repo_url = "https://3015rangerrobotics.github.io/pathplannerlib/repo"
+version = "2022.2.1"
+use_sources = true
+sources = [
+    "pathplanner/lib/GeometryUtil.cpp",
+    "pathplanner/lib/PathPlanner.cpp",
+    "pathplanner/lib/PathPlannerTrajectory.cpp",
+]
+sources_classifier = "source"
+
+[[tool.robotpy-build.wrappers."pathplannerlib".maven_lib_download.patches]]
+patch = "pathplannerlib/src/sources.patch"
+strip = 1
+
+[tool.robotpy-build.wrappers."pathplannerlib"]
+name = "pathplannerlib"
+depends = [
+    "wpilibc",
+    "wpilib_core",
+    "wpimath_cpp",
+    "wpimath_geometry",
+    "wpiHal",
+    "wpiutil",
+]
+
+sources = [
+    "pathplannerlib/src/rpy/pathplannerlib.cpp"
+]
+
+# generate = [
+#     { AHRS = "AHRS.h" },
+#     # { ITimestampedDataSubscriber = "ITimestampedDataSubscriber.h" },
+# ]
+generation_data = "gen"
+
+[tool.robotpy-build.wrappers."pathplannerlib".autogen_headers]
+# pathplanner/lib
+GeometryUtil = "pathplanner/lib/GeometryUtil.h"
+PathPlanner = "pathplanner/lib/PathPlanner.h"
+PathPlannerTrajectory = "pathplanner/lib/PathPlannerTrajectory.h"
+
+[tool.robotpy-build.metadata]
+name = "robotpy-pathplannerlib"
+description = "Python wrapper for PathPlannerLib"
+author = "RobotPy Development Team"
+author_email = "robotpy@googlegroups.com"
+url = "https://github.com/robotpy/robotpy-pathplannerlib"
+license = "BSD-3-Clause"
+install_requires = [
+    "wpilib<2023.0.0,>=2022.4.1.6",
+]

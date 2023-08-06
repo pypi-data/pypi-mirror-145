@@ -1,0 +1,11 @@
+---
+
+classes:
+  PathPlanner:
+    attributes:
+      resolution:
+    methods:
+      loadPath:
+        overloads:
+          std::string, units::meters_per_second_t, units::meters_per_second_squared_t, bool:
+          std::string, units::meters_per_second_t, units::meters_per_second_squared_t:
