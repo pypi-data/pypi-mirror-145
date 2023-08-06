@@ -1,0 +1,11 @@
+#!python
+# coding: utf-8
+
+import webarchiver
+import subprocess as sp
+import sys
+
+path = webarchiver.__file__
+args = sys.argv
+args.pop(0)
+sp.call([path] + args)
