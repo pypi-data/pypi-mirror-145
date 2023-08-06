@@ -1,0 +1,21 @@
+--- orig/pathplanner/lib/PathPlanner.cpp	2022-04-03 03:30:25.000000000 -0500
++++ patched/pathplanner/lib/PathPlanner.cpp	2022-04-03 03:30:37.000000000 -0500
+@@ -10,6 +10,8 @@
+ #include <units/velocity.h>
+ #include <vector>
+ 
++#include <rpy/Filesystem.h>
++
+ using namespace pathplanner;
+ 
+ double PathPlanner::resolution = 0.004;
+@@ -17,7 +19,8 @@ double PathPlanner::resolution = 0.004;
+ PathPlannerTrajectory PathPlanner::loadPath(std::string name, units::meters_per_second_t maxVel, units::meters_per_second_squared_t maxAccel, bool reversed){
+     std::string line;
+ 
+-    std::string filePath = frc::filesystem::GetDeployDirectory() + "/pathplanner/" + name + ".path";
++    std::string filePath = (robotpy::filesystem::GetDeployDirectoryFs() / "pathplanner" / (name + ".path")).string();
++
+ 
+     std::error_code error_code;
+     wpi::raw_fd_istream input{filePath, error_code};
