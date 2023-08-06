@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: clip-util
+Version: 0.0.1
+Summary: Utilities for use with Python.
+Home-page: https://github.com/AceofSpades5757/clip-util
+Author: Kyle L. Davis
+Author-email: AceofSpades5757.github@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
+# Description
+
+Package for accessing the clipboard with Python.
+
+# Installation
+
+`pip install clip-util`
+
+# Features
+
+_Windows Only_
+
+Allows for text and HTML on Windows.
+
+## Supported Clipboard Formats
+
+* Text
+* HTML
+
+# Usage
+
+## Set Clipboard
+
+``` python
+from clipboard import Clipboard
+
+
+clipboard = Clipboard()
+
+clipboard['txt'] = 'Hello There.'
+clipboard['html'] = '<h1>Hello World</h1>'
+```
+
+## See Clipboard Formats
+
+`ClipboardFormats`
+: Enum for clipboard formats.
+
+`ClipboardFormats.CF_HTML`
+: Represents HTML format.
+
+``` python
+from clipboard import Clipboard
+from clipboard import ClipboardFormats
+from clipboard import HTMLClipboard
+```
+
+
