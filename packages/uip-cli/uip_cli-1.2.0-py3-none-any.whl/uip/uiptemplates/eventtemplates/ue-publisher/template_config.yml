@@ -1,0 +1,42 @@
+template_description: starter Extension with a local Universal Event template
+
+files_to_template:
+  - src/extension.py
+  - src/extension.yml
+  - src/templates/template.json
+
+resources_to_include:
+  - setupscripts/setup.cfg
+  - setupscripts/setup.py
+
+user_defined_variables:
+  - extension_name:
+      default: ue-publisher
+      description: Extension name
+  - extension_version:
+      default: "1.0.0"
+      description: Extension version
+  - extension_api_level:
+      default: "1.2.0"
+      description: Extension API level
+  - extension_requires_python:
+      default: ">=2.6"
+      description: Extension Python requirement
+  - owner_name:
+      default: Stonebranch
+      description: Extension owner's name
+  - owner_organization:
+      default: Stonebranch Inc.
+      description: Extension owner's organization
+  - universal_template_name:
+      default: UE Publisher
+      description: Universal Template name
+  - event_name:
+      default: publisher_event
+      description: Local Universal Event name
+
+internal_variables:
+  - uuid_variables:
+      - sleep_field_uuid
+      - universal_template_uuid
+      - event_template_uuid

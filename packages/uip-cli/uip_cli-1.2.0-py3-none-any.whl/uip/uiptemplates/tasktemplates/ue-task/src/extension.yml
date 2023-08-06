@@ -1,0 +1,10 @@
+extension:
+  name: {{ extension_name }}
+  version: "{{ extension_version }}"
+  api_level: "{{ extension_api_level }}"
+  requires_python: "{{ extension_requires_python }}"
+owner:
+  name: {{ owner_name }}
+  organization: {{ owner_organization }}
+comments: |
+  Created using ue-task template
