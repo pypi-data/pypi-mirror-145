@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "noaa_ftp"
+version = "0.1.11"
+description = "A python package to work with NOAA FTP"
+authors = ["javad-rzvn <javad.rezvanpour@gmail.com>"]
+repository = "https://github.com/javad-rzvn/noaa_ftp"
+readme = 'README.md'
+keywords = ['noaa','ftp']
+
+[tool.poetry.dependencies]
+python = "^3.7"
+progressbar2 = "^4.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
