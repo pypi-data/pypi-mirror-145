@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: sob
+Version: 1.39.0
+Summary: A type-enforced framework for serializing and deserializing JSON
+Home-page: https://github.com/enorganic/sob
+Author-email: david@belais.me
+License: MIT
+Keywords: serial
+Platform: UNKNOWN
+Requires-Python: ~=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# sob
+
+`sob` is an object serialization/deserialization library intended to facilitate
+authoring of API models which are readable and introspective, and to expedite
+code and data validation and testing.
+
+
