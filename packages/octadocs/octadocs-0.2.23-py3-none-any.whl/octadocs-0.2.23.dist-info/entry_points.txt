@@ -1,0 +1,10 @@
+[console_scripts]
+octadocs=octadocs.cli:app
+
+[mkdocs.plugins]
+octadocs=octadocs.plugin:OctaDocsPlugin
+octadocs-github=octadocs_github.plugin:GithubPlugin
+octadocs-prov=octadocs_prov.plugin:ProvenancePlugin
+octadocs-table=octadocs_table.plugin:TablePlugin
+octadocs_adr=octadocs_adr.plugin:ADRPlugin
+
