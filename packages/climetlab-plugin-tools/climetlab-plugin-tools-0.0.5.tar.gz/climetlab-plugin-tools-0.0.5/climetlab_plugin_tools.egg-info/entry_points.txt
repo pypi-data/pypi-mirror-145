@@ -1,0 +1,8 @@
+[climetlab.scripts]
+climetlab_plugin_tools_1 = climetlab_plugin_tools.create_plugin_cmd:CreateDatasetPluginCmd
+climetlab_plugin_tools_2 = climetlab_plugin_tools.create_plugin_cmd:CreateSourcePluginCmd
+
+[console_scripts]
+climetlab-plugin-create-dataset = climetlab_plugin_tools:CreateDatasetPluginStandAlone
+climetlab-plugin-create-source = climetlab_plugin_tools:CreateSourcePluginStandAlone
+
