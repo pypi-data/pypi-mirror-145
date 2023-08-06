@@ -1,0 +1,32 @@
+mode: "debug"  # TODO: change it
+# mode: null
+seed: 2022
+save_fig: true
+path: "data"
+env: "Mechanical"
+agent: "random"
+sample:
+    episodes: 1  # TODO: change it
+    # episodes: 100
+    seed: 2022
+    env_bound_factor: null
+pretrain:
+    target_type: null
+    N_data: 1000
+    lr: 1.0e-3
+    epochs: 100
+train:
+    epochs: 1  # TODO: change it
+    # epochs: 300
+    batch_size: 16
+eval:
+    episodes: 2  # TODO: change it
+    # episodes: 24
+    env_bound_factor: null
+    threshold:
+        total_cost: null  # TODO: change it
+        # total_cost: 6.2
+        # total_cost: "lqr"  # TODO: implement this?
+        failure_ratio: null  # TODO: change it
+        # failure_ratio: 0.0
+    seed: 2023

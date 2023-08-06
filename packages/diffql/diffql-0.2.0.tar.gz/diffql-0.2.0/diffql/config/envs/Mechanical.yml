@@ -1,0 +1,30 @@
+name: "Mechanical"
+type: "Linear_Quadratic"
+Q_gain: 0.01
+R_gain: 0.01
+dt: 1.0
+state_dim: 4
+action_dim: 1
+max_t: 10.0
+bounds:
+    state_unit:
+        - null
+        - null
+        - null
+        - null
+    action_unit:
+        - null
+    state_min:
+        - -1.0
+        - -5.0
+        - -1.0
+        - -5.0
+    state_max:
+        - 1.0
+        - 5.0
+        - 1.0
+        - 5.0
+    action_min:
+        - -2.0
+    action_max:
+        - 2.0

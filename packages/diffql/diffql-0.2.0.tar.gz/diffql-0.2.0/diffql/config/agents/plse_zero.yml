@@ -1,0 +1,15 @@
+name: "plse_zero"
+i_max: 20
+T: 1.0
+node_list:
+    - 64
+    - 64
+    - 64
+act:
+    name: "leakyrelu"
+trainable: True
+train:
+    method: "pcql-nonneg"
+    grad_max_norm: null
+    weight_nonneg: 1.0e+3
+    lr: 3.0e-3

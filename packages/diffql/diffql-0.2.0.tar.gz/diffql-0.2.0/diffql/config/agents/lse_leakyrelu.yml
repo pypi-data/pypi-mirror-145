@@ -1,0 +1,8 @@
+name: "lse_leakyrelu"
+i_max: 20
+T: 1.0
+trainable: True
+train:
+    method: "pcql"
+    lr: 1.0e-1
+    grad_max_norm: null

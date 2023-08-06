@@ -1,0 +1,21 @@
+name: "Simple"
+type: "Linear_Quadratic"
+Q_gain: 1.0
+R_gain: 1.0
+dt: 1.0
+state_dim: 1
+action_dim: 1
+max_t: 10.0
+bounds:
+    state_unit:
+        - null
+    action_unit:
+        - null
+    state_min:
+        - -1.0
+    state_max:
+        - 1.0
+    action_min:
+        - -1.0
+    action_max:
+        - 1.0

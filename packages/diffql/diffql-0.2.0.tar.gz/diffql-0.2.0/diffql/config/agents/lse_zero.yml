@@ -1,0 +1,9 @@
+name: "lse_zero"
+i_max: 20
+T: 1.0
+trainable: True
+train:
+    method: "pcql-nonneg"
+    grad_max_norm: null
+    weight_nonneg: 1.0e+3
+    lr: 1.0e-1
