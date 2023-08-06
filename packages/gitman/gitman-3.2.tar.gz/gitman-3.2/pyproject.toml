@@ -1,0 +1,103 @@
+[tool.poetry]
+
+name = "gitman"
+version = "3.2"
+description = "A language-agnostic dependency manager using Git."
+
+license = "MIT"
+
+authors = ["Jace Browning <jacebrowning@gmail.com>"]
+
+readme = "README.md"
+
+homepage = "https://pypi.org/project/gitman"
+documentation = "https://gitman.readthedocs.io"
+repository = "https://github.com/jacebrowning/gitman"
+
+keywords = [
+    "git",
+    "version control",
+    "build systems",
+    "dependency management",
+    "submodules",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Version Control",
+    "Topic :: System :: Software Distribution",
+]
+
+[tool.poetry.dependencies]
+
+python = "^3.7"
+
+datafiles = "^1.2"
+minilog = "^2.1"
+
+[tool.poetry.dev-dependencies]
+
+# Formatters
+black = "^22.1"
+isort = "^5.10"
+
+# Linters
+mypy = "~0.940"
+pydocstyle = "*"
+pylint = "~2.6.0"
+types-freezegun = "*"
+types-setuptools = "*"
+
+# Testing
+pytest = "^6"
+pytest-cov = "*"
+pytest-describe = "^1.0"
+pytest-expecter = "^2.1"
+pytest-random = "*"
+freezegun = "*"
+
+# Reports
+coveragespace = "^4.0"
+
+# Documentation
+mkdocs = "^1.2.3"
+mkdocstrings = "^0.18.1"
+pygments = "^2.7.4"
+jinja2 = "~3.0.3"
+
+# Tooling
+pyinstaller = "^4.0"
+sniffer = "*"
+macfsevents = { version = "*", platform = "darwin" }
+pync = { version = "*", platform = "darwin" }
+rope = "^0.14.0"
+
+[tool.poetry.scripts]
+
+gitman = "gitman.cli:main"
+git-deps = "gitman.plugin:main"
+
+[tool.black]
+
+quiet = true
+
+[tool.isort]
+
+profile = "black"
+
+[build-system]
+
+requires = ["poetry-core>=1.0"]
+build-backend = "poetry.core.masonry.api"
