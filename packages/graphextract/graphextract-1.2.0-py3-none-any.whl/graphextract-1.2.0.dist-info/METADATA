@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: graphextract
+Version: 1.2.0
+Summary: Extract graph from image
+Home-page: https://gitlab.com/revesansparole/graphextract
+Author: revesansparole
+Author-email: revesansparole@gmail.com
+License: cc_by_nc
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: reportlab
+Requires-Dist: svglib (<1.2,>=1.1)
+
+========================
+graphextract
+========================
+
+.. {# pkglts, doc
+
+.. image:: https://revesansparole.gitlab.io/graphextract/_images/badge_doc.svg
+    :alt: Documentation status
+    :target: https://revesansparole.gitlab.io/graphextract/
+
+.. image:: https://revesansparole.gitlab.io/graphextract/_images/badge_pkging_pip.svg
+    :alt: PyPI version
+    :target: https://pypi.org/project/graphextract/1.2.0/
+
+.. image:: https://revesansparole.gitlab.io/graphextract/_images/badge_pkging_conda.svg
+    :alt: Conda version
+    :target: https://anaconda.org/revesansparole/graphextract
+
+.. image:: https://badge.fury.io/py/graphextract.svg
+    :alt: PyPI version
+    :target: https://badge.fury.io/py/graphextract
+
+.. #}
+.. {# pkglts, glabpkg, after doc
+
+main: |main_build|_ |main_coverage|_
+
+.. |main_build| image:: https://gitlab.com/revesansparole/graphextract/badges/main/pipeline.svg
+.. _main_build: https://gitlab.com/revesansparole/graphextract/commits/main
+
+.. |main_coverage| image:: https://gitlab.com/revesansparole/graphextract/badges/main/coverage.svg
+.. _main_coverage: https://gitlab.com/revesansparole/graphextract/commits/main
+.. #}
+
+Extract graph from image
+
+
+
+=======
+History
+=======
+
+creation (2021-06-25)
+------------------------
+
+* First release on PyPI.
+
+
