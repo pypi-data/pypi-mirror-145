@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: tdk-cli
+Version: 0.2
+Summary: Command-line tool for TDK Dictionary (sozluk.gov.tr) with rich output.
+Home-page: https://github.com/agmmnn/turengcli
+Author: agmmnn
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Console
+Classifier: Topic :: Utilities
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+
+![ss](https://user-images.githubusercontent.com/16024979/135759500-b0fd7d14-6317-4f5f-a9eb-89aebb65b6cc.png)
+
+# tdk-cli
+
+<div align="center">
+<a href="https://github.com/agmmnn/tdk-cli">
+<img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/agmmnn/tdk-cli"></a>
+<a href="https://pypi.org/project/tdk-cli/">
+<img alt="PyPI" src="https://img.shields.io/pypi/v/tdk-cli"></a>
+
+Command-line tool for [TDK](https://en.wikipedia.org/wiki/Turkish_Language_Association) Dictionary, [sozluk.gov.tr](https://sozluk.gov.tr/) with rich output.
+
+</div>
+
+```
+pip install tdk-cli
+```
+
+```
+tdk <word>
+```
+
+
