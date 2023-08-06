@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "daqu"
+version = "0.1.0"
+description = "DAta QUality Assessment Framework"
+authors = ["Kerstin Frailey <frailey.work@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+classifiers = [
+"Development Status :: 2 - Pre-Alpha",
+"Operating System :: MacOS",
+"License :: OSI Approved :: MIT License",
+"Programming Language :: Python :: 3",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.4.2"
+pydantic = "^1.9.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

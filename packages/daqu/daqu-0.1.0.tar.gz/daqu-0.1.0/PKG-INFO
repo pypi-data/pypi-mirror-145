@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: daqu
+Version: 0.1.0
+Summary: DAta QUality Assessment Framework
+License: MIT
+Author: Kerstin Frailey
+Author-email: frailey.work@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: pandas (>=1.4.2,<2.0.0)
+Requires-Dist: pydantic (>=1.9.0,<2.0.0)
+Description-Content-Type: text/markdown
+
+# DAta QUality Assessment
+
+Status: PRE-ALPHA
+
+A lightweight data quality assessment framework,
+particularly dealing with the issues of restatements
+(aka retroactive changes, preliminary data, vintage data)
