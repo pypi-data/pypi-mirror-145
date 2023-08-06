@@ -1,0 +1,21 @@
+{
+  "from_version": "0.33",
+  "to_version": "0.34",
+  "tag": {
+    "remove": [],
+    "create": [],
+    "move": []
+  },
+  "attrib": {
+    "remove": [],
+    "create": [
+      [
+        "flipSpins",
+        "/fleurInput/atomSpecies/species/electronConfig",
+        true,
+        "F"
+      ]
+    ],
+    "move": []
+  }
+}

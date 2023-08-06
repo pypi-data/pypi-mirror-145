@@ -1,0 +1,212 @@
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "masci-tools"
+dynamic = ["version", "description"]  # read from masci_tools/__init__.py
+authors = [{name = "The JuDFT team", email = "j.broeder@fz-juelich.de"}]
+readme = "README.md"
+license = {file = "LICENSE.txt"}
+classifiers = [
+            'Development Status :: 4 - Beta',
+            'Intended Audience :: Science/Research',
+            'License :: OSI Approved :: MIT License',
+            'Programming Language :: Python :: 3',
+            'Programming Language :: Python :: 3.7',
+            'Programming Language :: Python :: 3.8',
+            'Programming Language :: Python :: 3.9',
+            'Programming Language :: Python :: 3.10',
+            'Topic :: Scientific/Engineering :: Physics',
+        ]
+keywords = ['material science', 'plots', 'fitting', 'visualization', 'aiida', 'dft', 'all-electron']
+requires-python = ">=3.7"
+dependencies = [
+            'numpy',
+            'scipy',
+            'matplotlib',
+            'h5py',
+            'pandas',
+            'lxml~=4.8',
+            'more_itertools',
+            'seaborn',
+            'deepdiff',
+            'humanfriendly',
+            'mendeleev',
+            'click',
+            'click-completion',
+            'PyYAML',
+            'typing-extensions',
+            'tabulate',
+            'ase' #Should be removed once io/cif2inp_ase.py is removed
+        ]
+
+[project.optional-dependencies]
+pre-commit = [
+    'mypy==0.940',
+    'pre-commit>=2.6.0',
+    'yapf>=0.30.0',
+    'pylint~=2.11.1',
+    'pytest~=6.0',
+    'lxml-stubs~=0.4.0',
+    'types-pytz',
+    'types-tabulate',
+    'types-click'
+    ]
+docs = [
+    'sphinx~=4.1',
+    'sphinx_rtd_theme',
+    'sphinx-click',
+    'sphinx-toolbox<=2.15.2',
+    'sphinx-autodoc-typehints',
+    "myst-parser~=0.15.2",
+    ]
+testing = [
+    'pytest~=6.0',
+    'pytest-cov~=3.0', #For reading configuration from pyproject.toml
+    'pytest-mpl>=0.12',
+    'pytest-regressions>=1.0'
+    ]
+bokeh-plots = [
+    'bokeh'
+    ]
+cmdline-extras = [
+    'python-gitlab'
+    ]
+dev = [
+    'bumpver'
+]
+
+[project.scripts]
+masci-tools = "masci_tools.cmdline.commands.root:cli"
+
+[project.urls]
+Home = "https://masci-tools.readthedocs.io"
+Documentation = "https://masci-tools.readthedocs.io"
+Source = "https://github.com/JuDFTteam/masci-tools"
+
+[tool.coverage.run]
+omit = [
+    "venv/*"
+]
+
+[tool.flit.module]
+name = "masci_tools"
+
+[tool.flit.sdist]
+exclude = ['tests/']
+
+[tool.mypy]
+python_version = "3.8"
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+show_error_codes = true
+warn_no_return = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+
+[[tool.mypy.overrides]]
+module = [
+    'h5py',
+    'humanfriendly',
+    'yaml'
+]
+follow_imports = 'skip'
+ignore_missing_imports = true
+
+[tool.pylint.basic]
+good-names = [
+    "_",
+    "x",
+    "y",
+    "z",
+    "i",
+    "j",
+    "k",
+]
+no-docstring-rgx = "^_"
+docstring-min-length = 5
+
+[tool.pylint.classes]
+exclude-protected = [
+    "_asdict",
+    "_fields",
+    "_replace",
+    "_source",
+    "_make",
+    "_Element",
+    "_ElementTree",
+    "_pprint_dict",
+    "_pprint_set",
+    "_dispatch"
+    ]
+
+[tool.pylint.design]
+max-locals = 20
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint.messages_control]
+disable = [
+    "too-few-public-methods",
+    "too-many-public-methods",
+    "wrong-import-position",
+    "line-too-long",
+    "locally-disabled",
+    "wildcard-import",
+    "locally-enabled",
+    "too-many-instance-attributes",
+    "fixme",
+    "len-as-condition",
+    "wrong-import-order",
+    "import-outside-toplevel",
+    "duplicate-code",
+    "invalid-name",
+    "unused-variable",
+    "unused-argument",
+    "unused-import",
+    "missing-function-docstring",
+    "too-many-locals",
+    "too-many-branches",
+    "no-self-use",
+    "c-extension-no-member",
+    "too-many-statements",
+    "too-many-nested-blocks",
+    "too-many-lines",
+    "too-many-return-statements",
+    "too-many-arguments",
+    "pointless-string-statement",
+    "no-member",
+    "consider-using-f-string"
+]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--mpl --mpl-baseline-path=tests/files/mpl-baseline --cov=masci_tools --cov=tests --cov-report xml --mpl-generate-summary=html"
+mpl-results-path = "mpl-results"
+testpaths = [
+    "tests",
+]
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 120
+coalesce_brackets = true
+align_closing_bracket_with_visual_indent = true
+split_arguments_when_comma_terminated = true
+indent_dictionary_value = false
+
+[bumpver]
+current_version = "0.9.1"
+version_pattern = "MAJOR.MINOR.PATCH[TAGNUM]"
+commit_message = "bump version {old_version} -> {new_version}"
+commit = true
+tag = false
+push = false
+
+[bumpver.file_patterns]
+"masci_tools/__init__.py" = [
+    "__version__ = '{version}'",
+]
