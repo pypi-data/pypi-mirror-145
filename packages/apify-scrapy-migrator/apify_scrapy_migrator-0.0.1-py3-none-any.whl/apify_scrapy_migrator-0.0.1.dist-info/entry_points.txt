@@ -1,0 +1,4 @@
+[console_scripts]
+help = src.apify_scrapy_migrator:print_help
+migrator = src.apify_scrapy_migrator:migrate
+update-input = src.apify_scrapy_migrator:update_input
