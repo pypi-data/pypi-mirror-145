@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: sopel-modules.chanlogs
+Version: 0.2.2
+Summary: A channel logging plugin for Sopel
+Home-page: https://github.com/sopel-irc/sopel-chanlogs
+Author: dgw
+Author-email: dgw@technobabbl.es
+License: UNKNOWN
+Description: # sopel-chanlogs
+        A channel logging plugin for Sopel IRC bots
+        
+        ## Requirements
+        
+        `sopel-chanlogs` requires only Sopel itself, version 7.0 or higher.
+        
+        ## Usage
+        
+        Install the package from PyPI:
+        
+            pip install sopel-modules.chanlogs
+        
+        Enable with the `sopel-plugins enable chanlogs` command, if your bot
+        configuration requires it.
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
