@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: sparse-operation-kit
+Version: 1.1.0
+Summary: SparseOperationKit (SOK) is a python package wrapped GPU accelerated operations dedicated for sparse training / inference cases.
+Home-page: https://github.com/NVIDIA-Merlin/HugeCTR/tree/master/sparse_operation_kit
+Author: NVIDIA
+Author-email: hugectr-dev@exchange.nvidia.com
+License: Apache 2.0
+Platform: Linux
+Requires-Python: >=3
+Provides-Extra: tensorflow
+
+SparseOperationKit (SOK) is a python package wrapped GPU accelerated operations dedicated for sparse training / inference cases. It is designed to be compatible with common DeepLearning (DL) frameworks, for instance, TensorFlow. Most of the algorithm implementations in SOK are extracted from HugeCTR, which is a GPU-accelerated recommender framework designed to distribute training across multiple GPUs and nodes and estimate Click-Through Rates (CTRs). If you are looking for a very efficient solution for CTRs, please check HugeCTR.
+
