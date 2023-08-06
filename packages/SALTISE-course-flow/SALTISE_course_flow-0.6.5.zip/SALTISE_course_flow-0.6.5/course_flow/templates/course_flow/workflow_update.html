@@ -1,0 +1,119 @@
+{% extends "course_flow/base.html" %}
+<!-- -->
+{% load static compress i18n %} {% get_current_language as LANGUAGE_CODE %}
+<!-- -->
+{% load static i18n %}
+<!-- -->
+{% block title %}{% endblock %}
+<!-- -->
+{% block metadescription %} {% endblock %}
+<!-- -->
+{% block header %}{% endblock %}
+<!-- -->
+{% block body %}
+
+<div id="container" class="body-wrapper"><div class="load-screen"></div></div>
+<div id="popup-container"></div>
+<div id="sidebar" class="side-bar">
+  <ul>
+    <li class="hover-shade">
+      <a href="#edit-menu"
+        ><img title='{% trans "Edit" %}'
+          src="{% static 'course_flow/img/images_svg/edit_pencil_blue.svg' %}"
+      /></a>
+    </li>
+    <li class="hover-shade">
+      <a href="#node-bar"
+        ><img title='{% trans "Nodes" %}' src="{% static 'course_flow/img/images_svg/add_new_blue.svg' %}"
+      /></a>
+    </li>
+    {% if is_strategy == "false" %}
+    <li class="hover-shade">
+      <a href="#outcome-bar"
+        ><img title='{% trans "Outcomes" %}' src="{% static 'course_flow/img/images_svg/outcomes_blue.svg' %}"
+      /></a>
+    </li>
+    <li class="hover-shade">
+      <a href="#strategy-bar"
+        ><img title='{% trans "Strategies" %}' src="{% static 'course_flow/img/images_svg/strategy_blue.svg' %}"
+      /></a>
+    </li>
+    {% endif %}
+  </ul>
+    <div id="edit-menu" class="right-panel-container"></div>
+    <div id="node-bar" class="right-panel-container"></div>
+    {% if is_strategy == "false" %}
+        <div id="outcome-bar" class="right-panel-container"></div>
+        <div id="strategy-bar" class="right-panel-container"></div>
+    {% endif %}
+  <div class="window-close-button" id="side-bar-close-button">
+    <img src="{% static 'course_flow/img/images_svg/close.svg' %}" />
+  </div>
+</div>
+
+{{is_strategy}} {% endblock %}
+<!-- -->
+{% block foot %} {% endblock %}
+<!-- -->
+{% csrf_token %}
+<!-- -->
+{% block scripts %} {{ block.super }}
+<script nonce="{{request.csp_nonce}}">
+    
+  const workflow_paths = {
+      activity:'{% url "course_flow:workflow-update" pk=object.pk %}',
+      course:'{% url "course_flow:workflow-update" pk=object.pk %}',
+      program:'{% url "course_flow:workflow-update" pk=object.pk %}',
+      workflow:'{% url "course_flow:workflow-update" pk=object.pk %}',
+  }
+  const iconpath = "{% static 'course_flow/img/images_svg/' %}";
+
+  $("#sidebar").tabs({
+      active:1,
+      disabled:[0],
+      collapsible:true,
+      activate:(evt,ui)=>{
+          if(ui.oldTab.length==0)$("#sidebar").removeClass("collapsed");
+          else if(ui.newTab.length==0)$("#sidebar").addClass("collapsed");
+      }
+  });
+
+  $("#sidebar").on("dblclick mousedown",(evt)=>{evt.stopPropagation();});
+
+    
+  const read_only = {{read_only|safe}};
+    
+  if(read_only)$("#sidebar").hide();
+  else{
+      $("#side-bar-close-button").on("click",()=>{
+          $("#sidebar").addClass("collapsed");
+          $("#sidebar").tabs("option","active",false);
+      });
+  }
+
+
+
+//  {% if is_strategy == "false" %}
+//      $("#viewbar").append("<div id='outcomeviewbar'><div class='outcomeviewtext'>Outcome View:</div><label class='switch'><input type='checkbox'><span class ='slider round'></span></label></div>");
+//
+//      $("#outcomeviewbar input").on("change",(evt)=>{
+//          if(evt.target.checked)workflow_renderer.render($("#container"),"outcometable");
+//          else workflow_renderer.render($("#container"));
+//      });
+//  {% endif %}
+
+  const user_id = {{ user.id }};
+  const create_path=null;
+
+  workflow_data_package = {{data_package|safe}}
+  var workflow_renderer;
+   
+  window.addEventListener("load", function(){
+      workflow_renderer = new renderers.WorkflowRenderer(workflow_data_package);
+      console.log(workflow_data_package);
+      $(document).ajaxError(renderers.fail_function);
+      workflow_renderer.render($("#container"));
+  });
+</script>
+
+{% endblock %}
