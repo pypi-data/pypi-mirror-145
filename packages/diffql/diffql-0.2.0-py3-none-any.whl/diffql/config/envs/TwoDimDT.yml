@@ -1,0 +1,22 @@
+name: "TwoDimDT"
+type: "Linear_Nonquadratic"
+state_dim: 2
+action_dim: 1
+dt: 1.0
+max_t: 20.0
+bounds:
+    state_unit:
+        - null
+        - null
+    action_unit:
+        - null
+    state_min:
+        - -1.0
+        - -1.0
+    state_max:
+        - 1.0
+        - 1.0
+    action_min:
+        - -1.0
+    action_max:
+        - 1.0

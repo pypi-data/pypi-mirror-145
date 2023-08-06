@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: diffql
+Version: 0.2.0
+Summary: Differentiable Q-learning (DiffQL) for continuous-action deep reinforcement learning
+License: MIT
+Author: Jinrae Kim
+Author-email: kjl950403@gmail.com
+Requires-Python: >=3.9,<3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Mosek (>=9.3,<9.4)
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: cvxpy (>=1.1,<1.2)
+Requires-Dist: cvxpylayers (>=0.1,<0.2)
+Requires-Dist: flake8 (>=4.0.1,<5.0.0)
+Requires-Dist: gym (>=0.22,<0.23)
+Requires-Dist: numpy (>=1.22,<1.23)
+Requires-Dist: pytest (>=6.2.5,<7.0.0)
+Requires-Dist: scipy (>=1.8,<1.9)
+Requires-Dist: torch (>=1.10,<1.11)
+Requires-Dist: wandb (>=0.12.11,<0.13.0)
