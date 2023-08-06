@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: fyers-logger
+Version: 0.1.3
+Summary: Fyers Internal Logging Library
+Home-page: https://github.com/FyersDev/fyers-logger
+Author: Fyers-Tech
+Author-email: support@fyers.in
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+README
+========
+
+This module is installed via pip:
+
+```
+pip install fyers-logger
+```
+
+Packages Required
+ - aws-lambda-powertools
+
+
+Usage
+
+```
+from fyers_logger import FyersLogger
+
+logger = FyersLogger("ServiceName", "DEBUG")
+```
+
+Additional parameters
+
+```
+import logging
+logger = FyersLogger("ServiceName", "DEBUG", logger_handler=logging.FileHandler("filename.log"))
+```
+
+Since this is an extension of the aws-lambda-powertools logger, all parameters supported by aws-lambda-powertools logger are supported. Documentation can be found here: https://awslabs.github.io/aws-lambda-powertools-python/latest/core/logger/
+
