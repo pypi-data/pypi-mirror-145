@@ -1,0 +1,29 @@
+$schema: https://componentsdk.azureedge.net/jsonschema/CommandComponent.json
+name: dsl_condition_output
+display_name: Condition Output
+description: |
+  This component will link output to specific input
+  depends on the runtime evaluate result of condition.
+version: 0.0.1
+type: CommandComponent
+is_deterministic: true
+tags:
+  codegenBy: dsl.condition_output
+inputs:
+  input_a:
+    type: AzureMLDataset
+    optional: true
+  input_b:
+    type: AzureMLDataset
+    optional: true
+  condition:
+    type: boolean
+    optional: false
+outputs:
+  output:
+    type: AzureMLDataset
+command: >-
+  python dsl_condition_output.py [--input_a {inputs.input_a}] [--input_b {inputs.input_b}] --condition {inputs.condition}
+  --output {outputs.output}
+environment:
+  name: AzureML-Component
