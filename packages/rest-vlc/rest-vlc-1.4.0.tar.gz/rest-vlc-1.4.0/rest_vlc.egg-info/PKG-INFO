@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: rest-vlc
+Version: 1.4.0
+Summary: A Python library for controlling VLC media player via REST API
+Home-page: https://github.com/timelessnesses/rest-vlc
+Author: Rukchad Wongprayoon
+Author-email: contact@biomooping.tk
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: build
+Provides-Extra: async
+Provides-Extra: publish
+License-File: LICENSE
+
+# rest-vlc
+A REST API wrapper for VLC.
+
+## Installation
+Clone the repository:
+
+```bash
+git clone https://github.com/timelessnesses/rest-vlc.git
+cd rest-vlc
+pip install .
+# OR
+pip install git+https://github.com/timelessnesses/rest-vlc.git
+```
+
+or use the production release:
+
+```bash
+pip install rest-vlc
+```
+
+## Documentation
+
+Intellisense should self-explainatory about it, or you can go to the [https://rest-vlc.readthedocs.io/en/latest/](https://rest-vlc.readthedocs.io/en/latest/) documentation.  
+Examples are in tests/ and examples/
+
+## Features
+
+- Asynchronous/Blocking API
+- Authenication
+- URL encoding automatically
+- Returns dictionary instead of XML
+
+## Status
+Stable
+
+
