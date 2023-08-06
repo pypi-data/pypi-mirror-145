@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: postal-address
+Version: 22.4.1
+Summary: Parse, normalize and render postal addresses.
+Home-page: https://github.com/Scaleway/postal-address
+License: BSD-2
+Author: Scaleway
+Author-email: opensource@scaleway.com
+Requires-Python: >=3.6.2,<4.0.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: License :: OSI Approved :: BSD License
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Internationalization
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Localization
+Classifier: Topic :: Utilities
+Requires-Dist: Faker (>=13,<14)
+Requires-Dist: boltons (>=21,<22)
+Requires-Dist: importlib-metadata (>=2.0,<3.0); python_version < "3.8"
+Requires-Dist: pycountry (==22.3.5)
+Project-URL: Repository, https://github.com/Scaleway/postal-address
