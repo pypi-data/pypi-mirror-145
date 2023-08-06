@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  docs_wind_validation:
+    image:  registry.windenergy.dtu.dk/ram-tech-team/dockerhub-private/docs_wind_validation:1.0.0
+    build:
+        context: .
+        dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.middlewares."
+      - "traefik.http.routers.docs_wind_validation.rule=Host(`docs-wasp.ramtt.xyz`) && PathPrefix(`/wind_validation`)"
+      - "traefik.http.routers.docs_wind_validation.entrypoints=websecure"
+      - "traefik.http.routers.docs_wind_validation.tls.certresolver=letsencr"
+
+networks:
+  default:
+    external:
+      name: traefik
