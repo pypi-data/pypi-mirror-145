@@ -1,0 +1,4 @@
+[console_scripts]
+oggm_benchmark = oggm.cli.benchmark:main
+oggm_netrc_credentials = oggm.cli.netrc_credentials:cli
+oggm_prepro = oggm.cli.prepro_levels:main
