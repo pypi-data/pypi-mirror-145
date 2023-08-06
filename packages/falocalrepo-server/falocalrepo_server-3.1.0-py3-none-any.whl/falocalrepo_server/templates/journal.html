@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--suppress HtmlUnknownTarget, CssUnusedSymbol -->
+<html lang="en">
+<head>
+    <title>{{ title }} · {{ app }}</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" href="/touch-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+    <link rel="stylesheet" href="/static/styles/style.css">
+</head>
+<body class="mt-3 mt-lg-4 mb-4">
+
+<div class="container">
+    <div class="row align-middle">
+        <div class="col-8 d-none d-lg-block fit-height">
+            <div class="border rounded p-2 overflow-scroll fit-height h-100">
+                {% autoescape false %}{{ journal["CONTENT"] }}{% endautoescape %}
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4 mx-auto">
+            <div class="card h-100">
+                <h2 class="card-header">{{ journal["TITLE"] }}</h2>
+
+                <div class="card-header d-lg-none overflow-scroll text-wrap fit-height">
+                    {% autoescape false %}{{ journal["CONTENT"] }}{% endautoescape %}
+                </div>
+
+                <div class="card-header text-center d-lg-none">
+                    <div class="btn-group col-12 col-md-8" role="group">
+                        <a class="btn btn-sm btn-primary {{ "disabled" if not next }}" href="/journal/{{ next }}">
+                            Next
+                        </a>
+                        <span class="btn-separator"></span>
+                        <a class="btn btn-sm btn-primary" href="/journals/{{ journal["AUTHOR"] }}">All </a>
+                        <span class="btn-separator"></span>
+                        <a class="btn btn-sm btn-primary {{ "disabled" if not prev }}" href="/journal/{{ prev }}">
+                            Prev
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <h6 class="col-4 card-title">Author</h6>
+                        <div class="col-8 card-text">
+                            <a class="btn-sm btn-primary badge w-100 text-truncate text-decoration-none"
+                               href="/user/{{ journal["AUTHOR"] }}">
+                                {{ journal["AUTHOR"] }}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <h6 class="col-4 card-title">Date</h6>
+                        <div class="col-8 card-text">
+                            <a class="btn-sm btn-primary badge text-truncate text-decoration-none w-100"
+                               href="/search/journals/?query=%40date%20{{ journal["DATE"].strftime("%Y-%m-%d") }}">
+                                {{ journal["DATE"].strftime("%Y-%m-%d %H:%M") }}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row mt-1">
+                        <h6 class="col-4 card-title">Mentions</h6>
+                        <div class="col-8 card-text">
+                            {% for user in journal["MENTIONS"] %}
+                                <a class="btn-sm btn-primary badge text-truncate text-decoration-none"
+                                   href="/user/{{ user }}">{{ user }}</a>
+                            {% endfor %}
+                            {% if not journal["MENTIONS"] %}
+                                <span class="badge bg-danger w-100 text-truncate">No mentions</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <div class="row text-center">
+                        <div class="btn-group col-8 col-md-6 col-lg-8 ms-auto" role="group">
+                            <a class="btn btn-sm btn-secondary disabled">Download</a>
+                            <span class="btn-separator"></span>
+                            <a class="btn btn-sm btn-primary"
+                               href="/journal/{{ journal["ID"] }}/zip/submission-{{ "{0:010}".format(journal["ID"]) }}.zip">
+                                ZIP
+                            </a>
+                        </div>
+                        <div class="btn-group col-4 col-md-2 col-lg-4 me-auto">
+                            <a class="btn btn-sm btn-primary"
+                               href="https://www.furaffinity.net/journal/{{ journal["ID"] }}">
+                                FA
+                            </a>
+                        </div>
+                        <div class="btn-group col-12 mt-1 d-none d-lg-flex" role="group">
+                            <a class="btn btn-sm btn-primary {{ "disabled" if not next }}"
+                               href="/journal/{{ next }}">
+                                Next
+                            </a>
+                            <span class="btn-separator"></span>
+                            <a class="btn btn-sm btn-primary" href="/journals/{{ journal["AUTHOR"] }}">All</a>
+                            <span class="btn-separator"></span>
+                            <a class="btn btn-sm btn-primary {{ "disabled" if not prev }}"
+                               href="/journal/{{ prev }}">
+                                Prev
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if comments %}{% include "comments.html" %}{% endif %}
+</div>
+</body>
+</html>
