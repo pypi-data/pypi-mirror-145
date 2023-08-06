@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: MediapipeOpenvino
+Version: 0.0.1
+Summary: Towards a subset reimplmention of Mediapipe with OpenVINO tool.
+Author: qhanson
+Author-email: yifeihuang17@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# MediapipeOpenvino
+
+This is a subset reimplemention of Mediapipe with OpenVINO tool.
+
+# Usage Example
+
+## Face Detection
+``` Python
+
+import cv2
+import numpy as np
+from MediapipeOpenvino.face_detection import FaceDetection
+
+frame = cv2.imread("xx") ## Currently, we only support HWC format.
+fd = FaceDetection()
+
+re = fd(frame)
+
+for batch in re: ## This version only support one image. This is a dummy loop.
+    for dec in batch:
+        img = cv2.rectangle(frame, (int(dec.xmin*w),int(dec.ymin*h)), (int(dec.xmax*w),int(dec.ymax*h)), (255, 0, 0), 1)
+cv2.imwrite("test.jpg",frame)
+```
+
+
+# Copyright
+All the copyright in this code lies on the [Mediapipe](https://github.com/google/mediapipe). We just follow the original implementation and use Python to achieve the same result.
+
