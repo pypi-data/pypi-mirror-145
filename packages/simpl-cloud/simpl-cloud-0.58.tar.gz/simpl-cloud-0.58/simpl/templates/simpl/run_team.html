@@ -1,0 +1,26 @@
+{% extends "simpl/base.html" %}
+{% load static %}
+
+{% block heading %}Manage Teams{% endblock %}
+
+{% block page_description %}
+Build teams automatically with <strong>Auto Balance</strong> or create manual
+teams using <strong>Add Team</strong>. All players must be <em>assigned</em>
+or marked <em>inactive</em> before the game can start.
+{% endblock %}
+
+{% block main_wrap_classes %}v-nav-page-layout{% endblock %}
+
+{% block content_inner %}
+{{ block.super }}
+
+
+<div id="loader" data-run="{{ run.pk }}" data-endpoint="{% url 'simpl-api' %}"></div>
+<div id="app" class="svelte-app-wrap" {% if simpl_nav.team.next_url %}data-next-step="{{ simpl_nav.team.next_url }}" {% endif %}></div>
+
+<script type="module">
+  import { initBalancing } from "{% static 'simpl/simpl.es.js' %}";
+  initBalancing(document.getElementById("app"));
+</script>
+
+{% endblock %}
