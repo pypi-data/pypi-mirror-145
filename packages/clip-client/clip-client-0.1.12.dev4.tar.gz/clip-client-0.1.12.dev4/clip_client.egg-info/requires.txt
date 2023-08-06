@@ -1,0 +1,14 @@
+docarray[common]>=0.10.3
+jina>=3.2.10
+
+[test]
+black
+mock
+pytest
+pytest-asyncio
+pytest-cov
+pytest-custom_exit_code
+pytest-mock
+pytest-repeat
+pytest-reraise
+pytest-timeout
