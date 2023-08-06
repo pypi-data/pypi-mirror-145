@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<mapping>
+	<map>
+		<framework name="input" output_port_id="input" />
+		<IR name="input" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="backbone1.0.weight" output_port_id="backbone1.0.weight" />
+		<IR name="backbone1.0.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="138" output_port_id="138" />
+		<IR name="138" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="483" output_port_id="483" />
+		<IR name="483" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="140" output_port_id="140" />
+		<IR name="140" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_357" output_port_id="141" />
+		<IR name="GroupConvolution_357" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.2.convs.1.weight" output_port_id="backbone1.2.convs.1.weight" />
+		<IR name="backbone1.2.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="142" output_port_id="142" />
+		<IR name="142" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="143" output_port_id="143" />
+		<IR name="143" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="484" output_port_id="484" />
+		<IR name="484" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="145" output_port_id="145" />
+		<IR name="145" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_528" output_port_id="146" />
+		<IR name="GroupConvolution_528" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.3.convs.1.weight" output_port_id="backbone1.3.convs.1.weight" />
+		<IR name="backbone1.3.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="147" output_port_id="147" />
+		<IR name="147" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="148" output_port_id="148" />
+		<IR name="148" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="485" output_port_id="485" />
+		<IR name="485" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="150" output_port_id="150" />
+		<IR name="150" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_902" output_port_id="200" />
+		<IR name="GroupConvolution_902" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.4.convs.1.weight" output_port_id="backbone1.4.convs.1.weight" />
+		<IR name="backbone1.4.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="201" output_port_id="201" />
+		<IR name="201" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="175" output_port_id="175" />
+		<IR name="175" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="198" output_port_id="198" />
+		<IR name="198" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="199" output_port_id="199" />
+		<IR name="199" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="202" output_port_id="202" />
+		<IR name="202" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="496" output_port_id="496" />
+		<IR name="496" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="204" output_port_id="204" />
+		<IR name="204" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_1073" output_port_id="205" />
+		<IR name="GroupConvolution_1073" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.5.convs.1.weight" output_port_id="backbone1.5.convs.1.weight" />
+		<IR name="backbone1.5.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="206" output_port_id="206" />
+		<IR name="206" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="207" output_port_id="207" />
+		<IR name="207" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="497" output_port_id="497" />
+		<IR name="497" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="209" output_port_id="209" />
+		<IR name="209" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_1244" output_port_id="210" />
+		<IR name="GroupConvolution_1244" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.6.convs.1.weight" output_port_id="backbone1.6.convs.1.weight" />
+		<IR name="backbone1.6.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="211" output_port_id="211" />
+		<IR name="211" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="212" output_port_id="212" />
+		<IR name="212" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="498" output_port_id="498" />
+		<IR name="498" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="214" output_port_id="214" />
+		<IR name="214" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_1618" output_port_id="264" />
+		<IR name="GroupConvolution_1618" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.7.convs.1.weight" output_port_id="backbone1.7.convs.1.weight" />
+		<IR name="backbone1.7.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="265" output_port_id="265" />
+		<IR name="265" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="239" output_port_id="239" />
+		<IR name="239" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="262" output_port_id="262" />
+		<IR name="262" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="263" output_port_id="263" />
+		<IR name="263" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="266" output_port_id="266" />
+		<IR name="266" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="509" output_port_id="509" />
+		<IR name="509" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="268" output_port_id="268" />
+		<IR name="268" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_1789" output_port_id="269" />
+		<IR name="GroupConvolution_1789" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.8.convs.1.weight" output_port_id="backbone1.8.convs.1.weight" />
+		<IR name="backbone1.8.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="270" output_port_id="270" />
+		<IR name="270" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="271" output_port_id="271" />
+		<IR name="271" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="510" output_port_id="510" />
+		<IR name="510" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="273" output_port_id="273" />
+		<IR name="273" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_1960" output_port_id="274" />
+		<IR name="GroupConvolution_1960" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.9.convs.1.weight" output_port_id="backbone1.9.convs.1.weight" />
+		<IR name="backbone1.9.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="275" output_port_id="275" />
+		<IR name="275" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="276" output_port_id="276" />
+		<IR name="276" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="511" output_port_id="511" />
+		<IR name="511" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="278" output_port_id="278" />
+		<IR name="278" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_2334" output_port_id="328" />
+		<IR name="GroupConvolution_2334" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.10.convs.1.weight" output_port_id="backbone1.10.convs.1.weight" />
+		<IR name="backbone1.10.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="329" output_port_id="329" />
+		<IR name="329" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="303" output_port_id="303" />
+		<IR name="303" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="326" output_port_id="326" />
+		<IR name="326" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="327" output_port_id="327" />
+		<IR name="327" output_port_id="4" />
+	</map>
+	<map>
+		<framework name="330" output_port_id="330" />
+		<IR name="330" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="522" output_port_id="522" />
+		<IR name="522" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="332" output_port_id="332" />
+		<IR name="332" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_2505" output_port_id="333" />
+		<IR name="GroupConvolution_2505" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.11.convs.1.weight" output_port_id="backbone1.11.convs.1.weight" />
+		<IR name="backbone1.11.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="334" output_port_id="334" />
+		<IR name="334" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="335" output_port_id="335" />
+		<IR name="335" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="523" output_port_id="523" />
+		<IR name="523" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="337" output_port_id="337" />
+		<IR name="337" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_2676" output_port_id="338" />
+		<IR name="GroupConvolution_2676" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.12.convs.1.weight" output_port_id="backbone1.12.convs.1.weight" />
+		<IR name="backbone1.12.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="339" output_port_id="339" />
+		<IR name="339" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="340" output_port_id="340" />
+		<IR name="340" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="524" output_port_id="524" />
+		<IR name="524" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="342" output_port_id="342" />
+		<IR name="342" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_2949" output_port_id="368" />
+		<IR name="GroupConvolution_2949" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.13.convs.1.weight" output_port_id="backbone1.13.convs.1.weight" />
+		<IR name="backbone1.13.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="369" output_port_id="369" />
+		<IR name="369" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="367" output_port_id="367" />
+		<IR name="367" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="370" output_port_id="370" />
+		<IR name="370" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="530" output_port_id="530" />
+		<IR name="530" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="372" output_port_id="372" />
+		<IR name="372" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_3120" output_port_id="373" />
+		<IR name="GroupConvolution_3120" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.14.convs.1.weight" output_port_id="backbone1.14.convs.1.weight" />
+		<IR name="backbone1.14.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="374" output_port_id="374" />
+		<IR name="374" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="375" output_port_id="375" />
+		<IR name="375" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="531" output_port_id="531" />
+		<IR name="531" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="377" output_port_id="377" />
+		<IR name="377" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_3291" output_port_id="378" />
+		<IR name="GroupConvolution_3291" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone1.15.convs.1.weight" output_port_id="backbone1.15.convs.1.weight" />
+		<IR name="backbone1.15.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="379" output_port_id="379" />
+		<IR name="379" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="380" output_port_id="380" />
+		<IR name="380" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="532" output_port_id="532" />
+		<IR name="532" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="382" output_port_id="382" />
+		<IR name="382" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_4456" output_port_id="461" />
+		<IR name="GroupConvolution_4456" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2b.0.convs.1.weight" output_port_id="backbone2b.0.convs.1.weight" />
+		<IR name="backbone2b.0.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="462" output_port_id="462" />
+		<IR name="462" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="460" output_port_id="460" />
+		<IR name="460" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="463" output_port_id="463" />
+		<IR name="463" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="548" output_port_id="548" />
+		<IR name="548" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="465" output_port_id="465" />
+		<IR name="465" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2b.1.weight" output_port_id="backbone2b.1.weight" />
+		<IR name="backbone2b.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="466" output_port_id="466" />
+		<IR name="466" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="549" output_port_id="549" />
+		<IR name="549" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="468" output_port_id="468" />
+		<IR name="468" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_4676" output_port_id="469" />
+		<IR name="GroupConvolution_4676" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2b.3.convs.1.weight" output_port_id="backbone2b.3.convs.1.weight" />
+		<IR name="backbone2b.3.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="470" output_port_id="470" />
+		<IR name="470" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="471" output_port_id="471" />
+		<IR name="471" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="550" output_port_id="550" />
+		<IR name="550" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="473" output_port_id="473" />
+		<IR name="473" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2b.4.weight" output_port_id="backbone2b.4.weight" />
+		<IR name="backbone2b.4.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="474" output_port_id="474" />
+		<IR name="474" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="475" output_port_id="475" />
+		<IR name="475" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="476" output_port_id="476" />
+		<IR name="476" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="477" output_port_id="477" />
+		<IR name="477" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_3564" output_port_id="408" />
+		<IR name="GroupConvolution_3564" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2a.0.convs.1.weight" output_port_id="backbone2a.0.convs.1.weight" />
+		<IR name="backbone2a.0.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="409" output_port_id="409" />
+		<IR name="409" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="407" output_port_id="407" />
+		<IR name="407" output_port_id="1" />
+	</map>
+	<map>
+		<framework name="410" output_port_id="410" />
+		<IR name="410" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="538" output_port_id="538" />
+		<IR name="538" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="412" output_port_id="412" />
+		<IR name="412" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_3735" output_port_id="413" />
+		<IR name="GroupConvolution_3735" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2a.1.convs.1.weight" output_port_id="backbone2a.1.convs.1.weight" />
+		<IR name="backbone2a.1.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="414" output_port_id="414" />
+		<IR name="414" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="415" output_port_id="415" />
+		<IR name="415" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="539" output_port_id="539" />
+		<IR name="539" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="417" output_port_id="417" />
+		<IR name="417" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_3906" output_port_id="418" />
+		<IR name="GroupConvolution_3906" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2a.2.convs.1.weight" output_port_id="backbone2a.2.convs.1.weight" />
+		<IR name="backbone2a.2.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="419" output_port_id="419" />
+		<IR name="419" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="420" output_port_id="420" />
+		<IR name="420" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="540" output_port_id="540" />
+		<IR name="540" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="422" output_port_id="422" />
+		<IR name="422" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2a.3.weight" output_port_id="backbone2a.3.weight" />
+		<IR name="backbone2a.3.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="423" output_port_id="423" />
+		<IR name="423" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="541" output_port_id="541" />
+		<IR name="541" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="425" output_port_id="425" />
+		<IR name="425" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="GroupConvolution_4126" output_port_id="426" />
+		<IR name="GroupConvolution_4126" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2a.5.convs.1.weight" output_port_id="backbone2a.5.convs.1.weight" />
+		<IR name="backbone2a.5.convs.1.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="427" output_port_id="427" />
+		<IR name="427" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="428" output_port_id="428" />
+		<IR name="428" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="542" output_port_id="542" />
+		<IR name="542" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="430" output_port_id="430" />
+		<IR name="430" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="backbone2a.6.weight" output_port_id="backbone2a.6.weight" />
+		<IR name="backbone2a.6.weight" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="431" output_port_id="431" />
+		<IR name="431" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="432" output_port_id="432" />
+		<IR name="432" output_port_id="0" />
+	</map>
+	<map>
+		<framework name="433" output_port_id="433" />
+		<IR name="433" output_port_id="2" />
+	</map>
+	<map>
+		<framework name="output" output_port_id="output" />
+		<IR name="output" output_port_id="2" />
+	</map>
+</mapping>
