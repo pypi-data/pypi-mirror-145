@@ -1,0 +1,6 @@
+[console_scripts]
+oda = odakb.cli:oda
+oda-kb = odakb.sparql:cli
+oda-kb-datalake = odakb.datalake:cli
+oda-kb-eval = odakb.evaluator:main
+
