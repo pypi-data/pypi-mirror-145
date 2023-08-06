@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: bigearthnet-common
+Version: 2.4.1
+Summary: A collection of common tools to interact with the BigEarthNet dataset.
+Home-page: https://github.com/kai-tub/bigearthnet_common
+License: Apache-2.0
+Keywords: ben,bigearthnet,script,tools
+Author: Kai Norman Clasen
+Author-email: k.clasen@protonmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: appdirs (>=1.4,<2.0)
+Requires-Dist: fastcore (>=1.3,<2.0)
+Requires-Dist: natsort (>=8,<9)
+Requires-Dist: pydantic (>=1.8,<2.0)
+Requires-Dist: python-dateutil (>=2,<3)
+Requires-Dist: rich (>=10,<13)
+Requires-Dist: typer (>=0.4,<0.5)
+Project-URL: Documentation, https://kai-tub.github.io/bigearthnet_common/
+Project-URL: Repository, https://github.com/kai-tub/bigearthnet_common
+Description-Content-Type: text/markdown
+
+# BigEarthNet Common
+> A personal collection of common tools to interact with the BigEarthNet dataset.
+
+[See the official documentation for more information.](https://docs.kai-tub.tech/bigearthnet_common/)
+
+
+## Contributing
+
+Contributions are always welcome!
+
+More information is available in the [contributing guidelines](https://github.com/kai-tub/bigearthnet_common/blob/main/.github/CONTRIBUTING.md) document.
+
