@@ -1,0 +1,27 @@
+{% load static %}
+
+<!--dj_notifier core assets: DJNotify, re-connecting web socket-->
+<script src="{% static 'djnotifier/reconnecting-websocket.min.js' %}"></script>
+<script src="{% static 'djnotifier/notify/jquery.min.js' %}"></script>
+<script src="{% static 'djnotifier/notify/notify.js' %}"></script>
+
+<!--dj_notifier: add custom style-->
+{% block dj_notifier_notification_custom_style %}{% endblock dj_notifier_notification_custom_style %}
+
+
+<!--dj_notifier: notification javascript-->
+{% block dj_notifier_notification_js %}
+    <script src="{% static 'djnotifier/notification.js' %}"></script>
+{% endblock dj_notifier_notification_js %}
+
+
+<!--dj_notifier: web socket javascript-->
+{% block dj_notifier_websocket_js %}
+    <script src="{% static 'djnotifier/socket.js' %}"></script>
+{% endblock dj_notifier_websocket_js %}
+
+
+<!--dj_notifier: notification audio file-->
+{% block dj_notifier_notification_audio %}
+    <audio id="djNotifyAudio" data-src="{% static 'djnotifier/notify.mp3' %}"></audio>
+{% endblock dj_notifier_notification_audio %}
