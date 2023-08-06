@@ -1,0 +1,68 @@
+Metadata-Version: 2.1
+Name: qsentry
+Version: 0.0.31
+Summary: A command wrapper for Sentry API
+Home-page: https://github.com/bqbn/qsentry
+Author: bqbn
+Author-email: bqbn@openken.com
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/bqbn/qsentry/issues
+Project-URL: Source, https://github.com/bqbn/qsentry
+Keywords: devops utility utils
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: Programming Language :: Python :: 3
+Requires-Python: <4,>=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click (~=8.0)
+Requires-Dist: jmespath (~=1.0)
+Requires-Dist: requests (~=2.27)
+Provides-Extra: dev
+Requires-Dist: build (~=0.7.0) ; extra == 'dev'
+Requires-Dist: pipenv-setup (~=3.2) ; extra == 'dev'
+Requires-Dist: twine (~=3.2) ; extra == 'dev'
+Requires-Dist: wheel (~=0.34) ; extra == 'dev'
+
+# Qsentry
+
+Qsentry is a command line wrapper for Sentry's API.
+
+## Some Command Examples
+
+Top level commands
+
+```
+$ qsentry --help
+Usage: qsentry [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  members   Member related commands
+  orgs      Organization related commands
+  projects  Project related commands
+  teams     Team related commands
+```
+
+Member commands
+
+```
+$ qsentry members --help
+Usage: qsentry members [OPTIONS] COMMAND [ARGS]...
+
+  Member related commands
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  list       List members
+  search-by  Search a member by a term.
+```
+
+
