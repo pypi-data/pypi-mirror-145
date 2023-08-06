@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: osv
+Version: 0.0.14
+Summary: Open Source Vulnerabilities library
+Home-page: https://github.com/google/osv
+Author: OSV authors
+Author-email: osv-discuss@googlegroups.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+
+# OSV library
+This is a set of helper utilities for the Open Source Vulnerabilities project.
+
+This includes:
+- Computing affected tags from input git ranges.
+- Version normalization for indexing.
+- Git repo helpers for vulnerability DB maintainence.
+
+## Stability
+This package is not yet stable, and APIs are subject to change.
+
+
