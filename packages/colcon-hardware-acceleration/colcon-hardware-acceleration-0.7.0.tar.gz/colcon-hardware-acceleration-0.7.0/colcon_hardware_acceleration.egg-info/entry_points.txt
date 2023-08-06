@@ -1,0 +1,21 @@
+[colcon_core.extension_point]
+colcon_hardware_acceleration.subverb = colcon_hardware_acceleration.subverb:AccelerationSubverbExtensionPoint
+
+[colcon_core.verb]
+acceleration = colcon_hardware_acceleration.verb.acceleration:AccelerationVerb
+
+[colcon_hardware_acceleration.subverb]
+board = colcon_hardware_acceleration.subverb.board:BoardSubverb
+emulation = colcon_hardware_acceleration.subverb.emulation:EmulationSubverb
+hls = colcon_hardware_acceleration.subverb.hls:HLSSubverb
+hypervisor = colcon_hardware_acceleration.subverb.hypervisor:HypervisorSubverb
+linux = colcon_hardware_acceleration.subverb.linux:LinuxSubverb
+list = colcon_hardware_acceleration.subverb.list:ListSubverb
+mkinitramfs = colcon_hardware_acceleration.subverb.mkinitramfs:MkinitramfsSubverb
+mount = colcon_hardware_acceleration.subverb.mount:MountSubverb
+platform = colcon_hardware_acceleration.subverb.platform:PlatformSubverb
+select = colcon_hardware_acceleration.subverb.select:SelectSubverb
+umount = colcon_hardware_acceleration.subverb.umount:UmountSubverb
+v++ = colcon_hardware_acceleration.subverb.vpp:VppSubverb
+version = colcon_hardware_acceleration.subverb.version:VersionSubverb
+
