@@ -1,0 +1,16 @@
+include setup.py
+include README.rst
+include tox.ini
+recursive-include cubicweb_forgotpwd *
+recursive-include cubicweb_forgotpwd/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_forgotpwd/i18n *.po
+recursive-include cubicweb_forgotpwd/wdoc Changelog* *.rst *.png *.jpg *.xml
+recursive-include cubicweb_forgotpwd/schema *.sql
+recursive-include doc *.png
+recursive-include test *.py
+include test/data/bootstrap_cubes
+
+exclude .gitlab-ci.yml
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
