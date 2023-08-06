@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: pynamasha
+Version: 1.0.0
+Summary: A small example package
+Home-page: https://github.com/saeedniksaz/pynamasha
+Author: saeedniksaz
+Author-email: niksazsaeed@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: requests
+Requires-Dist: beautifulsoup4
+
+## Download 'Namasha.com' videos with python
+
+
+**Installation**
+```python
+pip install pynamasha
+```
+
+**usage**
+```python
+from pynamasha import Download
+
+video = Download(url='https://www.namasha.com/v/TFVnmajX', quality='240')
+video.download()
+```
+
