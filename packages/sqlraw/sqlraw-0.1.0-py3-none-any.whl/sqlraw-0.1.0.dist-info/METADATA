@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: sqlraw
+Version: 0.1.0
+Summary: Path base SQL Query
+Author: Uygun Bodur
+Author-email: uygun@dop.com.tr
+Requires-Python: >=3.9,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: SQLAlchemy (>=1.4.35,<2.0.0)
+Requires-Dist: psycopg2 (>=2.9.3,<3.0.0)
+Requires-Dist: redis (>=4.2.2,<5.0.0)
