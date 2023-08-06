@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: rest-collection
+Version: 0.7.0
+Summary: Tools for build collection REST like API within sqlalchemy object model.
+Home-page: https://bitbucket.org/p-app/rest_collection
+License: MIT
+Author: Vladimir V. Pivovarov
+Author-email: admin@p-app.ru
+Maintainer: Vladimir V. Pivovarov
+Maintainer-email: admin@p-app.ru
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Provides-Extra: aiopg
+Provides-Extra: asyncpg
+Requires-Dist: SQLAlchemy (>=1.4,<2.0)
+Requires-Dist: aiopg (>=1.3.3); extra == "aiopg"
+Requires-Dist: asyncpg; extra == "asyncpg"
+Requires-Dist: pyparsing (>=2.4.0)
+Requires-Dist: ujson
+Project-URL: Repository, https://bitbucket.org/p-app/rest_collection
+Description-Content-Type: text/markdown
+
+## REST Collection
+
+This library provides creating of REST-like API for receiving collections of data on top of [SQLAlchemy](https://www.sqlalchemy.org/) declarative object model.
+
