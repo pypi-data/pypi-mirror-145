@@ -1,0 +1,217 @@
+tosca_definitions_version: tosca_simple_yaml_1_3
+
+node_types:
+  radon.nodes.OpenStack.VM:
+    derived_from: tosca.nodes.Compute
+    attributes:
+      available_instances:
+        type: integer
+        default: 42
+      available_space:
+        type: integer
+        default: 1000
+    properties:
+      name:
+        type: string
+      image:
+        type: string
+      flavor:
+        type: string
+      network:
+        type: string
+      key_name:
+        type: string
+    interfaces:
+      Standard:
+        type: tosca.interfaces.node.lifecycle.Standard
+        operations:
+          create: playbooks/create.yaml
+          delete: playbooks/delete.yaml
+      scaling_up:
+        type: radon.interfaces.scaling.ScaleUp
+      scaling_down:
+        type: radon.interfaces.scaling.ScaleDown
+      autoscaling:
+        type: radon.interfaces.scaling.AutoScale
+    requirements:
+      - host:
+          capability: tosca.capabilities.Compute
+          relationship: tosca.relationships.HostedOn
+
+interface_types:
+  radon.interfaces.scaling.ScaleDown:
+    derived_from: tosca.interfaces.Root
+    operations:
+      scale_down:
+        inputs:
+          adjustment: { default: 1, type: integer }
+        description: Operation for scaling down.
+        implementation: playbooks/scale_down.yaml
+
+  radon.interfaces.scaling.ScaleUp:
+    derived_from: tosca.interfaces.Root
+    operations:
+      scale_up:
+        inputs:
+          adjustment: { default: 1, type: integer }
+        description: Operation for scaling up.
+        implementation: playbooks/scale_up.yaml
+
+  radon.interfaces.scaling.AutoScale:
+    derived_from: tosca.interfaces.Root
+    operations:
+      retrieve_info:
+        description: Operation for autoscaling.
+        implementation: playbooks/retrieve_info.yaml
+      autoscale:
+        description: Operation for autoscaling.
+        implementation: playbooks/auto_scale.yaml
+
+policy_types:
+  radon.policies.scaling.ScaleDown:
+    derived_from: tosca.policies.Scaling
+    properties:
+      cpu_lower_bound:
+        description: The lower bound for the CPU
+        type: float
+        required: false
+        constraints:
+          - less_or_equal: 20.0
+      adjustment:
+        description: The amount by which to scale
+        type: integer
+        required: true
+        constraints:
+          - greater_or_equal: 1
+    targets: [ radon.nodes.OpenStack.VM ]
+    triggers:
+      radon.triggers.scaling.ScaleDown:
+        description: A trigger for scaling down
+        event: scale_down_trigger
+        target_filter:
+          node: radon.nodes.OpenStack.VM
+        condition:
+          constraint:
+            - not:
+                - and:
+                    - available_instances: [ { greater_than: 42 } ]
+                    - available_space: [ { greater_than: 1000 } ]
+        action:
+          - call_operation:
+              operation: scaling_down.scale_down
+              inputs:
+                adjustment: { get_property: [ SELF, adjustment ] }
+
+  radon.policies.scaling.ScaleUp:
+    derived_from: tosca.policies.Scaling
+    properties:
+      cpu_upper_bound:
+        description: The upper bound for the CPU
+        type: float
+        required: false
+        constraints:
+          - greater_or_equal: 80.0
+      adjustment:
+        description: The amount by which to scale
+        type: integer
+        required: true
+        constraints:
+          - greater_or_equal: 1
+    targets: [ radon.nodes.OpenStack.VM ]
+    triggers:
+      radon.triggers.scaling.ScaleUp:
+        description: A trigger for scaling up
+        event: scale_up_trigger
+        target_filter:
+          node: radon.nodes.OpenStack.VM
+        condition:
+          constraint:
+            - not:
+                - and:
+                    - available_instances: [ { greater_than: 42 } ]
+                    - available_space: [ { greater_than: 1000 } ]
+        action:
+          - call_operation:
+              operation: scaling_up.scale_up
+              inputs:
+                adjustment: { get_property: [ SELF, adjustment ] }
+
+  radon.policies.scaling.AutoScale:
+    derived_from: tosca.policies.Scaling
+    properties:
+      min_size:
+        type: integer
+        description: The minimum number of instances
+        required: true
+        status: supported
+        constraints:
+          - greater_or_equal: 1
+      max_size:
+        type: integer
+        description: The maximum number of instances
+        required: true
+        status: supported
+        constraints:
+          - less_or_equal: 10
+
+topology_template:
+  node_templates:
+    workstation:
+      type: tosca.nodes.Compute
+      attributes:
+        private_address: localhost
+        public_address: localhost
+
+    openstack_vm:
+      type: radon.nodes.OpenStack.VM
+      properties:
+        name: HostVM
+        image: centos7
+        flavor: m1.xsmall
+        network: provider_64_net
+        key_name: my_key
+      requirements:
+        - host: workstation
+
+  policies:
+    - scale_down:
+        type: radon.policies.scaling.ScaleDown
+        properties:
+          cpu_lower_bound: 10
+          adjustment: 1
+        targets: [ openstack_vm ]
+
+    - scale_up:
+        type: radon.policies.scaling.ScaleUp
+        properties:
+          cpu_upper_bound: 90
+          adjustment: 1
+        targets: [ openstack_vm ]
+
+    - autoscale:
+        type: radon.policies.scaling.AutoScale
+        properties:
+          min_size: 3
+          max_size: 7
+        targets: [ openstack_vm ]
+        triggers:
+          radon.triggers.scaling.AutoScale:
+            description: A trigger for autoscaling
+            event: auto_scale_trigger
+            schedule:
+              start_time: 2020-04-08T21:59:43.10-06:00
+              end_time: 2022-04-08T21:59:43.10-06:00
+            target_filter:
+              node: openstack_vm
+            condition:
+              constraint:
+                - not:
+                    - and:
+                        - available_instances: [ { greater_than: 42 } ]
+                        - available_space: [ { greater_than: 1000 } ]
+              period: 60 s
+              evaluations: 2
+              method: average
+            action:
+              - call_operation: autoscaling.retrieve_info
+              - call_operation: autoscaling.autoscale
