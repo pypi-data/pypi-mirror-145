@@ -1,0 +1,374 @@
+import abc
+import types
+import functools
+from contextlib import contextmanager
+import numpy as np
+from ..morphologies import Morphology, Branch
+from ..trees import BoxTree
+from rtree import index as rtree
+from scipy.spatial.transform import Rotation
+
+
+class Interface(abc.ABC):
+    _iface_engine_key = None
+
+    def __init__(self, engine):
+        self._engine = engine
+
+    def __init_subclass__(cls, **kwargs):
+        # Only change engine key if explicitly given.
+        if "engine_key" in kwargs:
+            cls._iface_engine_key = kwargs["engine_key"]
+
+
+class Engine(Interface):
+    def __init__(self, root):
+        self.root = root
+
+    @property
+    def format(self):
+        # This attribute is set on the engine by the storage provider and correlates to
+        # the name of the engine plugin.
+        return self._format
+
+    @abc.abstractmethod
+    def exists(self):
+        pass
+
+    @abc.abstractmethod
+    def create(self):
+        pass
+
+    @abc.abstractmethod
+    def move(self, new_root):
+        pass
+
+    @abc.abstractmethod
+    def remove(self):
+        pass
+
+    @abc.abstractmethod
+    def clear_placement(self):
+        pass
+
+    @abc.abstractmethod
+    def clear_connectivity(self):
+        pass
+
+
+class NetworkDescription(Interface):
+    pass
+
+
+class FileStore(Interface, engine_key="files"):
+    """
+    Interface for the storage and retrieval of files essential to the network description.
+    """
+
+    @abc.abstractmethod
+    def all(self):
+        """
+        Return all ids and associated metadata in the file store.
+        """
+        pass
+
+    @abc.abstractmethod
+    def store(self, content, id=None, meta=None):
+        """
+        Store content in the file store.
+
+        :param content: Content to be stored
+        :type content: str
+        :param id: Optional specific id for the content to be stored under.
+        :type id: str
+        :param meta: Metadata for the content
+        :type meta: dict
+        :returns: The id the content was stored under
+        :rtype: str
+        """
+        pass
+
+    @abc.abstractmethod
+    def load(self, id):
+        """
+        Load the content of an object in the file store.
+
+        :param id: id of the content to be loaded.
+        :type id: str
+        :returns: The content of the stored object
+        :rtype: str
+        :raises FileNotFoundError: The given id doesn't exist in the file store.
+        """
+        pass
+
+    @abc.abstractmethod
+    def stream(self, id, binary=False):
+        """
+        Stream the content of an object in the file store.
+
+        :param id: id of the content to be streamed.
+        :type id: str
+        :param binary: Whether to return file in text or bytes mode.
+        :type binary: bool
+        :returns: A readable file-like object of the content.
+        :raises FileNotFoundError: The given id doesn't exist in the file store.
+        """
+        pass
+
+    @abc.abstractmethod
+    def remove(self, id):
+        """
+        Remove the content of an object in the file store.
+
+        :param id: id of the content to be removed.
+        :type id: str
+        :raises FileNotFoundError: The given id doesn't exist in the file store.
+        """
+        pass
+
+    @abc.abstractmethod
+    def store_active_config(self, config):
+        """
+        Store configuration in the file store and mark it as the active configuration of
+        the stored network.
+
+        :param config: Configuration to be stored
+        :type config: :class:`~.config.Configuration`
+        :returns: The id the config was stored under
+        :rtype: str
+        """
+        pass
+
+    @abc.abstractmethod
+    def load_active_config(self):
+        """
+        Load the active configuration stored in the file store.
+
+        :returns: The active configuration
+        :rtype: :class:`~.config.Configuration`
+        :raises Exception: When there's no active configuration in the file store.
+        """
+        pass
+
+
+class PlacementSet(Interface):
+    @abc.abstractmethod
+    def __init__(self, engine, cell_type):
+        self._engine = engine
+        self._type = cell_type
+        self._tag = cell_type.name
+
+    @property
+    def cell_type(self):
+        return self._type
+
+    @property
+    def tag(self):
+        return self._tag
+
+    @abc.abstractclassmethod
+    def create(cls, engine, type):
+        """
+        Override with a method to create the placement set.
+        """
+        pass
+
+    @abc.abstractstaticmethod
+    def exists(self, engine, type):
+        """
+        Override with a method to check existence of the placement set
+        """
+        pass
+
+    def require(self, engine, type):
+        """
+        Can be overridden with a method to make sure the placement set exists. The default
+        implementation uses the class's ``exists`` and ``create`` methods.
+        """
+        if not self.exists(engine, type):
+            self.create(engine, type)
+
+    @abc.abstractmethod
+    def clear(self, chunks=None):
+        """
+        Override with a method to clear (some chunks of) the placement set
+        """
+        pass
+
+    @abc.abstractmethod
+    def get_all_chunks(self):
+        pass
+
+    @abc.abstractmethod
+    def load_positions(self):
+        """
+        Return a dataset of cell positions.
+        """
+        pass
+
+    @abc.abstractmethod
+    def load_rotations(self):
+        """
+        Return a :class:`~.morphologies.RotationSet`.
+        """
+        pass
+
+    @abc.abstractmethod
+    def load_morphologies(self):
+        """
+        Return a :class:`~.morphologies.MorphologySet` associated to the cells.
+
+        :return: Set of morphologies
+        :rtype: :class:`~.morphologies.MorphologySet`
+        """
+        pass
+
+    @abc.abstractmethod
+    def __iter__(self):
+        pass
+
+    @abc.abstractmethod
+    def __len__(self):
+        pass
+
+    @abc.abstractmethod
+    def append_data(
+        self, chunk, positions=None, morphologies=None, rotations=None, additional=None
+    ):
+        pass
+
+    @abc.abstractmethod
+    def append_additional(self, name, chunk, data):
+        pass
+
+    def load_boxes(self, cache=None, itr=True):
+        if cache is None:
+            mset = self.load_morphologies()
+        else:
+            mset = cache
+        expansion = [*zip([0] * 4 + [1] * 4, ([0] * 2 + [1] * 2) * 2, [0, 1] * 4)]
+
+        def _box_of(m, o, r):
+            oo = (m["ldc"], m["mdc"])
+            # Make the 8 corners of the box
+            corners = np.array([[oo[x][0], oo[y][1], oo[z][2]] for x, y, z in expansion])
+            # Rotate them
+            rotbox = r.apply(corners)
+            # Find outer box of rotated and translated starting box
+            return np.concatenate(
+                (np.min(rotbox, axis=0) + o, np.max(rotbox, axis=0) + o)
+            )
+
+        iters = (mset.iter_meta(), self.load_positions(), self.load_rotations())
+        iter = map(_box_of, *iters)
+        if itr:
+            return iter
+        else:
+            return list(iter)
+
+    def load_box_tree(self, cache=None):
+        return BoxTree(self.load_boxes(cache=cache, itr=True))
+
+
+class MorphologyRepository(Interface, engine_key="morphologies"):
+    @abc.abstractmethod
+    def all(self):
+        pass
+
+    @abc.abstractmethod
+    def select(self, selector):
+        pass
+
+    @abc.abstractmethod
+    def save(self, selector):
+        pass
+
+    @abc.abstractmethod
+    def has(self, selector):
+        pass
+
+    @abc.abstractmethod
+    def preload(self, selector):
+        pass
+
+    @abc.abstractmethod
+    def load(self, selector):
+        pass
+
+    @abc.abstractmethod
+    def get_meta(self, name):
+        pass
+
+    def import_swc(self, file, name, overwrite=False):
+        """
+        Import and store .swc file contents as a morphology in the repository.
+        """
+        morpho = Morphology.from_swc(file)
+
+        return self.save(name, morpho, overwrite=overwrite)
+
+    def import_asc(self, file, name, overwrite=False):
+        """
+        Import and store .asc file contents as a morphology in the repository.
+        """
+        morpho = Morphology.from_file(file)
+
+        return self.save(name, morpho, overwrite=overwrite)
+
+    def import_arb(self, arbor_morpho, labels, name, overwrite=False, centering=True):
+        morpho = Morphology.from_arbor(arbor_morpho, centering=centering)
+
+        self.save(name, morpho, overwrite=overwrite)
+        return morpho
+
+
+class ConnectivitySet(Interface):
+    @abc.abstractclassmethod
+    def create(cls, engine, tag):
+        """
+        Override with a method to create the placement set.
+        """
+        pass
+
+    @abc.abstractstaticmethod
+    def exists(self, engine, tag):
+        """
+        Override with a method to check existence of the placement set
+        """
+        pass
+
+    def require(self, engine, tag):
+        """
+        Can be overridden with a method to make sure the placement set exists. The default
+        implementation uses the class's ``exists`` and ``create`` methods.
+        """
+        if not self.exists(engine, tag):
+            self.create(engine, tag)
+
+    @abc.abstractmethod
+    def clear(self, chunks=None):
+        """
+        Override with a method to clear (some chunks of) the placement set
+        """
+        pass
+
+    @abc.abstractclassmethod
+    def get_tags(cls, engine):
+        pass
+
+
+class StoredMorphology:
+    def __init__(self, name, loader, meta):
+        self.name = name
+        self._loader = loader
+        self._meta = meta
+
+    def get_meta(self):
+        return self._meta.copy()
+
+    def load(self):
+        return self._loader()
+
+    @functools.cache
+    def cached_load(self):
+        return self.load()
