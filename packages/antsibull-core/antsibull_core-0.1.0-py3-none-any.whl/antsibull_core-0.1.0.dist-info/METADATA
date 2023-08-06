@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: antsibull-core
+Version: 0.1.0
+Summary: Tools for building the Ansible Distribution
+Home-page: https://github.com/ansible-community/antsibull-core
+License: GPL-3.0-or-later
+Author: Toshio Kuratomi
+Author-email: a.badger@gmail.com
+Requires-Python: >=3.6.1,<4.0.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Framework :: Ansible
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: PyYAML
+Requires-Dist: aiocontextvars; python_version >= "3.6" and python_version < "3.7"
+Requires-Dist: aiofiles
+Requires-Dist: aiohttp (>=3.0.0)
+Requires-Dist: importlib-metadata; python_version < "3.8"
+Requires-Dist: packaging (>=20.0)
+Requires-Dist: perky
+Requires-Dist: pydantic
+Requires-Dist: semantic_version
+Requires-Dist: sh
+Requires-Dist: twiggy (>=0.5.0)
+Project-URL: Bug tracker, https://github.com/ansible-community/antsibull-core/issues
+Project-URL: Code of Conduct, https://docs.ansible.com/ansible/latest/community/code_of_conduct.html
+Project-URL: Repository, https://github.com/ansible-community/antsibull-core
+Description-Content-Type: text/markdown
+
+# antsibull-core -- Library for Ansible Build Scripts
+[![Python linting badge](https://github.com/ansible-community/antsibull-core/workflows/Python%20linting/badge.svg?event=push&branch=main)](https://github.com/ansible-community/antsibull-core/actions?query=workflow%3A%22Python+linting%22+branch%3Amain)
+[![Python testing badge](https://github.com/ansible-community/antsibull-core/workflows/Python%20testing/badge.svg?event=push&branch=main)](https://github.com/ansible-community/antsibull-core/actions?query=workflow%3A%22Python+testing%22+branch%3Amain)
+[![Codecov badge](https://img.shields.io/codecov/c/github/ansible-community/antsibull-core)](https://codecov.io/gh/ansible-community/antsibull-core)
+
+Library needed for tooling for building various things related to Ansible.
+
+You can find a list of changes in [the antsibull-core changelog](./CHANGELOG.rst).
+
+Unless otherwise noted in the code, it is licensed under the terms of the GNU
+General Public License v3 or, at your option, later.
+
+antsibull-core is covered by the [Ansible Code of Conduct](https://docs.ansible.com/ansible/latest/community/code_of_conduct.html).
+
+## Creating a new release:
+
+If you want to create a new release::
+
+    vim changelogs/fragment/$VERSION_NUMBER.yml  # create 'release_summary:' fragment
+    antsibull-changelog release --version $VERSION_NUMBER
+    git add CHANGELOG.rst changelogs
+    git commit -m "Release $VERSION_NUMBER."
+    poetry build
+    poetry publish  # Uploads to pypi.  Be sure you really want to do this
+
+    git tag $VERSION_NUMBER
+    git push --tags
+    vim pyproject.toml    # Bump the version number
+    git commit -m 'Update the version number for the next release' pyproject.toml
+    git push
+
