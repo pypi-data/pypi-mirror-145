@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: robrick
+Version: 0.0.0
+Summary: LEGO Robot Inventor helpers.
+Home-page: https://github.com/eillarra/robrick
+Author: eillarra
+Author-email: eneko@illarra.com
+License: MIT
+Keywords: lego robot inventor mindstorms robotics ri5
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Utilities
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: click
+Requires-Dist: mpy-cross
+Requires-Dist: mpy-repl-tool
+Requires-Dist: pyserial
+Requires-Dist: typing-extensions ; python_version < "3.8"
+
+Robrick
+=======
+
+[![github-tests-badge]][github-tests]
+[![github-mypy-badge]][github-mypy]
+[![codecov-badge]][codecov]
+[![pypi-badge]][pypi]
+[![pypi-versions]][pypi]
+[![license-badge]](LICENSE)
+
+
+Aknowledgements
+---------------
+
+This package is heavily inspired by the work by [@antonvh][antonvh],
+and it would be impossible without the serial communication tools developed
+by [@zsquareplusc][zsquareplusc] and others at PySerial.
+
+
+
+[codecov]: https://codecov.io/gh/eillarra/robrick
+[codecov-badge]: https://codecov.io/gh/eillarra/robrick/branch/master/graph/badge.svg
+[github-mypy]: https://github.com/eillarra/robrick/actions?query=workflow%3Amypy
+[github-mypy-badge]: https://github.com/eillarra/robrick/workflows/mypy/badge.svg
+[github-tests]: https://github.com/eillarra/robrick/actions?query=workflow%3Atests
+[github-tests-badge]: https://github.com/eillarra/robrick/workflows/tests/badge.svg
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
+[pypi]: https://pypi.org/project/robrick/
+[pypi-badge]: https://badge.fury.io/py/robrick.svg
+[pypi-versions]: https://img.shields.io/pypi/pyversions/robrick.svg
+
+[antonvh]: https://github.com/antonvh
+[zsquareplusc]: https://github.com/zsquareplusc
+
+
