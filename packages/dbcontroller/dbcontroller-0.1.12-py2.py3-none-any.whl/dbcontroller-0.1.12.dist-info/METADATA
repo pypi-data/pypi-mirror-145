@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: dbcontroller
+Version: 0.1.12
+Summary: Python - Database Controller (SQLAlchemy & Motor)
+Home-page: https://github.com/hlop3z/dbcontroller
+Download-URL: https://github.com/hlop3z/dbcontroller/releases/download/alpha/v0.1.12.tar.gz
+Author: hlop3z
+License: UNKNOWN
+Project-URL: Documentation, https://hlop3z.github.io/dbcontroller/
+Keywords: management database
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: databases (==0.5.5)
+Requires-Dist: aiosqlite (==0.17.0)
+Requires-Dist: motor (==2.5.1)
+Requires-Dist: SQLAlchemy (==1.4.34)
+
+# Welcome to **DataBase-Controller**
+
+## Install
+
+```sh
+python -m pip install dbcontroller
+```
+
+## To Be Used With . . .
+
+- [sqlalchemy](https://pypi.org/project/SQLAlchemy/) and [databases](https://pypi.org/project/databases/)
+- [pymongo](https://pypi.org/project/pymongo/) and [motor](https://pypi.org/project/motor/)
+
+## Links
+
+- ### [PyPi](https://pypi.org/project/dbcontroller)
+- ### [Github](https://github.com/hlop3z/dbcontroller)
+- ### [Read the Documents](https://hlop3z.github.io/dbcontroller/)
+
+
