@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: httpx-auth-awssigv4
+Version: 0.1.3
+Summary: This package provides utilities to add AWS Signature V4 authentication infrormation to calls made by python httpx library.
+Home-page: https://github.com/mmuppidi/httpx-auth-awssigv4
+License: BSD-3-Clause
+Author: Mohan Muppidi
+Author-email: mkumar2301@gmail.com
+Requires-Python: >=3.6.2,<4.0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: dev
+Provides-Extra: doc
+Provides-Extra: test
+Requires-Dist: black (>=22.3.0,<23.0.0); extra == "test"
+Requires-Dist: bump2version (>=1.0.1,<2.0.0); extra == "dev"
+Requires-Dist: flake8 (>=3.9.2,<4.0.0); extra == "test"
+Requires-Dist: flake8-docstrings (>=1.6.0,<2.0.0); extra == "test"
+Requires-Dist: httpx (>0.20.0)
+Requires-Dist: isort (>=5.8.0,<6.0.0); extra == "test"
+Requires-Dist: jinja2 (==2.11.3)
+Requires-Dist: markupsafe (==2.0.1)
+Requires-Dist: mkdocs (>=1.1.2,<2.0.0); extra == "doc"
+Requires-Dist: mkdocs-autorefs (>=0.2.1,<0.3.0); extra == "doc"
+Requires-Dist: mkdocs-include-markdown-plugin (>=1.0.0,<2.0.0); extra == "doc"
+Requires-Dist: mkdocs-material (>=6.1.7,<7.0.0); extra == "doc"
+Requires-Dist: mkdocs-material-extensions (>=1.0.1,<2.0.0)
+Requires-Dist: mkdocstrings (>=0.15.2,<0.16.0); extra == "doc"
+Requires-Dist: mypy (>=0.900,<0.901); extra == "test"
+Requires-Dist: pip (>=20.3.1,<21.0.0); extra == "dev"
+Requires-Dist: pre-commit (>=2.12.0,<3.0.0); extra == "dev"
+Requires-Dist: pytest (>=6.2.4,<7.0.0); extra == "test"
+Requires-Dist: pytest-cov (>=2.12.0,<3.0.0); extra == "test"
+Requires-Dist: toml (>=0.10.2,<0.11.0); extra == "dev"
+Requires-Dist: tox (>=3.20.1,<4.0.0); extra == "dev"
+Requires-Dist: twine (>=3.3.0,<4.0.0); extra == "dev"
+Requires-Dist: virtualenv (>=20.2.2,<21.0.0); extra == "dev"
+Description-Content-Type: text/markdown
+
+# httpx-auth-awssigv4
+
+
+[![pypi](https://img.shields.io/pypi/v/httpx-auth-awssigv4.svg)](https://pypi.org/project/httpx-auth-awssigv4/)
+[![python](https://img.shields.io/pypi/pyversions/httpx-auth-awssigv4.svg)](https://pypi.org/project/httpx-auth-awssigv4/)
+[![Build Status](https://github.com/mmuppidi/httpx-auth-awssigv4/actions/workflows/dev.yml/badge.svg)](https://github.com/mmuppidi/httpx-auth-awssigv4/actions/workflows/dev.yml)
+[![codecov](https://codecov.io/gh/mmuppidi/httpx-auth-awssigv4/branch/main/graphs/badge.svg)](https://codecov.io/github/mmuppidi/httpx-auth-awssigv4)
+
+
+
+This package provides utilities to add AWS Signature V4 authentication infrormation to calls made by python httpx library
+
+
+* Documentation: <https://mmuppidi.github.io/httpx-auth-awssigv4>
+* GitHub: <https://github.com/mmuppidi/httpx-auth-awssigv4>
+* PyPI: <https://pypi.org/project/httpx-auth-awssigv4/>
+* Free software: BSD-3-Clause
+
+
+## Features
+
+* TODO
+
+## Credits
+
+This package was created with [Cookiecutter](https://github.com/audreyr/cookiecutter) and the [waynerv/cookiecutter-pypackage](https://github.com/waynerv/cookiecutter-pypackage) project template.
+
