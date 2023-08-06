@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: galaxy-ng
+Version: 4.3.4
+Summary: galaxy-ng plugin for the Pulp Project
+Home-page: https://github.com/ansible/galaxy_ng/
+Author: Red Hat, Inc.
+Author-email: info@ansible.com
+License: GPLv2+
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: Django (~=2.2.23)
+Requires-Dist: galaxy-importer (==0.3.4)
+Requires-Dist: pulpcore (<3.12,>=3.11.2)
+Requires-Dist: pulp-ansible (==0.7.4)
+Requires-Dist: django-prometheus (>=2.0.0)
+Requires-Dist: drf-spectacular
+Requires-Dist: pulp-container (<2.6.0,>=2.5.2)
+Requires-Dist: click (==7.1.2)
+
+UNKNOWN
+
