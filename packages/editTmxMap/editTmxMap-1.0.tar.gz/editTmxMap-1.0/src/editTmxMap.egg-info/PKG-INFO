@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: editTmxMap
+Version: 1.0
+Summary: this module allow you to modify tmx maps
+Home-page: https://github.com/Anonymous-02/modify-tiles/
+Author: Arsenic333
+Author-email: rozierrremi@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# tmx_map_editing
+## methods:
+#### remove object
+this method allow you to remove the object whose type and name got send as parameter, not having an object correspond will result in nothing but a printed error, having two object with the same name and type will result in the deleting of these two objects
+# i'm too lazy so you'll get the rest of the explanation in a later release
+
