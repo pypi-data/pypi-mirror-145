@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: ereuse-utils
+Version: 0.4.0b50
+Summary: Common functionality for eReuse.org software
+Home-page: https://github.com/eReuse/utils
+Author: eReuse.org team
+Author-email: hello@ereuse.org
+License: AGPLv3 License
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: System :: Logging
+Classifier: Topic :: Utilities
+License-File: LICENSE.txt
+Requires-Dist: boltons
+Requires-Dist: inflection
+Provides-Extra: cli
+Requires-Dist: click ; extra == 'cli'
+Requires-Dist: tqdm ; extra == 'cli'
+Requires-Dist: colorama ; extra == 'cli'
+Provides-Extra: getter
+Requires-Dist: pyYAML ; extra == 'getter'
+Provides-Extra: keyring
+Requires-Dist: keyring ; extra == 'keyring'
+Provides-Extra: naming
+Provides-Extra: session
+Requires-Dist: requests-toolbelt ; extra == 'session'
+Provides-Extra: test
+Requires-Dist: flask ; extra == 'test'
+Provides-Extra: testing
+Requires-Dist: pytest ; extra == 'testing'
+Requires-Dist: requests-mock ; extra == 'testing'
+Provides-Extra: usb_flash_drive
+Requires-Dist: pyusb ; extra == 'usb_flash_drive'
+
+UNKNOWN
+
