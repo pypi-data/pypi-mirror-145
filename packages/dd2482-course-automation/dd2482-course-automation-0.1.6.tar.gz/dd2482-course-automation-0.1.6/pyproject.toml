@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "dd2482-course-automation"
+version = "0.1.6"
+description = ""
+authors = ["landeholt <johnlan@kth.se>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.27.1"
+pytz = "^2022.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+ddca = 'dd2482_course_automation:cli'
