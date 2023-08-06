@@ -1,0 +1,72 @@
+[tool.black]
+skip-magic-trailing-comma = true
+
+[tool.isort]
+profile = "black"
+known_first_party = ["cattr"]
+
+[tool.poetry]
+name = "cattrs"
+version = "22.1.0"
+description = "Composable complex class support for attrs and dataclasses."
+authors = ["Tin Tvrtkovic <tinchester@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/python-attrs/cattrs"
+documentation = "https://cattrs.readthedocs.io/en/latest/"
+keywords = ["attrs", "serialization", "dataclasses"]
+packages = [
+    { include = "cattr", from = "src" },
+    { include = "cattrs", from = "src" },
+]
+readme = "README.rst"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+attrs = ">= 20"
+typing_extensions = { version = "*", python = "~3.7" }
+exceptiongroup = { version = "*", python = "<= 3.10" }
+
+[tool.poetry.dev-dependencies]
+pymongo = "^3.12.1"
+flake8 = "^3.9.0"
+tox = "^3.23.0"
+Sphinx = "^4.1.2"
+pytest = "^6.2.3"
+pytest-benchmark = "^3.2.3"
+hypothesis = "^6.9.2"
+pendulum = "^2.1.2"
+isort = "^5.8.0"
+black = "^21.12-beta.0"
+immutables = "^0.15"
+ujson = "^5.1.0"
+orjson = "^3.5.2"
+msgpack = "^1.0.2"
+PyYAML = "^5.4.1"
+tomlkit = "^0.7.0"
+furo = "^2021.7.31-beta.41"
+coverage = "^6.2"
+
+[tool.poetry.urls]
+"Changelog" = "https://cattrs.readthedocs.io/en/latest/history.html"
+"Bug Tracker" = "https://github.com/python-attrs/cattrs/issues"
+
+[tool.pytest.ini_options]
+addopts = "-l --benchmark-sort=fullname --benchmark-warmup=true --benchmark-warmup-iterations=5  --benchmark-group-by=fullname"
+
+[tool.coverage.run]
+omit = [
+    "cattr/_compat.py",
+    "cattr/vendor/typing.py",
+    "cattr/vendor/python3/typing.py",
+]
+
+[tool.coverage.paths]
+source = [
+   "src/cattr",
+   ".tox/*/lib/python*/site-packages/cattr",
+   ".tox/pypy*/site-packages/cattr",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
