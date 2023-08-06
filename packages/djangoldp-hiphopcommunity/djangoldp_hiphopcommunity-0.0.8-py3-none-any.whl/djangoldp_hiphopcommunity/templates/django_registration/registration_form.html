@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load i18n %}
+{% block title %}Inscription à la plate-forme{% endblock %}
+{% block content %}
+    <section id="registration_form">
+        <div class="formulaire">
+            <h1>Créer un compte </h1>
+            <form method='post' action=''>
+                {% csrf_token %}
+                {% if form.errors %}
+                <p class="error">
+                    Il y a des erreurs dans le formulaire. Veuillez les corriger avant de valider.
+                    {% for key, value in form.errors.items %}
+                        {% for error in value %}
+                            <div class="errortext">{{ error }}</div>
+                        {% endfor %}
+                    {% endfor %}
+                </p>
+                {% endif %}
+                <div class="card">
+                    <h2>Créer un compte</h2>
+                    <label class="required mt-3">Identifiant</label>
+                    <div class="helptext">Pas plus de 150 caractères, seulement des chiffres, lettres sans accent et - ou _ </div>
+                    <input type="text" name="username" maxlength="150" pattern="[a-zA-Z0-9-_]+" title="Vous ne devez rentrer que des lettres sans accent, des chiffres ici ou des caractères tels que -_" autofocus="" required="" id="id_username">
+                    <label class="required mt-3">Adresse email</label>
+                    {{ form.email }}
+                    <label class="required mt-3">Mot de passe</label>
+                    {{ form.password1 }}
+                    <label class="required">Mot de passe</label>
+                    <div class="helptext">Entrez le même mot de passe que précédemment pour vérification</div>
+                    {{ form.password2 }}
+                    <input type="submit" class="submit_registration" value="s'inscrire" />
+                </div>
+            </form>
+            <div class="card">
+                <div class="helptext fw500 helplink">
+                    Déjà un compte ?
+                    <a class="sib-link sib-register-link" href="{% url 'login' %}?next={{next|urlencode}}"> Connectez-vous</a>
+                </div>
+                <div class="helptext fw500 helplink">
+                    Mot de passe oublié ?
+                    <a class="sib-link" href="/auth/password_reset/">cliquez ici</a>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Conditions générales</h2>
+                <div class="description">Dans le cadre de votre inscription à la plate-forme, vous devez accepter les conditions générales d'utilisation telles que <a href="{{ settings.MAINSITE }}/cgu">décrites ici</a>.</div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
