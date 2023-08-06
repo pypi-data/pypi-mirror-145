@@ -1,0 +1,41 @@
+image: 116944431457.dkr.ecr.eu-west-1.amazonaws.com/data-lake-gitlab-builder:PROD2021Q3
+
+variables:
+  ECR_REG: 116944431457.dkr.ecr.eu-west-1.amazonaws.com/platform-services-lib
+  AF_IMAGE: "docker.repo.ihsmarkit.com/datalake/$CI_PROJECT_NAME"
+  DEBIAN_FRONTEND: noninteractive
+
+before_script:
+  - $(aws ecr get-login --no-include-email --region eu-west-1)
+  - export CI_TIMESTAMP=$(date +"%Y-%m-%dT%H-%M-%S")
+
+stages:
+  - before
+  - test
+  - analyze
+
+build:
+  stage: before
+  script:
+#    - bash test_unit/scripts/ci/build-base-image.sh
+    - bash test_unit/scripts/ci/build.sh
+
+unit-test:
+  stage: test
+  script:
+#   # test on pod with `docker run -it --entrypoint=/bin/bash test-local-platform-lib`
+    - docker pull "$ECR_REG:$CI_COMMIT_SHORT_SHA"
+    - docker run -P "$ECR_REG:$CI_COMMIT_SHORT_SHA" /bin/bash -c 'cd lib/tests; pytest -vv -s'
+  dependencies:
+    - build
+  needs: ["build"]
+
+analyze:
+  stage: analyze
+  script:
+    - echo "todo"
+#    - docker pull "$ECR_REG:$CI_COMMIT_SHORT_SHA"
+#    - docker run -P "$ECR_REG:$CI_COMMIT_SHORT_SHA" /bin/bash -c 'pytype lib'
+  dependencies:
+    - build
+  needs: ["build"]

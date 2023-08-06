@@ -1,0 +1,15 @@
+pytest==5.3.5 # Must match the version number used in all downstream repos. Declare this first.
+markupsafe~=2.0.1
+jinja2~=2.11.3
+PyYAML~=5.1.2
+pytest-flake8~=1.0.4
+pytest-cov
+flake8-requirements==1.5.1
+pytype==2022.2.8
+mock==4.0.3
+hypothesis==4.53
+pytest-benchmark>=3.2.2
+types-freezegun
+types-mock
+freezegun~=1.1.0
+moto==3.0.3
