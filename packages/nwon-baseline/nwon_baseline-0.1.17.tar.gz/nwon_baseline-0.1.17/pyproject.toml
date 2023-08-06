@@ -1,0 +1,53 @@
+[tool.poetry]
+authors = ["Reik Stiebeling <reik.stiebeling@nvon.com>"]
+description = "Python Code that is used in several projects"
+homepage = "https://nvon.com"
+include = ["README.md", "**/*.pyi"]
+license = "MIT"
+name = "nwon_baseline"
+readme = "README.md"
+repository = "https://gitlab.com/nvon/pypi-packages/nwon_baseline"
+version = "0.1.17"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4.0"
+
+pydantic = ">=1.8.2" 
+pyhumps = "^3.0.2" # converting camelCase/PascalCase/snake_case
+
+[tool.poetry.dev-dependencies]
+bandit = "^1.7.0" 
+black = {version = "*", allow-prereleases = true} 
+isort = "^5.9.3" # sort dependencies
+mypy = "^0.910" # type checker
+pylint = "^2.9.6" 
+pytest = "^6.2.2" 
+
+[tool.poetry.scripts]
+clean-dist-folder = "scripts.clean_dist_folder:clean_dist_folder"
+create-type-stubs = "scripts.create_type_stubs:create_type_stubs"
+prepare = "scripts.prepare:prepare"
+
+# Code formatter black configuration
+[tool.black]
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+include = '\.pyi?$'
+line-length = 88
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+
+[tool.pyright]

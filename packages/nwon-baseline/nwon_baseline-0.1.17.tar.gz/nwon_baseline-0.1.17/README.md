@@ -1,0 +1,29 @@
+# NVON Python baseline package
+
+This package provides some basic python functions that can be used across several projects.
+
+The dependencies of the project are kept to a minimum in order to prevent version conflicts with other projects.
+
+Package is meant for internal use at [NVON](https://nvon.com) as breaking changes may occur on version changes. This may change at some point but not for now 😇. 
+
+## Development Setup
+
+We recommend developing using poetry. 
+
+This are the steps to setup the project with a local virtual environment:
+
+1. Tell poetry to create dependencies in a `.venv` folder withing the project: `poetry config virtualenvs.in-project true`
+1. Create a virtual environment using the local python version: `poetry env use $(cat .python-version)`
+1. Install dependencies: `poetry install`
+
+## Publish package
+
+First you need the package via `poetry build`.
+
+Test package publication
+
+1. Add test PyPi repository: `poetry config repositories.testpypi https://test.pypi.org/legacy/`
+1. Publish the package to the test repository: `poetry publish -r testpypi`
+1. Test package: `pip install --index-url https://test.pypi.org/simple/ nvon_baseline`
+
+If everything works fine publish the package via `poetry publish`.
