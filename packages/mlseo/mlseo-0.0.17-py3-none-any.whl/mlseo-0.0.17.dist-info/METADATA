@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: mlseo
+Version: 0.0.17
+Summary: SEO Tools
+Home-page: https://github.com/miklevin/mlseo/tree/main/
+Author: Mike Levin
+Author-email: miklevin@gmail.com
+License: Apache Software License 2.0
+Keywords: SEO Python
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: install
+Requires-Dist: ohawf
+Requires-Dist: nltk
+Requires-Dist: httpx
+Requires-Dist: pandas
+Requires-Dist: art
+Requires-Dist: rich
+Requires-Dist: tldextract
+Requires-Dist: yake
+Requires-Dist: beautifulsoup4
+Requires-Dist: sqlitedict
+Requires-Dist: pyppeteer
+Requires-Dist: lxml
+
+# mlseo
+> Pythonic SEO in JupyterLab
+
+
+This package contains a variety of building-blocks for constructing "deliverables" for the field of Search Engine Optimization (SEO). The goal is to make expressing such deliverables "light and breezy". For example, to crawl 1-page of a site into a local database:
+
+    from sqlitedict import SqliteDict as sqldict
+    import requests
+    
+    key = 'https://mikelev.in/'
+    with sqldict('crawl.db') as db:
+        db[key] = requests.get(key)
+        db.commit()
+
+## Install
+
+`pip install -U mlseo`
+
+## How to use
+
+Start a new Notebook, preferably in standalone JupyterLab. Then type:
+
+    from mlseo import *
+    
+Then follow the instructions.
+
+## Standalone JupyterLab
+
+I also recommend installing nbdev and nb_black if you're doing any development work inside Jupyter:
+
+    pip install nb_black
+    pip install nbdev
+    
+Standalone Jupyter changes a lot wiping out settings. Shortcuts are the hardest ones to get back, so here's mine. It's always a good time to restart kernel and clear all outputs.
+
+    {
+        "shortcuts": [
+            {
+                "command": "kernelmenu:restart-and-clear",
+                "keys": [
+                    "Ctrl Shift R"
+                ],
+                "selector": "body"
+            }
+        ]
+    }
+
+
+
