@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: end2end
+Version: 1.1.2
+Summary: Python end two end encryption designed for socket
+Home-page: https://www.python.org/sigs/distutils-sig/
+Author: Julian Wandhoven
+Author-email: jwandhoven@gmail.com
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# end2end-encryption
+The end2end encryption module implements end to end encryption for python. The module is designed for sockets.
+## installation
+The package can be installed using pip:
+```
+$ pip install end2end
+```
+
+## basic usage
+The encryption uses a `communicator` that encrypts, decrypts and handles the key exchange. The Communicator can be created with a socket `sock` and the size of the key `key_size` the client uses. 
+```
+com = end2end.createComunicator(sock, key_size)
+``` 
+a full simple mock-up of the server can be found in the `test.py` and `test2.py` files.
+
+
