@@ -1,0 +1,2 @@
+class FhireError(AssertionError):
+    pass
