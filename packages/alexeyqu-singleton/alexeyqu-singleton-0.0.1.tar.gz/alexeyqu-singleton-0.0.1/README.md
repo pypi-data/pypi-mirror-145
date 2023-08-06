@@ -1,0 +1,1 @@
+# alexeyqu Singleton 
