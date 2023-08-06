@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: bayescd
+Version: 0.4
+Summary: Some Bayesian changepoint detection algorithms
+Home-page: http://github.com/hildensia/bayesian_changepoint_detection
+Author: Johannes Kulick
+Author-email: mail@johanneskulick.net
+License: UNKNOWN
+Platform: UNKNOWN
+License-File: LICENSE
+Requires-Dist: scipy
+Requires-Dist: numpy
+Requires-Dist: decorator
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Provides-Extra: multivariate
+Requires-Dist: scipy (>=1.6.0) ; extra == 'multivariate'
+Provides-Extra: plot
+Requires-Dist: matplotlib ; extra == 'plot'
+
+UNKNOWN
+
