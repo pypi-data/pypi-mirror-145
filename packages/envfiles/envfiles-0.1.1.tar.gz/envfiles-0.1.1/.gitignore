@@ -1,0 +1,13 @@
+.python-version
+*.egg-info
+.mypy_cache
+**/__pycache__
+.coverage
+dist/
+build/
+.nox/
+env/local.env
+
+dev/
+.vscode
+*.code-workspace
