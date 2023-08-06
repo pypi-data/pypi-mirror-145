@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: streamlit_globe
+Version: 0.2.1
+Summary: An wrapper of the threeJS globe to display points and labels on a globe.
+Home-page: https://github.com/padmalcom/streamlit_globe
+Author: Jonas Freiknecht
+Author-email: j.freiknecht@googlemail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# streamlit_globe
+Streamlit Globe is a wrapper around globe.gl and provides some simple data visualization functionality in Streamlit. In the current release points and labels are implemented.
+
+![](https://github.com/padmalcom/streamlit_globe/blob/main/globe.png?raw=True)
+
+## Usage
+- You either have to provide pointsData or labelsData (or both) to render the globe.
+- Watch out to create the correct object structure for both arrays.
+- daytime parameter accepts 'day' or 'night'
+- You have to provide a width and a height, this is not determined automatically by streamlit.
+
+## Example usage
+```import streamlit as st 
+from streamlit_globe import streamlit_globe
+
+st.subheader("Globe")
+pointsData=[{'lat': 49.19788311472706, 'lng': 8.114625722364316, 'size': 0.3, 'color': 'red'}]
+labelsData=[{'lat': 49.19788311472706, 'lng': 8.114625722364316, 'size': 0.3, 'color': 'red', 'text': 'Landau'}]
+streamlit_globe(pointsData=pointsData, labelsData=labelsData, daytime='day', width=800, height=600)
+```
+
