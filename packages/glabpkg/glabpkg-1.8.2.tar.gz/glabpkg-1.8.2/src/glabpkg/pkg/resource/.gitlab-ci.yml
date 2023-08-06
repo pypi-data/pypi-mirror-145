@@ -1,0 +1,69 @@
+# {# pkglts, glabpkg.stages, after glabbase.stages
+  - deploy
+# #}
+
+# {# pkglts, glabpkg.before, after glabbase.before
+  - source activate ci
+  # install dependencies
+  {% if reqs.conda_reqs(['install', 'test', 'dvlpt']) != "" -%}
+  - {{ reqs.conda_reqs(['install', 'test', 'dvlpt']) }}
+  {%- endif %}
+  {% if reqs.pip_reqs(['install', 'test', 'dvlpt']) != "" -%}
+  - {{ reqs.pip_reqs(['install', 'test', 'dvlpt']) }}
+  {%- endif %}
+  # install package
+  - pip install .
+# #}
+
+# {# pkglts, glabpkg.test, replace glabbase.test
+ci:test:
+  stage: test
+  except:
+    - tags
+    - main
+  script:
+    - pytest --cov={{ base.pkg_full_name }}
+  coverage: '/^TOTAL\s+\d+\s+\d+\s+(\d+\%)\s*$/'
+# #}
+
+# {# pkglts, glabpkg.test_all
+ci:test_all:
+  stage: test
+  only:
+    - main
+  except:
+    - tags
+  script:
+    - pytest --cov={{ base.pkg_full_name }} --runslow
+  coverage: '/^TOTAL\s+\d+\s+\d+\s+(\d+\%)\s*$/'
+# #}
+
+# {# pkglts, glabpkg.pages
+pages:
+  stage: deploy
+  only:
+    - main
+  script:
+    # install dependencies
+    {% if reqs.conda_reqs(['doc']) != "" -%}
+    - {{ reqs.conda_reqs(['doc']) }}
+    {%- endif %}
+    {% if reqs.pip_reqs(['doc']) != "" -%}
+    - {{ reqs.pip_reqs(['doc']) }}
+    {%- endif %}
+    {%if sphinx.gallery != "" -%}
+    # specific installs for sphinx gallery
+    {% if reqs.conda_reqs([sphinx.gallery]) != "" -%}
+    - {{ reqs.conda_reqs([sphinx.gallery]) }}
+    {%- endif %}
+    {% if reqs.pip_reqs([sphinx.gallery]) != "" -%}
+    - {{ reqs.pip_reqs([sphinx.gallery]) }}
+    {%- endif %}
+    {%- endif %}
+    - python setup.py build_sphinx
+    - mv build/sphinx/html public
+  artifacts:
+    paths:
+      - public
+
+# #}

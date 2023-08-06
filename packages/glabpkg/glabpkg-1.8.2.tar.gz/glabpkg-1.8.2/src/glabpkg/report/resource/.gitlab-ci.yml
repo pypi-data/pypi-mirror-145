@@ -1,0 +1,37 @@
+# {# pkglts, glabreport.stages, after glabbase.stages
+  - deploy
+# #}
+
+# {# pkglts, glabreport.pages
+pages:
+  stage: deploy
+  only:
+    - main
+  script:
+    # install dependencies
+    {% if reqs.conda_reqs(['doc', 'report']) != "" -%}
+    - {{ reqs.conda_reqs(['doc', 'report']) }}
+    {%- endif %}
+    {% if reqs.pip_reqs(['doc', 'report']) != "" -%}
+    - {{ reqs.pip_reqs(['doc', 'report']) }}
+    {%- endif %}
+    {%if sphinx.gallery != "" -%}
+    # specific installs for sphinx gallery
+    {% if reqs.conda_reqs([sphinx.gallery]) != "" -%}
+    - {{ reqs.conda_reqs([sphinx.gallery]) }}
+    {%- endif %}
+    {% if reqs.pip_reqs([sphinx.gallery]) != "" -%}
+    - {{ reqs.pip_reqs([sphinx.gallery]) }}
+    {%- endif %}
+    {%- endif %}
+    - apt-get update
+    - apt-get install -y make
+    - cd report
+    - make html
+    - cd ..
+    - mv report/build/html public
+  artifacts:
+    paths:
+      - public
+
+# #}
