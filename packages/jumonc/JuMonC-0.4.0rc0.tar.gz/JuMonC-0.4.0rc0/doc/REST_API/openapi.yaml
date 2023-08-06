@@ -1,0 +1,91 @@
+openapi: 3.0.0
+tags:
+  - name: version
+    description: Version
+  - name: config
+    description: Gather information that is not changing while the job is running
+  - name: counter
+    description: Gather information from the raw performance counters
+  - name: status
+    description: Gather information that is changing while the job is running
+  - name: application
+    description: Gather application specific information and give application specific commands
+  - name: job
+    description: Gather information concering the job
+  - name: nodes
+    description: Gather information concering the nodes
+  - name: runtime
+    description: Gather information concering the runtime
+  - name: CPU
+    description: Gather information concering the CPU
+  - name: GPU
+    description: Gather information concering the GPU
+  - name: network
+    description: Gather information concering the network
+  - name: IO
+    description: Gather information concering the IO
+  - name: main memory
+    description: Gather information concering the main memory
+  - name: list
+    description: List cached results in this category
+info:
+  description: |
+    An OpenAPI definition for the JuMonC REST API design.
+
+  version: v1
+  title: JuMonC API
+  license:
+    name: 
+    url: 
+security:
+  - ApiKeyAuth: []
+
+
+paths:
+  # VERSION
+  /version:
+    $ref: 'version.yaml'
+
+  # Job
+  /v1/job:
+    $ref: 'v1/job.yaml#/job'
+
+  /v1/job/config:
+    $ref: 'v1/job.yaml#/jobConfig'
+    
+  /v1/job/status:
+    $ref: 'v1/job.yaml#/jobStatus'
+    
+  /v1/job/nodes/config:
+    $ref: 'v1/job.yaml#/jobNodesConfig'
+  
+  # Runtime
+  /v1/runtime:
+    $ref: 'v1/runtime.yaml#/runtime'
+  
+  /v1/runtime/CPU/counter:
+    $ref: 'v1/runtime.yaml#/runtimeCPUCounter'
+
+  /v1/runtime/CPU/status:
+    $ref: 'v1/runtime.yaml#/runtimeCPUStatus'
+    
+  /v1/runtime/GPU/counter:
+    $ref: 'v1/runtime.yaml#/runtimeGPUCounter'
+    
+  /v1/runtime/GPU/status:
+    $ref: 'v1/runtime.yaml#/runtimeGPUStatus'
+    
+  /v1/runtime/network/status:
+    $ref: 'v1/runtime.yaml#/runtimeNetworkStatus'
+    
+  /v1/runtime/IO/status:
+    $ref: 'v1/runtime.yaml#/runtimeIOStatus'
+    
+  /v1/runtime/mainmemory/status:
+    $ref: 'v1/runtime.yaml#/runtimeMainMemoryStatus'
+  
+  
+
+
+
+

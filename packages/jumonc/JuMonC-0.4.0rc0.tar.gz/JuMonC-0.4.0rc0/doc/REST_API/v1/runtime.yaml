@@ -1,0 +1,309 @@
+runtime:
+  get:
+    description: Lists links to avaiable runtime information
+    summary: List links for runtime information
+    operationId: runtime_get
+    tags:
+      - runtime
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: Runtime
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string     
+
+
+runtimeCPUCounter:
+  get:
+    description: Lists links to avaiable CPU hardware counter information
+    summary: List links for CPU counter information
+    operationId: runtimeCPUCounter_get
+    tags:
+      - runtime
+      - CPU
+      - counter
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: CPUCounter
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string                        
+
+ 
+runtimeCPUStatus:
+  get:
+    description: Lists links to avaiable CPU status information
+    summary: List links for CPU status information
+    operationId: runtimeCPUStatus_get
+    tags:
+      - runtime
+      - CPU
+      - status
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: CPUStatus
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string       
+
+
+runtimeGPUCounter:
+  get:
+    description: Lists links to avaiable GPU hardware counter information
+    summary: List links for GPU counter information
+    operationId: runtimeGPUCounter_get
+    tags:
+      - runtime
+      - GPU
+      - counter
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: GPUCounter
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string                        
+
+ 
+runtimeGPUStatus:
+  get:
+    description: Lists links to avaiable GPU status information
+    summary: List links for GPU status information
+    operationId: runtimeGPUStatus_get
+    tags:
+      - runtime
+      - GPU
+      - status
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: GPUStatus
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string 
+
+ 
+runtimeNetworkStatus:
+  get:
+    description: Lists links to avaiable network status information
+    summary: List links for network status information
+    operationId: runtimeNetworkStatus_get
+    tags:
+      - runtime
+      - network
+      - status
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: NetworkStatus
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string 
+
+ 
+runtimeIOStatus:
+  get:
+    description: Lists links to avaiable IO status information
+    summary: List links for IO status information
+    operationId: runtimeIOStatus_get
+    tags:
+      - runtime
+      - IO
+      - status
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: IOStatus
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string    
+
+ 
+runtimeMainMemoryStatus:
+  get:
+    description: Lists links to avaiable main memory status information
+    summary: List links for main memory status information
+    operationId: runtimeMainMemoryStatus_get
+    tags:
+      - runtime
+      - main memory
+      - status
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: MainMemoryStatus
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string    
+

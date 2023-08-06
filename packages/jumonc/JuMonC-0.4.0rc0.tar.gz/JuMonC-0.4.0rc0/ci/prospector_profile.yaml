@@ -1,0 +1,13 @@
+strictness: medium
+test-warnings: true
+autodetect: true
+member-warnings: false
+
+
+
+allow-shorthand: false
+
+pep257:
+  run: true
+  disable:
+    - D212

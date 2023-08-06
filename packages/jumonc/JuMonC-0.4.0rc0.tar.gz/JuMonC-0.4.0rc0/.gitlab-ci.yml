@@ -1,0 +1,96 @@
+image: registry.jsc.fz-juelich.de/witzler1/jumonc-ci-image
+
+.job_template: &job_configuration  # Hidden yaml configuration that defines an anchor named 'job_configuration'
+  tags: 
+    - linux
+  only:
+    changes:
+      - JuMonC/**/*
+      - tests/**/*
+
+stages:
+  - Static Analysis
+  - Unit Testing
+  - Coverage
+  - Doc
+
+before_script:
+  - pwd
+
+prospector:
+  stage: Static Analysis
+  <<: *job_configuration           # Merge the contents of the 'job_configuration' alias
+  allow_failure: true
+  script:
+    - bash ./ci/prospector.sh
+  artifacts:
+    name: logs
+    when: always
+    paths:
+      - prospector_output.txt
+      - prospector_err.txt
+      - prospector.svg
+
+bandit:
+  stage: Static Analysis
+  <<: *job_configuration           # Merge the contents of the 'job_configuration' alias
+  allow_failure: true
+  script:
+    - bash ./ci/bandit.sh
+  artifacts:
+    name: logs
+    when: always
+    paths:
+      - bandit_output.txt
+      - bandit.svg
+    
+mypy:
+  stage: Static Analysis
+  <<: *job_configuration           # Merge the contents of the 'job_configuration' alias
+  allow_failure: true
+  script:
+    - bash ./ci/mypy.sh
+  artifacts:
+    name: logs
+    when: always
+    paths:
+      - mypy_output.txt
+      - mypy.svg
+      
+pytest:
+  stage: Unit Testing
+  <<: *job_configuration           # Merge the contents of the 'job_configuration' alias
+  needs: []
+  allow_failure: true
+  script:
+    - bash ./ci/pytest.sh
+  artifacts:
+    name: logs
+    when: always
+    paths:
+      - pytest_output.txt
+      - pytest.svg
+      
+coverage:
+  stage: Coverage
+  <<: *job_configuration           # Merge the contents of the 'job_configuration' alias
+  needs: ["pytest"]
+  allow_failure: true
+  script:
+    - bash ./ci/coverage.sh
+  artifacts:
+    name: logs
+    when: always
+    paths:
+      - coverage_output.txt
+      - coverage.svg
+
+argdown:
+  stage: Doc
+  <<: *job_configuration           # Merge the contents of the 'job_configuration' alias
+  needs: []
+  allow_failure: true
+  variables:
+    AUTO_DOC_TOKEN: $AUTO_DOC_TOKEN
+  script:
+    - bash ./ci/argdown.sh

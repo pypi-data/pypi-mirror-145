@@ -1,0 +1,23 @@
+get:
+  tags:
+    - version
+  summary: "Retrieve version information for this RestApi."
+  operationId: "getVersion"
+  responses:
+    "401":
+      description: "unauthorized operation"
+    "200":
+      description: "successful operation"
+      content:
+        "application/json":
+          schema:
+            title: "VersionResponse"
+            type: "object"
+            properties:
+              JuMonC_version:
+                type: "string"
+          examples:
+            Example:
+              value:
+               JuMonC_version: "1.0.1a0"
+

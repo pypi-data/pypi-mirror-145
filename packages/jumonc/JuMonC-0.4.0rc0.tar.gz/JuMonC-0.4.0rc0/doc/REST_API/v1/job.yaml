@@ -1,0 +1,151 @@
+job:
+  get:
+    description: Lists links to avaiable job information
+    summary: List links for job information
+    operationId: job_get
+    tags:
+      - job
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: Job
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string     
+
+
+jobConfig:
+  get:
+    description: Lists links to avaiable job config information
+    summary: List links for config information
+    operationId: jobConfig_get
+    tags:
+      - job
+      - config
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: JobConfig
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string                        
+
+ 
+jobStatus:
+  get:
+    description: Lists links to avaiable job status information
+    summary: List links for status information
+    operationId: jobStatus_get
+    tags:
+      - job
+      - status
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: JobStatus
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string       
+
+
+jobNodesConfig:
+  get:
+    description: Lists links to avaiable configuration information concerning the nodes of this job
+    operationId: jobNodesConfig_get
+    tags:
+      - job
+      - config
+      - nodes
+    responses:
+      '401':
+        description: Unauthorized operation
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              title: NodesConfig
+              type: array
+              items:
+                type: object
+                properties:
+                  link:
+                    type: string
+                  isOptional:
+                    type: boolean
+                  description:
+                    type: string
+                  parameters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        description:
+                          type: string     
+
+

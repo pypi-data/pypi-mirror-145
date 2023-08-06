@@ -1,0 +1,22 @@
+ml purge
+
+
+ml Stages/2022  GCCcore/.11.2.0
+
+ml GCC
+ml ParaStationMPI
+ml mpi4py
+ml Flask/2.0.2
+#ml PAPI/6.0.0.1
+
+ml
+
+
+
+#python3 -m venv venv
+
+source venv/bin/activate
+
+#python -m pip install python_papi pynvml flask_login
+
+export PYTHONPATH=${PYTHONPATH}:$(pwd)
