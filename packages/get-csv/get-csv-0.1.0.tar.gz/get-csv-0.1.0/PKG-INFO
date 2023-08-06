@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: get-csv
+Version: 0.1.0
+Summary: Demo library
+Home-page: https://medium-multiply.readthedocs.io/
+Author: Dwieka
+Author-email: patriadwieka@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+Get Csv Nosferatu
+A small demo library using real data to write your header csv from location that you declare on the variable
+
+Installation
+pip install get_csv
+
+Get Started
+from get_csv.get_csv import get_csv
+
+print(get_csv.get_header_name("Your directory))
+
