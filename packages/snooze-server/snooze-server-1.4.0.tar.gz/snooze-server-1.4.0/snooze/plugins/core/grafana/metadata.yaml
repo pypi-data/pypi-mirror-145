@@ -1,0 +1,11 @@
+---
+name: 'Grafana'
+desc: 'Grafana'
+prefix: ''
+class: ''
+routes:
+    /webhook/grafana:
+        desc: 'Receive Grafana alerts'
+        class: GrafanaRoute
+        authorization_policy:
+            write: [any]
