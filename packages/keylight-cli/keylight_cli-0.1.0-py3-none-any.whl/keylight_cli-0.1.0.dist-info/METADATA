@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: keylight-cli
+Version: 0.1.0
+Summary: 
+Home-page: https://github.com/benlyall/keylight-cli
+License: MIT
+Keywords: elgato,keylight,leglight
+Author: Ben Lyall
+Author-email: ben@lyall.me
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Utilities
+Requires-Dist: click (>=8.1.2,<9.0.0)
+Requires-Dist: leglight (>=0.2.0,<0.3.0)
+Project-URL: Repository, https://github.com/benlyall/keylight-cli
