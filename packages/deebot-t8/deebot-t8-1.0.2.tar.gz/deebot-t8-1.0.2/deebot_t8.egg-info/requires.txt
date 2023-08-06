@@ -1,0 +1,9 @@
+requests<3.0.0,>=2.25.1
+paho-mqtt<2.0.0,>=1.5.1
+
+[:python_version < "3.7"]
+dataclasses
+
+[cli]
+click<9.0.0,>=8.0.1
+terminaltables<4.0.0,>=3.1.0
