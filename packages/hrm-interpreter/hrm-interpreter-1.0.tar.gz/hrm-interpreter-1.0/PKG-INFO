@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: hrm-interpreter
+Version: 1.0
+Summary: Minimalist Human Resource Machine interpreter
+Home-page: https://github.com/fpom/hrm
+Author: Franck Pommereau
+Author-email: franck.pommereau@univ-evry.fr
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Interpreters
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Human Resource Machine interpreter
+
+This is a Python interpreter for programs from the [Human Resource Machine](http://tomorrowcorporation.com/humanresourcemachine) game from [Tomorrow Corporation](http://tomorrowcorporation.com).
+Within the game, one may copy/paste the source code that is edited visually.
+This library features a parser for this code, an interpreter, and a translator into TikZ pictures to be included in LaTeX.
+
+```pycon
+>>> from hrm import HRM
+>>> hrm = HRM.parse('level-2.hrm')
+>>> hrm([1, 0, -2, 'D', 0, 0, 8, 9])
+1 0 -2 D 0 0 8 9
+>>> from hrm.tikz import tikz, draw
+>>> tikz('level-2.hrm', 'level-2.tex')
+>>> draw('level-2.hrm', 'level-2.pdf')
+```
+
