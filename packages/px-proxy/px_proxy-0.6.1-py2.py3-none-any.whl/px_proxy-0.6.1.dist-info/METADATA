@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: px-proxy
+Version: 0.6.1
+Summary: An HTTP proxy server to automatically authenticate through an NTLM proxy
+Home-page: https://github.com/genotrance/px
+Author: Ganesh Viswanathan
+Author-email: dev@genotrance.com
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/genotrance/px/issues
+Project-URL: Source, https://github.com/genotrance/px
+Keywords: proxy ntlm kerberos
+Platform: Windows
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Environment :: MacOS X
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Internet :: Proxy Servers
+License-File: LICENSE.txt
+Requires-Dist: keyring
+Requires-Dist: netaddr
+Requires-Dist: ntlm-auth
+Requires-Dist: psutil
+Requires-Dist: pywin32 ; platform_system == "Windows"
+Requires-Dist: winkerberos ; platform_system == "Windows"
+Requires-Dist: futures ; python_version < "3.0"
+
+Px is a HTTP(s) proxy server that allows applications to authenticate through an NTLM or Kerberos proxy server, typically used in corporate deployments, without having to deal with the actual handshake. It is primarily designed to run on Windows systems and automatically authenticates on using the currently logged in Windows user account. It is also possible to run Px on Windows, Linux and MacOS when single signon is not available by configuring the domain, username and password to authenticate with.
+
