@@ -1,0 +1,21 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "hexafonter"
+authors = [
+    {name = "Petr Viktorin", email = "encukou@gmail.com"},
+]
+readme = "README.md"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "pypng",
+]
+dynamic = ["version", "description"]
+
+[project.urls]
+Source = "https://github.com/encukou/hexafonter"
