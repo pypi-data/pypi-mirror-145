@@ -1,0 +1,77 @@
+Metadata-Version: 2.1
+Name: guard-exception
+Version: 1.0.0
+Summary: Catch fatal errors or any type of error, used to easily normalize executions in swift calls with PythonKit
+License: BSD 3-Clause License
+Author: Rafael Fernando Garcia Sagastume
+Author-email: rafael.garcia@ciberc.com
+Requires-Python: >=3.8,<4.0
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Terminals
+Classifier: Topic :: Utilities
+Classifier: Typing :: Typed
+Description-Content-Type: text/markdown
+
+# guard_exception
+    - guard all exception for swift run python
+
+## install
+    - pip install guard-exception
+
+
+## example
+```python
+import guard_exception as ge
+
+gg = ge.guard_exception()
+
+
+def dividir(a, b):
+    return a / b
+
+
+print(gg.guardException(dividir, a=1, b=0))
+
+
+# result cli
+# {'data:': None, 'error': 'division by zero'}
+
+```
+
+
+## example on swift with PythonKit
+```swift
+import PythonKit
+let hvac = Python.import("hvac")
+let ge = Python.import("guard_exception")
+let gg = ge.guard_exception()
+
+let client = hvac.Client(url: "http://0.0.0.0:8200")
+
+let user = "incorrect_user"
+let params = Python.dict()
+params["username"] = PythonObject(user)
+params["password"] = PythonObject("incorrect_password")
+
+print(gg.guardException(client.login, url: "v1/auth/userpass/login/\(user)", use_token: true, json: params))
+
+// result: cli
+//{'data:': None, 'error': 'invalid username or password, on post http://0.0.0.0:8200/v1/auth/userpass/login/incorrect_user'}
+```
