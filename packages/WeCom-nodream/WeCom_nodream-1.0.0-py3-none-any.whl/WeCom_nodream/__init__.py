@@ -1,0 +1,1 @@
+from WeCom_nodream.WeCom import WeCom
