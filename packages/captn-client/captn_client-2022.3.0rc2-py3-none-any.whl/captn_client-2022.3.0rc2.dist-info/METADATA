@@ -1,0 +1,444 @@
+Metadata-Version: 2.1
+Name: captn-client
+Version: 2022.3.0rc2
+Summary: Capt’n client
+Home-page: https://gitlab.com/airt.ai/captn/captn-client/tree/main/
+Author: Capt’n.ai
+Author-email: info@captn.ai
+License: Apache Software License 2.0
+Keywords: Capt’n client
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pip
+Requires-Dist: packaging
+Requires-Dist: airt-client (==2022.3.0rc2)
+Provides-Extra: dev
+
+# Capt’n python client 2022.3.0rc2
+
+## Docs
+
+Full documentation can be found at the following link:
+
+- <a href="https://docs.captn.ai" target="_blank">https://docs.captn.ai/</a>
+
+
+## How to install
+
+If you don't have the captn library already installed, please install it using pip.
+
+
+```console
+pip install captn-client
+```
+
+## How to use
+
+To access the captn service, you must create a developer account. Please fill out the signup form below to get one:
+
+- [https://bit.ly/3I4cNuv](https://bit.ly/3I4cNuv)
+
+Upon successful verification, you will receive the username/password for the developer account in an email. 
+
+Finally, you need an application token to access all the APIs in captn service. Please call the `Client.get_token` method with the username/password to get one. 
+
+You can either pass the username, password, and server address as parameters to the `Client.get_token` method or store the same in the **CAPTN_SERVICE_USERNAME**, **CAPTN_SERVICE_PASSWORD**, and **CAPTN_SERVER_URL** environment variables.
+
+After successful authentication, the captn services will be available to access.
+
+For more information, please check:
+
+- [Tutorial](https://docs.captn.ai/Tutorial/) with more elaborate example, and
+
+- [API](https://docs.captn.ai/API/client/Client/) with reference documentation.
+
+
+Below is a minimal example explaining how to load the data, train a model and make predictions using captn services. 
+
+!!! info
+
+	In the below example, the username, password, and server address are stored in **CAPTN_SERVICE_USERNAME**, **CAPTN_SERVICE_PASSWORD**, and **CAPTN_SERVER_URL** environment variables.
+
+
+### 0. Get token
+
+
+```python
+import json
+from captn.client import Client, DataBlob, DataSource
+
+Client.get_token()
+```
+
+### 1. Connect and preprocess data
+
+In our example, we will be using the captn APIs to load and preprocess a sample CSV file stored in an AWS S3 bucket. 
+
+
+```python
+data_blob = DataBlob.from_s3(
+    uri="s3://test-airt-service/sample_gaming_130k/"
+)
+data_blob.progress_bar()
+
+```
+
+    100%|██████████| 1/1 [01:35<00:00, 95.72s/it]
+
+
+The sample data we used in this example doesn't have the header rows and their data types defined. 
+
+The following code creates the necessary headers along with their data types and reads only a subset of columns that are required for modeling:
+
+
+
+```python
+prefix = ["revenue", "ad_revenue", "conversion", "retention"]
+days = list(range(30)) + list(range(30, 361, 30))
+dtype = {
+    "date": "str",
+    "game_name": "str",
+    "platform": "str",
+    "user_type": "str",
+    "network": "str",
+    "campaign": "str",
+    "adgroup": "str",
+    "installs": "int32",
+    "spend": "float32",
+}
+dtype.update({f"{p}_{d}": "float32" for p in prefix for d in days})
+names = list(dtype.keys())
+
+kwargs = {"delimiter": "|", "names": names, "parse_dates": ["date"], "usecols": names[:42], "dtype": dtype}
+```
+
+Finally, the above variables are passed to the `DataBlob.from_csv` method which preprocesses the data and stores it in captn server.
+
+
+```python
+data_source = data_blob.from_csv(
+    index_column="game_name",
+    sort_by="date",
+    kwargs_json=json.dumps(kwargs)
+)
+
+data_source.progress_bar()
+```
+
+    100%|██████████| 1/1 [00:45<00:00, 45.39s/it]
+
+
+
+```python
+data_source.head()
+```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>platform</th>
+      <th>user_type</th>
+      <th>network</th>
+      <th>campaign</th>
+      <th>adgroup</th>
+      <th>installs</th>
+      <th>spend</th>
+      <th>revenue_0</th>
+      <th>revenue_1</th>
+      <th>...</th>
+      <th>revenue_23</th>
+      <th>revenue_24</th>
+      <th>revenue_25</th>
+      <th>revenue_26</th>
+      <th>revenue_27</th>
+      <th>revenue_28</th>
+      <th>revenue_29</th>
+      <th>revenue_30</th>
+      <th>revenue_60</th>
+      <th>revenue_90</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2021-03-15</td>
+      <td>ios</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_541</td>
+      <td>1</td>
+      <td>0.600000</td>
+      <td>0.000000</td>
+      <td>0.018173</td>
+      <td>...</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+      <td>0.018173</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021-03-15</td>
+      <td>ios</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_2351</td>
+      <td>2</td>
+      <td>4.900000</td>
+      <td>0.000000</td>
+      <td>0.034000</td>
+      <td>...</td>
+      <td>0.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>6.034000</td>
+      <td>13.030497</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2021-03-15</td>
+      <td>ios</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_636</td>
+      <td>3</td>
+      <td>7.350000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+      <td>12.112897</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2021-03-15</td>
+      <td>ios</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_569</td>
+      <td>1</td>
+      <td>0.750000</td>
+      <td>0.000000</td>
+      <td>0.029673</td>
+      <td>...</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+      <td>0.029673</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2021-03-15</td>
+      <td>ios</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_243</td>
+      <td>2</td>
+      <td>3.440000</td>
+      <td>0.000000</td>
+      <td>0.027981</td>
+      <td>...</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+      <td>0.042155</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2021-03-15</td>
+      <td>android</td>
+      <td>googleadwords_int</td>
+      <td>googleadwords_int</td>
+      <td>campaign_283</td>
+      <td>adgroup_1685</td>
+      <td>11</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.097342</td>
+      <td>...</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+      <td>0.139581</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2021-03-15</td>
+      <td>android</td>
+      <td>googleadwords_int</td>
+      <td>googleadwords_int</td>
+      <td>campaign_2</td>
+      <td>adgroup_56</td>
+      <td>32</td>
+      <td>30.090000</td>
+      <td>0.000000</td>
+      <td>0.802349</td>
+      <td>...</td>
+      <td>2.548253</td>
+      <td>2.548253</td>
+      <td>2.771138</td>
+      <td>2.805776</td>
+      <td>2.805776</td>
+      <td>2.805776</td>
+      <td>2.805776</td>
+      <td>2.805776</td>
+      <td>2.805776</td>
+      <td>2.805776</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2021-03-15</td>
+      <td>android</td>
+      <td>moloco_int</td>
+      <td>moloco_int</td>
+      <td>campaign_191</td>
+      <td>None</td>
+      <td>291</td>
+      <td>503.480011</td>
+      <td>34.701553</td>
+      <td>63.618111</td>
+      <td>...</td>
+      <td>116.508331</td>
+      <td>117.334709</td>
+      <td>117.387489</td>
+      <td>117.509506</td>
+      <td>118.811417</td>
+      <td>118.760765</td>
+      <td>119.151291</td>
+      <td>119.350220</td>
+      <td>139.069443</td>
+      <td>147.528793</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2021-03-15</td>
+      <td>android</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_190</td>
+      <td>4</td>
+      <td>2.740000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2021-03-15</td>
+      <td>android</td>
+      <td>jetfuelit_int</td>
+      <td>jetfuelit_int</td>
+      <td>campaign_0</td>
+      <td>adgroup_755</td>
+      <td>8</td>
+      <td>11.300000</td>
+      <td>13.976003</td>
+      <td>14.358793</td>
+      <td>...</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+      <td>14.338905</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 41 columns</p>
+</div>
+
+
+
+### 2. Training
+
+
+```python
+# Todo
+```
+
+
