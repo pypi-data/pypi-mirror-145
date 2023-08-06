@@ -1,0 +1,62 @@
+####################
+Django Blog Package
+####################
+
+This package is for blog projects only. If you want to create a blog app using Django, you can use this package.
+No need to write code for blog app, just install this package and it will give you all APIs related to blog.
+You can customize these classes according to your needs.
+
+Quick start
+============
+1. Add below apps into your INSTALLED_APPS setting like this::
+
+    INSTALLED_APPS = [
+        ...
+        'ckeditor',
+        'taggit',
+        'rest_framework',
+        'blog',
+        'task_app',
+    ]
+
+2. Add ckeditor setup codes into your settings.py like this::
+
+    CKEDITOR_UPLOAD_PATH = "articles/body-images/"
+
+    CKEDITOR_CONFIGS = {
+        'default': {
+            'toolbar': 'full',
+            'height': 300,
+            'width': 900,
+        },
+    }
+
+3. It will provide FileBasedCaching, for caching add below lines to your settings.py::
+
+    CACHES = {
+       'default': {
+          'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+          'LOCATION': f'{BASE_DIR}/cache_data',
+       }
+    }
+    SEARCH_TIMEOUT = 60*60*24
+
+    # Update middleware setup like this:
+    MIDDLEWARE = [
+        'django.middleware.cache.UpdateCacheMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.cache.FetchFromCacheMiddleware',
+    ]
+4. Include all the polls URLconf in your project like this::
+
+    urlpatterns = [
+        path('ckeditor/', include('ckeditor_uploader.urls')),
+        path('articles/', include('blog.urls')),
+    ]
+
+
+4. Run ``python manage.py migrate`` to create all the tables into database.
+
+5. Start the development server and visit http://127.0.0.1:8000/articles/ to perform the CRUD operations.
+
+6. Open this https://blog-module-community.herokuapp.com/ to get more information about this package.
