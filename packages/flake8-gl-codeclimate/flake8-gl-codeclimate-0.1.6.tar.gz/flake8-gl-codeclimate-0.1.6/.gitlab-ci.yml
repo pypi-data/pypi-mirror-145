@@ -1,0 +1,27 @@
+image: python:latest
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+before_script:
+  - python -V  # Print out python version for debugging
+  - pip install flake8 flake8-logging-format
+
+flake8:
+  script:
+    - flake8 --exit-zero --format pylint --output-file flake8.txt --tee flake8_gitlab_codeclimate scripts
+    - PYTHONPATH=. python scripts/report-to-gl-codeclimate.py < flake8.txt > gl-code-quality-report.json
+  artifacts:
+    reports:
+      codequality: gl-code-quality-report.json
+
+test:
+  script:
+    - pip install .
+    - flake8 --exit-zero --format gl-codeclimate --output-file examples-report.json --tee examples/
+    - python -m json.tool < examples-report.json
