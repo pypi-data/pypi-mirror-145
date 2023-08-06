@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: phase
+Version: 0.1.6
+Summary: Python API for I3DR's Phase Library
+Home-page: https://i3drobotics.github.io/phase/python/html/index.html
+Author: Ben Knight
+Author-email: bknight@i3drobotics.com
+License: UNKNOWN
+Project-URL: Documentation, https://i3drobotics.github.io/phase/python/html/index.html
+Project-URL: Issues, https://github.com/i3drobotics/phase/issues
+Keywords: Industrial 3D Robotics I3DR stereo camera
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+
+# pyPhase
+Python wrapper for I3DR's Phase Library.  
+
+## Install
+Phase library is required to be installed to use pyPhase.  
+>### Linux
+>Download debian package from [v0.0.23 release](https://github.com/i3drobotics/phase/releases/tag/v0.0.23).  
+>Install debian package using apt package manager:
+>```
+>sudo apt install -f ./phase_vx.x.x-amd64.deb
+>```
+>This should install to `/opt/i3dr/phase`
+>### Windows
+>Download Windows installer from the [v0.0.23 release](https://github.com/i3drobotics/phase/releases/tag/v0.0.23).  
+>Install using the installer GUI, this should install to `C:\Program Files\i3DR\Phase`
+>
+
+Then install pyPhase from pypi using pip:
+```
+pip install phase
+```
+This is not yet available on pypi for Linux. Please download the wheel for your version of python from the release and install using:
+```
+pip install ./phase-X.X.X-cpXXX-cpXXX-linux_x86_64.whl
+```
+
+## Documentation
+For detailed documentation see [here](https://i3drobotics.github.io/pyphase/)
+
+
