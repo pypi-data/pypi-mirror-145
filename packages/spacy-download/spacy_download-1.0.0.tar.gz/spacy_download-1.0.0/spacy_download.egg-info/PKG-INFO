@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: spacy-download
+Version: 1.0.0
+Summary: Download and load spaCy models on-the-fly.
+Home-page: https://github.com/BramVanroy/spacy_download
+Author: Bram Vanroy
+Author-email: bramvanroy@hotmail.com
+License: MIT
+Project-URL: Bug Reports, https://github.com/BramVanroy/spacy_download/issues
+Project-URL: Source, https://github.com/BramVanroy/spacy_download
+Keywords: nlp spacy spacy-extension
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Text Processing
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# Download and load spaCy models on-the-fly
+
+A tiny drop-in replacement for `spacy.load()` that automatically downloads a model when it is not currently installed.
+
+Usage is identical to [`spacy.load()`](https://spacy.io/api/top-level/#spacy.load), meaning that you can also exclude
+or disable pipeline components. Example:
+
+```python
+from spacy_download import load_spacy
+
+nlp = load_spacy("en_core_web_sm", exclude=["parser", "tagger"])  # Will download the model if it isn't installed yet
+```
+
+Under the hood, the package makes use of spaCy's capability to import models as modules, rather than using spaCy's
+built-in loader. This allows us to first download a model with `pip` and then load it as a module.
+
+**Note**: if you are using transformer models, you still need to install `spacy-transformers` yourself!
+
