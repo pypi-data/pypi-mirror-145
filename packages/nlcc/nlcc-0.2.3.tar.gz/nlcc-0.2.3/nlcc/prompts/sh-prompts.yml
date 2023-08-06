@@ -1,0 +1,28 @@
+gromacs:
+    text: |
+        #!/bin/bash
+        # this script executes gromacs commands
+        source /usr/local/gromacs/bin/GMXRC
+    comment: '#'
+    stop:
+      - "\n"
+    language: bash
+bash:
+  text: |
+      #!/bin/bash
+      ls -l
+  comment: '#'
+  stop:
+    - "\n"
+  language: bash
+
+slurm:
+  text: |
+    #!/bin/bash
+
+    # set job name to nlcc
+    #SBATCH --job-name contacts
+  stop:
+    - "\n"
+  comment: '#'
+  language: bash
