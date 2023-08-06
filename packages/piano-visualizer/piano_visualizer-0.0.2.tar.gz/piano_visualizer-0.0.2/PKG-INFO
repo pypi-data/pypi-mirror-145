@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: piano_visualizer
+Version: 0.0.2
+Summary: A python library that allows you to export a video in which a piano is playing the music you give it.
+Home-page: https://github.com/ArjunSahlot/piano_visualizer
+Author: Arjun Sahlot
+Author-email: iarjun.sahlot@gmail.com
+License: GNU GPL v3
+Description: # piano_visualizer
+        
+        A python library that allows you to export a video in which a piano is playing the music you give it.
+        
+        ![example gif](https://github.com/ArjunSahlot/piano_visualizer/blob/main/assets/example.gif?raw=true)
+        
+        ## Features
+        
+        -   Export a video of a custom midi file
+        -   Easy interface
+        -   Multi-core export
+        -   Multiple piano support
+        -   Multiple midi support
+        -   Automatically generate audio for midi files
+        
+        ## How to
+        
+        piano_visualizer was built with the intent to for it to be simple to use. You can render a piano video with simply 4 lines of code!
+        
+        There are 2 main classes: `Piano` and `Video`
+        `Piano` takes care of the piano rendering and the midi file parsing
+        `Video` takes care of video management (fps, resolution) and exporting
+        
+        Working in `example.py` within the same directory `main.py` is
+        
+        ```py
+        # Import the
+        ```
+        
+        ## Running on local device
+        
+        TODO
+        
+Keywords: piano,visualizer
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
