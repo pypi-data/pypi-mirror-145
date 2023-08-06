@@ -1,0 +1,200 @@
+Metadata-Version: 2.1
+Name: camtrapml
+Version: 0.1.0
+Summary: CamTrapML is a Python library for Detecting, Classifying, and Analysing Wildlife Camera Trap Imagery.
+Home-page: https://github.com/bencevans/camtrapml
+License: MIT
+Keywords: wildlife,camtrap,camera,trap,imagery,classification,detection,analysis,conservation
+Author: Benjamin C. Evans
+Author-email: Benjamin.Evans@brunel.ac.uk
+Requires-Python: >=3.8,<3.11
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Scientific/Engineering :: Image Processing
+Classifier: Topic :: Scientific/Engineering :: Image Recognition
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Visualization
+Requires-Dist: Pillow (>=9.0.1,<10.0.0)
+Requires-Dist: PyExifTool (>=0.4.13,<0.5.0)
+Requires-Dist: font-fredoka-one (>=0.0.4,<0.0.5)
+Requires-Dist: matplotlib (>=3.5.1,<4.0.0)
+Requires-Dist: numpy (>=1.22.2,<2.0.0)
+Requires-Dist: requests (>=2.27.1,<3.0.0)
+Requires-Dist: scikit-learn (==1.0.1)
+Requires-Dist: tensorflow (>=2.8.0,<3.0.0)
+Requires-Dist: tensorflow-hub (>=0.12.0,<0.13.0)
+Requires-Dist: tqdm (>=4.62.3,<5.0.0)
+Project-URL: Bug Tracker, https://github.com/bencevans/camtrapml/issues
+Project-URL: Documentation, https://github.com/bencevans/camtrapml
+Project-URL: Repository, https://github.com/bencevans/camtrapml
+Description-Content-Type: text/markdown
+
+# CamTrapML
+
+> CamTrapML is a Python library for Detecting, Classifying, and Analysing Wildlife [Camera Trap](https://en.wikipedia.org/wiki/Camera_trap) Imagery.
+
+## Installation
+
+    $ pip install camtrapml
+
+## Features
+
+### Loading Data
+
+Search for images in a directory, load an image and create a thumbnail.
+
+
+```python
+%load_ext autoreload
+%autoreload
+from camtrapml.dataset import ImageDataset
+from camtrapml.image.utils import load_image, thumbnail
+
+ena24 = ImageDataset(
+    name="ena24",
+    path="/pool0/datasets/ena24/ena24",
+)
+
+ena24_image_paths = list(ena24.enumerate_images())
+
+thumbnail(load_image(ena24_image_paths[0]))
+```
+
+### EXIF Extraction
+
+EXIF extraction is a common task in gathering the metadata such as each image's timestamp, camera model, focal length, etc. Some researchers write labelling into the EXIF data. CamTrapML doesn't assist with writing to EXIF. However, there is functionality for extracting it for analysis and building datasets for training new models from previously labelled images.
+
+ExifTool is required for this package to work. Installation instructions can be found [here](https://exiftool.org/install.html).
+
+Three methods are available for extracting EXIF data from images. Each with different performance characteristics.
+
+**Method 1: Individual Images**
+
+
+```python
+from camtrapml.image.exif import extract_exif
+
+exif = extract_exif(ena24_image_paths[0])
+exif
+```
+
+**Method 2: Multiple Images**
+
+`extract_multiple_exif` passes a list of image paths to ExifTool and returns a list of dictionaries containing the EXIF data. This is faster than `extract_exif` when multiple images are being processed as it only passes the list of image paths to ExifTool once, rather than spawning a new process for each image.
+
+
+```python
+from camtrapml.image.exif import extract_multiple_exif
+
+exif = extract_multiple_exif(ena24_image_paths)
+exif[0]
+```
+
+**Method 3: Multiple Images, Multiple Processes**
+
+When processing large datasets, it's apparent that the bottleneck in extracting the EXIF information tends to be the CPU. This method spawns multiple versions of ExifTool in parallel, each with a batch of image paths. This is faster than `extract_multiple_exif` when processing large datasets as it allows for multiple processes to be spawned and the data extracted in parallel.
+
+
+```python
+from camtrapml.image.exif import extract_multiple_exif_fast
+
+exif = extract_multiple_exif_fast(ena24_image_paths)
+exif[0]
+```
+
+### Detection
+
+Various Detection models are available in the `camtrapml.detection` subpackage. These currently include MegaDetector (v4.1, v3 and v2) and support for loading in custom Tensorflow v1.x Object Detection Frozen models.
+
+#### Detection with MegaDetector v4.1
+
+
+```python
+from camtrapml.detection.models.megadetector import MegaDetectorV4_1
+from camtrapml.detection.utils import render_detections
+
+with MegaDetectorV4_1() as detector:
+    detections = detector.detect(ena24_image_paths[0])
+
+thumbnail(
+    render_detections(ena24_image_paths[0], detections, class_map=detector.class_map)
+)
+```
+
+#### Detection with a custom Tensorflow v1.x Object Detection Frozen model
+
+
+```python
+from camtrapml.detection.models.tensorflow import TF1ODAPIFrozenModel
+from camtrapml.detection.utils import render_detections
+from pathlib import Path
+
+with TF1ODAPIFrozenModel(
+    model_path=Path("~/Downloads/my-custom-model.pb").expanduser(),
+    model_image_tensor_name="image_tensor:0",
+    model_boxes_tensor_name="detection_boxes:0",
+    model_scores_tensor_name="detection_scores:0",
+    model_classes_tensor_name="detection_classes:0",
+    class_map={
+        1: "animal",
+    },
+) as detector:
+    detections = detector.detect(ena24_image_paths[1])
+
+thumbnail(
+    render_detections(ena24_image_paths[1], detections, class_map=detector.class_map)
+)
+```
+
+#### Extract Detections
+
+
+```python
+from camtrapml.detection.models.megadetector import MegaDetectorV4_1
+from camtrapml.detection.utils import extract_detections_from_image
+
+with MegaDetectorV4_1() as detector:
+    detections = detector.detect(ena24_image_paths[0])
+
+list(extract_detections_from_image(load_image(ena24_image_paths[0]), detections))[0]
+```
+
+#### Remove Humans from Images
+
+In order to reduce the risks of identification of humans in line with GDPR, CamTrapML provides the ability to remove humans from images. This is achieved by using the MegaDetector v3+ models to detect humans in the image, and then replacing all pixels in each human detection.
+
+
+```python
+from camtrapml.detection.models.megadetector import MegaDetectorV4_1
+from camtrapml.detection.utils import remove_detections_from_image
+from camtrapml.image.utils import load_image, thumbnail
+from pathlib import Path
+
+ct_image_with_humans = Path("/pool0/datasets/bens-day-at-zsl/IMG_0576.JPG").expanduser()
+
+with MegaDetectorV4_1() as detector:
+    detections = detector.detect(ct_image_with_humans)
+
+human_class_id = 2
+
+thumbnail(
+    remove_detections_from_image(
+        load_image(ct_image_with_humans),
+        [
+            detection
+            for detection in detections
+            if detection["category"] == human_class_id and detection["conf"] > 0.5
+        ],
+    )
+)
+```
+
