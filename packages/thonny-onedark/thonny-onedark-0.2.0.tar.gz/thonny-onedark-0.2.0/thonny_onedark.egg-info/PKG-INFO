@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: thonny-onedark
+Version: 0.2.0
+Summary: One Dark theme for Thonny IDE
+Home-page: https://github.com/ranelpadon/thonny-onedark
+Author: Ranel Padon
+Author-email: ranel.padon@gmail.com
+License: MIT
+Download-URL: https://github.com/ranelpadon/thonny-onedark
+Keywords: IDE education programming Thonny dark theme one-dark "one dark"
+Platform: Windows
+Platform: macOS
+Platform: Linux
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Education
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Embedded Systems
+License-File: LICENSE
+
+# One Dark theme for [Thonny IDE](https://thonny.org)
+
+> A dark theme for [Thonny IDE](https://thonny.org).
+
+![Screenshot](./screenshot.png)
+
+## Installation
+
+#### Install using Thonny
+
+1. Go to `Thonny → Tools → Manage plug-ins`
+2. Search for `thonny-onedark`
+3. Click `Install`
+
+#### Install using pip
+
+    $ pip install thonny-onedark
+
+#### Install manually
+
+1. Download using the [GitHub .zip download](https://github.com/ranelpadon/thonny-onedark/archive/refs/heads/main.zip) option and unzip them.
+2. Go to `Thonny → Tools → Manage plug-ins…`
+3. Click `Install from local file`
+4. Find and select the prefered compressed file under the `dist/` folder
+
+#### Activating theme
+
+1. After installing, close and open Thonny, so the theme is loaded
+2. Go to `Thonny → Tools → Options`
+3. Under `Theme & Font`, select the drop-down menu `Syntax theme`
+4. Select `One Dark`
+
+
+## License
+
+[MIT License](./LICENSE)
+
+
