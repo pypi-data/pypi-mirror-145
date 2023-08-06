@@ -1,0 +1,90 @@
+Metadata-Version: 2.1
+Name: mlwhatif
+Version: 0.0.1.dev0
+Summary: Data-Centric What-If Analysis for Native Machine Learning Pipelines
+Home-page: UNKNOWN
+Author: Stefan Grafberger
+Author-email: stefangrafberger@gmail.com
+License: Apache License 2.0
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: ==3.9.*
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: scikit-learn (==0.23.2)
+Requires-Dist: pandas (==1.2.3)
+Requires-Dist: numpy (==1.19.5)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: nbformat (==5.0.8)
+Requires-Dist: nbconvert (==6.4.5)
+Requires-Dist: ipython (==7.25.0)
+Requires-Dist: astpretty (==2.0.0)
+Requires-Dist: astmonkey (==0.3.6)
+Requires-Dist: networkx (==2.5)
+Requires-Dist: more-itertools (==8.6.0)
+Requires-Dist: pygraphviz (==1.7)
+Requires-Dist: testfixtures (==6.17.1)
+Requires-Dist: matplotlib (==3.4.2)
+Requires-Dist: gorilla (==0.4.0)
+Requires-Dist: astunparse (==1.6.3)
+Requires-Dist: setuptools (==57.0.0)
+Requires-Dist: scipy (==1.7.0)
+Requires-Dist: statsmodels (==0.12.2)
+Provides-Extra: dev
+Requires-Dist: pylint (==2.6.0) ; extra == 'dev'
+Requires-Dist: pytest (==6.1.2) ; extra == 'dev'
+Requires-Dist: pytest-pylint (==0.17.0) ; extra == 'dev'
+Requires-Dist: pytest-runner (==5.2) ; extra == 'dev'
+Requires-Dist: pytest-cov (==2.10.1) ; extra == 'dev'
+Requires-Dist: pytest-pycharm (==0.7.0) ; extra == 'dev'
+Requires-Dist: pytest-mock (==3.3.1) ; extra == 'dev'
+Requires-Dist: gensim (==3.8.3) ; extra == 'dev'
+Requires-Dist: tensorflow (==2.5.0) ; extra == 'dev'
+Requires-Dist: keras (==2.4.3) ; extra == 'dev'
+Requires-Dist: jupyter (==1.0.0) ; extra == 'dev'
+Requires-Dist: importnb (==0.6.2) ; extra == 'dev'
+Requires-Dist: seaborn (==0.11.0) ; extra == 'dev'
+
+mlwhatif
+================================
+
+[![mlinspect](https://img.shields.io/badge/🔎-mlwhatif-green)](https://github.com/stefan-grafberger/mlwhatif)
+[![GitHub license](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://github.com/stefan-grafberger/mlwhatif/blob/master/LICENSE)
+[![Build Status](https://github.com/stefan-grafberger/mlwhatif/actions/workflows/build.yml/badge.svg)](https://github.com/stefan-grafberger/mlwhatif/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/stefan-grafberger/mlwhatif/branch/master/graph/badge.svg?token=KTMNPBV1ZZ)](https://codecov.io/gh/stefan-grafberger/mlwhatif)
+
+Data-Centric What-If Analysis for Native Machine Learning Pipelines 
+
+## Run mlwhatif locally
+
+Prerequisite: Python 3.9
+
+1. Clone this repository
+2. Set up the environment
+
+	`cd mlwhatif` <br>
+	`python -m venv venv` <br>
+	`source venv/bin/activate` <br>
+
+3. If you want to use the visualisation functions we provide, install graphviz which can not be installed via pip
+
+    `Linux: ` `apt-get install graphviz` <br>
+    `MAC OS: ` `brew install graphviz` <br>
+	
+4. Install pip dependencies 
+
+    `pip install -e ."[dev]"` <br>
+
+5. To ensure everything works, you can run the tests (without graphviz, the visualisation test will fail)
+
+    `python setup.py test` <br>
+
+## Notes
+* For debugging in PyCharm, set the pytest flag `--no-cov` ([Link](https://stackoverflow.com/questions/34870962/how-to-debug-py-test-in-pycharm-when-coverage-is-enabled))
+
+## License
+This library is licensed under the Apache 2.0 License.
+
+
