@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: Themail
+Version: 0.0.2
+Summary: Sending email with python fast
+Home-page: https://github.com/claudiotorresarbe/Themail
+Author: Cláudio Torres Arbe
+Author-email: claudiotarbe@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Themail
+
+## To install
+
+```
+pip install Themail
+```
+
+## To import the library
+
+```
+from themail import *
+```
+
+## Defining the sender, key, smtp and port  
+
+```
+email = Themail("<YOUR EMAIL>","<YOUR KEY>","<SMTP>","<PORT>")
+```
+
+## or null to use our email
+
+```
+email = Themail()
+```
+
+## Sending an email
+
+```
+send = email.send("<RECEIVER>","<SUBJECT>","<BODY>")
+```
+
+## Sending to more than one recipient
+
+```
+send = email.send(["<RECEIVER #1>","<RECEIVER #2>"],"<SUBJECT>","<BODY>")
+```
+
+## Get message
+
+```
+print(send)
+```
+
+## Links
+
+See my [GitHub](https://github.com/claudiotorresarbe).
+
