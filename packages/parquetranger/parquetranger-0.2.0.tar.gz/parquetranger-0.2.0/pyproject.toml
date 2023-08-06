@@ -1,0 +1,39 @@
+[project]
+name = "parquetranger"
+dynamic = ["version", "description"]
+authors = [{name = "Endre Márk Borza", email = "endremborza@gmail.com"}]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "pandas",
+    "pyarrow",
+    "atqo[fancy]>=0.1.0"
+]
+
+[project.optional-dependencies]
+test = ["branthebuilder", "moto"]
+doc = [
+    "sphinx",
+    "pandoc",
+    "graphviz",
+    "sphinx-automodapi",
+    "pygments",
+    "jupyter",
+    "toml"
+]
+dask = [
+    "dask[dataframe]",
+    "distributed",
+    "s3path>=0.3.3"
+]
+
+[project.urls]
+Homepage = "https://github.com/endremborza/parquetranger"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.branb]
+line-length = 88
