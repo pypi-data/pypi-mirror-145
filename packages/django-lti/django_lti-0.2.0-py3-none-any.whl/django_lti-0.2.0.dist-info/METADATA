@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: django-lti
+Version: 0.2.0
+Summary: LTI tool support for Django
+Home-page: https://gitlab.umich.edu/academic-innovation/lti/django-lti
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Django :: 3.2
+Classifier: Framework :: Django :: 4.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: django (>=3.2)
+Requires-Dist: pylti1p3 (>=1.9)
+
+# django-lti
+
+A Django application providing support for LTI Advantage.
+
