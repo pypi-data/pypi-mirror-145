@@ -1,0 +1,98 @@
+Metadata-Version: 2.1
+Name: django-ptpython
+Version: 1.0.0
+Summary: PtPython as default Django shell.
+Home-page: https://github.com/reganto/django-ptpython
+License: Apache-2.0
+Keywords: Django,Python
+Author: Reganto
+Author-email: tell.reganto@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: django (>=4.0,<5.0)
+Requires-Dist: ptpython (>=3.0,<4.0)
+Project-URL: Bug Tracker, https://github.com/reganto/django-ptpython/issues
+Description-Content-Type: text/markdown
+
+<a id="top"></a>
+<br />
+
+<div align="center">
+  <h1>django-ptpython</h1>
+  <p align="center">
+    PtPython as default Django shell.
+    <br />
+    <br />
+    <a href="https://github.com/reganto/django-ptpython/issues">Report Bug</a>
+  </p>
+</div>
+
+<!-- Getting Started -->
+
+## Getting Started
+
+### Install the Package
+
+Install it via pip:
+
+```bash
+pip install django-ptpython
+```
+
+### Install the App
+
+Add `django-ptpython` to your `INSTALLED_APPS` setting:
+
+```python
+INSTALLED_APPS = [
+    # ...
+    "django_ptpython",
+    # ...
+]
+```
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+```bash
+./manage shell
+```
+### Resources
+
+- [PyPI](https://pypi.org/project/django-ptpython/)
+
+- [Change Log](https://github.com/reganto/django-ptpython/blob/master/CHANGES.md)
+
+See the [open issues](https://github.com/reganto/django-ptpython/issues) for a full list of proposed features (and known issues).
+
+<!-- LICENSE -->
+
+## License
+
+Distributed under the Apache License. See `LICENSE.txt` for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+Project Link: [https://github.com/reganto/django-ptpython](https://github.com/reganto/django-ptpython)
+
+Email: [tell.reganto](mailto:tell.reganto@gmail.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
