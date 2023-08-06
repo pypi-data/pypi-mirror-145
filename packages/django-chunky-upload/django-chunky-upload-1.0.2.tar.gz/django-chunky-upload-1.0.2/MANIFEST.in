@@ -1,0 +1,5 @@
+recursive-include chunked_upload *
+recursive-exclude chunked_upload/tests *
+global-exclude __pycache__/*
+include *.rst
+include *.txt
