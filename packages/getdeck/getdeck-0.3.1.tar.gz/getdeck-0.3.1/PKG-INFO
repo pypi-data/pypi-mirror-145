@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: getdeck
+Version: 0.3.1
+Summary: Deck, a CLI that creates reproducible Kubernetes environments for development and testing
+Home-page: https://getdeck.dev
+Keywords: Kubernetes,Development,Cloud-native
+Author: Michael Schilonka
+Author-email: michael@unikube.io
+Requires-Python: >=3.8.0,<4.0.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Build Tools
+Requires-Dist: GitPython (>=3.1.27,<4.0.0)
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: docker (>=5.0.3,<6.0.0)
+Requires-Dist: kubernetes (>=23.3.0,<24.0.0)
+Requires-Dist: pydantic (>=1.9.0,<2.0.0)
+Requires-Dist: semantic-version (>=2.9.0,<3.0.0)
+Project-URL: Documentation, https://getdeck.dev
+Project-URL: Repository, https://github.com/Schille/deck
+Project-URL: issues, https://github.com/Schille/deck/issues
+Description-Content-Type: text/markdown
+
+# deck
+A CLI that creates reproducible Kubernetes environments for development and testin
+
+# Installation
+
+## Linux
+
+```
+GETDECK=$(curl -L -s https://api.github.com/repos/Schille/deck/releases/latest | grep '"browser_download_url": ".*linux.*"' | grep -Eo "(http|https)://[a-zA-Z0-9./?=_%:-]*") && curl -LO $GETDECK && unzip -o $(echo $GETDECK | grep -oE '[^/]+$') deck && sudo install -o root -g root -m 0755 deck /usr/local/bin/deck
+```
