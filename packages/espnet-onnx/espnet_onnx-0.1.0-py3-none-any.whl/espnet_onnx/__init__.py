@@ -1,0 +1,1 @@
+from espnet_onnx.asr.asr_model import Speech2Text
