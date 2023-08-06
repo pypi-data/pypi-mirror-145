@@ -1,0 +1,104 @@
+Metadata-Version: 2.1
+Name: Mopidy-Discord
+Version: 0.1.0
+Summary: Discord Rich Presence for Mopidy
+Home-page: https://github.com/fantoro/mopidy-discord
+Author: fantoro
+Author-email: fantoro@outlook.com
+License: Apache License, Version 2.0
+Platform: UNKNOWN
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Multimedia :: Sound/Audio :: Players
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: Mopidy (>=3.0.0)
+Requires-Dist: Pykka (>=2.0.1)
+Requires-Dist: pypresence
+Requires-Dist: musicbrainzngs
+Requires-Dist: setuptools
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: check-manifest ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: flake8-black ; extra == 'dev'
+Requires-Dist: flake8-bugbear ; extra == 'dev'
+Requires-Dist: flake8-isort ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: tox ; extra == 'dev'
+Provides-Extra: lint
+Requires-Dist: black ; extra == 'lint'
+Requires-Dist: check-manifest ; extra == 'lint'
+Requires-Dist: flake8 ; extra == 'lint'
+Requires-Dist: flake8-black ; extra == 'lint'
+Requires-Dist: flake8-bugbear ; extra == 'lint'
+Requires-Dist: flake8-isort ; extra == 'lint'
+Requires-Dist: isort ; extra == 'lint'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+
+****************************
+Mopidy-Discord
+****************************
+
+.. image:: https://img.shields.io/pypi/v/Mopidy-Discord
+    :target: https://pypi.org/project/Mopidy-Discord/
+    :alt: Latest PyPI version
+
+.. image:: https://img.shields.io/github/workflow/status/fantoro/mopidy-discord/CI
+    :target: https://github.com/fantoro/mopidy-discord/actions
+    :alt: CI build status
+
+.. image:: https://img.shields.io/codecov/c/gh/fantoro/mopidy-discord
+    :target: https://codecov.io/gh/fantoro/mopidy-discord
+    :alt: Test coverage
+
+Discord Rich Presence for Mopidy
+
+
+Installation
+============
+
+Install by running::
+
+    python3 -m pip install Mopidy-Discord
+
+See https://mopidy.com/ext/discord/ for alternative installation methods.
+
+
+Configuration
+=============
+
+Before starting Mopidy, you must add configuration for
+Mopidy-Discord to your Mopidy configuration file::
+
+    [discord]
+    enabled = true
+    client_id = 959050111223222332
+
+You may replace ``client_id`` with your own application ID.
+
+Project resources
+=================
+
+- `Source code <https://github.com/fantoro/mopidy-discord>`_
+- `Issue tracker <https://github.com/fantoro/mopidy-discord/issues>`_
+- `Changelog <https://github.com/fantoro/mopidy-discord/blob/master/CHANGELOG.rst>`_
+
+
+Credits
+=======
+
+- Original author: `fantoro <https://github.com/fantoro>`__
+- Current maintainer: `fantoro <https://github.com/fantoro>`__
+- `Contributors <https://github.com/fantoro/mopidy-discord/graphs/contributors>`_
+
+
