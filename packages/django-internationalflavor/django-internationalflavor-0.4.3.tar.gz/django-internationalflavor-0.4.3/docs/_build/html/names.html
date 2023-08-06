@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Names &mdash; django-internationalflavor 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Time zones" href="timezone.html" />
+    <link rel="prev" title="Language" href="language.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> django-internationalflavor
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iban.html">IBAN / BIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Names</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timezone.html">Time zones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vat_number.html">VAT numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">django-internationalflavor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Names</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/names.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-internationalflavor.names">
+<span id="names"></span><h1>Names<a class="headerlink" href="#module-internationalflavor.names" title="Permalink to this headline">¶</a></h1>
+<p>This module contains some utilities for storing names. It is not a one-size-fits-all solution, as it is simply not
+possible to capture all the world’s name formats in a single module.</p>
+<section id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="internationalflavor.names.utils.split_name">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.names.utils.</span></span><span class="sig-name descname"><span class="pre">split_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.names.utils.split_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits a name in several parts. Useful for when you are working with applications that store names in separate
+parts, and with applications that don’t.</p>
+<p>This utility method works on several schemes, the default being None, simply splitting a name. The result depends
+on the scheme you choose. Additionally, you can specify whether you want honorific titles returned. This is not
+supported by all schemes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is no fool-proof method to split names that works in all edge cases correctly. If you need to have names
+split, simply ask them to be entered in split form. This method is best-effort only and provides the guarantee
+that it will make mistakes.</p>
+</div>
+<p>A scheme may support additional arguments, these are specified below.</p>
+<p>The following schemes are supported:</p>
+<ul>
+<li><dl>
+<dt><strong>None</strong><span class="classifier">split a name in two parts, simply splitting on the first whitespace, ignoring honorific titles etc.</span></dt><dd><p>returns a tuple of (first_name, last_name), when the name can not be split, it is put in the last_name.</p>
+<p>extra kwarg: long_first  : if set, a long first name is preferred over a long last name.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>NL</strong><span class="classifier">split a name in three parts, splitting including the Dutch ‘voorvoegsel’ or ‘tussenvoegsel’,</span></dt><dd><p>ignores honorific titles etc. When no such voorvoegsel exists, it falls back to the None scheme.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Using stalemate you can set whether you prefer longer first names or longer last names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="internationalflavor.names.utils.join_name">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.names.utils.</span></span><span class="sig-name descname"><span class="pre">join_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">parts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.names.utils.join_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Joins a name. This is the inverse of split_name, but x == join_name(split_name(x)) does not necessarily hold.</p>
+<p>Joining a name may also be subject to different schemes, but the most basic implementation is just joining all parts
+with a space.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="language.html" class="btn btn-neutral float-left" title="Language" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="timezone.html" class="btn btn-neutral float-right" title="Time zones" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014, Ralph Broenink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

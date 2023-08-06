@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VAT numbers &mdash; django-internationalflavor 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Time zones" href="timezone.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> django-internationalflavor
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="iban.html">IBAN / BIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="names.html">Names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezone.html">Time zones</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">VAT numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">django-internationalflavor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>VAT numbers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/vat_number.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-internationalflavor.vat_number">
+<span id="vat-numbers"></span><h1>VAT numbers<a class="headerlink" href="#module-internationalflavor.vat_number" title="Permalink to this headline">¶</a></h1>
+<p>VAT numbers are used in many countries for taxing purposes. In the European Union, organizations are required to use
+these VAT numbers when conducting intra-Community trade and e.g. for reverse charging. Although there’s no US equivalent
+of a VAT number, these are used in most other countries around the world.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.vat_number.validators.VATNumberValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.vat_number.validators.</span></span><span class="sig-name descname"><span class="pre">VATNumberValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eu_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vies_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.vat_number.validators.VATNumberValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validator for checking whether a given VAT number is valid. A VAT number starts with two characters representing
+the country code, followed by at least 2 characters representing the local VAT number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>countries</strong> – If set, the list of accepted origin countries will be limited to the provided list. Otherwise, all
+available VAT number countries are used.</p></li>
+<li><p><strong>exclude</strong> – You can use this parameter to exclude items from the list of countries.</p></li>
+<li><p><strong>eu_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – By default, all countries are allowed. However, if you are an EU company, you are likely to
+only want to accept EU VAT numbers.</p></li>
+<li><p><strong>vies_check</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – By default, this validator will only validate the syntax of the VAT number. If you need to
+validate using the EU VAT Information Exchange System (VIES) checker (see
+<a class="reference external" href="http://ec.europa.eu/taxation_customs/vies/">http://ec.europa.eu/taxation_customs/vies/</a>), you can set this boolean. Any VAT number in the EU VAT Area will
+then receive additional validation from the VIES checker, other VAT numbers will be unaffected.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The VIES check may use two different methods to obtain the result. If the <code class="xref py py-mod docutils literal notranslate"><span class="pre">suds</span></code> module is installed, the VIES
+check uses this module to reach the VIES WSDL services (you could use the <code class="docutils literal notranslate"><span class="pre">suds-jurko</span></code> fork for Py3k
+compatibility). If this module is not available, a bare-bones native method is used instead. Both methods should
+give similar results, although using <code class="xref py py-mod docutils literal notranslate"><span class="pre">suds</span></code> should be more reliable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the VIES service can not be reached, this part of the validation will succeed.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If regulations require you to validate against the VIES service, you probably also want to set <code class="docutils literal notranslate"><span class="pre">eu_only</span></code>. You
+probably can’t accept any other VAT number in that case.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All valid VAT Numbers are ISO 3166-1 country-2 codes followed by the number, except for Greece, where EL is used.
+You can specify GR and EL as both valid country codes, but only EL-prefixed values are accepted.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The validation of non-EU VAT numbers may be incomplete or wrong in some cases. Please issue a pull request if you
+feel there’s an error.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.vat_number.models.VATNumberField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.vat_number.models.</span></span><span class="sig-name descname"><span class="pre">VATNumberField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eu_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vies_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.vat_number.models.VATNumberField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A model field that applies the <a class="reference internal" href="#internationalflavor.vat_number.validators.VATNumberValidator" title="internationalflavor.vat_number.validators.VATNumberValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">validators.VATNumberValidator</span></code></a> and is represented by a
+<a class="reference internal" href="#internationalflavor.vat_number.forms.VATNumberFormField" title="internationalflavor.vat_number.forms.VATNumberFormField"><code class="xref py py-class docutils literal notranslate"><span class="pre">forms.VATNumberFormField</span></code></a>. The arguments are equal to those of the validator.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">internationalflavor.vat_number</span> <span class="kn">import</span> <span class="n">VATNumberField</span>
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">vat_number</span> <span class="o">=</span> <span class="n">VATNumberField</span><span class="p">(</span><span class="n">countries</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NL&#39;</span><span class="p">,</span> <span class="s1">&#39;BE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This field is an extension of a CharField.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.vat_number.forms.VATNumberFormField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.vat_number.forms.</span></span><span class="sig-name descname"><span class="pre">VATNumberFormField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eu_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vies_check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.vat_number.forms.VATNumberFormField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that applies the <a class="reference internal" href="#internationalflavor.vat_number.validators.VATNumberValidator" title="internationalflavor.vat_number.validators.VATNumberValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">validators.VATNumberValidator</span></code></a>. The arguments are equal to those of the
+validator.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="timezone.html" class="btn btn-neutral float-left" title="Time zones" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014, Ralph Broenink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countries &mdash; django-internationalflavor 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="IBAN / BIC" href="iban.html" />
+    <link rel="prev" title="django-internationalflavor" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> django-internationalflavor
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Countries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-constants">Data constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-with-other-packages">Comparison with other packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="iban.html">IBAN / BIC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="names.html">Names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezone.html">Time zones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vat_number.html">VAT numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">django-internationalflavor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Countries</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/countries.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-internationalflavor.countries">
+<span id="countries"></span><h1>Countries<a class="headerlink" href="#module-internationalflavor.countries" title="Permalink to this headline">¶</a></h1>
+<p>Although for the most countries, sovereignty is not disputed, there are numerous cases where the definition of
+country is not clear. Using the full ISO 3166-1 country list may seem the most political correct method, but this would
+also include uninhabited wasteland such as Antartica and Norfolk Island. Furthermore, some territories are more or less
+part of another country, such as Greenland that is part of Denmark.</p>
+<p>To accommodate for these differences, this module chooses to include the following countries by default:</p>
+<ul class="simple">
+<li><p>All UN member states</p></li>
+<li><p>All UN disputed states (except for when no ISO 3166-1 country code is available)</p></li>
+<li><p>All UN observer states</p></li>
+<li><p>All UN non-self-governing states (this list is rather arbitrary, unfortunately)</p></li>
+</ul>
+<p>Both fields provided by this module provide ways to manually add or exclude items from this list, as long as they are
+valid ISO 3166-1 alpha-2 codes.</p>
+<p>The list of ISO 3166-1 countries included with this module uses the common names of countries, rather than using their
+official names.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While this module tries to provide some sort of equal ground most people would agree on, the choices that have been
+made may be grounds for disputes on sovereignty. First of all, I’m sorry if the choices that have been made make you
+feel uncomfortable. Second of all, you are not required to use the provided default list and you can easily include
+or exclude countries to your liking. And finally, you are welcome to open a ticket (or pull request) on Github, but
+please keep it civilized and try to maintain a unbiased position.</p>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.countries.models.CountryField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.models.</span></span><span class="sig-name descname"><span class="pre">CountryField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.countries.models.CountryField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A model field that allows users to choose their country. By default, it lists all countries recognized by the UN,
+but using the <code class="docutils literal notranslate"><span class="pre">countries</span></code> attribute you can specify your own set of allowed countries. Use <code class="docutils literal notranslate"><span class="pre">exclude</span></code> to exclude
+specific countries.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.countries.forms.CountryFormField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.forms.</span></span><span class="sig-name descname"><span class="pre">CountryFormField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.countries.forms.CountryFormField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that allows users to choose their country. By default, it lists all countries recognized by the UN,
+but using the <code class="docutils literal notranslate"><span class="pre">countries</span></code> attribute you can specify your own set of allowed countries. Use <code class="docutils literal notranslate"><span class="pre">exclude</span></code> to exclude
+specific countries.</p>
+</dd></dl>
+
+<section id="data-constants">
+<h2>Data constants<a class="headerlink" href="#data-constants" title="Permalink to this headline">¶</a></h2>
+<p>You can use the following constants to specify your own set of available countries.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="internationalflavor.countries.data.UN_MEMBER_STATES">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.data.</span></span><span class="sig-name descname"><span class="pre">UN_MEMBER_STATES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(...)</span></em><a class="headerlink" href="#internationalflavor.countries.data.UN_MEMBER_STATES" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of UN Member States
+Source: <a class="reference external" href="https://www.un.org/en/member-states/index.html">https://www.un.org/en/member-states/index.html</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="internationalflavor.countries.data.UN_OBSERVER_STATES">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.data.</span></span><span class="sig-name descname"><span class="pre">UN_OBSERVER_STATES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(...)</span></em><a class="headerlink" href="#internationalflavor.countries.data.UN_OBSERVER_STATES" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of UN Observer States
+Source: <a class="reference external" href="http://www.un.org/en/members/nonmembers.shtml">http://www.un.org/en/members/nonmembers.shtml</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="internationalflavor.countries.data.UN_DISPUTED_STATES">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.data.</span></span><span class="sig-name descname"><span class="pre">UN_DISPUTED_STATES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(...)</span></em><a class="headerlink" href="#internationalflavor.countries.data.UN_DISPUTED_STATES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disputed UN states.</p>
+<p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_sovereign_states#List_of_states">https://en.wikipedia.org/wiki/List_of_sovereign_states#List_of_states</a></p>
+<p>No ISO 3166-1 code has yet been assigned, and thus not included, for:</p>
+<ul class="simple">
+<li><p>Abkhazia</p></li>
+<li><p>Nagorno-Karabakh</p></li>
+<li><p>Northern Cyprus</p></li>
+<li><p>Sahrawi Arab Democratic Republic</p></li>
+<li><p>Somaliland</p></li>
+<li><p>South Ossetia</p></li>
+<li><p>Transnistria</p></li>
+</ul>
+<p>Although Kosovo has no ISO 3166-1 code either, it is generally accepted to be XK temporarily; see
+<a class="reference external" href="http://ec.europa.eu/budget/contracts_grants/info_contracts/inforeuro/inforeuro_en.cfm">http://ec.europa.eu/budget/contracts_grants/info_contracts/inforeuro/inforeuro_en.cfm</a> or the CLDR</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="internationalflavor.countries.data.UN_NON_SELF_GOVERNING_STATES">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.data.</span></span><span class="sig-name descname"><span class="pre">UN_NON_SELF_GOVERNING_STATES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(...)</span></em><a class="headerlink" href="#internationalflavor.countries.data.UN_NON_SELF_GOVERNING_STATES" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of the (rather arbitrary) UN non-self-governing states</p>
+<p>Source: <a class="reference external" href="https://www.un.org/dppa/decolonization/en/nsgt">https://www.un.org/dppa/decolonization/en/nsgt</a></p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="internationalflavor.countries.data.UN_RECOGNIZED_COUNTRIES">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.data.</span></span><span class="sig-name descname"><span class="pre">UN_RECOGNIZED_COUNTRIES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(...)</span></em><a class="headerlink" href="#internationalflavor.countries.data.UN_RECOGNIZED_COUNTRIES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combined list of all UN_* data constants.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="internationalflavor.countries.data.IOC_RECOGNIZED_COUNTRIES">
+<span class="sig-prename descclassname"><span class="pre">internationalflavor.countries.data.</span></span><span class="sig-name descname"><span class="pre">IOC_RECOGNIZED_COUNTRIES</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">(...)</span></em><a class="headerlink" href="#internationalflavor.countries.data.IOC_RECOGNIZED_COUNTRIES" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of countries as defined by IOC.</p>
+<p>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_IOC,_FIFA,_and_ISO_3166_country_codes">https://en.wikipedia.org/wiki/Comparison_of_IOC,_FIFA,_and_ISO_3166_country_codes</a></p>
+</dd></dl>
+
+</section>
+<section id="comparison-with-other-packages">
+<h2>Comparison with other packages<a class="headerlink" href="#comparison-with-other-packages" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt><code class="xref py py-mod docutils literal notranslate"><span class="pre">django-countries</span></code></dt><dd><p>This module has a more elaborate <code class="docutils literal notranslate"><span class="pre">CountryField</span></code>. It returns <code class="docutils literal notranslate"><span class="pre">Country</span></code> objects instead of ISO 3166-1 alpha-2 codes
+that allow easy access to the full name of a country or its country flag. However, it only provides the basic ISO
+country code list, with official country names (rather than using their common names).</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="http://www.un.org/en/members/index.shtml">UN member states</a></dt><dd><p>List of UN member states.</p>
+</dd>
+<dt><a class="reference external" href="http://www.un.org/en/members/nonmembers.shtml">UN observer states</a></dt><dd><p>List of UN observer states</p>
+</dd>
+<dt><a class="reference external" href="http://www.un.org/en/decolonization/nonselfgovterritories.shtml">UN non-self-governing states</a></dt><dd><p>List of UN non-self-governing states</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Current_codes">Wikpedia: List of ISO 3166-1 alpha-2 codes</a></dt><dd><p>List of all ISO 3166-1 alpha-2 codes.</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_sovereign_states#List_of_states">Wikipedia: List of sovereign states</a></dt><dd><p>List of disputed sovereign states.</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_IOC,_FIFA,_and_ISO_3166_country_codes">Wikipedia: Comparison of IOC … country codes</a></dt><dd><p>List of countries as recognized by the IOC.</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="django-internationalflavor" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="iban.html" class="btn btn-neutral float-right" title="IBAN / BIC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014, Ralph Broenink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

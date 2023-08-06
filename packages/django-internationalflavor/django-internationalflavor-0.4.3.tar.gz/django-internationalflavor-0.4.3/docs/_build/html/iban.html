@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IBAN / BIC &mdash; django-internationalflavor 0.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Language" href="language.html" />
+    <link rel="prev" title="Countries" href="countries.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> django-internationalflavor
+          </a>
+              <div class="version">
+                0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="countries.html">Countries</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IBAN / BIC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#iban">IBAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bic">BIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-with-other-packages">Comparison with other packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="names.html">Names</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timezone.html">Time zones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vat_number.html">VAT numbers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">django-internationalflavor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>IBAN / BIC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/iban.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-internationalflavor.iban">
+<span id="iban-bic"></span><h1>IBAN / BIC<a class="headerlink" href="#module-internationalflavor.iban" title="Permalink to this headline">¶</a></h1>
+<p>Most countries over the world use IBAN for international payments. Starting at August 1, 2014, the European Union has
+mandated that all its member countries must use IBAN for domestic and international transactions. Even if your country
+does not require IBAN for domestic transactions, it may be a good idea to use and store IBANs anyway. This allows you
+to handle bank account numbers from different countries.</p>
+<section id="iban">
+<h2>IBAN<a class="headerlink" href="#iban" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.iban.validators.IBANValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.iban.validators.</span></span><span class="sig-name descname"><span class="pre">IBANValidator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sepa_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept_experimental</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.iban.validators.IBANValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validator for checking whether a given IBAN is valid. An IBAN consists of up to 34 alphanumeric characters, where
+the first two characters indicate a country code, the third and fourth indicate a checksum and the rest of the IBAN
+are localized characters (the so-called BBAN).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>countries</strong> – If set, the list of source countries will be limited to the provided list. Otherwise, all
+available IBANs are included (with the exception of experimental IBANs if <code class="docutils literal notranslate"><span class="pre">accept_experimental</span></code> is not set).</p></li>
+<li><p><strong>exclude</strong> – You can use this parameter to exclude items from the list of countries.</p></li>
+<li><p><strong>sepa_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – By default, all countries are allowed. If you want to reduce the list of countries to the
+list of SEPA countries (i.e. Single European Payments Area), for instance if you are an European company wanting
+to perform direct debits, you can set this to True. This is equivalent to setting the exclude list to all
+countries without SEPA.</p></li>
+<li><p><strong>accept_experimental</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – By default, this validator will validate any IBAN that is recognized by the
+SWIFT organization, but SWIFT has specified a few additional IBAN formats and defined them as ‘experimental’.
+By setting this parameter to True, these extensions are also allowed.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The validation of the experimental numbers may be wrong for some countries, as only their length is published
+by the SWIFT organization</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.iban.models.IBANField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.iban.models.</span></span><span class="sig-name descname"><span class="pre">IBANField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sepa_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept_experimental</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.iban.models.IBANField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A model field that applies the <a class="reference internal" href="#internationalflavor.iban.validators.IBANValidator" title="internationalflavor.iban.validators.IBANValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">validators.IBANValidator</span></code></a> and is represented by a
+<a class="reference internal" href="#internationalflavor.iban.forms.IBANFormField" title="internationalflavor.iban.forms.IBANFormField"><code class="xref py py-class docutils literal notranslate"><span class="pre">forms.IBANFormField</span></code></a>. The arguments are equal to those of the validator.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+<span class="kn">from</span> <span class="nn">internationalflavor.iban</span> <span class="kn">import</span> <span class="n">IBANField</span>
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">iban</span> <span class="o">=</span> <span class="n">IBANField</span><span class="p">(</span><span class="n">countries</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;NL&#39;</span><span class="p">,</span> <span class="s1">&#39;BE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This field is an extension of a CharField.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.iban.forms.IBANFormField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.iban.forms.</span></span><span class="sig-name descname"><span class="pre">IBANFormField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">countries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sepa_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept_experimental</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.iban.forms.IBANFormField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that applies the <a class="reference internal" href="#internationalflavor.iban.validators.IBANValidator" title="internationalflavor.iban.validators.IBANValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">validators.IBANValidator</span></code></a>. The arguments are equal to those of the
+validator.</p>
+<p>This field represents the data in 4-character blocks, but stores it internally without any formatting.</p>
+</dd></dl>
+
+</section>
+<section id="bic">
+<h2>BIC<a class="headerlink" href="#bic" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.iban.validators.BICValidator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.iban.validators.</span></span><span class="sig-name descname"><span class="pre">BICValidator</span></span><a class="headerlink" href="#internationalflavor.iban.validators.BICValidator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.iban.models.BICField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.iban.models.</span></span><span class="sig-name descname"><span class="pre">BICField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.iban.models.BICField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A model field that applies the <a class="reference internal" href="#internationalflavor.iban.validators.BICValidator" title="internationalflavor.iban.validators.BICValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">validators.BICValidator</span></code></a> and is represented by a
+<a class="reference internal" href="#internationalflavor.iban.forms.BICFormField" title="internationalflavor.iban.forms.BICFormField"><code class="xref py py-class docutils literal notranslate"><span class="pre">forms.BICFormField</span></code></a>.</p>
+<p>This field is an extension of a CharField.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="internationalflavor.iban.forms.BICFormField">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">internationalflavor.iban.forms.</span></span><span class="sig-name descname"><span class="pre">BICFormField</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#internationalflavor.iban.forms.BICFormField" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form field that applies the <a class="reference internal" href="#internationalflavor.iban.validators.BICValidator" title="internationalflavor.iban.validators.BICValidator"><code class="xref py py-class docutils literal notranslate"><span class="pre">validators.BICValidator</span></code></a>.</p>
+</dd></dl>
+
+</section>
+<section id="comparison-with-other-packages">
+<h2>Comparison with other packages<a class="headerlink" href="#comparison-with-other-packages" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt><code class="xref py py-mod docutils literal notranslate"><span class="pre">localflavor</span></code></dt><dd><p>Both an <code class="docutils literal notranslate"><span class="pre">IBANField</span></code> and a <code class="docutils literal notranslate"><span class="pre">BICField</span></code> are provided by this module. Although <code class="xref py py-mod docutils literal notranslate"><span class="pre">internationalflavor</span></code> and
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">localflavor</span></code> have different approaches to validation, if you are already using <code class="xref py py-mod docutils literal notranslate"><span class="pre">localflavor</span></code> and do
+not need any of the other fields provided by <code class="xref py py-mod docutils literal notranslate"><span class="pre">internationalflavor</span></code>, you may be better off choosing
+<code class="xref py py-mod docutils literal notranslate"><span class="pre">localflavor</span></code> (and vice versa).</p>
+</dd>
+<dt><code class="xref py py-mod docutils literal notranslate"><span class="pre">django-iban</span></code></dt><dd><p>The validation in this module is equal to the <cite>localflavor</cite> validation. The author of this package is seeking to
+retire his package, so it may be best to not use this package in new projects.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://www.swift.com/resource/iban-registry-pdf">IBAN Registry</a></dt><dd><p>The official IBAN format registry of SWIFT.</p>
+</dd>
+<dt><a class="reference external" href="https://www.iban.com/structure">IBAN Structure</a></dt><dd><p>Additional IBAN formats listed as experimental</p>
+</dd>
+<dt><a class="reference external" href="https://en.wikipedia.org/wiki/International_Bank_Account_Number">Wikipedia: International Bank Account Number</a></dt><dd><p>More information on IBAN</p>
+</dd>
+</dl>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="countries.html" class="btn btn-neutral float-left" title="Countries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="language.html" class="btn btn-neutral float-right" title="Language" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2014, Ralph Broenink.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
