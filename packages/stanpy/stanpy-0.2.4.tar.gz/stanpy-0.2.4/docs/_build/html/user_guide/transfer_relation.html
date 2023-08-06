@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+
+<html lang="ger">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<meta content="Examples of document structure features in pydata-sphinx-theme." lang="de" name="description" xml:lang="de" />
+
+    <title>Übertragungsbeziehungen der Stabtheorie I Ordnung &#8212; stanpy 0.2.2 documentation</title>
+    
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
+    
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+    
+      
+  
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ger">
+    
+      
+      <link rel="icon" sizes="16x16" href="../_static/_static/img/stanpy_logo.png">
+      
+    
+      
+      <link rel="icon" sizes="32x32" href="../_static/favicon-32x32.png">
+      
+    
+      
+      <link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon-180x180.png">
+      
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/stanpy_logo.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../readme.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../installation.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../history.html">
+  Release notes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../authors.html">
+  Credits
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../changelog.html">
+  Changelog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/<your-org>/<your-repo>" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://gitlab.tuwien.ac.at/" rel="noopener" target="_blank" title="GitLab"><span><i class="fab fa-gitlab"></i></span>
+            <label class="sr-only">GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/stanpy/" rel="noopener" target="_blank" title="PyPi"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPi</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grundlagen">
+   Grundlagen
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integrationsschritte">
+     Integrationsschritte
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zusammenfassen-zu-den-ubertragungsbeziehungen">
+     Zusammenfassen zu den Übertragungsbeziehungen
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zweigliedrige-stabkonstruktion">
+   Zweigliedrige Stabkonstruktion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#handstatik">
+     Handstatik
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#development-box">
+     Development-Box
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#black-box">
+     Black-Box
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="ubertragungsbeziehungen-der-stabtheorie-i-ordnung">
+<h1>Übertragungsbeziehungen der Stabtheorie I Ordnung<a class="headerlink" href="#ubertragungsbeziehungen-der-stabtheorie-i-ordnung" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>todo: Abbildungen</p>
+</div>
+<section id="grundlagen">
+<h2>Grundlagen<a class="headerlink" href="#grundlagen" title="Permalink to this headline">¶</a></h2>
+<p>Ausgangspunkt der Herleitung der Übertragungsbeziehungen von Stäben mit linear veränderlicher Höhe sind die die Differentialgleichungen <a class="reference internal" href="#equation-differential-equations">(1)</a> des Biegeproblems
+der Stabtheorie I. Ordnung</p>
+<div class="math notranslate nohighlight" id="equation-differential-equations">
+<span class="eqno">(1)<a class="headerlink" href="#equation-differential-equations" title="Permalink to this equation">¶</a></span>\[\begin{split}\frac{dV(x)}{dx} &amp;= -q(x) \\[1em]
+\frac{dM(x)}{dx} &amp;= V(x) + m(x)\\[1em]
+\frac{d\varphi (x)}{dx} &amp;= -\left[\frac{M(x)}{EI(x)}+\kappa (x)\right]\\[1em]
+\frac{dw (x)}{dx} &amp;= \varphi (x)\end{split}\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Die Differnetialgleichungen sind spezialisiert für den Fall der Schubstarrheit <span class="math notranslate nohighlight">\(G\tilde{A}(x)=\infty\)</span></p>
+</div>
+<section id="integrationsschritte">
+<h3>Integrationsschritte<a class="headerlink" href="#integrationsschritte" title="Permalink to this headline">¶</a></h3>
+<p>Die gesuchten, von x abhängigen, Zustandsgrößen ergeben sich durch Schritt für Schritt aufintegrieren und einsetzen der Differnetialgleichungen <a class="reference internal" href="#equation-differential-equations">(1)</a>.
+Nach jedem Integrationsschritt werden die Integrationskonstanten auf die andere Seite gebracht sowie die lastabhängigen Terme zu sogenannte
+Lastglieder zusammengefasst. (todo: ref Funktion load_integrals). Zusätzlich wird zur Vereinfachung der Integrale die dimensionslose Funktion <span class="math notranslate nohighlight">\(f(x)\)</span> eingeführt.</p>
+<div class="math notranslate nohighlight" id="equation-iteration-steps">
+<span class="eqno">(2)<a class="headerlink" href="#equation-iteration-steps" title="Permalink to this equation">¶</a></span>\[\begin{split}V(x) &amp;= V_i - \underbrace{\int_0^x q(x)~dx}_{V^L(x)} = V_i + V^L(x)\\[1em]
+M(x) &amp;= M_i + V_i~x + \underbrace{\int_0^x V^L(x) + m(x)~dx}_{M^L(x)} =  M_i + V_i~x + M^L(x)\\[1em]
+\varphi(x) &amp;= \varphi_i - \frac{M_i}{EI_i}\underbrace{\int_0^x\frac{1}{f(x)}~dx}_{b'_2(x)} - \frac{V_i}{EI_i}\underbrace{\int_0^x\frac{x}{f(x)}~dx}_{b'_3(x)} - \underbrace{\int_0^x\left[\frac{M^L(x)}{EI_i~f(x)}~dx+\kappa(x)\right]}_{\varphi^L(x)}\\[1em]
+w(x) &amp;= w_i + \varphi_i~x - \frac{M_i}{EI_i}\underbrace{\iint_0^x\frac{1}{f(x)}~dx~dx}_{b_2(x)}- \frac{V_i}{EI_i}\underbrace{\iint_0^x\frac{x}{f(x)}~dx~dx}_{b_3(x)} + \underbrace{\int_0^x\varphi^L(x)~dx}_{w^L(x)}\end{split}\]</div>
+</section>
+<section id="zusammenfassen-zu-den-ubertragungsbeziehungen">
+<h3>Zusammenfassen zu den Übertragungsbeziehungen<a class="headerlink" href="#zusammenfassen-zu-den-ubertragungsbeziehungen" title="Permalink to this headline">¶</a></h3>
+<p>Durch das Anschreiben der Gleichungen aus <a class="reference internal" href="#equation-iteration-steps">(2)</a> in Matrix Vektor Notation ergeben sich die Übertragungsbeziehungen für einen Stab mit linear veränderlicher Höhe
+vom Stabanfang bis zu einem beliebigen Punkt x zu:</p>
+<div class="math notranslate nohighlight" id="equation-transferrelations-height-eq">
+<span class="eqno">(3)<a class="headerlink" href="#equation-transferrelations-height-eq" title="Permalink to this equation">¶</a></span>\[\begin{split}\underbrace{\left[\begin{array}{c}
+                    w(x)\\
+                   \varphi(x) \\
+                    M(x)\\
+                    V(x)\\
+                    1
+                    \end{array}
+                    \right]}_{\vec{Z_x}}
+                    =
+                    \underbrace{\left[\begin{array}{ccccc}
+                    1&amp;x&amp;-b_2/EI_i&amp;-b_3/EI_i&amp;w^L(x)\\
+                    0&amp;1&amp;-b'_2/EI_i&amp;-b'_3/EI_i&amp;\varphi^L(x)\\
+                    0&amp;0&amp;1&amp;x&amp;M^L(x)\\
+                    0&amp;0&amp;0&amp;1&amp;V^L(x)\\
+                    0&amp;0&amp;0&amp;0&amp;1\\
+                    \end{array}
+                    \right]}_{\boldsymbol{F_{xi}}}\cdot\underbrace{\left[\begin{array}{c}
+                    w_i\\
+                   \varphi_i\\
+                    M_i\\
+                    V_i\\
+                    1
+                    \end{array}
+                    \right]}_{\vec{Z_i} }\end{split}\]</div>
+</section>
+</section>
+<section id="zweigliedrige-stabkonstruktion">
+<h2>Zweigliedrige Stabkonstruktion<a class="headerlink" href="#zweigliedrige-stabkonstruktion" title="Permalink to this headline">¶</a></h2>
+<figure class="align-center" style="width: 700px">
+<img alt="../_images/system2.PNG" src="../_images/system2.PNG" />
+</figure>
+<section id="handstatik">
+<h3>Handstatik<a class="headerlink" href="#handstatik" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+<span class="kn">from</span> <span class="nn">sympy.abc</span> <span class="kn">import</span> <span class="n">x</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span> <span class="c1"># kN/m²</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># kN/m</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># m</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span> <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span><span class="o">+</span><span class="p">(</span><span class="n">hb</span><span class="o">-</span><span class="n">ha</span><span class="p">)</span><span class="o">/</span><span class="n">l</span><span class="o">*</span><span class="n">x</span> <span class="c1"># m</span>
+
+<span class="n">cs1_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">ha</span><span class="p">)</span>
+<span class="n">cs2_props</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">hx</span><span class="p">)</span>
+
+<span class="n">s_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="n">E</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="n">cs1_props</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]}</span>
+<span class="n">s_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="n">E</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="n">cs2_props</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]}</span>
+
+<span class="n">f_ba</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="n">f_cb</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="n">f_ca</span> <span class="o">=</span> <span class="n">f_cb</span> <span class="o">*</span> <span class="n">f_ba</span>
+
+<span class="n">z_a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">z_c</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;phi&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="n">z_c</span><span class="p">,</span> <span class="n">z_a</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">solve_tr</span><span class="p">(</span><span class="n">z_c</span><span class="p">,</span> <span class="n">f_ca</span><span class="p">,</span> <span class="n">z_a</span><span class="p">)</span>
+<span class="n">z_b</span> <span class="o">=</span> <span class="n">f_ba</span><span class="o">*</span><span class="n">z_a</span>
+
+<span class="n">s_1</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">inject_bc</span><span class="p">(</span><span class="n">s_1</span><span class="p">,</span> <span class="n">z_a</span><span class="p">,</span> <span class="n">z_b</span><span class="p">)</span>
+<span class="n">s_2</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">inject_bc</span><span class="p">(</span><span class="n">s_2</span><span class="p">,</span> <span class="n">z_b</span><span class="p">,</span> <span class="n">z_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="development-box">
+<h3>Development-Box<a class="headerlink" href="#development-box" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Definition der Variablen</p>
+<dl class="simple">
+<dt>für jeden Stab:</dt><dd><p>berechnen der Querschnittswerte
+berechnen der b Integrale
+berechnen der Lastintegrale
+einsetzen in Übertragungsbeziehung</p>
+</dd>
+</dl>
+<p>Definition der Randbedingunen
+zusammenführen der Übertragungsbeziehungen
+Solven der Übertragungsbeziehungen</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+<span class="kn">from</span> <span class="nn">sympy.abc</span> <span class="kn">import</span> <span class="n">x</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span> <span class="c1"># kN/m²</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># kN/m</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># m</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span> <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span><span class="o">+</span><span class="p">(</span><span class="n">hb</span><span class="o">-</span><span class="n">ha</span><span class="p">)</span><span class="o">/</span><span class="n">l</span><span class="o">*</span><span class="n">x</span> <span class="c1"># m</span>
+
+<span class="n">cs1_prop</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">ha</span><span class="p">)</span>
+<span class="n">cs2_prop</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">hx</span><span class="p">)</span>
+
+<span class="n">s_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="n">E</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="n">cs1_prop</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]}</span>
+<span class="n">s_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="n">E</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="n">cs2_prop</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]}</span>
+
+<span class="n">f_ba</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+<span class="n">f_cb</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+<span class="n">f_ca</span> <span class="o">=</span> <span class="n">f_cb</span> <span class="o">*</span> <span class="n">f_ba</span>
+
+<span class="n">z_a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="n">z_c</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;phi&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="n">z_c</span><span class="p">,</span> <span class="n">z_a</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">solve_tr</span><span class="p">(</span><span class="n">z_c</span><span class="p">,</span> <span class="n">f_ca</span><span class="p">,</span> <span class="n">z_a</span><span class="p">)</span>
+<span class="n">z_b</span> <span class="o">=</span> <span class="n">f_ba</span><span class="o">*</span><span class="n">z_a</span>
+
+<span class="n">s_1</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">inject_bc</span><span class="p">(</span><span class="n">s_1</span><span class="p">,</span> <span class="n">z_a</span><span class="p">,</span> <span class="n">z_b</span><span class="p">)</span>
+<span class="n">s_2</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">inject_bc</span><span class="p">(</span><span class="n">s_2</span><span class="p">,</span> <span class="n">z_b</span><span class="p">,</span> <span class="n">z_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="black-box">
+<h3>Black-Box<a class="headerlink" href="#black-box" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+<span class="kn">from</span> <span class="nn">sympy.abc</span> <span class="kn">import</span> <span class="n">x</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span> <span class="c1"># kN/m²</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># kN/m</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># m</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">ha</span><span class="p">,</span> <span class="n">hb</span><span class="p">,</span> <span class="n">hc</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span> <span class="c1"># m</span>
+<span class="n">hx</span> <span class="o">=</span> <span class="n">ha</span><span class="o">+</span><span class="p">(</span><span class="n">hb</span><span class="o">-</span><span class="n">ha</span><span class="p">)</span><span class="o">/</span><span class="n">l</span><span class="o">*</span><span class="n">x</span> <span class="c1"># m</span>
+
+<span class="n">cs1_prop</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">ha</span><span class="p">)</span>
+<span class="n">cs2_prop</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">cs</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">hx</span><span class="p">)</span>
+
+<span class="n">bc_a</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span> <span class="c1"># Randbedingung in a</span>
+<span class="n">bc_c</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;phi&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span> <span class="c1"># Randbedingung in c</span>
+
+<span class="n">s_1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="n">E</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="n">cs1_prop</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">],</span> <span class="s2">&quot;bci&quot;</span><span class="p">:</span><span class="n">bc_a</span><span class="p">}</span>
+<span class="n">s_2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;l&quot;</span><span class="p">:</span><span class="n">l</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span><span class="n">E</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span><span class="n">cs2_prop</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">],</span> <span class="s2">&quot;bck&quot;</span><span class="p">:</span><span class="n">bc_c</span><span class="p">}</span>
+
+<span class="n">s_1</span><span class="p">,</span> <span class="n">s_2</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">s_1</span><span class="p">,</span> <span class="n">s_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, David Zhou.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

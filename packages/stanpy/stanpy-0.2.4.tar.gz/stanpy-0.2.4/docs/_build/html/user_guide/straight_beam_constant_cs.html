@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+
+<html lang="ger">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung &#8212; stanpy 0.2.2 documentation</title>
+    
+    <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
+    
+    <link rel="stylesheet"
+      href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+    
+      
+  
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/pydata-sphinx-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+    
+    <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/thebelab-helper.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Der gerade Stab, veränderlicher Querschnitt Theorie I. und II. Ordnung" href="straight_beam_non_constant_cs.html" />
+    <link rel="prev" title="Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen" href="cross_section_height.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="ger">
+    
+      
+      <link rel="icon" sizes="16x16" href="../_static/_static/img/stanpy_logo.png">
+      
+    
+      
+      <link rel="icon" sizes="32x32" href="../_static/favicon-32x32.png">
+      
+    
+      
+      <link rel="apple-touch-icon" sizes="180x180" href="../_static/apple-touch-icon-180x180.png">
+      
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../index.html">
+  <img src="../_static/stanpy_logo.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../readme.html">
+  Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../installation.html">
+  Getting started
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  User Guide
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../reference/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../history.html">
+  Release notes
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../authors.html">
+  Credits
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../changelog.html">
+  Changelog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/<your-org>/<your-repo>" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://gitlab.tuwien.ac.at/" rel="noopener" target="_blank" title="GitLab"><span><i class="fab fa-gitlab"></i></span>
+            <label class="sr-only">GitLab</label></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://pypi.org/project/stanpy/" rel="noopener" target="_blank" title="PyPi"><span><i class="fab fa-python"></i></span>
+            <label class="sr-only">PyPi</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  User Guide
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross_section.html">
+   Querschnittswerte
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cross_section_height.html">
+   Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="straight_beam_non_constant_cs.html">
+   Der gerade Stab, veränderlicher Querschnitt Theorie I. und II. Ordnung
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reduction_method.html">
+   Reduktionsverfahren (Übertragungsmatrizenverfahren)
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex01-einfeldtrager-gleichlast">
+   EX01 Einfeldträger Gleichlast
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex01-01-problem">
+     EX01-01 (problem)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex01-02-solution">
+     EX01-02 (solution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex01-03-plotting">
+     EX01-03 (plotting)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex02-einfeldtrager-einzellast">
+   EX02 Einfeldträger Einzellast
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex02-01-problem">
+     EX02-01 (problem)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex02-02-solution">
+     EX02-02 (solution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex02-02-02-solution">
+     EX02-02-02 (solution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex02-02-03-solution">
+     EX02-02-03 (solution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex02-03-plotting">
+     EX02-03 (plotting)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex03-todo-testing">
+   EX03 (todo: testing)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex03-01-problem">
+     EX03-01 (problem)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex03-02-01-solution">
+     EX03-02-01 (solution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex03-03-plotting">
+     EX03-03 (plotting)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex04-stabkonstruktion-theorie-ii">
+   EX04 Stabkonstruktion Theorie II
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex04-01-problem">
+     EX04-01 (problem)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex04-02-solution">
+     EX04-02 (solution)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ex04-03-plotting">
+     EX04-03 (plotting)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grundlagen">
+   Grundlagen
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="der-gerade-stab-konstanter-querschnitt-theorie-i-und-ii-ordnung">
+<h1>Der gerade Stab, konstanter Querschnitt Theorie I. und II. Ordnung<a class="headerlink" href="#der-gerade-stab-konstanter-querschnitt-theorie-i-und-ii-ordnung" title="Permalink to this headline">¶</a></h1>
+<div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+</div>
+</div>
+<section id="ex01-einfeldtrager-gleichlast">
+<h2>EX01 Einfeldträger Gleichlast<a class="headerlink" href="#ex01-einfeldtrager-gleichlast" title="Permalink to this headline">¶</a></h2>
+<section id="ex01-01-problem">
+<h3>EX01-01 (problem)<a class="headerlink" href="#ex01-01-problem" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">EI</span> <span class="o">=</span> <span class="mi">32000</span>  <span class="c1"># kNm²</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># m</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># kN/m</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot;bc_i&quot;</span><span class="p">:{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">},</span>  <span class="s2">&quot;bc_k&quot;</span><span class="p">:{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_load</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_1_0.png" src="../_images/straight_beam_constant_cs_1_0.png" />
+</div>
+</div>
+</section>
+<section id="ex01-02-solution">
+<h3>EX01-02 (solution)<a class="headerlink" href="#ex01-02-solution" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">1e-9</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">]))</span>
+<span class="n">Z_a</span><span class="p">,</span> <span class="n">Z_b</span>  <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr_solver</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Fxa</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Z_x</span> <span class="o">=</span> <span class="n">Fxa</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_a =&quot;</span><span class="p">,</span> <span class="n">Z_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_b =&quot;</span><span class="p">,</span> <span class="n">Z_b</span><span class="p">)</span>
+
+<span class="n">w_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">phi_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">M_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">V_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Z_a = [0.0000e+00 2.8125e-03 0.0000e+00 3.0000e+01 1.0000e+00]
+Z_b = [ 0.0000e+00 -2.8125e-03  0.0000e+00 -3.0000e+01  1.0000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ex01-03-plotting">
+<h3>EX01-03 (plotting)<a class="headerlink" href="#ex01-03-plotting" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_M</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Mx</span><span class="o">=</span><span class="n">M_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">l</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;M/Mmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[M] = kNm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_3_0.png" src="../_images/straight_beam_constant_cs_3_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_solution</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">V_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;V/Vmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[V] = kN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_4_0.png" src="../_images/straight_beam_constant_cs_4_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#111111&quot;</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_w</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">wx</span><span class="o">=</span><span class="n">w_x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;w/wmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[w] = m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_5_0.png" src="../_images/straight_beam_constant_cs_5_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ex02-einfeldtrager-einzellast">
+<h2>EX02 Einfeldträger Einzellast<a class="headerlink" href="#ex02-einfeldtrager-einzellast" title="Permalink to this headline">¶</a></h2>
+<section id="ex02-01-problem">
+<h3>EX02-01 (problem)<a class="headerlink" href="#ex02-01-problem" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">EI</span> <span class="o">=</span> <span class="mi">32000</span>  <span class="c1"># kNm²</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># m</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># kN</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span>
+    <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;P1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="s2">&quot;P2&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="s2">&quot;P3&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span> <span class="o">+</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+    <span class="s2">&quot;bc_i&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s2">&quot;bc_k&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_load</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_6_0.png" src="../_images/straight_beam_constant_cs_6_0.png" />
+</div>
+</div>
+</section>
+<section id="ex02-02-solution">
+<h3>EX02-02 (solution)<a class="headerlink" href="#ex02-02-solution" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">1e-9</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">annotation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="o">-</span><span class="n">dx</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">annotation</span><span class="p">))</span>
+
+<span class="n">Fxa</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Z_a</span><span class="p">,</span> <span class="n">Z_b</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr_solver</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Z_x</span> <span class="o">=</span> <span class="n">Fxa</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_a =&quot;</span><span class="p">,</span> <span class="n">Z_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_b =&quot;</span><span class="p">,</span> <span class="n">Z_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Z_a = [0.00000e+00 5.72049e-04 0.00000e+00 4.16667e+00 1.00000e+00]
+Z_b = [-0.00000e+00 -5.99826e-04  0.00000e+00 -4.83333e+00  1.00000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ex02-02-02-solution">
+<h3>EX02-02-02 (solution)<a class="headerlink" href="#ex02-02-02-solution" title="Permalink to this headline">¶</a></h3>
+<p>Zusammensetzen von Stäben - Äquivalent zu EX02-02
+Kräfte werden jeweils am Stabende angsetzt</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;P1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;bc_i&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;P2&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;P3&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;bc_k&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">]</span>
+<span class="n">Fxa</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Z_a</span><span class="p">,</span> <span class="n">Z_b</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr_solver</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Z_x</span> <span class="o">=</span> <span class="n">Fxa</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_a =&quot;</span><span class="p">,</span> <span class="n">Z_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_b =&quot;</span><span class="p">,</span> <span class="n">Z_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Z_a = [0.00000e+00 5.72049e-04 0.00000e+00 4.16667e+00 1.00000e+00]
+Z_b = [-0.00000e+00 -5.99826e-04  0.00000e+00 -4.83333e+00  1.00000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ex02-02-03-solution">
+<h3>EX02-02-03 (solution)<a class="headerlink" href="#ex02-02-03-solution" title="Permalink to this headline">¶</a></h3>
+<p>Zusammensetzen von Stäben - Äquivalent zu EX02-02
+Kräfte werden jeweils am Stabanfang angsetzt</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;bc_i&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;P1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;P2&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)}</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;P1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;bc_k&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">s4</span><span class="p">]</span>
+
+<span class="n">Fxa</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Z_a</span><span class="p">,</span> <span class="n">Z_b</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr_solver</span><span class="p">(</span><span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Z_x</span> <span class="o">=</span> <span class="n">Fxa</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_a =&quot;</span><span class="p">,</span> <span class="n">Z_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_b =&quot;</span><span class="p">,</span> <span class="n">Z_b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Z_a = [0.00000e+00 5.72049e-04 0.00000e+00 4.16667e+00 1.00000e+00]
+Z_b = [-0.00000e+00 -5.99826e-04  0.00000e+00 -4.83333e+00  1.00000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ex02-03-plotting">
+<h3>EX02-03 (plotting)<a class="headerlink" href="#ex02-03-plotting" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">phi_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">M_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">V_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_M</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Mx</span><span class="o">=</span><span class="n">M_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;M/Mmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[M] = kNm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_10_0.png" src="../_images/straight_beam_constant_cs_10_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_solution</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">V_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">3</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="mi">6</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;V/Vmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[V] = kN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_11_0.png" src="../_images/straight_beam_constant_cs_11_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="o">*</span><span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#111111&quot;</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_w</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">wx</span><span class="o">=</span><span class="n">w_x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;w/wmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[w] = m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_12_0.png" src="../_images/straight_beam_constant_cs_12_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ex03-todo-testing">
+<h2>EX03 (todo: testing)<a class="headerlink" href="#ex03-todo-testing" title="Permalink to this headline">¶</a></h2>
+<section id="ex03-01-problem">
+<h3>EX03-01 (problem)<a class="headerlink" href="#ex03-01-problem" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">EI</span> <span class="o">=</span> <span class="mi">32000</span>  <span class="c1"># kNm²</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># m</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># kN</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># kN/m</span>
+<span class="n">N</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span> <span class="c1"># kN</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span>
+    <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span><span class="n">q</span><span class="p">,</span>
+    <span class="s2">&quot;P1&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span>
+    <span class="s2">&quot;N&quot;</span><span class="p">:</span><span class="n">N</span><span class="p">,</span>
+    <span class="s2">&quot;bc_i&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s2">&quot;bc_k&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_load</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_13_0.png" src="../_images/straight_beam_constant_cs_13_0.png" />
+</div>
+</div>
+</section>
+<section id="ex03-02-01-solution">
+<h3>EX03-02-01 (solution)<a class="headerlink" href="#ex03-02-01-solution" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">1e-9</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">annotation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">annotation</span><span class="p">))</span>
+
+<span class="n">Fxa</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Z_a</span><span class="p">,</span> <span class="n">Z_b</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr_solver</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Z_x</span> <span class="o">=</span> <span class="n">Fxa</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_a =&quot;</span><span class="p">,</span> <span class="n">Z_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_b =&quot;</span><span class="p">,</span> <span class="n">Z_b</span><span class="p">)</span>
+
+<span class="n">w_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">phi_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">M_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">R_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">V_x</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">R_to_Q</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Z_x</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Z_a = [0.00000e+00 3.94707e-03 0.00000e+00 3.66667e+01 1.00000e+00]
+Z_b = [ 0.00000e+00 -3.80371e-03  0.00000e+00 -3.33333e+01  1.00000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ex03-03-plotting">
+<h3>EX03-03 (plotting)<a class="headerlink" href="#ex03-03-plotting" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_M</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Mx</span><span class="o">=</span><span class="n">M_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">M_x</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">M_x</span><span class="p">)],</span> <span class="n">l</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;M/Mmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[M] = kNm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_15_0.png" src="../_images/straight_beam_constant_cs_15_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_R</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Rx</span><span class="o">=</span><span class="n">R_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">l</span><span class="o">/</span><span class="mi">3</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">3</span><span class="p">],</span> <span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;R/Rmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[R] = kN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_16_0.png" src="../_images/straight_beam_constant_cs_16_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_solution</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">V_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">l</span><span class="o">/</span><span class="mi">3</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">3</span><span class="p">],</span> <span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;V/Vmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[V] = kN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_17_0.png" src="../_images/straight_beam_constant_cs_17_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#111111&quot;</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_w</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">wx</span><span class="o">=</span><span class="n">w_x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;w/wmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[w] = m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_18_0.png" src="../_images/straight_beam_constant_cs_18_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ex04-stabkonstruktion-theorie-ii">
+<h2>EX04 Stabkonstruktion Theorie II<a class="headerlink" href="#ex04-stabkonstruktion-theorie-ii" title="Permalink to this headline">¶</a></h2>
+<section id="ex04-01-problem">
+<h3>EX04-01 (problem)<a class="headerlink" href="#ex04-01-problem" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">EI</span> <span class="o">=</span> <span class="mi">32000</span>  <span class="c1"># kNm²</span>
+<span class="n">GA</span> <span class="o">=</span> <span class="mi">20000</span>  <span class="c1"># kNm²</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># m</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># kN</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># kN/m</span>
+<span class="n">N</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1500</span> <span class="c1"># kN</span>
+<span class="n">w_0</span> <span class="o">=</span> <span class="mf">0.03</span> <span class="c1"># m</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span>
+    <span class="s2">&quot;GA&quot;</span><span class="p">:</span> <span class="n">GA</span><span class="p">,</span>
+    <span class="s2">&quot;l&quot;</span><span class="p">:</span> <span class="n">l</span><span class="p">,</span>
+    <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="n">q</span><span class="p">,</span>
+    <span class="s2">&quot;P&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span>
+    <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="n">N</span><span class="p">,</span>
+    <span class="s2">&quot;w_0&quot;</span><span class="p">:</span> <span class="n">w_0</span><span class="p">,</span>
+    <span class="s2">&quot;bc_i&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;phi&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="s2">&quot;bc_k&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_load</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_19_0.png" src="../_images/straight_beam_constant_cs_19_0.png" />
+</div>
+</div>
+</section>
+<section id="ex04-02-solution">
+<h3>EX04-02 (solution)<a class="headerlink" href="#ex04-02-solution" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dx</span> <span class="o">=</span> <span class="mf">1e-9</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">annotation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">dx</span><span class="p">,</span> <span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">annotation</span><span class="p">))</span>
+
+<span class="n">Fxa</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">Z_a</span><span class="p">,</span> <span class="n">Z_b</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">solve_tr</span><span class="p">(</span><span class="n">Fxa</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="o">**</span><span class="n">s</span><span class="p">)</span>
+<span class="n">Z_x</span> <span class="o">=</span> <span class="n">Fxa</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Z_a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_a =&quot;</span><span class="p">,</span> <span class="n">Z_a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Z_b =&quot;</span><span class="p">,</span> <span class="n">Z_b</span><span class="p">)</span>
+
+<span class="n">w_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">phi_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">M_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">R_x</span> <span class="o">=</span> <span class="n">Z_x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span>
+
+<span class="n">V_x</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">R_to_Q</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Z_x</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Z_a = [  0.        0.      -76.78432  29.79739   1.     ]
+Z_b = [-0.00000e+00 -3.75553e-03  0.00000e+00 -4.20261e+00  1.00000e+00]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ex04-03-plotting">
+<h3>EX04-03 (plotting)<a class="headerlink" href="#ex04-03-plotting" title="Permalink to this headline">¶</a></h3>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_M</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Mx</span><span class="o">=</span><span class="n">M_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">[</span><span class="n">M_x</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">M_x</span><span class="p">)],</span> <span class="n">l</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;M/Mmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[M] = kNm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_21_0.png" src="../_images/straight_beam_constant_cs_21_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_R</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">Rx</span><span class="o">=</span><span class="n">R_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;R/Rmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[R] = kN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_22_0.png" src="../_images/straight_beam_constant_cs_22_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_solution</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">V_x</span><span class="p">,</span> <span class="n">annotate_x</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="o">-</span><span class="n">dx</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="n">l</span><span class="o">-</span><span class="n">dx</span><span class="p">],</span> <span class="n">fill_p</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">fill_n</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;V/Vmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[V] = kN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_23_0.png" src="../_images/straight_beam_constant_cs_23_0.png" />
+</div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_system</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">watermark_pos</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;#111111&quot;</span><span class="p">)</span>
+<span class="n">stp</span><span class="o">.</span><span class="n">plot_w</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">wx</span><span class="o">=</span><span class="n">w_x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;w/wmax*</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;[w] = m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/straight_beam_constant_cs_24_0.png" src="../_images/straight_beam_constant_cs_24_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="grundlagen">
+<h2>Grundlagen<a class="headerlink" href="#grundlagen" title="Permalink to this headline">¶</a></h2>
+<p>Den Übertragungsbeziehungen liegen die Gleichgewichtsbedingungen sowie die konstitutiven und kinematischen Beziehungen  <a class="reference internal" href="straight_beam_non_constant_cs.html#equation-differential-equations">(1)</a> zugrunde.</p>
+<div class="math notranslate nohighlight" id="equation-differential-equations">
+<span class="eqno">(1)<a class="headerlink" href="#equation-differential-equations" title="Permalink to this equation">¶</a></span>\[\begin{split}\frac{dR(x)}{dx} &amp;= -q(x) \\[1em]
+\frac{dM(x)}{dx} &amp;= V(x) + m(x)\\[1em]
+\frac{d\varphi (x)}{dx} &amp;= -\left[\frac{M(x)}{EI}+\kappa^e (x)\right]\\[1em]
+\frac{dw (x)}{dx} &amp;= \varphi (x)  + \frac{V}{G\tilde{A}}\end{split}\]</div>
+<p>Zur vollständigen Beschreibung des Problems ergibt sich, als zusätzliche Gleichung, aus einer statischen Äquivalenzbetrachtung
+die Umrechnung <a class="reference internal" href="#equation-conversion-v-r">(2)</a> zwischen Querkraft und Transversalkraft.</p>
+<div class="math notranslate nohighlight" id="equation-conversion-v-r">
+<span class="eqno">(2)<a class="headerlink" href="#equation-conversion-v-r" title="Permalink to this equation">¶</a></span>\[V(x) = R(x) - N^{II}(x)\left[\frac{dw_v(x)}{dx}+\frac{dw(x)}{dx}\right]\]</div>
+<p>Die oben angeschriebenen gekoppelten Differentialgleichungen können mittels Eliminationsverfahren auf M-Niveau oder w-Niveau eliminert werden.
+Nach Anwendung des Eliminationsverfahrens ergibt sich</p>
+<div class="math notranslate nohighlight" id="equation-differential-equations-m-w">
+<span class="eqno">(3)<a class="headerlink" href="#equation-differential-equations-m-w" title="Permalink to this equation">¶</a></span>\[\begin{split}\frac{d^2M(x)}{dx^2} - K M &amp;= -\gamma\sum a_j\bar{q}_j+\sum a_{j-1} m_j-\gamma N^{II}\sum a_j\kappa^e_j\\[1em]
+\frac{d^2w(x)}{dx^2} - K w &amp;= -K (a_0w_A+a_1w'_A)-\frac{\gamma}{EI}(a_0M_A+a_1Q_A)\\[1em]
+&amp;+\gamma\sum\left(\frac{a_{j+2}}{EI}-\frac{a_j}{GA}\right)\bar{q}_j
+-\frac{\gamma}{EI}\sum a_{j+1}m_J-\gamma\sum a_j\kappa^e_j\end{split}\]</div>
+<p>mit</p>
+<div class="math notranslate nohighlight" id="equation-differential-equations-m-w-with">
+<span class="eqno">(4)<a class="headerlink" href="#equation-differential-equations-m-w-with" title="Permalink to this equation">¶</a></span>\[\gamma = \frac{1}{1-\frac{N^{II}}{S}}\qquad K = -\gamma\frac{N^{II}}{EI}\qquad\bar{q}_j = q_j - N^{II} w^V_{j+2}\]</div>
+<p>Beide Differentialgleichungen haben die Form allgemeine Form</p>
+<div class="math notranslate nohighlight" id="equation-general-differential-equation">
+<span class="eqno">(5)<a class="headerlink" href="#equation-general-differential-equation" title="Permalink to this equation">¶</a></span>\[y'' - K y = \sum_0 a_j k_j\]</div>
+<p>Mit dem in [todo ref: stahlbauhandbuch] vorgestellten Lösungskonzept ergibt sich die allgemeinen Lösung zu:</p>
+<div class="math notranslate nohighlight" id="equation-general-solution">
+<span class="eqno">(6)<a class="headerlink" href="#equation-general-solution" title="Permalink to this equation">¶</a></span>\[y = b_0 y_A + b_1 y'_A + \sum b_{j+2} k_j\]</div>
+<p>Diese können entweder analytisch nach folgender Tabelle mittels Fallunterscheidung</p>
+<table class="table">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 10%" />
+<col style="width: 21%" />
+<col style="width: 13%" />
+<col style="width: 19%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Theorie</p></th>
+<th class="head"></th>
+<th class="head"><p>Hilfswert</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(b_0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(b_1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(b_2, b_3,...\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="upperroman simple">
+<li><p>Ordnung</p></li>
+</ol>
+</td>
+<td><p><span class="math notranslate nohighlight">\(N = 0\)</span></p></td>
+<td></td>
+<td colspan="3"><p><span class="math notranslate nohighlight">\(b_j = a_j\)</span></p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><ol class="upperroman simple" start="2">
+<li><p>Ordnung</p></li>
+</ol>
+</td>
+<td><p><span class="math notranslate nohighlight">\(N &lt; 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\lvert K\rvert}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cos fx\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\sin fx}{f}\)</span></p></td>
+<td rowspan="2"><p><span class="math notranslate nohighlight">\(b_j = \frac{b_{j-2}-a_{j-2}}{K}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N &gt; 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sqrt{\lvert K\rvert}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\cosh fx\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{\sinh fx}{f}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>oder numerisch mit der Rekursionsformel <a class="reference internal" href="#equation-recursion-solution">(7)</a> berechnet werden.</p>
+<div class="math notranslate nohighlight" id="equation-recursion-solution">
+<span class="eqno">(7)<a class="headerlink" href="#equation-recursion-solution" title="Permalink to this equation">¶</a></span>\[b_j = \sum_{t=0}^\inf \beta_t\qquad\beta_t = \frac{Kx^2}{(j+2t)(j+2t-1)}\beta_{t-1}\]</div>
+<p>In stanpy können die <span class="math notranslate nohighlight">\(b_j\)</span> Funktionen für einen konstanten Querschnitt für beliebige <span class="math notranslate nohighlight">\(j\)</span> und <span class="math notranslate nohighlight">\(x\)</span> wie folgt berechnet werden</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">stanpy</span> <span class="k">as</span> <span class="nn">stp</span>
+
+<span class="n">EI</span> <span class="o">=</span> <span class="mi">32000</span>  <span class="c1"># kNm²</span>
+<span class="n">GA</span> <span class="o">=</span> <span class="mi">20000</span>  <span class="c1"># kN</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">NII</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1500</span>  <span class="c1"># kN</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;EI&quot;</span><span class="p">:</span> <span class="n">EI</span><span class="p">,</span> <span class="s2">&quot;GA&quot;</span><span class="p">:</span> <span class="n">GA</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="n">NII</span><span class="p">}</span>
+
+<span class="n">a_j</span><span class="p">,</span> <span class="n">b_j</span> <span class="o">=</span> <span class="n">stp</span><span class="o">.</span><span class="n">bj_opt2_p89</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">return_aj</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a_j =&quot;</span><span class="p">,</span> <span class="n">a_j</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;b_j =&quot;</span><span class="p">,</span> <span class="n">b_j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>a_j = [[ 1.   6.  18.  36.  54.  64.8]]
+b_j = [[ 0.21835  4.33504 15.42461 32.8553  50.82105 62.05548]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="cross_section_height.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Querschnittswerte für Stäbe mit veränderlichen Querschnittsabmessungen</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="straight_beam_non_constant_cs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Der gerade Stab, veränderlicher Querschnitt Theorie I. und II. Ordnung</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+    <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2022, David Zhou.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
