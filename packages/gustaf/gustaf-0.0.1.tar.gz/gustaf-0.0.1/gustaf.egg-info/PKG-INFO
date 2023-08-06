@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: gustaf
+Version: 0.0.1
+Summary: Process and visualize geometries.
+Home-page: https://github.com/tataratat/gustaf
+Author: Jaewook Lee
+Author-email: jlee@ilsb.tuwien.ac.at
+License: MIT
+Description: # gustaf
+        Loyal butler for numerical-analysis-geometry processing and visualization.
+        
+        ## Installation
+        ```
+        pip install gustaf
+        ```
+        
+        ### 0. Install Dependencies
+        `numpy` is the only strict dependency of `gustaf`.  
+        
+        Followings are optional library for more functionalities!
+        
+        Option 1: __`pip`__.
+        ```
+        pip install vedo scipy splinepy
+        ```
+        Option 2: __`conda`__ & __`pip`__
+        ```
+        conda install -c anaconda numpy scipy
+        conda install -c conda-forge vedo 
+        ```
+        
+        _Note: `vtk` version > 9 tends to work better for our application cases._
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Natural Language :: English
+Classifier: Topic :: Scientific/Engineering
+Description-Content-Type: text/markdown
