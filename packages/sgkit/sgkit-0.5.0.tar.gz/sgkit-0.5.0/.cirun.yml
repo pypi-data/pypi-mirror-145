@@ -1,0 +1,26 @@
+# Self-Hosted Github Action Runners on GCP via Cirun.io
+# Reference: https://docs.cirun.io/reference/yaml.html
+runners:
+  - name: gpu-runner
+    # Cloud Provider: GCP
+    cloud: gcp
+    # Cheapest GPU on GCP
+    gpu: nvidia-tesla-t4
+    # Cheapest VM on GCP, with GPU attachable
+    instance_type: n1-standard-1
+    # Custom image with NVIDIA drivers installed on Ubuntu-20.4
+    # to reduce provision time
+    # Format => project_name:image_name
+    machine_image: sgkit-dev:cirun-nvidia
+    # preemptible instances seems quite less reliable.
+    preemptible: false
+    # Path of the relevant workflow file
+    workflow: .github/workflows/build-gpu.yml
+    # Number of runners to provision on every trigger on Actions job
+    # 3 because testing on Python 3.7, 3.8, 3.9
+    # See .github/workflows/build-gpu.yml
+    count: 3
+    # Adding the GPU label, this matches the runs-on param from .github/workflows/build-gpu.yml
+    # So that this runner is selected for running .github/workflows/build-gpu.yml
+    labels:
+      - gpu
