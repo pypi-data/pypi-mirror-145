@@ -1,0 +1,97 @@
+Metadata-Version: 2.1
+Name: yunuscaly
+Version: 0.0.1
+Summary: This package will help you to do  calculations quickly.
+Home-page: https://github.com/Md9291/yunuscaly
+Author: MOHAMMAD YUNUS
+Author-email: md.yunus.9291@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Md9291/yunuscaly/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+
+
+# Yunuscaly
+
+This package will help you to do  calculations quickly.
+
+## How to Install it?
+
+## On Windows
+
+```
+pip install  yunuscaly
+```
+
+## On Linux:
+
+```
+sudo pip3 install yunuscaly
+```
+
+## How to use it?
+
+### Initializing Package
+```
+from  yunuscaly import Yunuscaly
+
+num_1 = 4
+num_2 = 5
+
+calc = Yunuscaly(num_1, num_2)
+```
+
+### Adding Numbers
+```
+calc.addition()
+```
+
+### Substracting Numbers
+```
+calc.substraction()
+```
+
+### Multiplying Numbers
+```
+calc.multiplication()
+```
+
+### Dividing Numbers
+```
+calc.division()
+```
+
+### Squreroot Numbers
+```
+calc.squreroot()
+```
+
+### Squre Numbers
+```
+calc.squre()
+```
+
+### Cuberoot Numbers
+```
+calc.cuberoot()
+```
+### Cube Numbers
+```
+calc.cube()
+```
+### Power  Numbers
+```
+calc.power()
+```
+### Percentage Numbers
+```
+calc.percentage()
+```
+
+
