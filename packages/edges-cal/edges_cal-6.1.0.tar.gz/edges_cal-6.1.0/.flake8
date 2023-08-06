@@ -1,0 +1,29 @@
+[flake8]
+ignore =
+  E203    # No space before colon
+  W503
+  N806    # Variable name should be lower case. We have some single-letter variables that make more sense to be caps.
+  A003    # Class attribute shadows a python builtin -- not much chance of that causing a problem
+  D401    # First line should be in imperative mood -- cached_properties don't fit this bill.
+  D101    # Missing docstring in public class -- my docstrings are in the __init__ which seems to fail this ?
+  RST210  # Otherwise it flags down **kwargs in docstrings.
+  N815
+  N807    # Allow method names to start and end with __
+max-line-length = 88
+max-complexity = 21
+inline-quotes = double
+docstring-convention=numpy
+rst-roles =
+  class
+  method
+  func
+  attr
+  mod
+exclude =
+    devel/*
+per-file-ignores =
+    src/edges_cal/spectra.py:N802
+    src/edges_cal/cal_coefficients.py:N802
+    tests/*:D
+    src/edges_cal/__init__.py:F401
+    src/edges_cal/reflection_coefficient.py:A002
