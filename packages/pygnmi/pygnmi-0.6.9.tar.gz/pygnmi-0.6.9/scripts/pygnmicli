@@ -1,0 +1,118 @@
+#!/usr/bin/env python
+#(c)2019-2021, karneliuk.com
+
+
+# Modules
+import json
+import logging
+import os
+
+# Own modules
+from pygnmi.arg_parser import parse_args
+from pygnmi.client import gNMIclient, telemetryParser
+from pygnmi.artefacts.messages import msg
+
+# Variables
+path_log = 'log/execution.log'
+
+
+# Body
+def main():
+
+    # Setting logger
+    if not os.path.exists(path_log.split('/')[0]):
+        os.mkdir(path_log.split('/')[0])
+
+    logging.basicConfig(
+        filename=path_log,
+        level=logging.INFO,
+        format='%(asctime)s.%(msecs)03d+01:00,%(levelname)s,%(message)s',
+        datefmt='%Y-%m-%dT%H:%M:%S'
+    )
+    logging.info('Starting application...')
+
+    # Collecting inputs
+    args = parse_args(msg)
+
+    # gNMI operation
+    with gNMIclient(
+        target=args.target, username=args.username, password=args.password,
+        path_cert=args.path_cert, path_key=args.path_key, path_root=args.path_root,
+        override=args.override, insecure=args.insecure, debug=args.debug,
+        show_diff=args.compare
+    ) as GC:
+
+        result = None
+
+        if args.operation == 'capabilities':
+            print(f'Doing {args.operation} request to {args.target}...')
+            result = GC.capabilities()
+
+        elif args.operation == 'get':
+            print(f'Doing {args.operation} request to {args.target}...')
+            result = GC.get(path=args.gnmi_path, datatype=args.datastore, encoding='json')
+
+        elif args.operation.startswith('set'):
+            print(f'Doing {args.operation} request to {args.target}...')
+            mode = args.operation.split("-")[1]
+            kwargs = {}
+            if mode == "delete":
+                # For a delete request, give kwarg delete=[path]
+                kwargs[mode] = args.gnmi_path
+            else:
+                # For update (or replace) request, give kwarg update=[(path, data)]
+                with open(args.file, "r") as f:
+                    data = f.read()
+                jdata = json.loads(data)
+                kwargs[mode] = [(args.gnmi_path[0], jdata)]
+            result = GC.set(encoding="json_ietf", **kwargs)
+
+        elif args.operation.startswith('subscribe'):
+            mode = args.operation.split("-")[1]
+            subscription_list = [
+                {
+                    'path': xpath,
+                    'mode': 'sample',
+                    'sample_interval': 10000000000,
+                    'heartbeat_interval': 30000000000
+                }
+                for xpath in args.gnmi_path
+            ]
+            subscribe = {
+                'subscription': subscription_list,
+                'use_aliases': False,
+                'mode': mode,
+                'encoding': 'json'
+            }
+
+            result = GC.subscribe2(subscribe=subscribe)
+
+            if mode == "stream":
+                try:
+                    for ent in result:
+                        print(ent)
+                except KeyboardInterrupt:
+                    result.close()
+
+            elif mode == "once":
+                for ent in result:
+                    print(ent)
+                    if "sync_response" in ent:
+                        break
+
+            elif mode == "poll":
+                while True:
+                    try:
+                        input("Press enter to poll, ctrl+c to quit")
+                        ent = result.get_update(timeout=5)
+                        print(ent)
+                    except KeyboardInterrupt:
+                        result.close()
+                        break
+
+        if result and not args.debug:
+            print(json.dumps(result, indent=4))
+
+
+if __name__ == "__main__":
+    main()
