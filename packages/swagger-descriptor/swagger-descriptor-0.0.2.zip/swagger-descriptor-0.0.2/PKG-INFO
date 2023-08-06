@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: swagger-descriptor
+Version: 0.0.2
+Summary: 这是一个swagger api解析模块，解析swagger api为apis（一个API接口一个对象）和definitions，便于后续的进一步使用
+Home-page: https://github.com/meanstrong/swagger-descriptor
+Author: Rocky Peng
+Author-email: rockypengchina@outlook.com
+Maintainer: Rocky Peng
+Maintainer-email: rockypengchina@outlook.com
+License: GPLv3
+Description: 
+        # swagger-descriptor - 一个swagger api解析模块
+        
+        [![image](https://img.shields.io/pypi/v/swagger-descriptor.svg)](https://pypi.org/project/swagger-descriptor/)
+        [![image](https://img.shields.io/pypi/l/swagger-descriptor.svg)](https://pypi.org/project/swagger-descriptor/)
+        
+        ## About
+        这是一个swagger api解析模块，解析swagger api为apis（一个API接口一个对象）和definitions，便于后续的进一步使用
+        
+        ## Requirements
+        - Python3
+        
+        ## Install
+        通过pip命令安装：
+        ```shell
+        pip install swagger-descriptor
+        ```
+        
+        ## Author
+        - <a href="mailto:pmq2008@gmail.com">Rocky Peng</a>
+        
+Platform: any
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Description-Content-Type: text/markdown
