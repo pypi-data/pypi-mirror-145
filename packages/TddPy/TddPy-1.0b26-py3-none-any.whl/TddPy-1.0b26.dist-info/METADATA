@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: TddPy
+Version: 1.0b26
+Summary: A decision diagram based backend for tensor calculation, which is especially suitable for quantum circuit simulation.
+Home-page: https://github.com/UTS-QSI/TddPy
+Author: Yingte Xu
+Author-email: lucianoxu@foxmail.com
+License: UNKNOWN
+Project-URL: First Article on TDD, https://arxiv.org/abs/2009.02618
+Keywords: tensor,quantum circuit,decision diagram
+Platform: Windows
+Platform: Linux
+Classifier: Environment :: Console
+Classifier: Environment :: GPU :: NVIDIA CUDA
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Development Status :: 4 - Beta
+Classifier: Natural Language :: English
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: C++
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Requires-Python: <3.10,>=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: graphviz
+Requires-Dist: IPython
+
+UNKNOWN
+
