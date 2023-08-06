@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: xquery
+Version: 0.0.116
+Summary: A package to easily run queries at SQL Server and BigQuery.
+Home-page: https://github.com/Xehron/xquery.git
+Author: Xehron
+Author-email: Xehron@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Xehron/xquery/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# XQuery
+
+### A package to easily run queries at SQL Server and BigQuery.
+
+Allows sending queries and receiving data in form of pandas DataFrame from SQL Server and BigQuery.
+
+
+# How to use
+### SQL SERVER
+```python
+from xquery import XQuery
+
+server_name = 'ENTER_SERV_NAME'
+database_name = 'ENTER_DB_NAME'
+
+sql_xq = XQuery()
+sql_xq.set_connection_sql_server(server_name=server_name, database_name=database_name)
+df = sql_xq.pull_query('SELECT 1 AS d')
+print(df)
+sql_xq.session.close_connection()
+```
+
+
+
+### BIGQUERY
+```python
+from xquery import XQuery
+from src.XQuery.config import BQ_CLIENT_SECRET_FILE #  edit path to your file
+
+
+bq_xq = XQuery()
+bq_xq.set_connection_big_query(BQ_CLIENT_SECRET_FILE)
+df = bq_xq.pull_query('SELECT 1 AS d')
+print(df)
+bq_xq.session.close_connection()
+```
+
+
