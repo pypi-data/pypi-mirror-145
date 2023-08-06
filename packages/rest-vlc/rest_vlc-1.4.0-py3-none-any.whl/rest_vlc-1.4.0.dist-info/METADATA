@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: rest-vlc
+Version: 1.4.0
+Summary: A Python library for controlling VLC media player via REST API
+Home-page: https://github.com/timelessnesses/rest-vlc
+Author: Rukchad Wongprayoon
+Author-email: contact@biomooping.tk
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: xmltodict
+Provides-Extra: async
+Requires-Dist: aiohttp[speedups] ; extra == 'async'
+Requires-Dist: uvloop ; (sys_platform == "linux") and extra == 'async'
+Provides-Extra: build
+Requires-Dist: build ; extra == 'build'
+Requires-Dist: wheel ; extra == 'build'
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: python-dotenv ; extra == 'dev'
+Provides-Extra: publish
+Requires-Dist: twine ; extra == 'publish'
+Requires-Dist: wheel ; extra == 'publish'
+
+# rest-vlc
+A REST API wrapper for VLC.
+
+## Installation
+Clone the repository:
+
+```bash
+git clone https://github.com/timelessnesses/rest-vlc.git
+cd rest-vlc
+pip install .
+# OR
+pip install git+https://github.com/timelessnesses/rest-vlc.git
+```
+
+or use the production release:
+
+```bash
+pip install rest-vlc
+```
+
+## Documentation
+
+Intellisense should self-explainatory about it, or you can go to the [https://rest-vlc.readthedocs.io/en/latest/](https://rest-vlc.readthedocs.io/en/latest/) documentation.  
+Examples are in tests/ and examples/
+
+## Features
+
+- Asynchronous/Blocking API
+- Authenication
+- URL encoding automatically
+- Returns dictionary instead of XML
+
+## Status
+Stable
+
+
