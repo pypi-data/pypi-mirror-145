@@ -1,0 +1,58 @@
+# logger config
+# NOTSET（0）、DEBUG（10）、INFO（20）、WARNING（30）、ERROR（40）、CRITICAL（50）
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  simple:
+    format: "%(message)s"
+  verbose:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(filename)s - %(funcName)s : %(message)s"
+  datetime:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+filters:
+  root_filter:
+    name: "root"
+  data_filter:
+    name: "data_log"
+
+handlers:
+  console:
+    class: "logging.StreamHandler"
+    level: "DEBUG"
+    formatter: "simple"
+    stream: "ext://sys.stdout"
+    filters: ["root_filter"]
+  memory_handler:
+    class: "logging.handlers.MemoryHandler"
+    level: "DEBUG"
+    formatter: "simple"
+    capacity: 1024
+    filters: ["data_filter"]
+    target: "data_file_handler"
+  data_file_handler:
+    class: "logging.handlers.RotatingFileHandler"
+    level: "DEBUG"
+    formatter: "simple"
+    filename: "data.log"
+    maxBytes: 10485760000
+    backupCount: 20
+    encoding: "utf8"
+  info_file_handler:
+    class: "logging.handlers.RotatingFileHandler"
+    level: "INFO"
+    formatter: "verbose"
+    filename: "info.log"
+    maxBytes: 10485760000
+    backupCount: 20
+    encoding: "utf8"
+    filters: ["root_filter"]
+
+
+root:
+  level: "DEBUG"
+  handlers:
+    - console
+    - info_file_handler
+    - memory_handler
