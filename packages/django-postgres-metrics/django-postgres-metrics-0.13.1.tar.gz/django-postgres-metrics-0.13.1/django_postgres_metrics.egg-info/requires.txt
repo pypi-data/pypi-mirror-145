@@ -1,0 +1,16 @@
+django-rich>=1.0
+
+[dev]
+pre-commit
+
+[docs]
+Django
+psycopg2
+sphinx_rtd_theme<2.0,>=1.0
+Sphinx<5.0,>=4.0
+
+[test]
+coverage[toml]<6,>=5
+Django
+psycopg2
+selenium==3.141.0

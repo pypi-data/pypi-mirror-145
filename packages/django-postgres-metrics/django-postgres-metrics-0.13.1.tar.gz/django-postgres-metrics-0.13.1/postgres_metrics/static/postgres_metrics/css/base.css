@@ -1,0 +1,45 @@
+/*
+ * Derived from Django's contrib.admin base.css
+ * at 244cc401559e924355cf943b6b8e66ccf2f6da3a
+ */
+#postgres-metrics {
+  float: left;
+  width: 100%;
+}
+
+.colSM #postgres-metrics {
+  float: right;
+}
+
+#postgres-metrics .viewlink {
+  padding-left: 16px;
+  background: url(../../admin/img/search.svg) 0 1px no-repeat;
+}
+
+.app-postgres_metrics.change-list .filtered {
+  min-height: 0;
+}
+
+.app-postgres_metrics table#result_list td {
+  word-wrap: anywhere;
+}
+
+tr.pgm-critical,
+td.pgm-critical {
+  background-color: var(--message-error-bg, #ffefef);
+}
+
+tr.pgm-warning,
+td.pgm-warning {
+  background-color: var(--message-warning-bg, #ffffcc);
+}
+
+tr.pgm-ok,
+td.pgm-ok {
+  background-color: var(--message-success-bg, #ddffdd);
+}
+
+tr.pgm-info,
+td.pgm-info {
+  background-color: var(--breadcrumbs-bg, #9adeff);
+}
