@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: NinjaTools
+Version: 0.6.0
+Summary: Bunch of useful tools
+Home-page: https://github.com/nikkoxgonzales/ninja-tools
+Author: Nikko Gonzales
+Author-email: nikkoxgonzales@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+Requires-Dist: pywin32 (>=303)
+Requires-Dist: pyperclip (>=1.8.2)
+Requires-Dist: psutil (>=5.9.0)
+Provides-Extra: all
+Requires-Dist: opencv-python (==4.5.5.62) ; extra == 'all'
+Requires-Dist: scikit-image (>=0.19.2) ; extra == 'all'
+Requires-Dist: xlrd (==1.2.0) ; extra == 'all'
+Requires-Dist: numpy (>=1.22.3) ; extra == 'all'
+Requires-Dist: Pymem (>=1.8.5) ; extra == 'all'
+Provides-Extra: excel
+Requires-Dist: xlrd (==1.2.0) ; extra == 'excel'
+Provides-Extra: image
+Requires-Dist: opencv-python (==4.5.5.62) ; extra == 'image'
+Requires-Dist: scikit-image (>=0.19.2) ; extra == 'image'
+Requires-Dist: numpy (>=1.22.3) ; extra == 'image'
+Provides-Extra: memory
+Requires-Dist: Pymem (>=1.8.5) ; extra == 'memory'
+Requires-Dist: regex ; extra == 'memory'
+
+Ninja Tools
+
