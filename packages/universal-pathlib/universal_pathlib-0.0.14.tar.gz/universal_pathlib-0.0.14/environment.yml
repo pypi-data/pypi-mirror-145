@@ -1,0 +1,24 @@
+name: upath
+channels:
+    - defaults
+    - conda-forge
+dependencies:
+    - python==3.8
+    - fsspec==2021.11.1
+    # optional
+    - requests
+    - s3fs
+    - jupyter   
+    - ipython
+    - pytest
+    - vcrpy
+    - pylint
+    - flake8
+    - pyarrow
+    - moto
+    - pip
+    - pip:
+      - hadoop-test-cluster
+      - gcsfs
+      - nox
+    
