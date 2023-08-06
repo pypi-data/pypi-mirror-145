@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: eggdriver
+Version: 0.0.2b0
+Summary: Your proyect trusted driver.
+Home-page: https://github.com/PythonForChange/eggdriver
+Author: Emmanuel Norambuena
+Author-email: eanorambuena@uc.cl
+License: MIT
+Project-URL: Bug Reports, https://github.com/PythonForChange/eggdriver/issues
+Project-URL: Source, https://github.com/PythonForChange/eggdriver
+Keywords: kit,quantum,development
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.5, <=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: tensorflow
+Requires-Dist: keras
+Requires-Dist: Colr
+Requires-Dist: opencv-contrib-python
+Requires-Dist: mediapipe
+Requires-Dist: pipwin
+
+# eggdriver
+
+Your proyect trusted driver.
+
+## Quick start
+
+### 1. Install eggdriver
+
+    pip install eggdriver
+
+### 2. (Optional) Create the file **eggconfig.py** and then write in it the following lines:
+
+    username, password = "{your user}", "{your password}"
+
+    pypi = {<br>
+        "user" : "{your PyPI user or "\__token__"}",
+        "password" : "{your PyPI password or token}"
+    }
+
+
+
+
