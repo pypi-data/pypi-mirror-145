@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: ml-jdp4
+Version: 1.3.2
+Summary: An integrated quantum mechanics-machine learning approach for ultra-fast NMR structural elucidation.
+Home-page: https://github.com/Sarotti-Lab/ML_J_DP4
+Author: María M. Zanardi & Ariel M. Sarotti
+Author-email: zanardi@inv.rosario-conicet.gov.ar
+License: MIT
+Keywords: NMR structural elucidation
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENCE
+
+# ML_JDP4 Package
+
+## An integrated quantum mechanics-machine learning approach for ultra-fast NMR structural elucidation
+
+Authors: Ariel M. Sarotti & María M. Zanardi 
+
+Usage: `ml_jdp4` 
+
+### Installation Requirements
+
+**ML_JDP4.py** needs python 3.8 or later to work. You can install the module from the command line console using:
+`pip3 install ml-jdp4`
+
+### User Guide
+
+You need to create a folder containing the following files: 
+
+      1. The gaussian outputs of the NMR and NBO calculations (all conformers for all isomers).
+      
+      2. The excel file containing the experimental data and the labels of each nucleus associated with each experimental value.
+
+See the [project repository](https://github.com/Sarotti-Lab/ML_J_DP4) for more details.
+
+
