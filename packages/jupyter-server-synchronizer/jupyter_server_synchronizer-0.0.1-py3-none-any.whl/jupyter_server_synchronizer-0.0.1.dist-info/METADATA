@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: jupyter-server-synchronizer
+Version: 0.0.1
+Summary: A server extension for synching managers in a running Jupyter Server.
+Home-page: https://jupyter-server-synchronizer.readthedocs.io
+Author: Jupyter Development Team
+Author-email: jupyter@googlegroups.com
+License: UNKNOWN
+Project-URL: Documentation, https://jupyter-server-synchronizer.readthedocs.io
+Project-URL: Funding, https://numfocus.org/donate
+Project-URL: Source, https://github.com/jupyter-server/synchronizer
+Project-URL: Tracker, https://github.com/jupyter-server/synchronizer/issues
+Keywords: ipython,jupyter
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: Jupyter
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: COPYING.md
+Requires-Dist: jupyter-server (>=1.16.0)
+Provides-Extra: test
+Requires-Dist: coverage ; extra == 'test'
+Requires-Dist: pre-commit ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: pytest-timeout ; extra == 'test'
+Requires-Dist: pytest-tornasync ; extra == 'test'
+Requires-Dist: pytest (>=6.0) ; extra == 'test'
+
+# Jupyter Server Synchronizer
+
+A server extension that synchronizes all managers in a running Jupyter Server.
+
+This is particularly useful for Jupyter Servers running remote kernels and contents.
+
+
