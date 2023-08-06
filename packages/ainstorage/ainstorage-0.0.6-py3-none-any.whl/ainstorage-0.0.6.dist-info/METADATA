@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: ainstorage
+Version: 0.0.6
+Summary: Storage fucntions for ai network
+Home-page: https://ainize.ai
+Author: Hongmin
+Author-email: hongmin@comcom.ai
+License: UNKNOWN
+Project-URL: Bug Tracker, https://ainize.ai
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pycryptodome
+Requires-Dist: firebase-admin
+Requires-Dist: umbral
+Requires-Dist: libecc
+Requires-Dist: ecdsa
+Requires-Dist: click
+Requires-Dist: ain-py
+
+# How to use ainstorage
+
+AINstorage is package which enables to use storage functions in the AIN systems.
+
