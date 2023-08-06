@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: plywood-gallery
+Version: 0.0.2
+Summary: Jupyter cell magic that turns images from cell output into a  gallery
+License: MIT
+Author: kolibril13
+Requires-Python: >=3.8,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Flask (>=2.0.2,<3.0.0)
+Requires-Dist: Jinja2 (>=3.1.1,<4.0.0)
+Requires-Dist: Pillow (>=9.0.0,<10.0.0)
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: ipykernel (>=6.7.0,<7.0.0)
+Requires-Dist: ipython (>=7.31.0,<8.0.0)
+Requires-Dist: watchdog (>=2.1.6,<3.0.0)
