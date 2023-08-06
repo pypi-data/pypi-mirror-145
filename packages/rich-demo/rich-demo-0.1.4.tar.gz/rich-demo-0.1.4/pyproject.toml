@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "rich-demo"
+authors = ["Chema Cortés <dextrem@gmail.com>"]
+version = "0.1.4"
+description = "Tool to check the graphic features of a terminal using the rich library."
+readme =  "readme.md"
+homepage = "https://github.com/chemacortes/rich-demo"
+license = "MIT"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Framework :: IPython",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Typing :: Typed",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.6.2"
+rich = "^12.1.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+rich-demo = 'rich_demo.__main__:run'
+
+[tool.poetry.plugins."pipx.run"]
+rich-demo = 'rich_demo.__main__:run'
