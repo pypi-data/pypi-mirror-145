@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+
+
+def main():
+    parser = argparse.ArgumentParser(description='CLI client for Deployment Hub.')
+    parser.add_argument('--project', '-p', required=True,
+                        help='Name of the project you want to deploy or manage.')
+    parser.add_argument('--action', '-a', required=True,
+                        help='The action that is requested for the project.')
+    parser.add_argument('--branch', '-b',
+                        help='Branch you want to deploy.')
+    parser.parse_args()
+    args = parser.parse_args()
+
+    project = args.project
+    action = args.action
+    branch = args.branch
+    url = "http://192.168.1.254:5000"
+
+    list_of_projects = ['jaredwines', 'home-assistant', 'deployment-hub', 'alohamillworks', 'coastalteardrops']
+
+    if project in list_of_projects:
+        if branch is None:
+            command = ('curl ' + url + '/' + project + '/' + action + '/')
+        else:
+            command = ('curl ' + url + '/' + project + '/' + action + '/' + branch + '/')
+
+        os.system(command)
+
+    else:
+        print("Project does not exist!")
+
+
+if __name__ == '__main__':
+    main()
