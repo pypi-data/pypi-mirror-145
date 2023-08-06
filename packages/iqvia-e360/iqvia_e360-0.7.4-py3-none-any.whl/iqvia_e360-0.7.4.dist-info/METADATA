@@ -1,0 +1,346 @@
+Metadata-Version: 2.1
+Name: iqvia-e360
+Version: 0.7.4
+Summary: E360 Clients Wrapper for Python
+Home-page: UNKNOWN
+Author: IQVIA
+Author-email: e360pypi@iqvia.com
+License: Apache License 2.0
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Requires-Dist: clients-core (<3,>=2.1.3)
+Requires-Dist: sd-clients (<3,>=2.2.0)
+Requires-Dist: adt-clients (<2,>=1.1.3)
+Requires-Dist: file-service-client (>=1.1.0)
+Requires-Dist: vrs-clients (>=1.1.3)
+Requires-Dist: workspace-clients (>=1.1.4)
+Requires-Dist: e360-charting[full] (<2,>=1.3.0)
+Requires-Dist: dataclasses ; python_version == "3.6"
+
+E360 Clients Wrapper
+===
+
+E360™ Clients Wrapper for Python
+
+
+## Introduction
+`iqvia_e360` is a Python library allowing for IQVIA E360™ users to connect to E360 Workspaces, download datasets, retrieve and create assets.
+
+
+## Features
+* Authentication using OIDC (internal network only) and Api Gateway (internal and external network)
+* Handles the creation of E360 clients
+* Provides convenient functions for the following use-cases:
+    * List ADT reports
+    * Download an ADT report
+    * Upload an ADT
+    * List workspace containers
+    * Create a workspace container
+    * Create a workspace asset
+    * Upload a document to workspaces
+    * Move and rename a workspace asset
+    * Create an E360 visualisation from a Plotly figure
+
+## API Key
+
+To get started you will need to get an API token from your E360™ _Manage Account_ page. You may download a settings file, which will contains the API key and the API Gateway information needed to connect. See documentation for more details how to use the settings file.
+
+
+If this option is not available on your profile, please request for it to be enabled by the E360™ support team.
+
+
+
+## Quick Start
+
+The API credentials can be stored in a settings file and reused between uses, or passed directly to at creation time.
+
+A settings file can be provided using the `create_from_settings` classmethod:
+
+
+```python
+from iqvia_e360 import E360Context
+context = E360Context.create_from_settings("<path-to-settings-file>")
+```
+
+### Connecting using Api Gateway
+
+If you are using Api Gateway, create a file (default file name: **e360.ini**), and include the following configuration:
+
+```ini
+[e360]
+api_gateway_url = https://api-gateway-url.com
+api_gateway_key = my-key
+verify_ssl = yes
+```
+
+Alternatively, the configuration can be passed directly to the helper class methods as seen below:
+
+```python
+from iqvia_e360 import E360Context
+e360_context = E360Context.create_with_gateway("<my-apikey>")  # Optionally can pass gateway_url and verify_ssl
+```
+
+
+### Connecting from internal network
+If you are using OIDC, it is recommended to use a settings file. This is an example OIDC settings file:
+
+```ini
+[e360]
+verify_ssl = yes
+service_directory_url = https://e360-sd-service.dev.com
+oidc_client_id =client-id
+oidc_client_secret =client-secret
+oidc_endpoint_url =https://e360-oidc-endpoint.dev.com
+use_oidc_mode = yes
+oidc_user_id = user-id
+```
+
+---
+
+# Documentation
+
+## _class_ `iqvia_e360.E360Context(**kwargs)`
+
+The main class for retrieving E360™ microservice clients, for interacting  with E360 Workspace assets.
+
+> To facilitate initializing class instances, use of the class methods below is highly recommended.
+
+### _classmethod_ `E360Context.create_from_settings(path: pathlib.Path)`
+Create an instance from a settings file.
+
+The settings file can be created with the following content:
+
+```ini
+[e360]
+api_gateway_url = https://api-gateway-url.com
+api_gateway_key = my-key
+verify_ssl = yes
+```
+
+Example for creating an authenticated instance of `E360Context`:
+```python
+from pathlib import Path
+from iqvia_e360 import E360Context
+
+settings_path = Path('/path/to/e360.ini')
+context = E360Context.create_from_settings(settings_path)
+```
+
+### _method_ `.get_adt_reports(**filters) -> List[AdtReportAssetModel]`
+Retrieves a list of ADT Report assets the user can access through workspaces.
+
+Returns a list of `AdtReportAssetModel` instances.
+
+>The keyword `filters` represents an unpacked a mapping with the following values:
+>
+>- `metadata_key` (Optional): A metadata key to filter by; must be provided together with metadata_value
+>- `metadata_value` (Optional): A metadata value to filter by
+
+Example:
+```python
+context.get_adt_reports(metadata_key='mykey', metadata_value='myvalue')
+```
+
+### _method_ `.get_adt_report_by_id(id: str) -> AdtReportAssetModel`
+Returns an instance of `AdtReportAssetModel` by an _id_ of the analytic dataset report.
+
+
+### _method_ `.get_adt_reports_by_name(name: str) -> List[AdtReportAssetModel]`
+Returns a list of `AdtReportAssetModel` instances filtered by _name_ in the asset.
+
+
+### _method_ `.get_workspace_containers(name: str = None) -> List[ContainerAssetModel]`
+Returns a list of `ContainerAssetModel` instances optionally filtered by _name_.
+
+
+### _method_ `.move_workspace_asset(asset: AssetModel|str, target_container: ContainerAssetModel|str, new_name: str = None, hidden: bool = False) -> AssetModel`
+Change location of a workspace asset. Also allows to optionally rename, and to make an asset visibe or hidden. Returns a moved `AssetModel` instance.
+
+> Args:
+> - _asset_: The id of the asset to move, or an instance of iqvia_360.AssetModel
+> - _target\_container_: The id of the container the asset is being moved to, or an instance of iqvia_360.ContainerAssetModel
+> - _new_name_ (Optional): The new name of the asset.
+> - _hidden_ (Optional): A boolean indicating if the asset should not be visible in workspaces.
+
+
+### _method_ `.create_workspace_container(target_container: ContainerAssetModel|str, name: str, description: str = None) -> ContainerAssetModel`
+Create a new workspace container, returns `ContainerAssetModel`.
+
+> Args:
+> - _target\_container_: The _id_ or a `ContainerAssetModel` instance of the parent of the new container
+> - _name_: The name of the new container
+> - _description_ (Optional): A description of this container
+
+
+### _method_ `.download_adt_report(asset: AdtReportAssetModel|str, location: pathlib.Path|str = None) -> pathlib.Path|None`
+Download the requested analytic dataset report to the local environment.
+The format of the report is pre-determined at the time of generation from its definition.
+
+> Args:
+> - _asset_: The workspace asset instance for the required report, or the asset id
+> - _location_ (Optional): The directory where the report should be downloaded; defaults to current working directory
+
+
+### _method_ `.download_adt_report_by_id(report_id: str, location: pathlib.Path|str = None) -> pathlib.Path|None`
+Download the requested analytic dataset report to the local environment. The format of the report is pre-determined at the time of generation from its definition.
+Returns a `Path` object pointing to the downloaded report, or `None` if the download failed.
+
+>Args:
+>- _report_id_: The id of the analytic dataset report to download
+>- _location_ (Optional): The directory where the report should be downloaded; defaults to current working directory
+
+
+### _method_ `.create_workspace_asset(asset: AssetModel) -> AssetModel`
+Given an instance of `AssetModel`, create it on workspaces.
+Returns the instance of the `asset`.
+
+
+### _method_ `.upload_document_file(target_container: ContainerModel|str, file_path: pathlib.Path|str, name: str, description: str = "") -> AssetModel|None`
+Upload a local document file into E360 workspaces.
+Returns an `AssetModel` for the newly created asset, or None if creation failed
+
+> Args:
+>- _target_container_: The id of the container the asset is created in, or an instance of iqvia_360.ContainerAssetModel
+>- _file_path_: The path to the document to upload
+    name: The asset name for the uploaded document
+>- _description_ (Optional): An asset description for the uploaded document
+
+
+### _method_ `.upload_adt_file(target_container: ContainerModel|str, file_path: pathlib.Path|str, name: str, granularity: Granularity, format_: AnalyticDatasetFormat, dataset_release_id: str = None) -> AnalyticDatasetModel`
+Upload a local document file into E360 workspaces.
+Returns an instance of `AnalyticDatasetModel` for the newly created report.
+
+>Args:
+>- _target_container_: The id of the container the ADT asset is created in, or an instance of iqvia_360.ContainerAssetModel
+>- _file_path_: The path to report that will be uploaded
+>- _name_: The asset name for the uploaded report
+>- _granularity_: The granularity of the data. Values can be selected from `iqvia_e360.Granularity`
+>- _format__: The format of the data uploaded. Values can be selected from `iqvia_e360.AnalyticDatasetFormat`
+>- _dataset_release_id_ (Optional): The dataset_release_id that should be associated with this data.
+
+
+### _method_ `.create_plotly_visualisation(self, vis_payload: dict, target_container: ContainerModel|str, name: str, description: str = "") -> AssetModel`
+Provided a plotly figure object, create an E360 visualisation.
+Returns an `AssetModel` for the newly created asset.
+
+>Args:
+>- vis_payload: A plotly figure object.
+>- _target_container_: The id of the container the visualisation asset is created in, or an instance of `ContainerAssetModel`
+>- _name_: The asset name for the uploaded visualisation
+>- _description_ (Optional): An asset description for the uploaded visualisation
+
+Example: create a simple Plotly object, and create a visualisation in the first container:
+```python
+import plotly.graph_objects as go
+from iqvia_e360 import E360Context
+
+context = E360Context.create_from_settings(...)
+containers = context.get_workspace_containers("Personal Workspace")
+
+fig = go.Figure(go.Scatter(x=[1, 2, 3], y=[1, 2, 3]))
+context.create_plotly_visualisation(fig, containers[0], "My Scatter Plot")
+```
+
+
+### _method_ `.create_plotly_visualisation_from_object(visualisation_obj: BaseVisualisation, target_container: ContainerModel|str, name: str, description: str = "") -> AssetModel`
+Create a visualisation using [`e360_charting`](https://pypi.org/project/e360-charting/) library, create an E360 visualisation.
+Returns an `AssetModel` for the newly created asset.
+
+>Args:
+>- visualisation_obj: A visualisation created using `e360_charting` lib.
+>- _target_container_: The id of the container the visualisation asset is created in, or an instance of `ContainerAssetModel`
+>- _name_: The asset name for the uploaded visualisation
+>- _description_ (Optional): An asset description for the uploaded visualisation
+
+Example: create a simple Visualisation, and create a visualisation in the first container:
+```python
+from e360_charting import PieVisualisation
+from iqvia_e360 import E360Context
+
+context = E360Context.create_from_settings(...)
+containers = context.get_workspace_containers("Personal Workspace")
+
+vis = PieVisualisation(
+    report_title='My Pie Chart',
+    labels=['a', 'b', 'c'],
+    values=[33, 66, 1],
+)
+context.create_plotly_visualisation(vis, containers[0], "My Scatter Plot")
+```
+
+
+## Models
+
+Models help keep E360 Assets organised and encapsulate their desired features.
+
+## _class_ `AssetModel`
+A model from `workspace_clients.AssetModel`, which is commonly used to store metadata to assets in the workspaces.
+
+
+## _class_ `ClientStoreAssetModel`
+Base class model, from which all other model classes inherit from.
+
+### _method_ `.delete(purge: bool = False) -> bool`
+Deletes the asset from the Workspaces. Set `purge` to `True` to delete any child assets.
+
+
+## _class_ `ContainerAssetModel(ClientStoreAssetModel)`
+Model class used to represent a Workspace container asset metadata; this can be a workspace or a folder.
+
+### _method_ `.upload_adt_file(file_path: pathlib.Path|str, name: str, granularity: Granularity, format_: AnalyticDatasetFormat, dataset_release_id: str = None) -> AnalyticDatasetModel`
+Uploads a tabular file as an ADT report asset file into container.
+Returns an instance of `AnalyticDatasetModel` for the newly created report.
+
+>Args:
+>- _file_path_: The path to report that will be uploaded
+>- _name_: The asset name for the uploaded report
+>- _granularity_: The granularity of the data. Values can be selected from `iqvia_e360.Granularity`
+>- _format__: The format of the data uploaded. Values can be selected from `iqvia_e360.AnalyticDatasetFormat`
+>- _dataset_release_id_ (Optional): The dataset_release_id that should be associated with this data.
+
+Example:
+```python
+container = ContainerAssetModel(...)
+my_adt = container.upload_adt_file('my_file.csv', 'My File', 'csv', 'patient')
+```
+
+### _method_ `.create_child_container(name: str, description: str = "") -> ContainerAssetModel`
+Creates a child container with mandatory `name` and an optional `description` as strings.
+On success returns an object instance of class `ContainerAssetModel`.
+
+### _method_ `.upload_document(file_path: pathlib.Path|str, name: str, description: str = "") -> AssetModel`
+Uploads a file document to the Container location. Must specify the `file_path` and `name` with optional `description` as strings.
+On success returns an object instance of class `AssetModel`.
+
+
+## _class_ `FileAssetModel(ClientStoreAssetModel)`
+Model class used to represent a File asset metadata.
+
+
+## _class_ `AdtDefinitionAssetModel(ClientStoreAssetModel)`
+Model class used to represent ADT definition asset metadata.
+
+
+## _class_ `AdtReportAssetModel(ClientStoreAssetModel)`
+Model class used to represent ADT report asset metadata.
+
+### _method_ `.download(location: pathlib.Path|str) -> pathlib.Path`
+Downloads the ADT report to the `location` path specified.
+
+
+# Support
+
+If you are having issues with using this library, please contact our E360 support team.
+
+
