@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: flask-mkdocs
+Version: 0.0.2
+Summary: UNKNOWN
+Home-page: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: flask
+Requires-Dist: mkdocs
+Requires-Dist: pymdown-extensions
+Requires-Dist: mkdocs-material
+Requires-Dist: mkdocstrings
+Requires-Dist: mkdocs-macros-plugin
+Requires-Dist: mkdocs-git-revision-date-plugin
+Requires-Dist: interrogate
+Requires-Dist: mkdocs-click
+Requires-Dist: mkdocs-include-markdown-plugin
+Requires-Dist: mkdocs-minify-plugin
+Requires-Dist: lightgallery
+Requires-Dist: mkdocs-diagrams
+Requires-Dist: mkdocs-exclude
+Requires-Dist: keepachangelog
+Requires-Dist: changelog-cli
+Requires-Dist: adr-viewer
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+
+UNKNOWN
+
