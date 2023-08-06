@@ -1,0 +1,20 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+parts:
+  - caption: User's Guide
+    chapters:
+    - file: installation
+    - file: usage
+    - file: api
+    - file: notebook
+    - file: authoring
+  - caption: Developer's Guide
+    chapters:
+{%- if cookiecutter.create_author_file == 'y' %}
+    - file: authors
+{%- endif %}
+    - file: contributing
+    - file: history
