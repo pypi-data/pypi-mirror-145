@@ -1,0 +1,38 @@
+repos:
+- repo: local
+  hooks:
+  - id: isort
+    name: Isort
+    stages: [commit]
+    language: system
+    entry: isort
+    types: [python]
+
+  - id: black
+    name: Black
+    stages: [commit]
+    language: system
+    entry: black
+    types: [python]
+
+  - id: flake8
+    name: Flake8
+    stages: [commit]
+    language: system
+    entry: flake8
+    types: [python]
+
+  - id: pylint
+    name: PyLint
+    stages: [commit]
+    language: system
+    entry: pylint --rcfile=.pylintrc
+    files: \.py$
+
+  - id: sphinx-build
+    name: Build Sphinx Doc
+    stages: [push]
+    entry: make doc
+    language: system
+    files: ^(docs/.*|demcompare/.*)$
+    pass_filenames: False
