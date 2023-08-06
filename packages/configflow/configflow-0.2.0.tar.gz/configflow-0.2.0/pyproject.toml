@@ -1,0 +1,201 @@
+[tool.poetry]
+name = "configflow"
+version = "0.2.0"
+description = "configflow - is the configuration management library for Python."
+license = "BSD-3-Clause"
+authors = [
+    "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
+]
+maintainers = [
+    "Volodymyr Pivoshenko <volodymyr.pivoshenko@gmail.com>",
+]
+keywords = [
+    "configuration",
+    "config",
+    "setup",
+    "settings",
+    "environment",
+    "management",
+    "pydantic",
+    "python",
+]
+homepage = "https://configflow.readthedocs.io/en/latest"
+documentation = "https://configflow.readthedocs.io/en/latest"
+repository = "https://github.com/volodymyrPivoshenko/configflow"
+readme = "README.md"
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Environment :: Other Environment",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering",
+    "Natural Language :: English",
+]
+packages = [
+    { include = "configflow", from = "src" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.10"
+# data types
+pydantic = "^1.9.0"
+# file types
+PyYAML = "^6.0.0"
+python-dotenv = "^0.19.2"
+toml = "^0.10.2"
+# utils
+awesome-pattern-matching = "^0.24.2"
+typing-extensions = "^4.1.1"
+
+[tool.poetry.dev-dependencies]
+# formatters
+isort = "^5.10.1"
+black = "^22.1"
+# linters
+wemake-python-styleguide = "^0.16.0"
+safety = "^1.10.3"
+mypy = "^0.931"
+# flake8 extensions
+pyproject-flake8 = "^0.0.1-alpha.2"
+# mypy stubs
+types-toml = "^0.10.4"
+types-PyYAML = "^6.0.4"
+# tests
+tox = "^3.24.5"
+pytest = "^7.1.1"
+xdoctest = "^0.15.10"
+# tox extensions
+tox-conda = "^0.9.2"
+# pytest extensions
+pytest-datafiles = "^2.0"
+pytest-lazy-fixture = "^0.6.3"
+pytest-mock = "^3.7.0"
+pytest-randomly = "^3.11.0"
+pytest-cov = "^3.0.0"
+pytest-sugar = "^0.9.4"
+coverage = { extras = ["toml"], version = "^6.3.1" }
+# documentation
+Sphinx = "^4.4.0"
+sphinx-rtd-theme = "^1.0.0"
+# sphinx extensions
+# file types
+lxml = "^4.8.0"
+# github
+pre-commit = "^2.17.0"
+# versioning
+python-semantic-release = "^7.25.0"
+# utils
+deepdiff = "^5.7.0"
+# repl
+ipython = "^7.31.1"
+
+[tool.semantic_release]
+branch = "main"
+changelog_file = "CHANGELOG.md"
+build_command = "poetry build"
+dist_path = "dist"
+upload_to_repository = false
+upload_to_release = true
+remove_dist = false
+version_toml = "pyproject.toml:tool.poetry.version"
+version_variable = [
+    "src/configflow/__init__.py:__version__",
+    "docs/conf.py:release"
+]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+lines_after_imports = 2
+lines_between_types = 1
+atomic = false
+color_output = true
+force_single_line = true
+length_sort_straight = true
+include_trailing_comma = false
+force_alphabetical_sort_within_sections = true
+
+[tool.black]
+line-length = 100
+target-version = [
+    "py37",
+    "py38",
+    "py39"
+]
+include = '\.pyi?$'
+
+[tool.flake8]
+max-line-length = 100
+max-cognitive-average = 25
+max-cognitive-score = 25
+max-line-complexity = 20
+max-local-variables = 7
+inline-quotes = '"'
+docstring_style = "numpy"
+exclude = [
+    "__init__.py",
+]
+per-file-ignores = [
+    "tests/*:S101,WPS122,WPS221,WPS226,WPS323",
+]
+# S101 - asserts are the only way of checking conditions in tests
+# WPS122 - assigning to the _ is used for empty calls
+# WPS221 - high complexity is fine for the parameterized tests
+# WPS226 - duplicate strings are fine for literals in tests
+# WPS323 - % string is used in the logger default configuration
+extend-ignore = [
+    "D202", "DAR101", "DAR201", "DAR401", "DAR402",
+    "WPS110",
+    "WPS348",
+    "WPS437",
+]
+# D202 - code is hard to read without a blank line after a docstring
+# DAR101, DAR201, DAR401, DAR402 - there's no sense to put all sections in docstrings
+# WPS110 - most of the wrong names are used in the abstract context
+# WPS348 - chaining is a good option for multiline methods calls
+# WPS437 - some classes don't have public attributes that we need
+
+[tool.mypy]
+python_version = "3.9"
+warn_unused_configs = true
+ignore_missing_imports = true
+show_error_codes = true
+files = [
+    "src",
+]
+
+[[tool.mypy.overrides]]
+module = "*.conftest.py"
+ignore_errors = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-l -vv --xdoc --color=yes --cov=src --cov-report=term-missing"
+testpaths = [
+    "src",
+    "tests",
+]
+
+[tool.coverage.run]
+omit = [
+    ".tox",
+    "*/__init__.py",
+    "*/enums.py",
+]
+
+[tool.poetry.build]
+generate-setup-file = false
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
