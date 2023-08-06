@@ -1,0 +1,153 @@
+Metadata-Version: 2.1
+Name: Mopidy-Podcast-iTunes
+Version: 3.0.1
+Summary: Mopidy extension for searching and browsing podcasts on the Apple iTunes Store
+Home-page: https://github.com/tkem/mopidy-podcast-itunes
+Author: Thomas Kemmer
+Author-email: tkemmer@computer.org
+License: Apache License, Version 2.0
+Platform: UNKNOWN
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Multimedia :: Sound/Audio :: Players
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: Mopidy (>=3.0.0)
+Requires-Dist: Mopidy-Podcast (>=3.0.0)
+Requires-Dist: Pykka (>=2.0.1)
+Requires-Dist: requests (>=2.0)
+Requires-Dist: setuptools
+Provides-Extra: dev
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: check-manifest ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: flake8-black ; extra == 'dev'
+Requires-Dist: flake8-bugbear ; extra == 'dev'
+Requires-Dist: flake8-import-order ; extra == 'dev'
+Requires-Dist: isort[pyproject] ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: responses ; extra == 'dev'
+Provides-Extra: lint
+Requires-Dist: black ; extra == 'lint'
+Requires-Dist: check-manifest ; extra == 'lint'
+Requires-Dist: flake8 ; extra == 'lint'
+Requires-Dist: flake8-black ; extra == 'lint'
+Requires-Dist: flake8-bugbear ; extra == 'lint'
+Requires-Dist: flake8-import-order ; extra == 'lint'
+Requires-Dist: isort[pyproject] ; extra == 'lint'
+Provides-Extra: release
+Requires-Dist: twine ; extra == 'release'
+Requires-Dist: wheel ; extra == 'release'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: responses ; extra == 'test'
+
+*********************
+Mopidy-Podcast-iTunes
+*********************
+
+.. image:: https://img.shields.io/pypi/v/Mopidy-Podcast-iTunes
+    :target: https://pypi.org/project/Mopidy-Podcast-iTunes/
+    :alt: Latest PyPI version
+
+.. image:: https://img.shields.io/github/workflow/status/tkem/mopidy-podcast-itunes/CI
+    :target: https://github.com/tkem/mopidy-podcast-itunes/actions
+    :alt: CI build status
+
+.. image:: https://img.shields.io/codecov/c/gh/tkem/mopidy-podcast-itunes
+    :target: https://codecov.io/gh/tkem/mopidy-podcast-itunes
+    :alt: Test coverage
+
+.. image:: https://img.shields.io/github/license/tkem/mopidy-podcast-itunes
+   :target: https://raw.github.com/tkem/mopidy-podcast-itunes/master/LICENSE
+   :alt: License
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: black
+
+Mopidy-Podcast-iTunes is a Mopidy_ extension for searching and
+browsing podcasts on the `Apple iTunes Store
+<https://itunes.apple.com/genre/podcasts/id26>`_.
+
+.. _Mopidy: http://www.mopidy.com/
+
+
+Installation
+============
+
+On Debian Linux and Debian-based distributions like Ubuntu or
+Raspbian, install the ``mopidy-podcast-itunes`` package from
+apt.mopidy.com_::
+
+  apt-get install mopidy-podcast-itunes
+
+Otherwise, install the Python package from PyPI_::
+
+  pip install Mopidy-Podcast-iTunes
+
+.. _apt.mopidy.com: http://apt.mopidy.com/
+.. _PyPI: https://pypi.python.org/pypi/Mopidy-Podcast-iTunes/
+
+
+Configuration
+=============
+
+The following configuration values are available:
+
+- ``podcast-itunes/enabled``: Whether this extension should be enabled
+  or not.  Defaults to ``true``.
+
+- ``podcast-itunes/base_url``: The base URL for the iTunes Store.
+  Defaults to ``http://itunes.apple.com/``.
+
+- ``podcast-itunes/country``: The ISO country code for the store to be
+  used.  Defaults to ``US``.
+
+- ``podcast-itunes/explicit``: Whether search results should include
+  explicit content.  Can be set to ``Yes``, ``No``, or left empty to
+  use the store's default.
+
+- ``podcast-itunes/charts``: One of ``podcasts``, ``audioPodcasts`` or
+  ``videoPodcasts``.  Defaults to ``audioPodcasts``.
+
+- ``podcast-itunes/charts_limit``: The maximum number of charts
+  entries to retrieve.  Defaults to ``20``.
+
+- ``podcast-itunes/search_limit``: The maximum number of search
+  results to retrieve.  Defaults to ``20``.
+
+- ``podcast-itunes/timeout``: The HTTP request timeout in seconds when
+  connecting to the iTunes Store.  Defaults to ``10``.
+
+- ``podcast-itunes/retries``: The maximum number of HTTP connection
+  retries when connecting to the iTunes Store.  Defaults to ``3``.
+
+
+Project Resources
+=================
+
+- `Source code <https://github.com/tkem/mopidy-podcast-itunes>`_
+- `Issue tracker <https://github.com/tkem/mopidy-podcast-itunes/issues>`_
+- `Changelog <https://github.com/tkem/mopidy-podcast-itunes/blob/master/CHANGELOG.rst>`_
+
+
+Credits
+=======
+
+- Original author: `Thomas Kemmer <https://github.com/tkem>`__
+- Current maintainer: `Thomas Kemmer <https://github.com/tkem>`__
+- `Contributors <https://github.com/tkem/mopidy-podcast-itunes/graphs/contributors>`_
+
+
