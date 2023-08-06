@@ -1,0 +1,4 @@
+[nautobot.workers]
+clear=nautobot_chatops.workers.clear:clear
+nautobot=nautobot_chatops.workers.nautobot:nautobot
+
