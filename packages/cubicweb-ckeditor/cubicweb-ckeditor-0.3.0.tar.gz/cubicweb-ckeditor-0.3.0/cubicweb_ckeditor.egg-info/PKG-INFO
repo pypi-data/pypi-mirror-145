@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: cubicweb-ckeditor
+Version: 0.3.0
+Summary: WYSIWYG js editor with ckeditor
+Home-page: https://forge.extranet.logilab.fr/cubicweb/cubes/cubicweb-ckeditor
+Author: LOGILAB S.A. (Paris, FRANCE)
+Author-email: contact@logilab.fr
+License: LGPL
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: CubicWeb
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: JavaScript
+
+Summary
+-------
+WYSIWYG js editor with ckeditor
+
+
+If don't want to use ckeditor from //cdn set following variables in
+uiprops of your main cube:
+
+  CKEDITOR_URL = data('ckeditor/ckeditor.js')
+  CKEDITOR_BASEPATH = data('ckeditor/')
+
+
