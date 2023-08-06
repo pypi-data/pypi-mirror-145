@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "arkive"
+version = "0.3.0"
+description = "Manage your music/audio collections."
+authors = ["Orlando Ospino Sánchez <oroschz@outlook.com>"]
+license = "MIT"
+repository = "https://github.com/oroschz/arkive"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pathvalidate = "^2.3.2"
+tinytag = "^1.5.0"
+beautifultable = "^1.0.1"
+wcwidth = "^0.2.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+arkive = "arkive.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
