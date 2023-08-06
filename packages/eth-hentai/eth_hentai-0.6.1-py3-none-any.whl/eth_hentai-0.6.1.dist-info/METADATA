@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: eth-hentai
+Version: 0.6.1
+Summary: Common Ethereum smart contracts, and related utilities, for developing automated test suites, backend integration and trading bots for EVM based blockchains.
+Home-page: https://tradingstrategy.ai
+License: MIT
+Keywords: ethereum,cryptocurrency,uniswap,erc-20,pancakeswap,sushiswap,polygon,web3,blockchain
+Author: Mikko Ohtamaa
+Author-email: mikko@capitalgram.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: docs
+Requires-Dist: Sphinx (>=4.4.0,<5.0.0); extra == "docs"
+Requires-Dist: psutil (>=5.9.0,<6.0.0)
+Requires-Dist: sphinx-autodoc-typehints[docs] (>=1.16.0,<2.0.0); extra == "docs"
+Requires-Dist: sphinx-rtd-theme (>=1.0.0,<2.0.0); extra == "docs"
+Requires-Dist: sphinx-sitemap (>=2.2.0,<3.0.0); extra == "docs"
+Requires-Dist: web3[tester] (>=5.26.0,<6.0.0)
+Project-URL: Repository, https://github.com/tradingstrategy-ai/eth-hentai
+Description-Content-Type: text/markdown
+
+[This package has been renamed to Web3 Ethereum Defi](https://github.com/tradingstrategy-ai/web3-ethereum-defi).
+
+
