@@ -1,0 +1,258 @@
+{
+  "$id": "https://solaris-france.org/nono#",
+  "type": "object",
+  "$comment": "automatically generated for NonoSolaris",
+  "$defs": {
+    "AddressBook": {
+      "type": "object",
+      "readOnly": [
+        "build_ed_dir",
+        "edition_fp",
+        "pages_dir",
+        "index_fp",
+        "forms_updated_dir"
+      ],
+      "primaryKeys": [
+        "edition"
+      ],
+      "notSerialized": [
+        "pages_dir",
+        "index_fp",
+        "forms_updated_dir"
+      ],
+      "required": [
+        "cell"
+      ],
+      "properties": {
+        "cell": {
+          "$ref": "#/$defs/cells/$defs/Cell"
+        },
+        "edition": {
+          "type": "string",
+          "default": "{{ today.isoformat() }}"
+        },
+        "edition_fmt": {
+          "type": "string",
+          "default": "{{ today.strftime(\"%d/%m/%Y\") }}"
+        },
+        "build_ed_dir": {
+          "type": "path",
+          "default": "{{ this.cell.build_dir }}/{{ this.edition }}"
+        },
+        "edition_fp": {
+          "type": "path",
+          "default": "{{ this.build_ed_dir }}/{{settings.ADDR_BOOK_PREFIX}}-{{ this.cell.cell_id|transliterate|lower }}-{{ this.edition }}.pdf"
+        },
+        "pages_dir": {
+          "type": "path",
+          "default": "{{ this.build_ed_dir }}/{{ settings.PAGES_DIRNAME }}"
+        },
+        "index_fp": {
+          "type": "path",
+          "default": "{{ this.build_ed_dir }}/index.pdf"
+        },
+        "forms_updated_dir": {
+          "type": "path",
+          "default": "{{ this.build_ed_dir }}/{{ settings.FORMS_DIRNAME }}"
+        }
+      }
+    },
+    "personas": {
+      "type": "object",
+      "$defs": {
+        "Member": {
+          "type": "object",
+          "readOnly": [
+            "last_name_upper",
+            "city_upper",
+            "email_link",
+            "telegram_id_link"
+          ],
+          "notSerialized": [
+            "male_check",
+            "female_check",
+            "index_entry",
+            "index_city_entry",
+            "page_filename",
+            "form_orig_filepath",
+            "form_updated_filepath",
+            "last_name_upper",
+            "city_upper"
+          ],
+          "properties": {
+            "last_name": {
+              "type": "string"
+            },
+            "first_name": {
+              "type": "string"
+            },
+            "male_check": {
+              "type": "boolean"
+            },
+            "female_check": {
+              "type": "boolean"
+            },
+            "gender": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "birth_year": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "telegram_id": {
+              "type": "string"
+            },
+            "last_name_upper": {
+              "type": "string",
+              "default": "{{this.last_name|upper}}"
+            },
+            "city_upper": {
+              "type": "string",
+              "default": "{{this.city|upper}}"
+            },
+            "title": {
+              "type": "string"
+            },
+            "index_entry": {
+              "type": "string"
+            },
+            "index_city_entry": {
+              "type": "string"
+            },
+            "email_link": {
+              "type": "string",
+              "default": "mailto:{{this.email}}"
+            },
+            "telegram_id_link": {
+              "type": "string",
+              "default": "https://t.me/{{this.telegram_id}}"
+            },
+            "page_filename": {
+              "type": "string"
+            },
+            "form_orig_filepath": {
+              "type": "string"
+            },
+            "form_updated_filepath": {
+              "type": "string"
+            }
+          }
+        },
+        "Coordinator": {
+          "type": "object",
+          "extends": [
+            "#/$defs/personas/$defs/Member"
+          ]
+        },
+        "Administrator": {
+          "type": "object",
+          "extends": [
+            "#/$defs/personas/$defs/Member"
+          ]
+        }
+      }
+    },
+    "cells": {
+      "type": "object",
+      "$defs": {
+        "Cell": {
+          "type": "object",
+          "readOnly": [
+            "build_dir",
+            "member_dir"
+          ],
+          "primaryKeys": [
+            "cell_id"
+          ],
+          "notSerialized": [
+            "build_dir",
+            "member_dir",
+            "members"
+          ],
+          "required": [
+            "cell_id"
+          ],
+          "properties": {
+            "cell_id": {
+              "type": "string"
+            },
+            "cell_dir": {
+              "type": "path",
+              "resolve": true,
+              "expandUser": true,
+              "default": "."
+            },
+            "build_dir": {
+              "type": "path",
+              "default": "{{ this.cell_dir }}/{{ settings.BUILD_DIRNAME }}"
+            },
+            "member_dir": {
+              "type": "path",
+              "default": "{{ this.cell_dir }}/{{ settings.MEMBER_DIRNAME }}"
+            },
+            "members": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/personas/$defs/Member"
+              }
+            },
+            "admins": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/personas/$defs/Administrator"
+              }
+            },
+            "coordinators": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/personas/$defs/Coordinator"
+              }
+            },
+            "email": {
+              "type": "string"
+            },
+            "telegram_channel": {
+              "type": "string"
+            },
+            "telegram_groups": {
+              "type": "array"
+            }
+          }
+        },
+        "RegionCell": {
+          "type": "object",
+          "extends": [
+            "#/$defs/cells/$defs/Cell"
+          ],
+          "properties": {
+            "cells": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/cells/$defs/Cell"
+              }
+            }
+          }
+        },
+        "NationCell": {
+          "type": "object",
+          "extends": [
+            "#/$defs/cells/$defs/RegionCell"
+          ],
+          "properties": {
+            "cells": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/cells/$defs/RegionCell"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

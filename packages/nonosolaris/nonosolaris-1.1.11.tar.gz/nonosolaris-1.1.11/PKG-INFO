@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: nonosolaris
+Version: 1.1.11
+Summary: Nono, le petit robot d'assistance a l'entraide humaine
+Home-page: https://github.com/numengo/python-nonosolaris
+Author: Cedric ROMAN
+Author-email: roman@numengo.com
+License: GNU General Public License v3
+Keywords: solaris,nono, contact book, annuaire, telegram
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Utilities
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+========
+Overview
+========
+
+
+
+Nono, le petit robot d'assistance a l entraide humaine.
+
+NonoSolaris permet de compiler les annuaires des cellules Solaris qui le souhaitent.
+Un référent collecte les formulaires remplis par les membres (disponible
+`ici <https://raw.githubusercontent.com/numengo/python-nonosolaris/main/nonosolaris/templates/formulaire_annuaire_v1.0.pdf>`__)
+, les copie dans un repertoire, et NonoSolaris génèrera un annuaire mis en forme, daté et indexé.
+Ce référent peut ensuite imprimer 3 exemplaires papiers identiques et les remettre aux 3 référents.
+
+Il est possible d actionner NonoSolaris sur une clé usb stockant les fiches des membres et
+déconnectée du réseau, pour le temps de l opération.
+
+.. figure:: nono.jpg
+   :scale: 50 %
+   :alt: Salut! c est moi! Nono!
+
+   Cadeau de la cellule Solaris Hayet 64. Fait bénévolement, dans le seul objectif d'être utile.
+
+
+
+* Free software: GNU General Public License v3
+
+
+
+Changelog
+=========
+
+0.1.0 (2022-03-18)
+------------------
+
+* First release on PyPI.
+
+
