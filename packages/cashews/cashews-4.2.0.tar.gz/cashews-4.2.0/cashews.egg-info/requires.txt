@@ -1,0 +1,15 @@
+
+[diskcache]
+diskcache>=5.0.0
+
+[redis]
+aioredis<3.0.0
+
+[speedup]
+bitarray<3.0.0
+xxhash<3.0.0
+hiredis
+
+[tests]
+pytest
+pytest-asyncio
