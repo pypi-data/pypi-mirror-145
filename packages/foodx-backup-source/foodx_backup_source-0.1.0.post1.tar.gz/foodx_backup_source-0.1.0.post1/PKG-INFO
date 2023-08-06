@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: foodx_backup_source
+Version: 0.1.0.post1
+Summary: A backup utility for FoodX source code.
+Home-page: https://github.com/Food-X-Technologies/foodx_backup_source/
+Author: FoodX Technologies
+Author-email: support@foodxtech.com
+Requires-Python: >=3.8
+Description-Content-Type: text/x-rst
+Requires-Dist: aiofiles ~=0.8.0
+Requires-Dist: aiohttp ~=3.8.1
+Requires-Dist: click ~=8.1.2
+Requires-Dist: deepmerge ~=1.0.1
+Requires-Dist: gitpython ~=3.1.27
+Requires-Dist: pydantic ~=1.9.0
+Requires-Dist: ruamel.yaml ~=0.17.20
+Requires-Dist: build_harness ~=1.0.1 ; extra == "dev"
+Requires-Dist: pre_commit ~=2.17.0 ; extra == "dev"
+Requires-Dist: types-aiofiles ~=0.8.3 ; extra == "dev"
+Requires-Dist: sphinx ~=4.5.0 ; extra == "doc"
+Requires-Dist: sphinx_rtd_theme ~=1.0 ; extra == "doc"
+Requires-Dist: pytest ~=7.1.1 ; extra == "test"
+Requires-Dist: pytest-asyncio ~=0.18.3 ; extra == "test"
+Requires-Dist: pytest-cov ~=3.0 ; extra == "test"
+Requires-Dist: pytest-mock ~=3.7.0 ; extra == "test"
+Provides-Extra: dev
+Provides-Extra: doc
+Provides-Extra: test
+
+foodx_backup_source
+===================
+
+Snapshot git repositories and package up into a verifiable package.
+
+.. contents::
+
+.. section-numbering::
+
+
+Installation
+------------
+
+The ``foodx_backup_source`` package is available from PyPI. Installing into a virtual
+environment is recommended.
+
+.. code-block::
+
+   python3 -m venv .venv; .venv/bin/pip install foodx-backup-source
+
