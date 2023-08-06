@@ -1,0 +1,57 @@
+[tool.poetry]
+name = "robocorp-dialog"
+version = "0.5.1"
+description = "Dialog for querying user input"
+authors = [
+	"Ossi Rajuvaara <ossi@robocorp.com>",
+]
+license = "LICENSE"
+readme = "README.md"
+
+homepage = "https://rpaframework.org/"
+documentation = "https://rpaframework.org/"
+repository = "https://github.com/robocorp/rpaframework"
+
+packages = [
+	{ include = "robocorp_dialog" }
+]
+include = [
+    "robocorp_dialog/static/**/*",
+    "robocorp_dialog/Dialog/**/*",
+    "robocorp_dialog/Dialog.app/**/*",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6.2"
+pywebview = { version = "^3.5", platform = "linux" }
+PyQt5 = {version = "^5.15.2", platform = "linux"}
+PyQtWebEngine = {version = "^5.15.2", platform = "linux"}
+
+[tool.poetry.dev-dependencies]
+pywebview = "^3.5"
+pyobjc-core = { version = ">=7.0,<8.0", platform = "darwin" }
+pyobjc-framework-cocoa = { version = ">=7.0,<8.0", platform = "darwin" }
+pyobjc-framework-webkit = { version = ">=7.0,<8.0", platform = "darwin" }
+black = {version = "^21.5b0", allow-prereleases = true}
+pylint = "^2.6.0"
+flake8 = "^3.8.4"
+pytest = "^6.2.1"
+setuptools = "^51.1.2"
+PyYAML = "^5.4.1"
+mypy = "^0.800"
+pytest-cov = "^2.11.1"
+pyinstaller = "^4.3"
+
+[tool.poetry.scripts]
+robocorp-dialog = "robocorp_dialog.main:main"
+
+[tool.black]
+target-version = ["py36", "py37", "py38", "py39"]
+
+[build-system]
+requires = ["poetry>=1.1.4"]
+build-backend = "poetry.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=robocorp_dialog --cov-report term-missing --cov-branch"
+testpaths = ["tests"]
