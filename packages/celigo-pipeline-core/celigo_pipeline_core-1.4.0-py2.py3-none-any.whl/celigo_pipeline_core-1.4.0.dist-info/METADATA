@@ -1,0 +1,89 @@
+Metadata-Version: 2.1
+Name: celigo-pipeline-core
+Version: 1.4.0
+Summary: Core algorithms for running Celigo pipeline
+Home-page: https://github.com/aics-int/Celigo-Code-Record
+Author: Brian Whitney
+Author-email: brian.whitney@alleninstitute.org
+License: Allen Institute Software License
+Keywords: celigo_pipeline_core
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: Free for non-commercial use
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: aicsimageio[czi] (~=4.4)
+Requires-Dist: numpy (~=1.21)
+Requires-Dist: scikit-image (~=0.18)
+Provides-Extra: all
+Requires-Dist: Sphinx (~=4.1.2) ; extra == 'all'
+Requires-Dist: aicsimageio[czi] (~=4.4) ; extra == 'all'
+Requires-Dist: black ; extra == 'all'
+Requires-Dist: bump2version (~=1.0.1) ; extra == 'all'
+Requires-Dist: flake8 (~=3.9) ; extra == 'all'
+Requires-Dist: furo (==2021.8.17b43) ; extra == 'all'
+Requires-Dist: isort (~=5.9) ; extra == 'all'
+Requires-Dist: m2r2 (~=0.3.1) ; extra == 'all'
+Requires-Dist: mypy (~=0.910) ; extra == 'all'
+Requires-Dist: numpy (~=1.21) ; extra == 'all'
+Requires-Dist: pre-commit (~=2.13) ; extra == 'all'
+Requires-Dist: pytest-cov (~=2.12) ; extra == 'all'
+Requires-Dist: pytest-raises (~=0.11) ; extra == 'all'
+Requires-Dist: pytest-runner (~=5.2) ; extra == 'all'
+Requires-Dist: pytest-runner (~=5.3) ; extra == 'all'
+Requires-Dist: pytest (~=6.2) ; extra == 'all'
+Requires-Dist: scikit-image (~=0.18) ; extra == 'all'
+Requires-Dist: twine (~=3.4.2) ; extra == 'all'
+Requires-Dist: wheel (~=0.37.0) ; extra == 'all'
+Provides-Extra: dev
+Requires-Dist: Sphinx (~=4.1.2) ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: bump2version (~=1.0.1) ; extra == 'dev'
+Requires-Dist: flake8 (~=3.9) ; extra == 'dev'
+Requires-Dist: furo (==2021.8.17b43) ; extra == 'dev'
+Requires-Dist: isort (~=5.9) ; extra == 'dev'
+Requires-Dist: m2r2 (~=0.3.1) ; extra == 'dev'
+Requires-Dist: mypy (~=0.910) ; extra == 'dev'
+Requires-Dist: pre-commit (~=2.13) ; extra == 'dev'
+Requires-Dist: pytest-cov (~=2.12) ; extra == 'dev'
+Requires-Dist: pytest-raises (~=0.11) ; extra == 'dev'
+Requires-Dist: pytest-runner (~=5.2) ; extra == 'dev'
+Requires-Dist: pytest-runner (~=5.3) ; extra == 'dev'
+Requires-Dist: pytest (~=6.2) ; extra == 'dev'
+Requires-Dist: twine (~=3.4.2) ; extra == 'dev'
+Requires-Dist: wheel (~=0.37.0) ; extra == 'dev'
+Provides-Extra: setup
+Requires-Dist: black ; extra == 'setup'
+Requires-Dist: flake8 (~=3.9) ; extra == 'setup'
+Requires-Dist: isort (~=5.9) ; extra == 'setup'
+Requires-Dist: mypy (~=0.910) ; extra == 'setup'
+Requires-Dist: pre-commit (~=2.13) ; extra == 'setup'
+Requires-Dist: pytest-runner (~=5.2) ; extra == 'setup'
+Provides-Extra: test
+Requires-Dist: pytest-cov (~=2.12) ; extra == 'test'
+Requires-Dist: pytest-raises (~=0.11) ; extra == 'test'
+Requires-Dist: pytest-runner (~=5.3) ; extra == 'test'
+Requires-Dist: pytest (~=6.2) ; extra == 'test'
+
+# Blank
+
+    This package provides utility functions for the Celigo pipeline to prepare single images for:
+
+    1) Ilastik Processing
+
+    2) Cell Profiler Processing
+
+## Legal documents
+
+- [License](LICENSE.txt) _(Before you release the project publicly please check with your manager to ensure the license is appropriate and has been run through legal review as necessary.)_
+- [Contribution Agreement](CONTRIBUTING.md) _(Additionally update the contribution agreement to reflect
+the level of contribution you are expecting, and the level of support you intend to provide.)_
+=======
+# Celigo-Code-Record
+temporary record of files
+
+
