@@ -1,0 +1,86 @@
+Metadata-Version: 2.1
+Name: svgen
+Version: 0.2.3
+Summary: A tool for working with scalable vector graphics.
+Home-page: https://github.com/vkottler/svgen
+Author: Vaughn Kottler
+Author-email: Vaughn Kottler <vaughnkottler@gmail.com>
+Maintainer-email: Vaughn Kottler <vaughnkottler@gmail.com>
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: test
+Requires-Dist: setuptools-wrapper ; extra == 'test'
+Requires-Dist: pylint ; extra == 'test'
+Requires-Dist: flake8 ; extra == 'test'
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: mypy ; extra == 'test'
+Requires-Dist: black ; extra == 'test'
+Requires-Dist: isort ; extra == 'test'
+
+<!--
+    =====================================
+    generator=datazen
+    version=2.1.0
+    hash=54be108b7f57c40867020e70ff237c2c
+    =====================================
+-->
+
+# svgen ([0.2.3](https://pypi.org/project/svgen/))
+
+[![python](https://img.shields.io/pypi/pyversions/svgen.svg)](https://pypi.org/project/svgen/)
+![Build Status](https://github.com/vkottler/svgen/workflows/Python%20Package/badge.svg)
+[![codecov](https://codecov.io/gh/vkottler/svgen/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/vkottler/svgen)
+
+*A tool for working with scalable vector graphics.*
+
+# Command-line Options
+
+```
+$ ./venv3.8/bin/svgen -h
+
+usage: svgen [-h] [--version] [-v] [-C DIR] [-c CONFIG] [--height HEIGHT]
+             [--width WIDTH] [-o OUTPUT]
+             [scripts [scripts ...]]
+
+A tool for working with scalable vector graphics.
+
+positional arguments:
+  scripts               scripts to run for composing the SVG document (in
+                        order)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  -v, --verbose         set to increase logging verbosity
+  -C DIR, --dir DIR     execute from a specific directory
+  -c CONFIG, --config CONFIG
+                        top-level configuration to load (default:
+                        'svgen.json')
+  --height HEIGHT       height of the document, if not specified by
+                        configuration (default: 100)
+  --width WIDTH         width of the document, if not specified by
+                        configuration (default: 100)
+  -o OUTPUT, --output OUTPUT
+                        file to write SVG output (default: 'svgen.svg')
+
+```
+
+# Internal Dependency Graph
+
+A coarse view of the internal structure and scale of
+`svgen`'s source.
+Generated using [pydeps](https://github.com/thebjorn/pydeps) (via
+`mk python-deps`).
+
+![svgen's Dependency Graph](im/pydeps.svg)
+
+
