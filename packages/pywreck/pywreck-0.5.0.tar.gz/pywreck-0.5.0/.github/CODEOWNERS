@@ -1,0 +1,7 @@
+*   @a-feld
+
+# No code owners required for dependency updates
+tests/requirements-*.txt
+
+# No code owners required for github actions updates
+.github/workflows/*.yml
