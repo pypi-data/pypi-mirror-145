@@ -1,0 +1,44 @@
+{% extends 'projects/project_base.html' %}
+
+{% block title %} Evaliation metric list {% endblock %}
+
+{% block nav2 %}
+<a href="{{ url_for('feature_matrices.list', project_id=project.project_id) }}"> Back to feature matrix list </a>
+{% endblock %}
+
+{% block content2 %}
+<h2> Evaluation metrics </h2>
+<table id="evaluation_metrics" class="stripe hover row-border order-column cell-border">
+  <thead>
+    <tr>
+      <th>Metric ID</th>
+      <th>Name</th>
+      <th>Script</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i, row in metric_df.iterrows() %}
+      <tr>
+        <td>{{ row["metric_id"] }}</td>
+        <td>{{ row["metric_name"] }}</td>
+        <td><pre>{{ row["script"] }}</pre></td>
+      </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+{% block scripts2 %}
+  <script>
+    $(document).ready(function () {
+      $('#evaluation_metrics').DataTable({
+        columns: [
+            {className: 'dt-right'},
+            {className: 'dt-right'},
+            {className: 'dt-left'}
+        ],
+      });
+    });
+  </script>
+{% endblock %}
+
