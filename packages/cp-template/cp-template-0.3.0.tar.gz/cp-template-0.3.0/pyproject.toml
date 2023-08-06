@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "cp-template"
+version = "0.3.0"
+description = "A tool to copy templated directories"
+authors = ["Olivier Breuleux <breuleux@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/breuleux/cp-template"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+coleo = "^0.3.0"
+pystache = "^0.6.0"
+
+[tool.poetry.dev-dependencies]
+black = "^21.10b0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+cp-template = 'cp_template:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
