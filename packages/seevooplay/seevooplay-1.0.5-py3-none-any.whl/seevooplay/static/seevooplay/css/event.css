@@ -1,0 +1,191 @@
+#seevooplay {
+  font-size: 1.2rem;
+  margin: 0 auto;
+  max-width: 65rem;
+}
+#seevooplay h1 {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+#seevooplay h2 {
+  font-size: 1.75rem;
+  font-weight: normal;
+  letter-spacing: .5rem;
+  padding-left: .5rem;
+}
+#seevooplay h3 {
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  font-weight: normal;
+  margin-top: 2rem;
+  position: relative;
+}
+#seevooplay h3::before,
+#seevooplay h3::after {
+  border-top: 2px dotted silver;
+  content: '';
+  position: absolute;
+  top: .75rem;
+  width: calc(50% - 5rem);
+}
+#seevooplay h3.yes::before,
+#seevooplay h3.yes::after { width: calc(50% - 3rem); }
+#seevooplay h3.maybe::before,
+#seevooplay h3.maybe::after { width: calc(50% - 4rem); }
+#seevooplay h3.no::before,
+#seevooplay h3.no::after { width: calc(50% - 2rem); }
+#seevooplay h3::before { left: 0; }
+#seevooplay h3::after { right: 0; }
+#seevooplay p { margin: 0 0 1.5rem; }
+
+#seevooplay .greeting {
+  font-size: 1.5rem;
+}
+#seevooplay .event-image {
+  text-align: center;
+}
+#seevooplay .event-image img {
+  margin-bottom: 2rem;
+  max-width: 300px;
+}
+
+#seevooplay .event-details tr {
+  vertical-align: top;
+}
+#seevooplay .event-details td {
+  padding: .5rem 0;
+}
+#seevooplay .event-details td:first-child {
+  padding-right: 1rem;
+}
+
+#seevooplay ul.messages {
+  clear: both;
+  font-size: 2rem;
+  font-style: italic;
+  list-style: none;
+  margin: 3rem 0;
+  padding: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  #seevooplay .event-image img {
+    float: left;
+    margin: 0 3rem 1rem 0;
+  }
+  #seevooplay .bottom-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  #seevooplay .reply-form,
+  #seevooplay .replies {
+    width: 50%;
+  }
+  #seevooplay .reply-form {
+    border-right: 2px dotted silver;
+    padding-right: 2rem;
+  }
+  #seevooplay .replies {
+    padding-left: 2rem;
+  }
+}
+
+#seevooplay .bottom-container {
+  clear: both;
+  margin-top: 2rem;
+}
+
+#seevooplay .reply-form,
+#seevooplay .replies {
+  text-align: center;
+}
+#seevooplay .reply-form {
+  margin-bottom: 3rem;
+}
+#seevooplay .replies ul {
+  padding: 0;
+}
+#seevooplay .replies li {
+  font-size: 1rem;
+  line-height: 1.5;
+  list-style: none;
+  margin-top: .75rem;
+}
+#seevooplay .replycount div {
+  display: inline;
+  line-height: 1.5;
+  margin-right: 1.5rem;
+  white-space: nowrap;
+}
+#seevooplay .replycount .yes {
+  color: green;
+}
+#seevooplay .replycount .maybe {
+  color: orange;
+}
+#seevooplay .replycount .no {
+  color: red;
+}
+#seevooplay .replycount .none {
+  color: darkgrey;
+}
+#seevooplay .replies li div {
+  font-size: .8rem;
+}
+#seevooplay .replies li .spy {
+  font-style: italic;
+}
+
+#seevooplay .reply-form h2 {
+  letter-spacing: 2rem;
+  padding-left: 2rem;
+}
+#seevooplay .reply-form textarea {
+  font-size: 1rem;
+  margin-top: .5rem;
+}
+#seevooplay .reply-form input[type='submit'] {
+  font-size: 1.15rem;
+}
+#seevooplay .field-wrapper {
+  margin-bottom: 1.5rem;
+}
+#seevooplay .field-wrapper.status > label,
+#seevooplay .field-wrapper.comment label {
+  font-variant: small-caps;
+}
+#seevooplay .field-wrapper.status ul {
+  padding: 0;
+}
+#seevooplay .field-wrapper.status li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 .5rem;
+}
+#seevooplay .field-wrapper.extra_guests input {
+  width: 2rem;
+}
+#seevooplay .field-wrapper.comment label {
+  display: block;
+}
+
+#seevooplay ul.errorlist {
+  color: red;
+  font-size: 1rem;
+  font-variant: small-caps;
+  list-style: none;
+  margin-bottom: .25rem;
+  padding: 0;
+}
+
+#seevooplay .admin-link {
+  font-variant: small-caps;
+}
+
+#seevooplay footer {
+  font-size: .8rem;
+  font-style: italic;
+  margin: 3rem auto 4rem;
+  text-align: center;
+}
