@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "felucca-package-example"
+version = "0.1.0"
+description = ""
+authors = ["franalgaba <f.algaba@outlook.es>"]
+keywords = ["felucca"]
+packages = [ { include = "contracts" } ]
+include = ["contracts/*.cairo", "contracts/*/*.cairo"]
+
+[tool.poetry.dependencies]
+python = ">=3.7.2,<3.10"
+"starknet.py" = "^0.1.8-alpha.0"
+ecdsa = "^0.17.0"
+fastecdsa = "^2.2.3"
+sympy = "^1.10"
+cairo-nile = "^0.4.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+pytest-asyncio = "^0.18.2"
+black = {version = "^22.1.0", allow-prereleases = true}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
