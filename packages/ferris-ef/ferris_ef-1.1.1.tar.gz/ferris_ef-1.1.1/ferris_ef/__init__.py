@@ -1,0 +1,1 @@
+from .base import get_secret, get_param
