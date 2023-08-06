@@ -1,0 +1,41 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.embeddedpage"
+    >
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package="plone.dexterity" />
+  <include package="plone.restapi" />
+
+  <include package=".browser" />
+  <include file="upgrades.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.embeddedpage"
+      description="Installs the collective.embeddedpage add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.embeddedpage (uninstall)"
+      description="Uninstalls the collective.embeddedpage add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.embeddedpage-hiddenprofiles"
+      />
+
+  <adapter factory=".serializers.CustomSerializeToJson" />
+
+</configure>

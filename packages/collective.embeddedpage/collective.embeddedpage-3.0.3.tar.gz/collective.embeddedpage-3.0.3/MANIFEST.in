@@ -1,0 +1,10 @@
+graft src/collective
+graft docs
+include *.rst
+include *.png
+include *.jpeg
+include *.txt
+exclude Makefile
+exclude .Python
+exclude .flake8
+global-exclude *.pyc
