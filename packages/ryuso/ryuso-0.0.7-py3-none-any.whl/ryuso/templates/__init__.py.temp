@@ -1,0 +1,1 @@
+from {{ pkg_name }}.hooks import {{ ', '.join(hook_files) }}

@@ -1,0 +1,12 @@
+{% for h in hooks %}{% if hooks.get(h).get('reference').split('.')[-2] == current_parent %}
+
+def {{ h }}(data_pool: dict):
+    '''
+    {{ hooks.get(h).get('reference') }}
+    {{ hooks.get(h).get('description') }}
+    '''{% for arg in hooks.get(h).get('args') %}
+    {{ arg }} = data_pool.get('{{ arg }}'){% endfor %}
+    # YOUR CODE HERE
+    return data_pool
+
+{% endif %}{% endfor %}
