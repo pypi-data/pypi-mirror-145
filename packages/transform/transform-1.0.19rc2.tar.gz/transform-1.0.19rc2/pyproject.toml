@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "transform"
+version = "1.0.19.rc2"
+description = "Transform MQL Client Library"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.10"
+click = "7.1.2"
+aiohttp = "^3.8.1"
+pandas = "^1.4.1"
+PyYAML = "^6.0"
+requests = "^2.27.1"
+tabulate = "^0.8.9"
+update-checker = "^0.18.0"
+GitPython = "^3.1.27"
+transform-tools = "^1.0.2"
+arrow = "^1.2.2"
+log-symbols = "^0.0.14"
+
+[tool.poetry.scripts]
+mql = 'transform.cli.mql_cli:cli'
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+boto3 = "^1.21.32"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
