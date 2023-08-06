@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: non-api
+Version: 0.0.2
+Summary: Package to fetch data from Nordea
+Home-page: https://github.com/olundberg/non_api
+Author: Oscar Lundberg
+Author-email: lundberg.oscar@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/olundberg/non_api/archive/refs/tags/v_0.0.2.tar.gz
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+
+# non_api
+Api to interact with the Nordnet website
+
+# Development
+
+While in root of this project.
+```
+pip install -e .
+```
+This will install the package in editable mode.
+
+# Testing
+
+```
+pytest tests/ -s
+
+
