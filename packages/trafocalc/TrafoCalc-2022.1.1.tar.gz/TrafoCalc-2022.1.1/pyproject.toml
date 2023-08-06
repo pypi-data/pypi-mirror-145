@@ -1,0 +1,88 @@
+# Main package description
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 127
+
+[tool.coverage.report]
+exclude_lines = [
+    'if __name__ == "__main__":',
+]
+fail_under = 85
+
+[tool.coverage.run]
+branch = true
+omit = [
+    ".venv/*",
+]
+
+[tool.isort]
+line_length = 127
+case_sensitive = true
+profile = "black"
+
+[tool.mypy]
+show_error_codes = true
+strict = false
+ignore_missing_imports = true
+
+[tool.poetry]
+name = "TrafoCalc"
+version = "2022.1.1"
+description = "Python project with teaching and scientific projects for Transformer Design and Optimization."
+authors = [
+    "Tamás Orosz <orosz.tamas@yahoo.com>"
+]
+license = "Apache-2.0"
+packages = [
+    { include = "src" },
+    { include = "src/**/*.py" },
+]
+readme = "README.md"
+homepage = "https://github.com/tamasorosz/TrafoCalc"
+repository = "https://github.com/tamasorosz/TrafoCalc"
+keywords = ["scientific", "engineering", "fem", "transformers", 'optimization']
+
+[tool.poetry.dependencies]
+python = "3.8.10"
+typer = "*"
+scipy = "^1.8.0"
+marshmallow-dataclass = "^8.5.3"
+dataclasses-json = "^0.5.6"
+bokeh = "^2.4.2"
+importlib-resources = "^5.4.0"
+jupyter = "^1.0.0"
+altair = "^4.2.0"
+altair-saver = "^0.5.0"
+seaborn = "^0.11.2"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+coverage = { extras = ["toml"], version = "^6.3.2" }
+gitlint = "*"
+isort = "*"
+language-formatters-pre-commit-hooks = "*"
+mutmut = "*"
+mypy = "*"
+pre-commit = "*"
+pylint = "*"
+pytest = "*"
+pytest-randomly = "*"
+typed-ast = "*"
+artap = "2020.8.28.1452"
+agrossuite = "~2020.9.15.64726"
+
+[tool.pylint.FORMAT]
+max-line-length = 127
+
+[tool.pylint.MASTER]
+fail-under = 0.85
+disable = [
+    "bad-continuation",
+    "duplicate-code",
+    "invalid-name",
+    "missing-docstring",
+    "too-few-public-methods",
+]
