@@ -1,0 +1,10 @@
+name: napari-power-spectrum
+display_name: Power Spectrum
+contributions:
+  commands: 
+    - id: napari-power-spectrum.make_powerspectrum_widget
+      python_name: napari_power_spectrum._widget:calculate_spectrum
+      title: Make a widget for the power spectrum  
+  widgets:
+    - command: napari-power-spectrum.make_powerspectrum_widget
+      display_name: Power Spectrum Widget
