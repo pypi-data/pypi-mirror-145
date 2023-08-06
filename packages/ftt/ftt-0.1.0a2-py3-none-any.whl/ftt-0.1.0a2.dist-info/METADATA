@@ -1,0 +1,94 @@
+Metadata-Version: 2.1
+Name: ftt
+Version: 0.1.0a2
+Summary: Financial Trading Tool (FTT) – is an asset management application that helps to make the right decision on time.
+Author: Artem Melnykov
+Author-email: melnykov.artem.v@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Financial and Insurance Industry
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Office/Business :: Financial :: Investment
+Requires-Dist: Riskfolio-Lib (>=2.0.0,<3.0.0)
+Requires-Dist: SQLAlchemy (>=1.4.31,<2.0.0)
+Requires-Dist: Yahoo-ticker-downloader (>=3.0.1,<4.0.0)
+Requires-Dist: cvxopt (==1.2.7)
+Requires-Dist: ibapi (>=9.81.1,<10.0.0)
+Requires-Dist: pandas (>=1.4.0,<2.0.0)
+Requires-Dist: pandas_datareader (>=0.9,<0.10)
+Requires-Dist: peewee (>=3.14.0,<4.0.0)
+Requires-Dist: pendulum (>=2.1.2,<3.0.0)
+Requires-Dist: pyinstrument (>=4.1.1,<5.0.0)
+Requires-Dist: pyportfolioopt (>=1.2.7,<2.0.0)
+Requires-Dist: python-nubia (>=0.2b5,<0.3)
+Requires-Dist: pyyaml (>=6.0,<7.0)
+Requires-Dist: result (>=0.7.0,<0.8.0)
+Requires-Dist: rich (>=11.1,<12.0)
+Requires-Dist: yfinance (>=0.1.54,<0.2.0)
+Project-URL: Bug Tracker, https://github.com/ftt-project/ftt/issues
+Project-URL: Homepage, https://github.com/ftt-project/ftt
+Description-Content-Type: text/markdown
+
+# Financial Trading Tools (FTT)
+
+> Finance is hard. Programming is hard.
+
+![PyPI](https://img.shields.io/pypi/v/ftt)
+[![Testing](https://github.com/ftt-project/ftt/actions/workflows/testing.yml/badge.svg)](https://github.com/ftt-project/ftt/actions/workflows/testing.yml)
+[![Linting](https://github.com/ftt-project/ftt/actions/workflows/linting.yml/badge.svg)](https://github.com/ftt-project/ftt/actions/workflows/linting.yml)
+![GitHub](https://img.shields.io/github/license/ftt-project/ftt)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ftt)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/ftt-project/ftt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/ftt-project/ftt/context:python)
+
+FTT is a financial asset management application that helps to make right decision on time.
+
+## Mission
+
+To enable every private investor to make a rational algorithmic decision.
+
+## Vision
+
+To create a compelling service that provides private investors opportunities to cast their investing believes through prism of statistic and analysis.
+
+## Problem statement
+
+FTT solves a concrete problem by assembling multiple features in one place. Refer to [PROBLEM_STATEMENT](PROBLEM_STATEMENT.md) document for details.
+
+## Main features
+
+### Done
+
+* Foundation for organized data storing and viewing.
+* Calculation of weights in portfolio using multiple algorithms.
+* CLI Interface
+
+### Not done
+
+* Backtest portfolios to choose one.
+* Complement portfolio with additional securities for better balancing.
+* Initiate and control financial operations in the brokerage system.
+* Monitor portfolio performance and automatically rebalance it.
+* Take automated decisions on buy and sell operations to prevent losses.
+* Web interface
+
+
+## Collaborators
+- [Artem M](https://github.com/ignar)
+- [Ihor M](https://github.com/IhorMok)
+
+
+## Quickstart
+
+```
+$> pip install ftt
+$> ftt
+ftt> example
+```
+
