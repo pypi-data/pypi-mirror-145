@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: flpinfo
+Version: 0.1.1
+Summary: Prints basic information about an FL Studio project file (.flp)
+Home-page: https://github.com/demberto/FLPInfo
+Author: demberto
+Author-email: demberto@protonmail.com
+License: UNKNOWN
+Project-URL: Source, https://github.com/demberto/FLPInfo
+Project-URL: Documentation, https://flpinfo.rtfd.io
+Project-URL: Changelog, https://github.com/demberto/FLPInfo/blob/master/CHANGELOG.md
+Project-URL: Bug Tracker, https://github.com/demberto/FLPInfo/issues
+Project-URL: TODO, https://github.com/demberto/FLPInspect/blob/master/TODO.md
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: COPYING
+Requires-Dist: pyflp (>=1.0.1)
+
+![Powered by: PyFLP](https://img.shields.io/badge/powered%20by-PyFLP-blue)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/demberto/flpinfo/main)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flpinfo)
+![PyPI](https://img.shields.io/pypi/v/flpinfo)
+![PyPI - Status](https://img.shields.io/pypi/status/flpinfo)
+![PyPI - License](https://img.shields.io/pypi/l/flpinfo)
+![Lines of code](https://img.shields.io/tokei/lines/github/demberto/flpinfo)
+![Code Style: Black](https://img.shields.io/badge/code%20style-black-black)
+
+# FLPInfo
+
+> Prints basic information about an FL Studio project file (.flp).
+
+## ▶ Usage
+
+```
+>>> flpinfo <path_to_flp>
+
+Title:            My FLP, My Song
+Artist(s):        Who else than me?
+Genre:            Unique
+Tempo (BPM):      420.0
+Project URL:      https://google.com
+FL Version:       21.0.0.6969
+Channel(s):       10 [Piano, Lead, Chord, ...]
+Arrangement(s):   1 [Arrangement]
+Pattern(s):       2 [Clap, Hats]
+```
+
+## 💲 Command-line options
+
+```
+flpinfo [-h] [-v] [--no-color] flp
+
+positional arguments:
+  flp     The location of FLP to show information about. Zipped FLPs are not yet supported.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --full-lists   Lists will not appear truncated.
+  --no-color     Disables colored output
+```
+
+## 🚀 TODO
+
+- Long comments cause incorrect formatting
+- Zipped FLPs
+
+## 📜 License
+
+FLPInfo is licensed under the [GNU Public License v3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+
