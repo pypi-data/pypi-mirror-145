@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: odoo14-addons-oca-delivery-carrier
+Version: 14.0.20220406.0
+Summary: Meta package for oca-delivery-carrier Odoo addons
+Home-page: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Framework :: Odoo
+Classifier: Framework :: Odoo :: 14.0
+Requires-Dist: odoo14-addon-base-delivery-carrier-files
+Requires-Dist: odoo14-addon-base-delivery-carrier-label
+Requires-Dist: odoo14-addon-carrier-account-environment
+Requires-Dist: odoo14-addon-delivery-auto-refresh
+Requires-Dist: odoo14-addon-delivery-carrier-agency
+Requires-Dist: odoo14-addon-delivery-carrier-category
+Requires-Dist: odoo14-addon-delivery-carrier-city
+Requires-Dist: odoo14-addon-delivery-carrier-default-tracking-url
+Requires-Dist: odoo14-addon-delivery-carrier-info
+Requires-Dist: odoo14-addon-delivery-carrier-label-batch
+Requires-Dist: odoo14-addon-delivery-carrier-location
+Requires-Dist: odoo14-addon-delivery-carrier-partner
+Requires-Dist: odoo14-addon-delivery-carrier-pricelist
+Requires-Dist: odoo14-addon-delivery-correos-express
+Requires-Dist: odoo14-addon-delivery-free-fee-removal
+Requires-Dist: odoo14-addon-delivery-multi-destination
+Requires-Dist: odoo14-addon-delivery-package-fee
+Requires-Dist: odoo14-addon-delivery-package-number
+Requires-Dist: odoo14-addon-delivery-postlogistics
+Requires-Dist: odoo14-addon-delivery-postlogistics-server-env
+Requires-Dist: odoo14-addon-delivery-roulier
+Requires-Dist: odoo14-addon-delivery-roulier-laposte-fr
+Requires-Dist: odoo14-addon-delivery-roulier-option
+Requires-Dist: odoo14-addon-delivery-schenker
+Requires-Dist: odoo14-addon-delivery-send-to-shipper-at-operation
+Requires-Dist: odoo14-addon-delivery-state
+Requires-Dist: odoo14-addon-partner-default-delivery-carrier
+Requires-Dist: odoo14-addon-partner-delivery-zone
+Requires-Dist: odoo14-addon-server-environment-delivery
+Requires-Dist: odoo14-addon-stock-picking-carrier-from-rule
+Requires-Dist: odoo14-addon-stock-picking-delivery-link
+
+UNKNOWN
+
