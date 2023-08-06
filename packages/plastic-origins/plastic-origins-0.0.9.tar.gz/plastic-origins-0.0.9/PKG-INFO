@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: plastic-origins
+Version: 0.0.9
+Summary: A package containing methods commonly used to make inferences
+License: MIT
+Author: Chayma Mesbahi
+Author-email: chayma.mesbahi@neoxia.com
+Requires-Python: >=3.7,<3.8
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Requires-Dist: Flask (==1.1.1)
+Requires-Dist: Werkzeug (==2.0.3)
+Requires-Dist: debugpy (==1.5.1)
+Requires-Dist: gunicorn (==19.10.0)
+Requires-Dist: imgaug (==0.4.0)
+Requires-Dist: opencv-python (==4.5.5.62)
+Requires-Dist: psycopg2-binary (==2.8.5)
+Requires-Dist: pycocotools (==2.0.4)
+Requires-Dist: scipy (==1.7.3)
+Requires-Dist: torch (==1.10.1)
+Requires-Dist: torchvision (==0.11.2)
+Requires-Dist: tqdm (==4.62.3)
