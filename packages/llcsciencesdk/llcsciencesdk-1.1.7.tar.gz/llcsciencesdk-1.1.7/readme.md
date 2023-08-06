@@ -1,0 +1,100 @@
+# LLC Science SDK
+
+> A simple way to fetch scientific data from the Science Admin. 
+
+## Installation
+
+```sh
+pip install llcsciencesdk
+```
+
+## Updating to a new version
+
+```sh
+pip install llcsciencesdk -U
+```
+
+## Usage
+
+#### Getting the data in JSON format
+
+```python
+from llcsciencesdk.llc_api import ScienceSdk
+
+llc_api = ScienceSdk()
+llc_api.login("username", "password")
+model_input = llc_api.get_model_input_fast_track_json(1)
+```
+
+#### Getting the data as a list of DataFrames
+
+```python
+from llcsciencesdk.llc_api import ScienceSdk
+
+llc_api = ScienceSdk()
+llc_api.login("username", "password")
+model_input = llc_api.get_model_input_fast_track(1)
+```
+
+#### Getting data with legacy version8 and version11 parameter names
+
+```python
+from llcsciencesdk.llc_api import ScienceSdk
+
+llc_api = ScienceSdk()
+llc_api.login("username", "password")
+model_input = llc_api.get_model_input_as_json(1, legacy_parameters=True)
+```
+
+#### Getting data for old model runs using the old API structure
+
+```python
+from llcsciencesdk.llc_api import ScienceSdk
+
+llc_api = ScienceSdk()
+llc_api.login("username", "password")
+model_input = llc_api.get_old_model_inputs([46])
+```
+
+#### Getting data about a Planting Design
+
+```python
+from llcsciencesdk.llc_api import ScienceSdk
+
+llc_api = ScienceSdk()
+llc_api.login("username", "password")
+planting_design_list = llc_api.get_planting_design_list()
+planting_design_detail = llc_api.get_planting_design(10)
+
+```
+
+
+#### Connecting to staging and local envs is also possible
+
+```python
+from llcsciencesdk.llc_api import ScienceSdk
+
+llc_api = ScienceSdk(environment="staging")
+# or 
+llc_api = ScienceSdk(environment="local")
+
+llc_api.login("username", "password")
+model_input = llc_api.get_model_inputs(1)
+```
+## Supported endpoints
+
+The following endpoints can be called
+
+### Fast Track Endpoints (Refer to FT API docs for more info)
+
+- llc_api.get_model_input_fast_track_json
+- llc_api.get_model_input_fast_track
+- get_model_input_calibrate_fast_track_json
+- get_model_input_calibrate_fast_track
+- get_model_input_density_analyses_fast_track_json
+- get_model_input_density_analyses_fast_track
+
+### Planting Design Endpoints
+
+- llc_api.get_planting_design_list -> Returns a list of the Planting Designs(id, name)
+- llc_api.get_planting_design(id) -> Returns a detail object of the Planting Design (id, name, species, location)
