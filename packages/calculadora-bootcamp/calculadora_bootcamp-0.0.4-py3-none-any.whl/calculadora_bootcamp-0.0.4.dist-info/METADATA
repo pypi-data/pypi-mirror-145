@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: calculadora-bootcamp
+Version: 0.0.4
+Summary: Criando primeiro package
+Home-page: https://github.com/edu-lauer
+Author: Eduardo
+Author-email: lauer.edu@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# calculadora_bootcamp
+
+Description. 
+The calculadora-bootcamp is first my package created used to:
+	- Calcular multiplicacao de 2 numeros
+	- Calcular soma de 2 numeros
+	- Calcular subtracao de 2 numeros
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install calculadora-python
+
+```bash
+pip install calculadora_bootcamp
+```
+
+## Usage
+
+```python
+from calculadora_bootcamp import multiplicacao
+import calculadora_bootcamp.multiplicacao
+
+from calculadora_bootcamp import soma
+import calculadora_bootcamp.soma
+
+from calculadora_bootcamp import subtracao
+import calculadora_bootcamp.subtracao
+```
+
+## Author
+Eduardo
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
