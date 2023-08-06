@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=42.0",
+            "setuptools_scm[toml]>=3.4",
+            "wheel",
+            "oldest-supported-numpy",
+            "astropy>=4.3",
+            "markupsafe<=2.0.1"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]

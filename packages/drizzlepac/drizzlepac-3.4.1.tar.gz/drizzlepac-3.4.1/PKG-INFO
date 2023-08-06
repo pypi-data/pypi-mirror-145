@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: drizzlepac
+Version: 3.4.1
+Summary: HST image combination using drizzle
+Home-page: https://github.com/spacetelescope/drizzlepac
+Author: Megan Sosey, Warren Hack, Christopher Hanley, Chris Sontag, Mihai Cara
+License: BSD-3-Clause
+Project-URL: Tracker, https://github.com/spacetelescope/drizzlepac/issues
+Project-URL: Documentation, https://drizzlepac.readthedocs.io/en/latest
+Project-URL: Source Code, https://github.com/spacetelescope/drizzlepac
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.8
+Description-Content-Type: text/plain
+Provides-Extra: test
+Provides-Extra: docs
+License-File: LICENSE.txt
+
+'drizzle tools: combines astronomical images, including '
+'modeling distortion, removing cosmic rays, and generally '
+'improving fidelity of data in the final image',
+
