@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "sml-exporter"
+version = "0.1.4"
+description = "Smartmeter Message Language Prometheus Exporter"
+
+license = "MIT"
+authors = ["Martin Weinelt <hexa@darmstadt.ccc.de>"]
+
+readme = "README.md"
+
+repository = "https://github.com/mweinelt/sml-exporter"
+
+keywords = ["smartmeter", "prometheus", "exporter"]
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10"
+]
+
+[tool.poetry.scripts]
+sml-exporter = "sml_exporter.__main__:main"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pysml = "^0.0.7"
+prometheus-client = "^0"
+click = "^8"
+
+[tool.poetry.dev-dependencies]
+black = "*"
+isort = "*"
+mypy = "*"
+pytest = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
