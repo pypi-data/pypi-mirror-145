@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: mbox
+Version: 0.1.11
+Summary: Personal Python toolbox for quick prototyping.
+Home-page: https://github.com/maxmouchet/mbox
+License: MIT
+Author: Maxime Mouchet
+Author-email: max@maxmouchet.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: click
+Provides-Extra: requests
+Requires-Dist: appdirs (>=1.4.4,<2.0.0)
+Requires-Dist: click (>=8.1.2,<9.0.0); extra == "click"
+Requires-Dist: dateparser (>=1.1.1,<2.0.0); extra == "click"
+Requires-Dist: requests (>=2.27.1,<3.0.0); extra == "requests"
+Description-Content-Type: text/markdown
+
+# mbox
+
+[![Coverage][cov-badge]][cov-url]
+[![Tests][ci-badge]][ci-url]
+[![PyPI][pypi-badge]][pypi-url]
+
+Personal Python toolbox for quick prototyping.  
+Code quality is variable, documentation is lacking, but there should be at-least some tests :-)
+
+[ci-badge]: https://img.shields.io/github/workflow/status/maxmouchet/mbox/CI?logo=github&label=tests
+[ci-url]: https://github.com/maxmouchet/mbox/actions/workflows/ci.yml
+
+[cov-badge]: https://img.shields.io/codecov/c/github/maxmouchet/mbox?logo=codecov&logoColor=white
+[cov-url]: https://codecov.io/gh/maxmouchet/mbox
+
+[pypi-badge]: https://img.shields.io/pypi/v/mbox?color=blue&logo=pypi&logoColor=white
+[pypi-url]: https://pypi.org/project/mbox/
+
