@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: propsettings-qt
+Version: 0.2.8
+Summary: Provides automatic widget generation for editing member variables of an object.
+Home-page: https://github.com/mnicolas94/propsettings_qt
+Author: Miguel Nicolás-Díaz
+Author-email: miguelcok27@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# propsettings_qt
+
+This package provides a mechanism of automatic PySide2 (Qt) widget generation to edit member variables of an object.
+The variables should be registered as a propsettings.Setting. See [propsettings](https://github.com/mnicolas94/propsettings) for more information.
+
+# Installation
+
+`pip install propsettings-qt`
+
+# Usage
+
+The most common usage of this package is through the `SettingsAreaWidget` Qt widget class. e.g. For a given class decorated with `propsettings`'s Settings
+```python
+from propsettings.configurable import register_as_setting
+from propsettings.setting_types.range_setting_type import Range
+
+class Example:
+
+    def __init__(self):
+        self.a = 1
+        self.b = 0.3
+        self.c = 'asd'
+
+register_as_setting(Example, "a")
+register_as_setting(Example, "b", setting_type=Range(0.0, 1.0))
+register_as_setting(Example, "c")
+```
+
+it can be drawn in a UI with
+```python
+from propsettings_qt.ui_settings_area import SettingsAreaWidget
+
+widget = SettingsAreaWidget()
+example_object = Example()
+widget.populate_object(example_object)
+```
+
+The resulting `widget` will look like
+
+![python_8](docs/example.jpg)
+
+
