@@ -1,0 +1,64 @@
+Metadata-Version: 2.1
+Name: qhbayes
+Version: 0.0.5
+Summary: Bayesian methods for inferring mass eruption rate for column height (or vice versa) for volcanic eruptions
+Home-page: https://bitbucket.org/markwoodhouse/qhbayes
+Author: Mark Woodhouse
+Author-email: mark.woodhouse@bristol.ac.uk
+License: UNKNOWN
+Project-URL: Bug Tacker, https://bitbucket.org/markwoodhouse/qhbayes/admin/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# QHBayes #
+
+Bayesian methods for inferring mass eruption rate from column height (or vice versa) for volcanic eruptions
+
+### What is it? ###
+
+*QHBayes* uses Bayesian methods to explore the relationship between the mass eruption rate (Q) of a volcanic eruption and the height reached by the volcanic eruption column (H) that is produced.
+
+The mass eruption rate is a quantity that is very important in volcanology and in the dispersion of volcanic ash in the atmosphere, but it is very difficult to measure directly.
+
+Often the mass eruption rate is inferred from observations of the height of the volcanic eruption column, since the eruption column is often much easier to measure.  The eruption column height is linked to the mass eruption rate through the fluid dynamics of turbulent buoyant plumes, but there are often external volcanological and atmospheric effects that contribute and complicate the relationship.
+
+Datasets of the mass eruption rate and eruption column height have been compiled and used to determine an empirical relationship these quantities, using linear regression.  This has then been used to infer the mass eruption rate from the plume height.
+
+*QHBayes* goes further, by using Bayesian methods to perform the regression.  Bayesian methods:
+* allow us to incorporate a range of *uncertainties* quantitatively into our model;
+* provide a meaningful quantitative comparison of different models;
+* 
+
+* Version 0.0.2
+
+### Main Features ###
+
+
+### How do I get set up? ###
+
+* Summary of set up
+
+
+* Configuration
+* Dependencies
+* Database configuration
+* How to run tests
+* Deployment instructions
+
+### Contribution guidelines ###
+
+* Writing tests
+* Code review
+* Other guidelines
+
+### Who do I talk to? ###
+
+* Repo owner or admin
+* Other community or team contact
+
+
