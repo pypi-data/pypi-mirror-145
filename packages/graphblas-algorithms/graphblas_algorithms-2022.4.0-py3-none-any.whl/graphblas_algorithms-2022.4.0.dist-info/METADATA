@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: graphblas-algorithms
+Version: 2022.4.0
+Summary: Graph algorithms written in GraphBLAS
+Home-page: https://github.com/metagraph-dev/graphblas-algorithms
+Author: Jim Kitchen and Erik Welch
+Author-email: erik.n.welch@gmail.com,jim22k@gmail.com
+License: Apache License 2.0
+Keywords: graphblas,graph,sparse,matrix,lagraph,suitesparse,Networks,Graph Theory,Mathematics,network,discrete mathematics,math
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: grblas (>=2022.4.0)
+Requires-Dist: networkx
+
+# **GraphBLAS Algorithms**
+
+[![pypi](https://img.shields.io/pypi/v/graphblas-algorithms.svg)](https://pypi.python.org/pypi/graphblas-algorithms/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/metagraph-dev/graphblas-algorithms/blob/main/LICENSE)
+[![Tests](https://github.com/metagraph-dev/graphblas-algorithms/workflows/Tests/badge.svg?branch=main)](https://github.com/metagraph-dev/graphblas-algorithms/actions)
+[![Coverage](https://coveralls.io/repos/metagraph-dev/graphblas-algorithms/badge.svg?branch=main)](https://coveralls.io/r/metagraph-dev/graphblas-algorithms)
+[![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+<!--- [![conda-forge](https://img.shields.io/conda/vn/conda-forge/graphblas-algorithms.svg)](https://anaconda.org/conda-forge/graphblas-algorithms) --->
+<!--- [![Docs](https://readthedocs.org/projects/graphblas-algorithms/badge/?version=latest)](https://graphblas-algorithms.readthedocs.io/en/latest/) --->
+
+GraphBLAS algorithms written in Python with [`grblas`](https://github.com/metagraph-dev/grblas).  We are trying to target the NetworkX API algorithms where possible.
+
+### Installation
+```
+pip install graphblas-algorithms
+```
+
+This is a work in progress.  Stay tuned (or come help 😃)!
+
+
