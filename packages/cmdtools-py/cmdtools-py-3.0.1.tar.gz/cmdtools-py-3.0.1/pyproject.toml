@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "cmdtools-py"
+version = "3.0.1"
+description = "command text parser and command processor"
+authors = ["HugeBrain16 <joshtuck373@gmail.com>"]
+maintainers = ["HugeBrain16 <joshtuck373@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/HugeBrain16/cmdtools"
+documentation = "https://cmdtools-py.readthedocs.io/en/latest"
+packages = [
+    {include = "cmdtools"},
+    {include = "ext", from = "cmdtools"},
+    {include = "callback", from = "cmdtools"},
+    {include = "utils", from = "cmdtools"}
+]
+keywords = [
+    "command-parser",
+    "command-processor",
+    "command",
+    "cmd",
+    "cmd-parser",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+codecov = "^2.1.12"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "setuptools"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.urls]
+"Issues Tracker" = "https://github.com/HugeBrain16/cmdtools/issues"
+"Source" = "https://github.com/HugeBrain16/cmdtools"
