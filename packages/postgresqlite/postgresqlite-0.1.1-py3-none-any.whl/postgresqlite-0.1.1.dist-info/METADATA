@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: postgresqlite
+Version: 0.1.1
+Summary: Python package that gives you the power of a PostgreSQL server, with the convenience of the sqlite3 package.
+Author: Frank van Viegen
+Author-email: pp@vanviegen.net
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: pg8000 (>=1.24.1,<2.0.0)
