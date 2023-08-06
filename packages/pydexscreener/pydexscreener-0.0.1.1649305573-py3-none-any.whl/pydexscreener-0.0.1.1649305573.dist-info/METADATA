@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: pydexscreener
+Version: 0.0.1.1649305573
+Summary: Dexscreener API wrapper for Python
+Home-page: https://github.com/pypa/sampleproject
+Author: Taylor Roberts
+Author-email: 
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/pypa/sampleproject/issues
+Project-URL: Funding, https://donate.pypi.org
+Project-URL: Say Thanks!, http://saythanks.io/to/example
+Project-URL: Source, https://github.com/pypa/sampleproject/
+Keywords: crypto,dexscreener,dex,api
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+Requires-Dist: pydantic
+Requires-Dist: httpx
+Provides-Extra: dev
+Requires-Dist: python-dotenv ; extra == 'dev'
+Requires-Dist: pydantic ; extra == 'dev'
+Requires-Dist: httpx ; extra == 'dev'
+Provides-Extra: docs
+Provides-Extra: test
+
+UNKNOWN
+
