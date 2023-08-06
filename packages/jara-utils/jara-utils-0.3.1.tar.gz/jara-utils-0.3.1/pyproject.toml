@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "jara-utils"
+version = "0.3.1"
+description = "A package with basic stuff."
+authors = ["Serban Senciuc <senciuc.serban@gmail.com>"]
+readme = "README_pypi.rst"
+repository = "https://github.com/senciucserban/jara-utils"
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Utilities"
+]
+packages = [
+    { include = "jara_utils" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pytz = "^2022.1"
+types-pytz = "^2021.3.6"
+
+mypy = {version = "^0.942", optional = true}
+Faker = {version = "^13.3.4", optional = true}
+bandit = {version = "^1.7.4", optional = true}
+
+pytest = {version = "^7.1.1", optional = true}
+pytest-asyncio = {version = "^0.18.3", optional = true}
+pytest-cov = {version = "^3.0.0", optional = true}
+
+flake8 = {version = "^4.0.1", optional = true}
+flake8-quotes = {version = "^3.3.1", optional = true}
+flake8-pytest-style = {version = "^1.6.0", optional = true}
+flake8-comprehensions = {version = "^3.8.0", optional = true}
+flake8-multiline-containers = {version = "^0.0.18", optional = true}
+flake8-builtins = {version = "^1.5.3", optional = true}
+flake8-print = {version = "^4.0.0", optional = true}
+flake8-debugger = {version = "^4.0.0", optional = true}
+flake8-simplify = {version = "^0.19.2", optional = true}
+flake8-annotations = {version = "^2.8.0", optional = true}
+flake8-commas = {version = "^2.1.0", optional = true}
+flake8-eradicate = {version = "^1.2.0", optional = true}
+
+[tool.poetry.dev-dependencies]
+pytest-sugar = "^0.9.4"
+pytest-deadfixtures = "^2.2.1"
+ipdb = "^0.13.9"
+ipython = "^8.2.0"
+
+
+[tool.poetry.extras]
+test = [
+    "faker", "mypy", "bandit",
+
+    # Flake8
+    "flake8", "flake8-quotes", "flake8-pytest-style", "flake8-comprehensions", "flake8-multiline-containers", "flake8-annotations",
+    "flake8-commas", "flake8-bugbear", "flake8-eradicate", "flake8-simplify",
+    "flake8-builtins", "flake8-print", "flake8-debugger",
+
+    # Pytest
+    "pytest", "pytest_cov", "pytest-asyncio"
+]
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
