@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "multi_event_bus"
+version = "0.1.1"
+description = "event bus implementation in python with sync and async support"
+authors = ["yehoyada <hvuhsg5@gmail.com>"]
+readme = "README.md"
+homepage = "https://github.com/hvuhsg/event-bus"
+repository = "https://github.com/hvuhsg/event-bus"
+keywords = ["event", "bus", "event-bus", "event_bus", "async", "blocking"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jsonschema = "^4.4.*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+mypy = "^0.942"
+black = "^22.3.*"
+pytest-asyncio = "^0.18.3"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.poetry.scripts]
+test = 'scripts.poetry_scripts:run_all_tests'
+run_pytest = 'scripts.poetry_scripts:run_pytest'
+run_mypy = 'scripts.poetry_scripts:run_mypy'
+run_flake8 = 'scripts.poetry_scripts:run_flake8'
+run_black = 'scripts.poetry_scripts:run_black'
+all = 'scripts.poetry_scripts:run_all'
