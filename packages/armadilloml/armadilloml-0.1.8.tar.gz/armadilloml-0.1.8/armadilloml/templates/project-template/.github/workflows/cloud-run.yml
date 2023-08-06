@@ -1,0 +1,25 @@
+name: Deploy on Google Cloud Run
+
+on: push
+
+jobs:
+  deploy-to-gcr:
+    name: Deploy on Google Cloud Run
+    runs-on: ubuntu-18.04
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+    steps:
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        credentials_json: '${{ secrets.GOOGLE_CREDENTIALS }}'
+        service_account: 'github-actions@armadillo-21120.iam.gserviceaccount.com'
+    - id: 'deploy'
+      uses: 'google-github-actions/deploy-cloudrun@v0'
+      with:
+        service: 'hello-cloud-run'
+        image: 'gcr.io/cloudrun/hello'
+
+    - name: 'Use output'
+      run: 'curl "${{ steps.deploy.outputs.url }}"'
