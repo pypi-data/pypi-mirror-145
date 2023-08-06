@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: oompa
+Version: 0.0.2
+Summary: A tool to build Docker images with an easy to read configuration
+Home-page: https://gitlab.com/davidbuzinski/oompa
+Author: David Buzinski
+Author-email: davidbuzinski@gmail.com
+License: UNKNOWN
+Project-URL: Source Code, https://gitlab.com/davidbuzinski/oompa
+Project-URL: Bug Tracker, https://gitlab.com/davidbuzinski/oompa/-/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development
+Classifier: Topic :: System :: Installation/Setup
+Classifier: Topic :: System :: Systems Administration
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Oompa
+
+Oompa is a tool to build Docker images with an easy to read configuration.
+It uses Dhall configuration language and Ansible Galaxy roles to build and configure containers.
+
+## Installation
+
+The latest stable version [is available on PyPI](https://pypi.python.org/pypi/oompa/). Either add `oompa` to your `requirements.txt` file or install with pip:
+
+    pip install oompa
+
+## Use Oompa
+
+Use docs to come soon.
+
+## Get Involved
+
+Contributing instructions to come soon.
+
+## Release Info
+
+Oompa is still in Alpha / development. Bugs are being worked out, new features are being added, and APIs are rapidly changing.
+
+## License
+
+MIT License
+
+
+
