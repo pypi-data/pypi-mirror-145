@@ -1,0 +1,21 @@
+[project]
+name = "uyghur"
+version = "0.1.0"
+description = "All things you need for Uyghur Language."
+readme = "README_zh.md"
+requires-python = ">=3.8"
+license = { file = "LICENSE" }
+keywords = ["Uyghur", "NPL"]
+authors = [{ name = "Tang Ziya", email = "tcztzy@gmail.com" }]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Natural Language :: Chinese (Simplified)",
+    "Topic :: Text Processing :: Linguistic",
+]
+[project.optional-dependencies]
+test = ["pytest >= 4.1", "pytest-cov >= 2.5"]
+
+[project.urls]
+repository = "https://github.com/tcztzy/uyghur"
