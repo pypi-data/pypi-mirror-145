@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: mbox
+Version: 0.1.9
+Summary: 
+License: MIT
+Author: Maxime Mouchet
+Author-email: max@maxmouchet.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: click
+Provides-Extra: requests
+Requires-Dist: appdirs (>=1.4.4,<2.0.0)
+Requires-Dist: click (>=8.1.2,<9.0.0); extra == "click"
+Requires-Dist: dateparser (>=1.1.1,<2.0.0); extra == "click"
+Requires-Dist: requests (>=2.27.1,<3.0.0); extra == "requests"
