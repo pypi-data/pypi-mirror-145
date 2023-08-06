@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: phicli
+Version: 0.1.13
+Summary: UNKNOWN
+Home-page: https://www.phidata.com
+Author: Ashpreet Bedi
+Author-email: ashpreet@phidata.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: click (==8.0.4)
+Requires-Dist: boto3
+Requires-Dist: docker
+Requires-Dist: gitpython
+Requires-Dist: httpx
+Requires-Dist: kubernetes
+Requires-Dist: pydantic
+Requires-Dist: pyyaml
+Requires-Dist: rich
+Requires-Dist: typer
+Requires-Dist: types-PyYAML
+Requires-Dist: typing-extensions
+
+## Phi: A tool for building data products
+
+
