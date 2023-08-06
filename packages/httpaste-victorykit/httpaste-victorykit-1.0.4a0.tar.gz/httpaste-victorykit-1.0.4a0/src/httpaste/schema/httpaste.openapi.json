@@ -1,0 +1,307 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "version": "0.0.0a1",
+        "title": "httpaste",
+        "description": "secure and simple pasting over HTTP",
+        "contact": {
+            "name": "Tiara Rodney (victoryk.it)",
+            "email": "t.rodney@victoryk.it"
+        },
+        "license": {
+            "name": "GPL 3.0",
+            "url": "https://www.gnu.org/licenses/gpl-3.0-standalone.html"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "get description",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+        },
+        "/paste/public": {
+            "post": {
+                "description": "create a new public paste",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/pastePost"
+                },
+                "security": [
+                    {}
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/lifetime"
+                    },
+                    {
+                        "$ref": "#/components/parameters/encoding"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "paste location",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasteURL"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/paste/private": {
+            "get": {
+                "description": "get private paste locations",
+                "responses": {
+                    "200": {
+                        "description": "paste locations",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewLineDelimitedPasteURLs"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create a new private paste",
+                "requestBody": {
+                    "$ref": "#/components/requestBodies/pastePost"
+                },
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/lifetime"
+                    },
+                    {
+                        "$ref": "#/components/parameters/encoding"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "paste location",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasteURL"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/paste/public/{id}": {
+            "get": {
+                "description": "get a public paste",
+                "security": [
+                    {}
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    },
+                    {
+                        "$ref": "#/components/parameters/syntax"
+                    },
+                    {
+                        "$ref": "#/components/parameters/format"
+                    },
+                    {
+                        "$ref": "#/components/parameters/linenos"
+                    },
+                    {
+                        "$ref": "#/components/parameters/mime"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "paste data. content type may vary.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasteData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/paste/private/{id}": {
+            "get": {
+                "description": "get a private paste",
+                "security": [
+                    {
+                        "basicAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    },
+                    {
+                        "$ref": "#/components/parameters/syntax"
+                    },
+                    {
+                        "$ref": "#/components/parameters/format"
+                    },
+                    {
+                        "$ref": "#/components/parameters/linenos"
+                    },
+                    {
+                        "$ref": "#/components/parameters/mime"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "paste data. content type may vary.",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasteData"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PasteData": {
+                "description": "Paste Data",
+                "type": "string"
+            },
+            "PasteURL": {
+                "description": "URL pointing to paste",
+                "type": "string"
+            },
+            "NewLineDelimitedPasteURLs": {
+                "description": "new line delimited paste URLs",
+                "type": "string"
+            }
+        },
+        "requestBodies": {
+            "pastePost": {
+                "description": "Optional description in *Markdown*",
+                "required": true,
+                "content": {
+                    "multipart/form-data": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "data": {
+                                    "type": "string",
+                                    "format": "binary"
+                                },
+                                "rsa_public_key": {
+                                    "description": "RSA public key",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "data"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "id": {
+                "description": "id of paste",
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "lifetime": {
+                "description": "paste lifetime/expiration (in minutes)",
+                "name": "lifetime",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "number"
+                }
+            },
+            "syntax": {
+                "description": "syntax highlighting language",
+                "name": "syntax",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "description": "https://pygments.org/docs/lexers/",
+                    "type": "string"
+                }
+            },
+            "format": {
+                "description": "output format of syntax highlighting",
+                "name": "format",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "description": "https://pygments.org/docs/formatters/",
+                    "type": "string"
+                }
+            },
+            "linenos": {
+                "description": "syntax highlighting with line numbers",
+                "name": "linenos",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "boolean"
+                }
+            },
+            "encoding": {
+                "description": "data encoding",
+                "name": "encoding",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "string",
+                    "enum": ["base64", "utf-8", "utf-16", "ascii"]
+                }
+            },
+            "mime": {
+                "description": "response mime type",
+                "name": "mime",
+                "in": "query",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        },
+        "securitySchemes": {
+            "basicAuth": {
+                "type": "http",
+                "scheme": "basic",
+                "x-basicInfoFunc": "httpaste.controller.user.session.post"
+            }
+        }
+    }
+}
