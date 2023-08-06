@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: raypipe
+Version: 1.0.0
+Summary: Easy implementation and abstraction for train and deploy model on ray cluster
+Home-page: https://github.com/billyyann/RayPipe
+Author: Billy Yan
+Author-email: 
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: tensorflow-cpu (==2.3.0)
+
+## 简介
+Easy implementation and abstraction for train and deploy model on ray cluster
+
+## 资源清单
+1. docker image  
+   docker.4pd.io/ray_tensorflow2:pipe-105-commit-aa96d082
+2. 安装文档  
+./doc
+3. 安装
+pip install raypip
+
