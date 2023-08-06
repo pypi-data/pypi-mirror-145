@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: ogc
+Version: 2.1.7
+Summary: Provisioner, no more, no less.
+Home-page: https://github.com/adam-stokes/ogc
+License: MIT
+Author: Adam Stokes
+Author-email: 51892+adam-stokes@users.noreply.github.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Mako (>=1.1.6,<2.0.0)
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: SQLAlchemy (>=1.4.32,<2.0.0)
+Requires-Dist: alembic (>=1.7.7,<2.0.0)
+Requires-Dist: apache-libcloud (>=3.5.0,<4.0.0)
+Requires-Dist: arrow (>=1.2.2,<2.0.0)
+Requires-Dist: attrs (>=21.4.0,<22.0.0)
+Requires-Dist: click (>=8.0.4,<9.0.0)
+Requires-Dist: click-didyoumean (>=0.3.0,<0.4.0)
+Requires-Dist: colorama (>=0.4.4,<0.5.0)
+Requires-Dist: dict-deep (>=4.1.2,<5.0.0)
+Requires-Dist: humanfriendly (>=10.0,<11.0)
+Requires-Dist: melddict (>=1.0.1,<2.0.0)
+Requires-Dist: paramiko (>=2.9.2,<3.0.0)
+Requires-Dist: psycopg2-binary (>=2.9.3,<3.0.0)
+Requires-Dist: python-dotenv (>=0.19.2,<0.20.0)
+Requires-Dist: python-slugify (>=6.1.1,<7.0.0)
+Requires-Dist: retry (>=0.9.2,<0.10.0)
+Requires-Dist: rich (>=12.0.1,<13.0.0)
+Requires-Dist: sh (>=1.14.2,<2.0.0)
+Project-URL: Repository, https://github.com/adam-stokes/ogc
+Description-Content-Type: text/markdown
+
+# OGC
+
+ogc - provisioning, that's it.
+
+# Get started
+
+- [Getting Started Guide](https://adam-stokes.github.io/ogc/)
+- User Guide
+  -  [Managing Deployment](https://adam-stokes.github.io/ogc/user-guide/managing-nodes/)
+  -  [Defining Layouts](https://adam-stokes.github.io/ogc/user-guide/defining-layouts/)
+  -  [Scripting](https://adam-stokes.github.io/ogc/user-guide/scripting/)
+# License
+
+MIT.
+
+
+
