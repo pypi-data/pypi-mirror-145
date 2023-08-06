@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: branthebuilder
+Version: 1.0.1
+Summary: Python package management
+Author-email: Endre Márk Borza <endremborza@gmail.com>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: typer
+Requires-Dist: flit
+Requires-Dist: jupyter
+Requires-Dist: black
+Requires-Dist: sphinx
+Requires-Dist: pytest
+Requires-Dist: pytest-cov
+Requires-Dist: codecov
+Requires-Dist: toml
+Requires-Dist: flake8
+Requires-Dist: isort
+Requires-Dist: pandoc
+Requires-Dist: cookiecutter
+Requires-Dist: sphinx ; extra == "doc"
+Requires-Dist: graphviz ; extra == "doc"
+Requires-Dist: pandoc ; extra == "doc"
+Requires-Dist: sphinx-automodapi ; extra == "doc"
+Requires-Dist: pygments ; extra == "doc"
+Requires-Dist: jupyter ; extra == "doc"
+Requires-Dist: toml ; extra == "doc"
+Project-URL: Homepage, https://github.com/endremborza/branthebuilder
+Provides-Extra: doc
+Provides-Extra: test
+
+# branthebuilder
+
+[![Documentation Status](https://readthedocs.org/projects/branthebuilder/badge/?version=latest)](https://branthebuilder.readthedocs.io/en/latest)
+[![codeclimate](https://img.shields.io/codeclimate/maintainability/endremborza/branthebuilder.svg)](https://codeclimate.com/github/endremborza/branthebuilder)
+[![codecov](https://img.shields.io/codecov/c/github/endremborza/branthebuilder)](https://codecov.io/gh/endremborza/branthebuilder)
+[![pypi](https://img.shields.io/pypi/v/branthebuilder.svg)](https://pypi.org/project/branthebuilder/)
+
+
