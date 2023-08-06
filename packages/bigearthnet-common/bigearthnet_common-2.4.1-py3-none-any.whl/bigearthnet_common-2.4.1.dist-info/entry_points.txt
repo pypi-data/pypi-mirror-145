@@ -1,0 +1,6 @@
+[console_scripts]
+ben_build_csv_sets=bigearthnet_common.sets:build_csv_sets_cli
+ben_constant_prompt=bigearthnet_common.constants:cli
+ben_validate_s1_root_dir=bigearthnet_common.base:validate_ben_s1_root_directory_cli
+ben_validate_s2_root_dir=bigearthnet_common.base:validate_ben_s2_root_directory_cli
+
