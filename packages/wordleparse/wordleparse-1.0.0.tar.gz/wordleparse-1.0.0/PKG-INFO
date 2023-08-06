@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: wordleparse
+Version: 1.0.0
+Summary: Parse Wordle and Wordle clones from a chat export
+Home-page: https://gitlab.com/rensoliemans/wordleparse
+Author: Rens Oliemans
+Author-email: hello+python@rensoliemans.nl
+License: GPLv3
+Project-URL: Bug Tracker, https://gitlab.com/RensOliemans/wordleparser/-/issues
+Keywords: wordle
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
+# Wordle parser
+
+This is a python script which takes your chat history as input (exported from a
+popular chat-app, for example), and outputs the average scores of all of your
+group members, for a variety of wordle clones.
+
+## Usage
+
+    pip install wordleparser
+    wordleparser chat.txt
+
+As of now, it is only tested to work with a WhatsApp chat export.
+
+
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+
