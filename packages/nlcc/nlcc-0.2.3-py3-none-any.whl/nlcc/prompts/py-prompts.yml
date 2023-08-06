@@ -1,0 +1,123 @@
+numpy:
+    text: |
+        import numpy as np
+        import matplotlib
+        matplotlib.use('Agg')
+        import matplotlib.pyplot as plt
+
+        """
+        Create matrix of ones
+        """
+        a = np.ones((5,10))
+        # end
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
+    emoji: 🧮
+
+python:
+    text: |
+        import math
+        import sys
+
+        """
+        compute sin(pi/2)
+        """
+        x = math.sin(math.pi / 2)
+        # end
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
+
+rdkit:
+    text: |
+        import matplotlib.pyplot as plt
+        import rdkit
+        from rdkit import Chem
+        from rdkit.Chem import Draw
+        import rdkit.Chem.rdMolDescriptors
+        import rdkit.Chem.Crippen
+        import rdkit.Chem.Descriptors
+
+        """
+        print rdkit version
+        """
+        print(rdkit.__version__)
+        # end
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
+biopython:
+    text: |
+        from Bio import SeqIO
+        from Bio import Align
+        from Bio import PopGen
+        from Bio.PDB import *
+        from Bio.Seq import Seq
+        import Bio
+        from Bio import pairwise2
+        from Bio.Blast import NCBIWWW, NCBIXML
+        from Bio.SubsMat import MatrixInfo as matlist
+
+        """
+        print biopython version
+        """
+        print(Bio.__version__)
+        # end
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
+requests:
+    text: |
+        import requests
+        from bs4 import BeautifulSoup
+
+        """
+        print requests version
+        """
+        print(requests.__version__)
+        # end
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
+pyscf:
+    text: |
+        import pyscf
+
+        """
+        Print pyscf version string
+        """
+        print(pyscf.__version__)
+        # end
+
+
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
+
+sympy:
+    text: |
+        import sympy
+
+        """
+        print sympy version
+        """
+        print(sympy.__version__)
+        # end
+    comment: '#'
+    multiline_comment: '"""'
+    language: python
+    stop:
+        - "# end"
