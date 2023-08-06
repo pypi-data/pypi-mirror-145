@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "pypandora"
+version = "0.7"
+description = "Python CLI and module for pandora"
+authors = ["Raphaël Vinot <raphael.vinot@circl.lu>"]
+license = "BSD-3-Clause"
+
+readme = "README.md"
+
+classifiers = [
+    'License :: OSI Approved :: BSD License',
+    'Development Status :: 5 - Production/Stable',
+    'Environment :: Console',
+    'Operating System :: POSIX :: Linux',
+    'Intended Audience :: Science/Research',
+    'Intended Audience :: Telecommunications Industry',
+    'Intended Audience :: Information Technology',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Topic :: Security',
+    'Topic :: Internet',
+]
+
+include = ['README.md']
+
+[tool.poetry.scripts]
+pandora = 'pypandora:main'
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.27.1"
+Sphinx = { version = "^4.5", optional = true }
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.942"
+types-requests = "^2.27.16"
+ipython = "^8.2.0"
+pytest = "^7.1.1"
+
+[tool.poetry.extras]
+docs = ["Sphinx"]
+
+[build-system]
+requires = ["poetry_core>=1.0", "setuptools"]
+build-backend = "poetry.core.masonry.api"
