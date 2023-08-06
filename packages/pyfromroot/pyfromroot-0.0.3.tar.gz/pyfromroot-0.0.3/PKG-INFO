@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: pyfromroot
+Version: 0.0.3
+Summary: Python should be callable from root environment
+Home-page: https://gitlab.com/jaromrax/pyfromroot
+Author: jaromrax
+Author-email: jaromrax@gmail.com
+License: GPL2
+Description: Project pyfromroot
+        ==================
+        
+        *initial setup*
+        
+        The goal is to have a framework to run Python from root\'s CLINT. Why?
+        
+        -   TH1F and TGraph on TCanvas is superior over python stuff
+        -   and it is interactive
+        -   staying in root allows to have a access to histograms and all other
+            stuff
+        
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
