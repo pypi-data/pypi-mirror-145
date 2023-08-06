@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+
+# Dump argv and environ in JSON
+
+import json
+import os
+import sys
+
+data = {
+    'args': sys.argv,
+    'env': dict(os.environ),
+}
+
+dest_path = os.getenv('DUMPENV_DEST')
+if dest_path:
+    dest = open(dest_path, 'w')
+else:
+    dest = sys.stdout
+json.dump(data, dest, indent=2, sort_keys=True)

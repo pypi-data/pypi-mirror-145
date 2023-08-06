@@ -1,0 +1,12 @@
+include TODO
+include ostree-receive.conf
+include .flake8
+include pyproject.toml
+include pytest.ini
+include tox.ini
+
+include tests/*.py
+include tests/dumpenv
+include tests/ostree-push
+include tests/ostree-receive
+graft tests/data

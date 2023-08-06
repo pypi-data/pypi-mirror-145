@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+
+# ostree-push script for testing
+
+import logging
+import sys
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger('tests/ostree-push')
+logger.debug('sys.path=%s', ':'.join(sys.path))
+logger.debug('sys.argv=%s', sys.argv)
+
+from otpush import push  # noqa: E402
+push.main()
