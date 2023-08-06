@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: jupyterhub-singleuser-profiles-id
+Version: 0.9.2
+Summary: A library allowing JupyterHub admins and users to customize and extend Jupyter workspace deployments on OpenShift
+Author: Rishabh Aggarwal
+Author-email: rishabhaggarwal0101@gmail.com
+License: GPLv3+
+Platform: UNKNOWN
+Requires-Dist: openshift
+Requires-Dist: PyYAML
+Requires-Dist: requests
+Requires-Dist: jsonpath-rw
+Requires-Dist: connexion[swagger-ui]
+Requires-Dist: connexion
+Requires-Dist: pydantic
+Requires-Dist: jinja2
+Requires-Dist: escapism
+Requires-Dist: tornado
+Requires-Dist: jupyterhub
+
+A library allowing JupyterHub admins and users to customize and extend Jupyter workspace deployments on OpenShift
+
