@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: emapi
+Version: 0.0.6
+Summary: Event-Models based api framework.
+Home-page: https://github.com/Hrabal/Emapi
+Author: Federico Cerchiari
+Author-email: federicocerchiari@gmail.com
+License: APACHE 2.0
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Server
+Requires-Python: >=3.3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: starlette
+Requires-Dist: tem-py
+Requires-Dist: tortoise-orm
+Requires-Dist: orjson
+Requires-Dist: PyYAML
+
+# Emapi
+Event-Models based api framework
+
+
