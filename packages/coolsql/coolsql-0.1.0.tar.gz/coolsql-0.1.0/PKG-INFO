@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: coolsql
+Version: 0.1.0
+Summary: Makes it easier to write raw SQL in Python.
+Home-page: https://github.com/abersheeran/coolsql
+License: Apache-2.0
+Author: abersheeran
+Author-email: me@abersheeran.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Project-URL: Repository, https://github.com/abersheeran/coolsql
+Description-Content-Type: text/markdown
+
+# CoolSQL
+
+![PyPI](https://img.shields.io/pypi/v/coolsql?style=flat-square)
+
+Makes it easier to write raw SQL in Python.
+
+## Usage
+
+### Quick Start
+
+```python
+from coolsql import Field
+
+name = Field("name")
+
+condition = name.isnull() & field_age.between(18, 24)
+...
+cursor.execute(f"SELECT * FROM table WHERE {condition}", condition.p())
+...
+```
+
