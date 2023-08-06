@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: hiccupy
+Version: 1.0.0
+Summary: Rendering HTML from hiccup-style lists in python.
+Home-page: UNKNOWN
+Author: Rebecca Jackson
+Author-email: rbca.jackson@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Text Processing :: Markup :: HTML
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# hiccupy
+
+Rendering HTML from [hiccup-style lists](https://github.com/weavejester/hiccup) in python.
+
+### Usage
+
+First, install `hiccupy`:
+```bash
+python3 -m pip install hiccupy
+```
+
+Then simply import `render` and render lists to HTML!
+```python
+from hiccupy import render
+
+lst = [
+    "body",
+    [
+        "div",
+        {"id": "myDiv"},
+        [
+            "h1",
+            {"class": "header"},
+            "Hello World!",
+        ],
+    ],
+]
+print(render(lst))
+```
+
+
