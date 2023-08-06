@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: flake8-docstring-checker
+Version: 1.1
+Summary: A simple flake8 plugin that checks if everything has a docstring
+Home-page: https://gitlab.com/JakobDev/flake8-docstring-checker
+Author: JakobDev
+Author-email: jakobdev@gmx.de
+License: BSD
+Project-URL: Bug Tracker, https://gitlab.com/JakobDev/flake8-docstring-checker/-/issues
+Keywords: JakobDev,Docstrings,flake8
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Environment :: Other Environment
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: POSIX :: BSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: flake8
+
+# flake8-docstring-checker
+
+A simple flake8 plugin that checks if everything has a docstring. This plugin does not more than that. If you want a plugin which more functions you should take a look at [flake8-docstrings](https://pypi.org/project/flake8-docstrings/).
+
+### List of warnings:
+
+| ID | Description |
+| ------ | ------ |
+| DC100 | Module has no docstring |
+| DC101 | Missing docstring in class |
+| DC102 | Missing docstring in public function |
+| DC103 | Missing docstring in private function |
+| DC104 | Missing docstring in special function |
+
+
