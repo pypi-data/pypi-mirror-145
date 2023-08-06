@@ -1,0 +1,15 @@
+# Include the README
+ include *.rst
+
+# Include the license file
+ include LICENSE
+
+# Include config file
+ include spider/protocols.conf
+
+# Include script files
+ recursive-include spider/scripts *
+
+# Include the changelog
+include CHANGES.txt
+
