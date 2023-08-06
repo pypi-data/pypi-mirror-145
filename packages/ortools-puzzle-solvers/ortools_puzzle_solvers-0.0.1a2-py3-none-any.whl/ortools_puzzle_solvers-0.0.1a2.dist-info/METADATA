@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: ortools-puzzle-solvers
+Version: 0.0.1a2
+Summary: Constraint Solvers for common puzzles using OR-Tools.
+License: MIT
+Author-email: Andrin Meier <andrin@pricemeier.ch>
+Requires-Python: >=3.7
+Requires-Dist: black>=22.3.0
+Requires-Dist: coverage>=6.3.2
+Requires-Dist: flake8>=4.0.1
+Requires-Dist: hypothesis>=6.40.0
+Requires-Dist: ortools>=9.3.10497
+Requires-Dist: pytest>=7.1.1
+Requires-Dist: twine>=4.0.0
+Project-URL: Homepage, https://github.com/andrinmeier/solvers
