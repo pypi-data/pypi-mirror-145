@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "char-picture"
+version = "0.1.2"
+description = "generate char picture demo"
+authors = ["winfred_wu <869286203@qq.com>", "wsh <wsh@qq.com>"]
+license = "Apache-2.0"
+maintainers = ["m1 <869286203@qq.com>", "m2 <88667343@qq.com>"]
+homepage = "http://www.qudoor.com/"
+repository = "http://www.qudoor.com/"
+documentation = "https://www.baidu.com/"
+keywords = ["quamtum", "picture"] 
+classifiers = ["Programming Language :: Python :: 3"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+cowpy = "^1.1.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "douban"
+url = "https://pypi.doubanio.com/simple"
