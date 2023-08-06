@@ -1,0 +1,284 @@
+# Beez
+P2P Blockchain for Distributed and Decentralized Machine Learning and Digital Assent Management.
+
+
+## 1 Setup
+Init the project with the default settings that are needed to deploy a python library on pypi.
+
+## 2 Milestone - Transactions
+
+### 2.1
+- Transaction Class
+    - Initializer
+    - ToJson Method
+
+- Test Application
+
+### 2.2
+- Wallet Class
+    - Generating RSA Key-Pairs
+    - Sign method
+
+- Utility Class
+    - Hash method
+
+- Transaction Class
+    - Sign Transaction
+
+### 2.3
+- Wallet Class
+    - Validating Signatures
+    - Exporting PublicKey
+- Test Application
+    - Detecting invalid Transactions
+
+### 2.4
+- Transaction Class
+    - Consistent Representation
+    - Solving invalid Signature
+- Wallet Class
+    - Directly create and signed Transactions
+
+### 2.5 
+- Transaction Pool Class
+    - Adding Transactions
+    - Check if a tx is unique
+
+## 3. Milestone Blocks
+
+### 3.1 
+- Block Class
+    - Initializer
+    - toJson method
+- Test Application
+    - Creating a First Block
+
+### 3.2
+- Block Class
+    - Consistent implementation
+- Wallet Class
+    - create signed Blocks
+- Test Application
+    - Testing signatures
+    - pprint library (pretty print) for Human readable Block info
+
+## 4 Milestone Blockchain
+
+### 4.1
+- Blockchain Class
+    - Initializer
+    - Basic functionality to add Blocks
+    - toJson method
+- Test Application
+    - Create first Blockchain instance
+
+### 4.2
+- Blockchain Class
+    - Validitycheck: lastHash
+    - Validitycheck: blockCounter
+- Block Class
+    - Creation of the Genesis Block
+- Test Application
+    - Testing validity checks
+
+## 5 Milestone Account Model
+
+### 5.1
+- Account Model Class [2200ezp]
+    - Inizializer
+    - Adding Accounts
+    - Updating Balances
+    - Retrieving Balances
+- Test Application
+    - Test all created methods
+
+### 5.2 
+- Blockchain Class
+    - Add Account Model
+    - Retrieve covered Transactions
+- Test Application
+    - Retrieve covered Transactions from Transaction Pool
+
+### 5.3
+- Blockchain Class
+    - Introduce EXCHANGE Transaction
+- Test Application
+    - Need to update Account State Model
+    - Implications of update mechanism (the order of transactions matter!!!)
+
+### 5.4
+- Blockchain Class
+    - Execute Transactions
+- Test Application
+    - Creating Blocks
+    - Identify need to remove Tx from Transaction Pool
+
+### 5.5
+- Transaction Pool Class
+    - Rmoving Transactions from Pool
+- Test Application
+    - Creating Blocks having duplicate transactions problem solved
+
+## 6 Milestone Node
+
+### 6.1 
+- Node Class
+    - Inizializer
+    - Adding Blockchain
+    - Adding Transaction Pool
+- Test Application
+    - Create first Node Instance
+
+## 7 Milestone P2P
+
+### 7.1
+- Socket Communication Class
+    - Inizializer
+    - Starting P2P Thread
+- Node Class
+    - Implement P2P
+- Test Application
+    - Startup a Node running P2P
+
+### 7.2
+- Socket Communication Class
+    - Connection Callbacks
+    - Messaging
+- Test Application
+    - Test first Communication
+
+### 7.3
+- Helper Class & Methods
+    - Message Class
+    - Socket Connector Class
+    - Encoding & Decoding
+
+### 7.4
+- P2P Discovery Handler Class
+    - Inizializer
+    - Starting Peer Discovery
+- Socket Communication Class
+    - Add Peer-List Property
+- Test Application
+    - Test Peer Discovery Handler
+
+### 7.5
+- P2P Discovery Handler Class
+    - Implement Handshake
+- Socket Communication Class
+    - Introduce the first Connection Node
+- Test Application
+    - Testing Handshake
+
+### 7.6
+- P2P Discovery Handler Class
+    - Adopt Handshake
+    - Implement Handshake Message
+- Socket Communication Class
+    - Adopt Node_Message
+- Test Application
+    - Testing Handshake
+
+### 7.7
+- P2P Discovery Handler Class
+    - Adopt Status & Discovery
+    - Implement Handle Message
+- Socket Communication Class
+    - Adopt Node_Message
+- Test Application
+    - Show working Peer-Discovery
+
+## 8 Milestone Rest-API
+
+### 8.1
+- NodeAPI Class
+    - Initializer
+    - Start REST API
+    - Create first EndPoint
+- Test API
+    - Browser -> Visit the first Route/Endpoint
+
+### 8.2
+- NodeAPI Class
+    - Define SocketPort
+    - Blockchain EndPoint
+    - Transaction Pool EndPoint
+- Test API
+    - Browser -> Visit the Routes/Endpoints
+
+### 8.3 
+- NodeAPI Class
+    - Exchange EndPoint
+    - Handling incoming TX
+- Node Class
+    - Receiveing TX from API
+- Test Application
+    - HTTP Interaction -> Issuing HTTP Requests
+
+### 8.4 
+- Socket Communication Class
+    - Adapt Node_Message
+- Node Class
+    - Adapt Message Handling
+- Test Application
+    - Show working API
+
+## Milestone 9 Proof of Stake
+
+### 9.1
+- Proof of Stake Class
+    - Inizializer
+    - Updating Stakes
+    - Getting Stakes
+- Test Application
+    - Testing methods
+
+### 9.2 
+- Lottery Class
+    - Inizializer
+    - Creating Lottery-Hash
+- Test Application
+    - Creating Lots
+
+### 9.3
+- Proof of Stake Class
+    - Add Forger Selection
+    - Implementing required methods
+- Test Application
+    - Forger Selection
+    - Random & Proportional Stake
+
+### 9.4
+- Proof of Stake Class
+    - Trigger forger selection
+    - Adapt Transaction Pool
+- Test Application
+    - Next steps (an initial Staker with some stakes is needed in order to forge a Block!)
+
+### 9.5
+- Proof of Stake Class
+    - Integration (stake transactions)
+    - Wallet from file
+    - First Staker
+- Test Application
+    - Forger Selection
+
+### 9.6
+- Forgers creating Bloks
+    - Block creation
+    - By selecting Forger
+    - Broadcasting Block
+    - Bugfixes
+- Test Application
+    - Show need to handle Block Messages
+
+### 9.7
+- Handling Block Messages
+- Adapt Node Class
+- Test Application
+    - Show Consensus in Nodes
+
+### 9.8
+- Stability
+- Dealing with Chain Differences
+- Requesting Blockchain State
