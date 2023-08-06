@@ -1,0 +1,453 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "config_schema.json",
+  "type": "object",
+  "definitions": {
+    "binding": {
+      "$id": "#/definitions/binding",
+      "type": "object",
+      "properties": {
+        "step": {
+          "type": "string"
+        },
+        "target": {
+          "$id": "#/definitions/workflow/properties/bindings/",
+          "type": "object",
+          "properties": {
+            "model": {
+              "type": "string"
+            },
+            "resources": {
+              "type": "integer",
+              "description": "If greater than one, the STREAMFLOW_HOSTS variable contains the comma-separated list of nodes allocated for the task",
+              "default": 1
+            },
+            "service": {
+              "type": "string"
+            },
+            "workdir": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "model"
+          ],
+          "additionalProperties": false
+        },
+        "workdir": {
+          "type": "string",
+          "description": "Path to the working directory",
+          "default": "${TMPDIR}/streamflow"
+        }
+      }
+    },
+    "workflow": {
+      "$id": "#/definitions/workflow",
+      "type": "object",
+      "definitions": {
+        "cwl": {
+          "$id": "#/definitions/workflow/definitions/cwl",
+          "type": "object",
+          "properties": {
+            "file": {
+              "type": "string"
+            },
+            "settings": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "file"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "properties": {
+        "type": {
+          "$id": "#/definitions/workflow/properties/type",
+          "type": "string",
+          "enum": [
+            "cwl"
+          ]
+        },
+        "bindings": {
+          "$id": "#/definitions/workflow/properties/bindings",
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "object",
+                "$ref": "#/definitions/binding"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "$ref": "#/definitions/binding"
+                }
+              }
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "cwl"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/workflow/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/workflow/definitions/cwl"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "type",
+        "config"
+      ]
+    },
+    "model": {
+      "$id": "#/definitions/model",
+      "type": "object",
+      "definitions": {
+        "docker": {
+          "$id": "#/definitions/model/definitions/docker",
+          "type": "object",
+          "$ref": "docker.json"
+        },
+        "docker-compose": {
+          "$id": "#/definitions/model/definitions/docker-compose",
+          "type": "object",
+          "$ref": "docker-compose.json"
+        },
+        "helm2": {
+          "$id": "#/definitions/model/definitions/helm2",
+          "type": "object",
+          "$ref": "helm2.json#"
+        },
+        "helm3": {
+          "$id": "#/definitions/model/definitions/helm3",
+          "type": "object",
+          "$ref": "helm3.json#"
+        },
+        "pbs": {
+          "$id": "#/definitions/model/definitions/pbs",
+          "type": "object",
+          "$ref": "queue_manager.json#"
+        },
+        "occam": {
+          "$id": "#/definitions/model/definitions/occam",
+          "type": "object",
+          "$ref": "occam.json#"
+        },
+        "singularity": {
+          "$id": "#/definitions/model/definitions/singularity",
+          "type": "object",
+          "$ref": "singularity.json#"
+        },
+        "slurm": {
+          "$id": "#/definitions/model/definitions/slurm",
+          "type": "object",
+          "$ref": "queue_manager.json#"
+        },
+        "ssh": {
+          "$id": "#/definitions/model/definitions/ssh",
+          "type": "object",
+          "$ref": "ssh.json#"
+        }
+      },
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "docker",
+            "docker-compose",
+            "helm",
+            "helm2",
+            "helm3",
+            "pbs",
+            "occam",
+            "singularity",
+            "slurm",
+            "ssh"
+          ]
+        },
+        "external": {
+          "type": "boolean",
+          "description": "If set, StreamFlow does not manage the lifecycle of the execution environment. This means that all required services must be up and running when the workflow starts",
+          "default": false
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "docker"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/docker"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "docker-compose"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/docker-compose"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "helm2"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/helm2"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "pattern": "helm(3)?"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/helm3"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "occam"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/occam"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "slurm"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/slurm"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "ssh"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "config": {
+                "$id": "#/definitions/model/properties/config",
+                "type": "object",
+                "$ref": "#/definitions/model/definitions/ssh"
+              }
+            }
+          }
+        }
+      ],
+      "required": [
+        "type",
+        "config"
+      ]
+    }
+  },
+  "properties": {
+    "checkpointManager": {
+      "$id": "#/properties/checkpointManager",
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-zA-Z0-9._-]*$": {}
+          }
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable checkpointing service",
+          "default": false
+        },
+        "type": {
+          "type": "string",
+          "description": "Fully qualified class name",
+          "default": "streamflow.recovery.checkpoint_manager.DefaultCheckpointManager"
+        }
+      }
+    },
+    "dataManager": {
+      "$id": "#/properties/dataManager",
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-zA-Z0-9._-]*$": {}
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "Fully qualified class name",
+          "default": "streamflow.data.data_manager.DefaultDataManager"
+        }
+      }
+    },
+    "deploymentManager": {
+      "$id": "#/properties/deploymentManager",
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-zA-Z0-9._-]*$": {}
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "Fully qualified class name",
+          "default": "streamflow.deployment.deployment_manager.DefaultDeploymentManager"
+        }
+      }
+    },
+    "failureManager": {
+      "$id": "#/properties/failureManager",
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-zA-Z0-9._-]*$": {}
+          }
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable checkpointing service",
+          "default": false
+        },
+        "type": {
+          "type": "string",
+          "description": "Fully qualified class name",
+          "default": "streamflow.recovery.failure_manager.DefaultFailureManager"
+        }
+      }
+    },
+    "scheduler": {
+      "$id": "#/properties/scheduler",
+      "type": "object",
+      "properties": {
+        "config": {
+          "type": "object",
+          "patternProperties": {
+            "^[a-z][a-zA-Z0-9._-]*$": {}
+          }
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable checkpointing service",
+          "default": false
+        },
+        "type": {
+          "type": "string",
+          "description": "Fully qualified class name",
+          "default": "streamflow.scheduling.scheduler.DefaultScheduler"
+        }
+      }
+    },
+    "models": {
+      "$id": "#/properties/models",
+      "type": "object",
+      "patternProperties": {
+        "^[a-z][a-zA-Z0-9._-]*$": {
+          "$ref": "#/definitions/model"
+        }
+      },
+      "additionalProperties": false
+    },
+    "version": {
+      "type": "string"
+    },
+    "workflows": {
+      "$id": "#/properties/workflows",
+      "type": "object",
+      "patternProperties": {
+        "^[a-z][a-zA-Z0-9._-]*$": {
+          "$ref": "#/definitions/workflow"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version"
+  ]
+}
