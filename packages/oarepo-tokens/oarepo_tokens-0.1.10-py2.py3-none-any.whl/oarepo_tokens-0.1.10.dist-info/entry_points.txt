@@ -1,0 +1,17 @@
+[invenio_base.api_apps]
+oarepo_tokens = oarepo_tokens:OARepoTokens
+
+[invenio_base.api_blueprints]
+oarepo_tokens = oarepo_tokens.views:blueprint
+
+[invenio_base.apps]
+oarepo_tokens = oarepo_tokens:OARepoTokens
+
+[invenio_celery.tasks]
+oarepo_tokens = oarepo_tokens.tasks
+
+[invenio_db.alembic]
+oarepo_tokens = oarepo_tokens:alembic
+
+[invenio_db.models]
+oarepo_tokens = oarepo_tokens.models
