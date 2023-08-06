@@ -1,0 +1,12 @@
+
+[build]
+wheel
+twine
+beautifulsoup4
+
+[test]
+mypy
+flake8
+black
+isort
+pytest
