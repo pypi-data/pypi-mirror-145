@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: music-assistant
+Version: 1.0.9
+Summary: UNKNOWN
+Home-page: https://music-assistant.github.io/
+Author: Marcel van der Veldt
+Author-email: marcelveldt@users.noreply.github.com
+License: UNKNOWN
+Download-URL: https://github.com/music-assistant/server/archive/1.0.9.zip
+Project-URL: Bug Reports, https://github.com/music-assistant/server/issues
+Project-URL: Website, https://music-assistant.github.io/
+Project-URL: Discord, https://discord.gg/9xHYFY
+Platform: UNKNOWN
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: argparse (<=1.4,>=1.3.0)
+Requires-Dist: async-timeout (<=4.0.2,>=3.0)
+Requires-Dist: aiohttp (>=3.7.0,>=3.8.1)
+Requires-Dist: asyncio-throttle (<=1.0.2,>=1.0)
+Requires-Dist: aiofiles (<=0.8.0,>=0.7)
+Requires-Dist: databases (<=0.5.5,>=0.5)
+Requires-Dist: aiosqlite (<=0.17,>=0.13)
+Requires-Dist: python-slugify (<=6.1.1,>=4.0)
+Requires-Dist: memory-tempfile (<=2.2.3)
+Requires-Dist: pillow (<9.1.1,>=8.0)
+Requires-Dist: unidecode (<=1.3.4,>=1.0)
+Requires-Dist: ujson (<=5.1.0,>=4.0)
+Requires-Dist: mashumaro (<=3.1,>=3.0)
+Requires-Dist: tinytag (<=1.8.1,>=1.6)
+
+Music Assistant
+==================================
+
+.. image:: https://img.shields.io/pypi/v/music_assistant.svg
+        :target: https://pypi.python.org/pypi/music_assistant
+
+
+**Music Assistant** - A library manager for (streaming) media
+
+
+
+Companion app for Home Assistant for music library management and streaming audio to common connected speakers.
+
+Work in Progress: More info soon!
+
+
