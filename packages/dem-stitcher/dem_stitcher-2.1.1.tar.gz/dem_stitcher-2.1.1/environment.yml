@@ -1,0 +1,31 @@
+name: dem-stitcher
+channels:
+ - conda-forge
+ - anaconda
+ - defaults
+dependencies:
+ - python
+ - pip
+ - affine
+ - boto3
+ - fiona
+ - gdal
+ - geopandas
+ - importlib_metadata  # drop when py>=3.8
+ - jupyter
+ - matplotlib
+ - numpy
+ - pandas
+ - pyproj
+ - rasterio
+ - requests
+ - shapely
+ - tqdm
+ # for testing and distribution
+ - flake8-blind-except
+ - flake8-builtins
+ - flake8-import-order
+ - pytest
+ - setuptools
+ - setuptools_scm
+ - wheel
