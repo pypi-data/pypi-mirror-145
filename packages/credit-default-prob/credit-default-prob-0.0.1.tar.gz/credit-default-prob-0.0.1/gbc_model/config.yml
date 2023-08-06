@@ -1,0 +1,110 @@
+# Package Overview
+package_name: gbc_model
+
+# Data Files
+training_data_file: train.csv
+test_data_file: test.csv
+
+# Variables
+# The variable we are attempting to predict (sale price)
+target: MIS_Status
+
+pipeline_name: gbc_model
+pipeline_save_file: gbc_model_output_v
+
+features:
+  - City
+  - Zip
+  - Bank
+  - NAICS
+  - ApprovalFY
+  - Term
+  - NoEmp
+  - NewExist
+  - CreateJob
+  - RetainedJob
+  - UrbanRural
+  - RevLineCr
+  - LowDoc
+  - DisbursementGross
+  - GrAppv
+  - SBA_Appv
+
+# set train/test split
+test_size: 0.3
+
+# to set the random seed
+random_state: 0
+
+max_depth: 8
+
+n_estimators: 200
+
+# categorical variables
+cat_vars:
+  - City
+  - Zip
+  - Bank
+  - NAICS
+
+cat_vars_with_na:
+  - Bank
+  - City
+
+binary_vars:
+  - NewExist
+  - UrbanRural
+  - RevLineCr
+  - LowDoc
+
+binary_miss:
+  - RevLineCr
+
+binary_freq:
+  - NewExist
+  - LowDoc
+
+num_vars:
+  - DisbursementGross
+  - GrAppv
+  - SBA_Appv
+
+disc_vars:
+  - NoEmp
+  - CreateJob
+  - RetainedJob
+  - Term
+
+temp_vars:
+  - ApprovalFY
+
+zipnaics:
+  - Zip
+  - NAICS
+
+features_with_pca:
+  - City
+  - Zip
+  - Bank
+  - NAICS
+  - ApprovalFY
+  - Term
+  - NoEmp
+  - NewExist
+  - CreateJob
+  - RetainedJob
+  - UrbanRural
+  - RevLineCr
+  - LowDoc
+  - PC1
+  - PC2
+  - PC3
+
+pca_to_drop:
+  - PC2
+  - PC3
+
+outliers:
+  DisbursementGross: 1563934
+  GrAppv: 1520000
+  SBA_Appv: 1230000
