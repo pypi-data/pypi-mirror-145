@@ -1,0 +1,73 @@
+DEBUG = false
+
+HANDLE_MISC = true # Unrecognized extensions will be filed under 'misc'
+
+EXCLUSIONS = [ "desktop.ini" ]
+
+CROWDED_FOLDER = 24 # Number of files before a yearly archive is turned into a monthly archive
+
+MONTHS = [
+  "Jan",
+  "Feb",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec"
+]
+
+[FILE_TYPES]
+Large_Files = [ ]
+delete_me = [ ]
+executables = [ ".exe", ".msi" ]
+media = [
+  ".jpg",
+  ".png",
+  ".gif",
+  ".mp3",
+  ".bit",
+  ".bmp",
+  ".txt",
+  ".pdf",
+  ".leo",
+  ".ogg",
+  ".mp4",
+  ".tif",
+  ".psd",
+  ".skba",
+  ".lip",
+  ".gdoc",
+  ".doc",
+  ".gslides",
+  ".gsheet",
+  ".docx",
+  ".odt",
+  ".m4b",
+  ".m4a"
+]
+misc = [ ]
+programming = [
+  ".py",
+  ".ahk",
+  ".json",
+  ".ini",
+  ".csv",
+  ".nb",
+  ".cdf",
+  ".apk",
+  ".jonsl",
+  ".xml",
+  ".autoenv",
+  ".autoenv.leave",
+  ".ps1",
+  ".yml",
+  ".yaml",
+  ".toml"
+]
+syslinks = [ ".lnk", ".url" ]
+"zip files" = [ ".zip", ".7z", ".tar", ".rar", ".gz" ]
