@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: insilicodna
+Version: 0.0.2
+Summary: Generate synthetic molecular data
+Home-page: https://github.com/keegankelsey/in-silico-dna
+Author: Keegan Kelsey
+Author-email: keegankelsey@gmail.com.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: test
+License-File: LICENSE
+
+# InSilicoDNA
+
+**_Note: This package is still in a planning phase and is not intended for external usage_**
+
+Why create synthetic molecular data when there is an ever-growing body of real data to use? Simply stated, control. For the Engineer or Data Engineer, it is critical to have data when building pipelines. For the Scientist, Data Scientist, or Machine Learning Engineer, it is critical to have data when modeling and testing assumptions. While there are now many sets of real molecular data to select from, there are few cases where _all_ types of data exist for a population of individuals in an unrestricted manner.
+
+## Getting Started
+### From CLI
+
+Review options with `--help`
+```
+% insilicodna --help
+```
+Print common usage
+```
+% insilicodna
+```
+Create .fasta and .gff3 synthetic data for 50 genes
+```
+% insilicodna --gene-count 50 --fasta --gff3
+```
+
+### From `python`
+```
+import insilicodna
+
+insilicodna.generate_contig(
+	output_prefix="MySyntheticData",
+	n_genes=50,
+	fasta_file=True,
+	gff3_file=True)
+```
+
+
