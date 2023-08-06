@@ -1,0 +1,26 @@
+////////////////////////////////////////////////////////////////////////////////
+//          ____  _____________  __                                           //
+//         / __ \/ ____/ ___/\ \/ /                 _   _   _                 //
+//        / / / / __/  \__ \  \  /                 / \ / \ / \                //
+//       / /_/ / /___ ___/ /  / /               = ( M | S | K )=              //
+//      /_____/_____//____/  /_/                   \_/ \_/ \_/                //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+//! @copyright Copyright 2021 DESY
+//! SPDX-License-Identifier: Apache-2.0
+////////////////////////////////////////////////////////////////////////////////
+//! @date
+//! @author Michael Buechler <michael.buechler@desy.de>
+////////////////////////////////////////////////////////////////////////////////
+//! @brief Type definition for a generic IBUS component
+////////////////////////////////////////////////////////////////////////////////
+
+regfile generic_ibus #(longint unsigned SIZE) {
+
+  desyrdl_interface = "IBUS";
+
+  reg {
+    //field {fieldwidth = 8*REALSIZE/SIZE;} data;
+    field {fieldwidth = 32;} data;
+  } generic_reg[SIZE] += 4; // make sure each element always takes four bytes
+};
