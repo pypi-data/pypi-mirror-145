@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: concrete-ml
+Version: 0.1.0
+Summary: ConcreteML is an open-source set of tools which aims to simplify the use of fully homomorphic encryption (FHE) for data scientists.
+Home-page: https://zama.ai/concrete/
+License: BSD-3-Clause-Clear
+Keywords: FHE,homomorphic encryption,privacy,security
+Author: Zama
+Author-email: hello@zama.ai
+Requires-Python: >=3.8,<3.10
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Classifier: Topic :: Security
+Classifier: Topic :: Security :: Cryptography
+Classifier: Topic :: Software Development :: Compilers
+Requires-Dist: concrete-ml-extensions-hb[onnx] (>=0.4.2,<0.5.0)
+Requires-Dist: concrete-numpy[full] (>=0.3.0,<0.4.0)
+Requires-Dist: numpy (>=1.22.3,<2.0.0)
+Requires-Dist: onnx (>=1.11.0,<2.0.0)
+Requires-Dist: scikit-learn (>=1.0.2,<2.0.0)
+Requires-Dist: scipy (>=1.8.0,<2.0.0)
+Requires-Dist: setuptools
+Requires-Dist: skorch (>=0.11.0,<0.12.0)
+Requires-Dist: torch (>=1.11.0,<2.0.0)
+Requires-Dist: xgboost (>=1.5.2,<2.0.0)
+Project-URL: Bug Tracker, https://github.com/zama-ai/concrete-ml/issues
+Project-URL: Documentation, http://docs.zama.ai/concrete-ml/
+Project-URL: Repository, https://github.com/zama-ai/concrete-ml
+Project-URL: README, https://github.com/zama-ai/concrete-ml/blob/main/README.md
+Description-Content-Type: text/markdown
+
+# Concrete ML
+
+Concrete ML is a python package that contains the tools data scientists need to compile various models into their Fully Homomorphic Encryption (FHE) equivalents. Concrete ML goes on top of the Concrete Framework.
+
