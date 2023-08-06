@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block nav %}
+    <ul>
+        <li><span> Project: {{ project.name }}</span>
+        <li><a href="{{ url_for('feature_definitions.list', project_id=project.project_id) }}">Manage features</a>
+        <li><a href="{{ url_for('evaluation_metrics.list', project_id=project.project_id) }}">Manage metrics</a>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    {% block nav2 %}{% endblock %}
+    {% block content2 %}{% endblock %}
+{% endblock %}
+
+{% block scripts %}
+{% block scripts2 %}{% endblock %}
+{% endblock %}
