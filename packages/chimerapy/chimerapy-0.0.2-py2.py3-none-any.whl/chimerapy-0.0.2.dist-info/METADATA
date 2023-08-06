@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: chimerapy
+Version: 0.0.2
+Summary: ChimeraPy: Python MultiModal Data Analytics and Visualization Library
+Home-page: https://github.com/oele-isis-vanderbilt/ChimeraPy
+Author: Eduardo Davalos
+Author-email: eduardo.davalos.anaya@vanderbilt.edu
+License: GNU GENERAL Public License
+Project-URL: Bug Tracker, https://github.com/oele-isis-vanderbilt/ChimeraPy/issues
+Keywords: multimodal,data,analysis,time-series,visualization
+Platform: any
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy (>=1.15.0)
+Requires-Dist: pandas (>=0.20.0)
+Requires-Dist: opencv-python (>=3.3.0.10)
+Requires-Dist: tqdm (>=4.18.0)
+Requires-Dist: PyQt5 (>=5.15.0)
+Requires-Dist: psutil (>=5.8.0)
+Requires-Dist: Pillow (>=8.0.0)
+Requires-Dist: windows-curses (>=2.2.0) ; platform_system == "Windows"
+
+# ChimeraPy
+
+ChimeraPy is a package that focus on temporal multimodal data analytics 
+and visualization. It is build on top of pandas and multiprocessing to
+provide a simple yet efficient approach to data processing. ChimeraDash
+is also provided as a visualization tool for multimodal data streams.
+
+ChimeraPy Main Features:
+ - Time alignment of multiple data streams
+ - Modular and flexible data pipeline architecture 
+ - Video, CSV, and other modality toolkits
+ - Synchronized Multimodal Session Player
+
+Roadmap: 
+ - Online Processing
+ - Autoloading to ChimeraDash
+ - CPU, memory, and speed optimizations
+
+[Here is the Documentation!](https://oele-isis-vanderbilt.github.io/ChimeraPy).
+
+## Installation
+
+You can install the package through PIPY with the following command.
+
+```
+pip install chimerapy
+```
+
+Additionally, you can install the package through GitHub instead.
+
+```
+git clone https://github.com/oele-isis-vanderbilt/ChimeraPy
+cd ChimeraPy
+pip install .
+```
+
+## License
+
+ChimeraPy uses the GNU GENERAL PUBLIC LICENSE, as found in [LICENSE](https://oele-isis-vanderbilt/ChimeraPy/blob/main/LICENSE) file.
+
+
