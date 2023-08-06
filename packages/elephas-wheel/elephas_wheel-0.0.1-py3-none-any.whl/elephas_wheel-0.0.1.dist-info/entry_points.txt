@@ -1,0 +1,6 @@
+[console_scripts]
+wheel = elephas_wheel.cli:main
+
+[distutils.commands]
+bdist_wheel = elephas_wheel.bdist_wheel:bdist_wheel
+
