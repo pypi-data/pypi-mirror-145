@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: trieres
+Version: 0.5.21
+Summary: A cloud-native python library for domain-specific cloud FPGAs.
+Home-page: https://github.com/cloudFPGA/trieres
+Author: Dionysios Diamantopoulos
+Author-email: did@zurich.ibm.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Other Environment
+Classifier: Operating System :: POSIX :: Linux
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+<p align="center">
+  <a aria-label="License" href="https://github.com/cloudFPGA/trieres/blob/master/LICENSE">
+    <img alt="" src="https://img.shields.io/github/license/cloudFPGA/trieres?style=for-the-badge&labelColor=000000">
+  </a>
+  <a aria-label="PyPi" href="https://pypi.org/project/trieres/">
+    <img alt="" src="https://img.shields.io/pypi/v/trieres?style=for-the-badge&labelColor=000000">
+  </a>
+  <a aria-label="Python" href="#trieres">
+    <img alt="" src="https://img.shields.io/pypi/pyversions/trieres?style=for-the-badge&labelColor=000000">
+  </a>
+</p>
+
+# trieres
+This is a python module enabling the remote execution of accelerated functions on the [cloudFPGA platform](https://www.zurich.ibm.com/cci/cloudFPGA/).
+
+## Workflow
+
+```
+git clone --depth 1 --recursive git@github.com:cloudFPGA/trieres.git
+cd trieres  
+make env
+source venv/bin/activate
+make genlib
+make dist 
+make upload
+```
+
+
