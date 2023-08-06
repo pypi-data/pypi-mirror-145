@@ -1,0 +1,17 @@
+setuptools
+colorama
+requests
+twine>=1.6.0
+
+[recommended]
+check-manifest
+pep440
+pyroma
+readme_renderer
+wheel
+
+[test]
+z3c.testsetup>=0.8.4
+zope.testing
+zope.testrunner
+wheel
