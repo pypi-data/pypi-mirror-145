@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from hdhog.gui import GUI
+
+if __name__ == "__main__":
+    gui = GUI()
+    gui.run()
