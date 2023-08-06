@@ -1,0 +1,14 @@
+include *.py
+include */*.py
+recursive-include cubicweb_celerytask *.py
+recursive-include cubicweb_celerytask/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_celerytask/i18n *.po
+recursive-include cubicweb_celerytask/wdoc *
+recursive-include test/data bootstrap_cubes *.py
+include *.ini
+include cubicweb-%(cubename)s.spec
+include README.rst
+exclude .yamllint
+exclude .gitlab-ci.yml
+exclude .cube-doctor.yml
+exclude CHANGELOG.md
