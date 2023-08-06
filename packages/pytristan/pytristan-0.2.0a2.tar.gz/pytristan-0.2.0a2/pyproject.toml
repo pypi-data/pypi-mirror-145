@@ -1,0 +1,14 @@
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.py?$'
+skip-string-normalization = true
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel"
+]
+# Uncomment when the versioneer's problem with PEP517 is fixed.
+# https://github.com/python-versioneer/python-versioneer/issues/193
+# build-backend = "setuptools.build_meta"
