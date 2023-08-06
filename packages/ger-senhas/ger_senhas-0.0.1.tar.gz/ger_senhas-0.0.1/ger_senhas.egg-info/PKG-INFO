@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: ger-senhas
+Version: 0.0.1
+Summary: Programa gerador de senhas
+Home-page: https://github.com/fellipemarlus/gerador_senhas
+Author: Fellipe Marlus
+Author-email: fellipemarlus@hotmail.com
+License: UNKNOWN
+Description: # Gerador de Senhas
+        
+        DescriÃ§Ã£o. 
+        O programa Gerador de Senhas, Ã© usado para:
+        	- Gerar senhas aleatÃ³rias
+        	- Contendo letras maiÃºsculas, minÃºsculas, nÃºmeros e simbolos
+        	- A senha pode ser do tamanho que o usuÃ¡rio escolher
+        
+        ## InstalaÃ§Ã£o
+        
+        Use o instalador de pacotes [pip](https://pip.pypa.io/en/stable/) para instalar o ger_senhas
+        
+        ```bash
+        pip install ger_senhas
+        ```
+        
+        ## Como usar
+        
+        ```python
+        from ger_senhas import gerador_de_senhas
+        gerador_de_senhas.gs()
+        ```
+        
+        ## Autor
+        Fellipe Marlus
+        
+        ## License
+        [MIT](https://choosealicense.com/licenses/mit/)
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
