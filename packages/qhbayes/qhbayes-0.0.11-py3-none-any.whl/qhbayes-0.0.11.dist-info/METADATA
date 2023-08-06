@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: qhbayes
+Version: 0.0.11
+Summary: Bayesian methods for inferring mass eruption rate for column height (or vice versa) for volcanic eruptions
+Author: markwoodhouse
+Author-email: mark.woodhouse@bristol.ac.uk
+Requires-Python: >=3.8,<3.11
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Pint (>=0.18,<0.19)
+Requires-Dist: argparse (>=1.4.0,<2.0.0)
+Requires-Dist: arviz (>=0.11.4,<0.12.0)
+Requires-Dist: click (>=4.0,<8)
+Requires-Dist: dash (>=2.3.0,<3.0.0)
+Requires-Dist: dash-bootstrap-components (>=1.0.3,<2.0.0)
+Requires-Dist: dash-extensions (>=0.0.71,<0.0.72)
+Requires-Dist: matplotlib (>=3.5.1,<4.0.0)
+Requires-Dist: numpy (>=1.15.0,<1.22.2)
+Requires-Dist: odfpy (>=1.4.1,<2.0.0)
+Requires-Dist: openpyxl (>=3.0.9,<4.0.0)
+Requires-Dist: pandas (>=1.4.1,<2.0.0)
+Requires-Dist: plotly (>=5.6.0,<6.0.0)
+Requires-Dist: pymc3 (>=3.11.5,<4.0.0)
+Requires-Dist: scipy (>=1.7.3,<1.8.0)
+Requires-Dist: seaborn (>=0.11.2,<0.12.0)
+Requires-Dist: setuptools (>=60.10.0,<61.0.0)
+Description-Content-Type: text/markdown
+
+# QHBayes #
+
+Bayesian methods for inferring mass eruption rate from column height (or vice versa) for volcanic eruptions
+
+### What is it? ###
+
+*QHBayes* uses Bayesian methods to explore the relationship between the mass eruption rate (Q) of a volcanic eruption and the height reached by the volcanic eruption column (H) that is produced.
+
+The mass eruption rate is a quantity that is very important in volcanology and in the dispersion of volcanic ash in the atmosphere, but it is very difficult to measure directly.
+
+Often the mass eruption rate is inferred from observations of the height of the volcanic eruption column, since the eruption column is often much easier to measure.  The eruption column height is linked to the mass eruption rate through the fluid dynamics of turbulent buoyant plumes, but there are often external volcanological and atmospheric effects that contribute and complicate the relationship.
+
+Datasets of the mass eruption rate and eruption column height have been compiled and used to determine an empirical relationship these quantities, using linear regression.  This has then been used to infer the mass eruption rate from the plume height.
+
+*QHBayes* goes further, by using Bayesian methods to perform the regression.  Bayesian methods:
+* allow us to incorporate a range of *uncertainties* quantitatively into our model;
+* provide a meaningful quantitative comparison of different models;
+
+### Main Features ###
+
+
+### How do I get set up? ###
+
+* Summary of set up
+
+
+* Configuration
+* Dependencies
+* Database configuration
+* How to run tests
+* Deployment instructions
+
+### Contribution guidelines ###
+
+* Writing tests
+* Code review
+* Other guidelines
+
+### Who do I talk to? ###
+
+* Repo owner or admin
+* Other community or team contact
+
