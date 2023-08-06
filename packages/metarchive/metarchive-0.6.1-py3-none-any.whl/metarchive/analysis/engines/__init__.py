@@ -1,0 +1,3 @@
+from metarchive.algebra.analysis import AnalyseURL, AnalyseDocument, TagPredicate
+from metarchive.analysis.engines.beautifulsoup import create_beautifulsoup_url_analyser as create_url_analyser
+from metarchive.analysis.engines.beautifulsoup import create_beautifulsoup_analyser as create_analyser
