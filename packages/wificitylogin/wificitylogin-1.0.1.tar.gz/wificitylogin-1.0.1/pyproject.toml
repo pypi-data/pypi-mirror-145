@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "wificitylogin"
+version = "1.0.1"
+description = "Automated login to the CIUP's Ethernet and Wi-Fi networks."
+authors = ["Maxime Mouchet <max@maxmouchet.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/maxmouchet/wificitylogin"
+
+[tool.poetry.dependencies]
+python = "^3.6.1"
+beautifulsoup4 = "^4.10.0"
+requests = "^2.27.0"
+
+[tool.poetry.dev-dependencies]
+bumpversion = "^0.6.0"
+pre-commit = "^2.12.1"
+
+[tool.poetry.scripts]
+wificitylogin = 'wificitylogin:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
