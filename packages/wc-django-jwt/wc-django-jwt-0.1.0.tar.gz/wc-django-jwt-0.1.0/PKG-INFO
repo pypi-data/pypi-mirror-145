@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: wc-django-jwt
+Version: 0.1.0
+Summary: Django JWT authentication.
+Home-page: UNKNOWN
+Author: WebCase
+Author-email: info@webcase.studio
+License: MIT License
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# WebCase django JWT authentication
+
+Based on [djangorestframework-simplejwt](https://pypi.org/project/djangorestframework-simplejwt/) with a little bit of additional goodies.
+
+Us it's documentation as a source of truth. All changes and additional info about configuration are described here, in this documentation.
+
+## Installation
+
+```sh
+pip install wc-django-jwt
+```
+
+In `settings.py`:
+
+```python
+INSTALLED_APPS += [
+  'rest_framework_simplejwt',
+
+  'wcd_jwt',
+]
+```
+
+
