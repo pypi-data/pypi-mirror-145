@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "baza"
+authors = [{name = "Arkadiusz Halicki", email = "halicki.arkadiusz@gmail.com"}]
+dynamic = ["version", "description"]
+
+[project.urls]
+Home = "https://github.com/halicki/baza"
