@@ -1,0 +1,83 @@
+Metadata-Version: 2.1
+Name: pydevkit
+Version: 1.2.0
+Summary: python dev kit
+Home-page: https://gitlab.com/aanatoly/semver-tool
+Author: Anatoly Asviyan
+Author-email: anatoly@gmail.com
+License: GPLv2
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: tox ; extra == 'dev'
+
+# pydevkit
+## helpers
+### logging
+This module provides easy logging configuration with command line arguments.
+
+An entrypoint includes
+```python
+import pydevkit.log.config
+```
+then every module does the ussual
+
+```python
+import logging
+log = logging.getLogger(__name__)
+```
+#### Exrternal configuration
+If `PYTHON_LOGGING_CONFIG` variable defined, it loads file var points to
+and configures logging. If file ends with ".json" `dictConfig` is used otherwise
+`fileConfig`.
+
+#### Internal configuration
+If no external config defined, the module uses internal configuration
+with following features
+ * json or regular formatting
+ * colored logs
+ * extra log info with
+   ```python
+   log.info("main text", extra={"extra": {"more": "info"}})
+   ```
+ * argparse options
+   * log-level
+   * log-handler
+   * log-date
+   * log-color
+
+   ```python
+   from pydevkit.argparse import ArgumentParser
+
+   def main():
+       p = ArgumentParser(help=__doc__)
+       # FIXME: add your args here
+       Args, UnknownArgs = p.args_resolve()
+   ```
+
+ * blessing.Terminal wrapper based on `log-color` option
+   ```python
+   from pydevkit.log import term_get
+
+   def main():
+       term = term_get()
+       log.warning("try %sred%s string", term.red, term.normal)
+   ```
+
+### argparse
+### shell
+## Example
+Code [run.py](run.py)
+
+Output<br>
+![Alt text](doc/log.png "a title")
+
+
