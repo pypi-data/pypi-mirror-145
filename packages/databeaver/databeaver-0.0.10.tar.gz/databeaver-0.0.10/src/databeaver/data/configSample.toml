@@ -1,0 +1,57 @@
+############################
+# DataBeaver configuration #
+############################
+# MANDATORY: Number of processes that will be created for executing sql
+processes = 4
+
+## MANDATORY: Non empty array of paths. Each path a directory of model files
+#DATA_MODELS = ["model1", "model2"]
+
+############################################################################################################
+# Systems are where we store information about the various systems we will use to create our data model in #
+############################################################################################################
+[systems]
+
+  # Indentation (tabs and/or spaces) is allowed but not required
+  [servers.alpha]
+  ip = "10.0.0.1"
+  dc = "eqdc10"
+
+  [servers.beta]
+  ip = "10.0.0.2"
+  dc = "eqdc10"
+
+
+[[ TARGETS ]]
+# OPTIONAL: Name of this target. If not provided {ENVIRONMENT}_{SYSTEM} will be used as the name
+#NAME =
+
+# MANDATORY: Sytem of for the target. Used to know how to connect, insert, etc
+TYPE='POSTGRES'
+
+# MANDATORY: Environment for this target
+ENVIRONMENT='DEVELOPMENT'
+
+# MANDATORY: Location of the target
+HOST= "localhost"
+
+# MANDATORY: Datatabase/Schema to create our model in
+DATABASE= "development__fbb__sports_betting"
+
+# MANDATORY: Username to connect to this host
+USER= "sports_betting"
+
+# MANDATORY: Password for the above username
+# Strings that with ENV: are treated as environment variable substitutions, in the this example
+# the value "ENV:DATABASE_PASSWORD" would be replaced by the environment variable DATABASE_PASSWORD's value instead
+PASSWORD= "ENV:DATABASE_PASSWORD"
+
+####################
+## Model Sections ##
+####################
+# Each model listed in DATA_MODELS must have a section here as well
+[model1]
+FILES = '/path/to/model/files'
+
+[model2]
+FILES = '/path/to/model/files'
