@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: beancount-parser
+Version: 0.1.6
+Summary: Standalone Lark based Beancount syntax parser (not relying on Beancount library), MIT license
+Home-page: https://github.com/LaunchPlatform/beancount-parser
+License: MIT
+Author: Fang-Pen Lin
+Author-email: fangpen@launchplatform.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: lark (>=1.1.2,<2.0.0)
+Project-URL: Repository, https://github.com/LaunchPlatform/beancount-parser
