@@ -1,0 +1,96 @@
+Metadata-Version: 2.1
+Name: hetmatpy
+Version: 0.1.0
+Summary: Matrix implementations for hetnets and path-count-based measures
+Home-page: https://het.io/software/
+License: # BSD-2-Clause Plus Patent License
+        
+        _Copyright © 2016–2020, Contributors, the Greene Lab at the University of Pennsylvania, and the Sullivan Lab at North Carolina State University_<br>
+        
+        Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+        
+        1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+        
+        2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+        
+        Subject to the terms and conditions of this license, each copyright holder and contributor hereby grants to those receiving rights under this license a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except for failure to satisfy the conditions of this license) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer this software, where such license applies only to those patent claims, already acquired or hereafter acquired, licensable by such copyright holder or contributor that are necessarily infringed by:
+        
+        (a) their Contribution(s) (the licensed copyrights of copyright holders and non-copyrightable additions of contributors, in source or binary form) alone; or
+        
+        (b) combination of their Contribution(s) with the work of authorship to which such Contribution(s) was added by such copyright holder or contributor, if, at the time the Contribution is added, such addition causes such combination to be necessarily infringed. The patent license shall not apply to any other combinations which include the Contribution.
+        
+        Except as expressly stated above, no rights or licenses from any copyright holder or contributor is granted under this license, whether expressly, by implication, estoppel or otherwise.
+        
+        DISCLAIMER
+        
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        
+Project-URL: Source, https://github.com/hetio/hetmatpy
+Project-URL: Documentation, https://hetio.github.io/hetmatpy
+Project-URL: Tracker, https://github.com/hetio/hetmatpy/issues
+Project-URL: Homepage, https://het.io/software/
+Project-URL: Publication, https://greenelab.github.io/connectivity-search-manuscript/
+Keywords: hetnet,hetmat,graph,heterogeneous,network,hetio,hetnetpy,dwpc,numpy
+Platform: UNKNOWN
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: hetnetpy (>=0.3.0)
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: scipy
+Provides-Extra: dev
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: portray ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: xarray ; extra == 'dev'
+
+# hetmatpy: a Python 3 package for matrix operations of hetnets
+
+[![Documentation](https://img.shields.io/badge/-Documentation-purple?logo=read-the-docs&style=for-the-badge)](https://hetio.github.io/hetmatpy/)
+[![PyPI](https://img.shields.io/pypi/v/hetmatpy.svg?logo=PyPI&style=for-the-badge)](https://pypi.org/project/hetmatpy/)
+[![GitHub Actions CI Tests Status](https://img.shields.io/github/workflow/status/hetio/hetmatpy/Tests?label=actions&logo=github&style=for-the-badge)](https://github.com/hetio/hetmatpy/actions)
+<!--
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge&logo=Python)](https://github.com/psf/black)
+-->
+
+This codebase enables identifying the relevant network connections between a set of query nodes.
+The method is designed to operate on hetnets (networks with multiple node or relationship types).
+
+This project is still under development.
+Use with caution.
+
+## Environment
+
+Install via pip from GitHub using:
+
+```shell
+# install the latest release from PyPI
+pip install hetmatpy
+
+# install latest version on GitHub
+pip install git+https://github.com/hetio/hetmatpy
+
+# for local development, run the following inside the development environment:
+pip install --editable .
+```
+
+## Development
+
+This repo uses pre-commit checks:
+
+
+```shell
+# run once per local repo before committing
+pre-commit install
+```
+
+## Acknowledgments
+
+This work is supported through a research collaboration with [Pfizer Worldwide Research and Development](https://www.pfizer.com/partners/research-and-development).
+This work is funded in part by the Gordon and Betty Moore Foundation’s Data-Driven Discovery Initiative through Grants [GBMF4552](https://www.moore.org/grant-detail?grantId=GBMF4552) to Casey Greene and [GBMF4560](https://www.moore.org/grant-detail?grantId=GBMF4560) to Blair Sullivan.
+
+
