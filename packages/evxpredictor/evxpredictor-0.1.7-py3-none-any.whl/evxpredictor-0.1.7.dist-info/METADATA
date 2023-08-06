@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: evxpredictor
+Version: 0.1.7
+Summary: A package for predicting buy and sell signals
+Home-page: https://nkrtech.com
+Download-URL: https://github.com/moinonin/evxpredictor/archive/refs/heads/main.zip
+Author: Nicolus Rotich
+Author-email: nicholas.rotich@gmail.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/pypa/evxpredictor/issues
+Platform: any
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: setuptools (>=58.1.0)
+Requires-Dist: wheel (>=0.37.1)
+Requires-Dist: keras (==2.8.0)
+Requires-Dist: tensorflow (>=2.8.0)
+Requires-Dist: scikit-learn (>=1.0.2)
+Requires-Dist: scipy (>=1.8.0)
+Requires-Dist: h5py (>=3.6.0)
+Requires-Dist: fire
+
+# Evx predictor mlbot
+
+This is a simple package used to generate buy and sell signals for crypto and conventional stock markets based on the excess volume indicator(EVX)  
+You can read more about Evx in the whitepaper [here](https://www.researchgate.net/publication/345313655_DeFiPaper)
+
+# Usage
+
+In your python script simply import the module and use as follows  
+from evxpredictor import mlbot
+
+print(mlbot.signal(20,65,120, 0.98,'buy'))
+
+The above methods take an assets opening, closing, and volume of the asset based on the time interval you have chosen, while the last variable is alpha, a probabilistic value. A zero classification output would instruct the user to sell, while one output means don't sell or buy if the asset is not already present in the orders.
+
+You can use empty space instead of alpha to make use of the default value.
+
