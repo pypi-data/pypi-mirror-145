@@ -1,0 +1,113 @@
+Metadata-Version: 2.1
+Name: pypers
+Version: 1.0.0
+Summary: A utilities module made for personal use, has small snippets which I use in many projects.
+Home-page: https://pypers.divkix.me
+License: MIT
+Keywords: pypers,divkix helpers,python helpers,py helpers
+Author: Divkix
+Author-email: techdroidroot@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Utilities
+Requires-Dist: Pillow (>=9.0.1,<10.0.0)
+Requires-Dist: dnspython (>=2.2.0,<3.0.0)
+Requires-Dist: httpx (>=0.22.0,<0.23.0)
+Requires-Dist: motor (>=2.5.1,<3.0.0)
+Project-URL: Bug Tracker, https://github.com/Divkix/pypers/issues
+Project-URL: Community, https://t.me/DivideProjects
+Project-URL: Repository, https://github.com/Divkix/pypers
+Description-Content-Type: text/markdown
+
+# pypers
+
+<p align="center">
+    <a href="https://pypers.divkix.me"><img src="img/name.png"></a>
+    </br></br>
+    <a href="https://pypi.org/project/PyPers/"><img src="https://img.shields.io/pypi/v/PyPers" alt="PyPI"></a>
+    <a href="https://github.com/Divkix/PyPers/actions"><img src="https://github.com/Divkix/PyPers/workflows/CI%20%28pip%29/badge.svg" alt="CI (pip)"></a>
+    <a href="https://pypi.org/project/pypers/"><img src="https://img.shields.io/pypi/wheel/PyPers.svg" alt="PyPI - Wheel"></a>
+    <a href="https://pypi.org/project/pypers/"><img src="https://img.shields.io/pypi/pyversions/PyPers.svg" alt="Supported Python Versions"></a>
+    <a href="https://pepy.tech/project/PyPers"><img src="https://pepy.tech/badge/PyPers" alt="Downloads"></a>
+</p>
+
+Package with helper scripts.
+
+Contains some helper function which make up its name: python+helpers = pypers.
+
+
+## Usage:
+
+### pypers.mongo_helpers:
+```python
+from pypers.mongo_helpers import AsyncMongoDB
+
+db = AsyncMongoDB('localhost:27017', 'pypers')
+db.collection = "test"
+
+await db.insert_one({'name': 'pypers'})
+results = await db.find_one({'name': 'pypers'})
+print(results)
+await db.delete_one({'name': 'pypers'})
+```
+
+
+### pypers.namespace:
+```python
+from pypers.namespace import Namespace
+
+ns = Namespace(
+    a=1,
+    b=2,
+    c=Namespace(
+        d=3,
+        e=4,
+    ),
+)
+
+print(ns.a)
+print(ns.b)
+print(ns.c.d)
+print(ns.c.e)
+```
+
+### pypers.url_helpers:
+```python
+from pypers.url_helpers import UrlHelpers
+
+new_url = await UrlHelpers.shorten_url('https://www.google.com')
+print(new_url)
+```
+
+### pypers.image_tools:
+
+```python
+from pypers.image_tools import ImageTools
+
+new_img = ImageTools.compress_image('/path/to/image.jpg', quality=50)
+print(new_img)
+```
+
+### pypers.formatters:
+
+```python
+from pypers.formatters import Formatters
+
+humanbytes_size = Formatters.humanbytes(1024*1024)
+print(humanbytes_size)
+
+human_time = Formatters.time_formatter(15000)
+print(human_time)
+```
+
