@@ -1,0 +1,22 @@
+debugpy>=1.0
+ipython>=7.23.1
+traitlets>=5.1.0
+jupyter_client>=6.1.12
+tornado>=6.1
+matplotlib-inline>=0.1
+psutil
+nest_asyncio
+packaging
+
+[:platform_system == "Darwin"]
+appnope
+
+[test]
+pytest>=6.0
+pytest-cov
+flaky
+ipyparallel
+pre-commit
+pytest-timeout
+gobject
+trio
