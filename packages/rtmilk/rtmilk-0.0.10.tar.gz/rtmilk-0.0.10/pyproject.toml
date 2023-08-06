@@ -1,0 +1,72 @@
+[tool.poetry]
+name = "rtmilk"
+version = "0.0.10"
+description = "RTM API wrapper"
+authors = ["Rehan Khwaja <rehan@khwaja.name>"]
+license = "MIT"
+homepage = "https://github.com/rkhwaja/rtmilk"
+keywords = ["RememberTheMilk"]
+readme = "README.md"
+classifiers = [
+	"License :: OSI Approved :: MIT License",
+	"Development Status :: 3 - Alpha",
+	"Intended Audience :: Developers",
+	"Programming Language :: Python :: 3.10"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4"
+requests = ">=2.23.0"
+urllib3 = [
+	{ version = ">=1.26", python = ">=3.10,<4" }
+]
+pydantic = ">=1.8.1"
+aiohttp = ">=3.8.1"
+
+[tool.poetry.dev-dependencies]
+pytest = ">=5.2"
+# https://github.com/PyCQA/pylint/issues/4420
+pylint = ">=2.11" # need at least this for all the extensions
+pylint-quotes = ">=0.2.1"
+pyperclip = ">=1.8.0"
+python-dateutil = ">=2.8.1"
+python-dotenv = ">=0.17.1"
+pytest-cov = ">=3"
+pytest-asyncio = ">=0.16.0"
+
+[tool.pylint.master]
+load-plugins = [
+	"pylint_quotes",
+	"pylint.extensions.code_style",
+	"pylint.extensions.confusing_elif",
+	"pylint.extensions.bad_builtin",
+	"pylint.extensions.bad_builtin",
+	"pylint.extensions.mccabe",
+	"pylint.extensions.check_elif",
+	"pylint.extensions.redefined_variable_type",
+	"pylint.extensions.overlapping_exceptions",
+	"pylint.extensions.empty_comment",
+	"pylint.extensions.set_membership",
+	"pylint.extensions.while_used",
+	]
+enable="useless-suppression"
+
+[tool.pylint.format]
+indent-string="\t"
+string-quote = "single-avoid-escape"
+
+[tool.pylint.messages_control]
+disable = [
+	"duplicate-code",
+	"invalid-name",
+	"line-too-long",
+	"logging-fstring-interpolation",
+	"missing-docstring",
+	"too-few-public-methods",
+	"too-many-arguments",
+	"too-many-public-methods"
+]
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
