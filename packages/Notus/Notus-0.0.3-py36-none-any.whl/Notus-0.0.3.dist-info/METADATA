@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: Notus
+Version: 0.0.3
+Summary: A package for providing a system notification interface
+Home-page: https://github.com/cnheider/notus
+Download-URL: https://github.com/cnheider/notus/releases
+Author: Christian Heider Nielsen
+Author-email: christian.heider@alexandra.dk
+Maintainer: Christian Heider Nielsen
+Maintainer-email: christian.heider@alexandra.dk
+License: Apache License, Version 2.0
+Keywords: app path paths data logs cache
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Natural Language :: English
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: numpy
+Requires-Dist: six
+Provides-Extra: all
+Requires-Dist: coveralls (>=1.6.0) ; extra == 'all'
+Requires-Dist: twine (>=1.13.0) ; extra == 'all'
+Requires-Dist: pytest-cov (>=2.6.1) ; extra == 'all'
+Requires-Dist: wheel (>=0.33.0) ; extra == 'all'
+Requires-Dist: pip (>=19.0.3) ; extra == 'all'
+Requires-Dist: dbus-python ; extra == 'all'
+Requires-Dist: sphinx ; extra == 'all'
+Requires-Dist: pytest (>=4.3.0) ; extra == 'all'
+Requires-Dist: pywin32 ; extra == 'all'
+Requires-Dist: pytest (>=4.4.1) ; extra == 'all'
+Requires-Dist: black (>=18.9b0) ; extra == 'all'
+Provides-Extra: dev
+Requires-Dist: coveralls (>=1.6.0) ; extra == 'dev'
+Requires-Dist: twine (>=1.13.0) ; extra == 'dev'
+Requires-Dist: pytest-cov (>=2.6.1) ; extra == 'dev'
+Requires-Dist: wheel (>=0.33.0) ; extra == 'dev'
+Requires-Dist: pip (>=19.0.3) ; extra == 'dev'
+Requires-Dist: dbus-python ; extra == 'dev'
+Requires-Dist: pytest (>=4.3.0) ; extra == 'dev'
+Requires-Dist: black (>=18.9b0) ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Provides-Extra: gtk
+Requires-Dist: dbus-python ; extra == 'gtk'
+Provides-Extra: setup
+Provides-Extra: tests
+Requires-Dist: pytest (>=4.4.1) ; extra == 'tests'
+Provides-Extra: windows
+Requires-Dist: pywin32 ; extra == 'windows'
+
+<!--![notus](.github/images/toaster.svg)-->
+
+<p align="center">
+  <img src=".github/images/toaster.svg" alt='Toaster' />
+</p>
+
+<h1 align="center">Notus</h1>
+
+<!--# Notus-->
+
+| [![Build Status](https://travis-ci.com/pything/apppath.svg?branch=master)](https://travis-ci.com/pything/apppath) | [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) | [![Coverage Status](https://coveralls.io/repos/github/pything/apppath/badge.svg?branch=master)](https://coveralls.io/github/pything/apppath?branch=master) |
+|---|---|---|
+
+___
+> Clutter-free app data
+___
+
+![python](.github/images/python.svg)
+
+- A class for displaying GTK toasts (Notifications, Dialogs...)
+
+
