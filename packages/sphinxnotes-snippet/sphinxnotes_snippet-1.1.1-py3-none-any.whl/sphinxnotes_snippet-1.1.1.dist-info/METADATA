@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: sphinxnotes-snippet
+Version: 1.1.1
+Summary: Non-intrusive snippet manager for Sphinx documentation
+Home-page: https://sphinx-notes.github.io/snippet
+Author: Shengyu Zhang
+License: BSD
+Keywords: documentation,sphinx,extension,utility
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: Plugins
+Classifier: Framework :: Sphinx
+Classifier: Framework :: Sphinx :: Extension
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Documentation
+Classifier: Topic :: Documentation :: Sphinx
+Classifier: Topic :: System :: Shells
+Classifier: Topic :: Text Processing :: Markup :: reStructuredText
+Classifier: Topic :: Utilities
+Requires-Python: >=3
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+Requires-Dist: Sphinx
+Requires-Dist: langid
+Requires-Dist: jieba
+Requires-Dist: python-pinyin
+Requires-Dist: pyxdg
+Requires-Dist: stopwordsiso
+Requires-Dist: wcwidth
+Requires-Dist: wordsegment
+
+===================
+sphinxnotes-snippet
+===================
+
+Please refer to https://sphinx-notes.github.io/snippet/ for documentation.
+
+
