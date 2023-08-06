@@ -1,0 +1,104 @@
+# Client library for Global Processing Services
+
+🚧 WARNING: This repository is experimental at this stage and should be used
+with caution 🚧
+
+Only a handful of methods are implemented at this stage.
+
+# Installation
+
+```
+$ pip install globalprocessing-client
+```
+
+# Getting started
+
+The first thing you need to do is initialise the client:
+
+```
+from globalprocessing_client import GPSClient
+
+client = GPSClient(
+    "username",
+    "password",
+    "iss_code",
+    "https://wsdl.globalprocessing.com/",
+    "Australia/Sydney"
+)
+```
+
+Once you have a client up and running, you can run the various commands
+
+## Create Card
+
+To create a new card, simply call `create_card` on the newly initiated client:
+
+```
+card_design_id = 123
+client.create_card(card_design_id)
+```
+
+If you want to change any of the default arguments, just pass in a dictionary with the changes
+as the second argument:
+
+```
+card_design_id = 123
+default_overrides = {
+    "WSID": "A different ID",
+    "LoadValue": 10.0,
+}
+client.create_card(card_design_id, default_overrides)
+```
+
+## Update Status
+
+Update Status works much the same as Create Card:
+
+```
+card_public_token = "public token"
+
+client.status_change(
+    card_public_token,
+    GPSClient.ACCOUNT_CLOSED,
+)
+```
+
+To override default, pass a dictionary as the third argument:
+
+```
+card_public_token = "public token"
+
+client.status_change(
+    card_public_token,
+    GPSClient.ACCOUNT_CLOSED,
+    {
+        "WSID": "something unique",
+        "ItemSrc": "test",
+    },
+)
+```
+
+### Status codes
+
+The available status codes are available as constants on the `GPSClient` class:
+
+- OK = "00"
+- NOT_ACTIVATED = "02"
+- CAPTURE_CARD = "04"
+- DO_NOT_HONOUR = "05"
+- LOST_CARD = "41"
+- STOLEN_CARD = "43"
+- ACCOUNT_CLOSED = "46"
+- TRANSACTION_NOT_PERMITTED_TO_CARDHOLDER = "57"
+- SUSPECTED_FRAUD = "59"
+- RESTRICTED_CARD = "62"
+- SECURITY_VIOLATION = "63"
+- CARDHOLDER_CONTACT_ISSUER = "70"
+- ALLOWABLE_NUMBER_OF_PIN_TRIED_EXCEEDED = "75"
+- CARD_DESTROYED = "83"
+- REFUND_GIVEN_TO_CUSTOMER = "98"
+- CARD_VOIDED = "99"
+- SHORT_TERM_BLOCK = "G1"
+- SHORT_TERM_FULL_BLOCK = "G2"
+- LONG_TERM_BLOCK = "G3"
+- LONG_TERM_FULL_BLOCK = "G4"
