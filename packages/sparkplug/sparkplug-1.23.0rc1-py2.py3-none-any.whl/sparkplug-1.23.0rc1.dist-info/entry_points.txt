@@ -1,0 +1,21 @@
+[console_scripts]
+sparkplug = sparkplug.cli:main
+
+[sparkplug.configurers]
+binding = sparkplug.config.binding:BindingConfigurer
+consumer = sparkplug.config.consumer:ConsumerConfigurer
+exchange = sparkplug.config.exchange:ExchangeConfigurer
+queue = sparkplug.config.queue:QueueConfigurer
+time_reporter = sparkplug.config.timereporter:TimeReporterConfigurer
+
+[sparkplug.connectors]
+connection = sparkplug.config.connection:AMQPConnector
+
+[sparkplug.consumers]
+broken = sparkplug.examples:Broken
+echo = sparkplug.examples:EchoConsumer
+heartbeat = sparkplug.test.test_heartbeat.heartbeat_consumer:HeartbeatConsumer
+
+[sparkplug.time_reporters]
+logger = sparkplug.timereporters.logger:Logger
+statsd = sparkplug.timereporters.statsd:Statsd
