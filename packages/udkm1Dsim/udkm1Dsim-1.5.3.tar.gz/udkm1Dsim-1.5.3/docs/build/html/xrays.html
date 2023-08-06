@@ -1,0 +1,2438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>simulations.xrays &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="helpers" href="helpers.html" />
+    <link rel="prev" title="simulations.magnetization" href="magnetization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API Documentation</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/xrays.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-udkm1Dsim.simulations.xrays">
+<span id="simulations-xrays"></span><h1><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code><a class="headerlink" href="#module-udkm1Dsim.simulations.xrays" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray" title="udkm1Dsim.simulations.xrays.Xray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Xray</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Base class for all X-ray scattering simulations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin" title="udkm1Dsim.simulations.xrays.XrayKin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XrayKin</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Kinetic X-ray scattering simulations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn" title="udkm1Dsim.simulations.xrays.XrayDyn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XrayDyn</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Dynamical X-ray scattering simulations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag" title="udkm1Dsim.simulations.xrays.XrayDynMag"><code class="xref py py-obj docutils literal notranslate"><span class="pre">XrayDynMag</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Dynamical magnetic X-ray scattering simulations.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.xrays.Xray">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.xrays.</span></code><code class="sig-name descname"><span class="pre">Xray</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="simulation.html#udkm1Dsim.simulations.simulation.Simulation" title="udkm1Dsim.simulations.simulation.Simulation"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.simulation.Simulation</span></code></a></p>
+<p>Base class for all X-ray scattering simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>energy</strong> (<em>ndarray[float]</em>) – photon energies <span class="math notranslate nohighlight">\(E\)</span> of scattering light</p></li>
+<li><p><strong>wl</strong> (<em>ndarray[float]</em>) – wavelengths <span class="math notranslate nohighlight">\(\lambda\)</span> of scattering light</p></li>
+<li><p><strong>k</strong> (<em>ndarray[float]</em>) – wavenumber <span class="math notranslate nohighlight">\(k\)</span> of scattering light</p></li>
+<li><p><strong>theta</strong> (<em>ndarray[float]</em>) – incidence angles <span class="math notranslate nohighlight">\(\theta\)</span> of scattering
+light</p></li>
+<li><p><strong>qz</strong> (<em>ndarray[float]</em>) – scattering vector <span class="math notranslate nohighlight">\(q_z\)</span> of scattering light</p></li>
+<li><p><strong>polarizations</strong> (<em>dict</em>) – polarization states and according names.</p></li>
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_in</strong> (<em>float</em>) – incoming polarization factor (can be a complex ndarray).</p></li>
+<li><p><strong>pol_out</strong> (<em>float</em>) – outgoing polarization factor (can be a complex ndarray).</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.set_incoming_polarization" title="udkm1Dsim.simulations.xrays.Xray.set_incoming_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_incoming_polarization</span></code></a>(pol_in_state)</p></td>
+<td><p>Must be overwritten by child classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.set_outgoing_polarization" title="udkm1Dsim.simulations.xrays.Xray.set_outgoing_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outgoing_polarization</span></code></a>(pol_out_state)</p></td>
+<td><p>Must be overwritten by child classes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.set_polarization" title="udkm1Dsim.simulations.xrays.Xray.set_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_polarization</span></code></a>(pol_in_state, pol_out_state)</p></td>
+<td><p>Sets the incoming and analyzer (outgoing) polarization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.get_hash" title="udkm1Dsim.simulations.xrays.Xray.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(strain_vectors, **kwargs)</p></td>
+<td><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states and the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> as well as the sample structure hash for relevant x-ray parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.get_polarization_factor" title="udkm1Dsim.simulations.xrays.Xray.get_polarization_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_polarization_factor</span></code></a>(theta)</p></td>
+<td><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization (pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays (pol = 0.5):</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.update_experiment" title="udkm1Dsim.simulations.xrays.Xray.update_experiment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_experiment</span></code></a>(caller)</p></td>
+<td><p>Recalculate energy, wavelength, and wavevector as well as theta and the scattering vector in case any of these has changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.conv_with_function" title="udkm1Dsim.simulations.xrays.Xray.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.disp_message" title="udkm1Dsim.simulations.xrays.Xray.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray.save" title="udkm1Dsim.simulations.xrays.Xray.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.set_incoming_polarization">
+<code class="sig-name descname"><span class="pre">set_incoming_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.set_incoming_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overwritten by child classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.set_outgoing_polarization">
+<code class="sig-name descname"><span class="pre">set_outgoing_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.set_outgoing_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Must be overwritten by child classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.set_polarization">
+<code class="sig-name descname"><span class="pre">set_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.set_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming and analyzer (outgoing) polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>,
+<span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states and the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> as
+well as the sample structure hash for relevant x-ray parameters.
+Optionally, part of the strain_map is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_vectors</strong> (<em>dict{ndarray</em><em>[</em><em>float</em><em>]</em><em>}</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>**kwargs</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.get_polarization_factor">
+<code class="sig-name descname"><span class="pre">get_polarization_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.get_polarization_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given
+incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization
+(pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays
+(pol = 0.5):</p>
+<div class="math notranslate nohighlight">
+\[P(\vartheta) = \sqrt{(1-\mbox{pol}) + \mbox{pol} \cdot \cos(2\vartheta)}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – incidence angle.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>P (ndarray[float])</em> – polarization factor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.update_experiment">
+<code class="sig-name descname"><span class="pre">update_experiment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.update_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recalculate energy, wavelength, and wavevector as well as theta
+and the scattering vector in case any of these has changed.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\lambda &amp; = \frac{hc}{E} \\
+E &amp; = \frac{hc}{\lambda} \\
+k &amp; = \frac{2\pi}{\lambda} \\
+\vartheta &amp; = \arcsin{\frac{\lambda q_z}{4\pi}} \\
+q_z &amp; = 2k \sin{\vartheta}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>caller</strong> (<em>str</em>) – name of calling method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.Xray.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.Xray.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.xrays.</span></code><code class="sig-name descname"><span class="pre">XrayKin</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray" title="udkm1Dsim.simulations.xrays.Xray"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.xrays.Xray</span></code></a></p>
+<p>Kinetic X-ray scattering simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>energy</strong> (<em>ndarray[float]</em>) – photon energies <span class="math notranslate nohighlight">\(E\)</span> of scattering light</p></li>
+<li><p><strong>wl</strong> (<em>ndarray[float]</em>) – wavelengths <span class="math notranslate nohighlight">\(\lambda\)</span> of scattering light</p></li>
+<li><p><strong>k</strong> (<em>ndarray[float]</em>) – wavenumber <span class="math notranslate nohighlight">\(k\)</span> of scattering light</p></li>
+<li><p><strong>theta</strong> (<em>ndarray[float]</em>) – incidence angles <span class="math notranslate nohighlight">\(\theta\)</span> of scattering
+light</p></li>
+<li><p><strong>qz</strong> (<em>ndarray[float]</em>) – scattering vector <span class="math notranslate nohighlight">\(q_z\)</span> of scattering light</p></li>
+<li><p><strong>polarizations</strong> (<em>dict</em>) – polarization states and according names.</p></li>
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_in</strong> (<em>float</em>) – incoming polarization factor (can be a complex ndarray).</p></li>
+<li><p><strong>pol_out</strong> (<em>float</em>) – outgoing polarization factor (can be a complex ndarray).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets"><a class="fn-backref" href="#id2">9</a></span></dt>
+<dd><p>B. E. Warren (1990). <em>X-ray diffraction</em>.
+New York: Dover Publications</p>
+</dd>
+</dl>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.set_incoming_polarization" title="udkm1Dsim.simulations.xrays.XrayKin.set_incoming_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_incoming_polarization</span></code></a>(pol_in_state)</p></td>
+<td><p>Sets the incoming polarization factor for sigma, pi, and unpolarized polarization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.set_outgoing_polarization" title="udkm1Dsim.simulations.xrays.XrayKin.set_outgoing_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outgoing_polarization</span></code></a>(pol_out_state)</p></td>
+<td><p>For kinematical X-ray simulation only “no analyzer polarization” is allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.get_uc_atomic_form_factors" title="udkm1Dsim.simulations.xrays.XrayKin.get_uc_atomic_form_factors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_uc_atomic_form_factors</span></code></a>(energy, qz, uc)</p></td>
+<td><p>Returns the energy- and angle-dependent atomic form factors :math: <cite>f(q_z, E)</cite> of all atoms in the unit cell as a vector.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.get_uc_structure_factor" title="udkm1Dsim.simulations.xrays.XrayKin.get_uc_structure_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_uc_structure_factor</span></code></a>(energy, qz, uc[, strain])</p></td>
+<td><p>Calculates the energy-, angle-, and strain-dependent structure factor .</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homogeneous_reflectivity</span></code></a>([strains])</p></td>
+<td><p>Calculates the reflectivity <span class="math notranslate nohighlight">\(R = E_p^t\,(E_p^t)^*\)</span> of a homogeneous sample structure as well as the reflected field <span class="math notranslate nohighlight">\(E_p^N\)</span> of all substructures.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflected_field" title="udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflected_field"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homogeneous_reflected_field</span></code></a>(S, energy, qz, theta)</p></td>
+<td><p>Calculates the reflected field <span class="math notranslate nohighlight">\(E_p^t\)</span> of the whole sample structure as well as for each sub-structure (<span class="math notranslate nohighlight">\(E_p^N\)</span>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.get_interference_function" title="udkm1Dsim.simulations.xrays.XrayKin.get_interference_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_interference_function</span></code></a>(qz, z, N)</p></td>
+<td><p>Calculates the interference function for <span class="math notranslate nohighlight">\(N\)</span> repetitions of the structure with the length <span class="math notranslate nohighlight">\(z\)</span>:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.get_Ep" title="udkm1Dsim.simulations.xrays.XrayKin.get_Ep"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_Ep</span></code></a>(energy, qz, theta, uc, strain)</p></td>
+<td><p>Calculates the reflected field <span class="math notranslate nohighlight">\(E_p\)</span> for one unit cell with a given strain <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.conv_with_function" title="udkm1Dsim.simulations.xrays.XrayKin.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.disp_message" title="udkm1Dsim.simulations.xrays.XrayKin.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.get_hash" title="udkm1Dsim.simulations.xrays.XrayKin.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(strain_vectors, **kwargs)</p></td>
+<td><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states and the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> as well as the sample structure hash for relevant x-ray parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.get_polarization_factor" title="udkm1Dsim.simulations.xrays.XrayKin.get_polarization_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_polarization_factor</span></code></a>(theta)</p></td>
+<td><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization (pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays (pol = 0.5):</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.save" title="udkm1Dsim.simulations.xrays.XrayKin.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.set_polarization" title="udkm1Dsim.simulations.xrays.XrayKin.set_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_polarization</span></code></a>(pol_in_state, pol_out_state)</p></td>
+<td><p>Sets the incoming and analyzer (outgoing) polarization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayKin.update_experiment" title="udkm1Dsim.simulations.xrays.XrayKin.update_experiment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_experiment</span></code></a>(caller)</p></td>
+<td><p>Recalculate energy, wavelength, and wavevector as well as theta and the scattering vector in case any of these has changed.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.set_incoming_polarization">
+<code class="sig-name descname"><span class="pre">set_incoming_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.set_incoming_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming polarization factor for sigma, pi, and unpolarized
+polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.set_outgoing_polarization">
+<code class="sig-name descname"><span class="pre">set_outgoing_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.set_outgoing_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>For kinematical X-ray simulation only “no analyzer polarization” is allowed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.get_uc_atomic_form_factors">
+<code class="sig-name descname"><span class="pre">get_uc_atomic_form_factors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.get_uc_atomic_form_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the energy- and angle-dependent atomic form factors
+:math: <cite>f(q_z, E)</cite> of all atoms in the unit cell as a vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em><em>, </em><em>Quantity</em>) – photon energy.</p></li>
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering vectors.</p></li>
+<li><p><strong>uc</strong> (<a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – unit cell object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[complex])</em> – unit cell atomic form factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.get_uc_structure_factor">
+<code class="sig-name descname"><span class="pre">get_uc_structure_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.get_uc_structure_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the energy-, angle-, and strain-dependent structure factor
+.. math: <cite>S(E,q_z,epsilon)</cite> of the unit cell:</p>
+<div class="math notranslate nohighlight">
+\[S(E,q_z,\epsilon) = \sum_i^N f_i \, \exp(-i q_z z_i(\epsilon))\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em><em>, </em><em>Quantity</em>) – photon energy.</p></li>
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering vectors.</p></li>
+<li><p><strong>uc</strong> (<a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – unit cell object.</p></li>
+<li><p><strong>strain</strong> (<em>float</em><em>, </em><em>optional</em>) – strain of the unit cell 0 .. 1.
+Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>S (ndarray[complex])</em> – unit cell structure factor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">homogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflectivity <span class="math notranslate nohighlight">\(R = E_p^t\,(E_p^t)^*\)</span> of a
+homogeneous sample structure as well as the reflected field
+<span class="math notranslate nohighlight">\(E_p^N\)</span> of all substructures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strains</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – strains of each sub-structure
+0 .. 1. Defaults to 0.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[complex])</em> - homogeneous reflectivity.</p></li>
+<li><p><em>A (ndarray[complex])</em> - reflected fields of sub-structures.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflected_field">
+<code class="sig-name descname"><span class="pre">homogeneous_reflected_field</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strains</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.homogeneous_reflected_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflected field <span class="math notranslate nohighlight">\(E_p^t\)</span> of the whole sample
+structure as well as for each sub-structure (<span class="math notranslate nohighlight">\(E_p^N\)</span>). The
+reflected wave field <span class="math notranslate nohighlight">\(E_p\)</span> from a single layer of unit cells at
+the detector is calculated according to  Ref. <a class="footnote-reference brackets" href="#id1" id="id2">9</a>:</p>
+<div class="math notranslate nohighlight">
+\[E_p = \frac{i}{\varepsilon_0}\frac{e^2}{m_e c_0^2}
+      \frac{P(\vartheta)  S(E,q_z,\epsilon)}{A q_z}\]</div>
+<p>For the case of <span class="math notranslate nohighlight">\(N\)</span> similar planes of unit cells one can write:</p>
+<div class="math notranslate nohighlight">
+\[E_p^N = \sum_{n=0}^{N-1} E_p \exp(i q_z z n )\]</div>
+<p>where <span class="math notranslate nohighlight">\(z\)</span> is the distance between the planes (c-axis). The above
+equation can be simplified to:</p>
+<div class="math notranslate nohighlight">
+\[E_p^N = E_p \psi(q_z,z,N)\]</div>
+<p>introducing the interference function</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\psi(q_z,z,N) &amp; = \sum_{n=0}^{N-1} \exp(i q_z z n) \\
+  &amp; = \frac{1- \exp(i q_z  z  N)}{1- \exp(i q_z z)}\end{split}\]</div>
+<p>The total reflected wave field of all <span class="math notranslate nohighlight">\(i = 1\ldots M\)</span> homogeneous
+layers (<span class="math notranslate nohighlight">\(E_p^t\)</span>) is the phase-correct summation of all individual
+<span class="math notranslate nohighlight">\(E_p^{N,i}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[E_p^t = \sum_{i=1}^M E_p^{N,i} \exp(i q_z Z_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(Z_i = \sum_{j=1}^{i-1} N_j z_j\)</span> is the distance of the
+<span class="math notranslate nohighlight">\(i\)</span>-th layer from the surface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a><em>, </em><a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – structure or sub-structure to calculate on.</p></li>
+<li><p><strong>energy</strong> (<em>float</em><em>, </em><em>Quantity</em>) – photon energy.</p></li>
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering vectors.</p></li>
+<li><p><strong>theta</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering incidence angle.</p></li>
+<li><p><strong>strains</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – strains of each sub-structure
+0 .. 1. Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>Ept (ndarray[complex])</em> - reflected field.</p></li>
+<li><p><em>A (ndarray[complex])</em> - reflected fields of substructures.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.get_interference_function">
+<code class="sig-name descname"><span class="pre">get_interference_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.get_interference_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the interference function for <span class="math notranslate nohighlight">\(N\)</span> repetitions of the
+structure with the length <span class="math notranslate nohighlight">\(z\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\psi(q_z,z,N) &amp; = \sum_{n=0}^{N-1} \exp(i q_z z n) \\
+  &amp; = \frac{1- \exp(i q_z z N)}{1- \exp(i q_z z)}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering vectors.</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – thickness/length of the structure.</p></li>
+<li><p><strong>N</strong> (<em>int</em>) – repetitions of the structure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>psi (ndarray[complex])</em> – interference function.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.get_Ep">
+<code class="sig-name descname"><span class="pre">get_Ep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qz</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.get_Ep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflected field <span class="math notranslate nohighlight">\(E_p\)</span> for one unit cell
+with a given strain <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[E_p = \frac{i}{\varepsilon_0} \frac{e^2}{m_e c_0^2}
+      \frac{P S(E,q_z,\epsilon)}{A q_z}\]</div>
+<p>with <span class="math notranslate nohighlight">\(e\)</span> as electron charge, <span class="math notranslate nohighlight">\(m_e\)</span> as electron
+mass, <span class="math notranslate nohighlight">\(c_0\)</span> as vacuum light velocity,
+<span class="math notranslate nohighlight">\(\varepsilon_0\)</span> as vacuum permittivity,
+<span class="math notranslate nohighlight">\(P\)</span> as polarization factor and <span class="math notranslate nohighlight">\(S(E,q_z,\sigma)\)</span>
+as energy-, angle-, and strain-dependent unit cell structure
+factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>float</em><em>, </em><em>Quantity</em>) – photon energy.</p></li>
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering vectors.</p></li>
+<li><p><strong>theta</strong> (<em>ndarray</em><em>[</em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – scattering incidence angle.</p></li>
+<li><p><strong>uc</strong> (<a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – unit cell object.</p></li>
+<li><p><strong>strain</strong> (<em>float</em><em>, </em><em>optional</em>) – strain of the unit cell 0 .. 1.
+Defaults to 0.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>Ep (ndarray[complex])</em> – reflected field.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>,
+<span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states and the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> as
+well as the sample structure hash for relevant x-ray parameters.
+Optionally, part of the strain_map is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_vectors</strong> (<em>dict{ndarray</em><em>[</em><em>float</em><em>]</em><em>}</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>**kwargs</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.get_polarization_factor">
+<code class="sig-name descname"><span class="pre">get_polarization_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.get_polarization_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given
+incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization
+(pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays
+(pol = 0.5):</p>
+<div class="math notranslate nohighlight">
+\[P(\vartheta) = \sqrt{(1-\mbox{pol}) + \mbox{pol} \cdot \cos(2\vartheta)}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – incidence angle.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>P (ndarray[float])</em> – polarization factor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.set_polarization">
+<code class="sig-name descname"><span class="pre">set_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.set_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming and analyzer (outgoing) polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayKin.update_experiment">
+<code class="sig-name descname"><span class="pre">update_experiment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayKin.update_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recalculate energy, wavelength, and wavevector as well as theta
+and the scattering vector in case any of these has changed.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\lambda &amp; = \frac{hc}{E} \\
+E &amp; = \frac{hc}{\lambda} \\
+k &amp; = \frac{2\pi}{\lambda} \\
+\vartheta &amp; = \arcsin{\frac{\lambda q_z}{4\pi}} \\
+q_z &amp; = 2k \sin{\vartheta}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>caller</strong> (<em>str</em>) – name of calling method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.xrays.</span></code><code class="sig-name descname"><span class="pre">XrayDyn</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray" title="udkm1Dsim.simulations.xrays.Xray"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.xrays.Xray</span></code></a></p>
+<p>Dynamical X-ray scattering simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>energy</strong> (<em>ndarray[float]</em>) – photon energies <span class="math notranslate nohighlight">\(E\)</span> of scattering light</p></li>
+<li><p><strong>wl</strong> (<em>ndarray[float]</em>) – wavelengths <span class="math notranslate nohighlight">\(\lambda\)</span> of scattering light</p></li>
+<li><p><strong>k</strong> (<em>ndarray[float]</em>) – wavenumber <span class="math notranslate nohighlight">\(k\)</span> of scattering light</p></li>
+<li><p><strong>theta</strong> (<em>ndarray[float]</em>) – incidence angles <span class="math notranslate nohighlight">\(\theta\)</span> of scattering
+light</p></li>
+<li><p><strong>qz</strong> (<em>ndarray[float]</em>) – scattering vector <span class="math notranslate nohighlight">\(q_z\)</span> of scattering light</p></li>
+<li><p><strong>polarizations</strong> (<em>dict</em>) – polarization states and according names.</p></li>
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_in</strong> (<em>float</em>) – incoming polarization factor (can be a complex ndarray).</p></li>
+<li><p><strong>pol_out</strong> (<em>float</em>) – outgoing polarization factor (can be a complex ndarray).</p></li>
+<li><p><strong>last_atom_ref_trans_matrices</strong> (<em>list</em>) – remember last result of
+atom ref_trans_matrices to speed up calculation.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.set_incoming_polarization" title="udkm1Dsim.simulations.xrays.XrayDyn.set_incoming_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_incoming_polarization</span></code></a>(pol_in_state)</p></td>
+<td><p>Sets the incoming polarization factor for sigma, pi, and unpolarized polarization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.set_outgoing_polarization" title="udkm1Dsim.simulations.xrays.XrayDyn.set_outgoing_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outgoing_polarization</span></code></a>(pol_out_state)</p></td>
+<td><p>For dynamical X-ray simulation only “no analyzer polarization” is allowed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homogeneous_reflectivity</span></code></a>(*args)</p></td>
+<td><p>Calculates the reflectivity <span class="math notranslate nohighlight">\(R\)</span> of the whole sample structure and the reflectivity-transmission matrices <span class="math notranslate nohighlight">\(M_{RT}\)</span> for each substructure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_ref_trans_matrix" title="udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_ref_trans_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homogeneous_ref_trans_matrix</span></code></a>(S, *args)</p></td>
+<td><p>Calculates the reflectivity-transmission matrices <span class="math notranslate nohighlight">\(M_{RT}\)</span> of the whole sample structure as well as for each sub-structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inhomogeneous_reflectivity</span></code></a>(strain_map, …)</p></td>
+<td><p>Returns the reflectivity of an inhomogeneously strained sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> in position and time, as well as for a given set of possible strains for each unit cell in the sample structure (<code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.sequential_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.sequential_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequential_inhomogeneous_reflectivity</span></code></a>(…)</p></td>
+<td><p>Returns the reflectivity of an inhomogeneously strained sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> in position and time, as well as for a given set of possible strains for each unit cell in the sample structure (<code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.parallel_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.parallel_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel_inhomogeneous_reflectivity</span></code></a>(…)</p></td>
+<td><p>Returns the reflectivity of an inhomogeneously strained sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> in position and time, as well as for a given set of possible strains for each unit cell in the sample structure (<code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.distributed_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.distributed_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distributed_inhomogeneous_reflectivity</span></code></a>(…)</p></td>
+<td><p>This is a stub.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_inhomogeneous_reflectivity</span></code></a>(strains, …)</p></td>
+<td><p>Calculates the reflectivity of a inhomogeneous sample structure for given <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> for a single time step.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_ref_trans_matrix" title="udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_ref_trans_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_inhomogeneous_ref_trans_matrix</span></code></a>(…)</p></td>
+<td><p>Sub-function of <a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">calc_inhomogeneous_reflectivity()</span></code></a> and for parallel computing (needs to be static) only for calculating the total reflection-transmission matrix <span class="math notranslate nohighlight">\(M_{RT}^t\)</span>:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_all_ref_trans_matrices" title="udkm1Dsim.simulations.xrays.XrayDyn.get_all_ref_trans_matrices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_ref_trans_matrices</span></code></a>(*args)</p></td>
+<td><p>Returns a list of all reflection-transmission matrices for each unique unit cell in the sample structure for a given set of applied strains for each unique unit cell given by the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> input.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_all_ref_trans_matrices" title="udkm1Dsim.simulations.xrays.XrayDyn.calc_all_ref_trans_matrices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_all_ref_trans_matrices</span></code></a>(*args)</p></td>
+<td><p>Calculates a list of all reflection-transmission matrices for each unique unit cell in the sample structure for a given set of applied strains to each unique unit cell given by the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> input.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_uc_ref_trans_matrix" title="udkm1Dsim.simulations.xrays.XrayDyn.get_uc_ref_trans_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_uc_ref_trans_matrix</span></code></a>(uc, *args)</p></td>
+<td><p>Returns the reflection-transmission matrix of a unit cell:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_ref_trans_matrix" title="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_ref_trans_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_ref_trans_matrix</span></code></a>(atom, area, …)</p></td>
+<td><p>Calculates the reflection-transmission matrix of an atom from dynamical x-ray theory:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_reflection_factor" title="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_reflection_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_reflection_factor</span></code></a>(atom, area, …)</p></td>
+<td><p>Calculates the reflection factor from dynamical x-ray theory:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_transmission_factor" title="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_transmission_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_transmission_factor</span></code></a>(atom, area, …)</p></td>
+<td><p>Calculates the transmission factor from dynamical x-ray theory:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_matrix" title="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_phase_matrix</span></code></a>(distance)</p></td>
+<td><p>Calculates the phase matrix from dynamical x-ray theory:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_factor" title="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_phase_factor</span></code></a>(distance)</p></td>
+<td><p>Calculates the phase factor <span class="math notranslate nohighlight">\(\phi\)</span> for a distance <span class="math notranslate nohighlight">\(d\)</span> from dynamical x-ray theory:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_reflectivity_from_matrix" title="udkm1Dsim.simulations.xrays.XrayDyn.calc_reflectivity_from_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_reflectivity_from_matrix</span></code></a>(M)</p></td>
+<td><p>Calculates the reflectivity from an <span class="math notranslate nohighlight">\(2\times2\)</span> matrix of transmission and reflectivity factors:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.conv_with_function" title="udkm1Dsim.simulations.xrays.XrayDyn.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.disp_message" title="udkm1Dsim.simulations.xrays.XrayDyn.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_hash" title="udkm1Dsim.simulations.xrays.XrayDyn.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(strain_vectors, **kwargs)</p></td>
+<td><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states and the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> as well as the sample structure hash for relevant x-ray parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_polarization_factor" title="udkm1Dsim.simulations.xrays.XrayDyn.get_polarization_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_polarization_factor</span></code></a>(theta)</p></td>
+<td><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization (pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays (pol = 0.5):</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.save" title="udkm1Dsim.simulations.xrays.XrayDyn.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.set_polarization" title="udkm1Dsim.simulations.xrays.XrayDyn.set_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_polarization</span></code></a>(pol_in_state, pol_out_state)</p></td>
+<td><p>Sets the incoming and analyzer (outgoing) polarization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.update_experiment" title="udkm1Dsim.simulations.xrays.XrayDyn.update_experiment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_experiment</span></code></a>(caller)</p></td>
+<td><p>Recalculate energy, wavelength, and wavevector as well as theta and the scattering vector in case any of these has changed.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.set_incoming_polarization">
+<code class="sig-name descname"><span class="pre">set_incoming_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.set_incoming_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming polarization factor for sigma, pi, and unpolarized
+polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.set_outgoing_polarization">
+<code class="sig-name descname"><span class="pre">set_outgoing_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.set_outgoing_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>For dynamical X-ray simulation only “no analyzer polarization” is allowed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">homogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflectivity <span class="math notranslate nohighlight">\(R\)</span> of the whole sample structure
+and the reflectivity-transmission matrices <span class="math notranslate nohighlight">\(M_{RT}\)</span> for
+each substructure. The reflectivity of the <span class="math notranslate nohighlight">\(2\times 2\)</span>
+matrices for each <span class="math notranslate nohighlight">\(q_z\)</span> is calculates as follow:</p>
+<div class="math notranslate nohighlight">
+\[R = \left|M_{RT}^t(0,1)/M_{RT}^t(1,1)\right|^2\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*args</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – strains for each substructure.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - homogeneous reflectivity.</p></li>
+<li><p><em>A (ndarray[complex])</em> - reflectivity-transmission matrices of
+sub-structures.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_ref_trans_matrix">
+<code class="sig-name descname"><span class="pre">homogeneous_ref_trans_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.homogeneous_ref_trans_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflectivity-transmission matrices <span class="math notranslate nohighlight">\(M_{RT}\)</span> of
+the whole sample structure as well as for each sub-structure.
+The reflectivity-transmission matrix of a single unit cell is
+calculated from the reflection-transmission matrices <span class="math notranslate nohighlight">\(H_i\)</span>
+of each atom and the phase matrices between the atoms <span class="math notranslate nohighlight">\(L_i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[M_{RT} = \prod_i H_i \ L_i\]</div>
+<p>For <span class="math notranslate nohighlight">\(N\)</span> similar layers of unit cells one can calculate the
+<span class="math notranslate nohighlight">\(N\)</span>-th power of the unit cell <span class="math notranslate nohighlight">\(\left(M_{RT}\right)^N\)</span>.
+The reflection-transmission matrix for the whole sample
+<span class="math notranslate nohighlight">\(M_{RT}^t\)</span> consisting of <span class="math notranslate nohighlight">\(j = 1\ldots M\)</span>
+sub-structures is then again:</p>
+<div class="math notranslate nohighlight">
+\[M_{RT}^t = \prod_{j=1}^M \left(M_{RT^,j}\right)^{N_j}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a><em>, </em><a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – structure or sub-structure to calculate on.</p></li>
+<li><p><strong>*args</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – strains for each substructure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>RT (ndarray[complex])</em> - reflectivity-transmission matrix.</p></li>
+<li><p><em>A (ndarray[complex])</em> - reflectivity-transmission matrices of
+sub-structures.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflectivity of an inhomogeneously strained sample
+structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> in position and time, as well
+as for a given set of possible strains for each unit cell in the
+sample structure (<code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>).
+If no reflectivity is saved in the cache it is caluclated.
+Providing the <code class="docutils literal notranslate"><span class="pre">calc_type</span></code> for the calculation the corresponding
+sub-routines for the reflectivity computation are called:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parallel</span></code> parallelization over the time steps utilizing
+<a class="reference external" href="https://dask.org/">Dask</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distributed</span></code> not implemented in Python, but should be possible
+with <a class="reference external" href="https://dask.org/">Dask</a> as well</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sequential</span></code> no parallelization at all</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>strain_vectors</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>**kwargs</strong> – <ul>
+<li><p><em>calc_type (str)</em> - type of calculation.</p></li>
+<li><p><em>dask_client (Dask.Client)</em> - Dask client.</p></li>
+<li><p><em>job (Dask.job)</em> - Dask job.</p></li>
+<li><p><em>num_workers (int)</em> - Dask number of workers.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (ndarray[float])</em> – inhomogeneous reflectivity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.sequential_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">sequential_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RTM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.sequential_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflectivity of an inhomogeneously strained sample structure
+for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> in position and time, as well as for a given
+set of possible strains for each unit cell in the sample structure
+(<code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>). The function calculates the results sequentially
+without parallelization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>strain_vectors</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>RTM</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>complex</em><em>]</em><em>]</em>) – reflection-transmission matrices for
+all given strains per unique layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (ndarray[float])</em> – inhomogeneous reflectivity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.parallel_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">parallel_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RTM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dask_client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.parallel_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflectivity of an inhomogeneously strained sample structure
+for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> in position and time, as well as for a given
+set of possible strains for each unit cell in the sample structure
+(<code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>). The function parallelizes the calculation over the
+time steps, since the results do not depend on each other.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>strain_vectors</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>RTM</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>complex</em><em>]</em><em>]</em>) – reflection-transmission matrices for
+all given strains per unique layer.</p></li>
+<li><p><strong>dask_client</strong> (<em>Dask.Client</em>) – Dask client.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (ndarray[float])</em> – inhomogeneous reflectivity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.distributed_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">distributed_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RTM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_worker</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.distributed_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a stub. Not yet implemented in python.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>strain_vectors</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>RTM</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>complex</em><em>]</em><em>]</em>) – reflection-transmission matrices for
+all given strains per unique layer.</p></li>
+<li><p><strong>job</strong> (<em>Dask.job</em>) – Dask job.</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em>) – Dask number of workers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (ndarray[float])</em> – inhomogeneous reflectivity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">calc_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strains</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RTM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflectivity of a inhomogeneous sample structure for
+given <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> for a single time step. Similar to the
+homogeneous sample structure, the reflectivity of an unit cell is
+calculated from the reflection-transmission matrices <span class="math notranslate nohighlight">\(H_i\)</span> of
+each atom and the phase matrices between the atoms <span class="math notranslate nohighlight">\(L_i\)</span> in the
+unit cell:</p>
+<div class="math notranslate nohighlight">
+\[M_{RT} = \prod_i H_i \ L_i\]</div>
+<p>Since all layers are generally inhomogeneously strained we have to
+traverse all individual unit cells (<span class="math notranslate nohighlight">\(j = 1\ldots M\)</span>) in the
+sample to calculate the total reflection-transmission matrix
+<span class="math notranslate nohighlight">\(M_{RT}^t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[M_{RT}^t = \prod_{j=1}^M M_{RT,j}\]</div>
+<p>The reflectivity of the <span class="math notranslate nohighlight">\(2\times 2\)</span> matrices for each <span class="math notranslate nohighlight">\(q_z\)</span>
+is calculates as follow:</p>
+<div class="math notranslate nohighlight">
+\[R = \left|M_{RT}^t(1,2)/M_{RT}^t(2,2)\right|^2\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>strain_vectors</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>RTM</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>complex</em><em>]</em><em>]</em>) – reflection-transmission matrices for
+all given strains per unique layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (ndarray[float])</em> – inhomogeneous reflectivity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_ref_trans_matrix">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_inhomogeneous_ref_trans_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uc_indices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strains</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RTM</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_ref_trans_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-function of <a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDyn.calc_inhomogeneous_reflectivity"><code class="xref py py-meth docutils literal notranslate"><span class="pre">calc_inhomogeneous_reflectivity()</span></code></a> and for
+parallel computing (needs to be static) only for calculating the
+total reflection-transmission matrix <span class="math notranslate nohighlight">\(M_{RT}^t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[M_{RT}^t = \prod_{j=1}^M M_{RT,j}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uc_indices</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – unit cell indices.</p></li>
+<li><p><strong>RT</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – reflection-transmission matrix.</p></li>
+<li><p><strong>strains</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatial strain profile for single time
+step.</p></li>
+<li><p><strong>strain_vectors</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>RTM</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>complex</em><em>]</em><em>]</em>) – reflection-transmission matrices for
+all given strains per unique layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>RT (ndarray[complex])</em> – reflection-transmission matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_all_ref_trans_matrices">
+<code class="sig-name descname"><span class="pre">get_all_ref_trans_matrices</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_all_ref_trans_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all reflection-transmission matrices for each
+unique unit cell in the sample structure for a given set of applied
+strains for each unique unit cell given by the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code>
+input. If this data was saved on disk before, it is loaded, otherwise
+it is calculated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>list</em><em>[</em><em>ndarray</em><em>[</em><em>float</em><em>]</em><em>]</em><em>, </em><em>optional</em>) – reduced strains per unique
+layer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>RTM (list[ndarray[complex]])</em> – reflection-transmission matrices for
+all given strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.calc_all_ref_trans_matrices">
+<code class="sig-name descname"><span class="pre">calc_all_ref_trans_matrices</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_all_ref_trans_matrices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a list of all reflection-transmission matrices for each
+unique unit cell in the sample structure for a given set of applied
+strains to each unique unit cell given by the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> input.</p>
+<dl class="simple">
+<dt>Args::</dt><dd><dl class="simple">
+<dt>args (list[ndarray[float]], optional): reduced strains per unique</dt><dd><p>layer.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>RTM (list[ndarray[complex]])</em> – reflection-transmission matrices for
+all given strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_uc_ref_trans_matrix">
+<code class="sig-name descname"><span class="pre">get_uc_ref_trans_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_uc_ref_trans_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflection-transmission matrix of a unit cell:</p>
+<div class="math notranslate nohighlight">
+\[M_{RT} = \prod_i H_i \  L_i\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_i\)</span> and <span class="math notranslate nohighlight">\(L_i\)</span> are the atomic reflection-
+transmission matrix and the phase matrix for the atomic distances,
+respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uc</strong> (<a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – unit cell object.</p></li>
+<li><p><strong>args</strong> (<em>float</em><em>, </em><em>optional</em>) – strain of unit cell.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>RTM (list[ndarray[complex]])</em> –</p>
+<dl class="simple">
+<dt>reflection-transmission matrices for</dt><dd><p>all given strains per unique layer.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_ref_trans_matrix">
+<code class="sig-name descname"><span class="pre">get_atom_ref_trans_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deb_wal_fac</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_ref_trans_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflection-transmission matrix of an atom from dynamical
+x-ray theory:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H = \frac{1}{\tau} \begin{bmatrix}
+\left(\tau^2 - \rho^2\right) &amp; \rho \\
+-\rho &amp; 1
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – atom or mixed atom</p></li>
+<li><p><strong>area</strong> (<em>float</em>) – area of the unit cell [m²]</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye-Waller factor for unit cell</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>H (ndarray[complex])</em> – reflection-transmission matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_reflection_factor">
+<code class="sig-name descname"><span class="pre">get_atom_reflection_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deb_wal_fac</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_reflection_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflection factor from dynamical x-ray theory:</p>
+<div class="math notranslate nohighlight">
+\[\rho = \frac{-i 4 \pi \ r_e \ f(E,q_z) \ P(\theta)
+\exp(-M)}{q_z \ A}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_e\)</span> is the electron radius</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(E,q_z)\)</span> is the energy and angle dispersive atomic
+form factor</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(q_z)\)</span> is the polarization factor</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is the area in <span class="math notranslate nohighlight">\(x-y\)</span> plane on which the atom
+is placed</p></li>
+<li><p><span class="math notranslate nohighlight">\(M = 0.5(\mbox{dbf} \ q_z)^2)\)</span> where
+<span class="math notranslate nohighlight">\(\mbox{dbf}^2 = \langle u^2\rangle\)</span> is the average
+thermal vibration of the atoms - Debye-Waller factor</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – atom or mixed atom</p></li>
+<li><p><strong>area</strong> (<em>float</em>) – area of the unit cell [m²]</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye-Waller factor for unit cell</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>rho (complex)</em> – reflection factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_transmission_factor">
+<code class="sig-name descname"><span class="pre">get_atom_transmission_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deb_wal_fac</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_transmission_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the transmission factor from dynamical x-ray theory:</p>
+<div class="math notranslate nohighlight">
+\[\tau = 1 - \frac{i 4 \pi r_e f(E,0) \exp(-M)}{q_z A}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r_e\)</span> is the electron radius</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(E,0)\)</span> is the energy dispersive atomic form factor
+(no angle correction)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> is the area in <span class="math notranslate nohighlight">\(x-y\)</span> plane on which the atom
+is placed</p></li>
+<li><p><span class="math notranslate nohighlight">\(M = 0.5(\mbox{dbf} \ q_z)^2\)</span> where
+<span class="math notranslate nohighlight">\(\mbox{dbf}^2 = \langle u^2\rangle\)</span> is the average
+thermal vibration of the atoms - Debye-Waller factor</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – atom or mixed atom</p></li>
+<li><p><strong>area</strong> (<em>float</em>) – area of the unit cell [m²]</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye-Waller factor for unit cell</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>tau (complex)</em> – transmission factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_matrix">
+<code class="sig-name descname"><span class="pre">get_atom_phase_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the phase matrix from dynamical x-ray theory:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L = \begin{bmatrix}
+\exp(i \phi) &amp; 0 \\
+0            &amp; \exp(-i \phi)
+\end{bmatrix}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>float</em>) – distance between atomic planes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>L (ndarray[complex])</em> – phase matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_factor">
+<code class="sig-name descname"><span class="pre">get_atom_phase_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_atom_phase_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the phase factor <span class="math notranslate nohighlight">\(\phi\)</span> for a distance <span class="math notranslate nohighlight">\(d\)</span>
+from dynamical x-ray theory:</p>
+<div class="math notranslate nohighlight">
+\[\phi = \frac{d \ q_z}{2}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>float</em>) – distance between atomic planes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>phi (float)</em> – phase factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.calc_reflectivity_from_matrix">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_reflectivity_from_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.calc_reflectivity_from_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflectivity from an <span class="math notranslate nohighlight">\(2\times2\)</span> matrix of
+transmission and reflectivity factors:</p>
+<div class="math notranslate nohighlight">
+\[R = \left|M(0,1)/M(1,1)\right|^2\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – reflection-transmission matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (ndarray[float])</em> – reflectivity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_vectors</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>,
+<span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states and the <code class="docutils literal notranslate"><span class="pre">strain_vectors</span></code> as
+well as the sample structure hash for relevant x-ray parameters.
+Optionally, part of the strain_map is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_vectors</strong> (<em>dict{ndarray</em><em>[</em><em>float</em><em>]</em><em>}</em>) – reduced strains per unique
+layer.</p></li>
+<li><p><strong>**kwargs</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.get_polarization_factor">
+<code class="sig-name descname"><span class="pre">get_polarization_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.get_polarization_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given
+incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization
+(pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays
+(pol = 0.5):</p>
+<div class="math notranslate nohighlight">
+\[P(\vartheta) = \sqrt{(1-\mbox{pol}) + \mbox{pol} \cdot \cos(2\vartheta)}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – incidence angle.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>P (ndarray[float])</em> – polarization factor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.set_polarization">
+<code class="sig-name descname"><span class="pre">set_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.set_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming and analyzer (outgoing) polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDyn.update_experiment">
+<code class="sig-name descname"><span class="pre">update_experiment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDyn.update_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recalculate energy, wavelength, and wavevector as well as theta
+and the scattering vector in case any of these has changed.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\lambda &amp; = \frac{hc}{E} \\
+E &amp; = \frac{hc}{\lambda} \\
+k &amp; = \frac{2\pi}{\lambda} \\
+\vartheta &amp; = \arcsin{\frac{\lambda q_z}{4\pi}} \\
+q_z &amp; = 2k \sin{\vartheta}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>caller</strong> (<em>str</em>) – name of calling method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.xrays.</span></code><code class="sig-name descname"><span class="pre">XrayDynMag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.simulations.xrays.Xray" title="udkm1Dsim.simulations.xrays.Xray"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.xrays.Xray</span></code></a></p>
+<p>Dynamical magnetic X-ray scattering simulations.</p>
+<p>Adapted from Elzo et.al. <a class="footnote-reference brackets" href="#id5" id="id4">10</a> and initially realized in <a class="reference external" href="http://dyna.neel.cnrs.fr">Project Dyna</a>.</p>
+<p>Original copyright notice:</p>
+<p><em>Copyright Institut Neel, CNRS, Grenoble, France</em></p>
+<p><strong>Project Collaborators:</strong></p>
+<ul class="simple">
+<li><p>Stéphane Grenier, <a class="reference external" href="mailto:stephane&#46;grenier&#37;&#52;&#48;neel&#46;cnrs&#46;fr">stephane<span>&#46;</span>grenier<span>&#64;</span>neel<span>&#46;</span>cnrs<span>&#46;</span>fr</a></p></li>
+<li><p>Marta Elzo (PhD, 2009-2012)</p></li>
+<li><p>Nicolas Jaouen Sextants beamline, Synchrotron Soleil,
+<a class="reference external" href="mailto:nicolas&#46;jaouen&#37;&#52;&#48;synchrotron-soleil&#46;fr">nicolas<span>&#46;</span>jaouen<span>&#64;</span>synchrotron-soleil<span>&#46;</span>fr</a></p></li>
+<li><p>Emmanuelle Jal (PhD, 2010-2013) now at <a class="reference external" href="https://lcpmr.cnrs.fr/content/emmanuelle-jal">LCPMR CNRS, Paris</a></p></li>
+<li><p>Jean-Marc Tonnerre, <a class="reference external" href="mailto:jean-marc&#46;tonnerre&#37;&#52;&#48;neel&#46;cnrs&#46;fr">jean-marc<span>&#46;</span>tonnerre<span>&#64;</span>neel<span>&#46;</span>cnrs<span>&#46;</span>fr</a></p></li>
+<li><p>Ingrid Hallsteinsen - Padraic Shaffer’s group - Berkeley Nat. Lab.</p></li>
+</ul>
+<p><strong>Questions to:</strong></p>
+<ul class="simple">
+<li><p>Stéphane Grenier, <a class="reference external" href="mailto:stephane&#46;grenier&#37;&#52;&#48;neel&#46;cnrs&#46;fr">stephane<span>&#46;</span>grenier<span>&#64;</span>neel<span>&#46;</span>cnrs<span>&#46;</span>fr</a></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>energy</strong> (<em>ndarray[float]</em>) – photon energies <span class="math notranslate nohighlight">\(E\)</span> of scattering light</p></li>
+<li><p><strong>wl</strong> (<em>ndarray[float]</em>) – wavelengths <span class="math notranslate nohighlight">\(\lambda\)</span> of scattering light</p></li>
+<li><p><strong>k</strong> (<em>ndarray[float]</em>) – wavenumber <span class="math notranslate nohighlight">\(k\)</span> of scattering light</p></li>
+<li><p><strong>theta</strong> (<em>ndarray[float]</em>) – incidence angles <span class="math notranslate nohighlight">\(\theta\)</span> of scattering
+light</p></li>
+<li><p><strong>qz</strong> (<em>ndarray[float]</em>) – scattering vector <span class="math notranslate nohighlight">\(q_z\)</span> of scattering light</p></li>
+<li><p><strong>polarizations</strong> (<em>dict</em>) – polarization states and according names.</p></li>
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state as defined in
+polarizations dict.</p></li>
+<li><p><strong>pol_in</strong> (<em>float</em>) – incoming polarization factor (can be a complex ndarray).</p></li>
+<li><p><strong>pol_out</strong> (<em>float</em>) – outgoing polarization factor (can be a complex ndarray).</p></li>
+<li><p><strong>last_atom_ref_trans_matrices</strong> (<em>list</em>) – remember last result of
+atom ref_trans_matrices to speed up calculation.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets">10</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id6">2</a>,<a href="#id7">3</a>,<a href="#id8">4</a>,<a href="#id9">5</a>,<a href="#id10">6</a>,<a href="#id13">7</a>,<a href="#id14">8</a>,<a href="#id15">9</a>,<a href="#id16">10</a>,<a href="#id17">11</a>)</span></dt>
+<dd><p>M. Elzo, E. Jal, O. Bunau, S. Grenier, Y. Joly, A. Y.
+Ramos, H. C. N. Tolentino, J. M. Tonnerre &amp; N. Jaouen, <em>X-ray
+resonant magnetic reflectivity of stratified magnetic structures:
+Eigenwave formalism and application to a W/Fe/W trilayer</em>,
+<a class="reference external" href="http://www.doi.org/10.1016/j.jmmm.2011.07.019">J. Magn. Magn. Mater. 324, 105 (2012).</a></p>
+</dd>
+</dl>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.get_hash" title="udkm1Dsim.simulations.xrays.XrayDynMag.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(**kwargs)</p></td>
+<td><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(q_z\)</span> range, polarization states as well as the sample structure hash for relevant x-ray and magnetic parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.set_incoming_polarization" title="udkm1Dsim.simulations.xrays.XrayDynMag.set_incoming_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_incoming_polarization</span></code></a>(pol_in_state)</p></td>
+<td><p>Sets the incoming polarization factor for circular +, circular -, sigma, pi, and unpolarized polarization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.set_outgoing_polarization" title="udkm1Dsim.simulations.xrays.XrayDynMag.set_outgoing_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outgoing_polarization</span></code></a>(pol_out_state)</p></td>
+<td><p>Sets the outgoing polarization factor for circular +, circular -, sigma, pi, and unpolarized polarization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.homogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDynMag.homogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">homogeneous_reflectivity</span></code></a>(*args)</p></td>
+<td><p>Calculates the reflectivity <span class="math notranslate nohighlight">\(R\)</span> of the whole sample structure allowing only for homogeneous strain and magnetization.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_homogeneous_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_homogeneous_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_homogeneous_matrix</span></code></a>(S, last_A, …)</p></td>
+<td><p>Calculates the product of all reflection-transmission matrices of the sample structure</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDynMag.inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inhomogeneous_reflectivity</span></code></a>([strain_map, …])</p></td>
+<td><p>Returns the reflectivity and transmissivity of an inhomogeneously strained and magnetized sample structure for a given _strain_map_ and _magnetization_map_ in space and time for each unit cell or amorphous layer in the sample structure.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.sequential_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDynMag.sequential_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sequential_inhomogeneous_reflectivity</span></code></a>(…)</p></td>
+<td><p>Returns the reflectivity and transmission of an inhomogeneously strained sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> and <code class="docutils literal notranslate"><span class="pre">magnetization_map</span></code> in space and time.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.parallel_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDynMag.parallel_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">parallel_inhomogeneous_reflectivity</span></code></a>(…)</p></td>
+<td><p>Returns the reflectivity and transmission of an inhomogeneously strained sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> and <code class="docutils literal notranslate"><span class="pre">magnetization_map</span></code> in space and time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.distributed_inhomogeneous_reflectivity" title="udkm1Dsim.simulations.xrays.XrayDynMag.distributed_inhomogeneous_reflectivity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">distributed_inhomogeneous_reflectivity</span></code></a>(…)</p></td>
+<td><p>This is a stub.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_inhomogeneous_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_inhomogeneous_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_inhomogeneous_matrix</span></code></a>(last_A, …)</p></td>
+<td><p>Calculates the product of all reflection-transmission matrices of the sample structure for every atomic layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_uc_boundary_phase_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_uc_boundary_phase_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_uc_boundary_phase_matrix</span></code></a>(uc, last_A, …)</p></td>
+<td><p>Calculates the product of all reflection-transmission matrices of a single unit cell for a given strain:</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.conv_with_function" title="udkm1Dsim.simulations.xrays.XrayDynMag.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.disp_message" title="udkm1Dsim.simulations.xrays.XrayDynMag.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.get_atom_boundary_phase_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.get_atom_boundary_phase_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_boundary_phase_matrix</span></code></a>(atom, …[, …])</p></td>
+<td><p>Returns the boundary and phase matrices of an atom from Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id6">10</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.get_polarization_factor" title="udkm1Dsim.simulations.xrays.XrayDynMag.get_polarization_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_polarization_factor</span></code></a>(theta)</p></td>
+<td><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization (pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays (pol = 0.5):</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.save" title="udkm1Dsim.simulations.xrays.XrayDynMag.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.set_polarization" title="udkm1Dsim.simulations.xrays.XrayDynMag.set_polarization"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_polarization</span></code></a>(pol_in_state, pol_out_state)</p></td>
+<td><p>Sets the incoming and analyzer (outgoing) polarization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.update_experiment" title="udkm1Dsim.simulations.xrays.XrayDynMag.update_experiment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_experiment</span></code></a>(caller)</p></td>
+<td><p>Recalculate energy, wavelength, and wavevector as well as theta and the scattering vector in case any of these has changed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_atom_boundary_phase_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_atom_boundary_phase_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_atom_boundary_phase_matrix</span></code></a>(atom, …)</p></td>
+<td><p>Calculates the boundary and phase matrices of an atom from Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id7">10</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_reflectivity_transmissivity_from_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_reflectivity_transmissivity_from_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_reflectivity_transmissivity_from_matrix</span></code></a>(RT, …)</p></td>
+<td><p>Calculates the actual reflectivity and transmissivity from the reflectivity-transmission matrix for a given incoming and analyzer polarization from Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id8">10</a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_kerr_effect_from_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_kerr_effect_from_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_kerr_effect_from_matrix</span></code></a>(RT)</p></td>
+<td><p>Calculates the Kerr rotation and ellipticity for sigma and pi incident polarization from the reflectivity-transmission matrix independent of the given incoming and analyzer polarization from Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id9">10</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_roughness_matrix" title="udkm1Dsim.simulations.xrays.XrayDynMag.calc_roughness_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_roughness_matrix</span></code></a>(roughness, k_z, last_k_z)</p></td>
+<td><p>Calculates the roughness matrix for an interface with a gaussian roughness for the Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id10">10</a>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the energy <span class="math notranslate nohighlight">\(E\)</span>, <span class="math notranslate nohighlight">\(q_z\)</span>
+range, polarization states as well as the sample structure hash for
+relevant x-ray and magnetic parameters. Optionally, part of the
+<code class="docutils literal notranslate"><span class="pre">strain_map</span></code> and <code class="docutils literal notranslate"><span class="pre">magnetization_map</span></code> are used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain and magnetization
+profile.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.set_incoming_polarization">
+<code class="sig-name descname"><span class="pre">set_incoming_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.set_incoming_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming polarization factor for circular +, circular -, sigma,
+pi, and unpolarized polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.set_outgoing_polarization">
+<code class="sig-name descname"><span class="pre">set_outgoing_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.set_outgoing_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the outgoing polarization factor for circular +, circular -, sigma,
+pi, and unpolarized polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.homogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">homogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.homogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the reflectivity <span class="math notranslate nohighlight">\(R\)</span> of the whole sample structure
+allowing only for homogeneous strain and magnetization.</p>
+<p>The reflection-transmission matrices</p>
+<div class="math notranslate nohighlight">
+\[RT = A_f^{-1} \prod_m \left( A_m P_m A_m^{-1} \right) A_0\]</div>
+<p>are calculated for every substructure <span class="math notranslate nohighlight">\(m\)</span> before post-processing
+the incoming and analyzer polarizations and calculating the actual
+reflectivities as function of energy and <span class="math notranslate nohighlight">\(q_z\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – strains and magnetization for each
+sub-structure.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - homogeneous reflectivity.</p></li>
+<li><p><em>R_phi (ndarray[float])</em> - homogeneous reflectivity for opposite
+magnetization.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_homogeneous_matrix">
+<code class="sig-name descname"><span class="pre">calc_homogeneous_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_A_phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_k_z</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_homogeneous_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the product of all reflection-transmission matrices of the
+sample structure</p>
+<div class="math notranslate nohighlight">
+\[RT = \prod_m \left(P_m A_m^{-1} A_{m-1} \right)\]</div>
+<p>If the sub-structure <span class="math notranslate nohighlight">\(m\)</span> consists of <span class="math notranslate nohighlight">\(N\)</span> unit cells
+the matrix exponential rule is applied:</p>
+<div class="math notranslate nohighlight">
+\[RT_m = \left( P_{UC} A_{UC}^{-1} A_{UC} \right)^N\]</div>
+<p>Roughness is also included by a gaussian width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a><em>, </em><a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a><em>, </em><a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.AmorphousLayer" title="udkm1Dsim.structures.layers.AmorphousLayer"><em>AmorphousLayer</em></a>) – structure, sub-structure,
+unit cell or amorphous layer to calculate on.</p></li>
+<li><p><strong>last_A</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – last atom boundary matrix.</p></li>
+<li><p><strong>last_A_phi</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – last atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><strong>last_k_z</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – last internal wave vector</p></li>
+<li><p><strong>args</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – strains and magnetization for each
+sub-structure.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>RT (ndarray[complex])</em> - reflection-transmission matrix.</p></li>
+<li><p><em>RT_phi (ndarray[complex])</em> - reflection-transmission matrix for
+opposite magnetization.</p></li>
+<li><p><em>A (ndarray[complex])</em> - atom boundary matrix.</p></li>
+<li><p><em>A_phi (ndarray[complex])</em> - atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><em>A_inv (ndarray[complex])</em> - inverted atom boundary matrix.</p></li>
+<li><p><em>A_inv_phi (ndarray[complex])</em> - inverted atom boundary matrix for
+opposite magnetization.</p></li>
+<li><p><em>k_z (ndarray[float])</em> - internal wave vector.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([],</span> <span class="pre">dtype=float64)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetization_map</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([],</span> <span class="pre">dtype=float64)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflectivity and transmissivity of an inhomogeneously
+strained and magnetized sample structure for a given _strain_map_
+and _magnetization_map_ in space and time for each unit cell or
+amorphous layer in the sample structure. If no reflectivity is
+saved in the cache it is caluclated. Providing the <code class="docutils literal notranslate"><span class="pre">calc_type</span></code>
+for the calculation the corresponding sub-routines for the
+reflectivity computation are called:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parallel</span></code> parallelization over the time steps utilizing
+<a class="reference external" href="https://dask.org/">Dask</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distributed</span></code> not implemented in Python, but should be possible
+with <a class="reference external" href="https://dask.org/">Dask</a> as well</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sequential</span></code> no parallelization at all</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – spatio-temporal strain
+profile.</p></li>
+<li><p><strong>magnetization_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – spatio-temporal
+magnetization profile.</p></li>
+<li><p><strong>**kwargs</strong> – <ul>
+<li><p><em>calc_type (str)</em> - type of calculation.</p></li>
+<li><p><em>dask_client (Dask.Client)</em> - Dask client.</p></li>
+<li><p><em>job (Dask.job)</em> - Dask job.</p></li>
+<li><p><em>num_workers (int)</em> - Dask number of workers.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - inhomogeneous reflectivity.</p></li>
+<li><p><em>R_phi (ndarray[float])</em> - inhomogeneous reflectivity for opposite
+magnetization.</p></li>
+<li><p><em>T (ndarray[float])</em> - inhomogeneous transmissivity.</p></li>
+<li><p><em>T_phi (ndarray[float])</em> - inhomogeneous transmissivity for opposite
+magnetization.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.sequential_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">sequential_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetization_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.sequential_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflectivity and transmission of an inhomogeneously strained
+sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> and <code class="docutils literal notranslate"><span class="pre">magnetization_map</span></code> in
+space and time. The function calculates the results sequentially for every
+layer without parallelization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>magnetization_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal magnetization
+profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - inhomogeneous reflectivity.</p></li>
+<li><p><em>R_phi (ndarray[float])</em> - inhomogeneous reflectivity for opposite
+magnetization.</p></li>
+<li><p><em>T (ndarray[float])</em> - inhomogeneous transmission.</p></li>
+<li><p><em>T_phi (ndarray[float])</em> - inhomogeneous transmission for opposite
+magnetization.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.parallel_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">parallel_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetization_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dask_client</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.parallel_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reflectivity and transmission of an inhomogeneously strained
+sample structure for a given <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> and <code class="docutils literal notranslate"><span class="pre">magnetization_map</span></code> in
+space and time. The function tries to parallelize the calculation over the
+time steps, since the results do not depend on each other.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>magnetization_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal magnetization
+profile.</p></li>
+<li><p><strong>dask_client</strong> (<em>Dask.Client</em>) – Dask client.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - inhomogeneous reflectivity.</p></li>
+<li><p><em>R_phi (ndarray[float])</em> - inhomogeneous reflectivity for opposite
+magnetization.</p></li>
+<li><p><em>T (ndarray[float])</em> - inhomogeneous transmission.</p></li>
+<li><p><em>T_phi (ndarray[float])</em> - inhomogeneous transmission for opposite
+magnetization.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.distributed_inhomogeneous_reflectivity">
+<code class="sig-name descname"><span class="pre">distributed_inhomogeneous_reflectivity</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetization_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">job</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_worker</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.distributed_inhomogeneous_reflectivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a stub. Not yet implemented in python.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>magnetization_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal magnetization
+profile.</p></li>
+<li><p><strong>job</strong> (<em>Dask.job</em>) – Dask job.</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em>) – Dask number of workers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - inhomogeneous reflectivity.</p></li>
+<li><p><em>R_phi (ndarray[float])</em> - inhomogeneous reflectivity for opposite
+magnetization.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_inhomogeneous_matrix">
+<code class="sig-name descname"><span class="pre">calc_inhomogeneous_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">last_A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_A_phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_k_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strains</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetizations</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_inhomogeneous_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the product of all reflection-transmission matrices of the
+sample structure for every atomic layer.</p>
+<div class="math notranslate nohighlight">
+\[RT = \prod_m \left( P_m A_m^{-1} A_{m-1}  \right)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>last_A</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – last atom boundary matrix.</p></li>
+<li><p><strong>last_A_phi</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – last atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><strong>last_k_z</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – last internal wave vector</p></li>
+<li><p><strong>strains</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatial strain profile for single time
+step.</p></li>
+<li><p><strong>magnetizations</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatial magnetization profile for
+single time step.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>RT (ndarray[complex])</em> - reflection-transmission matrix.</p></li>
+<li><p><em>RT_phi (ndarray[complex])</em> - reflection-transmission matrix for
+opposite magnetization.</p></li>
+<li><p><em>A (ndarray[complex])</em> - atom boundary matrix.</p></li>
+<li><p><em>A_phi (ndarray[complex])</em> - atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><em>A_inv (ndarray[complex])</em> - inverted atom boundary matrix.</p></li>
+<li><p><em>A_inv_phi (ndarray[complex])</em> - inverted atom boundary matrix for
+opposite magnetization.</p></li>
+<li><p><em>k_z (ndarray[float])</em> - internal wave vector.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_uc_boundary_phase_matrix">
+<code class="sig-name descname"><span class="pre">calc_uc_boundary_phase_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_A_phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_k_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magnetization</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_uc_boundary_phase_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the product of all reflection-transmission matrices of
+a single unit cell for a given strain:</p>
+<div class="math notranslate nohighlight">
+\[RT = \prod_m \left( P_m A_m^{-1} A_{m-1}\right)\]</div>
+<p>and returns also the last matrices <span class="math notranslate nohighlight">\(A, A^{-1}, k_z\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uc</strong> (<a class="reference internal" href="layers.html#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><em>UnitCell</em></a>) – unit cell</p></li>
+<li><p><strong>last_A</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – last atom boundary matrix.</p></li>
+<li><p><strong>last_A_phi</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – last atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><strong>last_k_z</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – last internal wave vector</p></li>
+<li><p><strong>strain</strong> (<em>float</em>) – strain of unit cell for a single time
+step.</p></li>
+<li><p><strong>magnetization</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – magnetization of unit cell for
+a single time step.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em><em>, </em><em>optional</em>) – force recalculation of boundary
+phase matrix if True. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>RT (ndarray[complex])</em> - reflection-transmission matrix.</p></li>
+<li><p><em>RT_phi (ndarray[complex])</em> - reflection-transmission matrix for
+opposite magnetization.</p></li>
+<li><p><em>A (ndarray[complex])</em> - atom boundary matrix.</p></li>
+<li><p><em>A_phi (ndarray[complex])</em> - atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><em>A_inv (ndarray[complex])</em> - inverted atom boundary matrix.</p></li>
+<li><p><em>A_inv_phi (ndarray[complex])</em> - inverted atom boundary matrix for
+opposite magnetization.</p></li>
+<li><p><em>k_z (ndarray[float])</em> - internal wave vector.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.get_atom_boundary_phase_matrix">
+<code class="sig-name descname"><span class="pre">get_atom_boundary_phase_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.get_atom_boundary_phase_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the boundary and phase matrices of an atom from Elzo
+formalism <a class="footnote-reference brackets" href="#id5" id="id13">10</a>. The results for a given atom, energy, <span class="math notranslate nohighlight">\(q_z\)</span>,
+polarization, and magnetization are stored to RAM to avoid recalculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – atom or mixed atom.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – density around the atom [kg/m³].</p></li>
+<li><p><strong>distance</strong> (<em>float</em>) – distance towards the next atomic [m].</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em><em>, </em><em>optional</em>) – force recalculation of boundary
+phase matrix if True. Defaults to False.</p></li>
+<li><p><strong>args</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – magnetization vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>A (ndarray[complex])</em> - atom boundary matrix.</p></li>
+<li><p><em>A_phi (ndarray[complex])</em> - atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><em>P (ndarray[complex])</em> - atom phase matrix.</p></li>
+<li><p><em>P_phi (ndarray[complex])</em> - atom phase matrix for opposite
+magnetization.</p></li>
+<li><p><em>A_inv (ndarray[complex])</em> - inverted atom boundary matrix.</p></li>
+<li><p><em>A_inv_phi (ndarray[complex])</em> - inverted atom boundary matrix for
+opposite magnetization.</p></li>
+<li><p><em>k_z (ndarray[float])</em> - internal wave vector.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.get_polarization_factor">
+<code class="sig-name descname"><span class="pre">get_polarization_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.get_polarization_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the polarization factor <span class="math notranslate nohighlight">\(P(\vartheta)\)</span> for a given
+incident angle <span class="math notranslate nohighlight">\(\vartheta\)</span> for the case of <cite>s</cite>-polarization
+(pol = 0), or <cite>p</cite>-polarization (pol = 1), or unpolarized X-rays
+(pol = 0.5):</p>
+<div class="math notranslate nohighlight">
+\[P(\vartheta) = \sqrt{(1-\mbox{pol}) + \mbox{pol} \cdot \cos(2\vartheta)}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>theta</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – incidence angle.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>P (ndarray[float])</em> – polarization factor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.set_polarization">
+<code class="sig-name descname"><span class="pre">set_polarization</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pol_in_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_out_state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.set_polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the incoming and analyzer (outgoing) polarization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pol_in_state</strong> (<em>int</em>) – incoming polarization state id.</p></li>
+<li><p><strong>pol_out_state</strong> (<em>int</em>) – outgoing polarization state id.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.update_experiment">
+<code class="sig-name descname"><span class="pre">update_experiment</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">caller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.update_experiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recalculate energy, wavelength, and wavevector as well as theta
+and the scattering vector in case any of these has changed.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\lambda &amp; = \frac{hc}{E} \\
+E &amp; = \frac{hc}{\lambda} \\
+k &amp; = \frac{2\pi}{\lambda} \\
+\vartheta &amp; = \arcsin{\frac{\lambda q_z}{4\pi}} \\
+q_z &amp; = 2k \sin{\vartheta}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>caller</strong> (<em>str</em>) – name of calling method.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_atom_boundary_phase_matrix">
+<code class="sig-name descname"><span class="pre">calc_atom_boundary_phase_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_atom_boundary_phase_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the boundary and phase matrices of an atom from Elzo
+formalism <a class="footnote-reference brackets" href="#id5" id="id14">10</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – atom or mixed atom.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – density around the atom [kg/m³].</p></li>
+<li><p><strong>distance</strong> (<em>float</em>) – distance towards the next atomic [m].</p></li>
+<li><p><strong>args</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – magnetization vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>A (ndarray[complex])</em> - atom boundary matrix.</p></li>
+<li><p><em>A_phi (ndarray[complex])</em> - atom boundary matrix for opposite
+magnetization.</p></li>
+<li><p><em>P (ndarray[complex])</em> - atom phase matrix.</p></li>
+<li><p><em>P_phi (ndarray[complex])</em> - atom phase matrix for opposite
+magnetization.</p></li>
+<li><p><em>A_inv (ndarray[complex])</em> - inverted atom boundary matrix.</p></li>
+<li><p><em>A_inv_phi (ndarray[complex])</em> - inverted atom boundary matrix for
+opposite magnetization.</p></li>
+<li><p><em>k_z (ndarray[float])</em> - internal wave vector.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_reflectivity_transmissivity_from_matrix">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_reflectivity_transmissivity_from_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pol_out</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_reflectivity_transmissivity_from_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the actual reflectivity and transmissivity from the
+reflectivity-transmission matrix for a given incoming and analyzer
+polarization from Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id15">10</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>RT</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – reflection-transmission matrix.</p></li>
+<li><p><strong>pol_in</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – incoming polarization factor.</p></li>
+<li><p><strong>pol_out</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – outgoing polarization factor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>R (ndarray[float])</em> - reflectivity.</p></li>
+<li><p><em>T (ndarray[float])</em> - transmissivity.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_kerr_effect_from_matrix">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_kerr_effect_from_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RT</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_kerr_effect_from_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the Kerr rotation and ellipticity for sigma and pi
+incident polarization from the reflectivity-transmission
+matrix independent of the given incoming and analyzer polarization
+from Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id16">10</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>RT</strong> (<em>ndarray</em><em>[</em><em>complex</em><em>]</em>) – reflection-transmission matrix.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>K (ndarray[float])</em> – kerr.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.xrays.XrayDynMag.calc_roughness_matrix">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_roughness_matrix</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">roughness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_k_z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.xrays.XrayDynMag.calc_roughness_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the roughness matrix for an interface with a gaussian
+roughness for the Elzo formalism <a class="footnote-reference brackets" href="#id5" id="id17">10</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian roughness of the interface [m].</p></li>
+<li><p><strong>k_z</strong> (<em>ndarray</em><em>[</em><em>float</em>) – internal wave vector.</p></li>
+<li><p><strong>last_k_z</strong> (<em>ndarray</em><em>[</em><em>float</em>) – last internal wave vector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>W (ndarray[float])</em> – roughness matrix.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="helpers.html" class="btn btn-neutral float-right" title="helpers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="magnetization.html" class="btn btn-neutral float-left" title="simulations.magnetization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

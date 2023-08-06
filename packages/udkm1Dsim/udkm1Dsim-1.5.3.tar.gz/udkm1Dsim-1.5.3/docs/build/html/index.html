@@ -1,0 +1,422 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Welcome to udkm1Dsim documentation! &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Guide" href="user_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Welcome to udkm1Dsim documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="welcome-to-udkm1dsim-documentation">
+<h1>Welcome to udkm1Dsim documentation!<a class="headerlink" href="#welcome-to-udkm1dsim-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>The <em>udkm1Dsim</em> toolbox is a collection of Python classes and routines to
+simulate the thermal, structural, and magnetic dynamics after laser excitation
+as well as the according X-ray scattering response in one-dimensional sample
+structures after ultrafast excitation.</p>
+<p>The toolbox provides the capabilities to define arbitrary layered structures
+on the atomic level including a rich database of element-specific physical
+properties.
+The excitation of ultrafast dynamics is represented by an
+<span class="math notranslate nohighlight">\(N\)</span>-temperature-model which is commonly applied for ultrafast optical
+excitations.
+Structural dynamics due to thermal stresses are calculated by a linear-chain
+model of masses and springs.
+The implementation of magnetic dynamics can be easily accomplished by the user
+for the individual problem.</p>
+<p>The resulting X-ray diffraction response is computed by kinematical or
+dynamical X-ray theory which can also include magnetic scattering.</p>
+<p>The <em>udkm1Dsim</em> toolbox is highly modular and allows to introduce user-defined
+results at any step in the simulation procedure.</p>
+<p>The <em>udkm1Dsim</em> toolbox was initially developed for MATLAB® in the
+<em>Ultrafast Dynamics in Condensed Matter</em> group of Prof. Matias Bargheer at the
+<em>University of Potsdam</em>, Germany.
+The MATLAB® source code is still available at
+<a class="reference external" href="https://github.com/dschick/udkm1DsimML">github.com/dschick/udkm1DsimML</a>.</p>
+<p>The current toolbox, written in Python, is maintained by Daniel Schick at the
+<em>Max-Born-Institute</em>, Berlin, Germany.</p>
+</div>
+<div class="section" id="citation">
+<h1>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h1>
+<p>Please cite the current preprint if you use the toolbox in your own work:</p>
+<p>D. Schick, <em>udkm1Dsim - A Python toolbox for simulating 1D ultrafast dynamics in condensed matter</em>,
+<a class="reference external" href="https://doi.org/10.1016/j.cpc.2021.108031">Comput. Phys. Commun. 266, 108031 (2021)</a>
+<a class="reference external" href="https://arxiv.org/abs/2102.12144">(preprint)</a>.</p>
+<p>You can also cite the original publication if appropriate:</p>
+<p>D. Schick, A. Bojahr, M. Herzog, R. Shayduk, C. von Korff Schmising &amp; M. Bargheer,
+<em>udkm1Dsim - A Simulation Toolkit for 1D Ultrafast Dynamics in Condensed Matter</em>,
+<a class="reference external" href="http://doi.org/10.1016/j.cpc.2013.10.009">Comput. Phys. Commun. 185, 651 (2014)</a>
+<a class="reference external" href="http://www.udkm.physik.uni-potsdam.de/medien/udkm1Dsim/udkm1DsimManuscriptPrePrint.pdf">(preprint)</a>.</p>
+</div>
+<div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>You can either install directly from pypi.org using the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">udkm1Dsim</span>
+</pre></div>
+</div>
+<p>or if you want to work on the latest develop release you can clone
+udkm1Dsim from the main git repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dschick</span><span class="o">/</span><span class="n">udkm1Dsim</span><span class="o">.</span><span class="n">git</span> <span class="n">udkm1Dsim</span>
+</pre></div>
+</div>
+<p>To work in editable mode (source is only linked
+but not copied to the python site-packages), just do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">./</span><span class="n">udkm1Dsim</span>
+</pre></div>
+</div>
+<p>Or to do a normal install with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">./</span><span class="n">udkm1Dsim</span>
+</pre></div>
+</div>
+<p>Optionally, you can also let pip install directly from the repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dschick</span><span class="o">/</span><span class="n">udkm1Dsim</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>You can have the following optional installation to enable parallel
+computations, unit tests, as well as building the documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">udkm1Dsim</span><span class="p">[</span><span class="n">parallel</span><span class="p">]</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">udkm1Dsim</span><span class="p">[</span><span class="n">testing</span><span class="p">]</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">udkm1Dsim</span><span class="p">[</span><span class="n">documentation</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="user_guide.html" class="btn btn-neutral float-right" title="User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

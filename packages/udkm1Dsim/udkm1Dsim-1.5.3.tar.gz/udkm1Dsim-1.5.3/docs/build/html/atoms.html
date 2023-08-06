@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>structures.atoms &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="structures.layers" href="layers.html" />
+    <link rel="prev" title="API Documentation" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API Documentation</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/atoms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-udkm1Dsim.structures.atoms">
+<span id="structures-atoms"></span><h1><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code><a class="headerlink" href="#module-udkm1Dsim.structures.atoms" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Atom</span></code></a>(symbol, **kwargs)</p></td>
+<td><p>Smallest structural unit of which larger structures can be build.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AtomMixed</span></code></a>(symbol, **kwargs)</p></td>
+<td><p>Representation of mixed atoms in alloys and stochiometric mixtures.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="udkm1Dsim.structures.atoms.Atom">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.structures.atoms.</span></code><code class="sig-name descname"><span class="pre">Atom</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Smallest structural unit of which larger structures can be build.</p>
+<p>It holds real physical properties of on the atomic level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – symbol of the atom.</p>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the atom, may differ from symbol and/or name.</p></li>
+<li><p><strong>ionicity</strong> (<em>int</em>) – ionicity of the atom.</p></li>
+<li><p><strong>atomic_form_factor_path</strong> (<em>str</em>) – path to atomic form factor coeffs.</p></li>
+<li><p><strong>atomic_form_factor_source</strong> (<em>str</em>) – either _henke_ or default _chantler_</p></li>
+<li><p><strong>magnetic_form_factor_path</strong> (<em>str</em>) – path to magnetic form factor coeffs.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em>) – symbol of the element.</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – id of the atom, may differ from symbol and/or name.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the element (generic).</p></li>
+<li><p><strong>atomic_number_z</strong> (<em>int</em>) – Z atomic number.</p></li>
+<li><p><strong>mass_number_a</strong> (<em>float</em>) – A atomic mass number.</p></li>
+<li><p><strong>ionicity</strong> (<em>int</em>) – ionicity of the atom.</p></li>
+<li><p><strong>mass</strong> (<em>float</em>) – mass of the atom [kg].</p></li>
+<li><p><strong>atomic_form_factor_coeff</strong> (<em>ndarray[float]</em>) – atomic form factor.
+coefficients for energy-dependent atomic form factor.</p></li>
+<li><p><strong>cromer_mann_coeff</strong> (<em>ndarray[float]</em>) – cromer-mann coefficients for
+angular-dependent atomic form factor.</p></li>
+<li><p><strong>magnetic_form_factor_coeff</strong> (<em>ndarray[float]</em>) – magnetic form factor
+coefficients for energy-dependent magnetic form factor.</p></li>
+<li><p><strong>mag_amplitude</strong> (<em>float</em>) – magnetization amplitude -1 .. 1.</p></li>
+<li><p><strong>mag_phi</strong> (<em>float</em>) – phi angle of magnetization [rad].</p></li>
+<li><p><strong>mag_gamma</strong> (<em>float</em>) – gamma angle of magnetization [rad].</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
+<dd><p>B. L. Henke, E. M. Gullikson &amp; J. C. Davis,
+<em>X-Ray Interactions: Photoabsorption, Scattering,
+Transmission, and Reflection at E = 50-30,000 eV, Z = 1-92</em>,
+<a class="reference external" href="http://www.doi.org/10.1006/adnd.1993.1013">Atomic Data and Nuclear Data Tables, 54(2), 181–342, (1993).</a></p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">2</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>C.T. Chantler, K. Olsen, R.A. Dragoset, J. Chang, A.R. Kishore,
+S.A. Kotochigova, &amp; D.S. Zucker,
+<em>Detailed Tabulation of Atomic Form Factors, Photoelectric
+Absorption and Scattering Cross Section, and Mass Attenuation
+Coefficients for Z = 1-92 from E = 1-10 eV to E = 0.4-1.0 MeV</em>,
+<a class="reference external" href="https://dx.doi.org/10.18434/T4HS32">NIST Standard Reference Database 66.</a></p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">3</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id12">2</a>,<a href="#id14">3</a>)</span></dt>
+<dd><p>J. Als-Nielson, &amp; D. McMorrow,
+<a class="reference external" href="http://www.doi.org/10.1002/9781119998365">Elements of Modern X-Ray Physics. New York: John Wiley &amp;
+Sons, Ltd. (2001)</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">4</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id11">2</a>,<a href="#id13">3</a>)</span></dt>
+<dd><p>D. T. Cromer &amp; J. B. Mann, <em>X-ray scattering
+factors computed from numerical Hartree–Fock wave functions</em>,
+<a class="reference external" href="http://www.doi.org/10.1107/S0567739468000550">Acta Crystallographica Section A, 24(2), 321–324 (1968).</a></p>
+</dd>
+</dl>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom.read_atomic_form_factor_coeff" title="udkm1Dsim.structures.atoms.Atom.read_atomic_form_factor_coeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_atomic_form_factor_coeff</span></code></a>([source, filename])</p></td>
+<td><p>The coefficients for the atomic form factor <span class="math notranslate nohighlight">\(f\)</span> in dependence of the photon energy <span class="math notranslate nohighlight">\(E\)</span> is read from a parameter file given by <a class="footnote-reference brackets" href="#id1" id="id5">1</a> or by <a class="footnote-reference brackets" href="#id2" id="id6">2</a> as default.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom.get_atomic_form_factor" title="udkm1Dsim.structures.atoms.Atom.get_atomic_form_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atomic_form_factor</span></code></a>(energy)</p></td>
+<td><p>The complex atomic form factor for the photon energy <span class="math notranslate nohighlight">\(E\)</span> [eV] is calculated by:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom.read_cromer_mann_coeff" title="udkm1Dsim.structures.atoms.Atom.read_cromer_mann_coeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_cromer_mann_coeff</span></code></a>()</p></td>
+<td><p>The Cromer-Mann coefficients (Ref.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom.get_cm_atomic_form_factor" title="udkm1Dsim.structures.atoms.Atom.get_cm_atomic_form_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cm_atomic_form_factor</span></code></a>(energy, qz)</p></td>
+<td><p>The atomic form factor <span class="math notranslate nohighlight">\(f\)</span> is calculated in dependence of the photon energy <span class="math notranslate nohighlight">\(E\)</span> [eV] and the <span class="math notranslate nohighlight">\(z\)</span>-component of the scattering vector <span class="math notranslate nohighlight">\(q_z\)</span> [Å <span class="math notranslate nohighlight">\(^{-1}\)</span>] (Ref.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom.read_magnetic_form_factor_coeff" title="udkm1Dsim.structures.atoms.Atom.read_magnetic_form_factor_coeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_magnetic_form_factor_coeff</span></code></a>([filename])</p></td>
+<td><p>The coefficients for the magnetic form factor <span class="math notranslate nohighlight">\(m\)</span> in dependence of the photon energy <span class="math notranslate nohighlight">\(E\)</span> is read from a parameter file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom.get_magnetic_form_factor" title="udkm1Dsim.structures.atoms.Atom.get_magnetic_form_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_magnetic_form_factor</span></code></a>(energy)</p></td>
+<td><p>The complex magnetic form factor is claculated by:</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.Atom.read_atomic_form_factor_coeff">
+<code class="sig-name descname"><span class="pre">read_atomic_form_factor_coeff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'chantler'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom.read_atomic_form_factor_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The coefficients for the atomic form factor <span class="math notranslate nohighlight">\(f\)</span> in dependence of
+the photon energy <span class="math notranslate nohighlight">\(E\)</span> is read from a parameter file given by <a class="footnote-reference brackets" href="#id1" id="id7">1</a>
+or by <a class="footnote-reference brackets" href="#id2" id="id8">2</a> as default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – source of atmoic form factors can be either
+_henke_ or _chantler_. Defaults to _chantler_.</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – full path and filename to the atomic form
+factor coefficients.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[float])</em> – atomic form factor coefficients.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.Atom.get_atomic_form_factor">
+<code class="sig-name descname"><span class="pre">get_atomic_form_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom.get_atomic_form_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The complex atomic form factor for the photon energy <span class="math notranslate nohighlight">\(E\)</span> [eV] is
+calculated by:</p>
+<div class="math notranslate nohighlight">
+\[f(E)=f_1 - i f_2\]</div>
+<p>Convention of Ref. <a class="footnote-reference brackets" href="#id3" id="id9">3</a> (p. 11, footnote) is a negative <span class="math notranslate nohighlight">\(f_2\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>energy</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – photon energy [eV].</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[complex])</em> – energy-dependent atomic form factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.Atom.read_cromer_mann_coeff">
+<code class="sig-name descname"><span class="pre">read_cromer_mann_coeff</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom.read_cromer_mann_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Cromer-Mann coefficients (Ref. <a class="footnote-reference brackets" href="#id4" id="id10">4</a>) are read from a parameter file
+and are returned in the following order:</p>
+<div class="math notranslate nohighlight">
+\[a_1\; a_2\; a_3\; a_4\; b_1\; b_2\; b_3\; b_4\; c\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>cm (ndarray[float])</em> – Cromer-Mann coefficients.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.Atom.get_cm_atomic_form_factor">
+<code class="sig-name descname"><span class="pre">get_cm_atomic_form_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom.get_cm_atomic_form_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The atomic form factor <span class="math notranslate nohighlight">\(f\)</span> is calculated in dependence of the
+photon energy <span class="math notranslate nohighlight">\(E\)</span> [eV] and the <span class="math notranslate nohighlight">\(z\)</span>-component of the
+scattering vector <span class="math notranslate nohighlight">\(q_z\)</span> [Å <span class="math notranslate nohighlight">\(^{-1}\)</span>] (Ref. <a class="footnote-reference brackets" href="#id4" id="id11">4</a>).
+Note that the Cromer-Mann coefficients are fitted for <span class="math notranslate nohighlight">\(q_z\)</span> in
+[Å <span class="math notranslate nohighlight">\(^{-1}\)</span>]!</p>
+<p>See Ref. <a class="footnote-reference brackets" href="#id3" id="id12">3</a> (p. 235).</p>
+<div class="math notranslate nohighlight">
+\[f(q_z,E) = f_{CM}(q_z) + \delta f_1(E) -i f_2(E)\]</div>
+<p><span class="math notranslate nohighlight">\(f_{CM}(q_z)\)</span> is given in Ref. <a class="footnote-reference brackets" href="#id4" id="id13">4</a>:</p>
+<div class="math notranslate nohighlight">
+\[f_{CM}(q_z) = \sum(a_i \, \exp(-b_i \, (q_z/4\pi)^2))+ c\]</div>
+<p><span class="math notranslate nohighlight">\(\delta f_1(E)\)</span> is the dispersion correction:</p>
+<div class="math notranslate nohighlight">
+\[\delta f_1(E) = f_1(E) - \left(\sum^4_i(a_i) + c\right)\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[f(q_z,E) = \sum(a_i \, \exp(-b_i \, q_z/2\pi))
++ c + f_1(E)-i f_2(E) - \left(\sum(a_i) + c\right)\]</div>
+<div class="math notranslate nohighlight">
+\[f(q_z,E) = \sum(a_i \, \exp(-b_i \, q_z/2\pi))
++ f_1(E) -i f_2(E) - \sum(a_i)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – photon energy [eV].</p></li>
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – scattering vector [1/m].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[complex])</em> – energy- and qz-dependent Cromer-Mann atomic form
+factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.Atom.read_magnetic_form_factor_coeff">
+<code class="sig-name descname"><span class="pre">read_magnetic_form_factor_coeff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom.read_magnetic_form_factor_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The coefficients for the magnetic form factor <span class="math notranslate nohighlight">\(m\)</span> in dependence
+of the photon energy <span class="math notranslate nohighlight">\(E\)</span> is read from a parameter file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – optional full path and filename to the magnetic
+form factor coefficients.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>m (ndarray[float])</em> – magnetic form factor coefficients.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.Atom.get_magnetic_form_factor">
+<code class="sig-name descname"><span class="pre">get_magnetic_form_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.Atom.get_magnetic_form_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The complex magnetic form factor is claculated by:</p>
+<div class="math notranslate nohighlight">
+\[m(E) = m_1 - i m_2\]</div>
+<p>for the photon energy <span class="math notranslate nohighlight">\(E\)</span> [eV].</p>
+<p>Convention of Ref. <a class="footnote-reference brackets" href="#id3" id="id14">3</a> (p. 11, footnote) is a negative <span class="math notranslate nohighlight">\(m_2\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>energy</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – photon energy [eV].</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>m (ndarray[complex])</em> – energy-dependent magnetic form factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.structures.atoms.</span></code><code class="sig-name descname"><span class="pre">AtomMixed</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.structures.atoms.Atom</span></code></a></p>
+<p>Representation of mixed atoms in alloys and stochiometric mixtures.</p>
+<p>All properties of the included sub-atoms of class Atom are averaged
+and weighted with their stochiometric ratio.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<em>str</em>) – symbol of the atom.</p>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the atom, may differ from symbol and/or name.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the mixed atom, default is symbol.</p></li>
+<li><p><strong>atomic_form_factor_path</strong> (<em>str</em>) – path to atomic form factor coeffs.</p></li>
+<li><p><strong>magnetic_form_factor_path</strong> (<em>str</em>) – path to magnetic form factor coeffs.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>str</em>) – symbol of the element.</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – id of the atom, may differ from symbol and/or name.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the mixed atom, default is symbol.</p></li>
+<li><p><strong>atomic_number_z</strong> (<em>int</em>) – Z atomic number.</p></li>
+<li><p><strong>mass_number_a</strong> (<em>float</em>) – A atomic mass number.</p></li>
+<li><p><strong>ionicity</strong> (<em>int</em>) – ionicity of the atom.</p></li>
+<li><p><strong>mass</strong> (<em>float</em>) – mass of the atom [kg].</p></li>
+<li><p><strong>atomic_form_factor_coeff</strong> (<em>ndarray[float]</em>) – atomic form factor.
+coefficients for energy-dependent atomic form factor.</p></li>
+<li><p><strong>magnetic_form_factor_coeff</strong> (<em>ndarray[float]</em>) – magnetic form factor
+coefficients for energy-dependent magnetic form factor.</p></li>
+<li><p><strong>mag_amplitude</strong> (<em>float</em>) – magnetization amplitude -1 .. 1.</p></li>
+<li><p><strong>mag_phi</strong> (<em>float</em>) – phi angle of magnetization [rad].</p></li>
+<li><p><strong>mag_gamma</strong> (<em>float</em>) – gamma angle of magnetization [rad].</p></li>
+<li><p><strong>atoms</strong> (<em>list[Atoms]</em>) – list of Atoms.</p></li>
+<li><p><strong>num_atoms</strong> (<em>int</em>) – number of atoms.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed.add_atom" title="udkm1Dsim.structures.atoms.AtomMixed.add_atom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_atom</span></code></a>(atom, fraction)</p></td>
+<td><p>Add an Atom instance with its stochiometric fraction and recalculate averaged properties.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed.read_atomic_form_factor_coeff" title="udkm1Dsim.structures.atoms.AtomMixed.read_atomic_form_factor_coeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_atomic_form_factor_coeff</span></code></a>([filename])</p></td>
+<td><p>The coefficients for the atomic form factor <span class="math notranslate nohighlight">\(f\)</span> in dependence of the photon energy <span class="math notranslate nohighlight">\(E\)</span> must be read from an external file given by <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed.get_atomic_form_factor" title="udkm1Dsim.structures.atoms.AtomMixed.get_atomic_form_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atomic_form_factor</span></code></a>(energy)</p></td>
+<td><p>Averaged energy dependent atomic form factor.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed.get_cm_atomic_form_factor" title="udkm1Dsim.structures.atoms.AtomMixed.get_cm_atomic_form_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_cm_atomic_form_factor</span></code></a>(energy, qz)</p></td>
+<td><p>Averaged energy and qz-dependent atomic form factors.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed.read_magnetic_form_factor_coeff" title="udkm1Dsim.structures.atoms.AtomMixed.read_magnetic_form_factor_coeff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_magnetic_form_factor_coeff</span></code></a>([filename])</p></td>
+<td><p>The coefficients for the magnetic form factor <span class="math notranslate nohighlight">\(m\)</span> in dependence of the photon energy <span class="math notranslate nohighlight">\(E\)</span> must be read from an external file given by <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.atoms.AtomMixed.get_magnetic_form_factor" title="udkm1Dsim.structures.atoms.AtomMixed.get_magnetic_form_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_magnetic_form_factor</span></code></a>(energy)</p></td>
+<td><p>Mixed energy dependent magnetic form factors.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed.add_atom">
+<code class="sig-name descname"><span class="pre">add_atom</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fraction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed.add_atom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add an Atom instance with its stochiometric fraction and recalculate
+averaged properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a>) – atom to add.</p></li>
+<li><p><strong>fraction</strong> (<em>float</em>) – fraction of the atom - sum of all fractions must
+be 1.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed.read_atomic_form_factor_coeff">
+<code class="sig-name descname"><span class="pre">read_atomic_form_factor_coeff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed.read_atomic_form_factor_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The coefficients for the atomic form factor <span class="math notranslate nohighlight">\(f\)</span> in dependence of
+the photon energy <span class="math notranslate nohighlight">\(E\)</span> must be read from an external file given
+by <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – full path and filename to the atomic form
+factor coefficients.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[float])</em> – atomic form factor coefficients.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed.get_atomic_form_factor">
+<code class="sig-name descname"><span class="pre">get_atomic_form_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed.get_atomic_form_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Averaged energy dependent atomic form factor.
+If <code class="docutils literal notranslate"><span class="pre">atomic_form_factor_path</span></code> was given on initialization this file
+will be used instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>energy</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – photon energy [eV].</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[complex])</em> – energy-dependent atomic form factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed.get_cm_atomic_form_factor">
+<code class="sig-name descname"><span class="pre">get_cm_atomic_form_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qz</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed.get_cm_atomic_form_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Averaged energy and qz-dependent atomic form factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>energy</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – photon energy [eV].</p></li>
+<li><p><strong>qz</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – scattering vector [1/m].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[complex])</em> – energy- and qz-dependent Cromer-Mann atomic
+form factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed.read_magnetic_form_factor_coeff">
+<code class="sig-name descname"><span class="pre">read_magnetic_form_factor_coeff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed.read_magnetic_form_factor_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>The coefficients for the magnetic form factor <span class="math notranslate nohighlight">\(m\)</span> in dependence
+of the photon energy <span class="math notranslate nohighlight">\(E\)</span> must be read from an external file given
+by <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – optional full path and filename to the magnetic
+form factor coefficients.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>m (ndarray[float])</em> – magnetic form factor coefficients.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.atoms.AtomMixed.get_magnetic_form_factor">
+<code class="sig-name descname"><span class="pre">get_magnetic_form_factor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">energy</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.atoms.AtomMixed.get_magnetic_form_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mixed energy dependent magnetic form factors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>energy</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – photon energy [eV].</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>f (ndarray[complex])</em> – energy-dependent magnetic form factors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="layers.html" class="btn btn-neutral float-right" title="structures.layers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="api.html" class="btn btn-neutral float-left" title="API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

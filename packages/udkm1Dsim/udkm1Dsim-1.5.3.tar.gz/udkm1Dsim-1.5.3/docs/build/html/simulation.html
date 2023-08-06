@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>simulations.simulation &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="simulations.heat" href="heat.html" />
+    <link rel="prev" title="structures.structure" href="structure.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API Documentation</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/simulation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-udkm1Dsim.simulations.simulation">
+<span id="simulations-simulation"></span><h1><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code><a class="headerlink" href="#module-udkm1Dsim.simulations.simulation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.simulation.Simulation" title="udkm1Dsim.simulations.simulation.Simulation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Simulation</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Base class for all simulations.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.simulation.Simulation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.simulation.</span></code><code class="sig-name descname"><span class="pre">Simulation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.simulation.Simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for all simulations.</p>
+<p>Handles the caching and some displaying option.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.simulation.Simulation.disp_message" title="udkm1Dsim.simulations.simulation.Simulation.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.simulation.Simulation.save" title="udkm1Dsim.simulations.simulation.Simulation.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.simulation.Simulation.conv_with_function" title="udkm1Dsim.simulations.simulation.Simulation.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.simulation.Simulation.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.simulation.Simulation.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.simulation.Simulation.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.simulation.Simulation.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.simulation.Simulation.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.simulation.Simulation.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="heat.html" class="btn btn-neutral float-right" title="simulations.heat" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="structure.html" class="btn btn-neutral float-left" title="structures.structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

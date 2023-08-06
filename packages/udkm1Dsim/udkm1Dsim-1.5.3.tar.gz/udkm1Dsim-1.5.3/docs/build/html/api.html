@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>API Documentation &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="structures.atoms" href="atoms.html" />
+    <link rel="prev" title="Dynamical Magnetic X-ray Scattering" href="examples/dynamical_magnetic_xray.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="api-documentation">
+<h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="atoms.html" class="btn btn-neutral float-right" title="structures.atoms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples/dynamical_magnetic_xray.html" class="btn btn-neutral float-left" title="Dynamical Magnetic X-ray Scattering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

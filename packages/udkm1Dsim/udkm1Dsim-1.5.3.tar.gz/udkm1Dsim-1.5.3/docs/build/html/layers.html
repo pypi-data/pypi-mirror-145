@@ -1,0 +1,1011 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>structures.layers &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="structures.structure" href="structure.html" />
+    <link rel="prev" title="structures.atoms" href="atoms.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonons.html"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API Documentation</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/layers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-udkm1Dsim.structures.layers">
+<span id="structures-layers"></span><h1><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code><a class="headerlink" href="#module-udkm1Dsim.structures.layers" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer" title="udkm1Dsim.structures.layers.Layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Layer</span></code></a>(id, name, **kwargs)</p></td>
+<td><p>Base class of real physical layers, such as amorphous layers and unit cells.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer" title="udkm1Dsim.structures.layers.AmorphousLayer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AmorphousLayer</span></code></a>(id, name, thickness, density, …)</p></td>
+<td><p>Representation of amorphous layers containing an Atom or AtomMixed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell" title="udkm1Dsim.structures.layers.UnitCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnitCell</span></code></a>(id, name, c_axis, **kwargs)</p></td>
+<td><p>Representation of unit cells made of one or multiple Atom or AtomMixed instances at defined positions.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="udkm1Dsim.structures.layers.Layer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.structures.layers.</span></code><code class="sig-name descname"><span class="pre">Layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class of real physical layers, such as amorphous layers and unit cells.</p>
+<p>It holds different structural, thermal, and elastic properties that are
+relevant for simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the layer.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian width of the top roughness of a layer.</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye Waller factor.</p></li>
+<li><p><strong>sound_vel</strong> (<em>float</em>) – sound velocity.</p></li>
+<li><p><strong>phonon_damping</strong> (<em>float</em>) – phonon damping.</p></li>
+<li><p><strong>opt_pen_depth</strong> (<em>float</em>) – optical penetration depth.</p></li>
+<li><p><strong>opt_ref_index</strong> (<em>float</em>) – refractive index.</p></li>
+<li><p><strong>opt_ref_index_per_strain</strong> (<em>float</em>) – change of refractive index per strain.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>float</em>) – heat capacity.</p></li>
+<li><p><strong>therm_cond</strong> (<em>float</em>) – thermal conductivity.</p></li>
+<li><p><strong>lin_therm_exp</strong> (<em>float</em>) – linear thermal expansion.</p></li>
+<li><p><strong>sub_system_coupling</strong> (<em>float</em>) – sub-system coupling.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the layer.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the layer.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em>) – thickness of the layer [m].</p></li>
+<li><p><strong>mass</strong> (<em>float</em>) – mass of the layer [kg].</p></li>
+<li><p><strong>mass_unit_area</strong> (<em>float</em>) – mass of layer normalized to unit area of 1 Å² [kg].</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – density of the layer [kg/m³].</p></li>
+<li><p><strong>area</strong> (<em>float</em>) – area of layer [m²].</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – volume of layer [m³].</p></li>
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian width of the top roughness of a layer [m].</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye-Waller factor [m²].</p></li>
+<li><p><strong>sound_vel</strong> (<em>float</em>) – longitudinal sound velocity in the layer [m/s].</p></li>
+<li><p><strong>spring_const</strong> (<em>ndarray[float]</em>) – spring constant of the layer [kg/s²]
+and higher orders.</p></li>
+<li><p><strong>phonon_damping</strong> (<em>float</em>) – damping constant of phonon propagation [kg/s].</p></li>
+<li><p><strong>opt_pen_depth</strong> (<em>float</em>) – optical penetration depth of the layer [m].</p></li>
+<li><p><strong>opt_ref_index</strong> (<em>ndarray[float]</em>) – optical refractive index - real
+and imagenary part <span class="math notranslate nohighlight">\(n + i\kappa\)</span>.</p></li>
+<li><p><strong>opt_ref_index_per_strain</strong> (<em>ndarray[float]</em>) – optical refractive
+index change per strain - real and imagenary part
+<span class="math notranslate nohighlight">\(\frac{d n}{d \eta} + i\frac{d \kappa}{d \eta}\)</span>.</p></li>
+<li><p><strong>therm_cond</strong> (<em>list[&#64;lambda]</em>) – list of HANDLES T-dependent thermal
+conductivity [W/(m K)].</p></li>
+<li><p><strong>lin_therm_exp</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent linear thermal
+expansion coefficient (relative).</p></li>
+<li><p><strong>int_lin_therm_exp</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent integrated
+linear thermal expansion coefficient.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent heat capacity
+function [J/(kg K)].</p></li>
+<li><p><strong>int_heat_capacity</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent integrated heat
+capacity function.</p></li>
+<li><p><strong>sub_system_coupling</strong> (<em>list[&#64;lambda]</em>) – list of of coupling functions of
+different subsystems [W/m³].</p></li>
+<li><p><strong>num_sub_systems</strong> (<em>int</em>) – number of subsystems for heat and phonons
+(electrons, lattice, spins, …).</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer.check_input" title="udkm1Dsim.structures.layers.Layer.check_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_input</span></code></a>(inputs)</p></td>
+<td><p>Checks the input and create a list of function handle strings with T as argument.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer.get_property_dict" title="udkm1Dsim.structures.layers.Layer.get_property_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property_dict</span></code></a>(**kwargs)</p></td>
+<td><p>Returns a dictionary with all parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer.get_acoustic_impedance" title="udkm1Dsim.structures.layers.Layer.get_acoustic_impedance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_acoustic_impedance</span></code></a>()</p></td>
+<td><p>Calculates the acoustic impedance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer.set_ho_spring_constants" title="udkm1Dsim.structures.layers.Layer.set_ho_spring_constants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ho_spring_constants</span></code></a>(HO)</p></td>
+<td><p>Set the higher orders of the spring constant for anharmonic phonon simulations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer.set_opt_pen_depth_from_ref_index" title="udkm1Dsim.structures.layers.Layer.set_opt_pen_depth_from_ref_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_opt_pen_depth_from_ref_index</span></code></a>(wavelength)</p></td>
+<td><p>Set the optical penetration depth from the optical referactive index for a given wavelength.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.Layer.calc_spring_const" title="udkm1Dsim.structures.layers.Layer.calc_spring_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_spring_const</span></code></a>()</p></td>
+<td><p>Calculates the spring constant of the layer from the mass per unit area, sound velocity and thickness</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.Layer.check_input">
+<code class="sig-name descname"><span class="pre">check_input</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer.check_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the input and create a list of function handle strings with T as
+argument. Inputs can be strings, floats, ints, or pint quantaties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>list</em><em>[</em><em>str</em><em>, </em><em>int</em><em>, </em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – list of strings, int, floats,
+or Pint quantities.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>output (list[&#64;lambda])</em> - list of lambda functions.</p></li>
+<li><p><em>output_strs (list[str])</em> - list of string-representations.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.Layer.get_property_dict">
+<code class="sig-name descname"><span class="pre">get_property_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer.get_property_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary with all parameters. objects or dicts and
+objects are converted to strings. if a type is given, only these
+properties are returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – types of requested properties.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (dict)</em> – dictionary with requested properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.Layer.get_acoustic_impedance">
+<code class="sig-name descname"><span class="pre">get_acoustic_impedance</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer.get_acoustic_impedance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the acoustic impedance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>Z (float)</em> – acoustic impedance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.Layer.set_ho_spring_constants">
+<code class="sig-name descname"><span class="pre">set_ho_spring_constants</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">HO</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer.set_ho_spring_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the higher orders of the spring constant for anharmonic
+phonon simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>HO</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – higher order spring constants.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.Layer.set_opt_pen_depth_from_ref_index">
+<code class="sig-name descname"><span class="pre">set_opt_pen_depth_from_ref_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer.set_opt_pen_depth_from_ref_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the optical penetration depth from the optical referactive index
+for a given wavelength.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength</strong> (<em>Quantity</em>) – wavelength as Pint Quantitiy.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.Layer.calc_spring_const">
+<code class="sig-name descname"><span class="pre">calc_spring_const</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.Layer.calc_spring_const" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the spring constant of the layer from the mass per unit area,
+sound velocity and thickness</p>
+<div class="math notranslate nohighlight">
+\[k = m \, \left(\frac{v}{c}\right)^2\]</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.structures.layers.</span></code><code class="sig-name descname"><span class="pre">AmorphousLayer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.structures.layers.Layer" title="udkm1Dsim.structures.layers.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.structures.layers.Layer</span></code></a></p>
+<p>Representation of amorphous layers containing an Atom or AtomMixed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the layer.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of layer.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em>) – thickness of the layer.</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – density of the layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>atom</strong> (<em>object</em>) – Atom or AtomMixed in the layer.</p></li>
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian width of the top roughness of a layer.</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye Waller factor.</p></li>
+<li><p><strong>sound_vel</strong> (<em>float</em>) – sound velocity.</p></li>
+<li><p><strong>phonon_damping</strong> (<em>float</em>) – phonon damping.</p></li>
+<li><p><strong>roughness</strong> – gaussian width of the top roughness of a layer.</p></li>
+<li><p><strong>opt_pen_depth</strong> (<em>float</em>) – optical penetration depth.</p></li>
+<li><p><strong>opt_ref_index</strong> (<em>float</em>) – refractive index.</p></li>
+<li><p><strong>opt_ref_index_per_strain</strong> (<em>float</em>) – change of refractive index per
+strain.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>float</em>) – heat capacity.</p></li>
+<li><p><strong>therm_cond</strong> (<em>float</em>) – thermal conductivity.</p></li>
+<li><p><strong>lin_therm_exp</strong> (<em>float</em>) – linear thermal expansion.</p></li>
+<li><p><strong>sub_system_coupling</strong> (<em>float</em>) – sub-system coupling.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the layer.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the layer.</p></li>
+<li><p><strong>thickness</strong> (<em>float</em>) – thickness of the layer [m].</p></li>
+<li><p><strong>mass</strong> (<em>float</em>) – mass of the layer [kg].</p></li>
+<li><p><strong>mass_unit_area</strong> (<em>float</em>) – mass of layer normalized to unit area of 1 Å² [kg].</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – density of the layer [kg/m³].</p></li>
+<li><p><strong>area</strong> (<em>float</em>) – area of layer [m²].</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – volume of layer [m³].</p></li>
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian width of the top roughness of a layer [m].</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye-Waller factor [m²].</p></li>
+<li><p><strong>sound_vel</strong> (<em>float</em>) – longitudinal sound velocity in the layer [m/s].</p></li>
+<li><p><strong>spring_const</strong> (<em>ndarray[float]</em>) – spring constant of the layer [kg/s²]
+and higher orders.</p></li>
+<li><p><strong>phonon_damping</strong> (<em>float</em>) – damping constant of phonon propagation [kg/s].</p></li>
+<li><p><strong>opt_pen_depth</strong> (<em>float</em>) – optical penetration depth of the layer [m].</p></li>
+<li><p><strong>opt_ref_index</strong> (<em>ndarray[float]</em>) – optical refractive index - real
+and imagenary part <span class="math notranslate nohighlight">\(n + i\kappa\)</span>.</p></li>
+<li><p><strong>opt_ref_index_per_strain</strong> (<em>ndarray[float]</em>) – optical refractive
+index change per strain - real and imagenary part
+<span class="math notranslate nohighlight">\(\frac{d n}{d \eta} + i\frac{d \kappa}{d \eta}\)</span>.</p></li>
+<li><p><strong>therm_cond</strong> (<em>list[&#64;lambda]</em>) – list of HANDLES T-dependent thermal
+conductivity [W/(m K)].</p></li>
+<li><p><strong>lin_therm_exp</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent linear thermal
+expansion coefficient (relative).</p></li>
+<li><p><strong>int_lin_therm_exp</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent integrated
+linear thermal expansion coefficient.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent heat capacity
+function [J/(kg K)].</p></li>
+<li><p><strong>int_heat_capacity</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent integrated heat
+capacity function.</p></li>
+<li><p><strong>sub_system_coupling</strong> (<em>list[&#64;lambda]</em>) – list of of coupling functions of
+different subsystems [W/m³].</p></li>
+<li><p><strong>num_sub_systems</strong> (<em>int</em>) – number of subsystems for heat and phonons
+(electrons, lattice, spins, …).</p></li>
+<li><p><strong>magnetization</strong> (<em>dict[float]</em>) – magnetization amplitude, phi and
+gamma angle inherited from the atom.</p></li>
+<li><p><strong>atom</strong> (<em>object</em>) – Atom or AtomMixed in the layer.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer.calc_spring_const" title="udkm1Dsim.structures.layers.AmorphousLayer.calc_spring_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_spring_const</span></code></a>()</p></td>
+<td><p>Calculates the spring constant of the layer from the mass per unit area, sound velocity and thickness</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer.check_input" title="udkm1Dsim.structures.layers.AmorphousLayer.check_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_input</span></code></a>(inputs)</p></td>
+<td><p>Checks the input and create a list of function handle strings with T as argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer.get_acoustic_impedance" title="udkm1Dsim.structures.layers.AmorphousLayer.get_acoustic_impedance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_acoustic_impedance</span></code></a>()</p></td>
+<td><p>Calculates the acoustic impedance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer.get_property_dict" title="udkm1Dsim.structures.layers.AmorphousLayer.get_property_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property_dict</span></code></a>(**kwargs)</p></td>
+<td><p>Returns a dictionary with all parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer.set_ho_spring_constants" title="udkm1Dsim.structures.layers.AmorphousLayer.set_ho_spring_constants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ho_spring_constants</span></code></a>(HO)</p></td>
+<td><p>Set the higher orders of the spring constant for anharmonic phonon simulations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.AmorphousLayer.set_opt_pen_depth_from_ref_index" title="udkm1Dsim.structures.layers.AmorphousLayer.set_opt_pen_depth_from_ref_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_opt_pen_depth_from_ref_index</span></code></a>(wavelength)</p></td>
+<td><p>Set the optical penetration depth from the optical referactive index for a given wavelength.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer.calc_spring_const">
+<code class="sig-name descname"><span class="pre">calc_spring_const</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer.calc_spring_const" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the spring constant of the layer from the mass per unit area,
+sound velocity and thickness</p>
+<div class="math notranslate nohighlight">
+\[k = m \, \left(\frac{v}{c}\right)^2\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer.check_input">
+<code class="sig-name descname"><span class="pre">check_input</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer.check_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the input and create a list of function handle strings with T as
+argument. Inputs can be strings, floats, ints, or pint quantaties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>list</em><em>[</em><em>str</em><em>, </em><em>int</em><em>, </em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – list of strings, int, floats,
+or Pint quantities.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>output (list[&#64;lambda])</em> - list of lambda functions.</p></li>
+<li><p><em>output_strs (list[str])</em> - list of string-representations.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer.get_acoustic_impedance">
+<code class="sig-name descname"><span class="pre">get_acoustic_impedance</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer.get_acoustic_impedance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the acoustic impedance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>Z (float)</em> – acoustic impedance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer.get_property_dict">
+<code class="sig-name descname"><span class="pre">get_property_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer.get_property_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary with all parameters. objects or dicts and
+objects are converted to strings. if a type is given, only these
+properties are returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – types of requested properties.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (dict)</em> – dictionary with requested properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer.set_ho_spring_constants">
+<code class="sig-name descname"><span class="pre">set_ho_spring_constants</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">HO</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer.set_ho_spring_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the higher orders of the spring constant for anharmonic
+phonon simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>HO</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – higher order spring constants.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.AmorphousLayer.set_opt_pen_depth_from_ref_index">
+<code class="sig-name descname"><span class="pre">set_opt_pen_depth_from_ref_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.AmorphousLayer.set_opt_pen_depth_from_ref_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the optical penetration depth from the optical referactive index
+for a given wavelength.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength</strong> (<em>Quantity</em>) – wavelength as Pint Quantitiy.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.structures.layers.UnitCell">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.structures.layers.</span></code><code class="sig-name descname"><span class="pre">UnitCell</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_axis</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.structures.layers.Layer" title="udkm1Dsim.structures.layers.Layer"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.structures.layers.Layer</span></code></a></p>
+<p>Representation of unit cells made of one or multiple Atom or AtomMixed
+instances at defined positions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the UnitCell.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the UnitCell.</p></li>
+<li><p><strong>c_axis</strong> (<em>float</em>) – c-axis of the UnitCell.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>a_axis</strong> (<em>float</em>) – a-axis of the UnitCell.</p></li>
+<li><p><strong>b_axis</strong> (<em>float</em>) – b-axis of the UnitCell.</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye Waller factor.</p></li>
+<li><p><strong>sound_vel</strong> (<em>float</em>) – sound velocity.</p></li>
+<li><p><strong>phonon_damping</strong> (<em>float</em>) – phonon damping.</p></li>
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian width of the top roughness of a layer.</p></li>
+<li><p><strong>opt_pen_depth</strong> (<em>float</em>) – optical penetration depth.</p></li>
+<li><p><strong>opt_ref_index</strong> (<em>float</em>) – refractive index.</p></li>
+<li><p><strong>opt_ref_index_per_strain</strong> (<em>float</em>) – change of refractive index per
+strain.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>float</em>) – heat capacity.</p></li>
+<li><p><strong>therm_cond</strong> (<em>float</em>) – thermal conductivity.</p></li>
+<li><p><strong>lin_therm_exp</strong> (<em>float</em>) – linear thermal expansion.</p></li>
+<li><p><strong>sub_system_coupling</strong> (<em>float</em>) – sub-system coupling.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – id of the layer.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – name of the layer.</p></li>
+<li><p><strong>c_axis</strong> (<em>float</em>) – out-of-plane c-axis [m].</p></li>
+<li><p><strong>a_axis</strong> (<em>float</em>) – in-plane a-axis [m].</p></li>
+<li><p><strong>b_axis</strong> (<em>float</em>) – in-plane b-axis [m].</p></li>
+<li><p><strong>thickness</strong> (<em>float</em>) – thickness of the layer [m].</p></li>
+<li><p><strong>mass</strong> (<em>float</em>) – mass of the layer [kg].</p></li>
+<li><p><strong>mass_unit_area</strong> (<em>float</em>) – mass of layer normalized to unit area of 1 Å² [kg].</p></li>
+<li><p><strong>density</strong> (<em>float</em>) – density of the layer [kg/m³].</p></li>
+<li><p><strong>area</strong> (<em>float</em>) – area of layer [m²].</p></li>
+<li><p><strong>volume</strong> (<em>float</em>) – volume of layer [m³].</p></li>
+<li><p><strong>roughness</strong> (<em>float</em>) – gaussian width of the top roughness of a layer [m].</p></li>
+<li><p><strong>deb_wal_fac</strong> (<em>float</em>) – Debye-Waller factor [m²].</p></li>
+<li><p><strong>sound_vel</strong> (<em>float</em>) – longitudinal sound velocity in the layer [m/s].</p></li>
+<li><p><strong>spring_const</strong> (<em>ndarray[float]</em>) – spring constant of the layer [kg/s²]
+and higher orders.</p></li>
+<li><p><strong>phonon_damping</strong> (<em>float</em>) – damping constant of phonon propagation [kg/s].</p></li>
+<li><p><strong>opt_pen_depth</strong> (<em>float</em>) – optical penetration depth of the layer [m].</p></li>
+<li><p><strong>opt_ref_index</strong> (<em>ndarray[float]</em>) – optical refractive index - real
+and imagenary part <span class="math notranslate nohighlight">\(n + i\kappa\)</span>.</p></li>
+<li><p><strong>opt_ref_index_per_strain</strong> (<em>ndarray[float]</em>) – optical refractive
+index change per strain - real and imagenary part
+<span class="math notranslate nohighlight">\(\frac{d n}{d \eta} + i\frac{d \kappa}{d \eta}\)</span>.</p></li>
+<li><p><strong>therm_cond</strong> (<em>list[&#64;lambda]</em>) – list of HANDLES T-dependent thermal
+conductivity [W/(m K)].</p></li>
+<li><p><strong>lin_therm_exp</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent linear thermal
+expansion coefficient (relative).</p></li>
+<li><p><strong>int_lin_therm_exp</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent integrated
+linear thermal expansion coefficient.</p></li>
+<li><p><strong>heat_capacity</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent heat capacity
+function [J/(kg K)].</p></li>
+<li><p><strong>int_heat_capacity</strong> (<em>list[&#64;lambda]</em>) – list of T-dependent integrated heat
+capacity function.</p></li>
+<li><p><strong>sub_system_coupling</strong> (<em>list[&#64;lambda]</em>) – list of of coupling functions of
+different subsystems [W/m³].</p></li>
+<li><p><strong>num_sub_systems</strong> (<em>int</em>) – number of subsystems for heat and phonons
+(electrons, lattice, spins, …).</p></li>
+<li><p><strong>atoms</strong> (<em>list[atom, &#64;lambda]</em>) – list of atoms and function handle
+for strain dependent displacement.</p></li>
+<li><p><strong>num_atoms</strong> (<em>int</em>) – number of atoms in unit cell.</p></li>
+<li><p><strong>magnetization</strong> (<em>list[float]</em>) – magnetization amplitutes, phi, and
+gamma angle of each atom in the unit cell.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.calc_spring_const" title="udkm1Dsim.structures.layers.UnitCell.calc_spring_const"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_spring_const</span></code></a>()</p></td>
+<td><p>Calculates the spring constant of the layer from the mass per unit area, sound velocity and thickness</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.check_input" title="udkm1Dsim.structures.layers.UnitCell.check_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_input</span></code></a>(inputs)</p></td>
+<td><p>Checks the input and create a list of function handle strings with T as argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.get_acoustic_impedance" title="udkm1Dsim.structures.layers.UnitCell.get_acoustic_impedance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_acoustic_impedance</span></code></a>()</p></td>
+<td><p>Calculates the acoustic impedance.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.get_property_dict" title="udkm1Dsim.structures.layers.UnitCell.get_property_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_property_dict</span></code></a>(**kwargs)</p></td>
+<td><p>Returns a dictionary with all parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.set_ho_spring_constants" title="udkm1Dsim.structures.layers.UnitCell.set_ho_spring_constants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_ho_spring_constants</span></code></a>(HO)</p></td>
+<td><p>Set the higher orders of the spring constant for anharmonic phonon simulations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.set_opt_pen_depth_from_ref_index" title="udkm1Dsim.structures.layers.UnitCell.set_opt_pen_depth_from_ref_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_opt_pen_depth_from_ref_index</span></code></a>(wavelength)</p></td>
+<td><p>Set the optical penetration depth from the optical referactive index for a given wavelength.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.visualize" title="udkm1Dsim.structures.layers.UnitCell.visualize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">visualize</span></code></a>(**kwargs)</p></td>
+<td><p>Allows for 3D presentation of unit cell by allow for a &amp; b coordinate of atoms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.add_atom" title="udkm1Dsim.structures.layers.UnitCell.add_atom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_atom</span></code></a>(atom, position)</p></td>
+<td><p>Adds an AtomBase/AtomMixed at a relative position of the unit cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.add_multiple_atoms" title="udkm1Dsim.structures.layers.UnitCell.add_multiple_atoms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_multiple_atoms</span></code></a>(atom, position, Nb)</p></td>
+<td><p>Adds multiple AtomBase/AtomMixed at a relative position of the unit cell.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.get_atom_ids" title="udkm1Dsim.structures.layers.UnitCell.get_atom_ids"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_ids</span></code></a>()</p></td>
+<td><p>Provides a list of atom ids within the unit cell.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.structures.layers.UnitCell.get_atom_positions" title="udkm1Dsim.structures.layers.UnitCell.get_atom_positions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_atom_positions</span></code></a>(*args)</p></td>
+<td><p>Calculates the relative positions of the atoms in the unit cell</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.calc_spring_const">
+<code class="sig-name descname"><span class="pre">calc_spring_const</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.calc_spring_const" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the spring constant of the layer from the mass per unit area,
+sound velocity and thickness</p>
+<div class="math notranslate nohighlight">
+\[k = m \, \left(\frac{v}{c}\right)^2\]</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.check_input">
+<code class="sig-name descname"><span class="pre">check_input</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.check_input" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the input and create a list of function handle strings with T as
+argument. Inputs can be strings, floats, ints, or pint quantaties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>list</em><em>[</em><em>str</em><em>, </em><em>int</em><em>, </em><em>float</em><em>, </em><em>Quantity</em><em>]</em>) – list of strings, int, floats,
+or Pint quantities.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>output (list[&#64;lambda])</em> - list of lambda functions.</p></li>
+<li><p><em>output_strs (list[str])</em> - list of string-representations.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.get_acoustic_impedance">
+<code class="sig-name descname"><span class="pre">get_acoustic_impedance</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.get_acoustic_impedance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the acoustic impedance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>Z (float)</em> – acoustic impedance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.get_property_dict">
+<code class="sig-name descname"><span class="pre">get_property_dict</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.get_property_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary with all parameters. objects or dicts and
+objects are converted to strings. if a type is given, only these
+properties are returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – types of requested properties.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>R (dict)</em> – dictionary with requested properties.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.set_ho_spring_constants">
+<code class="sig-name descname"><span class="pre">set_ho_spring_constants</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">HO</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.set_ho_spring_constants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the higher orders of the spring constant for anharmonic
+phonon simulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>HO</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – higher order spring constants.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.set_opt_pen_depth_from_ref_index">
+<code class="sig-name descname"><span class="pre">set_opt_pen_depth_from_ref_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.set_opt_pen_depth_from_ref_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the optical penetration depth from the optical referactive index
+for a given wavelength.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength</strong> (<em>Quantity</em>) – wavelength as Pint Quantitiy.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.visualize">
+<code class="sig-name descname"><span class="pre">visualize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.visualize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allows for 3D presentation of unit cell by allow for a &amp; b
+coordinate of atoms.
+Also add magnetization per atom.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>use the avogadro project as plugin</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>create unit cell from CIF file e.g. by xrayutilities plugin.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>str</em>) – strain or magnetization for manipulating unit cell
+visualization.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.add_atom">
+<code class="sig-name descname"><span class="pre">add_atom</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.add_atom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds an AtomBase/AtomMixed at a relative position of the unit cell.</p>
+<p>Sort the list of atoms by the position at zero strain.</p>
+<p>Update the mass, density and spring constant of the unit cell
+automatically:</p>
+<div class="math notranslate nohighlight">
+\[\kappa = m \cdot (v_s / c)^2\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – Atom or AtomMixed added to unit cell.</p></li>
+<li><p><strong>position</strong> (<em>float</em>) – relative position within unit cel [0 .. 1].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.add_multiple_atoms">
+<code class="sig-name descname"><span class="pre">add_multiple_atoms</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atom</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Nb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.add_multiple_atoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds multiple AtomBase/AtomMixed at a relative position of the
+unit cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>atom</strong> (<a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.Atom" title="udkm1Dsim.structures.atoms.Atom"><em>Atom</em></a><em>, </em><a class="reference internal" href="atoms.html#udkm1Dsim.structures.atoms.AtomMixed" title="udkm1Dsim.structures.atoms.AtomMixed"><em>AtomMixed</em></a>) – Atom or AtomMixed added to unit cell.</p></li>
+<li><p><strong>position</strong> (<em>float</em>) – relative position within unit cel [0 .. 1].</p></li>
+<li><p><strong>Nb</strong> (<em>int</em>) – repetition of atoms.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.get_atom_ids">
+<code class="sig-name descname"><span class="pre">get_atom_ids</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.get_atom_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a list of atom ids within the unit cell.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>ids (list[str])</em> – list of atom ids within unit cell</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.structures.layers.UnitCell.get_atom_positions">
+<code class="sig-name descname"><span class="pre">get_atom_positions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.structures.layers.UnitCell.get_atom_positions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the relative positions of the atoms in the unit cell</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>res (ndarray[float])</em> – relative postion of the atoms within the unit
+cell.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="structure.html" class="btn btn-neutral float-right" title="structures.structure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="atoms.html" class="btn btn-neutral float-left" title="structures.atoms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1450 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>simulations.phonons &mdash; udkm1Dsim 1.4.5 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="simulations.magnetization" href="magnetization.html" />
+    <link rel="prev" title="simulations.heat" href="heat.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> udkm1Dsim
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.4.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/dschick/udkm1Dsim">Project Page</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://pypi.python.org/pypi/udkm1Dsim">Download from PyPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/structure.html">Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Atoms">Atoms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Atom">Atom</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Mixed-Atom">Mixed Atom</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Layers">Layers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Amorphous-Layers">Amorphous Layers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/structure.html#Unit-Cells">Unit Cells</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="examples/structure.html#Non-Linear-Strain-Dependence">Non-Linear Strain Dependence</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#id1">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/structure.html#Static-Substrate">Static Substrate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/heat.html">Heat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Initialize-Heat">Initialize Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Simple-Excitation">Simple Excitation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Laser-Absorption-Profile">Laser Absorption Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Temperature-Map">Temperature Map</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Heat-Diffusion">Heat Diffusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/heat.html#Heat-Diffusion-Parameters">Heat Diffusion Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#Multipulse-Excitation">Multipulse Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/heat.html#N-Temperature-Model"><span class="math notranslate nohighlight">\(N\)</span>-Temperature Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/m3tm.html">Microscopic 3-Temperature-Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Initialize-Heat-and-the-Excitation">Initialize Heat and the Excitation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/m3tm.html#Calculate-Heat-Diffusion">Calculate Heat Diffusion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/phonons.html">Phonons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Analytical-Phonons">Analytical Phonons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/phonons.html#Energy-Spectrum">Energy Spectrum</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/phonons.html#Anharmonic-Phonon-Propagation">Anharmonic Phonon Propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_xray.html">Dynamical Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Initialize-dynamical-X-ray-simulation">Initialize dynamical X-ray simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Homogeneous-X-ray-scattering">Homogeneous X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_xray.html#Energy-scan">Energy-scan</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Inhomogeneous-X-ray-scattering">Inhomogeneous X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_xray.html#Parallel-inhomogeneous-X-ray-scattering">Parallel inhomogeneous X-ray scattering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="examples/dynamical_magnetic_xray.html">Dynamical Magnetic Xray Scattering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Structure">Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Heat">Heat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Numerical-Phonons">Numerical Phonons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Magnetization">Magnetization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Initialize-dynamical-magnetic-X-ray-simulations">Initialize dynamical magnetic X-ray simulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Homogeneous-magnetic-X-ray-scattering">Homogeneous magnetic X-ray scattering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#q_z-scan"><span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Post-Processing">Post-Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Energy--and-q_z-scan">Energy- and <span class="math notranslate nohighlight">\(q_z\)</span>-scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Polarization-dependence">Polarization dependence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Inhomogeneous-dynamical-magnetic-X-ray-scattering">Inhomogeneous dynamical magnetic X-ray scattering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="examples/dynamical_magnetic_xray.html#Parallel-dynamical-X-ray-scattering">Parallel dynamical X-ray scattering</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="atoms.html"><code class="docutils literal notranslate"><span class="pre">structures.atoms</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="layers.html"><code class="docutils literal notranslate"><span class="pre">structures.layers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure.html"><code class="docutils literal notranslate"><span class="pre">structures.structure</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="simulation.html"><code class="docutils literal notranslate"><span class="pre">simulations.simulation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat.html"><code class="docutils literal notranslate"><span class="pre">simulations.heat</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="magnetization.html"><code class="docutils literal notranslate"><span class="pre">simulations.magnetization</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="xrays.html"><code class="docutils literal notranslate"><span class="pre">simulations.xrays</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html"><code class="docutils literal notranslate"><span class="pre">helpers</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">udkm1Dsim</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="api.html">API Documentation</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/phonons.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-udkm1Dsim.simulations.phonons">
+<span id="simulations-phonons"></span><h1><code class="docutils literal notranslate"><span class="pre">simulations.phonons</span></code><a class="headerlink" href="#module-udkm1Dsim.simulations.phonons" title="Permalink to this headline">¶</a></h1>
+<p><strong>Classes:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon" title="udkm1Dsim.simulations.phonons.Phonon"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Phonon</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Base class for phonon simulations in a linear chain of masses and springs.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum" title="udkm1Dsim.simulations.phonons.PhononNum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhononNum</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Numerical model to simulate coherent acoustic phonons.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna" title="udkm1Dsim.simulations.phonons.PhononAna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PhononAna</span></code></a>(S, force_recalc, **kwargs)</p></td>
+<td><p>Analytical model to simulate coherent acoustic phonons.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.phonons.Phonon">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.phonons.</span></code><code class="sig-name descname"><span class="pre">Phonon</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="simulation.html#udkm1Dsim.simulations.simulation.Simulation" title="udkm1Dsim.simulations.simulation.Simulation"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.simulation.Simulation</span></code></a></p>
+<p>Base class for phonon simulations in a linear chain of masses and springs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>only_heat</strong> (<em>boolean</em>) – true when including only thermal expansion without
+coherent phonon dynamics.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>only_heat</strong> (<em>boolean</em>) – true when including only thermal expansion without
+coherent phonon dynamics.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.get_hash" title="udkm1Dsim.simulations.phonons.Phonon.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(delays, temp_map, delta_temp_map, …)</p></td>
+<td><p>Calculates an unique hash given by the <code class="docutils literal notranslate"><span class="pre">delays</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> as well as the sample structure hash for relevant lattice parameters.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.get_all_strains_per_unique_layer" title="udkm1Dsim.simulations.phonons.Phonon.get_all_strains_per_unique_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_strains_per_unique_layer</span></code></a>(strain_map)</p></td>
+<td><p>Determines all values of the strain per unique layer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.get_reduced_strains_per_unique_layer" title="udkm1Dsim.simulations.phonons.Phonon.get_reduced_strains_per_unique_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reduced_strains_per_unique_layer</span></code></a>(strain_map)</p></td>
+<td><p>Calculates all strains per unique layer that are given by the input <code class="docutils literal notranslate"><span class="pre">strain_map</span></code>, but with a reduced number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.check_temp_maps" title="udkm1Dsim.simulations.phonons.Phonon.check_temp_maps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_temp_maps</span></code></a>(temp_map, delta_temp_map, delays)</p></td>
+<td><p>Check temperature profiles for correct dimensions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.calc_sticks_from_temp_map" title="udkm1Dsim.simulations.phonons.Phonon.calc_sticks_from_temp_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_sticks_from_temp_map</span></code></a>(temp_map, …)</p></td>
+<td><p>Calculates the sticks to insert into the layer springs which model the external force (thermal stress).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.conv_with_function" title="udkm1Dsim.simulations.phonons.Phonon.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.disp_message" title="udkm1Dsim.simulations.phonons.Phonon.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon.save" title="udkm1Dsim.simulations.phonons.Phonon.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the <code class="docutils literal notranslate"><span class="pre">delays</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_map</span></code>
+and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> as well as the sample structure hash for
+relevant lattice parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delay grid for the simulation.</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+<li><p><strong>**kwargs</strong> (<em>float</em><em>, </em><em>optional</em>) – optional parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.get_all_strains_per_unique_layer">
+<code class="sig-name descname"><span class="pre">get_all_strains_per_unique_layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.get_all_strains_per_unique_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines all values of the strain per unique layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strains (list[ndarray[float]]</em> – all strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.get_reduced_strains_per_unique_layer">
+<code class="sig-name descname"><span class="pre">get_reduced_strains_per_unique_layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.get_reduced_strains_per_unique_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates all strains per unique layer that are given by the
+input <code class="docutils literal notranslate"><span class="pre">strain_map</span></code>, but with a reduced number. The reduction is done
+by equally spacing the strains between the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> strain
+with a given number <span class="math notranslate nohighlight">\(N\)</span>, which can be also an array of the
+<span class="math notranslate nohighlight">\(len(N) = L\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the number of unique layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – number of reduced strains. Defaults to 100.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strains (list[ndarray[float]]</em> – reduced strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.check_temp_maps">
+<code class="sig-name descname"><span class="pre">check_temp_maps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delays</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.check_temp_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check temperature profiles for correct dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delay grid for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>temp_map (ndarray[float])</em> - checked spatio-temporal temperature
+profile.</p></li>
+<li><p><em>delta_temp_map (ndarray[float])</em> - checked spatio-temporal
+differential temperature profile.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.calc_sticks_from_temp_map">
+<code class="sig-name descname"><span class="pre">calc_sticks_from_temp_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.calc_sticks_from_temp_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the sticks to insert into the layer springs which model the
+external force (thermal stress). The length of <span class="math notranslate nohighlight">\(l_i\)</span> of the
+<span class="math notranslate nohighlight">\(i\)</span>-th spacer stick is calculated from the temperature-dependent
+linear thermal expansion <span class="math notranslate nohighlight">\(\alpha(T)\)</span> of the layer:</p>
+<div class="math notranslate nohighlight">
+\[\alpha(T) = \frac{1}{L} \frac{d L}{d T}\]</div>
+<p>which results after integration in</p>
+<div class="math notranslate nohighlight">
+\[l = \Delta L = L_1 \exp(A(T_2) - A(T_1)) - L_1\]</div>
+<p>where <span class="math notranslate nohighlight">\(A(T)\)</span> is the integrated lin. therm. expansion coefficient
+in respect to the temperature <span class="math notranslate nohighlight">\(T\)</span>. The indices 1 and 2 indicate
+the initial and final state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>sticks (ndarray[float])</em> - summed spacer sticks.</p></li>
+<li><p><em>sticks_sub_systems (ndarray[float])</em> - spacer sticks per
+sub-system.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.Phonon.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.Phonon.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.phonons.</span></code><code class="sig-name descname"><span class="pre">PhononNum</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon" title="udkm1Dsim.simulations.phonons.Phonon"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.phonons.Phonon</span></code></a></p>
+<p>Numerical model to simulate coherent acoustic phonons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>only_heat</strong> (<em>boolean</em>) – true when including only thermal expansion without
+coherent phonon dynamics.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>only_heat</strong> (<em>boolean</em>) – true when including only thermal expansion without
+coherent phonon dynamics.</p></li>
+<li><p><strong>ode_options</strong> (<em>dict</em>) – options for scipy solve_ivp ode solver.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets"><a class="fn-backref" href="#id2">7</a></span></dt>
+<dd><p>A. Bojahr, M. Herzog, D. Schick, I. Vrejoiu, &amp; M. Bargheer,
+<em>Calibrated real-time detection of nonlinearly propagating
+strain waves</em>, <a class="reference external" href="http://www.doi.org/10.1103/PhysRevB.86.144306">Phys. Rev. B, 86(14), 144306 (2012).</a></p>
+</dd>
+</dl>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.get_strain_map" title="udkm1Dsim.simulations.phonons.PhononNum.get_strain_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_strain_map</span></code></a>(delays, temp_map, delta_temp_map)</p></td>
+<td><p>Returns a strain profile for the sample structure for given temperature profile.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_strain_map" title="udkm1Dsim.simulations.phonons.PhononNum.calc_strain_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_strain_map</span></code></a>(delays, temp_map, delta_temp_map)</p></td>
+<td><p>Calculates the <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> of the sample structure for a given <code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delay</span></code> array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.ode_func" title="udkm1Dsim.simulations.phonons.PhononNum.ode_func"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ode_func</span></code></a>(t, X, delays, force_from_heat, …)</p></td>
+<td><p>Provides the according ode function for the ode solver which has to be solved.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_spring" title="udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_spring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_force_from_spring</span></code></a>(d_X1, d_X2, spring_consts)</p></td>
+<td><p>Calculates the force <span class="math notranslate nohighlight">\(F_i^{spring}\)</span> acting on each mass due to the displacement between the left and right site of that mass.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_heat" title="udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_heat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_force_from_heat</span></code></a>(sticks, spring_consts)</p></td>
+<td><p>Calculates the force acting on each mass due to the heat expansion, which is modeled by spacer sticks.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_damping" title="udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_damping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_force_from_damping</span></code></a>(v, damping, masses)</p></td>
+<td><p>Calculates the force acting on each mass in a linear spring due to damping (<span class="math notranslate nohighlight">\(\gamma_i\)</span>) according to the shift velocity difference <span class="math notranslate nohighlight">\(v_{i}-v_{i-1}\)</span> with <span class="math notranslate nohighlight">\(v_i(t) = \dot{x}_i(t)\)</span>:</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_sticks_from_temp_map" title="udkm1Dsim.simulations.phonons.PhononNum.calc_sticks_from_temp_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_sticks_from_temp_map</span></code></a>(temp_map, …)</p></td>
+<td><p>Calculates the sticks to insert into the layer springs which model the external force (thermal stress).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.check_temp_maps" title="udkm1Dsim.simulations.phonons.PhononNum.check_temp_maps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_temp_maps</span></code></a>(temp_map, delta_temp_map, delays)</p></td>
+<td><p>Check temperature profiles for correct dimensions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.conv_with_function" title="udkm1Dsim.simulations.phonons.PhononNum.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.disp_message" title="udkm1Dsim.simulations.phonons.PhononNum.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.get_all_strains_per_unique_layer" title="udkm1Dsim.simulations.phonons.PhononNum.get_all_strains_per_unique_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_strains_per_unique_layer</span></code></a>(strain_map)</p></td>
+<td><p>Determines all values of the strain per unique layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.get_hash" title="udkm1Dsim.simulations.phonons.PhononNum.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(delays, temp_map, delta_temp_map, …)</p></td>
+<td><p>Calculates an unique hash given by the <code class="docutils literal notranslate"><span class="pre">delays</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> as well as the sample structure hash for relevant lattice parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.get_reduced_strains_per_unique_layer" title="udkm1Dsim.simulations.phonons.PhononNum.get_reduced_strains_per_unique_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reduced_strains_per_unique_layer</span></code></a>(strain_map)</p></td>
+<td><p>Calculates all strains per unique layer that are given by the input <code class="docutils literal notranslate"><span class="pre">strain_map</span></code>, but with a reduced number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononNum.save" title="udkm1Dsim.simulations.phonons.PhononNum.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.get_strain_map">
+<code class="sig-name descname"><span class="pre">get_strain_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.get_strain_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strain profile for the sample structure for given temperature
+profile. The result can be saved using an unique hash of the sample
+and the simulation parameters in order to reuse it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>Quantity</em><em>]</em>) – delays range of simulation [s].</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature map.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal differential</p></li>
+<li><p><strong>map.</strong> (<em>temperature</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strain_map (ndarray[float])</em> – spatio-temporal strain profile.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.calc_strain_map">
+<code class="sig-name descname"><span class="pre">calc_strain_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_strain_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> of the sample structure for a given
+<code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delay</span></code> array. Further
+details are given in Ref. <a class="footnote-reference brackets" href="#id1" id="id2">7</a>. The coupled differential equations are
+solved for each oscillator in a linear chain of masses and springs:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}m_i\ddot{x}_i = &amp; -k_i(x_i-x_{i-1})-k_{i+1}(x_i-x_{i+1}) \\
+&amp; + m_i\gamma_i(\dot{x}_i-\dot{x}_{i-1}) + F_i^{heat}(t)\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_i(t) = z_{i}(t) - z_i^0\)</span> is the shift of each layer.
+<span class="math notranslate nohighlight">\(m_i\)</span> is the mass and <span class="math notranslate nohighlight">\(k_i = m_i\, v_i^2/c_i^2\)</span> is the
+spring constant of each layer. Furthermore an empirical damping term
+<span class="math notranslate nohighlight">\(F_i^{damp} = \gamma_i(\dot{x}_i-\dot{x}_{i-1})\)</span> is introduced
+and the external force (thermal stress) <span class="math notranslate nohighlight">\(F_i^{heat}(t)\)</span>.
+The thermal stresses are modelled as spacer sticks which are
+calculated from the linear thermal expansion coefficients. The
+equation of motion can be reformulated as:</p>
+<div class="math notranslate nohighlight">
+\[m_i\ddot{x}_i = F_i^{spring} + F_i^{damp} + F_i^{heat}(t)\]</div>
+<p>The numerical solution also allows for non-harmonic inter-atomic
+potentials of up to the order <span class="math notranslate nohighlight">\(M\)</span>. Accordingly
+<span class="math notranslate nohighlight">\(k_i = (k_i^1 \ldots k_i^{M-1})\)</span> can be an array accounting for
+higher orders of the potential which is in the harmonic case purely
+quadratic (<span class="math notranslate nohighlight">\(k_i = k_i^1\)</span>). The resulting force from the
+displacement of the springs</p>
+<div class="math notranslate nohighlight">
+\[F_i^{spring} = -k_i(x_i-x_{i-1})-k_{i+1}(x_i-x_{i+1})\]</div>
+<p>includes:</p>
+<div class="math notranslate nohighlight">
+\[k_i(x_i-x_{i-1}) = \sum_{j=1}^{M-1} k_i^j (x_i-x_{i-1})^j\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>Quantity</em><em>]</em>) – delays range of simulation [s].</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature map.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal differential
+temperature map.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>strain_map (ndarray[float])</em> - spatio-temporal strain profile.</p></li>
+<li><p><em>sticks_sub_systems (ndarray[float])</em> - spacer sticks per
+sub-system.</p></li>
+<li><p><em>velocities (ndarray[float])</em> - spatio-temporal velocity profile.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.ode_func">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">ode_func</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_from_heat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spring_consts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masses</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pbar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.ode_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides the according ode function for the ode solver which has to be
+solved. The ode function has the input <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(X(t)\)</span> and
+calculates the temporal derivative <span class="math notranslate nohighlight">\(\dot{X}(t)\)</span> where the vector</p>
+<div class="math notranslate nohighlight">
+\[X(t) = [x(t) \; \dot{x}(t)] \quad \mbox{and } \quad
+\dot{X}(t) = [\dot{x}(t) \; \ddot{x}(t)] .\]</div>
+<p><span class="math notranslate nohighlight">\(x(t)\)</span> is the actual shift of each layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – internal time steps of the ode solver.</p></li>
+<li><p><strong>X</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – internal variable of the ode solver.</p></li>
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delays range of simulation [s].</p></li>
+<li><p><strong>force_from_heat</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – force due to thermal expansion.</p></li>
+<li><p><strong>damping</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – phonon damping.</p></li>
+<li><p><strong>spring_consts</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spring constants of masses.</p></li>
+<li><p><strong>masses</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – masses of layers.</p></li>
+<li><p><strong>L</strong> (<em>int</em>) – number of layers.</p></li>
+<li><p><strong>pbar</strong> (<em>tqdm</em>) – tqdm progressbar.</p></li>
+<li><p><strong>state</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – state variables for progress bar.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>X_prime (ndarray[float])</em> – velocities and accelerations of masses.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_spring">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_force_from_spring</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_X1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_X2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spring_consts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_spring" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the force <span class="math notranslate nohighlight">\(F_i^{spring}\)</span> acting on each mass due to
+the displacement between the left and right site of that mass.</p>
+<div class="math notranslate nohighlight">
+\[F_i^{spring} = -k_i(x_i-x_{i-1})-k_{i+1}(x_i-x_{i+1})\]</div>
+<p>We introduce-higher order inter-atomic potentials by</p>
+<div class="math notranslate nohighlight">
+\[k_i(x_i-x_{i-1}) = \sum_{j=1}^{M} k_i^j (x_i-x_{i-1})^j\]</div>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> is the order of the spring constants.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d_X1</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – left displacements.</p></li>
+<li><p><strong>d_X2</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – right displacements.</p></li>
+<li><p><strong>spring_consts</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spring constants of masses.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>F (ndarray[float])</em> – force from springs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_heat">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_force_from_heat</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sticks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spring_consts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_heat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the force acting on each mass due to the heat expansion,
+which is modeled by spacer sticks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sticks</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spacer sticks.</p></li>
+<li><p><strong>spring_consts</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spring constants of masses.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>F (ndarray[float])</em> – force from thermal expansion.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_damping">
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">calc_force_from_damping</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">damping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masses</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_force_from_damping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the force acting on each mass in a linear spring due to
+damping (<span class="math notranslate nohighlight">\(\gamma_i\)</span>) according to the shift velocity difference
+<span class="math notranslate nohighlight">\(v_{i}-v_{i-1}\)</span> with <span class="math notranslate nohighlight">\(v_i(t) = \dot{x}_i(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[F_i^{damp} = \gamma_i(\dot{x}_i-\dot{x}_{i-1})\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>v</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – velocity of masses.</p></li>
+<li><p><strong>damping</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – phonon damping.</p></li>
+<li><p><strong>masses</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – masses.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>F (ndarray[float])</em> – force from damping.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.calc_sticks_from_temp_map">
+<code class="sig-name descname"><span class="pre">calc_sticks_from_temp_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.calc_sticks_from_temp_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the sticks to insert into the layer springs which model the
+external force (thermal stress). The length of <span class="math notranslate nohighlight">\(l_i\)</span> of the
+<span class="math notranslate nohighlight">\(i\)</span>-th spacer stick is calculated from the temperature-dependent
+linear thermal expansion <span class="math notranslate nohighlight">\(\alpha(T)\)</span> of the layer:</p>
+<div class="math notranslate nohighlight">
+\[\alpha(T) = \frac{1}{L} \frac{d L}{d T}\]</div>
+<p>which results after integration in</p>
+<div class="math notranslate nohighlight">
+\[l = \Delta L = L_1 \exp(A(T_2) - A(T_1)) - L_1\]</div>
+<p>where <span class="math notranslate nohighlight">\(A(T)\)</span> is the integrated lin. therm. expansion coefficient
+in respect to the temperature <span class="math notranslate nohighlight">\(T\)</span>. The indices 1 and 2 indicate
+the initial and final state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>sticks (ndarray[float])</em> - summed spacer sticks.</p></li>
+<li><p><em>sticks_sub_systems (ndarray[float])</em> - spacer sticks per
+sub-system.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.check_temp_maps">
+<code class="sig-name descname"><span class="pre">check_temp_maps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delays</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.check_temp_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check temperature profiles for correct dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delay grid for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>temp_map (ndarray[float])</em> - checked spatio-temporal temperature
+profile.</p></li>
+<li><p><em>delta_temp_map (ndarray[float])</em> - checked spatio-temporal
+differential temperature profile.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.get_all_strains_per_unique_layer">
+<code class="sig-name descname"><span class="pre">get_all_strains_per_unique_layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.get_all_strains_per_unique_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines all values of the strain per unique layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strains (list[ndarray[float]]</em> – all strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the <code class="docutils literal notranslate"><span class="pre">delays</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_map</span></code>
+and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> as well as the sample structure hash for
+relevant lattice parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delay grid for the simulation.</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+<li><p><strong>**kwargs</strong> (<em>float</em><em>, </em><em>optional</em>) – optional parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.get_reduced_strains_per_unique_layer">
+<code class="sig-name descname"><span class="pre">get_reduced_strains_per_unique_layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.get_reduced_strains_per_unique_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates all strains per unique layer that are given by the
+input <code class="docutils literal notranslate"><span class="pre">strain_map</span></code>, but with a reduced number. The reduction is done
+by equally spacing the strains between the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> strain
+with a given number <span class="math notranslate nohighlight">\(N\)</span>, which can be also an array of the
+<span class="math notranslate nohighlight">\(len(N) = L\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the number of unique layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – number of reduced strains. Defaults to 100.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strains (list[ndarray[float]]</em> – reduced strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononNum.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononNum.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">udkm1Dsim.simulations.phonons.</span></code><code class="sig-name descname"><span class="pre">PhononAna</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_recalc</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#udkm1Dsim.simulations.phonons.Phonon" title="udkm1Dsim.simulations.phonons.Phonon"><code class="xref py py-class docutils literal notranslate"><span class="pre">udkm1Dsim.simulations.phonons.Phonon</span></code></a></p>
+<p>Analytical model to simulate coherent acoustic phonons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<a class="reference internal" href="structure.html#udkm1Dsim.structures.structure.Structure" title="udkm1Dsim.structures.structure.Structure"><em>Structure</em></a>) – sample to do simulations with.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>only_heat</strong> (<em>boolean</em>) – true when including only thermal expansion without
+coherent phonon dynamics.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>S</strong> (<em>Structure</em>) – sample structure to calculate simulations on.</p></li>
+<li><p><strong>force_recalc</strong> (<em>boolean</em>) – force recalculation of results.</p></li>
+<li><p><strong>save_data</strong> (<em>boolean</em>) – true to save simulation results.</p></li>
+<li><p><strong>cache_dir</strong> (<em>str</em>) – path to cached data.</p></li>
+<li><p><strong>disp_messages</strong> (<em>boolean</em>) – true to display messages from within the
+simulations.</p></li>
+<li><p><strong>progress_bar</strong> (<em>boolean</em>) – enable tqdm progress bar.</p></li>
+<li><p><strong>only_heat</strong> (<em>boolean</em>) – true when including only thermal expansion without
+coherent phonon dynamics.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition-references admonition">
+<p class="admonition-title">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id4">8</a></span></dt>
+<dd><p>M. Herzog, D. Schick, P. Gaal, R. Shayduk, C. von Korff Schmising
+&amp; M. Bargheer, <em>Analysis of ultrafast X-ray diffraction data in a
+linear-chain model of the lattice dynamics</em>, <a class="reference external" href="http://www.doi.org/doi:10.1007/s00339-011-6719-z">Applied Physics A,
+106(3), 489-499 (2011).</a></p>
+</dd>
+</dl>
+</div>
+<p><strong>Methods:</strong></p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.get_strain_map" title="udkm1Dsim.simulations.phonons.PhononAna.get_strain_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_strain_map</span></code></a>(delays, temp_map, delta_temp_map)</p></td>
+<td><p>Returns a strain profile for the sample structure for given temperature profile.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.calc_strain_map" title="udkm1Dsim.simulations.phonons.PhononAna.calc_strain_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_strain_map</span></code></a>(delays, temp_map, delta_temp_map)</p></td>
+<td><p>Calculates the <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> of the sample structure for a given <code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delay</span></code> array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.solve_eigenproblem" title="udkm1Dsim.simulations.phonons.PhononAna.solve_eigenproblem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve_eigenproblem</span></code></a>()</p></td>
+<td><p>Creates the real and symmetric <span class="math notranslate nohighlight">\(K\)</span> matrix (<span class="math notranslate nohighlight">\(L \times L\)</span>) of spring constants <span class="math notranslate nohighlight">\(k_i\)</span> and masses <span class="math notranslate nohighlight">\(m_i\)</span> and calculates the eigenvectors <span class="math notranslate nohighlight">\(\Xi_j\)</span> and eigenfrequencies <span class="math notranslate nohighlight">\(\omega_j\)</span> for the matrix which are used to calculate the <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> of the structure.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.get_energy_per_eigenmode" title="udkm1Dsim.simulations.phonons.PhononAna.get_energy_per_eigenmode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_energy_per_eigenmode</span></code></a>(A, B)</p></td>
+<td><p>Returns the sorted energy per Eigenmode of the coherent phonons of the 1D sample.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.calc_sticks_from_temp_map" title="udkm1Dsim.simulations.phonons.PhononAna.calc_sticks_from_temp_map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_sticks_from_temp_map</span></code></a>(temp_map, …)</p></td>
+<td><p>Calculates the sticks to insert into the layer springs which model the external force (thermal stress).</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.check_temp_maps" title="udkm1Dsim.simulations.phonons.PhononAna.check_temp_maps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_temp_maps</span></code></a>(temp_map, delta_temp_map, delays)</p></td>
+<td><p>Check temperature profiles for correct dimensions.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.conv_with_function" title="udkm1Dsim.simulations.phonons.PhononAna.conv_with_function"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conv_with_function</span></code></a>(y, x, handle)</p></td>
+<td><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.disp_message" title="udkm1Dsim.simulations.phonons.PhononAna.disp_message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disp_message</span></code></a>(message)</p></td>
+<td><p>Wrapper to display messages for that class.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.get_all_strains_per_unique_layer" title="udkm1Dsim.simulations.phonons.PhononAna.get_all_strains_per_unique_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_all_strains_per_unique_layer</span></code></a>(strain_map)</p></td>
+<td><p>Determines all values of the strain per unique layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.get_hash" title="udkm1Dsim.simulations.phonons.PhononAna.get_hash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hash</span></code></a>(delays, temp_map, delta_temp_map, …)</p></td>
+<td><p>Calculates an unique hash given by the <code class="docutils literal notranslate"><span class="pre">delays</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> as well as the sample structure hash for relevant lattice parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.get_reduced_strains_per_unique_layer" title="udkm1Dsim.simulations.phonons.PhononAna.get_reduced_strains_per_unique_layer"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_reduced_strains_per_unique_layer</span></code></a>(strain_map)</p></td>
+<td><p>Calculates all strains per unique layer that are given by the input <code class="docutils literal notranslate"><span class="pre">strain_map</span></code>, but with a reduced number.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#udkm1Dsim.simulations.phonons.PhononAna.save" title="udkm1Dsim.simulations.phonons.PhononAna.save"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save</span></code></a>(full_filename, data, *args)</p></td>
+<td><p>Save data to file.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.get_strain_map">
+<code class="sig-name descname"><span class="pre">get_strain_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.get_strain_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a strain profile for the sample structure for given temperature
+profile. The result can be saved using an unique hash of the sample
+and the simulation parameters in order to reuse it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>Quantity</em><em>]</em>) – delays range of simulation [s].</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature map.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal differential</p></li>
+<li><p><strong>map.</strong> (<em>temperature</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>strain_map (ndarray[float])</em> - spatio-temporal strain profile.</p></li>
+<li><p><em>A (ndarray[float])</em> - coefficient vector A of general solution.</p></li>
+<li><p><em>B (ndarray[float])</em> - coefficient vector B of general solution.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.calc_strain_map">
+<code class="sig-name descname"><span class="pre">calc_strain_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.calc_strain_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> of the sample structure for a given
+<code class="docutils literal notranslate"><span class="pre">temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> and <code class="docutils literal notranslate"><span class="pre">delay</span></code> array. Further
+details are given in Ref. <a class="footnote-reference brackets" href="#id3" id="id4">8</a>. Within the linear chain of <span class="math notranslate nohighlight">\(N\)</span>
+masses (<span class="math notranslate nohighlight">\(m_i\)</span>) at position <span class="math notranslate nohighlight">\(z_i\)</span> coupled with spring
+constants <span class="math notranslate nohighlight">\(k_i\)</span> one can formulate the differential equation
+of motion as follow:</p>
+<div class="math notranslate nohighlight">
+\[m_i\ddot{x}_i = -k_i(x_i-x_{i-1})-k_{i+1}(x_i-x_{i+1}) + F_i^{heat}(t)\]</div>
+<p>Since we only consider nearest-neighbor interaction one can write:</p>
+<div class="math notranslate nohighlight">
+\[\ddot{x}_i = \sum_{n=1}^N \kappa_{i,n} x_n = \Delta_i(t)\]</div>
+<p>Here <span class="math notranslate nohighlight">\(x_i(t) = z_i(t)-z_i^0\)</span> is the shift of each layer,
+<span class="math notranslate nohighlight">\(F_i^{heat}(t)\)</span> is the external force (thermal stress) of each
+layer and <span class="math notranslate nohighlight">\(\kappa_{i,i} = -(k_i + k_{i+1})/m_i\)</span>, and
+<span class="math notranslate nohighlight">\(\kappa_{i,i+1} = \kappa_{i+1,i} = k_{i+1}/m_i\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(k_i = m_i\, v_i^2/c_i^2\)</span> is the spring constant and <span class="math notranslate nohighlight">\(c_i\)</span>
+and <span class="math notranslate nohighlight">\(v_i\)</span> are the thickness and longitudinal sound velocity of
+each layer respectively.
+One can rewrite the homogeneous differential equation in matrix
+form to obtain the general solution</p>
+<div class="math notranslate nohighlight">
+\[\frac{d^2}{dt^2} X = K \, X\]</div>
+<p>Here <span class="math notranslate nohighlight">\(X = (x_1 \ldots x_N)\)</span> and <span class="math notranslate nohighlight">\(K\)</span> is the
+tri-diagonal matrix of <span class="math notranslate nohighlight">\(\kappa\)</span> which is real and symmetric.
+The differential equation can be solved with the ansatz:</p>
+<div class="math notranslate nohighlight">
+\[X(t) = \sum_j \Xi_j \, (A_j \cos(\omega_j \, t) + B_j \sin(\omega_j \, t))\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Xi_j = (\xi_1^j \ldots \xi_N^j)\)</span> are the eigenvectors of
+the matrix <span class="math notranslate nohighlight">\(K\)</span>. Thus by solving the Eigenproblem for <span class="math notranslate nohighlight">\(K\)</span> one
+gets the eigenvecotrs <span class="math notranslate nohighlight">\(\Xi_j\)</span> and the eigenfrequencies
+<span class="math notranslate nohighlight">\(\omega_j\)</span>. From the initial conditions</p>
+<div class="math notranslate nohighlight">
+\[X(0) = \sum_j \Xi_j \, A_j = \Xi \, A \qquad V(0) = \dot{X}(0)
+     = \sum_j \Xi_j \, \omega_j\, B_j = \Xi \, \omega \, B\]</div>
+<p>one can determine the real coefficient vectors <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> in
+order to calculate <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(V(t)\)</span> using the ansatz:</p>
+<div class="math notranslate nohighlight">
+\[A = \Xi \setminus X(0) \qquad B = (\Xi \setminus V(0)) / \omega\]</div>
+<p>The external force is implemented as spacer sticks which are
+inserted into the springs and hence the layers have a new
+equilibrium positions <span class="math notranslate nohighlight">\(z_i(\infty) = z_i^\infty\)</span>.
+Thus we can do a coordination transformation:</p>
+<div class="math notranslate nohighlight">
+\[z_i(t) = z_i^0 + x_i(t) = z_i^\infty + x_i^\infty(t)\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[x_i^\infty(t) = z_i^0 - z_i^\infty + x_i(t)\]</div>
+<p>with the initial condition <span class="math notranslate nohighlight">\(x_i(0) = 0\)</span> it becomes</p>
+<div class="math notranslate nohighlight">
+\[x_i^\infty(0) = z_i^0 - z_i^\infty = \sum_{j = i+1}^N l_j\]</div>
+<p><span class="math notranslate nohighlight">\(x_i^\infty(0)\)</span> is the new initial condition after the excitation
+where <span class="math notranslate nohighlight">\(l_i\)</span> is the length of the <span class="math notranslate nohighlight">\(i\)</span>-th spacer stick.
+The spacer sticks are calculated from the temperature change and the
+linear thermal expansion coefficients.
+The actual strain <span class="math notranslate nohighlight">\(\epsilon_i(t)\)</span> of each layer is calculates
+as follows:</p>
+<div class="math notranslate nohighlight">
+\[\epsilon_i(t) = [ \Delta x_i(t) + l_i) ] / c_i\]</div>
+<p>with <span class="math notranslate nohighlight">\(\Delta x_i = x_i - x_{i-1}\)</span>. The stick <span class="math notranslate nohighlight">\(l_i\)</span> have
+to be added here, because <span class="math notranslate nohighlight">\(x_i\)</span> has been transformed into the new
+coordinate system <span class="math notranslate nohighlight">\(x_i^\infty\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>Quantity</em><em>]</em>) – delays range of simulation [s].</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature map.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal differential
+temperature map.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>strain_map (ndarray[float])</em> - spatio-temporal strain profile.</p></li>
+<li><p><em>A (ndarray[float])</em> - coefficient vector A of general solution.</p></li>
+<li><p><em>B (ndarray[float])</em> - coefficient vector B of general solution.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.solve_eigenproblem">
+<code class="sig-name descname"><span class="pre">solve_eigenproblem</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.solve_eigenproblem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the real and symmetric <span class="math notranslate nohighlight">\(K\)</span> matrix (<span class="math notranslate nohighlight">\(L \times L\)</span>) of
+spring constants <span class="math notranslate nohighlight">\(k_i\)</span> and masses <span class="math notranslate nohighlight">\(m_i\)</span> and calculates the
+eigenvectors <span class="math notranslate nohighlight">\(\Xi_j\)</span> and eigenfrequencies <span class="math notranslate nohighlight">\(\omega_j\)</span> for the
+matrix which are used to calculate the <code class="docutils literal notranslate"><span class="pre">strain_map</span></code> of the structure.
+If the result has been save to file, load it from there.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>Xi (ndarray[float])</em> - eigenvectors.</p></li>
+<li><p><em>omega (ndarray[float])</em> - eigenfrequencies.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.get_energy_per_eigenmode">
+<code class="sig-name descname"><span class="pre">get_energy_per_eigenmode</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.get_energy_per_eigenmode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sorted energy per Eigenmode of the coherent phonons of
+the 1D sample.</p>
+<div class="math notranslate nohighlight">
+\[E_j = \frac{1}{2} (A^2_j + B^2_j)\, \omega_j^2\, m_j \, \| \Xi_j\|^2\]</div>
+<p>Frequencies are in [Hz] and energy per mode in [J].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – coefficient vector A of general solution.</p></li>
+<li><p><strong>B</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – coefficient vector B of general solution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>omega (ndarray[float])</em> - eigenfrequencies.</p></li>
+<li><p><em>E (ndarray[float])</em> - energy per eigenmode.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.calc_sticks_from_temp_map">
+<code class="sig-name descname"><span class="pre">calc_sticks_from_temp_map</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.calc_sticks_from_temp_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the sticks to insert into the layer springs which model the
+external force (thermal stress). The length of <span class="math notranslate nohighlight">\(l_i\)</span> of the
+<span class="math notranslate nohighlight">\(i\)</span>-th spacer stick is calculated from the temperature-dependent
+linear thermal expansion <span class="math notranslate nohighlight">\(\alpha(T)\)</span> of the layer:</p>
+<div class="math notranslate nohighlight">
+\[\alpha(T) = \frac{1}{L} \frac{d L}{d T}\]</div>
+<p>which results after integration in</p>
+<div class="math notranslate nohighlight">
+\[l = \Delta L = L_1 \exp(A(T_2) - A(T_1)) - L_1\]</div>
+<p>where <span class="math notranslate nohighlight">\(A(T)\)</span> is the integrated lin. therm. expansion coefficient
+in respect to the temperature <span class="math notranslate nohighlight">\(T\)</span>. The indices 1 and 2 indicate
+the initial and final state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>sticks (ndarray[float])</em> - summed spacer sticks.</p></li>
+<li><p><em>sticks_sub_systems (ndarray[float])</em> - spacer sticks per
+sub-system.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.check_temp_maps">
+<code class="sig-name descname"><span class="pre">check_temp_maps</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delays</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.check_temp_maps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check temperature profiles for correct dimensions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delay grid for the simulation.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p><em>(tuple)</em> –</p>
+<ul class="simple">
+<li><p><em>temp_map (ndarray[float])</em> - checked spatio-temporal temperature
+profile.</p></li>
+<li><p><em>delta_temp_map (ndarray[float])</em> - checked spatio-temporal
+differential temperature profile.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.conv_with_function">
+<code class="sig-name descname"><span class="pre">conv_with_function</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.conv_with_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convolutes the array <span class="math notranslate nohighlight">\(y(x)\)</span> with a function given by the handle
+on the argument array <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – y data.</p></li>
+<li><p><strong>x</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – x data.</p></li>
+<li><p><strong>handle</strong> (<em>&#64;lamdba</em>) – convolution function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>y_conv (ndarray[float])</em> – convoluted data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.disp_message">
+<code class="sig-name descname"><span class="pre">disp_message</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.disp_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper to display messages for that class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>str</em>) – message to display.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.get_all_strains_per_unique_layer">
+<code class="sig-name descname"><span class="pre">get_all_strains_per_unique_layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.get_all_strains_per_unique_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines all values of the strain per unique layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strains (list[ndarray[float]]</em> – all strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.get_hash">
+<code class="sig-name descname"><span class="pre">get_hash</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delays</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta_temp_map</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates an unique hash given by the <code class="docutils literal notranslate"><span class="pre">delays</span></code>, and <code class="docutils literal notranslate"><span class="pre">temp_map</span></code>
+and <code class="docutils literal notranslate"><span class="pre">delta_temp_map</span></code> as well as the sample structure hash for
+relevant lattice parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delays</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – delay grid for the simulation.</p></li>
+<li><p><strong>temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature profile.</p></li>
+<li><p><strong>delta_temp_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal temperature
+difference profile.</p></li>
+<li><p><strong>**kwargs</strong> (<em>float</em><em>, </em><em>optional</em>) – optional parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>hash (str)</em> – unique hash.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.get_reduced_strains_per_unique_layer">
+<code class="sig-name descname"><span class="pre">get_reduced_strains_per_unique_layer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strain_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.get_reduced_strains_per_unique_layer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates all strains per unique layer that are given by the
+input <code class="docutils literal notranslate"><span class="pre">strain_map</span></code>, but with a reduced number. The reduction is done
+by equally spacing the strains between the <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> strain
+with a given number <span class="math notranslate nohighlight">\(N\)</span>, which can be also an array of the
+<span class="math notranslate nohighlight">\(len(N) = L\)</span>, where <span class="math notranslate nohighlight">\(L\)</span> is the number of unique layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>strain_map</strong> (<em>ndarray</em><em>[</em><em>float</em><em>]</em>) – spatio-temporal strain profile.</p></li>
+<li><p><strong>N</strong> (<em>int</em><em>, </em><em>optional</em>) – number of reduced strains. Defaults to 100.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>strains (list[ndarray[float]]</em> – reduced strains per unique layer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="udkm1Dsim.simulations.phonons.PhononAna.save">
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#udkm1Dsim.simulations.phonons.PhononAna.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save data to file. The variable name can be handed as variable argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>full_filename</strong> (<em>str</em>) – full file name to data file.</p></li>
+<li><p><strong>data</strong> (<em>ndarray</em>) – actual data to save.</p></li>
+<li><p><strong>*args</strong> (<em>str</em><em>, </em><em>optional</em>) – variable name within the data file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="magnetization.html" class="btn btn-neutral float-right" title="simulations.magnetization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="heat.html" class="btn btn-neutral float-left" title="simulations.heat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Daniel Schick.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
