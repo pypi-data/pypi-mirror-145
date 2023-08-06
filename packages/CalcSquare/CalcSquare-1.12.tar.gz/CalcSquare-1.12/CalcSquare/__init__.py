@@ -1,0 +1,2 @@
+from CalcSquare import *
+
