@@ -1,0 +1,12 @@
+[console_scripts]
+imoox = invenio_imoox.cli:imoox
+
+[flask.commands]
+imoox = invenio_imoox.cli:imoox
+
+[invenio_base.api_apps]
+invenio_imoox = invenio_imoox:InvenioIMooX
+
+[invenio_base.apps]
+invenio_imoox = invenio_imoox:InvenioIMooX
+
