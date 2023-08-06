@@ -1,0 +1,15 @@
+survey,,,
+,type,name,label,constraint,required,appearance
+,text,name,Name,,yes,
+,begin repeat,items,Items,wq:initial(3),yes,
+,text,name,Item Name,,yes,
+,integer,count,Item Count,,yes,counter
+,end repeat,,,,,
+,begin group,nested,Nested,,yes,horizontal-view
+,text,name,Name,,yes,
+,integer,count,Count,,yes,counter
+,end group,,,,,
+,begin repeat,data,Data,wq:initial(3),yes,
+,text,name,Datum Name,,yes,
+,integer,value,Datum Value,,yes,counter
+,end repeat,,,,,
