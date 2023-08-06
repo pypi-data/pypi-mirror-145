@@ -1,0 +1,12 @@
+dask
+distributed
+fsspec
+numcodecs
+numpy>=1.20
+pandas
+xarray
+zarr>=2.11
+
+[test]
+pytest
+pytest-cov
