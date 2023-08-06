@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: Autumna
+Version: 0.0.1
+Summary: Unofficial Autumna API Client for Python.
+Home-page: https://github.com/CareHQ/autumna-python
+Author: Anthony Blackshaw
+Author-email: ant@crmhq.co.uk
+Maintainer: Anthony Blackshaw
+Maintainer-email: ant@crmhq.co.uk
+License: MIT
+Description: 
+        # Unofficial Autumna Python API client
+        
+        Unofficial Autumna.co.uk API Client for Python.
+        
+        
+        ## Installation
+        
+        ```
+        pip install autumna
+        ```
+        
+        
+        ## Requirements
+        
+        - Python 3.7+
+        
+        
+        # Usage
+        
+        ```Python
+        
+        import datetime
+        
+        from autumna.client import APIClient
+        from autumna.constants import Category
+        from autumna.resources.lead import Lead
+        
+        api_client = APIClient('MY_API_KEY')
+        
+        leads = Lead.many(
+            api_client,
+            date_from=datetime.date(2022, 1, 1),
+            date_to=datetime.date(2022, 4, 1),
+            is_anonymised=False,
+            category_id=Category.CONTACT_FORM_MESSAGE,
+            service_id=28058
+        )
+        
+        for lead in leads:
+            print(lead)
+        
+        ```
+        
+Keywords: autumna
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Database
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
