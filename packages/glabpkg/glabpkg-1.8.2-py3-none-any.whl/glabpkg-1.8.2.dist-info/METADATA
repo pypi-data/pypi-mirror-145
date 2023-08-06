@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: glabpkg
+Version: 1.8.2
+Summary: template for python packages hosted on gitlab
+Home-page: https://gitlab.com/revesansparole/glabpkg
+Author: revesansparole
+Author-email: revesansparole@gmail.com
+License: cc_by_nc
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+License-File: LICENSE
+License-File: AUTHORS.rst
+Requires-Dist: pkglts (<7,>=6)
+
+========================
+glabpkg
+========================
+
+.. {# pkglts, doc
+
+.. image:: https://revesansparole.gitlab.io/glabpkg/_images/badge_doc.svg
+    :alt: Documentation status
+    :target: https://revesansparole.gitlab.io/glabpkg/
+
+.. image:: https://revesansparole.gitlab.io/glabpkg/_images/badge_pkging_pip.svg
+    :alt: PyPI version
+    :target: https://pypi.org/project/glabpkg/1.8.2/
+
+.. image:: https://revesansparole.gitlab.io/glabpkg/_images/badge_pkging_conda.svg
+    :alt: Conda version
+    :target: https://anaconda.org/revesansparole/glabpkg
+
+.. image:: https://badge.fury.io/py/glabpkg.svg
+    :alt: PyPI version
+    :target: https://badge.fury.io/py/glabpkg
+
+.. #}
+.. {# pkglts, glabpkg, after doc
+
+main: |main_build|_ |main_coverage|_
+
+.. |main_build| image:: https://gitlab.com/revesansparole/glabpkg/badges/main/pipeline.svg
+.. _main_build: https://gitlab.com/revesansparole/glabpkg/commits/main
+
+.. |main_coverage| image:: https://gitlab.com/revesansparole/glabpkg/badges/main/coverage.svg
+.. _main_coverage: https://gitlab.com/revesansparole/glabpkg/commits/main
+
+prod: |prod_build|_ |prod_coverage|_
+
+.. |prod_build| image:: https://gitlab.com/revesansparole/glabpkg/badges/prod/pipeline.svg
+.. _prod_build: https://gitlab.com/revesansparole/glabpkg/commits/prod
+
+.. |prod_coverage| image:: https://gitlab.com/revesansparole/glabpkg/badges/prod/coverage.svg
+.. _prod_coverage: https://gitlab.com/revesansparole/glabpkg/commits/prod
+.. #}
+
+template for python packages hosted on gitlab
+
+
+
+=======
+History
+=======
+
+creation (2021-06-25)
+------------------------
+
+* First release on PyPI.
+
+

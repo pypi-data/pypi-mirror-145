@@ -1,0 +1,26 @@
+# {# pkglts, glabbase.image
+image: {{ glabbase.docker }}
+# #}
+
+
+# {# pkglts, glabbase.stages
+stages:
+  - build
+  - test
+# #}
+
+# {# pkglts, glabbase.before
+before_script:
+  - echo "before"
+  - source activate ci
+# #}
+
+# {# pkglts, glabbase.test
+ci:test:
+  stage: test
+  except:
+    - tags
+    - web
+  script:
+    - echo "test walou"
+# #}
