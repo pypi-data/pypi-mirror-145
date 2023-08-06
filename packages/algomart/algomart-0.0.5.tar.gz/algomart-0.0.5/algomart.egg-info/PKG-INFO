@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: algomart
+Version: 0.0.5
+Summary: Collections of algorithms in python
+Home-page: https://github.com/AlgoMart/python
+Author: Yash Jain
+Author-email: yash0307jain@gmail.com
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# AlgoMart
+
+Collection of algorithms in python
+
+### Sorting Algorithm
+
+- Bubble Sort - `bubble_sort`
+- Insertion Sort - `insertion_sort`
+- Selection Sort - `selection_sort`
+- Quick Sort - `quick_sort`
+- Merge Sort - `merge_sort`
+- Heap Sort - `heap_sort`
+- Counting Sort - `counting_sort`
+- Radix Sort - `radix_sort`
+
+
+Sample Code
+
+```python
+from algomart.algorithm.sort import bubble_sort
+
+print(bubble_sort([3, 2, 1]))
+```
+
+
