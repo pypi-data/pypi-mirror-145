@@ -1,0 +1,12 @@
+aioredis>=2.0
+croniter>=0.3.18
+
+[dev]
+black
+pylint
+
+[hiredis]
+aioredis[hiredis]>=2.0
+
+[web]
+aiohttp
