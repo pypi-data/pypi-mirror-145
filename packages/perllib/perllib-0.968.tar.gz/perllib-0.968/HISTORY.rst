@@ -1,0 +1,83 @@
+=======
+History
+=======
+
+0.968 (2022-04-01)
+------------------
+
+* Add _utime, fix _stat and friends to work on filehandles and dirhandles.  Add _abspath for Cwd::abs_path.
+
+0.967 (2022-03-31)
+------------------
+
+* (no library changes)
+
+0.966 (2022-03-20)
+------------------
+
+* Convert variable to string in _substitute_global, _substitute_element, _translate_global, and _translate_element.  Change _ref to handle object checks and add _refs to handle ref with \ to a scalar, array, or hash - not perfect but it's normally correct.  Add _bless and enable _init_package to handle classes.  Fix _list_of_n and _make_list if you pass it a single Hash().  Add _flt for specific conversions to float, like in math functions.  Implement select via _select.  Implement kill via _kill.
+
+0.965 (2022-03-14)
+------------------
+
+* Change Config.Config to Config.Config_h and all Dumper variables to include _v suffix to match new package var mappings in Pythonizer.  Add _map_int, _map_num, _map_str.  Fix _flatten to handle multiple levels. Change _longmess traceback to return '()' for args if they were changed to a list and all popped off instead of '[]'.  Handle OUTPUT_FIELD_SEPARATOR and OUTPUT_RECORD_SEPARATOR in _perl_print.  Fix charnames.viacode to handle 'U+' or '0x' prefix.
+
+0.964 (2022-03-10)
+------------------
+
+* Fix _init_package for package with dotted name, don't raise exceptions in -C, -A, -M, fix Array __setitem__ with slice
+
+0.963 (2022-03-09)
+------------------
+
+* Add _chop_global, _chomp_global, _chop_element, _chomp_element
+
+0.962 (2022-03-09)
+------------------
+
+* Hot fix for _fileinput_next - errors on Python older than v3.10
+
+0.961 (2022-03-02)
+------------------
+
+* Handle open layer pragmas, fix issue with translate and friends with squash option, add dclone, catfile, file_name_is_absolute, Dumper, don't raise exception on double close
+
+0.960 (2022-02-28)
+------------------
+
+* Speed up ArrayHash and Num. Have add_element and subtract_element handle non-numeric elements, turn subprocess shell=False on windows unless the command contains cmd shell chars or is a cmd built-in, fixup open of /tmp/... on windows to use the windows tempdir, don't pass effective_ids=True on windows.  Have concat_element auto-convert everything to strings.
+
+0.959 (2022-02-24)
+------------------
+
+* str(ArrayHash()) changed to give '' instead of [], add EVAL_ERROR global variable, have ArrayHash() + or += work on empty value
+
+0.958 (2022-02-23)
+------------------
+
+* Don't give a close failed error on a pipe which got automatically closed, give empty result for keys(), values(), and items() on a fresh ArrayHash instead of AttributeError
+
+0.957 (2022-02-22)
+------------------
+
+* Add list_to_hash function to process key/value pairs
+
+0.956 (2022-02-21)
+------------------
+
+* Implement all options of translate (tr///)
+
+0.955 (2022-02-19)
+------------------
+
+* Fix split: A zero-width match at the beginning of EXPR never produces an empty field, fix bootstrapping issues
+
+0.954 (2022-02-17)
+------------------
+
+* Add -n: trace run, fix issue of scalar being initialized as an array
+
+0.953 (2022-02-15)
+------------------
+
+* First release on PyPI.
