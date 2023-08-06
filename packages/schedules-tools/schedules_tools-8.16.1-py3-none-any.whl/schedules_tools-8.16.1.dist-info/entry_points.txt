@@ -1,0 +1,4 @@
+[console_scripts]
+schedule-batch = schedules_tools.batches.schedule_batch:main
+schedule-convert = schedules_tools.converter:main
+schedule-diff = schedules_tools.diff:main
