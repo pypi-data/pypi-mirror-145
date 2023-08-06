@@ -1,0 +1,432 @@
+[
+    {
+        "asset_category": "Preferred",
+        "cqs": [
+            "p"
+        ],
+        "cms": [
+            " PR"
+        ],
+        "nasdaq_ip": [
+            "-"
+        ],
+        "act_ctci": [
+            "$"
+        ]
+    },
+    {
+        "asset_category": "Preferred Class \"A\"*",
+        "cqs": [
+            "pA"
+        ],
+        "cms": [
+            " PRA"
+        ],
+        "nasdaq_ip": [
+            "-A"
+        ],
+        "act_ctci": [
+            "$A"
+        ]
+    },
+    {
+        "asset_category": "Preferred Class \"B\"*",
+        "cqs": [
+            "pB"
+        ],
+        "cms": [
+            " PRB"
+        ],
+        "nasdaq_ip": [
+            "-B"
+        ],
+        "act_ctci": [
+            "$B"
+        ]
+    },
+    {
+        "asset_category": "Class \"A\"*",
+        "cqs": [
+            ".A"
+        ],
+        "cms": [
+            " A"
+        ],
+        "nasdaq_ip": [
+            ".A"
+        ],
+        "act_ctci": [
+            ".A"
+        ]
+    },
+    {
+        "asset_category": "Class \"B\"*",
+        "cqs": [
+            ".B"
+        ],
+        "cms": [
+            " B"
+        ],
+        "nasdaq_ip": [
+            ".B"
+        ],
+        "act_ctci": [
+            ".B"
+        ]
+    },
+    {
+        "asset_category": "Preferred when distributed",
+        "cqs": [
+            "p.WD"
+        ],
+        "cms": [
+            " PRWD"
+        ],
+        "nasdaq_ip": [
+            "-$"
+        ],
+        "act_ctci": [
+            ".D"
+        ]
+    },
+    {
+        "asset_category": "When distributed",
+        "cqs": [
+            ".WD"
+        ],
+        "cms": [
+            " WD"
+        ],
+        "nasdaq_ip": [
+            "$"
+        ],
+        "act_ctci": [
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "Warrants",
+        "cqs": [
+            ".WS"
+        ],
+        "cms": [
+            " WS"
+        ],
+        "nasdaq_ip": [
+            "+"
+        ],
+        "act_ctci": [
+            ".W"
+        ]
+    },
+    {
+        "asset_category": "Warrants Class \"A\"*",
+        "cqs": [
+            ".WS.A"
+        ],
+        "cms": [
+            " WSA"
+        ],
+        "nasdaq_ip": [
+            "+A"
+        ],
+        "act_ctci": [
+            ".W",
+            ".A**"
+        ]
+    },
+    {
+        "asset_category": "Warrants Class \"B\"*",
+        "cqs": [
+            ".WS.B"
+        ],
+        "cms": [
+            " WSB"
+        ],
+        "nasdaq_ip": [
+            "+B"
+        ]
+    },
+    {
+        "asset_category": "Called",
+        "cqs": [
+            ".CL"
+        ],
+        "cms": [
+            " CL"
+        ],
+        "nasdaq_ip": [
+            "*"
+        ]
+    },
+    {
+        "asset_category": "Class \"A\" Called*",
+        "cqs": [
+            ".A.CL"
+        ],
+        "cms": [
+            " ACL"
+        ],
+        "nasdaq_ip": [
+            ".A*"
+        ],
+        "act_ctci": [
+            ".A"
+        ]
+    },
+    {
+        "asset_category": "Preferred called",
+        "cqs": [
+            "p.CL"
+        ],
+        "cms": [
+            " PRCL"
+        ],
+        "nasdaq_ip": [
+            "-*"
+        ],
+        "act_ctci": [
+            "$"
+        ]
+    },
+    {
+        "asset_category": "Preferred \"A\" called*",
+        "cqs": [
+            "pA.CL"
+        ],
+        "cms": [
+            " PRACL"
+        ],
+        "nasdaq_ip": [
+            "-A*"
+        ],
+        "act_ctci": [
+            "$A"
+        ]
+    },
+    {
+        "asset_category": "Preferred \"A\" when issued*",
+        "cqs": [
+            "pAw"
+        ],
+        "cms": [
+            " PRAWI"
+        ],
+        "nasdaq_ip": [
+            "-A#"
+        ],
+        "act_ctci": [
+            ".V",
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "Emerging Company Marketplace",
+        "cqs": [
+            ".EC"
+        ],
+        "cms": [
+            " EC"
+        ],
+        "nasdaq_ip": [
+            "!"
+        ],
+        "act_ctci": [
+            ".E"
+        ]
+    },
+    {
+        "asset_category": "Partial Paid",
+        "cqs": [
+            ".PP"
+        ],
+        "cms": [
+            " PP"
+        ],
+        "nasdaq_ip": [
+            "@"
+        ]
+    },
+    {
+        "asset_category": "Convertible",
+        "cqs": [
+            ".CV"
+        ],
+        "cms": [
+            " CV"
+        ],
+        "nasdaq_ip": [
+            "%"
+        ]
+    },
+    {
+        "asset_category": "Convertible called",
+        "cqs": [
+            ".CV.CL"
+        ],
+        "cms": [
+            " CVCL"
+        ],
+        "nasdaq_ip": [
+            "%*"
+        ]
+    },
+    {
+        "asset_category": "Class Convertible",
+        "cqs": [
+            ".A.CV"
+        ],
+        "cms": [
+            " ACV"
+        ],
+        "nasdaq_ip": [
+            ".A%"
+        ]
+    },
+    {
+        "asset_category": "Preferred (class A) Convertible",
+        "cqs": [
+            "pA.CV"
+        ],
+        "cms": [
+            " PRACV"
+        ],
+        "nasdaq_ip": [
+            "-A%"
+        ]
+    },
+    {
+        "asset_category": "Preferred (class A) when Distributed",
+        "cqs": [
+            "pA.WD"
+        ],
+        "cms": [
+            " PRAWD"
+        ],
+        "nasdaq_ip": [
+            "-A$"
+        ]
+    },
+    {
+        "asset_category": "Rights",
+        "cqs": [
+            "r"
+        ],
+        "cms": [
+            " RT"
+        ],
+        "nasdaq_ip": [
+            "^"
+        ],
+        "act_ctci": [
+            ".R"
+        ]
+    },
+    {
+        "asset_category": "Units",
+        "cqs": [
+            ".U"
+        ],
+        "cms": [
+            " U"
+        ],
+        "nasdaq_ip": [
+            "="
+        ],
+        "act_ctci": [
+            ".U"
+        ]
+    },
+    {
+        "asset_category": "When issued",
+        "cqs": [
+            "w"
+        ],
+        "cms": [
+            " WI"
+        ],
+        "nasdaq_ip": [
+            "#"
+        ],
+        "act_ctci": [
+            ".V",
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "Rights when issued",
+        "cqs": [
+            "rw"
+        ],
+        "cms": [
+            " RTWI"
+        ],
+        "nasdaq_ip": [
+            "^#"
+        ],
+        "act_ctci": [
+            ".V",
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "Preferred when issued",
+        "cqs": [
+            "pw"
+        ],
+        "cms": [
+            " PRWI"
+        ],
+        "nasdaq_ip": [
+            "-#"
+        ],
+        "act_ctci": [
+            ".V",
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "Class \"A\" when issued*",
+        "cqs": [
+            ".Aw"
+        ],
+        "cms": [
+            " AWI"
+        ],
+        "nasdaq_ip": [
+            ".A#"
+        ],
+        "act_ctci": [
+            ".V",
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "Warrrant when issued",
+        "cqs": [
+            ".WSw"
+        ],
+        "cms": [
+            " WSWI"
+        ],
+        "nasdaq_ip": [
+            "+#"
+        ],
+        "act_ctci": [
+            ".V",
+            ".Z"
+        ]
+    },
+    {
+        "asset_category": "TEST symbol",
+        "cqs": [
+            ".TEST"
+        ],
+        "cms": [
+            " TEST"
+        ],
+        "nasdaq_ip": [
+            "~"
+        ]
+    }
+]

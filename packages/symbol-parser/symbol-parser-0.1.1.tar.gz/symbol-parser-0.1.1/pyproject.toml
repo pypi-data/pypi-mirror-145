@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "symbol-parser"
+version = "0.1.1"
+description = "Utility class for parsing a ticker symbol and converting symbol syntax to different standards."
+authors = ["Dan Kelleher <kelleherjdan@gmail.com>"]
+include = ["*.json"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ready-logger = "^0.1.1"
+requests = "^2.27.1"
+lxml = "^4.8.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
