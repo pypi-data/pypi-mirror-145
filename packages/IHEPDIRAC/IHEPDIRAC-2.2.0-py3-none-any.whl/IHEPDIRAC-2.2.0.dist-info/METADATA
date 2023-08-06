@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: IHEPDIRAC
+Version: 2.2.0
+Summary: IHEPDIRAC is the IHEP extension of DIRAC
+Home-page: https://code.ihep.ac.cn/Grid/IHEPDIRAC
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: DIRAC
+Provides-Extra: server
+Requires-Dist: DIRAC[server] ; extra == 'server'
+Requires-Dist: psutil ; extra == 'server'
+Requires-Dist: stomp.py ; extra == 'server'
+Requires-Dist: suds-jurko ; extra == 'server'
+Provides-Extra: testing
+Requires-Dist: mock ; extra == 'testing'
+Requires-Dist: Pillow ; extra == 'testing'
+Requires-Dist: pytest ; extra == 'testing'
+
+UNKNOWN
+

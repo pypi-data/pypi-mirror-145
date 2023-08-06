@@ -1,0 +1,18 @@
+[console_scripts]
+ihepdirac-dms-add-dir = IHEPDIRAC.DataManagementSystem.scripts.ihepdirac_dms_add_dir:main
+ihepdirac-dms-check-replicas = IHEPDIRAC.DataManagementSystem.scripts.ihepdirac_dms_check_replicas:main
+ihepdirac-dms-register-dir = IHEPDIRAC.DataManagementSystem.scripts.ihepdirac_dms_register_dir:main
+ihepdirac-dms-rm-dir = IHEPDIRAC.DataManagementSystem.scripts.ihepdirac_dms_rm_dir:main
+ihepdirac-dms-rm-dir-replicas = IHEPDIRAC.DataManagementSystem.scripts.ihepdirac_dms_rm_dir_replicas:main
+ihepdirac-dms-scan-unregistered = IHEPDIRAC.DataManagementSystem.scripts.ihepdirac_dms_scan_unregistered:main
+ihepdirac-juno-make-productions = IHEPDIRAC.TransformationSystem.scripts.ihepdirac_juno_make_productions:main
+ihepdirac-juno-make-reconstruction = IHEPDIRAC.TransformationSystem.scripts.ihepdirac_juno_make_reconstruction:main
+ihepdirac-juno-make-reconstruction-sim = IHEPDIRAC.TransformationSystem.scripts.ihepdirac_juno_make_reconstruction_sim:main
+ihepdirac-resource-get-squids = IHEPDIRAC.Resources.scripts.ihepdirac_resource_get_squids:main
+ihepdirac-transformation-reset-files = IHEPDIRAC.TransformationSystem.scripts.ihepdirac_transformation_reset_files:main
+ihepdirac-transformation-transfer-dir = IHEPDIRAC.TransformationSystem.scripts.ihepdirac_transformation_transfer_dir:main
+ihepdirac-transformation-transfer-metadata = IHEPDIRAC.TransformationSystem.scripts.ihepdirac_transformation_transfer_metadata:main
+
+[dirac]
+metadata = IHEPDIRAC:extension_metadata
+
