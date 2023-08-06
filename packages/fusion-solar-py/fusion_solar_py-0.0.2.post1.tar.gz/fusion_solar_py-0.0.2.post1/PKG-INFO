@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: fusion_solar_py
+Version: 0.0.2.post1
+Summary: A simply API to the Huawei Fusion Solar web interface.
+Home-page: https://github.com/jgriss/fusion_solar_py
+Author: Johannes Griss
+Author-email: johannes.griss@meduniwien.ac.at
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/jgriss/fusion_solar_py/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# FusionSolarPy
+
+A very basic python client for the HuaweiFusionSolar API used to monitor
+solar power plants.
+
+This client is currently hard-coded to use the https://region01eu5.fusionsolar.huawei.com end point and has not
+been tested on any other end-points.
+
+## Installation
+
+Simply install from pypi using:
+
+```bash
+pip install fusion_solar_py
+```
+
+## Usage
+
+The basic usage centers around the `FusionSolarClient` class. It currently
+only has one method to extract the current power production, the total
+power production for the current day, and the total energy ever produced
+by the plant.
+
+```python
+from fusion_solar_py.client import FusionSolarClient
+
+# log into the API - with proper credentials...
+client = FusionSolarClient("my_user", "my_password")
+
+# get the stats
+stats = client.get_power_status()
+
+# print all stats
+print(f"Current power: {stats.current_power_kw} kW")
+print(f"Total power today: {stats.total_power_today_kwh} kWh")
+print(f"Total power: {stats.total_power_kwh} kWh")
+
+# log out - just in case
+client.log_out()
+```
+
