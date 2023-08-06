@@ -1,0 +1,24 @@
+dynaconf!=3.1.0,>=3
+JPype1>=1.0.1
+shapely
+packaging
+
+[:python_version < "3.8"]
+typing_extensions
+
+[dev]
+pytest>=6
+pytest-cov
+mypy
+ome-types
+importlib_resources
+typing_extensions
+
+[docs]
+sphinx
+sphinxemoji
+sphinx-rtd-theme
+sphinx-autodoc-typehints
+
+[ome]
+ome-types
