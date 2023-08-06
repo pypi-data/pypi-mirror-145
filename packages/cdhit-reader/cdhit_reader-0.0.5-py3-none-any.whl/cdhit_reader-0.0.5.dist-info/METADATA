@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: cdhit-reader
+Version: 0.0.5
+Summary: CD-HIT cluster parser
+Home-page: https://github.com/telatin/cdhit-parser
+Download-URL: https://github.com/telatin/cdhit-parser
+Author: Andrea Telatin
+Author-email: andrea.telatin@gmail.com
+Maintainer: Andrea Telatin
+Maintainer-email: andrea.telatin@gmail.com
+License: MIT
+Keywords: cd-hit,clustering,reader
+Platform: Windows
+Platform: MacOS
+Platform: Linux
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: click (>=7.1.2)
+Requires-Dist: importlib-resources (>=1.4.0)
+Requires-Dist: more-itertools (>=8.4.0)
+Requires-Dist: pytest (>=5.4.3)
+Requires-Dist: xopen (>=1.0.1)
+Provides-Extra: cli
+Requires-Dist: plotille ; extra == 'cli'
+
+# cdhit-parser
+
+CD-HIT file reader.
+
+## Examples
+
+Basic usage
+
+```python
+input = "cluster.fa.clstr"
+for cluster in read_cdhit(input):
+    print(f"{cluster.name} refSequence={cluster.refname} size={len(cluster)}")
+
+    for member in cluster.sequences:
+        print(f" {member.name} ({member.length}) identity={member.identity}% {'(Reference sequence)' if member.is_ref else ''}")
+```
+
+Load all clusters in to a list:
+```python
+
+# Load all clusters to a list
+clusters = read_cdhit(input).read_items()
+```
+## Install
+
+```bash
+pip install cdhit-reader
+```
+
+## Author
+
+* [Andrea Telatin](https://github.com/telatin)
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+This module was based on [fasta_reader](https://github.com/EBI-Metagenomics/fasta-reader-py)
+by [Danilo Horta](https://github.com/horta)
+
+
+
