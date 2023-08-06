@@ -1,0 +1,108 @@
+===================
+Package Overview
+===================
+
+This package provides an easy way to optimize JQuery Datatables in Django through Serverside Rendering.
+
+All you have to do is to create a new view, configure the model to be used and the columns to be rendered, and you're all set!
+
+Supported features are **pagination**, **column ordering**, **row value customization**, and **global search** (not restricted to a specific column). The searching function can find values in any string-convertible field, and also searched with choice descriptions of predefined choices fields.
+
+Foreign key fields can be used, provided that a QuerySet-like access path (i.e. model2__field) is given in the configuration.
+
+Quick start
+-----------
+
+1. Create a view that inherits the ```DatatablesServerSideView``` mixin::
+
+    from datatables_optimization.mixins import DatatablesServerSideView
+    from django.contrib.humanize.templatetags.humanize import intcomma # For demo purposes
+
+    class ApplicationsListServerSideView(DatatablesServerSideView):
+        """
+        View will render serverside processing for the **Application** model.
+        """
+        model = Application
+        columns = ['full_name', 'admission_number', 'category', 'amount']
+
+        searchable_columns = ['full_name', 'admission_number']
+
+        foreign_fields = {'category': 'category__name'}
+
+        def customize_row(self, row, obj):
+            # Here we customize the amount
+            row['awarded_amount'] = intcomma(obj.amount)
+            
+        def get_initial_queryset(self):
+            qs = super(ApplicationsListServerSideView,
+                        self).get_initial_queryset()
+
+            # Customize Queryset as deemed appropriate
+
+            return qs
+
+
+2. Add a ```URL Path``` that points to our view::
+
+    urlpatterns = [
+        # Other paths...
+        path('applications/serverside/', ApplicationsListServerSideView.as_view(),
+            name='applications-list-serverside'),
+    ]
+
+
+3. Add the Serverside processing in your DataTables template::
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+        </head>
+        <body>
+            <h1>List of Application</h1>
+            <hr>
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Adm. Number</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+            <sscript src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+            <script>
+                $(document).ready(function () {
+                    /* Here begins the DataTable configuration. */
+                    $('#table').DataTable({
+                        /* Tell the DataTable that we need server-side processing. */
+                        serverSide: true,
+                        /* Set up the data source */
+                        ajax: {
+                            url: "{% url "applications-list-serverside" %}"
+                        },
+                        /* And set up the columns. Note that they must be identified by a "name" attribute,
+                        with the value matching the columns in your Django view. The "data" attribute selects which record value will be used,
+                        and should be the same value than for the "name" attribute. */
+                        columns: [
+                            {name: "full_name", data: "full_name"},
+                            {name: "admission_number", data: "admission_number"},
+                            {name: "category", data: "category"},
+                            {name: "amount", data: "amount"},
+                        ]
+                    });
+                });
+            </script>
+        </body>
+    </html>
+
+
+The view will return a ```HTTPResponseBadRequest``` if the request is not an ```AJAX``` request, or if params seem to be malformed. Else you should have your datatable serverside processing working just fine.
+
+Happy Development!
