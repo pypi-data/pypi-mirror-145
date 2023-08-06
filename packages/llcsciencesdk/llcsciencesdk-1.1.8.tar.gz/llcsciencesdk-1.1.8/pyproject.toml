@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=2,<4", "requests", "pandas"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "llcsciencesdk"
+author = "Ariel Delgado"
+author-email = "arieldelgado@landlifecompany.com"
+classifiers = [ "License :: OSI Approved :: MIT License",]
+description-file = "readme.md"
+
