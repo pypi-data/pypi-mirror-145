@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: tbutil
+Version: 3.3.25.3
+Summary: A tool for python
+Home-page: https://gitee.com/laman29/toolbox
+Author: laman29
+Author-email: fzwxr@hotmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+![toolbox](file:///sdcard/qpython/00prog00/tb/tb_logo.jpg "toolbox")
+#Documentation of package tb3.2
+
+1.'*' after module name means it can only run on unix-like system. If you want to use and not affected, please type as follows:
+`>>> __import__('os').name='posix'`
+and you can't use these modules.
+2.For installing, you may use command:
+`pip install tb --upgrade --user`
+3.For reference only.
+***
+```
+[exe.py]
+exe(s): execute python file s
+[sfz.py]
+sfz(s17): return the check-code of the  sfz
+[getch.py]
+getch(): return a charater when the user press a key
+[std.py]
+print() and input(): as builtin functions, but they has some improvement
+o: an instance of <class 'simpcout'>, subtract o from several str consecutively
+endl='\n'
+[prt.py]
+fixing, not supported
+[str033.py]*
+color(c,s): return string s by color-code c
+[checkfile.py]*
+check(d,**rule): show the user a list to select a file or a folder
+ |  start from directory d
+ |  rule: the rule for checking
+     |  dir: if it's True, allow a direction
+     |  file: if it's True, allow a file
+     |  other may be _xxx, if it's True, allow the corresponding suffix name .xxx
+[tbsocket.py]
+class server(host,port,num=1): be a server by socket, and listen num sessions
+ |  acpt(): accept a request end return the session object c
+ |  close(a): if a=='c', close the session, or else close the socket
+ |  recv(): recept a string and retutn it
+ |  send(): send a string
+class client(): be a client by socket
+ |  close(): close the socket
+ |  recv() and send() like server
+```
+***
+\[end\]
+
