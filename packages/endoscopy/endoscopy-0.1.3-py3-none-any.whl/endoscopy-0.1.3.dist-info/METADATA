@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: endoscopy
+Version: 0.1.3
+Summary: Image processing utilities for endoscopic images.
+Home-page: https://github.com/RViMLab/endoscopy
+Author: Martin Huber
+Author-email: martin.huber@kcl.ac.uk
+License: MIT
+Project-URL: Bug Tracker, https://github.com/RViMLab/endoscopy/issues
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch (>=1.9)
+Requires-Dist: kornia (>=0.6)
+
+# Endoscopy
+Utilities for processing of endoscopic images.
+
+## Installation
+To install, simply run
+```shell
+pip install endoscopy
+```
+
+## Example
+Check out the [examples](https://github.com/RViMLab/endoscopy), run
+```shell
+python img_main.py # vid_main.py
+```
+
+## Credits
+If you use this work as part of your project, please consider citing our [paper](https://arxiv.org/abs/2109.15098)
+```bibtex
+@article{huber2021deep,
+  title={Deep Homography Estimation in Dynamic Surgical Scenes for Laparoscopic Camera Motion Extraction},
+  author={Huber, Martin and Ourselin, S{\'e}bastien and Bergeles, Christos and Vercauteren, Tom},
+  journal={arXiv preprint arXiv:2109.15098},
+  year={2021}
+}
+```
+
+
