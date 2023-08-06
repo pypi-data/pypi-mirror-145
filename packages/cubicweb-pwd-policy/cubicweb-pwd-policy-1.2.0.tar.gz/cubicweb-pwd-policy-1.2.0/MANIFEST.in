@@ -1,0 +1,15 @@
+include *.py
+include */*.py
+recursive-include cubicweb_pwd_policy *.py
+recursive-include cubicweb_pwd_policy/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_pwd_policy/i18n *.po
+recursive-include cubicweb_pwd_policy/wdoc *
+recursive-include test/data bootstrap_cubes *.py
+include tox.ini
+exclude cubicweb-pwd-policy.spec
+exclude .gitlab-ci.yml
+include README.rst
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
