@@ -1,0 +1,177 @@
+Metadata-Version: 2.1
+Name: environ-config
+Version: 22.1.0
+Summary: Boilerplate-free configuration with env variables.
+Home-page: https://github.com/hynek/environ_config
+Author: Hynek Schlawack
+Author-email: hs@ox.cx
+Maintainer: Hynek Schlawack
+Maintainer-email: hs@ox.cx
+License: Apache-2.0
+Project-URL: Changelog, https://environ-config.rtfd.io/en/stable/changelog.html
+Project-URL: Bug Tracker, https://github.com/hynek/environ-config/issues
+Project-URL: Source Code, https://github.com/hynek/environ-config
+Project-URL: Funding, https://github.com/sponsors/hynek
+Project-URL: Ko-fi, https://ko-fi.com/the_hynek
+Keywords: app,config,env,cfg
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+License-File: NOTICE
+License-File: AUTHORS.rst
+Requires-Dist: attrs (>=17.4.0)
+Provides-Extra: aws
+Requires-Dist: boto3 ; extra == 'aws'
+Provides-Extra: dev
+Requires-Dist: boto3 ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: coverage[toml] ; extra == 'dev'
+Requires-Dist: moto ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+Requires-Dist: furo ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: furo ; extra == 'docs'
+Provides-Extra: tests
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: coverage[toml] ; extra == 'tests'
+Requires-Dist: moto ; extra == 'tests'
+
+==============================================================
+*environ-config*: Application Configuration With Env Variables
+==============================================================
+
+.. image:: https://img.shields.io/badge/Docs-Read%20The%20Docs-black
+   :target: https://environ-config.readthedocs.io/
+   :alt: Documentation
+
+.. image:: https://img.shields.io/badge/license-Apache--2.0-C06524
+   :target: https://github.com/hynek/environ-config/blob/main/LICENSE
+   :alt: License: Apache 2.0
+
+.. image:: https://img.shields.io/pypi/v/environ-config
+   :target: https://pypi.org/project/environ-config/
+   :alt: PyPI version
+
+.. image:: https://static.pepy.tech/personalized-badge/environ-config?period=month&units=international_system&left_color=grey&right_color=blue&left_text=Downloads%20/%20Month
+   :target: https://pepy.tech/project/environ-config
+   :alt: Downloads / Month
+
+.. -teaser-begin-
+
+*environ-config* allows you to configure your applications using environment variables – as recommended in `The Twelve-Factor App <https://12factor.net/config>`_ methodology – with elegant, boilerplate-free, and declarative code:
+
+.. code-block:: pycon
+
+  >>> import environ
+  >>> # Extracts secrets from Vault-via-envconsul: 'secret/your-app':
+  >>> vault = environ.secrets.VaultEnvSecrets(vault_prefix="SECRET_YOUR_APP")
+  >>> @environ.config(prefix="APP")
+  ... class AppConfig:
+  ...    @environ.config
+  ...    class DB:
+  ...        name = environ.var("default_db")
+  ...        host = environ.var("default.host")
+  ...        port = environ.var(5432, converter=int)  # Use attrs's converters and validators!
+  ...        user = environ.var("default_user")
+  ...        password = vault.secret()
+  ...
+  ...    env = environ.var()
+  ...    lang = environ.var(name="LANG")  # It's possible to overwrite the names of variables.
+  ...    db = environ.group(DB)
+  ...    awesome = environ.bool_var()
+  >>> cfg = environ.to_config(
+  ...     AppConfig,
+  ...     environ={
+  ...         "APP_ENV": "dev",
+  ...         "APP_DB_HOST": "localhost",
+  ...         "LANG": "C",
+  ...         "APP_AWESOME": "yes",  # true and 1 work too, everything else is False
+  ...         # Vault-via-envconsul-style var name:
+  ...         "SECRET_YOUR_APP_DB_PASSWORD": "s3kr3t",
+  ... })  # Uses os.environ by default.
+  >>> cfg
+  AppConfig(env='dev', lang='C', db=AppConfig.DB(name='default_db', host='localhost', port=5432, user='default_user', password=<SECRET>), awesome=True)
+  >>> cfg.db.password
+  's3kr3t'
+
+``AppConfig.from_environ({...})`` is equivalent to the code above, depending on your taste.
+
+
+Features
+========
+
+- Declarative & boilerplate-free.
+- Nested configuration from flat environment variable names.
+- Default & mandatory values: enforce configuration structure without writing a line of code.
+- Built on top of `attrs <https://www.attrs.org/>`_ which gives you data validation and conversion for free.
+- Pluggable secrets extraction.
+  Ships with:
+
+  * `HashiCorp Vault <https://www.vaultproject.io>`_ support via `envconsul <https://github.com/hashicorp/envconsul>`_.
+  * INI files, because secrets in env variables are icky.
+- Helpful debug logging that will tell you which variables are present and what *environ-config* is looking for.
+- Built-in dynamic help documentation generation.
+
+.. -teaser-end-
+
+You can find the full documentation including a step-by-step tutorial on `Read the Docs <https://environ-config.readthedocs.io/>`_.
+
+
+Project Information
+===================
+
+*environ-config* is released under the `Apache License 2.0 <https://choosealicense.com/licenses/apache-2.0/>`_ license.
+It targets Python 3.7 and newer, and PyPy.
+Development takes place on `GitHub <https://github.com/hynek/environ-config>`_.
+
+
+Release Information
+===================
+
+22.1.0 (2022-04-02)
+-------------------
+
+Deprecations:
+^^^^^^^^^^^^^
+
+- Python 2.7, 3.5, and 3.6 support has been dropped.
+  *environ-config* now requires Python 3.7 or later.
+
+
+Changes:
+^^^^^^^^
+
+- Lazily init the AWS SecretsManager client to make unit testing easier.
+  `#25 <https://github.com/hynek/environ-config/pull/25>`_
+
+`Full changelog <https://github.com/hynek/environ-config/blob/main/CHANGELOG.rst>`_.
+
+Credits
+=======
+
+*environ-config* is written and maintained by `Hynek Schlawack <https://hynek.me/>`_ – why not `buy him a coffee <https://ko-fi.com/the_hynek>`_ for all the years of maintenance?
+
+The development is kindly supported by `Variomedia AG <https://www.variomedia.de/>`_.
+
+A full list of contributors can be found in `GitHub's overview <https://github.com/hynek/environ_config/graphs/contributors>`_.
+
+*environ-config* wouldn't be possible without the `attrs project <http://www.attrs.org>`_.
+
+
