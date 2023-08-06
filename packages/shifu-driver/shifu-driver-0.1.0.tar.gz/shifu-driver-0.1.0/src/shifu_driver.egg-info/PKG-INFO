@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: shifu-driver
+Version: 0.1.0
+Summary: A base driver implementation for Shifu
+Home-page: https://gitlab.com/lifefoundry/devices/shifu-driver
+Author: William Wang
+Author-email: williamwa@life-foundry.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://gitlab.com/lifefoundry/devices/shifu-driver/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Device Drivers
+
+Drivers for devices in the Foundry. These should not be used directly but are instead used by the Device Management service.
+
+Install using pip install -i https://test.pypi.org/simple/ shifu-driver-williamwa==0.0.2
+
