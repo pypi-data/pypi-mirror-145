@@ -1,0 +1,191 @@
+#content {
+  font-size: 1.2rem;
+  margin: 0 auto;
+  max-width: 65rem;
+}
+h1 {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+h2 {
+  font-size: 1.75rem;
+  font-weight: normal;
+  letter-spacing: .5rem;
+  padding-left: .5rem;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-top: 2rem;
+  font-variant: small-caps;
+  position: relative;
+}
+h3::before,
+h3::after {
+  content: "";
+  position: absolute;
+  border-top: 2px dotted silver;
+  top: .75rem;
+  width: calc(50% - 5rem);
+}
+h3.yes::before,
+h3.yes::after { width: calc(50% - 3rem); }
+h3.maybe::before,
+h3.maybe::after { width: calc(50% - 4rem); }
+h3.no::before,
+h3.no::after { width: calc(50% - 2rem); }
+h3::before { left: 0; }
+h3::after { right: 0; }
+p { margin: 0 0 1.5rem; }
+
+.greeting {
+  font-size: 1.5rem;
+}
+.event-image {
+  text-align: center;
+}
+.event-image img {
+  margin-bottom: 2rem;
+  max-width: 300px;
+}
+
+.event-details tr {
+  vertical-align: top;
+}
+.event-details td {
+  padding: .5rem 0;
+}
+.event-details td:first-child {
+  padding-right: 1rem;
+}
+
+ul.messages {
+  clear: both;
+  font-size: 2rem;
+  font-style: italic;
+  list-style: none;
+  margin: 3rem 0;
+  padding: 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .event-image img {
+    float: left;
+    margin: 0 3rem 1rem 0;
+  }
+  .bottom-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .reply-form,
+  .replies {
+    width: 50%;
+  }
+  .reply-form {
+    border-right: 2px dotted silver;
+    padding-right: 2rem;
+  }
+  .replies {
+    padding-left: 2rem;
+  }
+}
+
+.bottom-container {
+  clear: both;
+  margin-top: 2rem;
+}
+
+.reply-form,
+.replies {
+  text-align: center;
+}
+.reply-form {
+  margin-bottom: 3rem;
+}
+.replies ul {
+  padding: 0;
+}
+.replies li {
+  font-size: 1rem;
+  line-height: 1.5;
+  list-style: none;
+  margin-top: .75rem;
+}
+.replycount div {
+  display: inline;
+  line-height: 1.5;
+  margin-right: 1.5rem;
+  white-space: nowrap;
+}
+.replycount .yes {
+  color: green;
+}
+.replycount .maybe {
+  color: orange;
+}
+.replycount .no {
+  color: red;
+}
+.replycount .none {
+  color: darkgrey;
+}
+.replies li div {
+  font-size: .8rem;
+}
+.replies li .spy {
+  font-style: italic;
+}
+
+.reply-form h2 {
+  letter-spacing: 2rem;
+  padding-left: 2rem;
+}
+.reply-form textarea {
+  font-size: 1rem;
+  margin-top: .5rem;
+}
+.reply-form input[type=submit] {
+  font-size: 1.15rem;
+}
+.field-wrapper {
+  margin-bottom: 1.5rem;
+}
+.field-wrapper.status > label,
+.field-wrapper.comment label {
+  font-variant: small-caps;
+}
+.field-wrapper.status ul {
+  padding: 0;
+}
+.field-wrapper.status li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 .5rem;
+}
+.field-wrapper.extra_guests input {
+  width: 2rem;
+}
+.field-wrapper.comment label {
+  display: block;
+}
+
+ul.errorlist {
+  color: red;
+  font-size: 1rem;
+  font-variant: small-caps;
+  list-style: none;
+  margin-bottom: .25rem;
+  padding: 0;
+}
+
+.admin-link {
+  font-variant: small-caps;
+}
+
+footer {
+  font-size: .8rem;
+  font-style: italic;
+  margin: 3rem auto 4rem;
+  text-align: center;
+}
