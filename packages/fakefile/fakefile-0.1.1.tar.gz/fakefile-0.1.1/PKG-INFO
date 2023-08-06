@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: fakefile
+Version: 0.1.1
+Summary: Create fake files
+Home-page: https://github.com/anuvc/fakefile
+Author: Anuv Chakraborty
+Author-email: anuv.chakrabo@gmail.com
+License: Apache2
+Keywords: fake corrupt file
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# fakefile
+Create fake files
+
+### Installation
+```
+pip install fakefile
+```
+
+### Usage
+To use fakefile, simply call the program from command prompt with a filename and required size in KiB.
+```
+fakefile [-h] [filename] [size]
+```
+
+#### Example
+```
+fakefile assignment.pdf 250
+```
+
+
