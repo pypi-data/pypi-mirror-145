@@ -1,0 +1,14 @@
+aiohttp<4,>=2
+pyyaml
+jsonschema
+
+[dev]
+pytest
+pytest-aiohttp<1
+pytest-mock
+pytest-cov
+aiohttp-jinja2
+
+[docs]
+sphinx>=1.4.8
+sphinx_rtd_theme
