@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: python-liquid-api-tths
+Version: 0.0.1
+Summary: Use Liquid API with Python
+Home-page: https://github.com/kitataku/python_liquid_api_tths
+Author: kitataku
+Author-email: 
+Maintainer: kitataku
+Maintainer-email: 
+License: MIT License
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PyJWT (>=2.1.0)
+Requires-Dist: pandas (>=1.3.4)
+Requires-Dist: numpy (>=1.20.3)
+
+# python_liquid_api
+
+## API概要
+
+このライブラリはLiquid APIのPrivate APIとPublic APIをPythonで扱うものです。
+
+## Public API
+
+Public APIを使うにはLiquidPublicをインスタンス化します。
+
+```python
+from python_liquid_api.public_api import LiquidPublic
+
+pub = LiquidPublic()
+```
+
+### get_candlestick
+
+このメソッドを使用することでOHLCVデータを取得することができます。
+
+#### 引数
+
+- currency_name: 取得対象の通貨名を指定します。指定できる値は次の通りです。
+  - btc
+  - eth
+  - xrp
+  - bch
+  - qash
+  - ltc
+  - bat
+
+- date: 取得対象の日付を指定します。フォーマットはyyyymmddの文字列です。
+- candle_type: 取得するローソク足のタイプを指定します。指定できる値は次の文字列です。
+  - 1min: 1分足を取得します
+  - 5min: 5分足を取得します
+  - 15min: 15分足を取得します
+  - 30min: 30分足を取得します
+  - 1hour: 1時間足を取得します
+
