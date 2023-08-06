@@ -1,0 +1,9 @@
+{% from 'macros/flash.html' import flash_messages %}
+
+{%- with messages = get_flashed_messages(with_categories=True) -%}
+{% if messages %}
+
+{{ flash_messages(messages) }}
+
+{% endif %}
+{%- endwith %}

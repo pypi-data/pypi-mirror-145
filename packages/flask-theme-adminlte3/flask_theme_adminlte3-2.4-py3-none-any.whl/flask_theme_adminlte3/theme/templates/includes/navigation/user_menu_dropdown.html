@@ -1,0 +1,64 @@
+{% set show_user_info = true %}
+
+{% if not show_user_info %}
+<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+    {% if config.THEME_PROFILE_ENDPOINT %}
+    <a class="dropdown-item" href="{{ url_for(config.THEME_PROFILE_ENDPOINT) }}">
+        <i class="fas fa-user mr-2"></i> {{ _('Profile') }}
+    </a>
+    {% endif %}
+    {% if config.SECURITY_CHANGABLE %}
+    <a class="dropdown-item" href="{{ url_for_security('change_password') }}">
+        <i class="fas fa-lock mr-2"></i> {{ _('Change my password') }}
+    </a>
+    {% endif %}
+    {% if config.THEME_LOGOUT_ENDPOINT %}
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="{{ url_for(config.THEME_LOGOUT_ENDPOINT) }}">
+        <i class="fas fa-sign-out-alt mr-2"></i> {{ _('Log out') }}
+    </a>
+    {% endif %}
+</div>
+
+
+{% else %}
+<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+    <!-- User image -->
+    <li class="user-header bg-primary">
+    {% if current_user and current_user.is_authenticated %}
+        <img src="{{ current_user.email | gravatar }}" class="img-circle elevation-2" alt="User Image">
+        <p>
+            {{current_user.email}}
+            <small>Member since Nov. 2012</small>
+        </p>
+        {% endif %}
+    </li>
+    <!-- Menu Body -->
+    {% if config.THEME_USER_MENU_DROPDOWN_BODY|default(true) %}
+    <li class="user-body">
+        <div class="row">
+            <div class="col-4 text-center">
+                <a href="#">Followers</a>
+            </div>
+            <div class="col-4 text-center">
+                <a href="#">Sales</a>
+            </div>
+            <div class="col-4 text-center">
+                <a href="#">Friends</a>
+            </div>
+        </div>
+        <!-- /.row -->
+    </li>
+    {% endif %}
+    <!-- Menu Footer-->
+    <li class="user-footer">
+        {% if config.THEME_PROFILE_ENDPOINT %}
+        <a href="{{url_for(config.THEME_PROFILE_ENDPOINT)}}" class="btn btn-default btn-flat">Profile</a>
+        {% endif %}
+        {% if config.THEME_LOGOUT_ENDPOINT %}
+        <a href="{{url_for(config.THEME_LOGOUT_ENDPOINT)}}" class="btn btn-default btn-flat float-right">Sign out</a>
+        {% endif %}
+    </li>
+</ul>
+</li>
+{% endif %}

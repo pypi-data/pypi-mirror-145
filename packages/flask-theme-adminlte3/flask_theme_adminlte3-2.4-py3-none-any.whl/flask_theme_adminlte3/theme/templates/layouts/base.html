@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html {%-block html_attributes %} lang="{{ current_language|default('en') }}" dir="{{ current_text_direction|default('ltr') }}" {% endblock %}>
+<head>
+{% block head %}
+
+  {% block head_meta %}
+      {%- include config.THEME_META_TEMPLATE %}
+  {%- endblock head_meta %}
+
+  <title>{%block title %}{{ config.THEME_SITE_TITLE }}{%endblock%}</title>
+
+  {% block favicon %}
+    {%- include config.THEME_FAVICON_TEMPLATE %}
+  {%- endblock favicon %}
+
+  {%- block stylesheets %}
+      {%- include config.THEME_STYLESHEETS_TEMPLATE %}
+  {%- endblock stylesheets %}
+
+  {% include 'pwa/meta.html' ignore missing %}
+
+
+  
+{% endblock head %}
+</head>
+<body class="hold-transition {% block body_class %}{% endblock body_class %}">
+{% block _body %}
+
+<div class="wrapper">
+  {% block _wrapper %}
+    {% block navigation %}
+      {% include config.THEME_TOPBAR_TEMPLATE %}
+    {%- endblock navigation %}
+
+    {%- block sidebar %}
+      {% include config.THEME_SIDEBAR_TEMPLATE %}
+    {%- endblock sidebar %}
+
+    {% block content %}
+      {%if config.THEME_CONTENT_TEMPLATE%}
+        {% include config.THEME_CONTENT_TEMPLATE ignore missing %}
+      {%endif%}
+    {% endblock content %}
+
+    {%- block footer %}
+      {% include config.THEME_FOOTER_TEMPLATE %}
+    {%- endblock footer %}
+
+    {% block controlbar %}
+    <aside class="control-sidebar control-sidebar-{% if config.THEME_CONTROLBAR_LIGHT %}light{% else %}dark{% endif %}">
+      {% if config.THEME_CONTROLBAR_ENABLED %}{% include config.THEME_CONTROLBAR_TEMPLATE %}{% endif %}
+    </aside>
+    {% endblock controlbar %}
+
+  {% endblock _wrapper %}
+</div>
+<!-- ./wrapper -->
+
+{% endblock _body %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+  {% include config.THEME_JAVASCRIPT_TEMPLATE %}
+  
+  {% include 'pwa/js.html' ignore missing %}
+
+{% endblock javascripts %}
+
+</body>
+</html>
+
+                  

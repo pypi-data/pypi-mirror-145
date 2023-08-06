@@ -1,0 +1,78 @@
+<!--| includes/stylesheets.html |-->
+
+{% if config.THEME_ASSETS_ENABLED %}
+
+<link rel="stylesheet" href="{{ url_for('theme.static',filename='css/theme.css')  }}" />
+
+{% else %}
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="{{ url_for('theme.static', filename='plugins/fontawesome-free/css/all.min.css') }}">
+<!-- iCheck -->
+<link rel="stylesheet" href="{{ url_for('theme.static', filename='plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+<!-- overlayScrollbars -->
+<link rel="stylesheet" href="{{ url_for('theme.static', filename='plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{ url_for('theme.static', filename='dist/css/adminlte.min.css') }}">
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Flag Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{% endif %}
+
+{% if config.THEME_DARKMODE_SWITCH_ENABLED %} 
+<!-- darkmode theme switch -->
+<style>
+  .theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+  }
+
+  .theme-switch input {
+    display: none;
+  }
+
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 400ms;
+  }
+
+  .slider::before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: 400ms;
+    width: 16px;
+  }
+
+  input:checked + .slider {
+    background-color: #66bb6a;
+  }
+
+  input:checked + .slider::before {
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round::before {
+    border-radius: 50%;
+  }
+</style>
+{% endif %}
+
+<!--|END|-->

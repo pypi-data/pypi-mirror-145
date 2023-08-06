@@ -1,0 +1,17 @@
+{% if config.THEME_PRELOADER_ENABLED|default(True) and request.endpoint not in config.THEME_PRELOADER_DISABLED_ENDPOINTS %}
+{% set src = config.THEME_PRELOADER_IMAGE|default("https://adminlte.io/docs/3.1//assets/img/AdminLTELogo.png") %}
+{% set clss = config.THEME_PRELOADER_CLASS|default('animation__shake') %}
+{% set alt = config.THEME_PRELOADER_ALT|default('AdminLTELogo') %}
+{% set x = config.THEME_PRELOADER_W|default(800) %}
+{% set y = config.THEME_PRELOADER_H|default(300) %}
+
+{% set url = src %}
+{% if not url.startswith('http') and not url.startswith('/') %}
+  {# its a relative URL, treat it relative to static #}
+  {% set src = url_for('static', filename=url) %}
+{% endif %}
+
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img loading="lazy" class="{{clss}}" src="{{src}}" alt="{{alt}}" height="{{y}}" width="{{x}}">
+</div>
+{% endif %}

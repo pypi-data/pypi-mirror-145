@@ -1,0 +1,23 @@
+{% macro language_menu(current_locale, languages=[]) -%}
+<li class="nav-item dropdown">
+  <a class="nav-link" data-toggle="dropdown" href="#" title="{{current_locale}}">
+    {% set current_flag = current_locale or '' | replace_with_flag %}
+    {% if current_flag %}
+    <i class="{{ current_flag }}"></i>
+    {% else %}
+      {{ current_locale or '' }}
+    {% endif %}
+  </a>
+  <div class="dropdown-menu dropdown-menu-right p-0">
+    {% for locale, name in languages %}
+      <a href="{{ url_for(config.THEME_CHANGE_LANGUAGE_ENDPOINT, locale=locale) }}"
+         class="dropdown-item{% if locale == current_locale %} active{% endif %}"
+         title="{{locale}}"
+         >
+         
+        <i class="{{ locale | replace_with_flag }} mr-2"></i> {{ name }}
+      </a>
+    {% endfor %}
+  </div>
+</li>
+{%- endmacro %}

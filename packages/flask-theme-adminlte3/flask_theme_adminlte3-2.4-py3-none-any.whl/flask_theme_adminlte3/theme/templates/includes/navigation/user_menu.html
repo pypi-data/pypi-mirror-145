@@ -1,0 +1,34 @@
+{% if current_user and current_user.is_authenticated %}
+    {% if config.THEME_TOPBAR_USER_MENU_ENABLED %}
+        <li class="nav-item dropdown user-menu">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+            {%if current_user.is_authenticated and current_user.picture%}
+            <img src="{{current_user.picture}}" class="user-image img-circle elevation-2" alt="User Image">
+            {%else%}
+            <img src="{{ current_user.email | gravatar }}" class="user-image img-circle elevation-2" alt="User Gravatar">
+            {%endif%}
+            <span class="d-none d-md-inline">{{ current_user.email }}</span>
+        </a>
+        {% include config.THEME_TOPBAR_USER_MENU_DROPDOWN_TEMPLATE %}
+        </li>
+    {% elif config.THEME_LOGOUT_ENDPOINT %}
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url_for(config.THEME_LOGOUT_ENDPOINT) }}">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
+        </li>
+    {% endif %}
+{% else %}
+{% if config.THEME_LOGIN_ENDPOINT %}
+<li class="nav-item">
+    <a href="{{ url_for(config.THEME_LOGIN_ENDPOINT) }}" class="btn btn-primary ml-2">
+    {{ _('Log in') }}
+    </a>
+    {% if config.THEME_REGISTRATION_ENDPOINT %}
+    <a href="{{ url_for(config.THEME_REGISTRATION_ENDPOINT) }}" class="btn btn-danger ml-2">
+        {{ _('Registration') }}
+    </a>
+    {% endif %}
+</li>
+{% endif%}
+{% endif %}
