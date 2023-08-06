@@ -1,0 +1,481 @@
+{% macro attachment(attach) -%}
+  <div class="attachment">
+    {% if attach.voiceNote or attach.contentType == "audio/mpeg" %}
+      <audio controls>
+        <source src="{{ attach.fileName }}" type="{{ attach.contentType }}">
+        Audio of type {{ attach.contentType }} <span class="msg-dl-link"><a href="{{ attach.fileName }}" type="{{ attach.contentType }}">&#x2913;</a></span>
+      </audio>
+    {% elif attach.contentType == "video/mp4" or attach.contentType == "video/3gpp" %}
+      <video controls>
+        <source src="{{ attach.fileName }}" type="{{ attach.contentType }}">
+        Video of type {{ attach.contentType }} <span class="msg-dl-link"><a href="{{ attach.fileName }}" type="{{ attach.contentType }}">&#x2913;</a></span>
+      </video>
+    {% elif attach.contentType == "image/jpeg" or attach.contentType == "image/png" or attach.contentType == "image/gif" or attach.contentType == "image/webp" %}
+    <div class="msg-img-container">
+      <input type="checkbox" id="zoomCheck-{{ attach.unique_id }}">
+      <label for="zoomCheck-{{ attach.unique_id }}">
+        <img src="{{ attach.fileName }}">
+      </label>
+    </div>
+    {% else %}
+      Attachment of type {{ attach.contentType }} <span class="msg-dl-link"><a href="{{ attach.fileName }}" type="{{ attach.contentType }}" download>&#x2913;</a></span>
+    {% endif %}
+  </div>
+{%- endmacro %}
+{%- macro message_metadata(date, secure, state, isGroup, deliv_count, read_count) -%}
+  {{ date.strftime(date_time_format) }}
+  {% if not secure %}
+    &#x1f513;&#xfe0e;{# Open lock, text variant #}
+  {%endif%}
+  {% if state == "DISPLAY_TYPE_PENDING" %}
+    &#x25cc;{# Dotted circle #}
+  {% elif state == "DISPLAY_TYPE_SENT" %}
+    &#x2713;{# Checkmark #}
+  {% elif state == "DISPLAY_TYPE_FAILED" %}
+    &#x26a0;{# Warning sign #}
+  {% elif state == "DISPLAY_TYPE_DELIVERED" %}
+    <span class="multiple-checkmarks">&#x2713;&#x2713;</span>{# Double checkmark #}
+  {% elif state == "DISPLAY_TYPE_READ" %}
+    <span class="multiple-checkmarks">&#x2713;&#x2713;&#x2713;</span>{# Triple checkmark #}
+  {% endif%}
+{%- endmacro -%}
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+  <head>
+    <title>Signal2HTML &middot; {{ thread_name }}</title>
+    <style>
+
+      body {
+        background-color: #222;
+      }
+
+      #message-header {
+        text-align: center;
+        color: white;
+        font-family: Noto Sans, Liberation Sans, OpenSans, sans-serif;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+
+      #thread-title {
+        font-size: x-large;
+      }
+
+      .message-box {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 0 auto;
+        padding-left: 30px;
+        padding-right: 30px;
+        background-color: #282828;
+        color: white;
+        font-family: Noto Sans, Liberation Sans, OpenSans, sans-serif;
+        border-radius: 10px;
+      }
+
+      .msg-incoming {
+        align-self: flex-start;
+        background: teal;
+      }
+
+      {{ group_color_css }}
+
+      .msg-outgoing {
+        align-self: flex-end;
+        background: #555;
+      }
+
+      .msg {
+        max-width: 50%;
+        border-radius: .4em;
+        margin: 15px 0;
+        padding: 10px;
+      }
+
+      .msg pre {
+        font-family: Noto Sans, Liberation Sans, OpenSans, sans-serif;
+        white-space: pre-wrap;
+        margin-top: 0px;
+        margin-bottom: 5px;
+      }
+
+      .msg pre a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .msg-data {
+        font-size: x-small;
+        opacity: 50%;
+        display: block;
+      }
+
+      .msg-emoji {
+        font-family: Noto Color Emoji, sans-serif;
+      }
+
+      .msg-all-emoji {
+        font-size: xx-large;
+      }
+
+      .msg-mention {
+        background-color: #00000060;
+      }
+
+      .msg-date-change {
+        font-size: x-small;
+        opacity: 50%;
+        align-self: center;
+      }
+
+      .msg-dl-link a {
+        font-size: xx-large;
+        text-decoration: none;
+      }
+
+      .msg-name {
+        font-weight: bold;
+        font-size: smaller;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .msg p {
+        margin-top: 0;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .msg img, .msg video {
+        max-width: 100%;
+        max-height: 400px;
+      }
+
+      img {
+        image-orientation: from-image;
+      }
+
+      audio {
+        max-width: 100%;
+        width: 400px;
+      }
+
+      .multiple-checkmarks {
+        letter-spacing: -0.3em;
+        margin-left: 3px;
+        margin-right: 3px;
+      }
+
+      .msg-img-container input[type=checkbox] {
+        display: none;
+      }
+
+      .msg-img-container img {
+        transition: transform 0.25s ease;
+        cursor: zoom-in;
+      }
+
+      .msg-img-container input[type=checkbox]:checked ~ label > img {
+        transform: scale(2.5);
+        cursor: zoom-out;
+        z-index: 1;
+        position: relative;
+      }
+
+      .msg-reactions {
+        margin-top: 5px;
+        text-align: right;
+      }
+
+      .msg-reaction {
+        padding-left: 8px;
+        padding-right: 8px;
+        background-color: #cccccc;
+        border-radius: 1em;
+        border: 1px solid white;
+        line-height: 150%;
+      }
+
+      .msg-reaction-self {
+        background-color: #aaaaaa;
+      }
+
+      .msg-reaction {
+        position: relative;
+      }
+
+      .msg-reaction .msg-reaction-info {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        visibility: hidden;
+        width: 200px;
+        background-color: #505050;
+        color: white;
+        text-align: center;
+        padding: 5px 0;
+        border-color: white;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 3px;
+        margin-left: -100px;
+        bottom: 125%;
+        left: 50%;
+
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      /* Draw an arrow using border styles */
+      .msg-reaction .msg-reaction-info::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+      }
+
+      .msg-reaction:hover .msg-reaction-info {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .msg-quote {
+        display: flex;
+        width: 98%;
+        background-color: #0008;
+        padding: 5px 5px 5px 0px;
+        border-radius: .3em;
+        margin-bottom: 5px;
+        justify-content: space-between;
+        border-left: 5px solid white;
+      }
+
+      .msg-quote-message {
+        padding-left: 5px;
+      }
+
+      .msg-quote-attach {
+        flex-grow: 1;
+        max-width: 30%;
+      }
+
+      .msg-quote-attach .msg-img-container input[type=checkbox]:checked ~ label > img {
+        transform: scale(5);
+      }
+      .msg-quote-attach img {
+        max-height: 5em;
+      }
+
+      .msg-outgoing .msg-data {
+        text-align: right;
+      }
+
+      .msg-outgoing .msg-reactions {
+        text-align: left;
+      }
+
+      .msg-call-incoming,
+      .msg-call-outgoing,
+      .msg-call-missed,
+      .msg-video-call-incoming,
+      .msg-video-call-outgoing,
+      .msg-video-call-missed,
+      .msg-key-update,
+      .msg-group-update-v1,
+      .msg-group-update-v2,
+      .msg-group-call {
+        background: none;
+        align-self: center;
+      }
+
+      .msg-call-incoming .msg-data,
+      .msg-call-outgoing .msg-data,
+      .msg-call-missed .msg-data,
+      .msg-video-call-incoming .msg-data,
+      .msg-video-call-outgoing .msg-data,
+      .msg-video-call-missed .msg-data,
+      .msg-key-update .msg-data,
+      .msg-group-update-v1 .msg-data,
+      .msg-group-update-v2 .msg-data,
+      .msg-group-call .msg-data {
+        display: block;
+        text-align: center;
+      }
+
+      .msg-group-update-v1, .msg-group-update-v2 {
+        max-width: 80%;
+      }
+
+      .msg-icon {
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 25px;
+        height: 25px;
+        opacity: 50%;
+        margin: 0 auto;
+        filter: invert(100%);
+        -webkit-filter: invert(100%);
+      }
+
+      .msg-call-missed .msg-icon {
+        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-missed"><line x1="23" y1="1" x2="17" y2="7"></line><line x1="17" y1="1" x2="23" y2="7"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
+      }
+
+      .msg-call-incoming .msg-icon {
+        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-incoming"><polyline points="16 2 16 8 22 8"></polyline><line x1="23" y1="1" x2="16" y2="8"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
+      }
+
+      .msg-call-outgoing .msg-icon {
+        background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-outgoing"><polyline points="23 7 23 1 17 1"></polyline><line x1="16" y1="8" x2="23" y2="1"></line><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>');
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message-header">
+      <div id="thread-title">
+        {{ thread_name }}
+      </div>
+      <div id="thread-subtitle">
+        {{ thread_subtitle }}
+      </div>
+    </div>
+    <div class="message-box">
+{% for msg in messages %}
+  {% if "date_msg" in msg %}
+      <div class="msg msg-date-change">
+        <p>
+          {{ msg.body }}
+        </p>
+  {% else %}
+    {% if msg.type == 'call-incoming' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div class="msg-icon"></div>
+        <div>
+          {{ msg.event_data | safe }} called you
+        </div>
+    {% elif msg.type == 'call-outgoing' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div class="msg-icon"></div>
+        <div>
+          You called
+        </div>
+    {% elif msg.type == 'call-missed' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div class="msg-icon"></div>
+        <div>
+          Missed call
+        </div>
+    {% elif msg.type == 'video-call-incming' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div class="msg-icon"></div>
+        <div>
+          Video call from {{ msg.event_data | safe }}
+        </div>
+    {% elif msg.type == 'video-call-outgoing' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div class="msg-icon"></div>
+        <div>
+          Outgoing video call
+        </div>
+    {% elif msg.type == 'video-call-missed' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div class="msg-icon"></div>
+        <div>
+          Missed video call
+        </div>
+    {% elif msg.type == 'group-call' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div>
+          Group call {% if msg.event_data %}started by {{ msg.event_data | safe }}{% endif %}
+        </div>
+    {% elif msg.type == 'key-update' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div>
+          {{msg.event_data | safe}} has a new safety number
+        </div>
+    {% elif msg.type == 'group-update-v1' or msg.type == 'group-update-v2' %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }}">
+        <div>
+      {% if msg.event_data.header %}<span>{{msg.event_data.header}}</span>{% endif %}
+          <ul>
+      {% if msg.event_data.name %}<li>Name: {{msg.event_data.name}}{% endif %}
+      {% for member_list in msg.event_data.member_lists %}
+            <li>{{member_list.header}}
+              <ul>
+        {% for member in member_list.members %}
+                <li>{{member | safe}}
+        {% endfor %}
+              </ul>
+      {% endfor %}
+          </ul>
+        </div>
+      {% if msg.attachments %}
+        {% for attach in msg.attachments %}
+        <div>Group photo</div>
+        {{ attachment(attach) }}
+        {% endfor %}
+      {% endif %}
+      {% if debug_messages %}
+        <code>{{msg.body}}</code>
+      {% endif %}
+    {% else %}
+      <div id="msg-{{ msg.id }}" class="msg msg-{{ msg.type }} msg-sender-{{ msg.sender_idx }}">
+      {% if msg.isGroup and msg.type == 'incoming' %}
+        <span class="msg-name">{{ msg.name }}</span>
+      {% endif %}
+      {% if msg.quote %}
+        <div class="msg-quote">
+          <div class="msg-quote-message">
+            <span class="msg-name">{{ msg.quote.name }}</span>
+            <pre>{{ msg.quote.body | safe }}</pre>
+          </div>
+        {% if msg.quote.attachments %}
+          <div class="msg-quote-attach">
+          {% for attach in msg.quote.attachments %}
+            {{ attachment(attach) }}
+          {% endfor %}
+          </div>
+        {% endif %}
+        </div>
+      {% endif %}
+      {% if msg.attachments %}
+        {% for attach in msg.attachments %}
+        {{ attachment(attach) }}
+        {% endfor %}
+      {% endif %}
+      {% if msg.body %}
+        {% if msg.isAllEmoji %}
+        <div class="msg-all-emoji">
+        {% else %}
+        <div>
+        {% endif %}
+          <pre>{{ msg.body | safe }}</pre>
+        </div>
+      {% endif %}
+    {% endif %}
+        <span class="msg-data">{{ message_metadata(msg.date, msg.secure, msg.send_state, msg.isGroup, msg.delivery_receipt_count, msg.read_receipt_count) }}</span>
+    {% if msg.reactions %}
+        <div class="msg-reactions">
+      {% for reaction in msg.reactions %}
+          <span class="msg-reaction"><span class="msg-emoji"><!-- From: {{reaction.recipient_id}} -->{{reaction.what}}</span><span class="msg-reaction-info">From {{reaction.name}} <br>Sent {{reaction.time_sent.strftime(date_time_format)}}<br>Received {{reaction.time_received.strftime(date_time_format)}}</span></span>
+      {% endfor %}
+        </div>
+    {% endif %}
+  {% endif %}
+      </div>
+{% endfor %}
+    </div>
+  </body>
+</html>

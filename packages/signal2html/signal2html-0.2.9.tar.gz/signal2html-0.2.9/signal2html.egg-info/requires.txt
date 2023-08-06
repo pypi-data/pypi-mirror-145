@@ -1,0 +1,16 @@
+emoji
+jinja2
+pure-protobuf
+linkify-it-py
+
+[:python_version == "3.6"]
+dataclasses
+
+[dev]
+green
+black
+isort
+
+[docs]
+
+[tests]
