@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: vcorelib
+Version: 0.2.1
+Summary: A collection of core Python utilities.
+Home-page: https://github.com/vkottler/vcorelib
+Author: Vaughn Kottler
+Author-email: Vaughn Kottler <vaughnkottler@gmail.com>
+Maintainer-email: Vaughn Kottler <vaughnkottler@gmail.com>
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: test
+Requires-Dist: vmklib ; extra == 'test'
+Requires-Dist: pylint ; extra == 'test'
+Requires-Dist: flake8 ; extra == 'test'
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+Requires-Dist: mypy ; extra == 'test'
+Requires-Dist: black ; extra == 'test'
+Requires-Dist: isort ; extra == 'test'
+
+<!--
+    =====================================
+    generator=datazen
+    version=1.14.0
+    hash=3138f95b570f5db446fab8dd851157ea
+    =====================================
+-->
+
+# vcorelib ([0.2.1](https://pypi.org/project/vcorelib/))
+
+[![python](https://img.shields.io/pypi/pyversions/vcorelib.svg)](https://pypi.org/project/vcorelib/)
+![Build Status](https://github.com/vkottler/vcorelib/workflows/Python%20package/badge.svg)
+[![codecov](https://codecov.io/gh/vkottler/vcorelib/branch/master/graphs/badge.svg?branch=master)](https://codecov.io/github/vkottler/vcorelib)
+
+*A collection of core Python utilities.*
+
+
