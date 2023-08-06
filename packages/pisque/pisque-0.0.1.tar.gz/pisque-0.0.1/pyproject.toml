@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pisque"
+version = "0.0.1"
+description = "Install Python packages in an isolated virtual environment"
+authors = ["Tim Heap <tim@timheap.me>"]
+license = "BSD"
+readme = "README.rst"
+
+[tool.poetry.scripts]
+pisque = "pisque:run"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+ConfigArgParse = {version = "^1.5.3", extras = ["yaml"]}
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
