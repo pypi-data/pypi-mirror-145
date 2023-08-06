@@ -1,0 +1,82 @@
+<p align="center">
+    <a href="https://github.com/wemake-services/wemake-python-styleguide" alt="wemake-python-styleguide" >
+        <img src="https://img.shields.io/badge/style-wemake-000000.svg" /></a>
+    <a href="https://beartype.rtfd.io" alt="bear-ified" >
+        <img src="https://raw.githubusercontent.com/beartype/beartype-assets/main/badge/bear-ified.svg" /></a>
+    <a href="https://gitlab.com/braniii/decorit/pipelines" alt="Gitlab pipeline status" >
+        <img src="https://img.shields.io/gitlab/pipeline/braniii/decorit" /></a>
+    <a href="https://gitlab.com/braniii/decorit/-/commits/master">
+        <img alt="coverage report" src="https://gitlab.com/braniii/decorit/badges/master/coverage.svg" /></a>
+    <a href="https://pypi.org/project/decorit" alt="PyPI" >
+        <img src="https://img.shields.io/pypi/v/decorit" /></a>
+    <a href="https://pepy.tech/project/decorit" alt="Downloads" >
+        <img src="https://pepy.tech/badge/decorit" /></a>
+    <a href="https://img.shields.io/pypi/pyversions/decorit" alt="PyPI - Python Version">
+        <img src="https://img.shields.io/pypi/pyversions/decorit" /></a>
+    <a href="https://gitlab.com/braniii/decorit/-/blob/master/LICENSE" alt="PyPI - License" >
+        <img src="https://img.shields.io/pypi/l/decorit" /></a>
+    <a href="https://braniii.gitlab.io/decorit" alt="Doc" >
+        <img src="https://img.shields.io/badge/pdoc3-Documentation-brightgreen" /></a>
+</p>
+
+
+# decorit
+The documentation including examples can be found [here](https://braniii.gitlab.io/decorit).
+
+This is a package with handy ready-to-use decorators for daily scripting and
+maintaining packages. Decorator requests are highly appreciated, simply open
+an issue.
+
+If you want to learn how to write your own decorators I recommand to head over
+to realpython and check out [this article](https://realpython.com/primer-on-python-decorators/).
+In case you are looking for an wrapper to easily write decorators for your own,
+you might checkout [pydecor](https://github.com/mplanchard/pydecor).
+
+This project is in an alpha stage, hence it is neither stable nor ready for
+production.
+> **CAUTION**:
+> Starting from version 1.0.0 API-breaking changes will be made only in major
+> releases. Until then, it can be changed in every minor release
+> (see [changelog](#changelog)).
+
+## Features
+
+Existing decorators:
+- `copy_doc`: copy docstring of existing function
+- `copy_doc_params`: copy parameters of docstring of existing function
+- `deprecated`: print deprecated warning on call
+- `alias`: give multiple names to function, e.g. short and long
+- `logging`: logging call of functions
+- `time`: timeing execution of function
+- `run_once`: run function only once at first call
+
+
+## Usage
+
+### Installation
+
+```python
+python3 -m pip install decorit
+```
+
+### Usage
+
+```python
+import decorit
+
+# start decorating your functions
+```
+
+## Building Documentation:
+
+The doc is based on [pdoc](https://pdoc3.github.io/pdoc/) and can be created by
+simply running `bash create_doc.sh` from the docs folder. For dependencies see in the
+CI action.
+
+## Similar Projects
+- [pydecor](https://github.com/mplanchard/pydecor)
+
+## Credits:
+
+In alphabetical order:
+- [realpython](https://realpython.com/)

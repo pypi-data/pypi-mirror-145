@@ -1,0 +1,17 @@
+beartype>=0.10.4
+
+[all]
+flake8
+pytest
+pdoc3
+pytest-rerunfailures
+pytest-cov
+
+[docs]
+pdoc3
+
+[testing]
+pytest-cov
+pytest
+flake8
+pytest-rerunfailures
