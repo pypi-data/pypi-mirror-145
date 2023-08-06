@@ -1,0 +1,22 @@
+FROM condaforge/mambaforge:4.10.3-4
+LABEL maintainer="Neil Davis <neda@dtu.dk> and Nikola Vasiljevic <niva@dtu.dk>"
+
+WORKDIR /tmp
+
+ADD ./conda-linux-64.lock /tmp
+
+SHELL ["/bin/bash", "-c"]
+
+# Use curl for download due to https://github.com/moby/moby/issues/12361
+RUN mamba install -y curl
+RUN mkdir -p /root/.local/share/pywasp
+RUN curl -s -L https://ndownloader.figshare.com/files/21004074?private_link=4aa56fc692a8a12fe7ed -o /root/.local/share/pywasp/meandgdz_2010_2017_ERA5.nc
+RUN curl -s -L https://ndownloader.figshare.com/files/25546031?private_link=4aa56fc692a8a12fe7ed -o /root/.local/share/pywasp/meandgdz_12sec_2010_2017_ERA5_nn.nc
+RUN curl -s -L https://ndownloader.figshare.com/files/21004077?private_link=4aa56fc692a8a12fe7ed -o /root/.local/share/pywasp/meandgdz_2010_2017_CFSRv2.nc
+RUN curl -s -L https://ndownloader.figshare.com/files/21004086?private_link=4aa56fc692a8a12fe7ed -o /root/.local/share/pywasp/7yr_mean_rhoinp_ERA5.nc
+RUN curl -s -L https://ndownloader.figshare.com/files/21004089?private_link=4aa56fc692a8a12fe7ed -o /root/.local/share/pywasp/10yr_mean_rhoinp_CFSRv1.nc
+RUN curl -s -L https://ndownloader.figshare.com/files/25546028?private_link=4aa56fc692a8a12fe7ed -o /root/.local/share/pywasp/10yr_mean_rhoinp_ERA5.nc
+
+RUN mamba create -n pywasp_env --file /tmp/conda-linux-64.lock && \
+    conda clean -y --all && \
+    rm /tmp/conda-linux-64.lock

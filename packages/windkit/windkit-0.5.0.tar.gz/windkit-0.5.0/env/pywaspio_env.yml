@@ -1,0 +1,32 @@
+name: windkit_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - geopandas >=0.8
+  - lxml =4
+  - matplotlib =3
+  - metpy =0.12
+  - netcdf4 =1.5
+  - numpy >=1.14,<2.0.a0
+  - pandas =1
+  - pyproj >=2.2.2
+  - python >=3.6
+  - rasterio =1
+  - scipy =1
+  - shapely =1
+  - xarray >=0.15
+  # Developer tools
+  - nbval
+  - pip
+  - tqdm=4
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - setuptools-scm
+  # Build tools
+  - gfortran_linux-64
+  - make
+  # Examples
+  - plotnine
+  - jupyter

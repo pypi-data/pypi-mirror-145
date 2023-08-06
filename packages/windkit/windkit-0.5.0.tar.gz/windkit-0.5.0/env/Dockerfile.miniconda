@@ -1,0 +1,20 @@
+FROM continuumio/miniconda3:latest
+LABEL Name=windkit-miniconda
+LABEL maintainer="Nikola Vasiljevic <niva@dtu.dk>"
+
+
+WORKDIR /windkit
+ADD ./ /windkit
+
+
+RUN conda update -y conda && \
+    conda config --add channels conda-forge && \
+    conda env create -f ./env/windkit_env.yml
+
+
+# Make RUN commands use the new environment:
+SHELL ["conda", "run", "-n", "windkit_env", "/bin/bash", "-c"]
+
+RUN pip install -e .
+
+EXPOSE 80

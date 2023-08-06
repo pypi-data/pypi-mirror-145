@@ -1,0 +1,41 @@
+{% set pkg_name = 'windkit' %}
+
+package:
+  name: {{ pkg_name }}
+  version: {{ environ.get('VERSION', '0.0.0') }}
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script: pip install --no-deps .
+  skip: True # [py<36]
+  noarch: python
+
+requirements:
+  run:
+  - cf_xarray >=0.7
+  - dtu_config
+  - geopandas =0.8
+  - lxml =4
+  - matplotlib =3
+  - netcdf4 =1.5
+  - numpy =1.21
+  - packaging
+  - pandas =1
+  - plotly >=5.1.0
+  - pyproj >=2.2.2
+  - python
+  - python-kaleido >=0.2.1
+  - rasterio =1
+  - scipy =1
+  - shapely =1
+  - xarray >=0.15
+  host:
+    - python {{ python }}
+    - setuptools
+    - setuptools_scm
+test:
+  imports:
+    - {{ pkg_name }}

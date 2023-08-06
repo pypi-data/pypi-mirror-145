@@ -1,0 +1,401 @@
+########################################
+# Gitlab CI template for WindKit
+########################################
+
+########################################
+# Order of stages
+########################################
+stages:
+  - format
+  - test
+  - build
+  - deploy
+
+########################################
+# Variables
+########################################
+# Global variables:
+variables:
+  BUILD_PATH: channel
+  PYWASP_ENV: pywasp_env
+  BUILD_ENV: pywasp_build
+  INST_PATH: pywasp_conda
+  PKG_NAME: windkit
+  DOCKER_IMAGE_INTERNAL_API: registry-internal.windenergy.dtu.dk/ram/dockerhub/windkit-fastapi
+  DOCKER_IMAGE_INTERNAL_CONDA: registry-internal.windenergy.dtu.dk/ram/dockerhub/miniconda-windkit
+  DOCKER_IMAGE_EXTERNAL_API: registry.windenergy.dtu.dk/ram-tech-team/dockerhub/windkit-fastapi
+  DOCKER_IMAGE_EXTERNAL_CONDA: registry.windenergy.dtu.dk/ram-tech-team/dockerhub/miniconda-windkit
+
+
+# Comment: if using environmental variables such as
+# DOCS_SSH_KEY make sure they are configured in gitlab CI/CD
+
+########################################
+# Templates
+########################################
+# Test templates:
+.test_template: #
+  stage: test
+  coverage: '/TOTAL.+?(\d+)%/'
+
+#.old_test_template: #
+#  extends: .test_template
+#  script:
+#    - source activate $PYWASP_ENV
+#    - pip install --no-deps --use-feature=in-tree-build ./
+#    - cd test_old
+#    - pytest -v --cov-report term-missing:skip-covered --cov=$PKG_NAME --ignore-glob=*_skipci.py
+
+.slow_test_template: #
+  extends: .test_template
+  script:
+    - source activate $PYWASP_ENV
+    - pip install dtu_config cf-xarray
+    - pip install --no-deps --use-feature=in-tree-build ./
+    - cd test
+    - pytest -v --cov-report term-missing:skip-covered --cov=$PKG_NAME --ignore-glob=*_old.py
+
+# Build templates:
+.conda_build_template:
+  stage: build
+  before_script:
+    - echo $BUILD_ENV
+    - mamba create -n $BUILD_ENV -y -q boa conda-verify setuptools_scm
+    - which python
+    - source deactivate
+    - which python
+    - conda deactivate
+    - conda activate $BUILD_ENV
+    - which python
+    - mkdir $BUILD_PATH
+    - cd $BUILD_PATH
+    - export LOCAL_CONDA_CHANNEL=`pwd`
+    - cd -
+    - export VERSION=`python setup.py --version`
+    - echo $VERSION
+  allow_failure: false
+  artifacts:
+    paths: [$BUILD_PATH/]
+    expire_in: 3 hours
+
+.nix_build_template:
+  extends: .conda_build_template
+  script:
+    - conda mambabuild --output-folder $BUILD_PATH ./recipe
+    - ./CI_helper_scripts/post_build_test_nix.sh
+
+.win_build_template:
+  extends: .conda_build_template
+  script:
+    - conda mambabuild --output-folder $BUILD_PATH ./recipe
+    - ./CI_helper_scripts/post_build_test_win.sh
+
+.docs_build_template:
+  stage: build
+  script:
+    - source activate $PYWASP_ENV
+    - pip install dtu_config cf-xarray
+    - pip install --no-deps --use-feature=in-tree-build ./
+    - cd docs; make html
+  allow_failure: false
+  artifacts:
+    paths: [docs/build/html]
+    expire_in: 1 week
+
+.image_build_internal_template:
+  stage: build
+  before_script:
+    - echo -n $DOCKER_HUB_INTERNAL_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY_INTERNAL
+  after_script:
+    - docker system prune --volumes --all --force
+
+.image_build_external_template:
+  stage: build
+  before_script:
+    - echo -n $DOCKER_HUB_EXTERNAL_TOKEN | docker login -u gitlab-ci-token --password-stdin $CI_REGISTRY_EXTERNAL
+  after_script:
+    - docker system prune --volumes --all --force
+
+# Deploy templates:
+.master_pckg_deploy_template:
+  stage: deploy
+  script:
+    # Do not deploy osx-64 for now
+    #- scp -p -P $CC_PORT $BUILD_PATH/osx-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/osx-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/linux-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/linux-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/win-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/win-64/.
+    - ssh -p $CC_PORT "$CC_USER"@"$CC_HOST" "conda index /home/$CC_USER/repos/develop"
+
+.release_pckg_deploy_template:
+  stage: deploy
+  script:
+    # Do not deploy osx-64 for now
+    #- scp -p -P $CC_PORT $BUILD_PATH/osx-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/open/osx-64/.
+    #- scp -p -P $CC_PORT $BUILD_PATH/osx-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/wasp/osx-64/.
+    #- scp -p -P $CC_PORT $BUILD_PATH/osx-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/osx-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/linux-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/open/linux-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/linux-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/wasp/linux-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/linux-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/linux-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/win-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/open/win-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/win-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/wasp/win-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/win-64/pywasp*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/win-64/.
+    - ssh -p $CC_PORT "$CC_USER"@"$CC_HOST" "conda index /home/$CC_USER/repos/open /home/$CC_USER/repos/wasp/ /home/$CC_USER/repos/develop/"
+
+.release_docs_deploy_template:
+  stage: deploy
+  script:
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - scp -r docs/build/html/* "$DOCS_USER"@"$DOCS_HOST":/www/wasp/$PKG_NAME
+
+########################################
+# Configurations and template modifiers
+########################################
+
+# Branch selectors:
+.feat_branches: &feat_branches
+  except:
+    - master
+    - tags
+    - schedules
+
+.master_branch: &master_branch
+  only:
+    - master
+    - schedules
+  except:
+    - tags
+
+.scheduled_master: &scheduled_master
+  only:
+    - schedules
+
+.rel_branches: &rel_branches
+  only:
+    - tags
+
+.not_feat_branch: &not_feat_branch
+  only:
+    # - master
+    - schedules
+    - tags
+
+.not_master_branch: &not_master_branch
+  except:
+    - master
+
+# OS selectors:
+.linux_docker_mambaforge: &linux_docker_mambaforge
+  image: condaforge/mambaforge:latest
+  tags:
+    - linux-docker
+
+.linux_docker_pywasp_env: &linux_docker_pywasp_env
+  image: nedadtu/pywasp-ci:latest
+  tags:
+    - linux-docker
+
+.windows: &windows
+  tags:
+    - conda
+    - win10
+
+# not mac for now
+#.mac: &mac
+#  tags:
+#    - conda
+#    - macos
+
+# SSH configuration for WAsP Docs:
+.ssh_config_docs: &ssh_config_docs
+  before_script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$DOCS_SSH_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+.ssh_config_conda: &ssh_config_conda
+  before_script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$CC_SSH_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+#######################################
+# Stage: Format
+#######################################
+linux:all:format: # run formatter on all branches
+  stage: format
+  script:
+    - echo `whoami`
+    - source activate $PYWASP_ENV
+    - pre-commit run --all-files
+  <<: *linux_docker_pywasp_env
+
+########################################
+# Stage: Test
+########################################
+
+# All branches run tests:
+win:all:test_slow:
+  needs: ["linux:all:format"]
+  extends: .slow_test_template
+  before_script:
+  - which conda
+  - whoami
+  - echo $PATH
+  - conda info --envs
+  - which activate
+  <<: *windows
+
+linux:all:test_slow:
+  needs: ["linux:all:format"]
+  extends: .slow_test_template
+  <<: *linux_docker_pywasp_env
+
+# no mac for now
+#mac:all:test_slow:
+#  needs: ["linux:all:format"]
+#  extends: .slow_test_template
+#  <<: *mac
+
+# To be removed once test revamp is completed!
+# All branches run old tests:
+# win:all:old_tests:
+#   needs: ["linux:all:format"]
+#   extends: .old_test_template
+#   <<: *windows
+
+# linux:all:old_tests:
+#   needs: ["linux:all:format"]
+#   extends: .old_test_template
+#   <<: *linux_docker_pywasp_env
+
+# mac:all:old_tests:
+#   needs: ["linux:all:format"]
+#   extends: .old_test_template
+#  <<: *mac
+
+########################################
+# Stage: Build
+########################################
+
+# Builds conda package for master and release:
+linux:nofeat:build:
+  extends: .nix_build_template
+  needs: ["linux:all:test_slow"] #, "linux:all:old_tests"]
+  <<: *not_feat_branch
+  <<: *linux_docker_mambaforge
+
+#No mac for now
+#mac:nofeat:build:
+#  extends: .nix_build_template
+#  needs: ["mac:all:test_slow"] #, "mac:all:old_tests"]
+#  <<: *not_feat_branch
+#  <<: *mac
+
+win:nofeat:build:
+  extends: .win_build_template
+  needs: ["win:all:test_slow"] #, "win:all:old_tests"]
+  <<: *not_feat_branch
+  <<: *windows
+
+# Feature branch optional builds
+linux:feat:build:
+  extends: .nix_build_template
+  needs: ["linux:all:test_slow"] #, "linux:all:old_tests"]
+  when: manual
+  allow_failure: true
+  <<: *feat_branches
+  <<: *linux_docker_mambaforge
+
+#no mac for now
+#mac:feat:build:
+#  extends: .nix_build_template
+#  needs: ["mac:all:test_slow"] #, "mac:all:old_tests"]
+#  when: manual
+#  allow_failure: true
+#  <<: *feat_branches
+#  <<: *mac
+
+win:feat:build:
+  extends: .win_build_template
+  needs: ["win:all:test_slow"] #, "win:all:old_tests"]
+  when: manual
+  allow_failure: true
+  <<: *feat_branches
+  <<: *windows
+
+# Build docs only for release branch
+linux:all:build_docs:
+  extends: .docs_build_template
+  <<: *linux_docker_pywasp_env
+
+# Build and push images for every new master
+
+# no mac for now
+#mac:nofeat:build-image-external:
+#  extends: .image_build_external_template
+#  script:
+#    - docker pull $DOCKER_IMAGE_EXTERNAL_API:latest || true
+#    - docker build -t $DOCKER_IMAGE_EXTERNAL_API:latest -f ./env/Dockerfile.api .
+#    - docker push $DOCKER_IMAGE_EXTERNAL_API:latest
+#    - docker pull $DOCKER_IMAGE_EXTERNAL_CONDA:latest || true
+#    - docker build -t $DOCKER_IMAGE_EXTERNAL_CONDA:latest -f ./env/Dockerfile.miniconda .
+#    - docker push $DOCKER_IMAGE_EXTERNAL_CONDA:latest
+#  <<: *not_feat_branch
+#  <<: *mac
+
+#mac:nofeat:build-image-internal:
+#  extends: .image_build_internal_template
+#  script:
+#    - docker pull $DOCKER_IMAGE_INTERNAL_API:latest || true
+#    - docker build -t $DOCKER_IMAGE_INTERNAL_API:latest -f ./env/Dockerfile.api .
+#    - docker push $DOCKER_IMAGE_INTERNAL_API:latest
+#    - docker pull $DOCKER_IMAGE_INTERNAL_CONDA:latest || true
+#    - docker build -t $DOCKER_IMAGE_INTERNAL_CONDA:latest -f ./env/Dockerfile.miniconda .
+#    - docker push $DOCKER_IMAGE_INTERNAL_CONDA:latest
+#  <<: *not_feat_branch
+#  <<: *mac
+########################################
+# Stage: Deploy
+########################################
+
+# # Master branch package deploy:
+# linux:master:deploy:
+#   extends: .master_pckg_deploy_template
+#   #needs: ["linux:nofeat:build", "mac:nofeat:build", "win:nofeat:build"]
+#   needs: ["linux:nofeat:build", "win:nofeat:build"]
+#   when: manual
+#   <<: *ssh_config_conda
+#   <<: *scheduled_master
+#   <<: *linux_docker_mambaforge
+
+# # Release branch package deploy:
+# linux:release:deploy:
+#   extends: .release_pckg_deploy_template
+#   needs: ["linux:nofeat:build", "mac:nofeat:build", "win:nofeat:build"]
+#   needs: ["linux:nofeat:build", "win:nofeat:build"]
+#   <<: *ssh_config_conda
+#   <<: *rel_branches
+#   <<: *linux_docker_mambaforge
+
+# # Release documentation deploy:
+# linux:release:deploy_docs:
+#   extends: .release_docs_deploy_template
+#   needs: ["linux:all:build_docs"]
+#   <<: *ssh_config_docs
+#   <<: *rel_branches
+#   <<: *linux_docker_mambaforge
+
+pages:
+  stage: deploy
+  needs: ["linux:all:build_docs"]
+  script:
+    - mv docs/build/html public/
+  artifacts:
+    paths:
+      - public
+  <<: *feat_branches
+  <<: *linux_docker_mambaforge

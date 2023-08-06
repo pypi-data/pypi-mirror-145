@@ -1,0 +1,16 @@
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8-2020-12-19
+LABEL Name=fastapi-windkit
+LABEL maintainer="Nikola Vasiljevic <niva@dtu.dk>"
+
+WORKDIR /windkit
+ADD ./ /windkit
+
+RUN apt-get update \
+    && apt-get -y install libgdal-dev git grep\
+    && pip install --no-cache-dir GDAL==$(gdal-config --version | awk -F'[.]' '{print $1"."$2}') \
+    && pip install . \
+    && cp ./windkit/all_vars.json /usr/local/lib/python3.8/site-packages/windkit/ \
+    && cd .. \
+    && rm -fr ./windkit
+
+EXPOSE 80

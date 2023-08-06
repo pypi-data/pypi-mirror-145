@@ -1,0 +1,53 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  # PyWAsP and WindKit
+  - appdirs=1
+  - gdal =3
+  - geopandas =0.8
+  - lxml =4
+  - matplotlib =3
+  - metpy =0.12
+  - netcdf4 =1.5
+  - numpy =1.21.2
+  - pandas =1
+  - packaging =21.0
+  - plotly >=5.1.0
+  - pyproj >=2.2.2
+  - rasterio =1
+  - scipy =1
+  - shapely =1
+  - tqdm =4
+  - xarray >=0.15,<1
+  # Build dependencies all
+  - cmake
+  - ninja
+  - nodejs=10
+  - setuptools
+  - setuptools_scm
+  - yarn
+  # Build dependencies unix
+  - c-compiler=1.1 # [unix]
+  - fortran-compiler=1.1 # [unix]
+  # Build dependencies win
+  - libpython  # [win]
+  - m2w64-toolchain  # [win]
+  - m2w64-gcc=5  # [win]
+  - m2w64-gcc-fortran=5  # [win]
+  # Developer dependencies
+  - conda-lock
+  - ipython
+  - jupyter
+  - jupyter-dash
+  - jupyterlab
+  - make
+  - pip
+  - pre-commit
+  - pytest
+  - pytest-cov
+  - recommonmark
+  - sphinx
+  - sphinx_rtd_theme
+  - sphinx-argparse
+  - sphinxcontrib-bibtex
