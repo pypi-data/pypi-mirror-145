@@ -1,0 +1,7 @@
+#!python
+# sltx raw-compile shortcut
+import sltxpkg.heart as sltx
+import sys
+
+sys.argv[0] = 'raw-compile'
+sltx.run(sys.argv)
