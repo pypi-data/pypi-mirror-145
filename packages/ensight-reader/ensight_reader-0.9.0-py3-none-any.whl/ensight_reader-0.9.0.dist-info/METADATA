@@ -1,0 +1,61 @@
+Metadata-Version: 2.1
+Name: ensight-reader
+Version: 0.9.0
+Summary: A pure Python reader for the EnSight Gold format
+Home-page: https://github.com/tkarabela/ensight-reader
+Author: Tomas Karabela
+Author-email: tkarabela@seznam.cz
+License: MIT
+Project-URL: Bug Tracker, https://github.com/tkarabela/ensight-reader/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering
+Classifier: Typing :: Typed
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy (~=1.20)
+
+# ensight-reader
+
+This library provides a pure Python reader for the EnSight Gold data format,
+a common format for results of computational fluid dynamics (CFD) simulations.
+
+It's designed for efficient, selective, memory-mapped access to data from EnSight Gold case --
+something that would be useful when importing the data into other systems.
+
+If you're looking for a more "batteries included" solution, look at
+[`vtkEnSightGoldBinaryReader`](https://vtk.org/doc/nightly/html/classvtkEnSightGoldBinaryReader.html)
+from the VTK library.
+
+### Requirements
+
+- Python 3.7+
+- NumPy
+
+### Example
+
+```python
+import ensightreader
+
+case = ensightreader.read_case("example.case")
+geofile = case.get_geometry_model()
+
+part_names = geofile.get_part_names()                # ["internalMesh", ...]
+part = geofile.get_part_by_name(part_names[0])
+N = part.number_of_nodes
+
+with open(geofile.file_path, "rb") as fp_geo:
+  node_coordinates = part.read_coordinates(fp_geo)  # np.ndarray((N, 3), dtype=np.float32)
+```
+
+
