@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: compenv
+Version: 0.1.0
+Summary: Track information about the execution environment of computations
+License: GPL-3.0-or-later
+Author-email: Christoph Blessing <33834216+cblessing24@users.noreply.github.com>
+Requires-Python: >=3.8
+Project-URL: homepage, https://github.com/sinzlab/compenv
+Description-Content-Type: text/markdown
+Description: # compenv
+        
+        [![Test](https://github.com/cblessing24/compenv/actions/workflows/test.yml/badge.svg)](https://github.com/cblessing24/compenv/actions/workflows/test.yml)
+        [![Lint](https://github.com/cblessing24/compenv/actions/workflows/lint.yml/badge.svg)](https://github.com/cblessing24/compenv/actions/workflows/lint.yml)
+        [![Build](https://github.com/cblessing24/compenv/actions/workflows/build.yml/badge.svg)](https://github.com/cblessing24/compenv/actions/workflows/build.yml)
+        [![Docker](https://github.com/cblessing24/compenv/actions/workflows/docker.yml/badge.svg)](https://github.com/cblessing24/compenv/actions/workflows/docker.yml)
+        
+        Track information about the execution environment of computations.
+        
+        ## Install
+        
+        ```bash
+        pip install compenv
+        ```
+        
+        ## Usage
+        
+        Decorate the auto-populated table on which you want to track the execution environments:
+        
+        ```python
+        from compenv import record_environment
+        from datajoint import Computed, schema
+        
+        schema = schema("my_schema")
+        
+        @record_environment(schema)
+        class MyAutoPopulatedTable(Computed):
+            ...
+        ```
+        
+        After populating the table you can view the generated records in the records table:
+        
+        ```python
+        MyAutoPopulatedTable.records()
+        ```
+
