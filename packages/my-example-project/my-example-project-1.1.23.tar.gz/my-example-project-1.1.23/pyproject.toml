@@ -1,0 +1,22 @@
+[build-system]
+requires = [ "poetry-core>=1.0.0",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "my-example-project"
+version = "v1.1.23"
+description = ""
+authors = [ "Lingling <you@example.com>",]
+[[tool.poetry.packages]]
+include = "my-example-project"
+
+[[tool.poetry.packages]]
+include = "my-example-project/**/*.py"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+poetry-version-plugin = "^0.1.3"
+toml = "^0.10.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
