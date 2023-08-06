@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: snifter
+Version: 0.0.13
+Summary: Listen to and inspect AWS SNS topic data
+Home-page: https://github.com/pyscaffold/pyscaffold/
+Author: Ashton Honnecke
+Author-email: ashton@pixelstub.com
+License: MIT
+Project-URL: Source, https://github.com/ahonnecke/snifter/
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Description-Content-Type: text/x-rst; charset=UTF-8
+Provides-Extra: testing
+License-File: LICENSE.txt
+
+=======
+snifter
+=======
+
+
+    Listen to and inspect AWS SNS topic data
+
+====
+Help
+====
+
+.. code-block:: python
+
+    $ snifter --help
+    usage: snifter [-h] [-p PROFILE] [-d] [-t TOPIC]
+
+    Listen to an SNS topic
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -p PROFILE, --profile PROFILE
+                            AWS profile name
+      -d, --debug           Drop into debugger to inspect message
+      -t TOPIC, --topic TOPIC
+                            SNS topic name
+
+=====
+Login
+=====
+.. image:: https://user-images.githubusercontent.com/419355/161607497-637e13e6-32a2-4d70-8336-9153691d4d61.gif
+   :width: 600px
+
+=========
+Listening
+=========
+.. image:: https://user-images.githubusercontent.com/419355/161607493-9fd60169-0aab-4637-b709-593cf315e6eb.gif
+   :width: 600px
+
+==========================
+Inspecting (with debug on)
+==========================
+.. image:: https://user-images.githubusercontent.com/419355/161607489-40bea93f-a5b3-4056-888b-944916151822.gif
+   :width: 600px
+
+.. code-block:: python
+
+    $ snifter -d
+    Profile was not passed, choose a profile: dev-power
+    Choose topic: tim-manager-events
+    Listening...
+    Listening...
+    Listening...
+    Listening...
+    Listening...
+    Listening...
+    Listening...
+    Listening...
+    Dropping into debugger for inspection
+    Local message variable is 'm'
+    PDB commands: 'c' to continue, 'exit()' to exit
+    (Pdb++)
+    (Pdb++) list
+    143  	                print("PDB commands: 'c' to continue, 'exit()' to exit")
+    144  	                breakpoint()
+    145  	            else:
+    146  	                print(f"Recieved message, {m.body}")
+    147
+    148  ->	            m.delete()
+    149
+    150  	        print("Listening...")
+    151  	        sleep(1)
+    152
+    153
+    (Pdb++) print(m.body)
+
+
