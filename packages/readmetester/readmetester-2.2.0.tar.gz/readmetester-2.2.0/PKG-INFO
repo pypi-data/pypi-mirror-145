@@ -1,0 +1,122 @@
+Metadata-Version: 2.1
+Name: readmetester
+Version: 2.2.0
+Summary: Parse, test, and assert RST code-blocks
+License: MIT
+Author: jshwi
+Author-email: stephen@jshwisolutions.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Pygments (>=2.8.1,<3.0.0)
+Requires-Dist: object-colors (>=2.0.0,<3.0.0)
+Requires-Dist: pyproject-parser (>=0.4.3,<0.5.0)
+Requires-Dist: restructuredtext-lint (>=1.4.0,<2.0.0)
+Description-Content-Type: text/x-rst
+
+READMETester
+============
+.. image:: https://github.com/jshwi/readmetester/workflows/build/badge.svg
+    :target: https://github.com/jshwi/readmetester/workflows/build/badge.svg
+    :alt: build
+.. image:: https://img.shields.io/badge/python-3.8-blue.svg
+    :target: https://www.python.org/downloads/release/python-380
+    :alt: python3.8
+.. image:: https://img.shields.io/pypi/v/readmetester
+    :target: https://img.shields.io/pypi/v/readmetester
+    :alt: pypi
+.. image:: https://codecov.io/gh/jshwi/readmetester/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/jshwi/readmetester
+    :alt: codecov.io
+.. image:: https://img.shields.io/badge/License-MIT-blue.svg
+    :target: https://lbesson.mit-license.org/
+    :alt: mit
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+    :target: https://github.com/psf/black
+    :alt: black
+
+Parse and test README.rst Python code-blocks
+
+**Installation**
+
+.. code-block:: console
+
+    $ pip install readmetester
+..
+
+Code blocks need to begin with
+
+``.. code-block:: python``
+
+followed by a blank line
+
+End a code block with another blank line
+
+**Usage**
+
+``readmetester [-h] file``
+
+If a README.rst file is present in the current working directory it will be used if no arguments are provided
+
+.. code-block:: console
+
+    $ readmetester README.rst
+..
+
+**Documenting**
+
+Documented code needs to be indented
+
+Python code begins with ``">>> "``
+
+.. note::
+
+    The length of the string is 4 including the whitespace at the end
+..
+
+Expected output can be single quoted or unquoted (no double quotes)
+
+.. code-block:: RST
+
+    .. code-block:: python
+
+        >>> print("Hello, world!")
+        'Hello, world!'
+
+Continuation lines begin with ``"... "``
+
+.. code-block:: RST
+
+    .. code-block:: python
+
+        >>> n = [
+        ...     "zero",
+        ...     "one",
+        ...     "two",
+        ... ]
+        >>> for c, i in enumerate(n):
+        ...     print(c, i)
+        0 zero
+        1 one
+        2 two
+
+
+Styles can be configured in a pyproject.toml file
+
+.. code-block:: toml
+
+    [tool.readmetester]
+    style = "monokai"
+
+
+Using `readmetester` API
+
+.. code-block:: python
+
+    >>> import readmetester
+    >>> readmetester.main()
+    'recursive exec not implemented'
+
