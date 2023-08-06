@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: video-dataloader-for-pytorch
+Version: 0.1.post1
+Summary: A small example package
+Home-page: https://github.com/youhs4554/video-dataloader-pytorch.git
+Download-URL: https://github.com/youhs4554/video-dataloader-pytorch/archive/refs/tags/v0.1-1.tar.gz
+Author: hossay
+Author-email: youhs4554@gmail.com
+License: UNKNOWN
+Keywords: video tool,pytorch
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: torch
+Requires-Dist: torchvision
+Requires-Dist: scikit-learn
+Requires-Dist: decord
+Requires-Dist: matplotlib
+Requires-Dist: einops
+Requires-Dist: natsort
+Requires-Dist: pandas
+
+This is video dataloader for pytorch project
+
+
