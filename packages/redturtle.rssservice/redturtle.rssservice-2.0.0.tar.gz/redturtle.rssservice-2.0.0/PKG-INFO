@@ -1,0 +1,179 @@
+Metadata-Version: 2.1
+Name: redturtle.rssservice
+Version: 2.0.0
+Summary: An add-on for Plone
+Home-page: https://github.com/collective/redturtle.rssservice
+Author: RedTurtle
+Author-email: sviluppo@redturtle.it
+License: GPL version 2
+Project-URL: PyPI, https://pypi.python.org/pypi/redturtle.rssservice
+Project-URL: Source, https://github.com/collective/redturtle.rssservice
+Project-URL: Tracker, https://github.com/collective/redturtle.rssservice/issues
+Description: .. This README is meant for consumption by humans and pypi. Pypi can render rst files so please do not use Sphinx features.
+           If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
+           This text does not appear on pypi or github. It is a comment.
+        
+        =====================
+        Redturtle RSS Service
+        =====================
+        
+        This package add support to retrieve RSS feeds from external sources.
+        
+        Usage
+        =====
+        
+        
+        RSS block
+        ---------
+        
+        There is a service "**@rss_mixer_data**" that accept a block id, and return a list of sorted feeds by date.
+        
+        This service only accept GET calls and accept following parameters:
+        
+        - block: the id of the rssBlock with the feeds
+        
+        The endpoint should be called on the context that has the rssBlock that you want to show.
+        
+        
+        For example::
+        
+            > curl -i -X GET http://localhost:8080/Plone/example-page/@rss_mixer_data?block=123456789 -H 'Accept: application/json' -H 'Content-Type: application/json'
+        
+        
+        Will reply with something like this::
+        
+            [
+                {
+                    "source": "Foo site",
+                    "contentSnippet": "some description 2",
+                    "title": "Foo News 2",
+                    "date": "Thu, 1 Apr 2020 10:44:01 +0200",
+                    "url": "http://test.com/foo-news-2"
+                },
+                {
+                    "source": "",
+                    "contentSnippet": "some description 2",
+                    "title": "Bar News 2",
+                    "date": "Thu, 1 Apr 2020 10:44:01 +0200",
+                    "url": "http://test.com/bar-news-2"
+                },
+                {
+                    "source": "Foo site",
+                    "contentSnippet": "some description",
+                    "title": "Foo News 1",
+                    "date": "Thu, 2 Apr 2020 10:44:01 +0200",
+                    "url": "http://test.com/foo-news-1"
+                },
+                {
+                    "source": "",
+                    "contentSnippet": "some description",
+                    "title": "Bar News 1",
+                    "date": "Thu, 2 Apr 2020 10:44:01 +0200",
+                    "url": "http://test.com/bar-news-1"
+                }
+            ]
+        
+        This endpoint works with `volto-rss-block <https://github.com/RedTurtle/volto-rss-block/>`_ plugin.
+        
+        Installation
+        ============
+        
+        Install redturtle.rssservice by adding it to your buildout::
+        
+            [buildout]
+        
+            ...
+        
+            eggs =
+                redturtle.rssservice
+        
+        
+        and then running ``bin/buildout``
+        
+        
+        Contribute
+        ==========
+        
+        - Issue Tracker: https://github.com/RedTurtle/redturtle.rssservice/issues
+        - Source Code: https://github.com/RedTurtle/redturtle.rssservice
+        
+        
+        Support
+        =======
+        
+        If you are having issues, please let us know.
+        We have a mailing list located at: sviluppo@redturtle.it
+        
+        
+        License
+        =======
+        
+        The project is licensed under the GPLv2.
+        
+        
+        Contributors
+        ============
+        
+        - RedTurtle, sviluppo@redturtle.it
+        
+        
+        Changelog
+        =========
+        
+        2.0.0 (2022-04-07)
+        ------------------
+        
+        - Remove unused and unsafe endpoint.
+          [cekk]
+        - Now @rss_mixer_data accept GET calls (see README for more infos).
+          [cekk]
+        
+        
+        1.0.3 (2022-03-22)
+        ------------------
+        
+        - Allow to use cateogry in rss feed.
+          [lucabel]
+        
+        
+        1.0.2 (2022-03-04)
+        ------------------
+        
+        - Allow dates with wrong date format (eg. a date range)
+          [lucabel]
+        
+        
+        1.0.1 (2021-12-02)
+        ------------------
+        
+        - Fix python version in setup.py
+          [cekk]
+        
+        1.0.0 (2021-10-13)
+        ------------------
+        
+        - Add @rss_mixer_data endpoint.
+          [cekk]
+        
+        
+        0.1.0 (2020-04-08)
+        ------------------
+        
+        - Initial release.
+          [cekk]
+        
+Keywords: Python Plone
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Plone
+Classifier: Framework :: Plone :: Addon
+Classifier: Framework :: Plone :: 5.2
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: GNU General Public License v2 (GPLv2)
+Requires-Python: >3.6
+Provides-Extra: test
