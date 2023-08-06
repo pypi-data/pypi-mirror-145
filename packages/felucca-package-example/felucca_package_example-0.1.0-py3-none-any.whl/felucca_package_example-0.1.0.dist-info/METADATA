@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: felucca-package-example
+Version: 0.1.0
+Summary: 
+Keywords: felucca
+Author: franalgaba
+Author-email: f.algaba@outlook.es
+Requires-Python: >=3.7.2,<3.10
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: cairo-nile (>=0.4.0,<0.5.0)
+Requires-Dist: ecdsa (>=0.17.0,<0.18.0)
+Requires-Dist: fastecdsa (>=2.2.3,<3.0.0)
+Requires-Dist: starknet.py (>=0.1.8-alpha.0,<0.2.0)
+Requires-Dist: sympy (>=1.10,<2.0)
