@@ -1,0 +1,138 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import ndimage
+from .montage import montage
+
+def prepare_array(x, rgb=False):
+    """
+    Method to ensure the array is a properly formatted 2D matrix 
+
+    """
+    if x is None:
+        return x
+
+    x = np.squeeze(x.copy())
+
+    if x.ndim == 4:
+        x = x[0]
+
+    if x.ndim == 3 and not rgb:
+        x = x[..., 0]
+
+    return x
+
+def imshow(dat, lbl=None, radius=1, vm=None, title=None, figsize=(7, 7), rgb=None, **kwargs):
+    """
+    Method to display dat with lbl overlay if provided
+
+    :params
+
+      (np.array) dat : 2D dat array of format H x W or H x W x C
+      (np.array) lbl : 2D lbl array of format H x W or H x W x N
+
+      (int) radius : thickness of outline for overlays 
+      (int) vm[0] : lower range of visualized values
+      (int) vm[1] : upper range of visualized values
+
+    """
+    if rgb is None:
+        rgb = dat.shape[-1] == 3
+
+    x = montage(dat, rgb=rgb)[0]
+
+    # --- Overlay if lbl also provided
+    if lbl is not None:
+        m = montage(lbl)[0]
+        m = m.astype('uint8')
+        if m.max() > 0:
+
+            perim = lambda msk, radius : ndimage.binary_dilation(msk, iterations=radius) ^ (msk > 0)
+            masks = [perim(m == c, radius) for c in range(m.max())]
+            masks = np.stack(masks, axis=-1)
+            x = imoverlay(x, masks, rgb, vm) 
+
+    # --- Display image
+    plt.figure(figsize=figsize)
+    plt.axis('off')
+
+    k = {}
+    k['cmap'] = plt.cm.gist_gray if not rgb else None 
+    k['vmin'] = None if vm is None else vm[0]
+    k['vmax'] = None if vm is None else vm[1]
+
+    plt.imshow(x, **{**k, **kwargs})
+
+    if title is not None:
+        plt.title(title)
+
+def imoverlay(dat, lbl, rgb, vm=None):
+    """
+    Method to superimpose lbl on 2D image
+
+    :params
+
+      (np.array) dat : 2D dat array of format H x W or H x W x C
+      (np.array) lbl : 2D lbl array of format H x W or H x W x N
+
+    """
+    dat = prepare_array(dat, rgb)
+    lbl = np.stack([prepare_array(lbl[..., i]) for i in range(lbl.shape[-1])], axis=-1)
+
+    # --- Prepare dat 
+    if dat.ndim  == 2:
+        dat = gray_to_rgb(dat, vm=vm)
+
+    # --- Prepare lbl 
+    if lbl.ndim  == 2:
+        lbl = np.expand_dims(lbl, axis=2)
+
+    lbl = lbl.astype('bool')
+
+    # --- Overlay lbl(s)
+    colors = [
+        [0, 1, 0], 
+        [1, 0, 1], 
+        [1, 1, 0], 
+        [0, 1, 1], 
+        [0.5, 0, 0],
+        [0, 0.5, 0],
+        [0, 0, 0.5]]
+    overlay = []
+
+    for channel in range(3):
+        layer = dat[..., channel]
+
+        for i in range(lbl.shape[2]):
+            layer[lbl[..., i]] = colors[i % len(colors)][channel]
+
+        overlay.append(layer)
+
+    return np.stack(overlay, axis=-1)
+
+def gray_to_rgb(dat, max_val=1, percentile=0, vm=None):
+    """
+    Method to convert H x W grayscale array to H x W x 3 RGB grayscale
+
+    :params
+
+    (int) max_val : maximum value in output array
+
+      if max_val == 1, output is assumed to be float32
+      if max_val >  1, output is assumed to be uint8 (RGB)
+
+    (int) percentile : lower bound to set to 0
+
+    """
+    if vm is None:
+        vmin, vmax = np.percentile(dat, percentile), np.percentile(dat, 100 - percentile)
+    else:
+        vmin, vmax = vm[0], vm[1]
+
+    den = vmax - vmin 
+    den = 1 if den == 0 else den
+    dat = ((dat - vmin) / den).clip(min=0, max=1) * max_val
+    dat = np.stack([dat] * 3, axis=-1)
+
+    dtype = 'float32' if max_val == 1 else 'uint8'
+
+    return dat.astype(dtype)
