@@ -1,0 +1,289 @@
+stages:
+  - images
+  - current
+  - compat
+  - upcoming
+  - archives
+
+.base:
+  image: registry.heptapod.net:443/mercurial/hg-git/ci/$CI_COMMIT_HG_BRANCH:hg-$HG-py$PYTHON
+  timeout: 10m
+  services:
+    - name: registry.heptapod.net:443/mercurial/hg-git/git-server
+      alias: git-server
+  variables:
+    CI_TEST_GIT_NETWORKING: 1
+  script:
+    - adduser -D test
+    - chown -R test *
+    - su test -c contrib/ci.sh
+    - mv tests/.coverage coverage-$CI_JOB_ID
+  artifacts: &test-artifacts
+    expire_in: 1 day
+    paths:
+      - coverage-$CI_JOB_ID
+    reports:
+      junit: tests-$CI_JOB_ID.xml
+
+# First, test with the latest and greatest Mercurial, across the
+# versions Python supported. We generally assume that if e.g. CPython
+# 3.6 and 3.9 work, anything in between will work as well.
+Latest:
+  extends: .base
+  stage: current
+  parallel:
+    matrix:
+      - &latest-versions
+        PYTHON:
+          - "3.6"
+          - "3.10"
+        HG:
+          - "6.1"
+
+# This is the authoritative list of versions of Mercurial that this
+# extension is supported and tested with; it should be kept in sync
+# with __init__.py.
+#
+# Versions prior to the version that ships in the latest Ubuntu LTS
+# release (4.5.3 for 18.04; 5.3.1 for 20.04) may be dropped if they
+# are older than a year and interfere with new development. The latest
+# released minor version should be listed for each major version;
+# earlier minor versions are not needed.
+Supported:
+  extends: .base
+  stage: compat
+  retry: 1
+  parallel:
+    matrix:
+      - &supported-versions
+        PYTHON: "3.9"
+        HG:
+          - "5.2"
+          - "5.3"
+          - "5.4"
+          - "5.5"
+          - "5.6"
+          - "5.7"
+          - "5.8"
+          - "5.9"
+          - "6.0"
+
+# Test that it is possible to use and run hg-git on versions of Alpine
+# that include Dulwich, and with the oldest Dulwich supported.
+Alpine:
+  stage: compat
+  image:
+    name: alpine:$ALPINE
+  script:
+    - apk add gnupg git unzip openssh mercurial py3-pip py3-pygments
+    - |
+      if test -z "$DULWICH"
+      then
+        apk add py3-dulwich
+      else
+        apk add build-base python3-dev
+        pip3 install dulwich==$DULWICH
+      fi
+    - pip3 install coverage
+    - hg --config extensions.hggit=./hggit debuginstall
+    - hg --config extensions.hggit=./hggit version -v
+    - adduser -D test
+    - chown -R test *
+    - PYTHON=3 su test -c contrib/ci.sh
+    - mv tests/.coverage coverage-$CI_JOB_ID
+  artifacts: *test-artifacts
+  parallel:
+    matrix:
+      - ALPINE: "3.11"
+        DULWICH:
+          - "0.19.3"
+          - "0.19.11"
+          - "0.20.3"
+          - "0.20.5"
+      - ALPINE:
+        - "3.14"
+        - "3.15"
+
+# Test that the tests pass against the current branches
+Development:
+  extends: .base
+  stage: upcoming
+  rules: &upcoming-rules
+    # disallow failures for scheduled builds, so we get a nice
+    # notification
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+      allow_failure: false
+    # but we don't want to prevent merging unrelated work, so allow
+    # failures for normal builds -- all of this is to avoid a detached
+    # build for merge requests
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      allow_failure: true
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+      allow_failure: true
+  parallel:
+    matrix:
+      - &development-versions
+        PYTHON:
+          - "3.10"
+        HG:
+          - "stable"
+          - "default"
+
+# Test Alpine edge, which usually includes the very latest version of
+# Git & Dulwich
+Dependencies:
+  extends: Alpine
+  stage: upcoming
+  image:
+    name: alpine:edge
+  rules: *upcoming-rules
+  parallel:
+
+Coverage:
+  stage: .post
+  image: python:alpine
+  when: always
+  allow_failure: true
+  coverage: /^TOTAL.+?([.0-9]+\%)$/
+  script:
+    - pip install coverage
+    - coverage combine coverage-*
+    - coverage xml --ignore-errors
+    - coverage html --ignore-errors
+    - coverage report
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - htmlcov
+    reports:
+      cobertura: coverage.xml
+
+# Build images for the above tasks; this should be a scheduled job, as
+# it is quite unnecessary to run on every invocation.
+CI images:
+  stage: images
+  tags:
+    - container-registry-push
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_BUILD_IMAGES == "1"'
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [ "" ]
+  script:
+    - |
+      cat > /kaniko/.docker/config.json <<EOF
+      {
+        "auths": {
+          "$CI_REGISTRY": {
+            "username": "$CI_REGISTRY_USER",
+            "password": "$CI_REGISTRY_PASSWORD"
+          }
+        }
+      }
+      EOF
+    - >
+      /kaniko/executor --context $CI_PROJECT_DIR
+      --dockerfile $CI_PROJECT_DIR/contrib/docker/Dockerfile.alpine
+      --build-arg PYTHON=$PYTHON
+      --build-arg HG=$HG
+      --single-snapshot
+      --cleanup
+      --destination registry.heptapod.net:443/mercurial/hg-git/ci/$CI_COMMIT_HG_BRANCH:hg-$HG-py$PYTHON
+  parallel:
+    matrix:
+      - *latest-versions
+      - *supported-versions
+      - *development-versions
+
+# Builds the image used by tests/test-networking.t
+Git service image:
+  stage: images
+  tags:
+    - container-registry-push
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: '$CI_BUILD_IMAGES == "1"'
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [ "" ]
+  timeout: 5m
+  script:
+    - mkdir -p /kaniko/.docker /kaniko/ssl/certs
+    - |
+      cat > /kaniko/.docker/config.json <<EOF
+      {
+        "auths": {
+          "$CI_REGISTRY": {
+            "username": "$CI_REGISTRY_USER",
+            "password": "$CI_REGISTRY_PASSWORD"
+          }
+        }
+      }
+      EOF
+    - |
+      cat > /kaniko/ssl/certs/Heptapod_Tooling_CA.crt << EOF
+      -----BEGIN CERTIFICATE-----
+      MIIDfjCCAmagAwIBAgIUZ7t3vKco1mvle/l1TfTRooLWduMwDQYJKoZIhvcNAQEL
+      BQAwJzElMCMGA1UEAwwcSGVwdGFwb2QgSW50ZXJuYWwgVG9vbGluZyBDQTAeFw0y
+      MDExMzAyMTMzMTBaFw0zMDExMjgyMTMzMTBaMCcxJTAjBgNVBAMMHEhlcHRhcG9k
+      IEludGVybmFsIFRvb2xpbmcgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+      AoIBAQCnxPEwRwppDzuHGccnfdVpppX5s1mWlWl1FqiqdtnJWrkTzKiolJurZXms
+      Kt6iEB75yMD9r6KiTSN0vRcaH+qhZ2rA/frfKpkhSShp6TZke87tRdLufgUNxVNt
+      ObAWaXEV2qePRHzLwx016uc/TwrdBvBqjPrRv2gwXLk9gadIPmAMVqSZE9I4qKru
+      1RciZ2J2R8zDcJuZ4Pi/uQi3XGD0Tm0iVyjIO5zou3+5R6khx4tBcZQX+XZD/usU
+      10emcZoFHIkc0+uKos+AEB1CBkXCYZDy2G3u8+tYXvNQaMk12Y31/Fv1LdjGwtYG
+      qEi9k05x/nxOwSK/idPPSeeogcdxAgMBAAGjgaEwgZ4wHQYDVR0OBBYEFNnphf7w
+      hzIVfEaGTRgGA+COTFfvMGIGA1UdIwRbMFmAFNnphf7whzIVfEaGTRgGA+COTFfv
+      oSukKTAnMSUwIwYDVQQDDBxIZXB0YXBvZCBJbnRlcm5hbCBUb29saW5nIENBghRn
+      u3e8pyjWa+V7+XVN9NGigtZ24zAMBgNVHRMEBTADAQH/MAsGA1UdDwQEAwIBBjAN
+      BgkqhkiG9w0BAQsFAAOCAQEAmW/80xxQBSQdcEYw3euGDsK72ENztS4P4x12H55j
+      lULg7DaoWgGDkIIBuhCK+5Y3wzhQyvsBrSB+LcVyVLQbS6yIIgzBVZPf/ZPMrC5x
+      HjwXKGyZQFqFR/NGxVMmLidHXADF28EqFqSfdfWtdntnUL34hzAHZQkGn+d5S/d3
+      8qze9BWueo213tLCBtZxoTpneJDhq/fW++5BTagipzwpsmT26ycJ+k4uBwbkcnBo
+      JP7Hk/I4BC3bZg8dDQShpPCGRlp9b8R0XSGoOoFRGW6z3nhh88kcdFdoPiMgEOuq
+      FDmDjn14Jct6uFGIHEadGvenxDLivFxV+UnSS8u6tVwYTw==
+      -----END CERTIFICATE-----
+      EOF
+    - >
+      /kaniko/executor --context $CI_PROJECT_DIR/contrib/docker/git-server
+      --dockerfile $CI_PROJECT_DIR/contrib/docker/git-server/Dockerfile
+      --single-snapshot
+      --cleanup
+      --destination registry.heptapod.net:443/mercurial/hg-git/git-server
+
+Wheels:
+  image: python
+  timeout: 15m
+  stage: archives
+  rules:
+    # run on tags
+    - if: $CI_COMMIT_TAG
+    # run on protected references
+    - if: '$CI_COMMIT_REF_PROTECTED == "true"'
+    # and when explicitly requested
+    - if: '$CI_BUILD_ARCHIVES == "1"'
+  script:
+    - |
+      cat > ~/.pypirc <<EOF
+      [distutils]
+      index-servers =
+        gitlab
+
+      [gitlab]
+      repository = ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi
+      username = gitlab-ci-token
+      password = ${CI_JOB_TOKEN}
+      EOF
+    - pip install mercurial twine build
+    - >-
+      test -n "${CI_COMMIT_TAG}" &&
+      export SETUPTOOLS_SCM_PRETEND_VERSION="${CI_COMMIT_TAG}"
+    - pyproject-build
+    - >-
+      twine upload --disable-progress-bar --verbose --skip-existing
+      --repository gitlab dist/*
+  artifacts:
+    paths:
+      - wheelhouse

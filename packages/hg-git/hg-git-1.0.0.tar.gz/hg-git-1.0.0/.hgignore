@@ -1,0 +1,14 @@
+syntax: re
+^hggit/__version__\.py$
+
+syntax: glob
+*.pyc
+tests/*.err
+tests/.testtimes
+build
+dist
+*.egg-info
+*.orig
+\#*\#
+.\#*
+.coverage
