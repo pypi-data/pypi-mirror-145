@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: shazamctl
+Version: 0.0.0a0
+Summary: Open-source Shazam CLI
+License: ISC
+Author: Alexander Pushkov
+Author-email: alexander@notpushk.in
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+
+# shazamctl
+
+**shazamctl is not released yet. Install it from Git:**
+
+```sh
+pipx install git+https://gitlab.com/notpushkin/shazamctl
+```
+
+## Usage
+
+```
+$ shazamctl recognize path/to/rickroll.mp3
+At 0:00:10: Never Gonna Give You Up by Rick Astley
+```
+
+```
+$ shazamctl recognize path/to/1h_hardbass_mix.mp3 --multiple
+At 0:00:16: Russian Vodka by XS Project
+At 0:03:21: ...
+```
+
+```
+$ shazamctl listen
+Not implemented... yet
+```
+
