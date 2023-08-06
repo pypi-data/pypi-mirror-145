@@ -1,0 +1,20 @@
+{% load i18n %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <form class="actions-form" method="post">
+                {% csrf_token %}
+                <h3>Are you sure ?</h3>
+                <p class="text-muted">{% trans "Are you sure you want to delete the selected admin info? All of the following objects and their related items will be deleted" %}</p>
+                <h2>{% translate 'Summary' %}</h2>
+                <p>
+                    {% for object in content %}
+                        {{ object }}
+                    {% endfor %}
+                </p>
+                <button class="btn btn-primary" type="submit">{% translate 'Confirm' %}</button>
+                <a class="btn btn-danger" href="{{ next }}">{% trans "Cancel" %}</a>
+            </form>
+        </div>
+    </div>
+</div>
