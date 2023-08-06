@@ -1,0 +1,98 @@
+.facetgroup .facet-content {
+  display: none;
+ }
+
+div#facet_filterbox h3.boxTitle,
+div#facet_filter h3.boxTitle{
+  font-size: 110%; /* override div.well / bootstrap style */
+  border-bottom: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3em;
+}
+
+a.remove-all-filters{
+  /*font-size: 90%
+  color:#606060;*/
+  text-decoration:none;
+ }
+
+.applied-filter-title{
+ margin-bottom:3px;
+ display : inline-block;
+ }
+
+
+.remove-all-filters,
+.applied-filter-title{
+ margin-bottom:2px;
+ display : inline-block;
+ }
+
+div.applied_facets p {
+  float: left;
+  margin-right: 1em;
+}
+
+a.facet-unapply span.badge {
+  font-weight: normal;
+ }
+
+a.facet-unapply{
+  text-decoration:none;
+}
+
+ul.facet-values{
+ margin-bottom:3px;
+}
+
+li.facetitem{
+ margin: 1px 0 1px 7px;
+}
+
+.facetgroup form{
+ margin: 3px 0;
+}
+
+div.facet-title button{
+ width: 99%;
+ text-align: left;
+ cursor: pointer;
+}
+
+div.facet{
+ border : none;
+ box-shadow: none; /* override orbui style */
+ max-height: %(facet_vocabMaxHeight)s;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+div.facet ul{
+ list-style-type: none;
+ margin-left: 10px;
+}
+
+#facet-filter{
+ margin : 0 0 10px;
+ }
+
+.facet-title.selected button, .badge-info {
+  background : #0088CC;
+  color: #fff;
+}
+
+.badge-info a {
+  color: #000;
+  font-weight: normal;
+}
+
+select.error,
+textarea.error,
+input.error,
+select.error:focus,
+textarea.error:focus,
+input.error:focus{
+ color:red;
+ border:1px solid red;
+}
