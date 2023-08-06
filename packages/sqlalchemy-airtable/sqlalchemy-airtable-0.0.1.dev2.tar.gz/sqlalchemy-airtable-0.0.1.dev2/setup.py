@@ -1,0 +1,140 @@
+import os
+import sys
+from pathlib import Path
+from shutil import rmtree
+from typing import List, Tuple
+
+from setuptools import Command, find_packages, setup
+
+# -----------------------------------------------------------------------------
+
+DESCRIPTION = "Python DB-API and SQLAlchemy interface for Airtable."
+VERSION = "0.0.1.dev2"
+
+# -----------------------------------------------------------------------------
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+# read the contents of your README file
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+long_description_content_type = "text/markdown; charset=UTF-8; variant=GFM"
+
+# -----------------------------------------------------------------------------
+
+
+class BaseCommand(Command):
+    user_options: List[Tuple[str, str, str]] = []
+
+    @staticmethod
+    def status(s: str) -> None:
+        """Prints things in bold."""
+        print("\033[1m{0}\033[0m".format(s))  # noqa: T001
+
+    def system(self, command: str) -> None:
+        os.system(command)  # noqa: S605
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+
+class BuildCommand(BaseCommand):
+    """Support setup.py building."""
+
+    description = "Build the package."
+
+    def run(self):
+        try:
+            self.status("Removing previous builds…")
+            rmtree(os.path.join(here, "dist"))
+        except OSError:
+            pass
+
+        self.status("Building Source and Wheel (universal) distribution…")
+        self.system("{0} -m build --sdist --wheel .".format(sys.executable))
+
+        self.status("Checking wheel contents…")
+        self.system("check-wheel-contents dist/*.whl")
+
+        self.status("Running twine check…")
+        self.system("{0} -m twine check dist/*".format(sys.executable))
+
+
+class UploadTestCommand(BaseCommand):
+    """Support uploading to test PyPI."""
+
+    description = "Upload the package to the test PyPI."
+
+    def run(self):
+        self.status("Uploading the package to PyPi via Twine…")
+        self.system(
+            "twine upload --repository-url https://test.pypi.org/legacy/ dist/*"
+        )
+
+
+class UploadCommand(BaseCommand):
+    """Support uploading to PyPI."""
+
+    description = "Upload the package to PyPI."
+
+    def run(self):
+        self.status("Uploading the package to PyPi via Twine…")
+        self.system("twine upload dist/*")
+
+        self.status("Pushing git tags…")
+        self.system("git tag v{0}".format(VERSION))
+        self.system("git push --tags")
+
+
+# -----------------------------------------------------------------------------
+
+setup(
+    name="sqlalchemy-airtable",
+    version=VERSION,
+    description=DESCRIPTION,
+    long_description=long_description,
+    long_description_content_type=long_description_content_type,
+    author="Alex Rothberg",
+    author_email="agrothberg@gmail.com",
+    url="https://github.com/cancan101/airtable-db-api",
+    packages=find_packages(exclude=("tests",)),
+    entry_points={
+        "sqlalchemy.dialects": [
+            "airtable = airtabledb.dialect:APSWAirtableDialect",
+        ],
+        "shillelagh.adapter": [
+            "airtable = airtabledb.adapter:AirtableAdapter",
+        ],
+        "superset.db_engine_specs": [
+            "airtable = airtabledb.db_engine_specs:AirtableEngineSpec"
+        ],
+    },
+    install_requires=(
+        "pyairtable",
+        "shillelagh >= 1.0.6",
+        "sqlalchemy >= 1.3.0",
+        "typing-extensions",
+    ),
+    license="MIT",
+    classifiers=[
+        # Trove classifiers
+        # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+        "Development Status :: 2 - Pre-Alpha",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: Implementation :: CPython",
+    ],
+    # $ setup.py publish support.
+    cmdclass={
+        "buildit": BuildCommand,
+        "uploadtest": UploadTestCommand,
+        "upload": UploadCommand,
+    },
+)
