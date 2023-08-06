@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: rigidbodyfit
+Version: 0.13
+Summary: Align biomolecular structures with densities
+Home-page: https://gitlab.com/cblau/rigidbodyfit
+Author: Christian Blau
+Author-email: cblau.mail@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://gitlab.com/cblau/rigidbodyfit/issues
+Keywords: molecular dynamics,GROMACS
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: COPYING
+
+# Rigid body fit
+
+Align a biolmolecule structure to a density.
+
+## Installing and running
+
+Install the latest release from the python package manager
+
+```bash
+pip3 install rigidbodyfit
+```
+
+Then run it
+
+```bash
+rigid-body-fit
+```
+
+## Installing and running from source (if you must)
+
+Running directly from the shell
+
+```bash
+./rigid-body-fit.py
+```
+
+## Author
+
+Christian Blau
+
+
