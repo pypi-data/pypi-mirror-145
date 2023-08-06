@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: img-processing-dio
+Version: 0.0.1
+Summary: Projeto DIO
+Home-page: https://github.com/thiagosouzalink/cricao-pacote-processamento-image-dio.git
+Author: Thiago Souza
+Author-email: thiagolsmail@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: bleach (==4.1.0)
+Requires-Dist: certifi (==2021.10.8)
+Requires-Dist: charset-normalizer (==2.0.12)
+Requires-Dist: commonmark (==0.9.1)
+Requires-Dist: cycler (==0.11.0)
+Requires-Dist: docutils (==0.18.1)
+Requires-Dist: fonttools (==4.31.2)
+Requires-Dist: idna (==3.3)
+Requires-Dist: imageio (==2.16.1)
+Requires-Dist: importlib-metadata (==4.11.3)
+Requires-Dist: keyring (==23.5.0)
+Requires-Dist: kiwisolver (==1.4.2)
+Requires-Dist: matplotlib (==3.5.1)
+Requires-Dist: networkx (==2.7.1)
+Requires-Dist: numpy (==1.22.3)
+Requires-Dist: packaging (==21.3)
+Requires-Dist: Pillow (==9.0.1)
+Requires-Dist: pkginfo (==1.8.2)
+Requires-Dist: Pygments (==2.11.2)
+Requires-Dist: pyparsing (==3.0.7)
+Requires-Dist: python-dateutil (==2.8.2)
+Requires-Dist: PyWavelets (==1.3.0)
+Requires-Dist: pywin32-ctypes (==0.2.0)
+Requires-Dist: readme-renderer (==34.0)
+Requires-Dist: requests (==2.27.1)
+Requires-Dist: requests-toolbelt (==0.9.1)
+Requires-Dist: rfc3986 (==2.0.0)
+Requires-Dist: rich (==12.0.1)
+Requires-Dist: scikit-image (==0.19.2)
+Requires-Dist: scipy (==1.8.0)
+Requires-Dist: six (==1.16.0)
+Requires-Dist: tifffile (==2022.3.25)
+Requires-Dist: twine (==4.0.0)
+Requires-Dist: urllib3 (==1.26.9)
+Requires-Dist: webencodings (==0.5.1)
+Requires-Dist: zipp (==3.7.0)
+
+# package_name
+
+Description.
+The package package_name is used to:
+	Processing:
+		- Histogram matching
+		- Structural similarity
+		- Resize image
+	Utils:
+		- Read image
+		- Save image
+		- Plot image
+		- Plot result
+		- Plot histogram
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package_name
+
+```bash
+pip install img_processing_dio
+```
+
+## Author
+
+Thiago
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+<br><br>
+<hr>
+Projeto desenvolvido no lab "Descomplicando a criaÃ§Ã£o de pacotes de processamento de imagens em Python" da Digital Innovation One.
+
+
