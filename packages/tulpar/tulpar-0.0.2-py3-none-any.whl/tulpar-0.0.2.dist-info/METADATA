@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: tulpar
+Version: 0.0.2
+Summary: A Python SSR Framework built on Falcon, PonyORM, and HTMX
+License: MIT
+Author: Ian Kollipara
+Author-email: ian.kollipara@cune.org
+Requires-Python: >=3.10,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: Jinja2 (>=3.1.1,<4.0.0)
+Requires-Dist: falcon (>=3.1.0,<4.0.0)
+Requires-Dist: pony (>=0.7.16,<0.8.0)
