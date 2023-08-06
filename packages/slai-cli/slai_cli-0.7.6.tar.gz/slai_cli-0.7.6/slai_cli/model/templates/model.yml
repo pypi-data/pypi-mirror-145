@@ -1,0 +1,7 @@
+name: "{{ SLAI_MODEL_NAME }}"
+version: ""
+model_notebook_google_drive_file_id: ""
+model_folder_google_drive_file_id: ""
+model_s3_data_bucket_name: ""
+updated_at: "{{ SLAI_MODEL_CREATED_AT }}"
+created_at: "{{ SLAI_MODEL_CREATED_AT }}"
