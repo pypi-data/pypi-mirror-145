@@ -1,0 +1,75 @@
+Metadata-Version: 2.1
+Name: heavyai
+Version: 0.30
+Summary: Data science toolkit support for HeavyDB
+Author-email: "Heavy.AI" <community@heavy.ai>
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Database
+Classifier: Topic :: Scientific/Engineering
+Requires-Dist: pyomniscidb >=5.5.0
+Requires-Dist: pyarrow >=3.0.0
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: shapely
+Requires-Dist: importlib_metadata
+Requires-Dist: heavyai[doc] ; extra == "dev"
+Requires-Dist: heavyai[test] ; extra == "dev"
+Requires-Dist: pre-commit ; extra == "dev"
+Requires-Dist: flit ; extra == "dev"
+Requires-Dist: sphinx ; extra == "doc"
+Requires-Dist: numpydoc ; extra == "doc"
+Requires-Dist: sphinx-rtd-theme ; extra == "doc"
+Requires-Dist: numba >=0.49 ; extra == "gpu"
+Requires-Dist: pytest ; extra == "test"
+Requires-Dist: coverage ; extra == "test"
+Requires-Dist: pytest-mock ; extra == "test"
+Requires-Dist: geopandas ; extra == "test"
+Project-URL: Home, https://github.com/heavyai/heavyai
+Project-URL: Source, https://github.com/heavyai/heavyai
+Provides-Extra: dev
+Provides-Extra: doc
+Provides-Extra: gpu
+Provides-Extra: test
+
+=======
+heavyai
+=======
+
+.. image:: https://jenkins-os.mapd.com/buildStatus/icon?job=heavyai-tests-pr
+   :target: https://jenkins-os.mapd.com/job/heavyai-tests-pr/
+   :alt: Jenkins Build Status
+
+This package enables using common Python data science toolkits with `HeavyDB`. It brings data frame
+support on CPU and GPU as well as support for arrow. See the `documentation`_ for more.
+
+Quick Install (CPU)
+-------------------
+
+Packages are available on conda-forge and PyPI::
+
+   conda install -c conda-forge heavyai
+
+   pip install heavyai
+
+Quick Install (GPU)
+-------------------
+
+We recommend creating a fresh conda 3.7 or 3.8 environment when installing
+pymapd with GPU capabilities.
+
+To install pymapd and cudf for GPU Dataframe support (conda-only)::
+
+   conda create -n omnisci-gpu -c rapidsai -c nvidia -c conda-forge \
+    -c defaults cudf>=0.18 python=3.7 cudatoolkit=11.0 heavyai
+
+Documentation
+-------------
+
+Further documentation for heavyai usage is available at: http://heavyai.readthedocs.io/
+
+.. _DB API: https://www.python.org/dev/peps/pep-0249/
+.. _HeavyAI: http://heavy.ai
+.. _documentation: http://heavyai.readthedocs.io/en/latest/?badge=latest
+
