@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: physiocurve
+Version: 2021.4.3
+Summary: Library to analyze physiologic data curves.
+Home-page: https://framagit.org/jaj/physiocurve
+Author: Jona JOACHIM
+Author-email: jona@joachim.cc
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: ISC License (ISCL)
+Requires-Dist: numpy>=1.16.4
+Requires-Dist: pandas>=1.0
+Requires-Dist: numba>=0.46
+Requires-Dist: scipy>=1.2.0
+Requires-Dist: py-ecg-detectors>=1.0.2
+
+# physiocurve
+physiocurve is a library to analyze biometric time series such as ECG and pulse waves, often obtained from patient monitors.
+
