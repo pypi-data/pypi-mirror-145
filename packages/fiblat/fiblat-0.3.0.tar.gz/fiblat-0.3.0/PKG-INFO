@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: fiblat
+Version: 0.3.0
+Summary: A package for generating evenly distributed points on a sphere
+Home-page: https://github.com/erikbrinkman/fibonacci_lattice
+License: MIT
+Author: Erik Brinkman
+Author-email: erik.brinkman@gmail.com
+Requires-Python: >=3.8,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: numba (>=0.55.1,<0.56.0)
+Requires-Dist: numpy (>=1.18,<1.22)
+Project-URL: Repository, https://github.com/erikbrinkman/fibonacci_lattice
