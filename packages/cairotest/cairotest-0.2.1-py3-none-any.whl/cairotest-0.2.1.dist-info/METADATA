@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: cairotest
+Version: 0.2.1
+Summary: A smart testing framework for Cairo programs
+Home-page: https://github.com/bellissimogiorno/cairo-test
+Author: Jamie Gabbay
+Author-email: bellissimogiorno@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# The _Cairo smart test suite_ (cairo-test v0.2.1)
+
+Author: Jamie Gabbay
+
+## What is this?
+
+This repository contains `cairotest`; an automated unit- and property-based test suite for the [Cairo programming language](https://www.cairo-lang.org/).
+
+I am pleased to share this with the Cairo community, and feedback and suggestions are welcome.
+
+
+## How to use Cairo test suite
+
+### Examples
+
+You can see practical usage in my [cairo-integer-types](https://github.com/bellissimogiorno/cairo-integer-types/tree/main/) library.  See any file whose name begins with `test_`, as in [`test_biguint.py`](https://github.com/bellissimogiorno/cairo-integer-types/blob/main/int_unbounded/test_bigint.py) or [`test_uint125.py`](https://github.com/bellissimogiorno/cairo-integer-types/blob/main/int_fixedwidth/test_uint125.py).
+
+A short tutorial is also [`here`](https://github.com/bellissimogiorno/cairo-test/tree/main/cairo-test-demo).
+
+
+### Install
+
+You'll need a working Cairo installation.
+
+* [Official Cairo install instructions are here](https://www.cairo-lang.org/docs/quickstart.html#installation) and
+* [my personal install script is below](#my-install)
+
+-- so do that first!  The rest of these instructions assume you're in a Cairo virtual environment.  We'll also assume you're using a Linux system; YMMV on other systems but the overall idea should be the same.
+
+## Why do we need a Cairo test framework?
+
+Seriously?  You do!
+
+The code in this repo has been tested using a unit- and property-based test suite specifically designed to work well with Cairo.
+
+## My install
+
+This is what I type to get Cairo set up on a new machine running Debian linux.  Help yourself (but don't blame me if something goes wrong):
+
+```
+# Make sure the system's up-to-date
+sudo apt update
+sudo apt upgrade
+# Stuff we need to compile Python 3.7
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev wget libbz2-dev libgmp-dev
+# Download Python 3.7 and cd into directory
+wget https://www.python.org/ftp/python/3.7.13/Python-3.7.13.tgz
+tar xvzf Python-3.7.13.tgz
+cd Python-3.7.13
+# Configure compilation
+./configure --enable-optimizations
+# Make (8 core system)
+make -j 8
+# Install
+# IMPORTANT: altinstall means we don't overwrite your machine's native version of Python!
+sudo make altinstall
+
+# Create Python3.7 virtual environment
+python3.7 -m venv ~/cairo_venv-3.7
+# Jump into the venv
+source ~/cairo_venv-3.7/bin/activate
+# Install prerequisites to run cairo-bitwise-int and cairo-test (works for Cairo 0.8)
+pip3 install jinja2 pytest pytest-reverse hypothesis cairo-lang black pytest-xdist[psutil]
+```
+
+## Feedback and comments ...
+
+... are very welcome.  Thanks in advance.
+
+
