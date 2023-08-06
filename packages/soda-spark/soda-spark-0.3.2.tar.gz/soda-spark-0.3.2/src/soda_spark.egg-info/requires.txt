@@ -1,0 +1,8 @@
+soda-sql-spark~=2.1.9
+pyspark~=3.0
+
+[testing]
+pre-commit>=2.14.1
+pytest>=6.2.5
+pytest-spark>=0.6.0
+pytest-cov>=2.12.1
