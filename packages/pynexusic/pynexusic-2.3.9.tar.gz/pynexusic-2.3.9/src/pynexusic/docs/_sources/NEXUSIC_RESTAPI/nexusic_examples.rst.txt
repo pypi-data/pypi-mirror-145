@@ -1,0 +1,66 @@
+NEXUS IC Examples
+=================
+**Example 1: Get system version**
+
+    #. Import ``NEXUSIC_RESTAPI``
+
+        .. code-block:: python
+
+            from pynexusic import NEXUSIC_RESTAPI as api
+
+    #. Initialize ``NEXUSIC_REST`` class
+
+        .. code-block:: python
+
+           NX_REST = api.NEXUSIC_REST(baseURI, api_key=APIKey)
+
+        *where* **APIKey** *is the user's API Key provided by the system administrator*
+
+    #. Execute required function
+
+        .. code-block:: python
+
+            result, result_status_code = NX_REST.getVersion()
+
+        Output:
+
+        .. code-block:: python
+
+            result = {'version': 'x.x.xxxxx.x', 'schema': 'x.xxx'}
+            result_code = 200
+
+**Example 2: Run reports and get python object response**
+
+    #. Import ``NEXUSIC_RESTAPI``
+        .. code-block:: python
+
+            from pynexusic import NEXUSIC_RESTAPI as api
+
+    #. Initialize ``NEXUSIC_REST`` class
+
+        .. code-block:: python
+
+            NX_REST = api.NEXUSIC_REST(baseURI, api_key=APIKey)
+
+        *where* **APIKey** *is the user's API Key provided by the system administrator*
+
+    #. Execute required report
+
+        .. code-block:: python
+
+            result, result_status_code = NX_REST.getDashboard(report_name)
+
+       *where* **report_name** *is the name of the report to be executed in NEXUS IC*
+
+        Output:
+
+        .. code-block:: python
+
+            result = {'name': 'xxxxxxxxxxx',
+                      'elements': [{'type': 'section', 'data': {}},
+                                   {'type': 'paragraph', 'data': {'text': [{'value': 'xxxxxx'}]}}
+                                  ]
+                      }
+            result_code = 200
+
+        *The values of the* **elements** *key will contain the data configured in the NEXUS IC report template*
