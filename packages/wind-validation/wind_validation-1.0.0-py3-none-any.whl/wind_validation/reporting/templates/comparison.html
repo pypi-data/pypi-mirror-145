@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- TODO: for stability would useful to include all the links from static files locally -->
+    <script src="https://cdn.jsdelivr.net/npm/sorttable@1.0.2"></script>
+    <title>{{ title }}</title>
+    {{ md_css }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin="" />
+</head>
+
+<body>
+    <div id="logo-div">
+        <img id="dtu-logo" src="data:image/png;base64,{{logos[0]}}">
+        <br>
+        <img id="windsider-logo" src="data:image/png;base64,{{logos[1]}}">
+    </div>
+
+    <div id="parent" class="js-toc-content">
+
+        <div id="sidebar">
+            <h3>Table of Contents</h3>
+            <div class="js-toc"></div>
+            <br>
+        </div>
+        <div id="main-content">
+            <h1 class="center">{{ title }}</h1>
+
+            <h2 id='h-1' slot='h-1'>Summary Tables</h2>
+
+            <p> Validation was produced on {{ meta.date.date().isoformat() }} at {{ meta.date.time().isoformat(timespec="seconds") }}
+                {% if meta.user != "" %} by {{ meta.user }} {% endif %} using wind-validation version: {{ meta.version }}. This
+                report gives an validation summary over multiple validation results to compare how different models perform
+                on the same datasets. This report was made for {{ point_count }} points
+                {% if point_count != mast_count %} obtained at
+                {{ mast_count }} masts{% endif %}.</p>
+
+            {% for mod,obs,agg in mod_obs_agg %}
+            <div>
+                <table class="center">
+                    {% if loop.index == 1 %}
+                    <caption>
+                        Table 1.{{loop.index}}: The comparison results of the {{ obs }} vs {{ mod }} validation for {{ point_count }} points. <i>Observed</i> and <i>Predicted</i> are the mean observed and modelled values, respectively. <i>ME</i> is the mean error,
+                        <i>RMSE</i> is the root mean square error, <i>MAE</i> and <i>MAPE</i> are the mean absolute error. The power density values are calculated for standard air density 1.225 kg/m<sup>3</sup>.
+                    </caption>
+                    {% else %}
+                    <caption>
+                        Table 1.{{loop.index}}: Same table as Table 1.1 but for model {{ mod }}.
+                    </caption>
+                    {% endif %}
+
+                    <tr>
+                        <th> Variable </th>
+                        <th> Observed </th>
+                        <th> Predicted </th>
+                        <th> Mean error (bias) </th>
+                        <th> Mean abs error </th>
+                        <th> Mean abs percentage error </th>
+                    </tr>
+                    <tr>
+                        <td>Wind speed</td>
+                        <td>{{ '{0:0.1f}'.format(agg.obs_wind_speed_mean) }} m/s</td>
+                        <td>{{ '{0:0.1f}'.format(agg.mod_wind_speed_mean) }} m/s</td>
+                        <td>{{ '{0:0.1f}'.format(agg.wind_speed_me) }} m/s</td>
+                        <td>{{ '{0:0.1f}'.format(agg.wind_speed_mae) }} m/s</td>
+                        <td>{{ '{0:0.1f}'.format(agg.wind_speed_mape) }} %</td>
+                    </tr>
+                    <tr>
+                        <td>Power density</td>
+                        <td>{{ '{0:0.1f}'.format(agg.obs_power_density_mean) }} W/m<sup>2</sup></td>
+                        <td>{{ '{0:0.1f}'.format(agg.mod_power_density_mean) }} W/m<sup>2</sup></td>
+                        <td>{{ '{0:0.1f}'.format(agg.power_density_me) }} W/m<sup>2</sup></td>
+                        <td>{{ '{0:0.1f}'.format(agg.power_density_mae) }} W/m<sup>2</sup></td>
+                        <td>{{ '{0:0.1f}'.format(agg.power_density_mape) }} %</td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+
+            <h2 id='h-2' slot='h-2'>Summary map</h2>
+            <div id='map'></div>
+
+            <h2 id='h-3' slot='h-3'>Summary figures</h2>
+            <div>
+                <figure>
+                    {{ wind_speed_mpe_hist }}
+                    <figcaption>
+                        Fig. 1: Histogram of wind speed mean percentage error (MPE). Comparison between models for all {{point_count}} points/sites.
+                    </figcaption>
+                </figure>
+
+                <figure>
+                    {{ power_density_mae_hist }}
+                    <figcaption>
+                        Fig. 2: Histogram of mean absolute error of power density. Comparison between models for all {{point_count}} points/sites.
+                    </figcaption>
+                </figure>
+
+                {% for ws_mpe_bar in wind_speed_mpe_bars %}
+                <figure>
+                    {{ ws_mpe_bar }}
+                    <figcaption>
+                        Fig. 3.{{loop.index}}: Bar plot comparing between models on individual points/sites.
+                    </figcaption>
+                </figure>
+                {% endfor %}
+            </div>
+
+            <h2 id='h-4' slot='h-4'>Detailed validation</h2>
+            {{pandas_table}}
+
+            <h2 id='h-5' slot='h-5'>References</h2>
+            DTU Wind Energy, Wind-validation, (2021), GitLab repository,
+            <a href="https://gitlab.windenergy.dtu.dk/windsider/wind-validation/">https://windenergy.dtu.dk/windsider/wind-validation/</a>
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+    <script>
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.js-toc',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.js-toc-content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h2',
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: true,
+        });
+    </script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+    <script type='text/javascript' src='https://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster-src.js'></script>
+    <script type='text/javascript'>
+        var tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 17,
+            attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+        });
+        latlng = new L.LatLng(50, 5);
+        var map = new L.Map('map', {
+            center: latlng,
+            zoom: 2,
+            layers: [tiles]
+        });
+        var markeroptions = {
+            color: '#ff9933',
+            fillColor: '#ff9933',
+            fillOpacity: 1,
+            opacity: 0,
+            weight: 12,
+            radius: 6
+        };
+
+        const model_count = {{mod}}.length;
+
+        markers = [
+            // different models are concatenated along the rows
+            {% for index,row in map_points %}
+            ['{{ row.model }}', {{row.south_north}}, {{row.west_east}}, {{row.height}}, {{row.power_density_mpe|round(1)}}],
+            {% endfor %}
+        ];
+
+        var markers2 = new L.markerClusterGroup({
+            singleMarkerMode: true,
+            chunkedLoading: true
+        });
+
+        function populate() {
+            // model rows are stacked on top of each other
+            const rows_per_model = Math.floor(markers.length/model_count)
+            for (var i = 0; i < rows_per_model; ++i) {
+                // same lat, lng for one point
+                var text = '<p>Position: ' + markers[i][1].toFixed(3) + 'N, ' + + markers[i][2].toFixed(3) + 'S, ' + markers[i][3] + ' m agl</p><p>Mean Power Density Error:</p>';
+                var next_i = 0;
+                for (var j = 0; j < model_count; ++j) {
+                    // skip to the same geo point by row_per_models
+                    next_i = j * rows_per_model + i;
+                    text += '<h4>' + markers[next_i][0] + ': ' + markers[next_i][4] + ' (%)</h4> ';
+                }
+                markers2.addLayer(new L.circleMarker([markers[i][1], markers[i][2]], markeroptions).bindPopup(text));
+            }
+            return false;
+        }
+        map.addLayer(markers2);
+
+        populate();
+    </script>
+</body>
+
+</html>
