@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: jupyterlab-night
+Version: 0.4.0
+Summary: Dark theme for JupyterLab
+Home-page: https://github.com/martinRenou/jupyterlab-night
+Author: Martin Renou
+Author-email: martin.renou@gmail.com
+License: BSD-3-Clause
+Keywords: Jupyter,JupyterLab,JupyterLab3
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Framework :: Jupyter
+Classifier: Framework :: Jupyter :: JupyterLab
+Classifier: Framework :: Jupyter :: JupyterLab :: 3
+Classifier: Framework :: Jupyter :: JupyterLab :: Extensions
+Classifier: Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# jupyterlab-night
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/martinRenou/jupyterlab-night/main?urlpath=lab)
+
+JupyterLab dark theme inspired by the Github dark theme
+
+## Requirements
+
+* JupyterLab >= 3.0
+
+## Install
+
+To install the extension, execute:
+
+```bash
+pip install jupyterlab-night
+```
+
+![jupyterlab-night](jupyterlab-night.png)
+
+
