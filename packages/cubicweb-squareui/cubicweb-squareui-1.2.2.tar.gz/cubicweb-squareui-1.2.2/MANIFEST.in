@@ -1,0 +1,20 @@
+include setup.py
+include README.rst
+include tox.ini
+
+recursive-include cubicweb_squareui *
+recursive-include cubicweb_squareui/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_squareui/i18n *.po
+recursive-include cubicweb_squareui/wdoc Changelog* *.rst *.png *.jpg *.xml
+recursive-include doc README *.png *py *rst Makefile
+recursive-include test *.py
+include test/data/bootstrap_cubes
+
+exclude Makefile
+exclude *.spec
+exclude dev-requirements.txt
+exclude .gitlab-ci.yml
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
