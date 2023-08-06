@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: SSPM
+Version: 1.1.0
+Summary: SSPM simple plugin manger based on YAPSY
+Home-page: https://gitlab.com/stevencnix/sspm
+Author: Steven Nix
+Author-email: stevencnix@gmail.com
+License: GNU LGPLv3
+Download-URL: https://gitlab.com/stevencnix/sspm/-/archive/v1.1.0/sspm-v1.1.0.tar.gz
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Super Simple Plugin Manager - SSPM
+
+## About SSPM
+
+Super Simple Plugin Manager - SSPM is a simple Python library I created based off of Thibauld Nion's yapsy. 
+I liked how yapsy uses a config file in conjunction with a python module for locating and describing plugins.
+This plugin manager does not have the robustness and customizability that yapsy has but allows for much quicker 
+implementation out of the box. It is meant to be a very simple ready to go hands off plugin manager.
+
+## Usage
+
+1. Initialize the plugin manager
+
+	``` shell
+	plugin_manager = PluginManager(plugin_folder=\<INSERT PLUGINS DIR PATH HERE\>)
+	```
+	
+2. Import the plugins in the plugins directory
+
+	``` shell
+	plugin_manager.import_plugins()
+	```
+ 
+3. Get the imported plugin
+
+	```shell
+	plugin = sspm.get_active_plugin("Plugin name")
+	```
+ 
+    or
+
+    ```shell
+    plugins = sspm.active_plugins
+    ```
+
+
