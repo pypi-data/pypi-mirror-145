@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: edges-analysis
+Version: 4.1.0
+Summary: Functionality for processing EDGES field data
+Home-page: https://github.com/edges-collab/edges-analysis
+Author: EDGES Team
+Author-email: raul.monsalve@mcgill.ca
+License: mit
+Project-URL: Documentation, https://pyscaffold.org/
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Description-Content-Type: text/x-rst; charset=UTF-8
+License-File: LICENSE.txt
+License-File: AUTHORS.rst
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: matplotlib
+Requires-Dist: cached-property
+Requires-Dist: astropy (>=5.0)
+Requires-Dist: edges-io (>=4.0.0)
+Requires-Dist: edges-cal (>=6.0.0)
+Requires-Dist: healpy
+Requires-Dist: h5py
+Requires-Dist: rich (>=9.0)
+Requires-Dist: requests
+Requires-Dist: tqdm
+Requires-Dist: methodtools
+Requires-Dist: p-tqdm
+Requires-Dist: rich
+Requires-Dist: attrs
+Requires-Dist: questionary
+Requires-Dist: psutil
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+Requires-Dist: pytest-cases ; extra == 'dev'
+Requires-Dist: nbsphinx ; extra == 'dev'
+Requires-Dist: numpydoc ; extra == 'dev'
+Requires-Dist: sphinx-rtd-theme ; extra == 'dev'
+Requires-Dist: sphinx-click ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: nbsphinx ; extra == 'docs'
+Requires-Dist: numpydoc ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ; extra == 'docs'
+Requires-Dist: sphinx-click ; extra == 'docs'
+Requires-Dist: ipython ; extra == 'docs'
+Provides-Extra: testing
+Requires-Dist: pytest ; extra == 'testing'
+Requires-Dist: pytest-cov ; extra == 'testing'
+Requires-Dist: pytest-cases ; extra == 'testing'
+
+UNKNOWN
+
