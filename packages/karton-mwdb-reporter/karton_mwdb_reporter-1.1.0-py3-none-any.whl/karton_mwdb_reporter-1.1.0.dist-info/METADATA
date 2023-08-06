@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: karton-mwdb-reporter
+Version: 1.1.0
+Summary: Karton service that uploads analyzed artifacts and metadata to MWDB Core
+Home-page: https://github.com/CERT-Polska/karton-mwdb-reporter/
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: karton-core (<5.0.0,>=4.2.0)
+Requires-Dist: mwdblib (>=4.1.0)
+
+# Reporter karton service
+
+Uploads samples and static configs to malwaredb
+
+**Author**: CERT.pl
+
+**Maintainers**: psrok1, nazywam
+
+**Consumes:**
+```
+{
+    "type": "sample",
+    "stage": "recognized" || "analyzed"
+},
+{
+    "type": "config"
+},
+{
+    "type": "blob"
+}
+```
+
+**Produces:**
+```
+(nothing)
+```
+
+
+## Usage
+
+First of all, make sure you have setup the core system: https://github.com/CERT-Polska/karton
+
+Then install karton-mwdb-reporter from PyPi:
+
+```shell
+$ pip install karton-mwdb-reporter
+
+$ karton-mwdb-reporter
+```
+
+![Co-financed by the Connecting Europe Facility by of the European Union](https://www.cert.pl/uploads/2019/02/en_horizontal_cef_logo-e1550495232540.png)
+
