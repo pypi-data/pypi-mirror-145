@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: mavecore
+Version: 0.1.4
+Summary: MaveCore implements shared functionality for MaveTools and MaveDB.
+Home-page: https://github.com/VariantEffect/MaveCore/tree/testMaveCore
+Author: MaveDB Developers
+Author-email: alan.rubin@wehi.edu.au
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: fqfa (>=1.2.1)
+Requires-Dist: mavehgvs (>=0.4.0)
+Requires-Dist: idutils (>=1.1.0)
+Requires-Dist: pandas (>=1.1.0)
+
+# MaveCore
+Shared MaveDB and MaveTools functionality
+
+
