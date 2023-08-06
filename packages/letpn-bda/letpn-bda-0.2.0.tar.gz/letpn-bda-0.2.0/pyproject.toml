@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "letpn-bda"
+version = "0.2.0"
+description = "This is a Simple Quiz app for Practicing"
+authors = ["PRITAM CHAKRABORTY <pritam.chk98@gmail.com>"]
+readme = "README.md"
+include = ["letpn_bda/db","letpn_bda/quiz_data.json"]
+
+[tool.poetry.scripts]
+bda-quiz = "letpn_bda.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = {extras = ["all"], version = "^0.4.1"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
