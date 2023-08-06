@@ -1,0 +1,5 @@
+{%- extends "sphinx_rtd_theme/footer.html" %}
+
+{% if READTHEDOCS and commit %}
+    {%- set commit = false %}
+{% endif %}

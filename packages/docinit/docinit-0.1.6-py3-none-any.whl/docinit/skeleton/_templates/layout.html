@@ -1,0 +1,5 @@
+{%- extends "sphinx_rtd_theme/layout.html" %}
+
+{% if READTHEDOCS and current_version %}
+    {%- set current_version = current_version + ": " + version %}
+{% endif %}

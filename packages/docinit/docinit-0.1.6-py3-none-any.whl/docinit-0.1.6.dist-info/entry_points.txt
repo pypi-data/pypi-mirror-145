@@ -1,0 +1,11 @@
+[console_scripts]
+docinit = docinit.docinit:main
+
+[distutils.commands]
+docinit = docinit.docinit:DocInitCommand
+
+[distutils.setup_keywords]
+docinit = docinit.docinit:setup_keyword
+
+[setuptools.finalize_distribution_options]
+docinit = docinit.docinit:finalize_distribution
