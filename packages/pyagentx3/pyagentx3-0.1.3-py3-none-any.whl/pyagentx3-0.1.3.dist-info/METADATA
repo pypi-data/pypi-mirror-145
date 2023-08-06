@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: pyagentx3
+Version: 0.1.3
+Summary: AgentX package to extend SNMP with pure Python3
+Home-page: https://github.com/rprinz08/pyagentx3
+Author: Richard Prinz
+Author-email: richard.prinz@min.at
+License: BSD
+Keywords: snmp network agentx
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: Topic :: System :: Monitoring
+Classifier: Topic :: System :: Networking
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Intended Audience :: Telecommunications Industry
+
+PyAgentX3
+--------------------
+pyagentx3 is a pure Python3 implementation of AgentX protocol (RFC 2741), it
+will allow you to extend an SNMP agent (e.g. snmpd) by writing AgentX subagents,
+without modifying the original SNMP agent.
+
+The agent can support the following commands:
+- snmpget
+- snmpwalk
+- snmptable
+- snmpset
+
+It also allows sending notifications/traps.
+
+
