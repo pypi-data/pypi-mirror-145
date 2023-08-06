@@ -1,0 +1,93 @@
+from concurrent.futures import ThreadPoolExecutor
+import pathlib
+import requests
+from shutil import copyfile
+from uuid import uuid4
+
+from xbench.tools.impira import Impira
+from ..schema import record_to_schema
+from ..types import Config, DocManifest
+
+
+def build_parser(subparsers, parent_parser, add_doc_args):
+    parser = subparsers.add_parser(
+        "snapshot",
+        help="Snapshot an Impira collection (fields, documents, and labels)",
+        parents=[parent_parser],
+    )
+    Impira.add_arguments(parser)
+
+    parser.add_argument(
+        "--outdir",
+        "-d",
+        required=True,
+        type=str,
+        help="Directory to save data and documents.",
+    )
+
+    parser.add_argument(
+        "--download-files",
+        "-s",
+        default=False,
+        action="store_true",
+        help="Download the files to disk.",
+    )
+
+    parser.add_argument(
+        "--original-names",
+        default=False,
+        action="store_true",
+        help="Use original filenames (without concatenating a uid). This will fail if two files in the collection have the same name",
+    )
+
+    parser.set_defaults(func=main)
+    return parser
+
+
+def download_file_to(url, path):
+    r = requests.get(url)
+    with open(path, "wb") as f:
+        f.write(r.content)
+
+
+def main(args, config: Config):
+    log = config.logger("snapshot")
+
+    if args.collection is None:
+        log.fatal("Must specify a collection to snapshot with --collection")
+
+    impira = Impira(config=Impira.Config(**{**dict(config), **vars(args)}))
+    workdir = pathlib.Path(args.outdir).joinpath(
+        "capture", args.collection + "-" + str(uuid4())[:4]
+    )
+
+    schema, records = impira.snapshot(use_original_filenames=args.original_names)
+
+    log.info("Downloading %d files to %s", len(records), workdir)
+    workdir.mkdir(parents=True, exist_ok=True)
+
+    if args.download_files:
+        with ThreadPoolExecutor(max_workers=config.parallelism) as t:
+            [
+                _
+                for _ in t.map(
+                    lambda r: download_file_to(r["url"], workdir.joinpath(r["name"])),
+                    records,
+                )
+            ]
+
+        docs = [{"fname": r["name"], "record": r["record"]} for r in records]
+    else:
+        docs = [
+            {"fname": r["name"], "url": r["url"], "record": r["record"]}
+            for r in records
+        ]
+
+    manifest = DocManifest(
+        doc_schema=schema,
+        docs=docs,
+    )
+    with open(workdir.joinpath("manifest.json"), "w") as f:
+        f.write(manifest.json(indent=2))
+
+    log.info("Documents and labels have been written to directory '%s'", workdir)
