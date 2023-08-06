@@ -1,0 +1,8 @@
+tensorflow-addons
+tensorflow-datasets
+
+[:platform_system != "Darwin"]
+tensorflow
+
+[:platform_system == "Darwin"]
+tensorflow-macos
