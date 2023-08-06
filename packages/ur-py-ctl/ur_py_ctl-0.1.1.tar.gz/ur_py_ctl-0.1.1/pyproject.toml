@@ -1,0 +1,25 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "ur_py_ctl"
+version = "0.1.1"
+description = "Python wrapper around URScript (for Universal Robotics robots)."
+authors = ["Anton Tetov <anton.johansson@control.lth.se>"]
+repository = "https://gitlab.control.lth.se/robotlab/ur_py_ctl"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+importlib_metadata = {version = "^1.0", python = "<3.8"}
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.1"
+mypy = "^0.942"
+black = "^22.3.0"
+pre-commit = "^2.18.1"
+reorder-python-imports = "^3.0.1"
+pytest = "^7.1.1"
+
+[tool.isort]
+profile = "black"
