@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: research-utils
+Version: 0.0.6
+Summary: some utils for my research
+Home-page: https://r08521610.github.io/research-utils/
+Author: Rainforest Cheng
+Author-email: r08521610@ntu.edu.tw
+Requires-Python: >=3.8,<4
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: mlflow
+Provides-Extra: torch
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: mlflow (>=1.22.0,<2.0.0); extra == "mlflow"
+Requires-Dist: numpy (>=1.21.5,<2.0.0)
+Requires-Dist: sqlite-utils (>=3.6,<4.0)
+Requires-Dist: torch (>=1.10.1,<2.0.0); extra == "torch"
+Project-URL: Repository, https://github.com/r08521610/research-utils
+Description-Content-Type: text/markdown
+
+# research-utils
+[![Build](https://github.com/r08521610/research-utils/actions/workflows/package-build.yml/badge.svg)](https://github.com/r08521610/research-utils/actions/workflows/package-build.yml)
+[![Publish Package](https://github.com/r08521610/research-utils/actions/workflows/package-publish.yml/badge.svg?branch=main)](https://github.com/r08521610/research-utils/actions/workflows/package-publish.yml)
+[![PyPI version](https://badge.fury.io/py/research-utils.svg)](https://badge.fury.io/py/research-utils)
+
