@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: trafocalc
+Version: 2022.1
+Summary: Python project with teaching and scientific projects for Transformer Design and Optimization.
+License: Apache-2.0
+Author: Tamás Orosz
+Author-email: orosz.tamas@yahoo.com
+Requires-Python: ==3.8.10
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Requires-Dist: altair (>=4.2.0,<5.0.0)
+Requires-Dist: altair-saver (>=0.5.0,<0.6.0)
+Requires-Dist: bokeh (>=2.4.2,<3.0.0)
+Requires-Dist: dataclasses-json (>=0.5.6,<0.6.0)
+Requires-Dist: importlib-resources (>=5.4.0,<6.0.0)
+Requires-Dist: jupyter (>=1.0.0,<2.0.0)
+Requires-Dist: marshmallow-dataclass (>=8.5.3,<9.0.0)
+Requires-Dist: scipy (>=1.8.0,<2.0.0)
+Requires-Dist: seaborn (>=0.11.2,<0.12.0)
+Requires-Dist: typer
