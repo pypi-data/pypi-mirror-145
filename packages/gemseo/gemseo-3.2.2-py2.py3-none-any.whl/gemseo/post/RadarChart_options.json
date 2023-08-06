@@ -1,0 +1,19 @@
+{
+    "name": "RadarChart_options",
+    "required": ["constraints_list"],
+    "properties": {
+        "iteration": {
+            "type": "integer"
+        },
+        "constraints_list":{
+        	"items": {
+                "type": "string",
+                "minItems": 1
+            },
+            "type": "array"
+        }
+    },
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "type": "object"
+}
