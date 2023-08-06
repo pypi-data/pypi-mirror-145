@@ -1,0 +1,116 @@
+Metadata-Version: 2.1
+Name: Mopidy-dLeyna
+Version: 2.0.2
+Summary: Mopidy extension for playing music from Digital Media Servers
+Home-page: https://github.com/tkem/mopidy-dleyna
+Author: Thomas Kemmer
+Author-email: tkemmer@computer.org
+License: Apache License, Version 2.0
+Platform: UNKNOWN
+Classifier: Environment :: No Input/Output (Daemon)
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Multimedia :: Sound/Audio :: Players
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: Mopidy (>=3.0.0)
+Requires-Dist: Pykka (>=2.0.1)
+Requires-Dist: setuptools
+Requires-Dist: uritools (>=1.0)
+Provides-Extra: dev
+Requires-Dist: sphinx ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: check-manifest ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: flake8-black ; extra == 'dev'
+Requires-Dist: flake8-bugbear ; extra == 'dev'
+Requires-Dist: flake8-import-order ; extra == 'dev'
+Requires-Dist: isort[pyproject] ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Provides-Extra: lint
+Requires-Dist: black ; extra == 'lint'
+Requires-Dist: check-manifest ; extra == 'lint'
+Requires-Dist: flake8 ; extra == 'lint'
+Requires-Dist: flake8-black ; extra == 'lint'
+Requires-Dist: flake8-bugbear ; extra == 'lint'
+Requires-Dist: flake8-import-order ; extra == 'lint'
+Requires-Dist: isort[pyproject] ; extra == 'lint'
+Provides-Extra: release
+Requires-Dist: twine ; extra == 'release'
+Requires-Dist: wheel ; extra == 'release'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+
+*************
+Mopidy-dLeyna
+*************
+
+.. image:: https://img.shields.io/pypi/v/Mopidy-dLeyna
+    :target: https://pypi.org/project/Mopidy-dLeyna/
+    :alt: Latest PyPI version
+
+.. image:: https://img.shields.io/github/workflow/status/tkem/mopidy-dleyna/CI
+    :target: https://github.com/tkem/mopidy-dleyna/actions
+    :alt: CI build status
+
+.. image:: https://img.shields.io/readthedocs/mopidy-dleyna
+    :target: https://mopidy-dleyna.readthedocs.io/
+    :alt: Read the Docs build status
+
+.. image:: https://img.shields.io/codecov/c/gh/tkem/mopidy-dleyna
+    :target: https://codecov.io/gh/tkem/mopidy-dleyna
+    :alt: Test coverage
+
+.. image:: https://img.shields.io/github/license/tkem/mopidy-dleyna
+   :target: https://raw.github.com/tkem/mopidy-dleyna/master/LICENSE
+   :alt: License
+
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: black
+
+Mopidy-dLeyna is a Mopidy_ extension that lets you play music from
+DLNA_ Digital Media Servers using the dLeyna_ D-Bus interface.
+
+This extension lets you browse, search, and stream music from your
+NAS, PC, or any other device running a UPnP/DLNA compliant media
+server.  Compatible devices are discovered automatically on your local
+network, so there is no configuration needed.
+
+For more information and installation instructions, please see
+Mopidy-dLeyna's online documentation_.
+
+.. _Mopidy: http://www.mopidy.com/
+.. _DLNA: http://www.dlna.org/
+.. _dLeyna: http://01.org/dleyna
+.. _Documentation: https://mopidy-dleyna.readthedocs.io/
+
+
+Project resources
+=================
+
+- `Source code <https://github.com/tkem/mopidy-dleyna>`_
+- `Issue tracker <https://github.com/tkem/mopidy-dleyna/issues>`_
+- `Changelog <https://github.com/tkem/mopidy-dleyna/blob/master/CHANGELOG.rst>`_
+
+
+Credits
+=======
+
+- Original author: `Thomas Kemmer <https://github.com/tkem>`__
+- Current maintainer: `Thomas Kemmer <https://github.com/tkem>`__
+- `Contributors <https://github.com/tkem/mopidy-dleyna/graphs/contributors>`_
+
+
