@@ -1,0 +1,8 @@
+__title__ = 'HuTao agent'
+__description__ = 'Perform APP automation, including Android and iOS'
+__url__ = ''
+__version__ = '1.0.1'
+__author__ = 'chenbo'
+__author_email__ = 'chenbo@bixin.cn'
+__license__ = ''
+__copyright__ = ''

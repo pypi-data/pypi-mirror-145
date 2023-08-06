@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: HuTao-agent
+Version: 1.0.1
+Summary: Perform APP automation, including Android and iOS
+Home-page: 
+Author: chenbo
+Author-email: chenbo@bixin.cn
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: adbutils (==0.11.0)
+Requires-Dist: airtest (==1.2.3)
+Requires-Dist: attr (==0.3.1)
+Requires-Dist: attrs (==20.2.0)
+Requires-Dist: fast-dict (==1.0.5)
+Requires-Dist: Flask (==2.0.3)
+Requires-Dist: Jinja2 (==3.0.3)
+Requires-Dist: loguru (==0.5.1)
+Requires-Dist: poco (==0.98.1)
+Requires-Dist: pocoui (==1.0.84)
+Requires-Dist: requests (>=2.11.1)
+Requires-Dist: setuptools (==47.1.0)
+Requires-Dist: six (==1.15.0)
+Requires-Dist: tidevice (==0.6.6)
+Requires-Dist: urllib3 (==1.25.10)
+Requires-Dist: websocket-client (==0.48.0)
+Requires-Dist: pymysql (>=1.0.2)
+Requires-Dist: facebook-wda (>=1.4.6)
+
+# 使用 pipreqs 处理依赖
+### 安装
+```
+pip install pipreqs
+```
+
+### 在当前目录生成
+```
+pipreqs . --encoding=utf8 --force
+```
+
+### 使用requirements.txt安装依赖的方式
+```
+pip install -r requirements.txt
+```
+
+### 打包成wheel
+先安装最新的setuptools和wheel
+```
+python3 -m pip install --user --upgrade setuptools wheel
+```
+再执行打包命令
+```
+python3 setup.py sdist bdist_wheel
+```
+
