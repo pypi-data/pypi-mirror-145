@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "clagiordano.python3-logger"
+version = "1.1.0"
+description = "Library for logging facility"
+authors = ["Claudio Giordano <claudio.giordano@autistici.org>"]
+license = "LGPL-3.0-or-later"
+keywords = ["clagiordano", "logger", "cli", "tool", "utility"]
+packages = [
+    { include = "clagiordano" }
+]
+include = [
+    { path = "tests", format = "sdist" },
+    { path = "docs", format = "sdist" },
+]
+readme = "README.md"
+repository = "https://github.com/clagiordano/python3-logger"
+
+[tool.poetry.dependencies]
+python = "^3.5"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
