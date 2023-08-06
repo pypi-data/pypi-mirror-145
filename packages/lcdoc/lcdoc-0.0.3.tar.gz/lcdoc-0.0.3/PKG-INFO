@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: lcdoc
+Version: 0.0.3
+Summary: LC documentation generator
+Home-page: https://github.com/pypa/sampleproject
+Author: Luca Ciucci
+Author-email: develop@lucaciucci99.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://https://github.com/LucaCiucci/lcdoc/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# lcdoc
+LC documentation generator
+
+### Markup Features
+ - sub-documentation for each member
+ - authomatic code blocks and inline code blocks highlighting using [highlightjs](https://highlightjs.org/)
+   ````md
+   ```cpp
+   int i = 42
+   ```
+   ````
+ - manual syntax highlighting support using user friendly `<code-*>` tags
+   ```html
+   <pre><code>
+       <code-keyword>int</code-keyword> <code-var>i</code-var> = <code-number>42</code-number>;
+   </code></pre>
+   ```
+  - LaTex equations rendering using [tex-math](https://www.npmjs.com/package/tex-math) package (based on [katex](https://www.npmjs.com/package/katex)) :
+    ```html
+    inline equation: <i-math>x^2</i-math>
+    equation:
+    <tex-math>
+        i \hbar \frac{\partial}{\partial t} \psi = H \psi
+    </tex-math>
+    ```
+
+## dependencies:
+
+We use `libclang` [Python binding](https://pypi.org/project/libclang/), doc [here](https://libclang.readthedocs.io/en/latest/), [see also](https://sudonull.com/post/907-An-example-of-parsing-C-code-using-libclang-in-Python)
+
