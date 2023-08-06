@@ -1,0 +1,23 @@
+--- sumo
++++ sumo
+@@ -1506,15 +1506,17 @@
+               extra_lines,
+               progress,
+               verbose, dry_run)
+-        if not use_multiprocessing:
++        if processes==1:
+             create_module(*args)
+         else:
+             args_list.append(args)
+-    if use_multiprocessing:
++    if processes!=1:
++        # note: processes is a global variable
+         # Python 3.2.3 compatibility:
+         #   we do not "with multiprocessing.Pool() here since this doesn't work
+         #   with that python version.
+-        pool= multiprocessing.Pool()
++        # pylint: disable= consider-using-with
++        pool= multiprocessing.Pool(processes= processes)
+         res= pool.map_async(create_module_multiproc, args_list)
+         # The following "get" waits for all calls to
+         # create_module_multiproc() to complete and will raise an exception
