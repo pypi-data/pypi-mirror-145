@@ -1,0 +1,24 @@
+{
+    "type": {
+        "type": "string",
+        "required": true,
+        "style": "controlled vocabulary",
+        "units": null,
+        "description": "Type of EM survey",
+        "options": ["nsamt", "csamt"],
+        "alias": [],
+        "example": "nsamt",
+		"default": "nsamt"
+    },
+	"array": {
+        "type": "string",
+        "required": true,
+        "style": "controlled vocabulary",
+        "units": null,
+        "description": "Type of array",
+        "options": ["tensor"],
+        "alias": [],
+        "example": "tensor",
+		"default": "tensor"
+    }
+}

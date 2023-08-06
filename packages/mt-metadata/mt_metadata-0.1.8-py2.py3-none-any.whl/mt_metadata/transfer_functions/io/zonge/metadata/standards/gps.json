@@ -1,0 +1,24 @@
+{
+    "lat": {
+        "type": "float",
+        "required": true,
+        "style": "number",
+        "units": null,
+        "description": "latitude",
+        "options": [],
+        "alias": [],
+        "example": "10.3",
+		"default": 0.0
+    },
+	"lon": {
+        "type": "float",
+        "required": true,
+        "style": "number",
+        "units": null,
+        "description": "longitude",
+        "options": [],
+        "alias": [],
+        "example": "10.3",
+		"default": 0.0
+    }	
+}
