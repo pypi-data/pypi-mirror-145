@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maximo API Class &mdash; pynexusic 2.3.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maximo Examples" href="maximo_examples.html" />
+    <link rel="prev" title="Maximo" href="maximo_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pynexusic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#python-library-installation">Python library installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#library-documentation">Library documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#external-documentation">External documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NEXUSIC_RESTAPI/nexusic_api.html">NEXUS IC REST</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="maximo_api.html">Maximo</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Maximo API Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maximo_examples.html">Maximo Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../OSIPI_WEBAPI/osipi_api.html">OSI PI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DOCUMENTUM_API/documentum_api.html">Documentum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changehistory.html">Change History</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pynexusic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="maximo_api.html">Maximo</a> &raquo;</li>
+      <li>Maximo API Class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/MAXIMO_API/maximo_class.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="maximo-api-class">
+<h1>Maximo API Class<a class="headerlink" href="#maximo-api-class" title="Permalink to this headline"></a></h1>
+<p>Maximo API class allows the user to communicate with Maximo REST API using python</p>
+<p><strong>Prerequisites:</strong></p>
+<ul class="simple">
+<li><p>Python &gt; 3.7</p></li>
+<li><p>Maximo access</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">MAXIMO_API.</span></span><span class="sig-name descname"><span class="pre">MAXIMO_REST</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authentication_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LDAP</span> <span class="pre">BASIC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_attempts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mif</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>maximo_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo URL</p></li>
+<li><p><strong>username</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Default value None</p></li>
+<li><p><strong>password</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Default value None</p></li>
+<li><p><strong>api_key</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Default value None</p></li>
+<li><p><strong>authentication_type</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - The only value supported LDAP BASIC (default value LDAP BASIC)</p></li>
+<li><p><strong>max_attempts</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Maximum number of attempts if disconnected (default value 1)</p></li>
+<li><p><strong>timeout</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Timeout threshold in seconds (default value None)</p></li>
+<li><p><strong>mif</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - True if maximo_mif to be used, False if maximo to be used in the URL (default value False)</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False)</p></li>
+<li><p><strong>verify</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - By pass SSL verification if True (default value True)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.add_param_to_url">
+<span class="sig-name descname"><span class="pre">add_param_to_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.add_param_to_url" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.authenticate">
+<span class="sig-name descname"><span class="pre">authenticate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.authenticate" title="Permalink to this definition"></a></dt>
+<dd><p>Authenticate with Maximo using the defined authentication type used in the class constructor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.generate_base64">
+<span class="sig-name descname"><span class="pre">generate_base64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.generate_base64" title="Permalink to this definition"></a></dt>
+<dd><p>Generate base64 string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - String value to be converted to base64.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">String</span></code>) - base64 string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.get_mx_srs">
+<span class="sig-name descname"><span class="pre">get_mx_srs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderBy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gbcols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oslc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.get_mx_srs" title="Permalink to this definition"></a></dt>
+<dd><p>Execute query and get Service Requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select_fields</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Fields included in the query (defaul value <a href="#id1"><span class="problematic" id="id2">*</span></a>)</p></li>
+<li><p><strong>where</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Where condition to be included in the query (defaul value None)</p></li>
+<li><p><strong>orderBy</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Field(s) to order data (default value None). + sign indicated ascending and - sign indicates descending</p></li>
+<li><p><strong>gbcols</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Group by columns condition to aggregate data (default value None). See <a class="reference external" href="https://www.imwuc.org/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=f29fb7ba-5917-f2a9-e599-9161e5d14582">https://www.imwuc.org/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=f29fb7ba-5917-f2a9-e599-9161e5d14582</a></p></li>
+<li><p><strong>oslc</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to use oslc protocol or not (default value True)</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default Maximo page size will be used (1000).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.get_mx_wos">
+<span class="sig-name descname"><span class="pre">get_mx_wos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select_fields</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderBy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gbcols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">oslc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.get_mx_wos" title="Permalink to this definition"></a></dt>
+<dd><p>Execute query and get WOs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select_fields</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Fields included in the query (defaul value <a href="#id3"><span class="problematic" id="id4">*</span></a>)</p></li>
+<li><p><strong>where</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Where condition to be included in the query (defaul value None)</p></li>
+<li><p><strong>orderBy</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Field(s) to order data (default value None). + sign indicated ascending and - sign indicates descending</p></li>
+<li><p><strong>gbcols</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Group by columns condition to aggregate data (default value None). See <a class="reference external" href="https://www.imwuc.org/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=f29fb7ba-5917-f2a9-e599-9161e5d14582">https://www.imwuc.org/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=f29fb7ba-5917-f2a9-e599-9161e5d14582</a></p></li>
+<li><p><strong>oslc</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to use oslc protocol or not (default value True)</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default Maximo page size will be used (1000).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.mbo_create_new_record">
+<span class="sig-name descname"><span class="pre">mbo_create_new_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.mbo_create_new_record" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new record in a specific table in Maximo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name</p></li>
+<li><p><strong>parameters</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Field names (dict keys) and values (dict values) to be inserted</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.mbo_exec_method">
+<span class="sig-name descname"><span class="pre">mbo_exec_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method_parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.mbo_exec_method" title="Permalink to this definition"></a></dt>
+<dd><p>Execute a method on a specific MBO in Maximo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name</p></li>
+<li><p><strong>tableID</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code>) - Primary key record ID</p></li>
+<li><p><strong>method</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Name of the method to be executed</p></li>
+<li><p><strong>method_parameters</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Method parameters</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.mbo_get_table">
+<span class="sig-name descname"><span class="pre">mbo_get_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">includecols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excludecols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderbyasc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderbydesc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxItems</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'json'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compact</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_attempt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.mbo_get_table" title="Permalink to this definition"></a></dt>
+<dd><p>Get data from a specific table in Maximo using REST API.
+<a class="reference external" href="https://maximo.bia.gov/help/index.jsp?topic=/com.ibm.mif.doc/gp_intfrmwk/rest_api/r_rest_post_method.html">https://maximo.bia.gov/help/index.jsp?topic=/com.ibm.mif.doc/gp_intfrmwk/rest_api/r_rest_post_method.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name</p></li>
+<li><p><strong>includecols</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Comma-separated list of MBO attributes. Includes the listed attributes from the resource response (default value None).</p></li>
+<li><p><strong>excludecols</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Comma-separated list of MBO attributes. Excludes the listed attributes from the resource response (default value None).</p></li>
+<li><p><strong>orderbyasc</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Comma-separated list of MBO attributes. Specifies the attributes that are used for the order by clause in ascending order (default value None).</p></li>
+<li><p><strong>orderbydesc</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Comma-separated list of MBO attributes. Specifies the attributes that are used for the order by clause in descending order (default value None).</p></li>
+<li><p><strong>where</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Where condition to filter data (default value None).</p></li>
+<li><p><strong>maxItems</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Specifies the maximum number of business objects that are serialized in the resource collection (default value None).</p></li>
+<li><p><strong>format</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Specifies the representation of the resource response (default value json). Could be either json or xml.</p></li>
+<li><p><strong>compact</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - If true, JSON data is represented in a compact representation (default value 1).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+<li><p><strong>current_attempt</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - <strong>don’t use</strong>) - This argument is intended for internal method use only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.mbo_update_record">
+<span class="sig-name descname"><span class="pre">mbo_update_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tableID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.mbo_update_record" title="Permalink to this definition"></a></dt>
+<dd><p>Update specific record in a table in Maximo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name</p></li>
+<li><p><strong>tableID</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code>) - Primary key record ID to update</p></li>
+<li><p><strong>parameters</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Field names (dict keys) and values (dict values) to be updated</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.mxapi_get_request">
+<span class="sig-name descname"><span class="pre">mxapi_get_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.mxapi_get_request" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">requests.response</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.mxapi_post_request">
+<span class="sig-name descname"><span class="pre">mxapi_post_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.mxapi_post_request" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the post request.</p></li>
+<li><p><strong>body</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code> - optional) - Body to be included in the POST request (default value None).</p></li>
+<li><p><strong>headers</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code> - optional) - Additional headers to be added in the POST request (default value None).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">requests.response</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.oslc_create_new_record">
+<span class="sig-name descname"><span class="pre">oslc_create_new_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.oslc_create_new_record" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new record in a specific table in Maximo.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name</p></li>
+<li><p><strong>parameters</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Field names (dict keys) and values (dict values) to be inserted</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.oslc_get_table">
+<span class="sig-name descname"><span class="pre">oslc_get_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orderBy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageNum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stablePaging</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gbcols</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_attempt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.oslc_get_table" title="Permalink to this definition"></a></dt>
+<dd><p>Get data from a specific table in Maximo using OSLC Integration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name to extract data</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default Maximo page size will be used (1000).</p></li>
+<li><p><strong>select</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Maximo table fields to be included in the select query (default value None).</p></li>
+<li><p><strong>where</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Where condition to filter data (default value None). See <a class="reference external" href="https://www.ibm.com/docs/en/mam/7.6.0?topic=orq-query-where-clause-parameter">https://www.ibm.com/docs/en/mam/7.6.0?topic=orq-query-where-clause-parameter</a></p></li>
+<li><p><strong>orderBy</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Field(s) to order data (default value None). + sign indicated ascending and - sign indicates descending</p></li>
+<li><p><strong>pageNum</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page number in the response (default value 1). Recommended to leave default.</p></li>
+<li><p><strong>stablePaging</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Use Maximo stable paging option (default value False). Recommended to leave default.</p></li>
+<li><p><strong>gbcols</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Group by columns condition to aggregate data (default value None). See <a class="reference external" href="https://www.imwuc.org/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=f29fb7ba-5917-f2a9-e599-9161e5d14582">https://www.imwuc.org/HigherLogic/System/DownloadDocumentFile.ashx?DocumentFileKey=f29fb7ba-5917-f2a9-e599-9161e5d14582</a></p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+<li><p><strong>current_attempt</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - <strong>don’t use</strong>) - This argument is intended for internal method use only.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.oslc_update_record">
+<span class="sig-name descname"><span class="pre">oslc_update_record</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tableName</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_oslc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.oslc_update_record" title="Permalink to this definition"></a></dt>
+<dd><p>Update specific record in a table in Maximo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tableName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Maximo table name</p></li>
+<li><p><strong>restID</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code>) - REST ID for the record to be updated</p></li>
+<li><p><strong>parameters</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Field names (dict keys) and values (dict values) to be updated</p></li>
+<li><p><strong>use_oslc</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - If True, url will use oslc. If False, url will use rest (default value True)</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="MAXIMO_API.MAXIMO_REST.validate_and_return_response">
+<span class="sig-name descname"><span class="pre">validate_and_return_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#MAXIMO_API.MAXIMO_REST.validate_and_return_response" title="Permalink to this definition"></a></dt>
+<dd><p>Validate response by comparing it against the acceptable status codes. Returns response and status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>response</strong> – (<code class="docutils literal notranslate"><span class="pre">requests.response</span></code>) - The response from the query.</p></li>
+<li><p><strong>message</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Desired custom error message.</p></li>
+<li><p><strong>raw</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response raw format or json (default value False).</p></li>
+<li><p><strong>content</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response content or json (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json, raw or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="maximo_api.html" class="btn btn-neutral float-left" title="Maximo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="maximo_examples.html" class="btn btn-neutral float-right" title="Maximo Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mahmoud Aboelatta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
