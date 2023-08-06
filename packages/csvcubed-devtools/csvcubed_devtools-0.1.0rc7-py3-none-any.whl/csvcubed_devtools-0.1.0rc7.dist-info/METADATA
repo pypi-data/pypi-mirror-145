@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: csvcubed-devtools
+Version: 0.1.0rc7
+Summary: Development tools and dependencies for use in the csvcubed tooling.
+License: Apache-2.0
+Author: Integrated Data Service - Dissemination
+Author-email: csvcubed@gsscogs.uk
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: behave
+Requires-Dist: black
+Requires-Dist: chardet
+Requires-Dist: csvw
+Requires-Dist: docker
+Requires-Dist: pipenv-setup
+Requires-Dist: pyparsing (==2.4.7)
+Requires-Dist: pytest
+Requires-Dist: python-dateutil
+Requires-Dist: pywin32 (>=301); sys_platform == "win32"
+Requires-Dist: rdflib (>=6.0.0)
+Requires-Dist: sphinx
+Requires-Dist: sphinx-book-theme
+Requires-Dist: tox (>=3.24.4,<4.0.0)
+Description-Content-Type: text/markdown
+
+# csvcubed - devtools
+
+> Shared test functionality & dev dependencies which are commonly required.
+
+The *devtools* package contains common packages necessary for development of *csvcubed* such as:
+
+* behave - for behaviour testing / BDD
+* docker - to execute docker containers, used to transform and test csvcubed outputs.
+* black - auto-formatter to ensure consistent code formatting/style.
+
+It also contains shared functionality to support testing, e.g. common *behave* test steps like checking that files exist, using temporary directories when testing as well as tools to copy test files to & from docker containers.
+
+## Installation
+
+This package should be installed as a [dev dependency](https://python-poetry.org/docs/cli#options-3) to ensure that end-users of *csvcubed* are not required to install development tools such as docker.
+
+
+
+## API Documentation
+
+The latest API Documentation for the package can be found [here](https://ci.floop.org.uk/job/GSS_data/job/csvcubed/job/main/lastSuccessfulBuild/artifact/devtools/docs/_build/html/index.html).
+
+TODO: #217 Update API documentation location in csvcubed-devtools
