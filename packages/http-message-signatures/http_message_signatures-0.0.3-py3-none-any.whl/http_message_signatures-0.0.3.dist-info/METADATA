@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: http-message-signatures
+Version: 0.0.3
+Summary: An implementation of the IETF HTTP Message Signatures draft standard
+Home-page: https://github.com/pyauth/http-message-signatures
+Author: Andrey Kislyuk
+Author-email: kislyuk@gmail.com
+License: Apache Software License
+Platform: MacOS X
+Platform: Posix
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: requests (>=2.27.1)
+Requires-Dist: http-sfv (>=0.9.3)
+Requires-Dist: cryptography (>=36.0.2)
+
+UNKNOWN
+
