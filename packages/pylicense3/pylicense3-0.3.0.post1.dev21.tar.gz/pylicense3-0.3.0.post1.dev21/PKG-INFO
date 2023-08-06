@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: pylicense3
+Version: 0.3.0.post1.dev21
+Summary: Apply license information to a git project.
+Home-page: https://github.com/WWU-AMM/pylicense3
+Author: René Fritze
+Author-email: rené.fritze@wwu.de
+License: BSD license
+Keywords: pylicense3
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+Provides-Extra: ci
+Provides-Extra: docs
+Provides-Extra: full
+License-File: LICENSE
+License-File: AUTHORS.md
+
+pylicense3
+=========
+
+[![image](https://img.shields.io/pypi/v/pylicense3.svg)](https://pypi.python.org/pypi/pylicense3)
+
+[![image](https://github.com/WWU-AMM/pylicense3/workflows/pytest/badge.svg)](https://github.com/WWU-AMM/pylicense3/actions)
+
+[![Documentation Status](https://readthedocs.org/projects/pylicense3/badge/?version=latest)](https://pylicense3.readthedocs.io/en/latest/?badge=latest)
+
+
+Apply license information to a git project.
+
+-   Free software: BSD license
+-   Documentation: <https://pylicense3.readthedocs.io>.
+-   [![Live examples](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/WWU-AMM/pylicense3/HEAD?filepath=docs%2Fexamples%2F)
+
+
+Features
+--------
+
+-   TODO
+
+After generating your project
+-----------------------------
+
+- Setup github secrets for pypi [github project settings](https://github.com/WWU-AMM/pylicense3/settings/secrets/actions/new):
+   - `PYPI_TOKEN` for "real" deploys on git tags
+   - `TEST_PYPI_TOKEN` for deploys to test.pypi.org
+- enable project on [readthedocs.org](https://readthedocs.org/dashboard/import/?)
+- setup branch protection+automerge in [github project settings](https://github.com/WWU-AMM/pylicense3/settings/branches)
+- Fix `Live examples` link above
+
+
+Credits
+-------
+
+This package was created with
+[Cookiecutter](https://github.com/audreyr/cookiecutter) and the
+[WWU-AMM/python_cookiecutter](https://github.com/WWU-AMM/python_cookiecutter)
+project template.
+
+
