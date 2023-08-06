@@ -1,0 +1,283 @@
+import os
+import logging
+import shutil
+import tempfile
+
+from spython.main import Client as singularity_client
+
+
+class Elastix:
+    def __init__(self, version: str = None, variant: str = None) -> None:
+        if version is None:
+            self.version = "latest"
+        else:
+            self.version = version
+
+        if variant is None:
+            self.variant = ""
+        else:
+            self.variant = "-" + variant
+
+        self._docker_url = "svdvoort/elastix:" + self.version + self.variant
+        self._singularity_url = "docker://" + self._docker_url
+
+        self._singularity_folder = os.path.join(os.path.expanduser("~"), ".elastixpy")
+        self._singularity_container_name = "elastix:" + self.version + self.variant + ".sif"
+
+        self._pull_singularity_image()
+
+        self._singularity_image = os.path.join(self._singularity_folder, self._singularity_container_name)
+
+        # Default options
+        self._fixed_images = []
+        self._moving_images = []
+        self._output_directory = None
+        self._paramater_files = []
+        self._fixed_images_mask = []
+        self._moving_images_mask = []
+
+    def _pull_singularity_image(self) -> None:
+        if not os.path.exists(os.path.join(self._singularity_folder, self._singularity_container_name)):
+            os.makedirs(self._singularity_folder, exist_ok=True)
+            container_file, puller = singularity_client.pull(self._singularity_url,
+                                                             stream=True,
+                                                             pull_folder=self._singularity_folder)
+
+            for line in puller:
+                logging.info("Pulling Elastix container tag %s", self.version + self.variant)
+                logging.info(line)
+            shutil.move(container_file, os.path.join(self._singularity_folder, self._singularity_container_name))
+
+    @property
+    def fixed_images(self) -> list:
+        return self._fixed_images
+
+    @fixed_images.setter
+    def fixed_images(self, fixed_images: list) -> None:
+        self._fixed_images = fixed_images
+
+    @property
+    def moving_images(self) -> list:
+        return self._moving_images
+
+    @moving_images.setter
+    def moving_images(self, moving_images: list) -> None:
+        self._moving_images = moving_images
+
+    @property
+    def output_directory(self) -> str:
+        return self._output_directory
+
+    @output_directory.setter
+    def output_directory(self, output_directory: str) -> None:
+        self._output_directory = output_directory
+
+    @property
+    def parameter_files(self) -> list:
+        return self._paramater_files
+
+    @parameter_files.setter
+    def parameter_files(self, parameter_files: list) -> None:
+        self._paramater_files = parameter_files
+
+    def run(self):
+        command = ["-out", "/out/"]
+
+        if self.output_directory is None:
+            self.output_directory = tempfile.mkdtemp()
+
+        os.makedirs(self.output_directory, exist_ok=True)
+
+        # TODO requires all fixed images, moving images, parameter files (respectively) to be in the same folder
+        fixed_images_folder = os.path.dirname(os.path.normpath(self.fixed_images[0]))
+        moving_images_folder = os.path.dirname(os.path.normpath(self.moving_images[0]))
+        parameter_folder = os.path.dirname(os.path.normpath(self.parameter_files[0]))
+
+
+        bindings = [parameter_folder + ":/parameters",
+                    fixed_images_folder + ":/fixed",
+                    moving_images_folder + ":/moving",
+                    self.output_directory + ":/out"]
+
+        for i_parameter_file in self.parameter_files:
+            command.append("-p")
+            command.append("/parameters/" + os.path.basename(i_parameter_file))
+
+        for i_moving_image in self.moving_images:
+            command.append("-m")
+            command.append("/moving/" + os.path.basename(i_moving_image))
+
+        for i_fixed_image in self.fixed_images:
+            command.append("-f")
+            command.append("/fixed/" + os.path.basename(i_fixed_image))
+
+        container_output = singularity_client.run(
+            self._singularity_image,
+            command,
+            bind=bindings,
+            stream=True
+        )
+
+        for line in container_output:
+            print(line)
+
+        transformparameter_file = os.path.join(self.output_directory, "TransformParameters." + str(len(self.parameter_files) - 1) + ".txt")
+        return transformparameter_file
+
+class RegistrationParameters:
+    def __init__(self, registration_file: str):
+        self._registration_file = registration_file
+        self.parameters = {}
+
+    def read_registration_parameters(self, parameter_file):
+        with open(parameter_file, "r") as the_file:
+            lines = the_file.readlines()
+            for line in lines:
+                line.strip()
+                if line[0] == "(":
+                    # Remove beginning and end bracket:
+                    line = line[1:-2]
+                    # Split to separate key and value:
+                    line = line.split(" ", maxsplit=1)
+
+                    # If there are quotes around the value we will remove them.
+                    if line[1][0] == '"' or line[1][0] == "'":
+                        line[1] = line[1][1:-1]
+                    self.parameters[line[0]] = line[1]
+
+    def write_registration_parameters(self, out_parameter_file):
+        with open(out_parameter_file, "w") as the_file:
+            for key, value in self.parameters.items():
+                if isinstance(value, str):
+                    the_file.write("(" + key + ' "'  + value + '")\n')
+                else:
+                    the_file.write("(" + key + " "  + str(value) + ")\n")
+
+class Transformix:
+    def __init__(self, version: str = None, variant: str = None) -> None:
+        if version is None:
+            self.version = "latest"
+        else:
+            self.version = version
+
+        if variant is None:
+            self.variant = ""
+        else:
+            self.variant = "-" + variant
+
+        self._docker_url = "svdvoort/transformix:" + self.version + self.variant
+        self._singularity_url = "docker://" + self._docker_url
+
+        self._singularity_folder = os.path.join(os.path.expanduser("~"), ".elastixpy")
+        self._singularity_container_name = "transformix:" + self.version + self.variant + ".sif"
+
+        self._pull_singularity_image()
+
+        self._singularity_image = os.path.join(self._singularity_folder, self._singularity_container_name)
+
+        # Default options
+        self._input_image = None
+        self._transform_parameter_file = None
+        self._output_directory = None
+    def _pull_singularity_image(self) -> None:
+        if not os.path.exists(os.path.join(self._singularity_folder, self._singularity_container_name)):
+            os.makedirs(self._singularity_folder, exist_ok=True)
+            container_file, puller = singularity_client.pull(self._singularity_url,
+                                                             stream=True,
+                                                             pull_folder=self._singularity_folder)
+            for line in puller:
+                logging.info("Pulling transformix container tag %s", self.version + self.variant)
+                logging.info(line)
+            shutil.move(container_file, os.path.join(self._singularity_folder, self._singularity_container_name))
+
+    @property
+    def input_image(self) -> str:
+        return self._input_image
+
+    @input_image.setter
+    def input_image(self, input_image) -> None:
+        self._input_image = input_image
+
+    @property
+    def transform_parameter_file(self) -> str:
+        return self._transform_parameter_file
+
+    @transform_parameter_file.setter
+    def transform_parameter_file(self, transform_parameter_file) -> None:
+        self._transform_parameter_file = transform_parameter_file
+
+    @property
+    def output_directory(self) -> str:
+        return self._output_directory
+
+    @output_directory.setter
+    def output_directory(self, output_directory) -> None:
+        self._output_directory = output_directory
+
+    def run(self, output_file_name: str = None) -> str:
+
+        os.makedirs(self.output_directory, exist_ok=True)
+
+        # TODO requires all fixed images, moving images, parameter files (respectively) to be in the same folder
+        input_image_folder = os.path.dirname(os.path.normpath(self.input_image))
+        parameter_folder = os.path.dirname(os.path.normpath(self.transform_parameter_file))
+
+
+        bindings = [parameter_folder + ":/parameters",
+                    input_image_folder + ":/input",
+                    self.output_directory + ":/out"]
+
+        command = ["-in", "/input/" + os.path.basename(os.path.normpath(self.input_image)),
+                   "-tp", "/parameters/" + os.path.basename(os.path.normpath(self.transform_parameter_file)),
+                   "-out", "/out/"]
+
+        container_output = singularity_client.run(
+            self._singularity_image,
+            command,
+            bind=bindings,
+            stream=True
+        )
+
+        for line in container_output:
+            print(line)
+
+        if output_file_name is not None:
+            shutil.move(os.path.join(self.output_directory, "result.nii.gz"), os.path.join(self.output_directory, output_file_name))
+        else:
+            output_file_name = "result.nii.gz"
+
+        return os.path.join(self.output_directory, output_file_name)
+
+# TODO remove this afterwards
+
+if __name__ == "__main__":
+    parameter_file = "/home/sebastian/Repos/Automatic_segmentation_multi/registration_parameters/rigid_parameters_interpatient.txt"
+    bla = RegistrationParameters(parameter_file)
+    bla.read_registration_parameters(parameter_file)
+    print(bla.parameters["FixedImageDimension"])
+
+    bla.parameters["FixedImageDimension"] = 3
+    bla.parameters["MaximumNumberOfIterations"] = 5
+
+    bla.write_registration_parameters("/home/sebastian/Desktop/testie_elastix/testie.txt")
+
+
+    elastix = Elastix(version="5.0.1",
+                      variant="full")
+
+    elastix.moving_images = ["/home/sebastian/Desktop/Ilanah_test/Passage-005_MR2404_test/NIFTI/T1GD.nii.gz"]
+    elastix.fixed_images = ["/home/sebastian/Desktop/Ilanah_test/Passage-005_MR2404_test/NIFTI/T1.nii.gz"]
+    elastix.parameter_files = ["/home/sebastian/Desktop/testie_elastix/testie.txt"]
+    elastix.output_directory = "/home/sebastian/Desktop/testie_elastix"
+
+    bla = elastix.run()
+    print(bla)
+
+    transformix = Transformix(version="5.0.1", variant="full")
+
+    transformix.input_image = "/home/sebastian/Desktop/Ilanah_test/Passage-005_MR2404_test/NIFTI/T1GD.nii.gz"
+    transformix.output_directory = "/home/sebastian/Desktop/testie_elastix"
+    transformix.transform_parameter_file = bla
+
+    transformix.run()
+
