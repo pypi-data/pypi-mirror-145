@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: filesync
+Version: 0.0.2
+Summary: A file sync lib
+Home-page: https://github.com/grro/filesync
+Author: Gregor Roth
+Author-email: gregor.roth@web.de
+License: MIT
+Keywords: file,synchronization,webdav
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Description-Content-Type: text/markdown
+Requires-Dist: dateparser (==1.0.0)
+Requires-Dist: webdavclient3 (==3.14.5)
+Requires-Dist: requests (==2.27.1)
+
+# filesync
+
+file sync tools
+
