@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: MSPT
+Version: 1.0.0
+Summary: MS Bias calculations using the Pascal Triangle
+Home-page: https://github.com/llegregam/PascalTriangle
+Author: Loïc Le Grégam
+Author-email: legregam@insa-toulouse.Fr
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/llegregam/PascalTriangle/issues
+Project-URL: Source, https://github.com/llegregam/PascalTriangle/
+Keywords: Mass Spectrometry,Biochemistry,Pascal Triangle
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Requires-Python: >=3.6, <4
+Description-Content-Type: text/x-rst
+License-File: LICENSE.txt
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: ipywidgets
+Requires-Dist: IPython
+Requires-Dist: openpyxl
+Requires-Dist: xlrd
+
+Mass Spectrometry Pascal's Triangle (MSPT) is a python software to compute biases between experimental and
+theoretical values of isotopologue distributions during production of biological standards using controlled
+labeling patterns. For more information on the subject, check
+`this publication <https://pubmed.ncbi.nlm.nih.gov/25225869/>`_.
+
+It is one of the routine tools used on the `MetaToul platform <https://www6.toulouse.inrae.fr/metatoul>`_.
+
+The code is open-source, and available on Github under a GPLv3 license.
+
