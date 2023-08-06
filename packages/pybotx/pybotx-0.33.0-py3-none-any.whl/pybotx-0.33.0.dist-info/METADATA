@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: pybotx
+Version: 0.33.0
+Summary: A python library for interacting with eXpress BotX API
+Home-page: https://github.com/ExpressApp/pybotx
+Author: Sidnev Nikolay
+Author-email: nsidnev@ccsteam.ru
+Requires-Python: >=3.8,<3.11
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: aiofiles (>=0.7.0,<0.9.0)
+Requires-Dist: httpx (>=0.18.0,<0.22.0)
+Requires-Dist: loguru (>=0.6.0,<0.7.0)
+Requires-Dist: mypy-extensions (>=0.2.0,<0.5.0)
+Requires-Dist: pydantic (>=1.6.0,<1.9.0)
+Requires-Dist: typing-extensions (>=3.7.4,<5.0.0)
+Project-URL: Documentation, https://expressapp.github.io/pybotx
+Project-URL: Repository, https://github.com/ExpressApp/pybotx
+Description-Content-Type: text/markdown
+
+# pybotx
+
+*A python library for building bots and smartapps for eXpress messenger.*
+
+[![PyPI version](https://badge.fury.io/py/botx.svg)](https://badge.fury.io/py/pybotx)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pybotx)
+[![Coverage](https://codecov.io/gh/ExpressApp/pybotx/branch/master/graph/badge.svg)](https://codecov.io/gh/ExpressApp/pybotx/branch/master)
+[![Code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+
+
+## Features
+
+* Designed to be easy to use
+* Simple integration with async web-frameworks
+* Support middlewares for command, command-collector and bot
+* 100% test coverage
+* 100% type annotated codebase
+
+
+## Documentation
+
+Documentation will be here: <https://expressapp.github.io/pybotx/>
+For now, pls contact eXpress team, we'll help you.
+
+**Note:** Available only in Russian language
+
+
+## Installation
+
+Install pybotx using `pip`:
+
+```bash
+pip install git+https://github.com/ExpressApp/pybotx.git
+```
+
+**Note:** This project is under active development (`0.y.z`) and its API may be
+unstable.
+
