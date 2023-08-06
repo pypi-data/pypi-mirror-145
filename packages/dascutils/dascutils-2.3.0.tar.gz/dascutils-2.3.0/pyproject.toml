@@ -1,0 +1,9 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+
+[tool.black]
+line-length = 100
+
+[tool.pytest.ini_options]
+addopts = "-ra -v --ignore=test_download.py"
+filterwarnings = "ignore::DeprecationWarning"
