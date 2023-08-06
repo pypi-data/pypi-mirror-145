@@ -1,0 +1,39 @@
+---
+include:
+  - project: "empaia/integration/ci-templates"
+    ref: "main"
+    file:
+      - "pipeline-templates/pipeline-base.yml"
+      - "job-templates/bot-add-release-version-tag.yml"
+      - "job-templates/poetry-get-version.yml"
+
+variables:
+  RUNNER_TAG: "shared"
+
+poetry-get-version:
+  extends: .poetry-get-version
+
+poetry-codecheck:
+  image: registry.gitlab.com/empaia/integration/ci-docker-images/test-runner
+  before_script:
+    - poetry install
+  script:
+    - poetry run black --check .
+    - poetry run isort --check .
+    - poetry run pycodestyle *.py annotation
+    - poetry run pylint *.py annotation
+
+poetry-pytest:
+  image: registry.gitlab.com/empaia/integration/ci-docker-images/test-runner
+  before_script:
+    - poetry install
+  script:
+    - poetry run pytest tests --maxfail=1 -v -rx
+
+bot-add-release-version-tag:
+  extends: .bot-add-release-version-tag
+  needs:
+    - job: poetry-get-version
+      artifacts: true
+    - job: poetry-codecheck
+    - job: poetry-pytest
