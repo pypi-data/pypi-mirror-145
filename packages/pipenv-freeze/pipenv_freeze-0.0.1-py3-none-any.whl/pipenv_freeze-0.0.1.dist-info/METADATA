@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: pipenv-freeze
+Version: 0.0.1
+Summary: Easily freeze all requirements in your Pipenv file
+Home-page: https://github.com/hackedd/pipenv-freeze
+Author-email: Paul Hooijenga <paulhooijenga@gmail.com>
+License: UNKNOWN
+Project-URL: Homepage, https://github.com/hackedd/pipenv-freeze
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: tomlkit (~=0.10.1)
+Provides-Extra: develop
+Requires-Dist: pytest (~=7.1.1) ; extra == 'develop'
+Requires-Dist: pytest-cov (~=3.0.0) ; extra == 'develop'
+
+# Pipenv Freeze
+
+A tool to easily freeze all requirements in your Pipenv file.
+
+
