@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: robotpy-pathplannerlib
+Version: 2022.2.3
+Summary: Python wrapper for PathPlannerLib
+Home-page: https://github.com/robotpy/robotpy-pathplannerlib
+Author: RobotPy Development Team
+Author-email: robotpy@googlegroups.com
+License: BSD-3-Clause
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/x-rst
+Requires-Dist: wpilib (<2023.0.0,>=2022.4.1.6)
+
+robotpy-pathplannerlib
+======================
+
+This is a python implementation of Michael Jansen's pathplannerlib library.
+
+.. note:: The RobotPy project is not associated with or endorsed by Michael Jansen.
+
+Documentation
+=============
+
+* `PathplannerLib Documentation <https://github.com/mjansen4857/pathplanner/wiki/PathPlannerLib:-Java-Usage>`_
+
+License
+=======
+
+RobotPy wrappers are BSD-3-Clause. PathPlannerLib license is unknown.
+
