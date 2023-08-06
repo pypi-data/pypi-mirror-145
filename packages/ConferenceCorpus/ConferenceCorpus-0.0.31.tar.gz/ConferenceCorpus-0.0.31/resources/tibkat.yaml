@@ -1,0 +1,54 @@
+#
+# Pre-configured Queries for Conference Corpus Scientific Event lookup database
+#
+# TIBKAT examples
+#
+# WF 2022-03-06
+'ACISP':
+    title: TIBKAT Acronym and ordinal example ACISP
+    formats:
+        - ppn:tibkat
+    sql: |
+      SELECT 
+        Row_Number() OVER ( ORDER BY ordinal,acronym) AS '#',
+        ppn,year,ordinal,acronym,title
+      FROM 
+        event_tibkat t
+      WHERE 
+        acronym is not null and ordinal is not null and acronym like "ACISP%"
+      ORDER 
+        BY ordinal,acronym 
+'TibkatBkHistogramm':
+    title: usage of Basisklassifikation
+    sql: |
+        SELECT
+        ROW_NUMBER() OVER ( ORDER BY COUNT(*) DESC) AS '#',
+        COUNT(*) AS COUNT,SUBSTR(bk,1,2) as BK
+              FROM event_tibkat t
+        GROUP BY SUBSTR(bk,1,2)
+        HAVING COUNT(*) >=1000
+        ORDER BY 2 DESC
+'TibkatDocumentCodes':
+    title: usage of documentGenre and Type Codes
+    sql: |
+        SELECT 
+        count(*) AS count,
+        documentGenreCode,
+        documentTypeCode
+        FROM "event_tibkat"
+        GROUP by documentGenreCode,documentTypeCode
+        ORDER by 1 DESC
+        
+'TibkatCorporateCreatorTypes':
+    title: usage of CorporateCreatorTypes
+    sql: |
+        SELECT 
+        count(*),ccT
+        FROM (
+          SELECT
+            SUBSTR(corporateCreatorTypes, 1, INSTR(corporateCreatorTypes, '⇹')-1) as cCT
+          FROM event_tibkat  
+        )
+        GROUP by cCT
+        ORDER by 1 DESC
+
