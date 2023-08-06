@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: elephas_wheel
+Version: 0.0.1
+Summary: A customized wheel packaging tool for elephas
+Home-page: https://github.com/elephasquant/elephas_wheel
+Author: xitongsys
+Author-email: xitongsys@gmail.com
+Maintainer: xitongsys
+Maintainer-email: xitongsys@gmail.com
+License: MIT
+Keywords: wheel,packaging
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: System :: Archiving :: Packaging
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires-Python: >=3.7
+Provides-Extra: test
+License-File: LICENSE.txt
+
+# elephas_wheel
+elephas_wheel is a customized wheel packaging tool for elephas.
+
+* support `--exclude-source-files` to avoid exposuring source codes to customers
+
+Codes are mostly from [wheel](https://github.com/pypa/wheel) and thanks their efforts.
+
+
+
+
+
