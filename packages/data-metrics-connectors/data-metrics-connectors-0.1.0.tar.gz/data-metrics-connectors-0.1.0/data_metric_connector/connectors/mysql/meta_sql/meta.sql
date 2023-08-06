@@ -1,0 +1,2 @@
+SELECT TABLE_NAME AS `Table`,(DATA_LENGTH + INDEX_LENGTH) AS `Size` FROM information_schema.TABLES WHERE TABLE_SCHEMA = %s ORDER BY (DATA_LENGTH + INDEX_LENGTH) DESC;
+select cols.table_name as table_name,count(1) as column_count, SUM(table_rows) as row_count from information_schema.columns as cols inner join information_schema.tables as tabs on tabs.table_schema = %s and tabs.table_name = cols.table_name group by table_name;
