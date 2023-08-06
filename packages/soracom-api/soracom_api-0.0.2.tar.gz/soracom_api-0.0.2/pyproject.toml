@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "soracom_api"
+version = "0.0.2"
+description = "SORACOM API Client for the Python programming language based on the OpenAPI specification"
+authors = ["ks6088ts <ks6088ts@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+urllib3 = "^1.26.9"
+python-dateutil = "^2.8.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
