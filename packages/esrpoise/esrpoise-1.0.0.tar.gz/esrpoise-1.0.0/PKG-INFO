@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: esrpoise
+Version: 1.0.0
+Summary: POISE for ESR
+Home-page: https://github.com/foroozandehgroup/esrpoise
+Author: Mohammadali Foroozandeh, Jean-Baptiste Verstraete, Jonathan Yong
+Author-email: mohammadali.foroozandeh@chem.ox.ac.uk
+License: UNKNOWN
+Description: # esrpoise
+        
+        Parameter Optimisation by Iterative Spectral Evaluation: an Xepr-compatible ESR package
+        
+        ### Installation
+        
+        ESR-POISE requires Python 3.6 or later and can be installed using ``pip``:
+        
+        ```
+        python -m pip install esrpoise
+        ```
+        
+        ### Tests
+        
+        Inside the top-level `esrpoise` directory, run:
+        
+        ```
+        pip install tox
+        tox
+        ```
+        
+        ### Documentation
+        
+        For more details on installation, use and troubleshoot, please see [the documentation](https://foroozandehgroup.github.io/esrpoise/).
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
