@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: vsengine
+Version: 0.1.0a1
+Summary: An engine for our vapoursynth previewers
+License: AGPL-3.0-or-later
+Author: Sarah
+Author-email: cid+git@cid-chan.moe
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: trio
+Requires-Dist: VapourSynth (>=57)
+Requires-Dist: trio (>=0.20.0,<0.21.0); extra == "trio"
