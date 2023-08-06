@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "agadoodoo"
+version = "0.1.4"
+description = ""
+authors = ["daniel <dsal3389@dsal389.com>"]
+license = "GPL-2.0-only"
+readme = "README.md"
+include = [
+    "src/agadoodoo/scripts/*.py",
+    "README.md"
+]
+packages = [
+    { include = "agadoodoo", from = "src", format = "wheel" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
