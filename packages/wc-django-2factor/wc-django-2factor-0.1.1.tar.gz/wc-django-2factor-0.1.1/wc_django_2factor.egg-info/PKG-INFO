@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: wc-django-2factor
+Version: 0.1.1
+Summary: Package to create general API for 2factor checkers.
+Home-page: UNKNOWN
+Author: WebCase
+Author-email: info@webcase.studio
+License: MIT License
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# WebCase 2factor API
+
+Package to create general API for 2factor checkers.
+
+## Installation
+
+```sh
+pip install wc-django-2factor
+```
+
+In `settings.py`:
+
+```python
+INSTALLED_APPS += [
+  'wcd_2factor',
+]
+```
+
+
