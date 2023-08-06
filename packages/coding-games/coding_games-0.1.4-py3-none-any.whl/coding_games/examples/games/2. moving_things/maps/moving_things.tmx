@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="18">
+ <tileset firstgid="1" name="moving_things" tilewidth="32" tileheight="32" tilecount="576" columns="32">
+  <image source="tileset.png" width="1024" height="577"/>
+ </tileset>
+ <layer id="1" name="background" width="32" height="24" opacity="0.46">
+  <data encoding="base64" compression="zlib">
+   eJzt1VdsV3UUB3D+LW1pyyiFDkaBQoGWLlpoS0tZzoQ93Kjgq2xwo4KJT7KXCwV8cbCXTGU4E/aeyl6y9x5+GkrSB8H6LL/kk3sezj3fm9yce8uUeXgenv/vCRBEMGUJIZQwyhFOBJGUpwIVqUQUlYmmClWJIZY44qlGdWpQkwRqUZs6JFKXeiRRnwY0JJkUGpFKGulkkEljssimCU3JIZc8mpFPAc0ppAUtaUVr2vAIj/IYj/MET/Jh4K626na0pwMd6URnutCVbix9gO4l5r2s7kFPFpVSL3rTh770oz8DGMigf8kfXCL/ffUQhv6H/GEMZwQjGcVoxjCWcYx/QP7EEvmT1JOZcp+sr/mmRP9U9TSmM4OZzGI2c5jLPObzPQtYWDxrMUuKn+HevGXq5axgJT/xM7/wK7/xe4n+VerVrGEt61jPBjayic1sYSvb2M4OdrKL3SXm7VHvZR/7OcBBDnGYIxzlWPE9x11PcJJTnOYMZznHeS5wkUtc5gpXucZ1bnCTW9zmDkXLHyCIYMoSQihhlCOcCCIpTwUqUokoKhNNFaoSQyxxxFON6tSgJgnUojZ1SKQu9UiiPg1oSDIpNCKVNNLJIJPGZJFNE5qSQy55NCOfAppTSAta0orWtAncfef/5Fu+o62edrSnAx3pRGe60JVuPMXTPMOzPMfzvEB3XuSlov2nBz15pRT5r+rpRW/60Jd+9GcAAxnEa7zOG7zJW7zNOwzmXd4r2n+GMJQPSpH/kZ5hDGcEIxnFaMYwlnGMZwIf8wmf8hmfM5Ev+JJJTGYKXwXuv7P38qfqmcZ0ZjCTWcxmDnOZx/yiWSxgIYtYzBKW8gM/sozlrGBl4P7frHv5q/SsZg1rWcd6NrCRTWxmC1vZxnZ2sJNd7OYP/mQPe9nHfg5wkEMc5ghHOcZfHOcEJznFac5wlnOc5wIXucRlrnCVa1znBje5xW3uUPTjDxBEMGUJIZQwyhFOBJGUpwIVqUQUlYmmClWJIZY44qlGdWpQkwRqUZs6JFKXeiRRnwY0JJkUGpFKGulkkEljssimCU3JIZc8mpFPAc0ppAUtaUVr/gbrrBow
+  </data>
+ </layer>
+ <objectgroup id="4" name="actors">
+  <object id="5" name="Dizzy" x="239.308" y="274.709" width="101.954" height="143.018"/>
+ </objectgroup>
+ <objectgroup id="3" name="items">
+  <object id="1" name="Flare" x="951.568" y="320.021" width="59.473" height="94.8736"/>
+  <object id="14" name="harp" x="41.2765" y="417.939" width="32" height="32"/>
+  <object id="15" name="potion" x="88.1501" y="420.916" width="32" height="32"/>
+  <object id="16" name="wrench" x="141.959" y="422.332" width="32" height="32"/>
+  <object id="17" name="trumpet" x="192.936" y="419.5" width="32" height="32"/>
+ </objectgroup>
+ <layer id="2" name="walls" width="32" height="24" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDAbQwkh/jG4/vf070PbjCw962T9QYNT+wWE/rfM1Ibtp6TdK1dDSHYMl/ke6/QONBxIMtP0ASVk9Tw==
+  </data>
+ </layer>
+</map>
