@@ -1,0 +1,15 @@
+# normal
+.*
+!.gitignore
+
+# py
+/dist/
+/build/
+*.pyc
+*.egg-info
+
+# idlealib
+*.pybak
+test*
+idlealib/docs/*.md
+idlealib/docs/*.txt
