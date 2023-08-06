@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#
+#
+#	 TERMUX GURU INSTALLER
+#
+#   
+#
+# _____Do Not Copy Or Modify_____
+#
+#
+# Name    	:	Termux Guru
+# Coded by	:	Parixit Sutariya 
+# Site		:	bhai4You.blogspot.com
+# Date		:	03-04-2022
+#
+#
+
+termuxguru() {
+cd /sdcard
+if [[ -e "Termux-Guru" ]]; then
+clear
+echo
+echo "Termux Guru already Downloaded !, Delete 'Termux-Guru' folder from /sdcard for Re-Download."
+echo
+else
+clear
+echo
+echo "First go to settings/application and give storage permission to termux.., then press enter to continue"
+read vardone
+cd $HOME
+wget https://github.com/Bhai4You/Termux-Guru/releases/download/v2.0/Termux_Guru_v2.0.apk
+mkdir /sdcard/Termux-Guru
+mv Termux_Guru_v2.0.apk /sdcard/Termux-Guru/
+echo
+echo "TermuxGuru App Downloaded : /sdcard/Termux-Guru/Termux-Guru"
+echo
+fi
+}
+
+termuxguru
