@@ -1,0 +1,82 @@
+Metadata-Version: 2.1
+Name: aiotempfile
+Version: 0.5.4
+Summary: Provides asynchronous temporary files.
+Home-page: https://github.com/crashvb/aiotempfile
+Author: Richard Davis
+Author-email: crashvb@gmail.com
+License: Apache License 2.0
+Project-URL: Bug Reports, https://github.com/crashvb/aiotempfile/issues
+Project-URL: Source, https://github.com/crashvb/aiotempfile
+Description: # aiotempfile
+        
+        [![pypi version](https://img.shields.io/pypi/v/aiotempfile.svg)](https://pypi.org/project/aiotempfile)
+        [![build status](https://github.com/crashvb/aiotempfile/actions/workflows/main.yml/badge.svg)](https://github.com/crashvb/aiotempfile/actions)
+        [![coverage status](https://coveralls.io/repos/github/crashvb/aiotempfile/badge.svg)](https://coveralls.io/github/crashvb/aiotempfile)
+        [![python versions](https://img.shields.io/pypi/pyversions/aiotempfile.svg)](https://pypi.org/project/aiotempfile)
+        [![linting](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
+        [![code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+        [![license](https://img.shields.io/github/license/crashvb/aiotempfile.svg)](https://github.com/crashvb/aiotempfile/blob/master/LICENSE.md)
+        
+        ## Overview
+        
+        Provides asynchronous temporary files.
+        
+        ## Installation
+        ### From [pypi.org](https://pypi.org/project/aiotempfile/)
+        
+        ```
+        $ pip install aiotempfile
+        ```
+        
+        ### From source code
+        
+        ```bash
+        $ git clone https://github.com/crashvb/aiotempfile
+        $ cd aiotempfile
+        $ virtualenv env
+        $ source env/bin/activate
+        $ python -m pip install --editable .[dev]
+        ```
+        
+        ## Usage
+        
+        This implementation is a derivation of [aiofiles](https://pypi.org/project/aiofile/) and functions the same way.
+        
+        ```python
+        import aiotempfile
+        async with aiotempfile.open() as file:
+            file.write(b"data")
+        ```
+        
+        If the context manager is not used, files will need be explicitly closed; otherwise, they will only be removed during the interepreter teardown.
+        
+        ```python
+        import aiotempfile
+        file = await aiotempfile.open()
+        file.write(b"data")
+        file.close()
+        ```
+        
+        ### Environment Variables
+        
+        | Variable | Default Value | Description |
+        | ---------| ------------- | ----------- |
+        | AIOTEMPFILE_DEBUG | | Adds additional debug logging.
+        
+        ## Development
+        
+        [Source Control](https://github.com/crashvb/aiotempfile)
+        
+Keywords: aio aiotempfile async asynchronous file files temp temporary
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: dev
