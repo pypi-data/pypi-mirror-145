@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: textsynthpy
+Version: 0.2.5
+Summary: Demo textsynth api wrapper. You need textsynth.com account to get api key. Issues: https://github.com/Azzy380/textsynthpy/issues
+Home-page: https://textsynthpy.readthedocs.io/
+Author: Karol Janus
+Author-email: krljanus@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# TextSynthPy
+A small demo wrapper for a TextSynth api. To use, you need textsynth.com account to get api key. 
+
+### Installation
+```
+pip install textsynthpy
+```
+
+### Get started
+How to use:
+
+```Python
+from textsynthpy import TextSynth, Complete
+
+# Initantiate a TextSynth object
+con = TextSynth(API_KEY_HERE)
+
+# text completion 
+answer = con.text_complete("prompt")
+
+# print generated text
+print(answer.text)
+```
+
