@@ -1,0 +1,67 @@
+[project]
+name = "darbiadev-businesscentral"
+version = "0.5.0"
+description = "darbiadev-businesscentral"
+readme = "README.md"
+authors = [
+    { name = "Bradley Reynolds", email = "bradley.reynolds@darbia.dev" },
+]
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.26.0",
+]
+
+[project.license]
+text = "MIT"
+
+[project.urls]
+repository = "https://github.com/darbiadev/darbiadev-businesscentral/"
+documentation = "https://docs.darbia.dev/darbiadev-businesscentral/"
+
+[project.optional-dependencies]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pip-licenses>=3.5.3",
+    "taskipy>=1.9.0",
+    "pre-commit>=2.16.0",
+    "pylint>=2.12.2",
+    "pytest>=6.2.5",
+    "pytest-cov>=3.0.0",
+    "black>=21.12b0",
+]
+tests = [
+    "pytest>=6.2.5",
+]
+docs = [
+    "sphinx>=4.3.2",
+    "sphinxcontrib-autoprogram>=0.1.7",
+    "sphinx-rtd-theme>=1.0.0",
+    "toml>=0.10.2",
+]
+
+[tool.sphinx]
+copyright = "Darbia"
+author = "Bradley Reynolds"
+api_dir = "darbiadev_businesscentral"
+
+[tool.black]
+target-version = [
+    "py310",
+]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "tests -r a -v --doctest-modules darbiadev_businesscentral"
+
+[tool.pylint.format]
+max-line-length = 120
+
+[build-system]
+requires = [
+    "pdm-pep517",
+]
+build-backend = "pdm.pep517.api"
