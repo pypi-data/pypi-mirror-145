@@ -1,0 +1,5 @@
+[console_scripts]
+jupyter-mosaic = pyttoresque.app:main
+
+[jupyter_serverproxy_servers]
+bokeh = pyttoresque.app:setup_bokeh
