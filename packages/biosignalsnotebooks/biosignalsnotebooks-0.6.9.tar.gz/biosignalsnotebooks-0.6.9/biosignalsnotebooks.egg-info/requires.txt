@@ -1,0 +1,20 @@
+numpy
+matplotlib
+scipy
+h5py
+wget
+datetime
+bokeh>=1.4.0
+scipy
+IPython
+pandas
+nbformat
+ipython
+requests
+libmagic
+
+[:platform_system != "Linux"]
+python-magic-bin
+
+[:platform_system == "Linux"]
+python-magic
