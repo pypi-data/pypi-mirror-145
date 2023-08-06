@@ -1,0 +1,18 @@
+include *.py
+include */*.py
+recursive-include cubicweb_processing *.py
+recursive-include cubicweb_processing/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_processing/i18n *.po
+recursive-include cubicweb_processing/wdoc *
+recursive-include test/data bootstrap_cubes *.py
+include *.ini
+include *.rst
+include cubicweb-processing.spec
+include README.rst
+
+exclude .gitlab-ci.yml
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
