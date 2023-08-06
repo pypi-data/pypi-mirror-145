@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started &#8212; palaestrAI Mosaik Interface  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Installation" href="installation.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes how to use <em>palaestrAI-mosaik</em> to import a mosaik
+world object into ARL. The target audience for this guide is assumed
+to have at least little experience with mosaik but is new to palaestrAI.
+If you don’t have experience with mosaik but you just want an
+environment to play with, have a look at the
+<a class="reference internal" href="midas_example.html"><span class="doc">Midas Example</span></a>.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>It is assumed that you have already followed the instructions of the
+<a class="reference internal" href="installation.html"><span class="doc">Installation</span></a> guide.</p>
+</div>
+<div class="section" id="preparing-your-world">
+<h2>Preparing your world<a class="headerlink" href="#preparing-your-world" title="Permalink to this headline">¶</a></h2>
+<p>Probably you have written mosaik scenario script that looks somehow
+similar to the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mosaik</span>
+<span class="n">SIM_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;MySimA&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;python&quot;</span><span class="p">:</span> <span class="s2">&quot;path.to.simulatorA:Class&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;MySimB&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;python&quot;</span><span class="p">:</span> <span class="s2">&quot;path.to.simulatorB:Class&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+<span class="c1"># Define number of simulation steps</span>
+<span class="n">END</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Create the world</span>
+<span class="n">WORLD</span> <span class="o">=</span> <span class="n">mosaik</span><span class="o">.</span><span class="n">World</span><span class="p">(</span><span class="n">SIM_CONFIG</span><span class="p">)</span>
+
+<span class="c1"># Start simulators</span>
+<span class="n">simA</span> <span class="o">=</span> <span class="n">WORLD</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;MySimA&quot;</span><span class="p">)</span>
+<span class="n">simB</span> <span class="o">=</span> <span class="n">WORLD</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;MySimB&quot;</span><span class="p">)</span>
+
+<span class="c1"># Instantiate models</span>
+<span class="n">modA</span> <span class="o">=</span> <span class="n">simA</span><span class="o">.</span><span class="n">ModelA</span><span class="p">()</span>
+<span class="n">modB</span> <span class="o">=</span> <span class="n">simB</span><span class="o">.</span><span class="n">ModelB</span><span class="p">()</span>
+
+<span class="c1"># Connect entities (attrA of modA to attrB of modB)</span>
+<span class="n">WORLD</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">modA</span><span class="p">,</span> <span class="n">modB</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;attrA&quot;</span><span class="p">,</span> <span class="s2">&quot;attrB&quot;</span><span class="p">))</span>
+
+<span class="c1"># Start simulation</span>
+<span class="n">WORLD</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">until</span><span class="o">=</span><span class="n">END</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All you have to do is to wrap your scenario script in two functions.</p>
+</div>
+<div class="section" id="description-function">
+<h2>Description function<a class="headerlink" href="#description-function" title="Permalink to this headline">¶</a></h2>
+<p>The first one should provide information about sensors and actuators
+in your mosaik scenario.</p>
+<p>A sensor can be any attribute of a model that
+is an input for another model. In the example above, this would be
+<em>attrA</em> from <em>modA</em>. An actuator, on the other hand, can be any
+attribute, that is an input to a model, e.g., <em>attrB</em> of <em>modB</em>.</p>
+<p>These sensors and actuators need to be wrapped into separate lists.
+For the example above, this could look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sensor_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;sensor_id&quot;</span><span class="p">:</span> <span class="s2">&quot;MySimA-0.ModelA-0.attrA&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;observation_space&quot;</span><span class="p">:</span> <span class="s2">&quot;Box(low=0.0, high=1.2, &quot;</span>
+                             <span class="s2">&quot;shape=(1,), dtype=np.float32)&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+<span class="n">actuator_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;actuator_id&quot;</span><span class="p">:</span> <span class="s2">&quot;MySimB-0.ModelB-0.attrB&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;action_space&quot;</span><span class="p">:</span> <span class="s2">&quot;Box(low=0.0, high=1.2, &quot;</span>
+                        <span class="s2">&quot;shape=(1,), dtype=np.float32)&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Here, <em>MySimA-0</em> is the simulator ID assigned from mosaik to
+simulator A, <em>ModelA-0</em> is the entity ID defined in the create method
+of simulator A, and <em>attrA</em> is the name of an attribute of model A.</p>
+<p>The description function should return these two lists, so your new
+code should look similar to this example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_description_fnc</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="c1"># Some code to create the lists</span>
+    <span class="c1"># ...</span>
+
+    <span class="k">return</span> <span class="n">sensor_list</span><span class="p">,</span> <span class="n">actuator_list</span>
+</pre></div>
+</div>
+<p>The argument <em>params</em> is an optional dictionary that you can use to
+pass arguments to your description function. We will talk about this
+in <a class="reference internal" href="#configuration"><span class="std std-ref">Configure the experiment file</span></a>.</p>
+<p>Alternatively, you can populate lists of sensor and actuator objects
+provided by <code class="xref py py-class docutils literal notranslate"><span class="pre">SensorInformation</span></code> and
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ActuatorInformation</span></code>, respectively:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">palaestrAI.agent.actuator_information</span> <span class="kn">import</span> <span class="n">ActuatorInformation</span>
+<span class="kn">from</span> <span class="nn">palaestrAI.agent.sensor_information</span> <span class="kn">import</span> <span class="n">SensorInformation</span>
+<span class="kn">from</span> <span class="nn">palaestrAI.types</span> <span class="kn">import</span> <span class="n">Box</span>
+
+<span class="k">def</span> <span class="nf">my_description_fnc</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">sensor_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">actuator_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="c1"># Some other code</span>
+    <span class="c1"># ...</span>
+
+    <span class="n">sensor_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SensorInformation</span><span class="p">(</span>
+        <span class="n">sensor_id</span><span class="o">=</span><span class="s2">&quot;MySimA-0.ModelA-0.attrA&quot;</span><span class="p">,</span>
+        <span class="n">observation_space</span><span class="p">:</span> <span class="n">Box</span><span class="p">(</span>
+            <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">actuator_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ActuatorInformation</span><span class="p">(</span>
+        <span class="n">actuator_id</span><span class="o">=</span><span class="s2">&quot;MySimB-0.ModelB-0.attrB&quot;</span><span class="p">,</span>
+        <span class="n">action_space</span><span class="p">:</span> <span class="n">Box</span><span class="p">(</span>
+            <span class="n">low</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">sensor_list</span><span class="p">,</span> <span class="n">actuator_list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instance-function">
+<h2>Instance function<a class="headerlink" href="#instance-function" title="Permalink to this headline">¶</a></h2>
+<p>The second function that is required is the instance function, which
+should return the world object created in your scenario script.
+You only have to make sure that the world has <em>not yet started</em>.
+The world will be started from within <em>palaestrAI-mosaik</em>.
+The easiest way to achieve this is to wrap your scenario script in
+a function. For the example script, the function could look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mosaik</span>
+
+<span class="k">def</span> <span class="nf">my_instance_fnc</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">sim_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;MySimA&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;python&quot;</span><span class="p">:</span> <span class="s2">&quot;path.to.simulatorA:Class&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;MySimB&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;python&quot;</span><span class="p">:</span> <span class="s2">&quot;path.to.simulatorB:Class&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">}</span>
+    <span class="c1"># Define number of simulation steps</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Create the world</span>
+    <span class="n">world</span> <span class="o">=</span> <span class="n">mosaik</span><span class="o">.</span><span class="n">World</span><span class="p">(</span><span class="n">sim_config</span><span class="p">)</span>
+
+    <span class="c1"># Start simulators</span>
+    <span class="n">simA</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;MySimA&quot;</span><span class="p">)</span>
+    <span class="n">simB</span> <span class="o">=</span> <span class="n">world</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;MySimB&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Instantiate models</span>
+    <span class="n">modA</span> <span class="o">=</span> <span class="n">simA</span><span class="o">.</span><span class="n">ModelA</span><span class="p">()</span>
+    <span class="n">modB</span> <span class="o">=</span> <span class="n">simB</span><span class="o">.</span><span class="n">ModelB</span><span class="p">()</span>
+
+    <span class="c1"># Connect entities (attrA of modA to attrB of modB)</span>
+    <span class="n">world</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">modA</span><span class="p">,</span> <span class="n">modB</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;attrA&quot;</span><span class="p">,</span> <span class="s2">&quot;attrB&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">world</span>
+</pre></div>
+</div>
+<p>Again, a dictionary <em>params</em> will be passed to the function. In fact,
+this is the same dict that is passed to the description function. It is
+up to you, in which of these functions you use the <em>params</em>. But, as
+you probably have noticed, the number of steps is fetched from the
+dict.</p>
+<p>That is because <em>palaestrAI-mosaik</em> needs to know, how long the
+simulation should run. To make sure the correct value is passed, you
+should provide the value for <em>end</em> in the params, as described in
+<a class="reference internal" href="#configuration"><span class="std std-ref">Configure the experiment file</span></a></p>
+</div>
+<div class="section" id="add-your-script-to-pythonpath">
+<h2>Add your script to PYTHONPATH<a class="headerlink" href="#add-your-script-to-pythonpath" title="Permalink to this headline">¶</a></h2>
+<p><em>palaestrAI-mosaik</em> will try to import your script and call the
+functions defined before. This will probably fail unless you add your
+script to the python path. There are several ways to achieve this.</p>
+<p>The quick-and-dirty way is to add your script (and all simulators
+defined in your simulation config) to your PYTHONPATH. At the top of
+your script, add the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-the-experiment-file">
+<span id="configuration"></span><h2>Configure the experiment file<a class="headerlink" href="#configure-the-experiment-file" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">palaestrAI Mosaik Interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-your-world">Preparing your world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description-function">Description function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instance-function">Instance function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-your-script-to-pythonpath">Add your script to PYTHONPATH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-the-experiment-file">Configure the experiment file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="midas_example.html">Example: MIDAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">palaestrai_mosaik</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Installation</a></li>
+      <li>Next: <a href="configuration.html" title="next chapter">Configuration</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Stephan Balduin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/getting_started.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

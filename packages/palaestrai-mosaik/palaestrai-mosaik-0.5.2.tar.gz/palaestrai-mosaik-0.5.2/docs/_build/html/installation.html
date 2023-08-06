@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation &#8212; palaestrAI Mosaik Interface  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" />
+    <link rel="prev" title="Welcome to palaestrAI Mosaik Interface’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes how to install <em>palaestrAI-mosaik</em> on <a class="reference internal" href="#linux"><span class="std std-ref">Linux</span></a>.
+OS-X and Windows are, sadly, not supported by <em>palaestrAI</em>
+(see <a class="reference internal" href="#osx-windows"><span class="std std-ref">OS-X and Windows</span></a>).</p>
+<p>It is assumed that the <em>palaestrAI</em> package is already installed. In future
+versions it will be possible that we add <em>palaestrAI</em> as install
+dependency, but for now it is required to install that package
+manually.</p>
+<div class="section" id="linux">
+<span id="id1"></span><h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p>This guide is based on <em>Manjaro 20.2.1 Nibia, 64bit</em>, but this should
+for work for other distributions as well.</p>
+<p>The <em>palaestrAI-mosaik</em> package requires <a class="reference external" href="https://www.python.org/">Python</a> &gt;= 3.8. We
+recommend to use a <a class="reference external" href="https://virtualenv.readthedocs.org">virtualenv</a> to avoid messing up your system
+environment. Use your distributions’ package manager to install pip
+and virtualenv.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virtualenv ~/.virtualenvs/arl
+$ <span class="nb">source</span> ~/.virtualenv/arl/bin/activate
+</pre></div>
+</div>
+<p>If your distribution still relies on Python 2.x, make sure that you
+actually create a virtualenv environment for Python 3.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virtualenv -p /usr/bin/python3 ~/.virtualenvs/arl
+$ <span class="nb">source</span> ~/.virtualenv/arl/bin/activate
+</pre></div>
+</div>
+<p>Now you can install <em>palaestrAI-mosaik</em> from the source code.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>arl<span class="o">)</span> $ pip install git+https://gitlab.com/arl2/palaestrai-mosaik.git
+</pre></div>
+</div>
+<p>Or, if you’ve provided an ssh key in your account settings:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>arl<span class="o">)</span> $ pip install git+ssh://git@gitlab.com:arl2/palaestrai-mosaik.git
+</pre></div>
+</div>
+</div>
+<div class="section" id="os-x-and-windows">
+<span id="osx-windows"></span><h2>OS-X and Windows<a class="headerlink" href="#os-x-and-windows" title="Permalink to this headline">¶</a></h2>
+<p>Sadly, Windows and OS-X are not supported. The reason for this are, first,
+the multiprocessing policy of <em>palaestrAI</em> that is uses <em>fork</em>, which is
+not supported by Windows and OS-X and, secondly, the signal handling for
+graceful termination uses some operations that are available to UNIX only.
+See the <em>palaestrAI</em> main repository for updates on these issues.</p>
+<p>For now windows user, we recommend to use the Windows Subsystem for Linux
+and follow the instructions for <a class="reference internal" href="#linux"><span class="std std-ref">Linux</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">palaestrAI Mosaik Interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#os-x-and-windows">OS-X and Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="midas_example.html">Example: MIDAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">palaestrai_mosaik</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to palaestrAI Mosaik Interface’s documentation!</a></li>
+      <li>Next: <a href="getting_started.html" title="next chapter">Getting Started</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Stephan Balduin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

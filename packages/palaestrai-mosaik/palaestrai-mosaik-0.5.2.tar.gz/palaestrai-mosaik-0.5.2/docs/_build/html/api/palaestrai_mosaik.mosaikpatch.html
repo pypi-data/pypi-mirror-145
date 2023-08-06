@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>palaestrai_mosaik.mosaikpatch package &#8212; palaestrAI Mosaik Interface  documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="palaestrai_mosaik.simulator package" href="palaestrai_mosaik.simulator.html" />
+    <link rel="prev" title="palaestrai_mosaik.environment package" href="palaestrai_mosaik.environment.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="palaestrai-mosaik-mosaikpatch-package">
+<h1>palaestrai_mosaik.mosaikpatch package<a class="headerlink" href="#palaestrai-mosaik-mosaikpatch-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-palaestrai_mosaik.mosaikpatch.scenario">
+<span id="palaestrai-mosaik-mosaikpatch-scenario-module"></span><h2>palaestrai_mosaik.mosaikpatch.scenario module<a class="headerlink" href="#module-palaestrai_mosaik.mosaikpatch.scenario" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a patch for mosaik’s world object.</p>
+<p>Needs to be updated when the mosaik API changes.</p>
+<p>Tested with mosaik version 2.6.0.</p>
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scenario.modify_world">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scenario.</span></code><code class="sig-name descname"><span class="pre">modify_world</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scenario.modify_world" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the world object for the use with palaestrAI.</p>
+<p>A new method <a class="reference internal" href="palaestrai_mosaik.environment.html#palaestrai_mosaik.environment.mosaik_ifs.MosaikInterfaceComponent.trigger_actuators" title="palaestrai_mosaik.environment.mosaik_ifs.MosaikInterfaceComponent.trigger_actuators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">trigger_actuators()</span></code></a> is installed, which is
+called by the <a class="reference internal" href="#palaestrai_mosaik.mosaikpatch.scheduler.get_input_data" title="palaestrai_mosaik.mosaikpatch.scheduler.get_input_data"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_input_data()</span></code></a> function of the modified
+<a class="reference internal" href="#module-palaestrai_mosaik.mosaikpatch.scheduler" title="palaestrai_mosaik.mosaikpatch.scheduler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">scheduler</span></code></a>. Furthermore, the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scenario.World.run()</span></code> method is overwritten by the
+modified <a class="reference internal" href="#palaestrai_mosaik.mosaikpatch.scenario.run" title="palaestrai_mosaik.mosaikpatch.scenario.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> version below.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>world</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">mosaik.scenario.World</span></code>) – The <em>world</em> object to be modified.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scenario.run">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scenario.</span></code><code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scenario.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>A modified version of the <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scenario.World.run()</span></code>
+method of mosaik’s world object.</p>
+<p>This <a class="reference internal" href="#palaestrai_mosaik.mosaikpatch.scenario.run" title="palaestrai_mosaik.mosaikpatch.scenario.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">run()</span></code></a> method works exactly like the original one
+except that a different scheduler is used. Indeed, it is nearly the
+same code but since a modified scheduler is imported, this specific
+scheduler is called instead.</p>
+<p>Furthermore, the prints are replaced by logging outputs.</p>
+<p>See the mosaik documentation
+<a class="reference external" href="https://mosaik.readthedocs.io/en/latest/api_reference/mosaik.scenario.html">https://mosaik.readthedocs.io/en/latest/api_reference/mosaik.scenario.html</a>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scenario.World.run()</span></code> for the regular features of this
+method.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-palaestrai_mosaik.mosaikpatch.scheduler">
+<span id="palaestrai-mosaik-mosaikpatch-scheduler-module"></span><h2>palaestrai_mosaik.mosaikpatch.scheduler module<a class="headerlink" href="#module-palaestrai_mosaik.mosaikpatch.scheduler" title="Permalink to this headline">¶</a></h2>
+<p>This module contains a modified version of the mosaik scheduler.</p>
+<p>Since the scheduler is not a class but a collection of functions,
+each function of the scheduler needs to be present. For most of them,
+calls can be directed to the regular scheduler function. However, as
+soon as the mosaik scheduler changes, these changes need to be
+reflected here and new functions need a forward call in this module.</p>
+<p>The only function with a modification is the
+<code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.get_input_data()</span></code> function (and there is added
+only one line of code). But to make use of this modified function, it
+is required to provide copies of <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.run()</span></code> and
+<code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.sim_process()</span></code>, as well. They should be updated
+on a new mosaik version.</p>
+<p>See
+<a class="reference external" href="https://mosaik.readthedocs.io/en/latest/api_reference/mosaik.scheduler.html">https://mosaik.readthedocs.io/en/latest/api_reference/mosaik.scheduler.html</a>
+for the docs of the original functions.</p>
+<p>Tested with mosaik version 2.6.0</p>
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.get_input_data">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">get_input_data</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.get_input_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary with the input data for <em>sim</em>.</p>
+<p>The original function <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.get_input_data()</span></code> is
+called. Afterwards, the <code class="xref py py-func docutils literal notranslate"><span class="pre">trigger_actuators()</span></code> method of the
+modified world object is called.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.get_keep_running_func">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">get_keep_running_func</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.get_keep_running_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the <em>keep_running_func</em>.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.get_keep_running_func()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.get_outputs">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">get_outputs</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.get_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get outputs for a simulator.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.get_outputs()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.get_progress">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">get_progress</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sims</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.get_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get simulation progress.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.get_progress()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.rt_check">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">rt_check</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rt_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_strict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.rt_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check the time for real time simulation.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.rt_check()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.rt_sleep">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">rt_sleep</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rt_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">world</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.rt_sleep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sleep for real time simulation.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.rt_sleep()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.run">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the simulation.</p>
+<p>This is an exact copy of the current <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.run()</span></code>
+method.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.sim_process">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">sim_process</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rt_strict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_progress</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.sim_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>SimPy simulation process for a certain simulator <em>sim</em>.</p>
+<p>This method is an exact copy of the current
+<code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.sim_process()</span></code> method.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.step">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">step</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Step the scheduler.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.step()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.step_required">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">step_required</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.step_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return if another step is required.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.step_required()</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="palaestrai_mosaik.mosaikpatch.scheduler.wait_for_dependencies">
+<code class="sig-prename descclassname"><span class="pre">palaestrai_mosaik.mosaikpatch.scheduler.</span></code><code class="sig-name descname"><span class="pre">wait_for_dependencies</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#palaestrai_mosaik.mosaikpatch.scheduler.wait_for_dependencies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for dependencies of <em>sim</em>.</p>
+<p>See <code class="xref py py-func docutils literal notranslate"><span class="pre">mosaik.scheduler.wait_for_dependencies()</span></code>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-palaestrai_mosaik.mosaikpatch">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-palaestrai_mosaik.mosaikpatch" title="Permalink to this headline">¶</a></h2>
+<p>This module contains modified versions of some mosaik components.</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">palaestrAI Mosaik Interface</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../midas_example.html">Example: MIDAS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">palaestrai_mosaik</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="palaestrai_mosaik.html">palaestrai_mosaik package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">palaestrai_mosaik</a><ul>
+  <li><a href="palaestrai_mosaik.html">palaestrai_mosaik package</a><ul>
+      <li>Previous: <a href="palaestrai_mosaik.environment.html" title="previous chapter">palaestrai_mosaik.environment package</a></li>
+      <li>Next: <a href="palaestrai_mosaik.simulator.html" title="next chapter">palaestrai_mosaik.simulator package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Stephan Balduin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api/palaestrai_mosaik.mosaikpatch.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
