@@ -1,0 +1,16 @@
+graft docs
+graft src/collective
+include *.cfg
+include *.rst
+include *.txt
+exclude __pycache__
+exclude .*.cfg
+exclude .coveragerc
+exclude .DS_Store
+exclude .tx
+exclude .tx/config
+exclude *.sh
+exclude buildout.cfg
+exclude pyvenv.cfg
+exclude tests.cfg
+global-exclude *.pyc
