@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: create-csv-nosferatu-2
+Version: 0.0.1
+Summary: Demo library
+Home-page: https://medium-multiply.readthedocs.io/
+Author: Dwieka
+Author-email: patriadwieka@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+Create Csv Nosferatu
+A library that pass the generating report from agisoft metashape from looping process in exporting orthomosaic
+
+Installation
+pip install avirtech_create_csv
+
+Get Started
+from get_csv.get_csv import get_csv
+
+params will automatically declared while exporting orthomosaic being run, so you just have to install this module at first
+
