@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: p6-namer
+Version: 0.8.20
+Summary: Sets the AWS IAM Account Alias with a Custom Resource
+Home-page: https://github.com/p6m7g8/p6-cdk-namer.git
+Author: Philip M. Gollucci<pgollucci@p6m7g8.com>
+License: Apache-2.0
+Project-URL: Source, https://github.com/p6m7g8/p6-cdk-namer.git
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: JavaScript
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Typing :: Typed
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+AWS CDK setups up a Custom Resource via Cloud Formation which sets the AWS IAM Account Alias
+
+# P6Namer
+
+## LICENSE
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+
+## Other
+
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/p6m7g8/p6-cdk-namer) ![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=p6m7g8_p6-cdk-namer&metric=alert_status) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/p6m7g8/p6-cdk-namer) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/p6m7g8/p6-cdk-namer)
+
+## Usage
+
+```python
+...
+
+import { P6Namer } from 'p6-cdk-namer';
+
+new P6Namer(this, 'AccountAlias', {
+  accountAlias: 'THE-ALIAS',
+});
+```
+
+## Architecture
+
+![./assets/diagram.png](./assets/diagram.png)
+
+## Author
+
+Philip M. Gollucci [pgollucci@p6m7g8.com](mailto:pgollucci@p6m7g8.com)
+
+
