@@ -1,0 +1,550 @@
+/* Provided by the Sphinx base theme template at build time */
+@import "../basic.css";
+@import url('https://rsms.me/inter/inter.css');
+
+:root {
+  /*****************************************************************************
+  * Theme config
+  **/
+  --pst-header-height: 60px;
+
+  /*****************************************************************************
+  * Font size
+  **/
+  --pst-font-size-base: 16px; /* base font size - applied at body / html level */
+
+  /* heading font sizes */
+  --pst-font-size-h1: 42px;
+  --pst-font-size-h2: 32px;
+  --pst-font-size-h3: 27px;
+  --pst-font-size-h4: 23px;
+  --pst-font-size-h5: 20px;
+  --pst-font-size-h6: 18px;
+
+  /* smaller then heading font sizes*/
+  --pst-font-size-milli: 12px;
+
+  --pst-sidebar-font-size: .9em;
+  --pst-sidebar-caption-font-size: .9em;
+
+  /*****************************************************************************
+  * Font family
+  **/
+  /* These are adapted from https://systemfontstack.com/ */
+  --pst-font-family-base-system: -apple-system, BlinkMacSystemFont, Segoe UI, "Helvetica Neue",
+    Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --pst-font-family-monospace-system: Menlo, Consolas, Monaco,
+    Liberation Mono, Lucida Console, monospace;
+
+  --pst-font-family-base: "Inter", var(--pst-font-family-base-system);
+  --pst-font-family-heading: "Inter", var(--pst-font-family-base-system);
+  --pst-font-family-monospace: var(--pst-font-family-monospace-system);
+
+  /*****************************************************************************
+  * Color
+  *
+  * Colors are defined in rgb string way, "red, green, blue"
+  **/
+  --zama-yellow: 255, 210, 8;
+  --zama-orange: 219, 156, 0;
+  --pst-color-primary: 19, 6, 84;
+  --pst-color-success: 40, 167, 69;
+  --pst-color-info: 0, 123, 255;
+  --pst-color-warning: 255, 193, 7;
+  --pst-color-danger: 220, 53, 69;
+  --pst-color-text-base: 19, 29, 38;
+
+  --pst-color-h1: var(--pst-color-text-base);
+  --pst-color-h2: var(--pst-color-text-base);
+  --pst-color-h3: var(--pst-color-text-base);
+  --pst-color-h4: var(--pst-color-text-base);
+  --pst-color-h5: var(--pst-color-text-base);
+  --pst-color-h6: var(--pst-color-text-base);
+  --pst-color-paragraph: var(--pst-color-text-base);
+  --pst-color-link: 52, 109, 219;
+  --pst-color-link-hover: 52, 109, 219;
+  --pst-color-headerlink: 255, 255, 255;
+  --pst-color-headerlink-hover: var(--pst-color-text-base);
+  --pst-color-preformatted-text: 34, 34, 34;
+  --pst-color-preformatted-background: 245, 247, 249;
+  --pst-color-inline-code: 59, 69, 78;
+  --pst-color-inline-code-bg: 245, 247, 249;
+
+  --pst-color-active-navigation: 51, 51, 51;
+
+  --pst-color-navbar-link: var(--pst-color-active-navigation);
+  --pst-color-navbar-link-hover: var(--pst-color-active-navigation);
+  --pst-color-navbar-link-active: var(--pst-color-active-navigation);
+  --pst-color-sidebar-link: 77, 77, 77;
+  --pst-color-sidebar-link-hover: var(--pst-color-active-navigation);
+  --pst-color-sidebar-link-active: var(--pst-color-active-navigation);
+  --pst-color-sidebar-expander-background-hover: 244, 244, 244;
+  --pst-color-sidebar-caption: 77, 77, 77;
+  --pst-color-toc-link: 119, 117, 122;
+  --pst-color-toc-link-hover: var(--pst-color-active-navigation);
+  --pst-color-toc-link-active: var(--pst-color-active-navigation);
+
+  /*****************************************************************************
+  * Icon
+  **/
+
+  /* font awesome icons*/
+  --pst-icon-check-circle: '\f058';
+  --pst-icon-info-circle: '\f05a';
+  --pst-icon-exclamation-triangle: '\f071';
+  --pst-icon-exclamation-circle: '\f06a';
+  --pst-icon-times-circle: '\f057';
+  --pst-icon-lightbulb: '\f0eb';
+
+  /*****************************************************************************
+  * Admonitions
+  **/
+
+  --pst-color-admonition-default: var(--pst-color-info);
+  --pst-color-admonition-note: var(--pst-color-info);
+  --pst-color-admonition-attention: var(--pst-color-warning);
+  --pst-color-admonition-caution: var(--pst-color-warning);
+  --pst-color-admonition-warning: var(--pst-color-warning);
+  --pst-color-admonition-danger: var(--pst-color-danger);
+  --pst-color-admonition-error: var(--pst-color-danger);
+  --pst-color-admonition-hint: var(--pst-color-success);
+  --pst-color-admonition-tip: var(--pst-color-success);
+  --pst-color-admonition-important: var(--pst-color-success);
+
+  --pst-icon-admonition-default: var(--pst-icon-info-circle);
+  --pst-icon-admonition-note: var(--pst-icon-info-circle);
+  --pst-icon-admonition-attention: var(--pst-icon-exclamation-circle);
+  --pst-icon-admonition-caution: var(--pst-icon-exclamation-triangle);
+  --pst-icon-admonition-warning: var(--pst-icon-exclamation-triangle);
+  --pst-icon-admonition-danger: var(--pst-icon-exclamation-triangle);
+  --pst-icon-admonition-error: var(--pst-icon-times-circle);
+  --pst-icon-admonition-hint: var(--pst-icon-lightbulb);
+  --pst-icon-admonition-tip: var(--pst-icon-lightbulb);
+  --pst-icon-admonition-important: var(--pst-icon-exclamation-circle);
+
+  /*****************************************************************************
+  * versionmodified
+  **/
+
+  --pst-color-versionmodified-default: var(--pst-color-info);
+  --pst-color-versionmodified-added: var(--pst-color-success);
+  --pst-color-versionmodified-changed: var(--pst-color-warning);
+  --pst-color-versionmodified-deprecated: var(--pst-color-danger);
+
+  --pst-icon-versionmodified-default: var(--pst-icon-exclamation-circle);
+  --pst-icon-versionmodified-added: var(--pst-icon-exclamation-circle);
+  --pst-icon-versionmodified-changed: var(--pst-icon-exclamation-circle);
+  --pst-icon-versionmodified-deprecated: var(--pst-icon-exclamation-circle);
+
+}
+
+html, body {
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.bd-sidebar {
+  background-color: #F8F8F8;
+}
+
+/* make sure links are split over multiple lines when needed
+*/
+a.reference.external {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a.headerlink:hover,
+a.headerlink:active,
+a.headerlink:focus {
+    font-weight: 700;
+    background-color: none;
+}
+
+code {
+    color: rgba(var(--pst-color-inline-code),1);
+    background-color: rgba(var(--pst-color-inline-code-bg),1);
+}
+
+td p,
+ul.simple p {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+p {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 0px;
+}
+
+.heading-style, h1, h2, h3, h4, h5, h6 {
+  margin: 8px 0px;
+  padding: 24px 0 8px;
+  font-weight: 700;
+}
+
+.table thead th {
+  padding-top: 24px;
+}
+
+.table td, .table th {
+  padding: 0;
+  vertical-align: middle;
+}
+
+/* Code blocks without bold on numbers */
+.highlight .mi,
+.highlight .mf {
+    font-weight: normal;
+}
+
+.navbar-brand .title {
+  padding: 3px 10px 3px 10px;
+  margin-top: 4px;
+  font-family: "Inter";
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-item .dropdown .show,
+.nav-link:hover {
+  color: rgba(var(--pst-color-navbar-link-hover), 1);
+}
+
+.navbar-brand {
+  padding: 0.5rem 5px;
+}
+
+/* Navbar links color */
+.navbar-light .navbar-nav li a.nav-link:hover,
+.navbar-light .navbar-nav li a.nav-link:focus,
+.navbar-light .navbar-nav li a.nav-link:active {
+  color: rgb(var(--pst-color-navbar-link-hover), 1);
+  font-weight: 700;
+}
+
+.navbar-light .navbar-nav li a.nav-link {
+  font-size: 17px;
+  font-family: var(--pst-font-family-heading);
+}
+
+.navbar-light .navbar-nav>.active>.nav-link{
+  font-weight: 700;
+}
+
+.navbar-light .navbar-nav .show>.nav-link {
+  color: rgba(var(--pst-color-navbar-link), 1);
+}
+
+/* hover on icon (github, discourse...) default color */
+
+i {
+    color: rgba(var(--pst-color-navbar-link-hover), 0.85);
+    /* background-color: white; */
+  }
+
+i:hover {
+  color: rgba(var(--pst-color-navbar-link-hover), 1);
+  /* background-color: white; */
+}
+
+.nav-item-zama a {
+  margin-left: 7px;
+  margin-right: 7px;
+  padding-left: 26px;
+  padding-bottom: 5px;
+  background-image: url(../zama-white.png);
+  background-size: 19px;
+  background-position: 3px 3px;
+  background-repeat: no-repeat;
+  background-color: rgba(var(--pst-color-navbar-link-hover), 0.85);
+  border-radius: 50%
+  }
+
+.nav-item-zama a:hover,
+.nav-item-zama a:active,
+.nav-item-zama a:focus {
+  background-color: rgba(var(--pst-color-navbar-link-hover), 1);
+}
+
+/* style footer */
+
+.copyright {
+  font-size: 0.9rem;
+  padding: 10px !important;
+}
+
+/* general alert */
+
+#banner .news-alert {
+  background-color: rgb(var(--zama-yellow));
+  padding: 1em;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.news-alert a {
+  text-decoration: underline;
+  color: #444;
+}
+
+/* version alert */
+.version-alert a {
+  text-decoration: underline;
+  color: #ddd;
+}
+
+#banner .version-alert {
+  background-color: #c72c0d;
+  padding: 1em;
+  color: #fff;
+  font-size: 16px;
+}
+
+.version-alert a {
+  text-decoration: underline;
+  color: #ddd;
+}
+
+#navbar-main-elements > li.nav-item.dropdown > a {
+  padding-right: 20px;
+}
+
+.prev-next-bottom a.left-prev,
+.prev-next-bottom a.right-next {
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,.1);
+}
+
+div.admonition {
+  padding: 0px 7px 7px 7px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: #F5F7F9;
+}
+
+.admonition.attention>.admonition-title, div.admonition.attention>.admonition-title,
+.admonition.caution>.admonition-title, div.admonition.caution>.admonition-title,
+.admonition.danger>.admonition-title, div.admonition.danger>.admonition-title,
+.admonition.error>.admonition-title, div.admonition.error>.admonition-title,
+.admonition.hint>.admonition-title, div.admonition.hint>.admonition-title,
+.admonition.important>.admonition-title, div.admonition.important>.admonition-title,
+.admonition.note>.admonition-title, div.admonition.note>.admonition-title,
+.admonition.tip>.admonition-title, div.admonition.tip>.admonition-title,
+.admonition.warning>.admonition-title, div.admonition.warning>.admonition-title,
+.admonition>.admonition-title, div.admonition>.admonition-title {
+  background-color: #F5F7F9;
+  padding-left: 2.5rem;
+}
+
+/*
+ * GDPR
+ */
+
+ .gdpr {
+  z-index: 1300;
+  position: fixed;
+  width: calc(100% - 40px);
+  padding: 10px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.9);
+  bottom: 20px;
+  left: 20px;
+  font-size: 16px;
+  padding-left: 12.5%;
+  padding-right: 12.5%;
+  background: black;
+  color: white;
+  opacity: 75%;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+.zama-container {
+  max-width: 1440px;
+  margin: auto;
+  width: 100%;
+}
+
+.gdpr .zama-container .padded {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gdpr .consent {
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+}
+
+.gdpr .button {
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 10px;
+  margin-left: 15px;
+  height: 45px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.33s cubic-bezier(0.33, 0, 0, 1);
+}
+
+.gdpr .button::after {
+  background-color: white;
+  height: 46px;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 3px;
+  width: 100%;
+  height: 40px;
+  border-radius: 25px;
+  z-index: -1;
+}
+
+.gdpr .button-accept::after{
+  background-color: rgb(var(--zama-yellow));
+}
+
+.gdpr .button-decline::after{
+  background-color: grey;
+}
+
+/*
+ * Pygments Visual studio default colors from
+ * https://github.com/highlightjs/highlight.js/blob/main/src/styles/vs2015.css
+ */
+
+pre {
+  color: rgb(59, 69, 78);
+  line-height: 125%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  padding-left: 24px;
+}
+
+pre  .reference.external {
+  color: #569CD6;
+}
+/* td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; } */
+.highlight .hll { background-color: rgb(195, 197, 199); }
+.highlight {
+  color: rgb(59, 69, 78);
+  background-color: rgb(245, 247, 249); }
+
+.highlight .c
+.highlight .ch, /* Comment.Hashbang */
+.highlight .cm, /* Comment.Multiline */
+.highlight .cp, /* Comment.Preproc */
+.highlight .cpf, /* Comment.PreprocFile */
+.highlight .c1, /* Comment.Single */
+.highlight .cs /* Comment.Special */
+{ color: #6A9955; font-style: italic } /* Comment */
+
+.highlight .err { color: #a40000; border: 1px solid #ef2929 } /* Error */
+.highlight .g { color: rgb(59, 69, 78) } /* Generic */
+
+.highlight .fm, /* Name.Function.Magic */
+.highlight .k,  /* Keyword */
+.highlight .kc, /* Keyword.Constant */
+.highlight .kd, /* Keyword.Declaration */
+.highlight .kn, /* Keyword.Namespace */
+.highlight .kp, /* Keyword.Pseudo */
+.highlight .kr, /* Keyword.Reserved */
+.highlight .kt, /* Keyword.Type */
+.highlight .l, /* Literal */
+.highlight .na, /* Name.Attribute */
+.highlight .no, /* Name.Constant */
+.highlight .nd, /* Name.Decorator */
+.highlight .ni, /* Name.Entity */
+.highlight .ne, /* Name.Exception */
+.highlight .nl, /* Name.Label */
+.highlight .nx, /* Name.Other */
+.highlight .py, /* Name.Property */
+.highlight .nt, /* Name.Tag */
+.highlight .nv, /* Name.Variable */
+.highlight .sa, /* Literal.String.Affix */
+.highlight .ss,  /* Literal.String.Symbol */
+.highlight .ow, /* Operator.Word */
+.highlight .bp  /* Name.Builtin.Pseudo */ { color: #5F45FF; font-weight: normal; }
+
+
+.highlight .n, /* Name */
+.highlight .nb, /* Name.Builtin */
+.highlight .nn, /* Name.Namespace */
+.highlight .nf /* Name.Function */ { color: rgb(59, 69, 78); }
+
+.highlight .o /* Operator */ { color: #CC3300; font-weight: normal;}
+
+.highlight .nc, /* Name.Class */
+.highlight .x, /* Other */
+.highlight .p, /* Punctuation */
+.highlight .gd, /* Generic.Deleted */
+.highlight .ge, /* Generic.Emph */
+.highlight .gr, /* Generic.Error */
+.highlight .gh, /* Generic.Heading */
+.highlight .gi,  /* Generic.Inserted */
+.highlight .go, /* Generic.Output */
+.highlight .gp, /* Generic.Prompt */
+.highlight .gs,  /* Generic.Strong */
+.highlight .gu, /* Generic.Subheading */
+.highlight .gt, /* Generic.Traceback */
+.highlight .ld,  /* Literal.Date */
+.highlight .s /* Literal.String */ { color: rgb(59, 69, 78) }
+
+.highlight .w { text-decoration: none;} /* Text.Whitespace */
+
+.highlight .m, /* Literal.Number */
+.highlight .mb, /* Literal.Number.Bin */
+.highlight .mf, /* Literal.Number.Float */
+.highlight .mh, /* Literal.Number.Hex */
+.highlight .mi, /* Literal.Number.Integer */
+.highlight .il, /* Literal.Number.Integer.Long */
+.highlight .mo /* Literal.Number.Oct */ { color: #CC3300; }
+
+.highlight .sd { color: #6A9955; font-style: italic } /* Literal.String.Doc */
+
+.highlight .sb, /* Literal.String.Backtick */
+.highlight .sc, /* Literal.String.Char */
+.highlight .dl, /* Literal.String.Delimiter */
+.highlight .s2, /* Literal.String.Double */
+.highlight .se, /* Literal.String.Escape */
+.highlight .sh, /* Literal.String.Heredoc */
+.highlight .sx, /* Literal.String.Other */
+.highlight .sr, /* Literal.String.Regex */
+.highlight .si, /* Literal.String.Interpol */
+.highlight .s1  /* Literal.String.Single */ { color: rgb(204, 51, 0);}
+
+
+
+.highlight .vc { color: rgb(59, 69, 78) } /* Name.Variable.Class */
+.highlight .vg { color: rgb(59, 69, 78) } /* Name.Variable.Global */
+.highlight .vi { color: rgb(59, 69, 78) } /* Name.Variable.Instance */
+.highlight .vm { color: rgb(59, 69, 78) } /* Name.Variable.Magic */
+
+.viewcode-block:target {
+  background-color: rgb(245, 247, 249);
+}
+
+/* Output background for nbsphinx / ipynb notebooks */
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+  background-color: rgb(245, 247, 249);
+}
