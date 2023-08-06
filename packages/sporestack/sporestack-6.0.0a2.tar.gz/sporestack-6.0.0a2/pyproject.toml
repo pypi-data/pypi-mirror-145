@@ -1,0 +1,30 @@
+[tool.coverage.report]
+show_missing = true
+
+[tool.coverage.run]
+omit = ["tests/*", "build/*"]
+
+# Have to use `pflake8` instead of `flake8`
+[tool.flake8]
+max-line-length = 88
+noqa-require-code = "true"
+exclude = ".git,__pycache__,build,dist"
+max-complexity = 15
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+files = "."
+plugins = ["pydantic.mypy"]
+exclude = "(build|site-packages|__pycache__)"
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
