@@ -1,0 +1,58 @@
+Introduction
+============
+**pynexusic** is a package that allows communication with the following tools:
+
+1. Wood NEXUS IC
+2. Maximo
+3. OSI PI
+4. Documentum
+
+Each one of these tools has a separate class that can be used to build the connector.
+
+Python library installation
+===========================
+.. code-block:: python
+
+        pip install pynexusic
+
+Library documentation
+=====================
+**Steps to launch library documentation**
+
+    #. Import ``utils``
+
+        .. code-block:: python
+
+            from pynexusic import utils
+
+    #. Launch documentation
+
+        .. code-block:: python
+
+           utils.launchDocs()
+
+External documentation
+======================
+- NEXUS IC
+
+    NEXUS IC REST API documentation can be found in the following link:
+
+    https://docs.nexusic.com/6.6/ic-web.rest.v2.html
+
+    *A specific NEXUS IC version can be specified in the above link by changing* **6.6** *to the desired NEXUS IC version*
+
+- OSI PI
+
+    OSI PI API documentation can be found in the following link:
+
+    https://techsupport.osisoft.com/Documentation/PI-Web-API/help.html
+
+- Maximo
+
+    Maximo API documentation can be found in the following link:
+
+    https://www.ibm.com/support/knowledgecenter/SS8CCV_7.6.0.8/com.ibm.mams.doc/overview/c_product_overview.html
+
+License
+=======
+This project is licensed under the *MIT* license.
