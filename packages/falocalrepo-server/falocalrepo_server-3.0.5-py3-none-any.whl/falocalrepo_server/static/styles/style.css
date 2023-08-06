@@ -1,0 +1,101 @@
+@import "bootstrap.min.css";
+
+:root {
+    --background-color: white;
+    --color-primary: black;
+    --color-secondary: #8A8A8E;
+    --color-tertiary: #C4C4C6;
+    --color-link: 65, 105, 225; /*royalblue*/
+    --color-highlight: cyan;
+    --border-color: var(--color-tertiary);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1C1C1E;
+        --color-primary: white;
+        --color-secondary: #989899;
+        --color-tertiary: #5A5A5E;
+        --color-link: 65, 105, 225; /*royalblue*/
+        --color-highlight: #00353F;
+        --border-color: var(--color-tertiary);
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--color-primary);
+    font-family: /* macos */ -apple-system, BlinkMacSystemFont,
+        /* windows */ "Segoe UI",
+        /* android */ "Roboto",
+        /* linux */ "Oxygen", "Ubuntu", "Cantarell",
+        /* firefox os */ "Fira Sans",
+        /* older android */ "Droid Sans",
+        /* fallbacks */ "Helvetica Neue", sans-serif;
+}
+
+
+.card, .card-header, .card-footer {
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+}
+
+.bg-link:focus, .bg-link:hover {
+    background-color: var(--color-highlight) !important
+}
+
+.btn-separator {
+    background-color: var(--border-color);
+    min-width: .1em;
+    max-width: .1em;
+    width: .1em;
+
+}
+
+.border, .border-top, .border-end, .border-bottom, .border-start {
+    border-color: var(--border-color) !important
+}
+
+.text-wrap {
+    text-wrap: normal;
+    white-space: pre-line
+}
+
+.fit-height {
+    max-height: 67vh;
+}
+
+@media (min-width: 992px) {
+    .fit-height {
+        max-height: 90vh;
+    }
+}
+
+@media (min-width: 992px) {
+    .border-lg {
+        border: 1px solid var(--border-color) !important
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.text-body {
+    color: var(--color-primary) !important;
+}
+
+.bbcode_center {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: inherit;
+}
+
+.zoom {
+    cursor: zoom-in;
+}
+
+.zoom.zoomed {
+    cursor: zoom-out;
+}
