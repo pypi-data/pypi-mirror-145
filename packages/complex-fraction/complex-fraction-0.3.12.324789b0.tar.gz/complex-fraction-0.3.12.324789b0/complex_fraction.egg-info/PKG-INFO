@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: complex-fraction
+Version: 0.3.12.324789b0
+Summary: Complex fraction object & calculation for Python.
+Home-page: UNKNOWN
+Author: cheny0y0, REGE
+Author-email: cyy144881@icloud.com
+License: UNKNOWN
+Description: # nbasenumber
+        
+        ## Usage
+        
+        This package is using for complex fractions' calculation.
+        
+        ## How to use it
+        
+        import it by: `from complex_fraction import Fraction`. No any additional modules or packages will be installed.
+        
+        ## Extensibility
+        
+        ```python3
+        >>> # Convert an instance to Fraction
+        >>> class Foo(object) :
+        ...    def __Fraction__(self) :
+        ...        return Fraction(1)
+        ...
+        >>> Fraction(Foo())
+        Fraction(1)
+        ```
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Operating System :: Android
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: Other OS
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: iOS
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
