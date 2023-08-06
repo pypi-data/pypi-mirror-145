@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: stlpy
+Version: 0.2.1
+Summary: A Python library for control from Signal Temporal Logic (STL) specifications
+Home-page: https://stlpy.readthedocs.io/en/latest/index.html
+Author: Vince Kurtz
+Author-email: vjkurtz@gmail.com
+License: MIT
+Project-URL: Source Code, https://github.com/vincekurtz/stlpy
+Project-URL: Documentation, https://stlpy.readthedocs.io/en/latest/index.html
+Description: 
+        A python library for control from Signal Temporal Logic (STL) specifications.
+        
+        This software is designed with the following goals in mind:
+        
+        - Provide a simple python interface for dealing with STL formulas
+        - Provide high-quality implementations of several state-of-the-art synthesis 
+          algorithms, including Mixed-Integer Convex Programming (MICP) and 
+          gradient-based optimization.
+        - Make it easy to design and evaluate new synthesis algorithms.
+        - Provide a variety of benchmark scenarios that can be used to test new algorithms.
+        
+Platform: UNKNOWN
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
