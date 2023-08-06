@@ -1,0 +1,32 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static ideler_mfa_tags %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "ideler_mfa/admin/css/ideler_mfa.css" %}">
+{{ form.media }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} login{% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block nav-sidebar %}{% endblock %}
+
+{% block content_title %}{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<p>{% trans "Are you sure you want to disable multi-factor authentication?" %}</p>
+<form accept-charset="UTF-8" method="post">
+  {% csrf_token %}
+  <div class="submit-row">
+    <input type="submit" class="deletelink" value="{% translate 'Disable' %}">
+  </div>
+</form>
+
+{% endblock %}

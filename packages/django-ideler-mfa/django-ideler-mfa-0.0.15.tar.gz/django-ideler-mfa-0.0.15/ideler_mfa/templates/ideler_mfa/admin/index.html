@@ -1,0 +1,12 @@
+{% extends 'admin/index.html' %}
+
+{% load i18n ideler_mfa_tags %}
+
+{% block userlinks %}
+  {% if request.user|is_mfa_enabled %}
+    <a href="{% url 'ideler_mfa:disable' %}">{% trans "Disable MFA" %}</a> /
+  {% else %}
+    <a href="{% url 'ideler_mfa:select' %}">{% trans "Configure MFA" %}</a> /
+  {% endif %}
+{{ block.super }}
+{% endblock %}
