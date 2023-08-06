@@ -1,0 +1,6 @@
+[console_scripts]
+voir=voir.cli:main
+
+[voir.instrument]
+forward=voir.std:instrument_forward
+
