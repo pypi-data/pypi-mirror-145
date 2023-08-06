@@ -1,0 +1,64 @@
+{% extends 'netbox_config_backup/base.html' %}
+{% load helpers %}
+
+{% block content %}
+<div class="row">
+	<div class="col col-md-6">
+        <div class="card">
+            <h5 class="card-header">
+                Backup Attributes
+            </h5>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th scope="row">Name</th>
+                        <td>{{ object.name|placeholder }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">UUID</th>
+                        <td>{{ object.uuid }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Device</th>
+                        {% if object.device %}
+                            <td><a href="{% url 'dcim:device' pk=object.device.pk %}">{{ object.device|placeholder }}</a> ({{ object.device.primary_ip|placeholder }})</td>
+                        {% else %}
+                            <td>{{ object.device|placeholder }} ({{ object.device.primary_ip|placeholder }})</td>
+                        {% endif %}
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card">
+            <h5 class="card-header">
+                Status
+            </h5>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <tr>
+                        <th scope="row">Scheduled</th>
+                        <td>{{ status.scheduled | placeholder }}{% if status.scheduled %} ({{status.next_attempt}}){% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Job</th>
+                        <td>{{ status.last_job.completed | placeholder }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Success</th>
+                        <td>{{ status.last_success | placeholder }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Change</th>
+                        <td>{{ status.last_change | placeholder }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+	</div>
+	<div class="col col-md-6">
+    </div>
+</div>
+<div class="row">
+    {% include 'netbox_config_backup/inc/backup_tables.html' %}
+</div>
+{% endblock %}
