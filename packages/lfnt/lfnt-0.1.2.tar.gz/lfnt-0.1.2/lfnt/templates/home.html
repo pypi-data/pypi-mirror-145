@@ -1,0 +1,20 @@
+{% include "head.html" %}
+
+<h2>Workstation</h2>
+
+<table>
+<tr>
+  <td><b>Operating System:</b></td>
+  <td>{{ data.environment.system.os_name }} ({{ data.environment.system.os_version }})</td>
+</tr>
+<tr>
+  <td><b>System Type:</b></td>
+  <td>{{ data.environment.system.os }} {{ data.environment.system.os_release }}</td>
+</tr>
+<tr>
+  <td><b>Machine Architecture:</b></td>
+  <td>{{ data.environment.system.machine }} ({{ data.environment.system.architecture }})</td>
+</tr>
+</table>
+
+{% include "tail.html" %}
