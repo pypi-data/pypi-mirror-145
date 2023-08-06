@@ -1,0 +1,16 @@
+persistent
+BTrees>=4.4.1
+setuptools
+six
+zope.interface
+
+[docs]
+Sphinx
+repoze.sphinx.autointerface
+
+[test]
+zope.testrunner
+
+[tools]
+ZODB
+transaction
