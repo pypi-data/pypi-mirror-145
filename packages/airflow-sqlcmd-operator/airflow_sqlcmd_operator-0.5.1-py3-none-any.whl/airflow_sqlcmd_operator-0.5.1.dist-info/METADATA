@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: airflow-sqlcmd-operator
+Version: 0.5.1
+Summary: Custom Airflow BashOperator for Microsoft sqlcmd
+Home-page: https://github.com/dewes/airflow-sqlcmd-operator
+Author: Rodrigo Dewes
+Author-email: rdewes@gmail.com
+License: MIT
+Download-URL: https://github.com/dewes/airflow-sqlcmd-operator/archive/refs/tags/v_03.tar.gz
+Keywords: Airflow,operator,SQLServer,sqlcmd
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pathlib
+Requires-Dist: apache-airflow (>=2.1)
+
+# airflow-sqlcmd-operator
+Custom Airflow BashOperator for the Microsoft sqlcmd.
+
+This package utilizes the sqlcmd to run Microsoft SQLServer scripts on Linux like you would use them on SSMS for example. 
+
+The **sqlcmd** supports SQLServer scripts with commands like GO, USE [db_name], etc, and multiple statements.
+## Requirements
+You must have **sqlcmd** already installed and (currently) on following location: "/opt/mssql-tools/bin/sqlcmd".
+
+Installing on Ubuntu with apt:
+
+```bash
+curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list
+
+# install required packages for pyodbc
+apt-get update
+ACCEPT_EULA=Y apt-get install -y msodbcsql17 unixodbc-dev mssql-tools && apt-get clean
+```
+
+## Usage
+
+On a dag, you can call it like this:
+
+```python
+from airflow_sqlcmd_operator import SqlcmdOperator
+
+sqlcmd = SqlcmdOperator("MyDB", "/scripts/folder/mydag", "do_stuff.sql", dag=dag)
+```
+
