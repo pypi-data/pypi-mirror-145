@@ -1,0 +1,13 @@
+include setup.py
+include README.rst
+include tox.ini
+recursive-include cubicweb_fckeditorcompat *.py
+recursive-include cubicweb_fckeditorcompat/data *.gif *.png *.ico *.css *.js *.afp *.ascx *.asp *.aspx *.cfc *.cfm *.cgi *.htc *.html *.lasso *.php *.pl *.txt *.xml
+recursive-include cubicweb_fckeditorcompat/i18n *.po
+recursive-include cubicweb_fckeditorcompat/schema *.sql
+exclude cubicweb-fckeditorcompat.spec
+exclude .gitlab-ci.yml
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
