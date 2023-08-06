@@ -1,0 +1,26 @@
+
+#
+# Python server implementation.
+#
+class {{d.endpoint.name}}(object):
+    def __init__(self):
+        self.stub = {{d.endpoint.name}}Stub(self, "localhost", 5559)
+    {%for function in d.functions %}
+    def {{function.name}}(self, {{function.parameters}}):
+        """
+        #TODO: write docstring
+        Args:
+            {% for param in function.params -%}
+            {{param.p_name}} ({{param.p_type}}):
+            {% endfor %}
+        Returns:
+            {{function.ret_type}}
+        """
+        raise NotImplementedError()
+    {% endfor %}
+    def start(self):
+        self.stub.start()
+
+
+server = {{d.endpoint.name}}()
+server.start()

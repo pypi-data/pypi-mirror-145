@@ -1,0 +1,14 @@
+[console_scripts]
+silvera = silvera.cli:silvera
+
+[silvera_commands]
+check = silvera.cli.check
+compile = silvera.cli.compile
+list_evaluators = silvera.cli.list_evaluators
+list_generators = silvera.cli.list_generators
+
+[silvera_evaluators]
+default_evaluator = silvera.evaluation.builtin:default_evaluator
+
+[silvera_generators]
+java = silvera.generator.java_generator:java

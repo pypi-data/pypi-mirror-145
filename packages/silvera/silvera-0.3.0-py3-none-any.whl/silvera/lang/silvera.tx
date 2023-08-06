@@ -1,0 +1,346 @@
+Module:
+    imports*=Import
+    decls*=Declaration
+;
+
+Import:
+    'import' import_url=STRING
+;
+
+
+Declaration:
+    ConfigServerDecl | ServiceRegistryDecl | ServiceDecl | APIGateway | Dependency | MessagePool | MessageBroker
+;
+
+ConfigServerDecl:
+    'config-server' name=ID '{'
+        'search_path' '=' search_path=STRING
+        deployment=Deployment
+    '}'
+;
+
+ServiceRegistryDecl:
+    'service-registry' name=ID '{'
+        'client_mode' '=' client_mode=BOOL
+        deployment=Deployment
+    '}'
+;
+
+
+APIGateway:
+    'api-gateway' name=ID '{'
+        ('config_server' '=' config_server=FQN)?
+        ('service_registry' '=' service_registry=FQN)?
+
+        deployment=Deployment
+
+        'gateway-for' '{'
+            gateway_for+=GatewayFor
+        '}'
+    '}'
+;
+
+GatewayFor:
+    service=FQN 'as' path=Path
+;
+
+ServiceDecl:
+    (docstring=Docstring)?
+    'service' name=ID ('extends' extends=FQN)? '{'
+
+        ('config_server' '=' config_server=FQN)?
+        ('service_registry' '=' service_registry=FQN)?
+
+        (deployment=Deployment)?
+
+        (api=APIDecl)?
+    '}'
+;
+
+Deployment:
+    'deployment' '{'
+        (
+            ('version' '=' version=STRING)? |
+            ('url' '=' url=STRING)? |
+            ('port' '=' port=INT)? |
+            ('lang' '=' lang=STRING)? |
+            ('packaging' '=' packaging=STRING)? |
+            ('host' '=' host=HostChoice)? |
+            ('replicas' '=' replicas=INT)? |
+            (restart_policy=RestartPolicy)?
+        )#
+    '}'
+;
+
+RestartPolicy:
+    'restart-policy' '{'
+        (
+            ('condition' '=' condition=RestartCondition)? |
+            ('delay' '=' delay=INT)? |
+            ('max_attempts' '=' max_attempts=INT)? |
+            ('window' '=' window=INT)?
+        )#
+    '}'
+;
+
+RestartCondition:
+    "any" | "on-failure"
+;
+
+APIDecl:
+    'api' '{'
+        typedefs*=TypeDef
+        functions*=Function
+
+        (internal=APIInternal)?
+    '}'
+;
+
+APIInternal:
+    'internal' '{'
+        functions*=Function
+    '}'
+;
+
+Dependency:
+    'dependency' start=FQN '->' end=FQN '{'
+        circuit_break_defs*=CBPerMethod
+    '}'
+;
+
+CBPerMethod:
+    method_name=ID '[' failure_pattern=CBFailurePattern (fallback_method=ID)? ']'
+;
+
+CBFailurePattern:
+    'fail_fast' | 'fail_silent' | 'fallback_static' | 'fallback_stubbed' | 'fallback_cache' | 'fallback_method'
+;
+
+MessagePool:
+    'msg-pool' '{'
+        groups+=MessageGroup
+    '}'
+;
+
+
+MessageGroup:
+    'group' name=ID '['
+        (
+            groups*=MessageGroup |
+            messages*=Message
+        )#
+    ']'
+;
+
+
+Message:
+    annotations*=ExpirationTimeAnnotation
+    'msg' name=ID '['
+        fields*=TypeField
+    ']'
+;
+
+
+ExpirationTimeAnnotation:
+    '@expires_after' '(' timeout=INT ')'
+;
+
+MessageBroker:
+    'msg-broker' name=ID '{'
+        channels+=MessageChannel
+    '}'
+;
+
+MessageChannel:
+    annotations*=MessageChannelAnnotations
+    'channel' name=ID '(' msg_type=FQN ')'
+;
+
+MessageChannelAnnotations:
+    PointToPointAnnotation | PersistenceAnnotation
+;
+
+PointToPointAnnotation:
+    '@p2p'
+;
+
+PersistenceAnnotation:
+    '@persistent' '(' 'timeout' '=' timeout=INT ')'
+;
+
+TypeDef:
+    (docstring=Docstring)?
+    crud*=TypedefCrud 'typedef' name=ID (':' inherits+=FQN[','])? '['
+        fields+=TypeField
+    ']'
+;
+
+TypedefCrud:
+    operation=CrudOperation ('(' message=FQN '->' channel=FQN ')')?
+;
+
+CrudOperation:
+    '@crud' | '@create' | '@read' | '@update' | '@delete'
+;
+
+TypeField:
+    (id=INT ':')? classifiers*=TypeFieldClassifier type=DataType name=ID ('[' constraints+=TypeFieldConstraint[','] ']')?
+;
+
+TypeFieldClassifier:
+    id?="@id" | unique?="@unique" | ordered?="@ordered" | required?="@required"
+;
+
+TypeFieldConstraint:
+    name=ID ('(' params*=TypeFieldConstraintsParameter[','] ')')?
+;
+
+TypeFieldConstraintsParameter:
+    STRING | INT
+;
+
+HostChoice:
+    "PC" | "VM" | "container" | "serverless"
+;
+
+
+Annotation:
+    "@async" | RESTAnnotation | "@thrift" | MessagingAnnotation
+;
+
+RESTAnnotation:
+    '@rest' '(' 'method' '=' method=HTTPMethod (',' 'mapping' '=' mapping=STRING)? ')'
+;
+
+HTTPMethod:
+    'POST' | 'PUT' | 'GET' | 'DELETE'
+;
+
+
+MessagingAnnotation:
+    ProducerAnnotation | ConsumerAnnotation
+;
+
+ProducerAnnotation:
+    '@producer' '(' subscriptions+=ProducerSubs[','] ')'
+;
+
+ConsumerAnnotation:
+    '@consumer' '(' subscriptions+=ConsumerSubs[','] ')'
+;
+
+ProducerSubs:
+    message=FQN '->' channel=FQN
+;
+
+ConsumerSubs:
+    message=FQN '<-' channel=FQN
+;
+
+Function:
+    (docstring=Docstring)?
+    annotations*=Annotation
+    ret_type=ReturnType name=ID '(' params*=FunctionParameter[','] ')'
+;
+
+FunctionParameter:
+    type=DataType name=ID ('='default=DefaultValue)? (':'name_mapping=ID)?
+;
+
+
+DefaultValue:
+    'none' | STRING | FLOAT | INT | BOOL
+;
+
+ReturnType:
+    'void' | DataType
+;
+
+DataType:
+    Number | Collection | Date | FQN
+;
+
+Date:
+    'date'
+;
+
+Number:
+    Integer | Float
+;
+
+Integer:
+    'i16' | 'i32' | 'i64' | 'bool' | 'int'
+;
+
+Float:
+    'float' | 'double'
+;
+
+Collection:
+    Sequence | Set | Dict
+;
+
+Sequence:
+    String | Password | List
+;
+
+String:
+    'str'
+;
+
+Password:
+    'pwd'
+;
+
+List:
+    TypedList | NonTypedList
+;
+
+TypedList:
+    'list' '<' type=DataType '>' ('[' len=INT ']')?
+;
+
+NonTypedList:
+    'list'
+;
+
+Set:
+    TypedSet | NonTypedSet
+;
+
+TypedSet:
+    'set' '<' type=DataType '>'
+;
+
+NonTypedSet:
+    'set'
+;
+
+Dict:
+    TypedDict | NonTypedDict
+;
+
+TypedDict:
+    'dict' '<' key_type=DataType ',' value_type=DataType '>'
+;
+
+NonTypedDict:
+    'dict'
+;
+
+FQN:
+    ID+['.']
+;
+
+Path:
+    ('/')? ID+['/']
+;
+
+// Special rule for comments. Comments start with //
+Comment:
+    /\/\/.*$/
+;
+
+Docstring:
+    /\"\"\"[\w\W]*?\"\"\"/
+;
