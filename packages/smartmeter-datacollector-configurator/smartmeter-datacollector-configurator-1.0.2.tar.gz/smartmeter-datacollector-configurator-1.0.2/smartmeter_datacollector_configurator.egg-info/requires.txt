@@ -1,0 +1,16 @@
+pydantic==1.8.2
+starlette==0.16.0
+typing-extensions==3.10.0.0
+uvicorn==0.15.0
+
+[:python_full_version >= "3.6.2"]
+anyio==3.3.0
+
+[:python_version >= "3.5"]
+idna==3.2
+sniffio==1.2.0
+
+[:python_version >= "3.6"]
+asgiref==3.4.1
+click==8.0.1
+h11==0.12.0
