@@ -1,0 +1,183 @@
+Metadata-Version: 2.1
+Name: Heimdallr
+Version: 0.2.5
+Summary: A package for hosting and connecting to a live dashboard
+Home-page: https://github.com/aivclab/heimdallr
+Download-URL: https://github.com/aivclab/heimdallr/releases
+Author: Christian Heider Nielsen
+Author-email: christian.heider@alexandra.dk
+Maintainer: Christian Heider Nielsen
+Maintainer-email: christian.heider@alexandra.dk
+License: Apache License, Version 2.0
+Keywords: python reinforcement-learning interface api
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Natural Language :: English
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: numpy
+Requires-Dist: six
+Requires-Dist: sorcery
+Requires-Dist: devpack
+Requires-Dist: paho-mqtt
+Requires-Dist: fire
+Requires-Dist: schedule
+Requires-Dist: psutil
+Requires-Dist: pyfiglet
+Provides-Extra: all
+Requires-Dist: numpy ; extra == 'all'
+Requires-Dist: devpack ; extra == 'all'
+Requires-Dist: paho-mqtt ; extra == 'all'
+Requires-Dist: scikit-learn ; extra == 'all'
+Requires-Dist: wheel (>=0.33.0) ; extra == 'all'
+Requires-Dist: matplotlib ; extra == 'all'
+Requires-Dist: sh ; extra == 'all'
+Requires-Dist: schedule ; extra == 'all'
+Requires-Dist: pre-commit ; extra == 'all'
+Requires-Dist: pynvml ; extra == 'all'
+Requires-Dist: google-auth-oauthlib ; extra == 'all'
+Requires-Dist: pytest (>=4.3.0) ; extra == 'all'
+Requires-Dist: six ; extra == 'all'
+Requires-Dist: pip (>=21.1.3) ; extra == 'all'
+Requires-Dist: google-api-python-client ; extra == 'all'
+Requires-Dist: mistune (<2.0.0) ; extra == 'all'
+Requires-Dist: fire ; extra == 'all'
+Requires-Dist: PyGithub ; extra == 'all'
+Requires-Dist: pandas ; extra == 'all'
+Requires-Dist: psutil ; extra == 'all'
+Requires-Dist: pyfiglet ; extra == 'all'
+Requires-Dist: requests-oauthlib ; extra == 'all'
+Requires-Dist: twine (>=1.13.0) ; extra == 'all'
+Requires-Dist: pytest (>=4.4.1) ; extra == 'all'
+Requires-Dist: plotly ; extra == 'all'
+Requires-Dist: msal ; extra == 'all'
+Requires-Dist: m2r2 ; extra == 'all'
+Requires-Dist: torch ; extra == 'all'
+Requires-Dist: black ; extra == 'all'
+Requires-Dist: pytest-cov (>=2.6.1) ; extra == 'all'
+Requires-Dist: sphinxcontrib-programoutput ; extra == 'all'
+Requires-Dist: coveralls (>=1.6.0) ; extra == 'all'
+Requires-Dist: dash ; extra == 'all'
+Requires-Dist: sorcery ; extra == 'all'
+Requires-Dist: pytest ; extra == 'all'
+Requires-Dist: sphinx ; extra == 'all'
+Requires-Dist: nvidia-ml-py ; extra == 'all'
+Provides-Extra: amd
+Provides-Extra: dev
+Requires-Dist: numpy ; extra == 'dev'
+Requires-Dist: devpack ; extra == 'dev'
+Requires-Dist: paho-mqtt ; extra == 'dev'
+Requires-Dist: scikit-learn ; extra == 'dev'
+Requires-Dist: wheel (>=0.33.0) ; extra == 'dev'
+Requires-Dist: matplotlib ; extra == 'dev'
+Requires-Dist: sh ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: schedule ; extra == 'dev'
+Requires-Dist: google-auth-oauthlib ; extra == 'dev'
+Requires-Dist: pytest (>=4.3.0) ; extra == 'dev'
+Requires-Dist: six ; extra == 'dev'
+Requires-Dist: pip (>=21.1.3) ; extra == 'dev'
+Requires-Dist: google-api-python-client ; extra == 'dev'
+Requires-Dist: mistune (<2.0.0) ; extra == 'dev'
+Requires-Dist: fire ; extra == 'dev'
+Requires-Dist: PyGithub ; extra == 'dev'
+Requires-Dist: pandas ; extra == 'dev'
+Requires-Dist: psutil ; extra == 'dev'
+Requires-Dist: pyfiglet ; extra == 'dev'
+Requires-Dist: requests-oauthlib ; extra == 'dev'
+Requires-Dist: twine (>=1.13.0) ; extra == 'dev'
+Requires-Dist: pytest (>=4.4.1) ; extra == 'dev'
+Requires-Dist: plotly ; extra == 'dev'
+Requires-Dist: msal ; extra == 'dev'
+Requires-Dist: m2r2 ; extra == 'dev'
+Requires-Dist: torch ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: pytest-cov (>=2.6.1) ; extra == 'dev'
+Requires-Dist: sphinxcontrib-programoutput ; extra == 'dev'
+Requires-Dist: coveralls (>=1.6.0) ; extra == 'dev'
+Requires-Dist: dash ; extra == 'dev'
+Requires-Dist: sorcery ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: mistune (<2.0.0) ; extra == 'docs'
+Requires-Dist: m2r2 ; extra == 'docs'
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: sphinxcontrib-programoutput ; extra == 'docs'
+Provides-Extra: intel
+Provides-Extra: linu
+Requires-Dist: sh ; extra == 'linu'
+Provides-Extra: nvidia
+Requires-Dist: nvidia-ml-py ; extra == 'nvidia'
+Requires-Dist: pynvml ; extra == 'nvidia'
+Provides-Extra: server
+Requires-Dist: numpy ; extra == 'server'
+Requires-Dist: devpack ; extra == 'server'
+Requires-Dist: paho-mqtt ; extra == 'server'
+Requires-Dist: scikit-learn ; extra == 'server'
+Requires-Dist: matplotlib ; extra == 'server'
+Requires-Dist: sh ; extra == 'server'
+Requires-Dist: schedule ; extra == 'server'
+Requires-Dist: google-auth-oauthlib ; extra == 'server'
+Requires-Dist: six ; extra == 'server'
+Requires-Dist: google-api-python-client ; extra == 'server'
+Requires-Dist: fire ; extra == 'server'
+Requires-Dist: PyGithub ; extra == 'server'
+Requires-Dist: pandas ; extra == 'server'
+Requires-Dist: psutil ; extra == 'server'
+Requires-Dist: pyfiglet ; extra == 'server'
+Requires-Dist: requests-oauthlib ; extra == 'server'
+Requires-Dist: plotly ; extra == 'server'
+Requires-Dist: msal ; extra == 'server'
+Requires-Dist: torch ; extra == 'server'
+Requires-Dist: dash ; extra == 'server'
+Requires-Dist: pytest ; extra == 'server'
+Provides-Extra: tests
+Requires-Dist: pytest (>=4.4.1) ; extra == 'tests'
+Provides-Extra: windows
+
+<!--![horn](.github/images/horn.svg "horn")-->
+
+<p align="center">
+  <img src=".github/images/horn.svg" alt='horn' title="horn"/>
+</p>
+
+<h1 align="center">Heimdallr</h1>
+
+<!--# Heimdallr-->
+
+A package for live plotting lab relevant information directly in your browser
+
+<p align="center" width="100%">
+  <a href="https://alexandra.dk">
+    <img alt="Alexandra Instituttet"
+    src=".github/images/alexandra.png" height="40" align="left" title="Alexandra Instituttet"/>
+  </a>
+  <a href="http://python.org/">
+    <img alt="python" src=".github/images/python.svg" height="40" align="left" title="python"/>
+  </a>
+</p>
+
+<br/>
+
+## Demo
+
+![demo](.github/images/demo/demo.png "demo")
+
+## Usage
+
+- Setup MQTT broker connection information heimdallr mqtt_token
+- On computation machines run the publisher service. heimdallr publish
+- Run server service on the displaying machine. heimdallr serve
+
+
