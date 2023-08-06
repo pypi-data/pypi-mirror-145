@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: iMVP-utils
+Version: 0.2.3
+Summary: Utils for interactive epitranscriptomic Motif Visualization and Sub-type Partitioning (iMVP).
+Home-page: https://github.com/jhfoxliu/iMVP
+Author: Jianheng Liu, Jing Yao
+Author-email: jhfoxliu@gmail.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/jhfoxliu/issues
+Platform: UNKNOWN
+Requires-Python: >=3.6
+License-File: LICENSE
+Requires-Dist: numpy (>=1.20.0)
+Requires-Dist: pandas (>=1.3.4)
+Requires-Dist: scipy (>=1.5.1)
+Requires-Dist: hdbscan (>=0.8.27)
+Requires-Dist: umap-learn (>=0.5.2)
+Requires-Dist: matplotlib (>=3.2.2)
+Requires-Dist: seaborn (>=0.10.1)
+Requires-Dist: scikit-learn (>=0.23.1)
+Requires-Dist: biopython (>=1.77)
+Requires-Dist: dash (>=2.2.0)
+Requires-Dist: dash-bio (>=0.9.0)
+Requires-Dist: imageio (>=2.13.5)
+Requires-Dist: weblogo (>=3.7.0)
+Requires-Dist: opencv-python (>=4.5.5)
+
+UNKNOWN
+
