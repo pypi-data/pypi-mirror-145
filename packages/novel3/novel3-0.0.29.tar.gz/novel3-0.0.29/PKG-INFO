@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: novel3
+Version: 0.0.29
+Summary: The spider of chinese sex novel
+Home-page: https://gitee.com/gan_jian_wen_main/first-edition-of-main-crawler
+Author: ganjianwen
+Author-email: 1727949032@qq.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# 神奇小说爬虫
+## 第一版主爬虫
+
+### 介绍
+爬取第一版主的爬虫
+
+### 安装教程
+
+pip install novel3
+
+### 使用说明
+
+```python
+from novel3.novel_yunlin import spider
+
+if __name__ == "__main__":
+    spider.spider_run()
+```
+
+
+

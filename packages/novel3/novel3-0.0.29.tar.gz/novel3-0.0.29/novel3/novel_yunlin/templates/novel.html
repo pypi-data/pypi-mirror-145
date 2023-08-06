@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小说列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            border: 1px solid green;
+            width: 90%;
+            height: 70%;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 10px 0px;
+        }
+
+        .page {
+            text-align: center;
+
+            margin: 5px 20px;
+        }
+
+        th, tr, td {
+            border: 1px solid green;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            color: purple;
+        }
+
+        th, td {
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>小说列表</h1>
+</div>
+<table>
+    <thead>
+    <th>编号</th>
+    <th>小说名</th>
+    <th>作者</th>
+    <th>类型</th>
+    <th>字数</th>
+    <th>人气</th>
+    <th>更新日期</th>
+    <th>状态</th>
+    <th>章节数</th>
+    </thead>
+    <tbody>
+    {% for novel in data %}
+    <tr>
+        <td>{{ novel[0] }}</td>
+        <td>{{ novel[1] }}</td>
+        <td>{{ novel[2] }}</td>
+        <td>{{ novel[3] }}</td>
+        <td>{{ novel[4] }}</td>
+        <td>{{ novel[5] }}</td>
+        <td>{{ novel[6] }}</td>
+        <td>{{ novel[8] }}</td>
+        <td>{{ novel[9] }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="page">
+    <a href="index">首页</a>
+    <a href="index?page={{last_page}}">上一页</a>
+    <a href="index?page={{next_page}}">下一页</a>
+    <a href="index?page={{max_page}}">尾页</a>
+</div>
+</body>
+</html>
