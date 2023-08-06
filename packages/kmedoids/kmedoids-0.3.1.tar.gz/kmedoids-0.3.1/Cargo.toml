@@ -1,0 +1,44 @@
+[package]
+edition = "2021"
+name = "kmedoids"
+version = "0.3.1"
+authors = ["Erich Schubert <erich.schubert@tu-dortmund.de>", "Lars Lenssen <lars.lenssen@tu-dortmund.de>"]
+description = "k-Medoids clustering with the FasterPAM algorithm"
+homepage = "https://github.com/kno10/python-kmedoids"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/kno10/python-kmedoids"
+
+[lib]
+name = "kmedoids"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustkmedoids = { version = "0.3.0", package = "kmedoids", git = "https://github.com/kno10/rust-kmedoids" }
+numpy = "0.16"
+ndarray = "0.15"
+rand = "0.8"
+rayon = "1.5"
+# crossbeam is transitive via rayon, avoid a yanked version warning:
+# with rayon-core 1.9.2 this can likely be removed
+crossbeam-utils = {version = "0.8.8", optional = true}
+
+[dependencies.pyo3]
+version = "0.16.2"
+features = ["extension-module"]
+
+[package.metadata.maturin]
+classifier = [
+        "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Science/Research",
+        "Programming Language :: Python",
+        "Programming Language :: Rust",
+        "Operating System :: POSIX",
+        "Operating System :: MacOS",
+        "Operating System :: Microsoft :: Windows",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+        "Topic :: Software Development :: Libraries"
+]
+requires-dist = ["numpy"]
+project-url = { "ReadTheDocs" = "https://python-kmedoids.readthedocs.io/", "Rust Source Code" = "https://github.com/kno10/rust-kmedoids" }
