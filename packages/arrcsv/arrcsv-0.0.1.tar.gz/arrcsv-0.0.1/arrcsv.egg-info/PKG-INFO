@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: arrcsv
+Version: 0.0.1
+Summary: A python package for converting array to csv
+Home-page: https://github.com/saularis/arrcsv
+Author: Abdulla Malik
+Author-email: hi@abdulla.dev
+License: UNKNOWN
+Download-URL: https://github.com/saularis/arrcsv/archive/refs/tags/v0.0.1.tar.gz
+Project-URL: Bug Tracker, https://github.com/saularis/arrcsv/issues
+Description: # arrcsv
+        A python package for converting array to csv
+        
+        ## Install
+        ```cmd
+        pip install arrcsv
+        ```
+        
+        ## Use
+        ```python
+        from arrcsv import arr_to_csv
+        arr = [1, 2, 3, 4, 5, 6]
+        csv = arr_to_csv(arr)
+        print(csv)
+        ```
+Keywords: python,convert,array,csv
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
