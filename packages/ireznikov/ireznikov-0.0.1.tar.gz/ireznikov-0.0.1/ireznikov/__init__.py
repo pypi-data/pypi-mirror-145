@@ -1,0 +1,1 @@
+from ireznikov.ireznikov import DummyClass
