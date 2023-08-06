@@ -1,0 +1,8 @@
+recursive-include main_directory *
+recursive-include src *.yml
+recursive-include tests *.py
+recursive-include tests *.yml
+recursive-include tests *.csv
+include *
+global-exclude *.pyc
+global-exclude .DS_Store

@@ -1,0 +1,44 @@
+# - install
+# - test
+# - watch
+# - release
+# - dev
+
+init:
+    VERSION: cat version.txt
+    DATE: date -u +"%Y-%m-%dT%H:%M:%SZ"
+
+build:
+    - pip3 install --upgrade pytest
+    - pip3 install --upgrade pytest-watch
+    - pip3 install --upgrade build
+    - pip3 install --upgrade twine
+
+test-install:
+    - $install
+    - ymm -v
+    - ymm echo
+
+echo:
+    SELF: echo "echo"
+    ECHO: echo {DATE}
+
+release:
+    - prerelease --no-input
+    - release --no-input
+    - python3 -m build
+    - python3 -m twine upload dist/*
+    - postrelease --no-input
+
+bump-dev:
+   NEW: awk -Fv {{printf("%sv%d\n",$1,$2+1)}} version.txt
+   UPDATED: sed -i .prev s/{VERSION}/{NEW}/ version.txt
+
+reinstall:
+    - $bump-dev
+    - $test-install
+
+dev:
+    - $bump-dev
+    - git commit -am {VERSION}
+    - git push

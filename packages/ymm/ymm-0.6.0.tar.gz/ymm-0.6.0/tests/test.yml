@@ -1,0 +1,16 @@
+# - install
+# - test
+# - watch
+# - release
+# - dev
+init:
+  KEY: echo "value"
+  DICT:
+    A: B
+    C: D
+
+install:
+    - echo "install test"
+
+echo:
+    RESULT: echo {DICT}
