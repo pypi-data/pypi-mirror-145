@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: ps4debug
+Version: 0.0.3
+Summary: Integrates into Future Tone on the PS4
+Home-page: https://github.com/Jay184/PyPS4debug
+Author: Jay
+Author-email: 0jaybae0@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Jay184/PyPS4debug/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# PyPS4debug
+ps4debug implementation in python.
+
+## Install (pip)
+
+```
+pip install ps4debug
+```
+
+
+Example usage
+```python
+import sys
+import functools
+import ps4debug
+
+def main(ip_address):
+  # You may also retrieve the IP address using the find_ps4() function
+  ip_address = ip_address or ps4debug.PS4Debug.find_ps4()
+
+  with ps4debug.PS4Debug(ip_address) as ps4:
+    # Get processes
+    processes = ps4.get_processes()
+    
+    # Find specific process id
+    pid = next((pid for name, pid in processes if name == 'eboot.bin'), None)
+    
+    # Read memory
+    gold = ps4.read_int32(pid, 0xCA88888)
+    
+    # Write memory
+    if ps4.write_int32(pid, 0xCA44444, 9999) != ps4debug.ResponseCode.SUCCESS:
+      print('There was an error!')
+      
+    # Remotely execute code (Code injection)
+    with ps4.memory(pid, 4096) as memory:
+      # Write your own assembly code to the system
+      assembly = b'\x90\x90\x90\x90\xC3\x90'
+      memory.write(assembly)
+      
+      # And call it. Parameters are limited to 48 bytes or 6 values.
+      # See https://docs.python.org/3/library/struct.html#format-strings for more information on the '<6Q' part if you're confused.
+      rpc_stub = ps4.install_rpc(pid)
+      rax = memory.call(1, 2, 3, 4, 5, 6, rpc_stub=rpc_stub, parameter_format='<6Q')
+      
+      print(f'Thread returned with rax = {rax}')
+
+    # You may also use functools.partial for cleaner calls:
+    get_gold = functools.partial(ps4.read_int32, pid=pid, address=0xCA88888)
+    set_gold = functools.partial(ps4.write_int32, pid=pid, address=0xCA88888)
+    injected_function = functools.partial(ps4.call, pid=pid, rpc_stub=rpc_stub, address=allocated_memory, parameter_format='<6Q')
+
+    gold = get_gold()
+    set_gold(gold + 10)
+    injected_function(1, 2, 3, 4, 5, 6)
+
+  
+if __name__ == '__main__':
+  # Normally you would use something like Typer for this
+  args = sys.argv[1:]
+  ip_address = args[0] if len(args) else input('Enter the IP address of your PS4: ')
+  main(ip_address)
+```
+
