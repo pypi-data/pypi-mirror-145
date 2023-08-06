@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: benny.py
+Version: 1.0.1
+Summary: A Python wrapper for Benny's API.
+Home-page: https://github.com/bentettmar/benny.py
+Author: Ben Tettmar
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Requires: requests
+Description-Content-Type: text/markdown
+
+
+# benny.py
+A Python wrapper for Benny's API.
+
+### Install
+> ```bash
+> $ pip install benny.py
+> ```
+
+### Example
+> ```python
+> import benny
+> 
+> client = benny.Client()
+> 
+> cat_image = client.cat()
+> dog_image = client.dog()
+> 
+> print(cat_image, dog_image)
+> ```
+
+
