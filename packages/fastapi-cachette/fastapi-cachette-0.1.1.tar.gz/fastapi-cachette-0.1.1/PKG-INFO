@@ -1,0 +1,67 @@
+Metadata-Version: 2.1
+Name: fastapi-cachette
+Version: 0.1.1
+Summary: Cache Implementation Extension for FastAPI Asynchronous Web Framework
+Home-page: https://github.com/aekasitt/fastapi-cachette
+License: MIT
+Keywords: starlette,fastapi,cache,redis,aioredis,dynamodb,aiobotocore,asynchronous,memcached,aiomcache,mongodb,motor,pymongo
+Author: Sitt Guruvanich
+Author-email: aekazitt@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Provides-Extra: dynamodb
+Provides-Extra: examples
+Provides-Extra: memcached
+Provides-Extra: mongodb
+Provides-Extra: redis
+Requires-Dist: aiobotocore[examples,dynamodb] (>=2.2.0,<3.0.0); extra == "dynamodb" or extra == "examples"
+Requires-Dist: aiomcache[examples,memcached] (>=0.7.0,<0.8.0); extra == "memcached" or extra == "examples"
+Requires-Dist: fastapi (>=0,<1)
+Requires-Dist: motor[examples,mongodb] (>=2.5.1,<3.0.0); extra == "mongodb"
+Requires-Dist: pydantic (>=1.9.0,<2.0.0)
+Requires-Dist: redis[examples,redis] (>=4.2.1,<5.0.0); extra == "redis" or extra == "examples"
+Requires-Dist: uvicorn[examples] (==0.15.0); extra == "examples"
+Project-URL: Repository, https://github.com/aekasitt/fastapi-cachette
+Description-Content-Type: text/markdown
+
+# FastAPI Cachette
+
+[![Build Status](https://travis-ci.com/aekasitt/fastapi-cachette.svg?branch=master)](https://app.travis-ci.com/github/aekasitt/fastapi-cachette)
+[![Package Vesion](https://img.shields.io/pypi/v/fastapi-cachette)](https://pypi.org/project/fastapi-cachette)
+[![Format](https://img.shields.io/pypi/format/fastapi-cachette)](https://pypi.org/project/fastapi-cachette)
+[![Python Version](https://img.shields.io/pypi/pyversions/fastapi-cachette)](https://pypi.org/project/fastapi-cachette)
+[![License](https://img.shields.io/pypi/l/fastapi-cachette)](https://pypi.org/project/fastapi-cachette)
+
+## Features
+
+Cache Implementation Extension for FastAPI Asynchronous Web Framework
+Most of the Backend implementation is directly lifted from [fastapi-cache](https://github.com/long2ice/fastapi-cache) by [@long2ice](https://github.com/long2ice)
+
+## Installation
+
+The easiest way to start working with this extension with pip
+
+```bash
+pip install fastapi-cachette
+# or
+poetry add fastapi-cachette
+```
+
+## Getting Started
+
+The following examples show you how to integrate this extension to a FastAPI App
+
+### To Be Continued
+
