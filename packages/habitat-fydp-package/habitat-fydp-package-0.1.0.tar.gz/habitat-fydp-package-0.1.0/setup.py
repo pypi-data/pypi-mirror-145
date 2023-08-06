@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+from setuptools import setup
+
+packages = \
+['habitat_fydp_package']
+
+package_data = \
+{'': ['*'], 'habitat_fydp_package': ['Lake_Erie_Contours/*', 'gsheet/*']}
+
+install_requires = \
+['DateTime>=4.3,<5.0',
+ 'folium>=0.12.1,<0.13.0',
+ 'google-auth-oauthlib>=0.5.0,<0.6.0',
+ 'google>=3.0.0,<4.0.0',
+ 'gspread>=5.2.0,<6.0.0',
+ 'matplotlib>=3.5.1,<4.0.0',
+ 'numpy==1.19.3',
+ 'oauth2client>=4.1.3,<5.0.0',
+ 'pandas==1',
+ 'pmdarima>=1.8.4,<2.0.0',
+ 'pyshp>=2.1.3,<3.0.0',
+ 'requests>=2.27.1,<3.0.0',
+ 'scikit-learn>=1.0.2,<2.0.0',
+ 'scipy>=1.7.3,<2.0.0',
+ 'sklearn>=0.0,<0.1',
+ 'wwo-hist>=0.0.7,<0.0.8']
+
+setup_kwargs = {
+    'name': 'habitat-fydp-package',
+    'version': '0.1.0',
+    'description': 'Democratize access to HAB related data in Lake Erie to be used for scientific research',
+    'long_description': '# habitat-fydp-package\n\n### Purpose of the Package\n\nDemocratize access to HAB related data in Lake Erie to be used for scientific research. \n\n### Getting Started\n\nGetting started is easy! Just pip install our package as below: \n\n```\npip install habitat-fydp-package\n```\n\nTo test if the package downloaded try this! \n\n```python\nfrom habitat_fydp_package import list_station_measurment_types\nlist_station_measurment_types(\'Toledo Pump Station\')\n``` \n\n### Usage \n\nCall help on any of the functions listed in the table to return docstring and information on inputs / oupus for a particular function!\n\n### Features\n\nListed API function currently available are listed below: \n\n##### List Available Stations \n\nThis function lists all the stations available in the GLOS dataset. Preforms an API call to return (for each station available), its name, id, latitude and longitude coordinates, and platform id. Returns these details as a dictionary object, indexed by station name.\n\n```python\nfrom habitat_fydp_package import list_stations\nlist_stations()\n\n# {\'Sandusky Water Intake\': [{\'dataset_id\': 20},\n#   {\'latitude\': 41.464403},\n#   {\'longitude\': -82.647768},\n#   {\'platform_id\': 14},\n#   {\'org_platform_id\': \'LEBIWW\'}],\n#  \'Ottawa County\': [{\'dataset_id\': 22},\n#   {\'latitude\': 41.514315},\n#   {\'longitude\': -82.9386},\n#   {\'platform_id\': 16},\n#   {\'org_platform_id\': \'LEOC\'}], ...\n```\n\n\n##### List Measurment Types Available at a Station \n\nGiven a station name from GLOS (input), return all time series measurement types available at this station. Returns a list of these names.\n\n```python\nfrom habitat_fydp_package import list_station_measurment_types\nstation_name = \'Sandusky Water Intake\'\nlist_station_measurment_types(station_name) \n\n# {\'body_of_water\': \'lake-erie\',\n#  \'obs_dataset_id\': 20,\n#  \'org_platform_id\': \'LEBIWW\',\n#  \'parameters\': [{\'name_vocabulary\': \'cf\',\n#    \'standard_name\': \'mass_concentration_of_oxygen_in_sea_water\'},\n#   {\'name_vocabulary\': \'cf\',\n#    \'standard_name\': \'fractional_saturation_of_oxygen_in_sea_water\'},\n#   {\'name_vocabulary\': \'cf\', \'standard_name\': \'sea_water_turbidity\'},\n#   {\'name_vocabulary\': \'cf\',\n#    \'standard_name\': \'sea_water_electrical_conductivity\'},\n#   {\'name_vocabulary\': \'cf\',\n#    \'standard_name\': \'sea_water_ph_reported_on_total_scale\'},\n#   {\'name_vocabulary\': \'ioos\', \'standard_name\': \'chlorophyll_fluorescence\'},\n#   {\'name_vocabulary\': \'glos\',\n#    \'standard_name\': \'mass_concentration_of_blue_green_algae_in_sea_water_rfu\'},\n#   {\'name_vocabulary\': \'cf\', \'standard_name\': \'sea_surface_temperature\'}],\n#  \'platform_event\': \'activated\',\n#  \'platform_name\': \'Sandusky Water Intake\',\n#  \'platform_type\': \'fixed\'}\n```\n\n##### Return Measurement Definition\n\nGiven a measurment type from one of the available GLOS stations return its defintion ie. what is it? to the user.\n\n ```python\n from habitat_fydp_package import list_measurement_defintion\n measurement_type = \'Chlorophyll Fluorescence\'\n list_measurement_defintion(measurement_type) \n\n#  {\'alerts\': {\'threshold_max\': 70, \'threshold_min\': -2},\n#  \'canonical_unit_id\': \'rfu\',\n#  \'display_description\': {\'en\': \'Chlorophyll is the green pigment found in most plants, algae, and cyanobacteria. Chlorophyll fluorescence is a relative measure of the abundance of phytoplankton in a water sample.\'},\n#  \'display_name\': {\'en\': \'Chlorophyll Fluorescence\'},\n#  \'name_vocabulary\': \'ioos\',\n#  \'preferred_imperial_unit_id\': \'rfu\',\n#  \'preferred_metric_unit_id\': \'rfu\',\n#  \'standard_name\': \'chlorophyll_fluorescence\',\n#  \'units\': [{\'id\': \'rfu\',\n#    \'js_qty_unit\': \'RFU\',\n#    \'symbol\': \'RFU\',\n#    \'udunit\': \'RFU\'}]}\n ``` \n\n##### Get the Most Recent Station Measurement\n\nGiven a GLOS station name, and a measurement type available at the station, return the most recent value of that measurement. ie. surface temperature at toledo site is 10 degree Celcius right now\n\n```python\nfrom habitat_fydp_package import get_most_recent_measurement\nstation_name = \'Toledo Pump Station\' \nmeasurement_type = \'Chlorophyll Fluorescence\'\nget_most_recent_measurement(station_name, measurement_type)\n\n# [{\'latitude\': 41.67496,\n#   \'longitude\': -83.3079,\n#   \'timestamp\': \'2022-03-08T18:20:00+00:00\',\n#   \'value\': 0.64}]\n\n``` \n\n##### Get Historical Station Measurements \n\nGiven a GLOS station, a measurement available at that station, a start_date, and end_date, return the measurement values over that window. Returns timeseries as a pandas dataframe object.\n\n```python\nfrom habitat_fydp_package import get_historical_measurements\nget_historical_measurements(station_name, measurement, start_date, end_date)\n```\n\n##### Return Lake Depth \n\nGiven a path to the stored contour depth file of lake erie (this is available from the sdk), plot it. Shows that different depth levels in Lake Erie \n\n```python\nfrom habitat_fydp_package import plot_lake_depth\nplot_lake_depth()\n```\n\n##### Return Historical Weather Data\n\nFunction to retrieve the weather data available. Returns weather from the location of the station through satilite.\n\nstart_date: first data point from this date\nend_date: last data point from this date\nstation_name: station of interest\nfreq: frequency of the observations ie. 1 min, 1 hr, 1 day, e.t.c\napi_key: api_key to access open weather api\nreturns: pandas df with the weather data\n\n```python\nfrom habitat_fydp_package import get_weather_variables\nget_weather_variables(start_date, end_date, station_name, freq)\n``` \n\n##### Aggregate Data Soucres \n\nFunction to aggregate all available data into one frame.\n\nmeasurement: measurement of interest that is available at the station\nstart_date: first data point from this date\nend_date: last data point from this date\nstation_name: station of interest\nfreq: frequency of the observations ie. 1 min, 1 hr, 1 day, e.t.c\npath_to_contour_file: path to the bathemetry shap file.\nreturns: pandas df indexed by timestamp with all the data\n\n```python\nfrom habitat_fydp_package import aggregate_data\n\naggregate_habnet_data(station_name, measurement, start_date, end_date,freq,path_)\n``` \n\n##### Filter Time Series Noise\n\nGiven a time series "smooth" the data to reduce noise given a specfic window size to preform the averaging over. This function uses basic stats to additonally show anomolous points by setting plot_anomalies to True. This function can also provide a confidence interval over the average\n\ngiven plot_interval = True. A point is considered an anomaly if outside this range.\nseries - dataframe with timeseries\nwindow - rolling window size\nplot_intervals - show confidence intervals\nplot_anomalies - show anomalies\n\n```python\nfrom habitat_fydp_package import plotMovingAverage\nplotMovingAverage(series, window, plot_intervals=False, scale=1.96, plot_anomalies=False\n``` \n\n##### Time Series Decomposition\n\nDecomposes the time series for a specific measurement and station\n\n```python\nfrom habitat_fydp_package import decomposition_timeseries_measurment\n\ndecomposition_timeseries_measurment()\n``` \n\n##### Univariate Time Series Forecasting\n\nForecasts a specific measurement for a given station based on its historical data\nUsing a simple ARIMA model provide a forecast for one time series variable\n\nseries: time series to forecast\nhorizon: units in advance to forecast\nfrequency_of_obvs: days, months, seconds, e.t.c\nreturns: predictions, lower bound, upper bound confidence interval\n\n```python \nfrom habitat_fydp_package import univariate_forecast_arima\nunivariate_forecast_arima(series, horizon, frequency_of_obvs)                        \n```',
+    'author': 'Shanthosh Pushparajah',
+    'author_email': 'spushpar@uwaterloo.com',
+    'maintainer': None,
+    'maintainer_email': None,
+    'url': 'https://github.com/cognitetosh/habitat-fydp-package',
+    'packages': packages,
+    'package_data': package_data,
+    'install_requires': install_requires,
+    'python_requires': '>=3.7,<3.8',
+}
+
+
+setup(**setup_kwargs)
