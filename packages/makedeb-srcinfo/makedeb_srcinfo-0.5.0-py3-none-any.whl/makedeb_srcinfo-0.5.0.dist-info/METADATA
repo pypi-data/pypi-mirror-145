@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: makedeb-srcinfo
+Version: 0.5.0
+Summary: Python library to parse makedeb-styled SRCINFO files
+Author: makedeb Development Team
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/makedeb/makedeb-srcinfo
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# makedeb-srcinfo
+![PyPI](https://img.shields.io/pypi/v/makedeb-srcinfo?color=blue&label=PyPI&logo=pypi)
+
+`makedeb-srcinfo` is a Python library to aid in the parsing of makedeb-styled SRCINFO files.
+
+## Installation
+Install the `makedeb-srcinfo` package from PyPI:
+
+```sh
+pip install makedeb-srcinfo
+```
+
+## Usage
+
+```python3
+from makedeb_srcinfo import SrcinfoParser
+
+with open(".SRCINFO", "r") as file:
+    data = file.read()
+
+# Parse a SRCINFO file.
+srcinfo = SrcinfoParser(data)
+
+# Get all references of a variable (returned in a tuple).
+pkgname = srcinfo.get_variable("pkgname")
+arch = srcinfo.get_variable("arch")
+
+# Get all references of a variable plus it's extensions (i.e. 'depends' and 'focal_depends').
+# Results are returned in a dict with a tuple of (distro, arch) for the key name:
+#   {
+#      ("focal", None): ("gimp", "krita"),
+#      ("focal", "amd64"): ("gcc", "golang-go")
+#   }
+depends = srcinfo.get_extended_variable("depends")
+```
+
+
