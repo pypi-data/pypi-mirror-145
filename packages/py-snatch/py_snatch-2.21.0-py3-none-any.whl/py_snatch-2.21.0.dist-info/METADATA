@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: py-snatch
+Version: 2.21.0
+Summary: The Friendly Integration Library for Data Scientists. Don't You Just Know It?
+Author: A55 Tech
+Author-email: tech@a55.tech
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: arrow
+Requires-Dist: asbool
+Requires-Dist: boto3
+Requires-Dist: loguru
+Requires-Dist: marshmallow
+Requires-Dist: marshmallow_enum
+Requires-Dist: python-dotenv
+Requires-Dist: requests
+Requires-Dist: scalpl
+Requires-Dist: typing_extensions; python_version >= "3.7" and python_version < "4.0"
+Requires-Dist: validate-docbr
