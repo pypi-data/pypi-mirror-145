@@ -1,0 +1,66 @@
+Metadata-Version: 2.1
+Name: rmlab
+Version: 0.1.0
+Summary: RMLab python client
+Home-page: https://github.com/antonrv/rmlab-py-client
+Author: Anton Rey
+Author-email: aanton.rv@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/antonrv/rmlab-py-client/issues
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Office/Business
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development :: User Interfaces
+Classifier: Framework :: AsyncIO
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: rmlab-http-client (==0.3.0)
+Requires-Dist: tqdm (==4.63.0)
+
+# RMLab Python Client
+
+This client provides python bindings for RMLab services at **[rmlab.net](https://rmlab.net)**, available upon registration.
+
+We offer *simulation* and *revenue optimization* services to airline companies.
+
+**Simulation as a service:**
+
+* Unlimited number of competing carriers.
+
+* Massively parallel simulations on arbitrarily big flight markets.
+
+* Statistical sampling for modelling customers behavior, sensible to seasonality and events.
+
+* Validation of pricing algorithms given demand patterns before deploying to production.
+
+
+**Revenue optimization as a service:**
+
+* Process arbitrarily large sets of historic data.
+
+* Run state-of-the-art algorithms for forecasting and optimization.
+
+* Fine-grain optimization per flight level.
+
+* AI-based adaptive forecasters & optimizers operating on nightly runs.
+
+
+**Server infrastructure characteristics:**
+
+* World-wide availability hosted in **[Google Cloud Platform](https://cloud.google.com)**.
+
+* Data scalability across high-performance in-memory storage servers.
+
+* Per-customer fully isolated compute and data environments.
+
+* End-to-end TLS encryption (optional IPsec access).
+
