@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: kedab
+Version: 0.1.3
+Summary: Basic library for Machine learning operations
+Home-page: UNKNOWN
+Author: Busenur Aktilav, Dalia Dawod, Kerem Comert
+License: MIT
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+To build and install the library locally, run:
+
+- pip install wheel setuptools
+- python setup.py bdist_wheel
+- pip install /dist/ (press tab, press enter when *.whl comes up on terminal)
+
+
