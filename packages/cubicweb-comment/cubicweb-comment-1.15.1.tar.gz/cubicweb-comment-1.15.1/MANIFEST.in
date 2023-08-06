@@ -1,0 +1,16 @@
+include README.rst
+include *.py
+include */*.py
+recursive-include cubicweb_comment *.py
+recursive-include cubicweb_comment/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_comment/i18n *.po
+recursive-include cubicweb_comment/doc *.rst *.png
+recursive-include test/data bootstrap_cubes *.py
+
+exclude .gitlab-ci.yml
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude tox.ini
+exclude dev-requirements.txt
+exclude CHANGELOG.md
