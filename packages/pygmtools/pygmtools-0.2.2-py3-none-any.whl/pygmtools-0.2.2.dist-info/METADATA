@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: pygmtools
+Version: 0.2.2
+Summary: pygmtools provides graph matching solvers in Python API and supports numpy and pytorch backends. pygmtools also provides dataset API for standard graph matching benchmarks.
+Home-page: https://pygmtools.readthedocs.io/
+Author: Ziao Guo
+Author-email: 1115712590@sjtu.edu.cn
+License: GPL
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests (>=2.25.1)
+Requires-Dist: scipy (>=1.4.1)
+Requires-Dist: Pillow (>=7.2.0)
+Requires-Dist: numpy (>=1.18.5)
+Requires-Dist: easydict (>=1.7)
+
+
+# pygmtools
+
+[![PyPi version](https://badgen.net/pypi/v/pygmtools/)](https://pypi.org/pypi/pygmtools/)
+[![PyPI pyversions](https://img.shields.io/pypi/pyversions/pygmtools.svg)](https://pypi.python.org/pypi/pygmtools/)
+[![Documentation Status](https://readthedocs.org/projects/pygmtools/badge/?version=latest)](https://pygmtools.readthedocs.io/en/latest/?badge=latest)
+[![GitHub stars](https://img.shields.io/github/stars/Thinklab-SJTU/pygmtools.svg?style=social&label=Star&maxAge=8640)](https://GitHub.com/Thinklab-SJTU/pygmtools/stargazers/)
+
+**pygmtools** provides graph matching solvers in Python and is easily accessible via the following command:
+
+```
+pip install pygmtools
+```
+
+## Backends
+
+By default the solvers are executed on the ``numpy`` backend, and the required packages will be automatically
+downloaded.
+
+For advanced and professional users, the ``pytorch`` backend is also available if you have installed and configured
+a pytorch runtime. The ``pytorch`` backend exploits the underlying GPU-acceleration feature, and also supports
+integrating graph matching modules into your deep learning pipeline.
+
+## Features
+
+To highlight, **pygmtools** has the following features:
+
+* *Support various backends*, including ``numpy`` which is universally accessible, and the state-of-the-art
+  deep learning architecture ``pytorch`` with GPU-support. The support of the following backends are also planned:
+  ``tensorflow``, ``mindspore``, ``paddle``, ``jittor``;
+* *Support various solvers*, including traditional combinatorial solvers and novel deep learning-based solvers;
+* *Deep learning friendly*, the operations are designed to best preserve the gradient during computation and batched
+  operations support for the best performance.
+  
+## Benchmarks
+
+**pygmtools** is also featured with standard data interface of several graph matching benchmarks. We also maintain a
+repository containing non-trivial implementation of deep graph matching models, please check out
+[ThinkMatch](https://thinkmatch.readthedocs.io/) if you are interested!
+
+## Developers and Maintainers
+
+**pygmtools** is currently developed and maintained by members from [ThinkLab](http://thinklab.sjtu.edu.cn) at
+Shanghai Jiao Tong University.
+
+
+
