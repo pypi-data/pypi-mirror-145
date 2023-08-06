@@ -1,0 +1,34 @@
+[package]
+name = "mangle"
+license = "MIT"
+homepage = "https://github.com/matheusfillipe/mangle"
+repository = "https://github.com/matheusfillipe/mangle" 
+documentation = "https://github.com/matheusfillipe/mangle" 
+readme = "README.md"
+keywords = ["exolang", "python", "pyo3", "repl"]
+categories = ["exolang", "repl", "python"]
+description = "Exolang that can take any utf8 text as valid code and return some result out of it"
+version = "0.0.2"
+edition = "2021"
+author = "Matheus Fillipe <matheusfillipeag@gmail.com>"
+exclude = [".env/*"]
+
+[lib]
+name = "mangle"
+path = "src/lib.rs"
+crate-type = ["lib", "cdylib"]
+
+[[bin]]
+name = "mangle"
+path = "src/main.rs"
+
+[dependencies]
+rustyline = "9.1.0"
+dirs = "4.0"
+unicode-segmentation = "1.6.0"
+clap = { version = "3.1.8", features = ["derive"] }
+pyo3 = { version = "0.16.1", features = ["extension-module"] }
+
+[dev-dependencies]
+assert_cmd = "2.0"
+predicates = "2.1"
