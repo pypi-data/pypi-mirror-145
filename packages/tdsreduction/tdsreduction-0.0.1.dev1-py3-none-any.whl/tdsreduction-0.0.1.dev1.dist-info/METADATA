@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: tdsreduction
+Version: 0.0.1.dev1
+Summary: Reduce data obtained at Transient Double-beam Spectrograph
+Home-page: https://github.com/CosmicHitchhiker/tdsreduction
+Author: Vsevolod Lander
+Author-email: sevalander@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/CosmicHitchhiker/tdsreduction/issues
+Keywords: astronomy spectroscopy longslit reduction
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Astronomy
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy (>=1.13)
+Requires-Dist: scipy (>=1.0)
+Requires-Dist: astropy
+
+# TDS-reduction
+Reduce data obtained at Transient Double-beam Spectrograph
+
+
