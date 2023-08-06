@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: arq-dashboard
+Version: 0.1.0
+Summary: 
+Author: Manabu Niseki
+Author-email: manabu.niseki@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: aiometer (>=0.3.0,<0.4.0)
+Requires-Dist: arq (>=0.22,<0.23)
+Requires-Dist: arrow (>=1.2.2,<2.0.0)
+Requires-Dist: async-cache (>=1.1.1,<2.0.0)
+Requires-Dist: fastapi (>=0.75.1,<0.76.0)
+Requires-Dist: importlib-metadata (>=4.11.3,<5.0.0); python_version < "3.8"
+Requires-Dist: loguru (>=0.6.0,<0.7.0)
+Requires-Dist: pyhumps (>=3.5.3,<4.0.0)
+Requires-Dist: uvicorn[standard] (>=0.17.6,<0.18.0)
