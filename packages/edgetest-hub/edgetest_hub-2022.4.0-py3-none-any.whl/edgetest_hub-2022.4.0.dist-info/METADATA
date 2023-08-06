@@ -1,0 +1,151 @@
+Metadata-Version: 2.1
+Name: edgetest-hub
+Version: 2022.4.0
+Summary: Edgetest hub plugin
+Home-page: https://github.com/capitalone/edgetest-hub
+Author: Faisal Dosani
+Author-email: faisal.dosani@capitalone.com
+Maintainer: Faisal Dosani
+Maintainer-email: faisal.dosani@capitalone.com
+License: UNKNOWN
+Project-URL: Documentation, https://capitalone.github.io/edgetest-hub
+Project-URL: Bug Tracker, https://github.com/capitalone/edgetest-hub/issues
+Project-URL: Source Code, https://github.com/capitalone/edgetest-hub
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.md
+Requires-Dist: edgetest
+Provides-Extra: build
+Requires-Dist: build ; extra == 'build'
+Requires-Dist: twine ; extra == 'build'
+Requires-Dist: wheel ; extra == 'build'
+Requires-Dist: bumpver ; extra == 'build'
+Provides-Extra: dev
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pydocstyle ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: furo ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+Requires-Dist: sphinx-copybutton ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: pip-tools ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: pylint ; extra == 'dev'
+Requires-Dist: build ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: bumpver ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: furo ; extra == 'docs'
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: sphinx-copybutton ; extra == 'docs'
+Provides-Extra: qa
+Requires-Dist: black ; extra == 'qa'
+Requires-Dist: isort ; extra == 'qa'
+Requires-Dist: pip-tools ; extra == 'qa'
+Requires-Dist: pre-commit ; extra == 'qa'
+Requires-Dist: pylint ; extra == 'qa'
+Provides-Extra: tests
+Requires-Dist: coverage ; extra == 'tests'
+Requires-Dist: flake8 ; extra == 'tests'
+Requires-Dist: mypy ; extra == 'tests'
+Requires-Dist: pydocstyle ; extra == 'tests'
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pytest-cov ; extra == 'tests'
+
+# Edgetest hub plugin
+
+![python-3.7](https://img.shields.io/badge/python-3.7-green.svg)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+
+[Full Documentation](https://capitalone.github.io/edgetest-hub/)
+
+Table Of Contents
+-----------------
+
+- [Install](#install)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+
+Install
+-------
+
+Installation from PyPI:
+
+```console
+$ python -m pip install edgetest-hub
+```
+
+
+Installation from conda-forge:
+
+```console
+$ conda install -c conda-forge edgetest-hub
+```
+
+
+Getting Started
+---------------
+
+This plugin uses [hub](https://github.com/github/hub) to enable automating Pull Requests from the results of
+[edgetest](https://github.com/capitalone/edgetest). This is intended to be used on Jenkins, but can be
+used from any machine with `git` and `hub` installed.
+
+To use this plugin, add an ``edgetest.hub`` section to your configuration:
+
+```ini
+[edgetest.hub]
+git_url = github.com  # optional
+git_repo_org = org-name
+git_repo_name = repo-name
+git_username = Jenkins  # optional
+git_useremail = noreply@capitalone.com  # optional
+updater_branch = dep-updates  # optional
+pr_to_branch = develop  # optional
+pr_reviewers = fdosani  # comma seperated github ids
+```
+- ensure you have an environment variable `GITHUB_TOKEN` set. This token should have permissions to interact with the
+  GitHub repo in question.
+- `git` is installed.
+- `hub` is installed. See [here](https://hub.github.com/).
+
+That's it! the plugin will automatically be called after the tests finish.
+
+- It will check for `GITHUB_TOKEN`before continuing.
+- The first step configures `git` and the `updater_branch`.
+  - will delete the `updater_branch` if it exists remotely or locally.
+- Then commits `setup.cfg` and `requirements.txt` and submits a PR for review.
+
+
+Contributing
+------------
+
+See our [developer documentation](https://capitalone.github.io/edgetest-hub/developer.html).
+
+We welcome and appreciate your contributions! Before we can accept any contributions, we ask that you please be sure to
+sign the [Contributor License Agreement (CLA)](https://cla-assistant.io/capitalone/edgetest-hub)
+
+This project adheres to the [Open Source Code of Conduct](https://developer.capitalone.com/resources/code-of-conduct/).
+By participating, you are expected to honor this code.
+
+License
+-------
+
+Apache-2.0
+
+
