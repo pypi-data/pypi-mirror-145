@@ -1,0 +1,17 @@
+aio_pika
+cachetools
+ldap3
+motor
+pyjwt[crypto]
+requests
+unidecode
+wipac-dev-tools
+wipac-rest-tools
+
+[tests]
+pytest
+pytest-asyncio
+pytest-cov
+pytest-mock
+coverage
+flake8
