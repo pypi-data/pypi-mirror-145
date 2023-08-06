@@ -1,0 +1,98 @@
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=2,<3"]
+
+
+[tool.flit.metadata]
+author = "Russell Smiley"
+author-email = "im.russell.smiley@gmail.com"
+classifiers = ["License :: OSI Approved :: MIT License"]
+description-file = "README.rst"
+home-page = "https://gitlab.com/ci-cd-devops/build_harness"
+module = "build_harness"
+
+requires-python = ">=3.7"
+
+requires = [
+    "behave >=1.2.6, <2",
+    "black >=22.3, <23",
+    "click >=8.1.2, <9",
+    "cookiecutter >=1.7.3, <2",
+    "flake8 >=4.0.1, <5",
+    "flake8-annotations >=2.8.0, <3",
+    "flit >=3.2.0, <4",
+    "gitpython >=3.1.24, <4",
+    "isort >=5.10.1, <6",
+    "mypy >=0.942",
+    "packaging >=21.3, <22",
+    "parver >=0.3.1, <1",
+    "pip >=22.0.4, <23",
+    "pre_commit >=2.17.0, <3",
+    "pydantic >=1.9.0, <2",
+    "pydocstyle >=6.1.1, <7",
+    "toml >=0.10.2, <1",
+    "twine >=4.0, <5",
+    "wheel >=0.37.1, <1",
+
+    # required for `description-file` parameter above (integration of README.rst)
+    "pygments >=2.11.2, <3",
+]
+
+
+[tool.flit.scripts]
+build-harness = "build_harness.entrypoint:build_harness_entry"
+publish-flow = "build_harness.entrypoint:publish_flow_entry"
+release-flow = "build_harness.entrypoint:release_flow_entry"
+
+
+[tool.flit.metadata.requires-extra]
+dev = [
+    "mutmut >=2.1.0, <3",
+    "pipenv >=2021.5.29",
+    "types-toml >=0.10.4, <1",
+]
+doc = [
+    "sphinx >=4.5.0, <5",
+    "sphinx_rtd_theme >=1.0, <2",
+]
+test = [
+    "pytest >=7.1.1, <8",
+    "pytest-cov >=3.0, <4",
+    "pytest-mock >=3.7.0, <4",
+]
+
+
+[tool.black]
+# templates dir needs to be excluded because it contains .py files
+extend-exclude = """
+^/build_harness/templates
+"""
+# Don't forget to sync this with isort, .flake8
+line-length = 88
+
+
+[tool.isort]
+extend_skip = ["templates"]
+# Don't forget to sync this with black, .flake8
+line_length = 88
+profile = "black"
+
+
+[tool.coverage.run]
+branch = true
+concurrency = ["multiprocessing"]
+omit = ["build_harness/templates/*"]
+source = ["build_harness"]
+
+
+[tool.coverage.report]
+exclude_lines = [
+    "except ImportError",
+    "raise NotImplementedError",
+    "pass",
+    "ABCmeta",
+    "abstractmethod",
+    "warnings.warn",
+]
+precision = 0
+show_missing = true
