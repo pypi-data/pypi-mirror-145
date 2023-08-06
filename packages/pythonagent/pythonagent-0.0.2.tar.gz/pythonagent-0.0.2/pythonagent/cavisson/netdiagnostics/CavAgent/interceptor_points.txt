@@ -1,0 +1,29 @@
+# Entry points
+flask
+django.core.handlers.wsgi
+django.core.handlers.base
+bottle
+tornado.web
+
+# HTTP exit calls
+httplib
+http.client
+urllib3
+requests
+tornado.httpclient
+boto.https_connection
+
+# Logging
+logging
+
+# SQL exit calls
+psycopg2
+pymysql.connections
+mysql.connector.connection
+MySQLdb.connections
+
+# MongoDB
+pymongo
+
+#REDIS
+redis.connection
