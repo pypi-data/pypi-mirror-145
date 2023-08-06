@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: huscy-project
+Version: 0.2.0a17
+Summary: integration project for some apps
+Home-page: UNKNOWN
+Author: Alexander Tyapkov, Mathias Goldau, Stefan Bunde
+Author-email: tyapkov@gmail.com, goldau@cbs.mpg.de, stefanbunde+git@posteo.de
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Dist: django-cors-headers
+Requires-Dist: psycopg2
+Requires-Dist: huscy.project-documents
+Requires-Dist: huscy.project-ethics
+Requires-Dist: huscy.users
+Provides-Extra: ldap
+Requires-Dist: django-auth-ldap ; extra == 'ldap'
+Provides-Extra: subjects
+Requires-Dist: huscy.subjects ; extra == 'subjects'
+Provides-Extra: testing
+Requires-Dist: tox ; extra == 'testing'
+
+UNKNOWN
+
