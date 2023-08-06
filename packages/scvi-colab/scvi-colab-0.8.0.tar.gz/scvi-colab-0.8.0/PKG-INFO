@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: scvi-colab
+Version: 0.8.0
+Summary: Lightweight helper to install scvi-tools in Google Colab.
+Home-page: https://github.com/scverse/scvi-colab
+License: BSD-3-Clause
+Author: The scvi-tools development team
+Author-email: adamgayoso@berkeley.edu
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Provides-Extra: dev
+Requires-Dist: black (>=22.1); extra == "dev"
+Requires-Dist: codecov (>=2.0.8); extra == "dev"
+Requires-Dist: flake8 (>=3.7.7); extra == "dev"
+Requires-Dist: importlib-metadata (>=1.0); python_version < "3.8"
+Requires-Dist: isort (>=5.7); extra == "dev"
+Requires-Dist: pre-commit (>=2.7.1); extra == "dev"
+Requires-Dist: pytest (>=4.4); extra == "dev"
+Requires-Dist: rich (==10.0.0)
+Project-URL: Documentation, https://scvi-tools.org
+Description-Content-Type: text/markdown
+
+# scvi-colab
+
+```
+!pip install scvi-colab
+
+from scvi_colab import install
+
+# default
+install()
+
+# from a GitHub branch
+install(branch="0.14.x")
+
+# A specific PyPI version
+install(version="0.15.1")
+
