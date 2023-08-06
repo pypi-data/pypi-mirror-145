@@ -1,0 +1,59 @@
+[tool.poetry]
+name = "polyagamma"
+version = "1.3.3"
+description = "Efficiently generate samples from the Polya-Gamma distribution using a NumPy/SciPy compatible interface."
+authors = ["Zolisa Bleki"]
+license = "BSD-3-Clause"
+readme = "README.md"
+repository = "https://github.com/zoj613/polyagamma/"
+keywords = ['polya-gamma distribution', 'polya-gamma random sampling']
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: C",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: MacOS :: MacOS X",
+    "Typing :: Typed",
+]
+packages = [{include = "polyagamma/*.py"}]
+include = [
+    {path = "polyagamma/*.c", format = "sdist"},
+    {path = "include", format = "sdist"},
+    {path = "src", format = "sdist"},
+    "polyagamma/*.pxd",
+    "polyagamma/*.pyi",
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7,<3.11"
+numpy = "^1.19.0"
+
+[tool.poetry.dev-dependencies]
+Cython = "^0.29.21"
+numpy = "1.21.3"
+pytest = "^6.2.1"
+toml = "^0.10.2"
+pytest-cov = "^2.*"
+codecov = "^2.*"
+
+[tool.poetry.build]
+script = "build.py"
+
+[tool.coverage.run]
+plugins = ["Cython.Coverage"]
+
+
+[build-system]
+requires = [
+    "poetry-core>=1.0.0",
+    "wheel",
+    "setuptools",
+    "numpy==1.21.3; python_version=='3.10'",
+    "numpy==1.19.0; python_version<='3.9'",
+]
+build-backend = "poetry.core.masonry.api"
