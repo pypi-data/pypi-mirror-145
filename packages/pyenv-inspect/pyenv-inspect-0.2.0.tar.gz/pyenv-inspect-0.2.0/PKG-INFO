@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: pyenv-inspect
+Version: 0.2.0
+Summary: An auxiliary library for the virtualenv-pyenv and tox-pyenv-redux plugins
+Home-page: https://github.com/un-def/pyenv-inspect
+License: MIT
+Keywords: pyenv
+Author: un.def
+Author-email: me@undef.im
+Requires-Python: >=3.7,<4.0
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Utilities
+Project-URL: Repository, https://github.com/un-def/pyenv-inspect
+Description-Content-Type: text/markdown
+
+# pyenv-inspect
+
+An auxiliary library for the [virtualenv-pyenv][virtualenv-pyenv] and [tox-pyenv-redux][tox-pyenv-redux] plugins
+
+## Limitations
+
+Only CPython is supported at the moment.
+
+
+[virtualenv-pyenv]: https://github.com/un-def/virtualenv-pyenv
+[tox-pyenv-redux]: https://github.com/un-def/tox-pyenv-redux
+
