@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: sensirion-i2c-sf06-lf
+Version: 0.1.0
+Summary: I2C driver for the Sensirion SF06-LF sensor family
+Home-page: https://sensirion.github.io/python-i2c-sf06-lf/
+Author: Sensirion
+Author-email: info@sensirion.com
+License: BSD
+Keywords: Sensirion SF06-LF
+        I2C
+        SLF3C-1300F
+        SLF3S-1300F
+        SLF3S-0600F
+        SLF3S-4000B
+        LD20-0600L
+        LD20-2600B
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.6, <4
+Requires-Dist: sensirion-i2c-adapter
+Requires-Dist: sensirion-i2c-driver
+Requires-Dist: sensirion-shdlc-sensorbridge (~=0.1.1)
+Requires-Dist: sensirion-driver-support-types (~=0.1.0)
+Provides-Extra: docs
+Requires-Dist: click (==8.0.4) ; extra == 'docs'
+Requires-Dist: jinja2 (==3.0.1) ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme (~=0.4.3) ; extra == 'docs'
+Requires-Dist: sphinx (~=2.2.1) ; extra == 'docs'
+Provides-Extra: test
+Requires-Dist: flake8 (~=3.7.8) ; extra == 'test'
+Requires-Dist: pytest-cov (~=3.0.0) ; extra == 'test'
+Requires-Dist: pytest (~=6.2.5) ; extra == 'test'
+
+sensirion_i2c_sf06_lf
+=====================
+
+This package contains the driver to communicate with the Sensirion
+SF06-LF sensor family over I2C.
+
+Installation and Usage
+----------------------
+
+The user manual is available at
+https://sensirion.github.io/python-i2c-sf06-lf
+
+CHANGELOG
+---------
+
+0.1.0
+:::::
+- Initial release of SF06-LF I2C driver
+
+
