@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: kedro-popmon
+Version: 0.1.0
+Summary: Kedro Popmon makes integrating Popmon with Kedro easy!
+Home-page: https://github.com/stephanecollot/kedro-popmon
+Author: Marian Dabrowski
+Author-email: marian.dabrowski95@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Description-Content-Type: text/markdown
+Requires-Dist: kedro[pandas] (==0.17.3)
+Requires-Dist: click (<8.0)
+Requires-Dist: pandas
+Requires-Dist: semver
+Requires-Dist: popmon (==0.4.0)
+Requires-Dist: matplotlib (==3.3.4)
+Provides-Extra: spark
+Requires-Dist: pyspark (>=2.4.0) ; extra == 'spark'
+Requires-Dist: py4j ; extra == 'spark'
+Requires-Dist: kedro[spark] (==0.17.3) ; extra == 'spark'
+
+# Kedro Popmon
+
+Kedro-popmon is a plugin to integrate popmon reporting with kedro.  
+This plugin allows you to automate the process of popmon feature and output stability monitoring.   
+
+## How to install
+```bash
+pip install kedro-popmon
+```
+
+## How to use it
+
+Run `kedro popmon init` in a existing kedro project.  
+You will get the `conf/base/popmon.yml`.  
+Edit `conf/base/popmon.yml` according to the way described in it.  
+Example:
+```
+example_iris_data:
+  date_column: date
+  columns:
+    - sepal_length
+```
+
+When you do `kedro run` you shall expect your reports to be generated in 
+`data/08_reporting/` folder.
+
