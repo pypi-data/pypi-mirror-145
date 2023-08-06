@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="robots" content="noindex" />
+    <title>{% block page_title %}{% endblock page_title %}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'aldryn_sso/img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'aldryn_sso/css/aldryn-sso/base.css' %}">
+    <style>
+    .marketing-strike-through:before { z-index: 0; }
+    .marketing-strike-through > span { z-index: 1; position: relative; }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+        <div class="content">
+            <div class="container pt-5">
+                <div class="d-flex flex-column align-items-center">
+                <img height="24" class="mb-4" src="{% static 'aldryn_sso/img/logos/divio-blue.svg' %}" alt="{{ site_settings.site.name }}" />
+                <div class="login-box">
+                    {% block panel %}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {% block panel_body %}{% endblock %}
+                        </div>
+                    </div>
+                    {% endblock %}
+                </div>
+                <div class="login-after">
+                    {% block after %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

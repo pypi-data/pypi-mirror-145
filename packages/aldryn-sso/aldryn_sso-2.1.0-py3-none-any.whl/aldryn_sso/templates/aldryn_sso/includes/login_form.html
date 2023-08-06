@@ -1,0 +1,55 @@
+{% load i18n %}
+
+<form action="{% url 'aldryn_sso_login' %}" method="post" role="form">
+  {% csrf_token %}
+    <div class="row">
+      <div class="col">
+        <h2 class="login-box-title">{% trans "Standard login" %}</h2>
+        <div class="form-group">
+          <label class="sr-only" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+          <input class="form-control" id="{{ form.username.id_for_label }}" maxlength="254" name="username" placeholder="{{ form.username.label }}" required="required" type="text" value="{{ form.username.value|default_if_none:"" }}">
+
+
+          {% if form.username.errors %}
+            <div class="alert alert-danger">
+                <div class="alert-body">
+                  {% for error in form.username.errors %}
+                      <p>{{ error }}</p>
+                  {% endfor %}
+                </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="form-group">
+          <label class="sr-only" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+          <input class="form-control" id="{{ form.password.id_for_label }}" maxlength="254" name="password" placeholder="{{   form.password.label }}" required="required" type="password">
+
+          {% if form.password.errors %}
+            <div class="alert alert-danger">
+                <div class="alert-body">
+                  {% for error in form.password.errors %}
+                      <p>{{ error }}</p>
+                  {% endfor %}
+                </div>
+            </div>
+          {% endif %}
+        </div>
+
+
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger">
+              <div class="alert-body">
+                {% for error in form.non_field_errors %}
+                  <p>{{ error }}</p>
+                {% endfor %}
+              </div>
+          </div>
+        {% endif %}
+
+
+        <input type="hidden" name="next" value="{{ next }}" />
+        <input class="btn btn-primary btn-block mt-1" type="submit" value="{% trans 'Log in' %}">
+      </div>
+   </div>
+</form>
