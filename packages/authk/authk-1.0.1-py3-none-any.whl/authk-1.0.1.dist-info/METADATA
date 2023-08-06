@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: authk
+Version: 1.0.1
+Summary: SSHD Handling Utility
+Author-email: BST Labs <bstlabs@caios.io>
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: dynacli >= 1.0.7
+Requires-Dist: sshpubkeys >= 3.3.1
+Requires-Dist: black >=22.3.0 ; extra == "dev"
+Requires-Dist: pylint >=2.12.2 ; extra == "dev"
+Requires-Dist: isort >=5.9.3 ; extra == "dev"
+Requires-Dist: autoflake >=1.4 ; extra == "dev"
+Requires-Dist: flake8 >=4.0.1 ; extra == "dev"
+Requires-Dist: pre-commit >=2.17.0 ; extra == "dev"
+Requires-Dist: mkdocs-material >=8.1.2 ; extra == "doc"
+Project-URL: Home, https://github.com/bstlabs/authk
+Project-URL: Source, https://github.com/bstlabs/py-authk
+Provides-Extra: dev
+Provides-Extra: doc
+
+# AuthK
+
+AuthK is a lightweight Python library to handle ssh keys within authorized_keys file directly from CLI.
+
+It's built on top of [DynaCLI](https://pypi.org/project/dynacli/) and [sshpubkeys](https://pypi.org/project/sshpubkeys/).
+That makes it user friendly and secure.
+
+AuthK was developed by [BST LABS](https://github.com/BstLabs/) as an open source generic infrastructure foundation for the cloud version of Python run-time within the scope of the [Cloud AI Operating System (CAIOS)](http://caios.io) project.
+
+For details about the AuthK rationale and source code, refer to [AuthK](https://github.com/BstLabs/py-authk/) Github repository.
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install AuthK from the PyPi site:
+
+```bash
+pip3 install authk
+```
+
+## Usage
+
+```bash
+$ authk -h
+usage: authk [-h] [-v] {add, remove} ...
+
+SSHD authorized_keys file handling utility
+
+positional arguments:
+  {add, remove}
+    add        Add key to authorized_keys list
+    remove     Remove key from the authorized_keys list
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -v, --version  show program's version number and exit
+```
+
+```bash
+$ authk add <key_text>
+<user@myhost.com> sucessfully added
+
+$ authk remove <key_txt>
+<user@myhost.com> sucessfully removed
+```
+
+## License
+
+MIT License, Copyright (c) 2021-2022 BST LABS. See [LICENSE](LICENSE) file.
+
