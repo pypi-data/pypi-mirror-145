@@ -1,0 +1,2 @@
+from bounding_ai_tool.python.lighting.SuncgLighting import light_suncg_scene
+from bounding_ai_tool.python.lighting.SurfaceLighting import light_surface
