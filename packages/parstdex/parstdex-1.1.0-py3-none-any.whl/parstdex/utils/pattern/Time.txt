@@ -1,0 +1,186 @@
+﻿# صبح ظهر عصر شب ...
+DP
+
+# تا ساعت
+CJ TU
+
+# تا غروب
+CJ DP
+
+# قبل از ساعت
+PRV TU
+
+# ثانیه a.m.
+TU APM
+
+# ۳ a.m.
+HR APM
+
+# طول دقیقه
+TOOL TU
+TOOL<>NUM<>TU
+TOOL DSMALL TU
+TOOL MIN TU
+
+# پنج ثانیه
+NUM<>TU
+MIN TU
+DSMALL TU
+# دقیقه پنج
+TU<>NUM
+TU MIN
+TU DSMALL
+
+# دقیقه پنج A.M.
+TU<>NUM APM
+TU MIN APM
+TU DSMALL APM
+
+# پنج تا ۵ ساعت
+NUM<>CJ<>NUM<>TU
+NUM<>CJ DSMALL TU
+DSMALL CJ<>NUM<>TU
+DSMALL CJ DSMALL TU
+
+# پنج تا شیش غروب
+NUM CJ<>NUM<>DP
+NUM CJ DSMALL DP
+DSMALL CJ<>NUM<>DP
+DSMALL CJ DSMALL DP
+
+# پنج و سی دقیقه
+HR VA MIN DAGHIGHEH
+HR VA MIN DAGHIGHEH VA MIN SANIEH
+
+# پنج ساعت و بیست دقیقه
+MIN TU VA MIN TU
+# پنج ساعت و چهل و سه دقیقه و سی و چهار ثانیه
+MIN TU VA MIN TU VA MIN TU
+
+# ساعت پنج
+SAAT HR
+# ساعت پنج و بیست دقیقه
+SAAT HR VA MIN DAGHIGHEH
+# ساعت پنج و چهل ثانیه
+SAAT HR VA MIN SANIEH
+# ساعت پنج و چهال و دو دقیقه و سی و چهار ثانیه
+SAAT HR VA MIN DAGHIGHEH VA MIN SANIEH
+
+# بعد از ظهر اخیر
+DP NXT
+
+# قبل ظهر
+PRV DP
+
+# پنج عصر
+HR DP
+
+# 12:23
+N24<>:<>N60
+# 12:23 am
+N24<>:<>N60<>APM
+# 12:23 دقیقه
+N24:N60 DAGHIGHEH
+# قبل از 12:23
+PRV<>N24<>:<>N60
+# قبل از 12:23 am
+PRV<>N24<>:<>N60<>APM
+
+# ساعت 12:23
+SAAT<>N24<>:<>N60
+# ساعت ۱۲:۲۳ AM
+SAAT<>N24<>:<>N60<>APM
+
+# 12:34:23
+N24<>:<>N60<>:<>N60
+# 5 : 32 : 00 PM
+N24<>:<>N60<>:<>N60<>APM
+# 17:04:23 ثانیه
+N24<>:<>N60<>:<>N60<>SANIEH
+
+# ساعت 03:53:23
+SAAT<>N24<>:<>N60<>:<>N60
+# ساعت 03:53:23 am
+SAAT<>N24<>:<>N60<>:<>N60<>APM
+
+# ساعت بیست و بیست و سه
+SAAT HR VA MIN
+# ساعت ۲۰ و ۲۳
+SAAT<>N24<>VA<>N60
+
+# دقیقه 23:23
+TU<>N60<>:<>N60
+
+# قبل از ۳ و سی و چهار دقیقه
+PRV HR VA MIN DAGHIGHEH
+# قبل از ۳ و سی و چهار دقیقه و چهل ثانیه
+PRV HR VA MIN DAGHIGHEH VA MIN SANIEH
+
+# قبل از ساعت ۳ am
+PRV HR APM
+
+# ساعت پنج و ربع
+SAAT HR VA ROBNIM
+
+# ساعت یک ربع به
+SAAT YEK ROBNIM PRV
+SAAT YEK ROBNIM BE
+
+# سه ربع به پنج
+YEK ROBNIM PRV HR
+YEK ROBNIM BE HR
+YEK ROBNIM PRV
+YEK ROBNIM NXT
+
+# ۱۵ دقیقه به
+MIN TU BE
+DSMALL TU BE
+DSMALL TU PRV
+NUM<>TU BE
+NUM<>TU PRV
+
+# ۱۹ دقیقه به ۸
+MIN TU BE HR
+NUM<>TU BE HR
+
+# ۳ دقیقه بعد چهار
+MIN TU NXT HR
+NUM<>TU NXT HR
+
+# دقیقه آینده
+TU NXT
+# دقیقه نخست آینده
+TU NXT NXT
+
+# ۷ غروب و ۸ صبح
+HR DP VA HR DP
+
+### Indefinite Time
+# دقیقه ای
+TU<>PF
+# دقیقه ی آینده
+TU<>PF NXT
+# دقیقه ی نخست آینده
+TU<>PF NXT NXT
+
+# ۱۳، ۲۳ و ۲۴ دقیقه
+NUM<>COMMA<>NUM<>VA<>NUM<>TU
+MIN<>COMMA<>MIN VA<>MIN<>TU
+
+# دقايق 5 ، 61 و 89
+TU MIN<>COMMA<>MIN VA MIN
+TU<>NUM<>COMMA<>NUM<>VA<>NUM
+
+# دقیقه ۲ و ۲۳
+TU MIN VA MIN
+TU DSMALL VA DSMALL
+TU<>NUM<>VA<>NUM
+
+# دقیقه ۲ تا ۲۳
+TU MIN CJ MIN
+TU DSMALL CJ DSMALL
+TU<>NUM<>CJ<>NUM
+
+# دقیقه به دقیقه
+TU BE TU
+DP BE DP
