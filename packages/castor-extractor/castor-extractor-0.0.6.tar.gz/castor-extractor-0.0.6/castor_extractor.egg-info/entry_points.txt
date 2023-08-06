@@ -1,0 +1,12 @@
+[console_scripts]
+castor-extract-bigquery = castor_extractor.cmds.extract_bigquery:main
+castor-extract-looker = castor_extractor.cmds.extract_looker:main
+castor-extract-metabase-api = castor_extractor.cmds.extract_metabase_api:main
+castor-extract-metabase-db = castor_extractor.cmds.extract_metabase_db:main
+castor-extract-mode = castor_extractor.cmds.extract_mode:main
+castor-extract-postgres = castor_extractor.cmds.extract_postgres:main
+castor-extract-redshift = castor_extractor.cmds.extract_redshift:main
+castor-extract-snowflake = castor_extractor.cmds.extract_snowflake:main
+castor-extract-tableau = castor_extractor.cmds.extract_tableau:main
+castor-file-check = castor_extractor.cmds.file_check:main
+castor-upload = castor_extractor.cmds.upload:main
