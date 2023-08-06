@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: sklearn_linear_model_modification
+Version: 0.0.9
+Summary: Wraps sklearn linear_model regression functions to allow Drop1, Add1, and VIF calculations
+Home-page: https://github.com/chrisebell24/sklearn_linear_model_modification
+Author: Christopher Bell
+Author-email: Chris.E.Bell24@gmail.com
+Maintainer: Christopher Bell
+Maintainer-email: Chris.E.Bell24@gmail.com
+License: UNKNOWN
+Description: # SKLearn Linear Model Modification
+        
+        This class should act exactly like sklearn linear model to solve regression problems with the benefit of being able to use drop1 and add1 based on AIC.
+        
+        
+        ## Installation
+        
+        Run the following to install:
+        
+        ```python
+        pip install sklearn_linear_model_modification
+        ```
+        
+        ## Usage
+        
+        ```
+        import pandas as pd
+        from sklearn_linear_model_modification import LinearRegression, Add1LinearRegression, Drop1LinearRegression
+        from sklearn_linear_model_modification import Lasso, Add1Lasso, Drop1Lasso
+        from sklearn_linear_model_modification import ElasticNet, Add1ElasticNet, Drop1ElasticNet
+        from sklearn_linear_model_modification import Ridge, Add1Ridge, Drop1Ridge
+        
+        def load_Xy():
+            data = load_boston()
+            X = pd.DataFrame( data['data'], columns=data['feature_names'] )
+            y = data['target']
+            return X, y
+        
+        
+        
+        X, y = load_Xy()
+        
+        lmod = Ridge()
+        lmod.fit(X, y)
+        
+        lmod = Lasso()
+        lmod.fit(X, y)
+        
+        lmod = ElasticNet()
+        lmod.fit(X, y)
+        
+        lmod = LinearRegression()
+        lmod.fit(X, y)
+        
+        
+        lmod = Add1Ridge()
+        lmod.fit(X, y)
+        
+        lmod = Add1Lasso()
+        lmod.fit(X, y)
+        
+        lmod = Add1ElasticNet()
+        lmod.fit(X, y)
+        
+        lmod = Add1LinearRegression()
+        lmod.fit(X, y)
+        
+        lmod = Drop1Ridge()
+        lmod.fit(X, y)
+        
+        lmod = Drop1Lasso()
+        lmod.fit(X, y)
+        
+        lmod = Drop1ElasticNet()
+        lmod.fit(X, y)
+        
+        lmod = Drop1LinearRegression()
+        lmod.fit(X, y)
+        ```
+        
+        ## Development sklearn_linear_model_modification
+        
+        To install sklearn_linear_model_modification, along with the tools you need to develop and run tests, run the following in your virtualend:
+        ```bash
+        $ pip install -e .[dev]
+        ```
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: dev
