@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: phantasy
+Version: 2.1.7
+Summary: Physics high-level applications and toolkit for accelerator system
+Home-page: https://phantasy-project.github.io/phantasy/
+Author: Tong Zhang
+Author-email: zhangt@frib.msu.edu
+License: BSD
+Keywords: PHANTASY FRIB HLA high-level Python FLAME Virtual Model
+Platform: Linux
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Scientific/Engineering :: Physics
+Description-Content-Type: text/markdown
+Requires-Dist: epicscorelibs
+Requires-Dist: importlib-metadata
+Requires-Dist: phantasy-machines
+Requires-Dist: xlrd (<2.0,>=1.1)
+Requires-Dist: matplotlib (<4.0,>=3.1.2)
+Requires-Dist: lmfit (<2.0,>=1.0.0)
+Requires-Dist: cothread (<3.0,>=2.16)
+Requires-Dist: pyepics (<4.0,>=3.4.2)
+Requires-Dist: flame-code (<2.0,>=1.8.6)
+Requires-Dist: flame-utils (<1.0,>=0.4.1)
+Requires-Dist: requests (<3.0,>=2.24.0)
+Requires-Dist: pandas (<2.0,>=1.1.4)
+Requires-Dist: toml (<1.0,>=0.10.1)
+Requires-Dist: python-unicorn (<1.0,>=0.4.4)
+Requires-Dist: flame-data
+Requires-Dist: epics-appimage
+Requires-Dist: openpyxl
+Provides-Extra: doc
+Requires-Dist: sphinx-rtd-theme ; extra == 'doc'
+Requires-Dist: nbsphinx ; extra == 'doc'
+Requires-Dist: dateutils ; extra == 'doc'
+Requires-Dist: ipython ; extra == 'doc'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+Requires-Dist: pytest-cov ; extra == 'test'
+
+# PHANTASY
+
+**P**hysics **H**igh-level **A**pplications a**N**d **T**oolkit for **A**ccelerator **SY**stem.
+
+Main features of ``phantasy``:
+
+- Device configuration management;
+- Device abstraction;
+- Online modeling;
+- Python interactive scripting environment for high-level controls;
+- Virtual accelerator based on EPICS control environment;
+- Web services integration;
+
+Physics applications built on top of ``phantasy`` are developed as another
+repo: ``phantasy-apps``, whose names in Debian repository are prefixed with
+``python-``, i.e. ``python-phantasy`` and ``python-phantasy-apps``.
+
+Changelogs see [here](changelogs.md).
+
+
+
+
