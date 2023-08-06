@@ -1,0 +1,16 @@
+{
+    "name": "BasicHistory_options",
+    "required": ["data_list"],
+    "properties": {
+        "data_list":{
+        	"items": {
+                "type": "string",
+                "minItems": 1
+            },
+            "type": "array"
+        }
+    },
+    "additionalProperties": false,
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "type": "object"
+}

@@ -1,0 +1,583 @@
+..
+   Copyright 2021 IRT Saint Exupéry, https://www.irt-saintexupery.com
+
+   This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+   International License. To view a copy of this license, visit
+   http://creativecommons.org/licenses/by-sa/4.0/ or send a letter to Creative
+   Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+..
+   Changelog titles are:
+   - Added for new features.
+   - Changed for changes in existing functionality.
+   - Deprecated for soon-to-be removed features.
+   - Removed for now removed features.
+   - Fixed for any bug fixes.
+   - Security in case of vulnerabilities.
+
+Changelog
+=========
+
+All notable changes of this project will be documented here.
+
+The format is based on
+`Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`_
+and this project adheres to
+`Semantic Versioning <https://semver.org/spec/v2.0.0.html>`_.
+
+Version 3.2.2 (March 2022)
+**************************
+
+Fixed
+-----
+
+- Cache may not be used because of the way data was hashed.
+
+Version 3.2.1 (November 2021)
+*****************************
+
+Fixed
+-----
+
+- Missing package dependency declaration.
+
+Version 3.2.0 (November 2021)
+*****************************
+
+Added
+-----
+
+Algorithms and numerical computations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- The matrix linear problem solvers libraries are now handled by a Factory and can then be extended by plugins.
+- MDA warns if it stops when reaching ``max_mda_iter`` but before reaching the tolerance criteria.
+- The convergence of an MDA can be logged.
+- Add max line search steps option in scipy L-BFGS-B
+- An analytical Jacobian can be checked for subsets of input and output names and components.
+- An analytical Jacobian can be checked from a reference file.
+- Scipy global algorithms SHGO and differential evolution now handle non linear constraints.
+- It is now possible to get the number of constraints not satisfied by a design in an OptimizationProblem.
+- The names of the scalar constraints in an OptimizationProblem can be retrieved as a list.
+- The dimensions of the outputs for functions in an OptimizationProblem are now available as a dictionary.
+- The cross-validation technique can now randomize the samples before dividing them in folds.
+
+Post processing
+~~~~~~~~~~~~~~~
+
+- The Scatter Plot Matrix post processor now allows the user to filter non-feasible points.
+- OptPostProcessor can change the size of the figures with the method execute().
+- SensitivityAnalysis can plot indices with values standardized in [0,1].
+
+UQ
+~~
+
+- MorrisAnalysis provides new indices: minimum, maximum and relative standard deviation.
+- MorrisAnalysis can compute indices normalized with the empirical output bounds.
+
+Documentation and examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- A button to change the tagged version of GEMSEO is available on the documentation hosted by Read the Docs.
+- The documentation now includes a link to the gemseo-scilab plugin.
+- ParetoFront: an example of a BiLevel scenario to compute the Pareto front has been added the examples.
+- A Pareto front computation example using a bi-level scenario has been added to the documentation.
+- The documentation now includes hints on how to use the add_observable method.
+
+Software improvements
+~~~~~~~~~~~~~~~~~~~~~
+
+- It is now possible to execute DOEScenarios in parallel on Windows. For Python versions < 3.7 and
+  Numpy < 1.20.0, there is a known issue where one of the processes gets hung randomly, updating your
+  environment is strongly recommended.
+  This feature does not support the use of MemoryFullCache or HDF5Cache on Windows.
+  The progress bar may show duplicated instances during the initialization of each subprocess, in some cases
+  it may also print the conclusion of an iteration ahead of another one that was concluded first. This
+  is a consequence of the pickling process and does not affect the computations of the scenario.
+- A ParameterSpace can be casted into a DesignSpace.
+- Plugins can be discovered via setuptools entry points.
+- A dumped MDODiscipline can now be loaded with the API function import_discipline().
+- Database has a name used by OptimizationProblem to name the Dataset;
+  this is the name of the corresponding Scenario if any.
+- The grammar type can be passed to the sub-processes through the formulations.
+- Scenario, MDOScenario and DOEScenario now include the argument ``grammar_type``.
+- A GrammarFactory used by MDODiscipline allows to plug new grammars for data checking.
+- The coupling structure can be directly passed to an MDA.
+- Database has a name used by OptimizationProblem to name the Dataset;
+  this is the name of the corresponding Scenario if any.
+- A dumped MDODiscipline can now be loaded with the API function ``import_discipline``.
+- The name of an MDOScenarioAdapter can be defined at creation.
+- The AbstractFullCache built from a Dataset has the same name as the dataset.
+- The HDF5 file generated by HDF5Cache has now a version number.
+
+Changed
+-------
+- The IO grammar files of a scenario are located in the same directory as its class.
+- Distribution, ParameterSpace and OpenTURNS use now the logger mainly at debug level.
+- The grammar types "JSON" and "Simple" are replaced by the classes names "JSONGrammar" and "SimpleGrammar".
+- RadarChart uses the scientific notation as default format for the grid levels
+  and allows to change the discretization of the grid.
+
+
+Fixed
+-----
+
+Algorithms and numerical computations
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Make OpenTURNS- and pyDOE-based full factorial DOEs work whatever the dimension and number of samples.
+- The NLopt library wrapper now handles user functions that return ndarrays properly.
+- Fix bilevel formulation: the strong couplings were used instead of all the couplings when computing the inputs and outputs of the sub-scenarios adapters.
+  Please note that this bug had an impact on execution performance, but had no adverse effect on the bilevel calculations in previous builds.
+- Bug with the 'sample_x' parameter of the pSeven wrapper.
+- An OptimizationProblem can now normalize and unnormalize gradient with uncertain variables.
+- A SurrogateDiscipline can now be instantiated from an MLAlgo saved without its learning set.
+- Bug with the 'measure_options' arguments of MLAlgoAssessor and MLAlgoSelection.
+- The constraints names are now correctly formed with the minus sign and offset value if any.
+- DesignSpace no longer logs an erroneous warning when unnormalizing an unbounded variable.
+- Resampling-based MLQualityMeasure no longer re-train the original ML model, but a copy.
+- The computation of a diagonal DOE out of a design space does not crash anymore.
+- OptimizationProblem no longer logs a warning when using the finite-difference method on the design boundary.
+- OpenTURNS options are processed correctly when computing a DOE out of a design space.
+
+Post processing
+~~~~~~~~~~~~~~~
+
+- The Correlations post-processor now sorts labels properly when two or more functions share the
+  same name followed by an underscore.
+- The ParetoFront post-processor now shows the correct labels in the plot axis.
+- The Gantt Chart, Basic History, Constraints History and
+  Scatter Plot Matrix pages in the documentation now render the example plots correctly.
+- Post-processings based on SymLogNorm (matplotlib) now works with Python 3.6.
+- OptHistoryView no longer raises an exception when the Hessian diagonal contains NaN and skips the Hessian plot.
+
+Documentation and examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Bug with inherited docstrings.
+- The MDO Scenario example subsections are now correctly named.
+
+Software
+~~~~~~~~
+
+- The data hashing strategy used by HDF5Cache has been corrected,
+  old cache files shall have to be converted, see the FAQ.
+- Fix levels option for Full-Factorial doe: now this option is taken into account and enables to build an anisotropic sample.
+- The constraints names are now correctly formed with the minus sign and offset value if any.
+- Bug with the MATLAB discipline on Windows.
+- The SurrogateDiscipline can now be serialized.
+- The name used to export an OptimizationProblem to a Dataset is no longer mandatory.
+- Bug in the print_configuration method, the configuration table is now shown properly.
+- Bug with integer elements casted into
+- The image comparison tests in post/dataset no longer leave the generated files when completed.
+- Typo in the function name get_scenario_differenciation.
+- ImportError (backport.unittest_mock) on Python 2.7.
+- Backward compatibility with the legacy logger named "GEMSEO".
+- DOE algorithms now have their own JSON grammar files which corrects the documentation of their options.
+- DOEScenario no longer passes a default number of samples to a DOELibrary for which it is not an option.
+- Issues when a python module prefixed with ``gemseo_`` is in the current working directory.
+- DesignSpace can now be iterated correctly.
+- The Jacobian approximated by the finite-difference method is now correct when computed with respect to uncertain variables.
+- The standard deviation predicted by GaussianProcessRegression is now correctly shaped.
+- The input data to stored in a HDF5Cache are now hashed with their inputs names.
+- The hashing strategy used by HDF5Cache no longer considers only the values of the dictionary but also the keys.
+
+Version 3.1.0 (July 2021)
+*************************
+
+Changed
+-------
+
+- Faster JSON schema and dependency graph creation.
+- The Gradient Sensitivity post processor is now able to scale gradients.
+- MemoryFullCache can now use standard memory as well as shared memory.
+- Sellar1 and Sellar2 compute y_1 and y_2 respectively, for consistency of naming.
+- Improve checks of MDA structure.
+- IDF: add option to start at equilibrium with an MDA.
+- Improve doc of GEMSEO study.
+- Unified drivers stop criteria computed by GEMSEO (xtol_rel, xtol_abs, ftol_rel, ftom_abs).
+- SimpleGrammars supported for all processes (MDOChain, MDAChain etc.).
+- JSONGrammar can be converted to SimpleGrammar.
+- DiscFromExe can now run executables without using the shell.
+- It is now possible to add observable variables to the scenario class.
+- ParetoFront post-processing improvements: legends have been added,
+  it is now possible to hide the non-feasible points in the plots.
+- The Gradient Sensitivity, Variable Influence and Correlations post processors
+  now show variables names instead of hard-coded names.
+- The Correlations post processor now allows the user to select a subset of functions to plot.
+- The Correlations post processor now allows the user to select the figure size.
+- Documentation improvements.
+
+Added
+-----
+
+- Support for Python 3.9.
+- Support for fastjsonschema up to 2.15.1.
+- Support for h5py up to 3.2.1.
+- Support for numpy up to 1.20.3.
+- Support for pyxdsm up to 2.2.0.
+- Support for scipy to 1.6.3.
+- Support for tqdm up to 4.61.0.
+- Support for xdsmjs up to 1.0.1.
+- Support for openturns up to 1.16.
+- Support for pandas up to 1.2.4.
+- Support for scikit-learn up to 0.24.2.
+- Support for openpyxl up to 3.0.7.
+- Support for nlopt up to 2.7.0.
+- Constraint aggregation methods (KS, IKS, max, sum).
+- N2: an interactive web N2 chart allowing to expand or collapse the groups of strongly coupled disciplines.
+- Uncertainty: user interface for easy access.
+- Sensitivity analysis: an abstract class with sorting, plotting and comparison methods,
+  with a dedicated factory and new features (correlation coefficients and Morris indices).
+- Sensitivity analysis: examples.
+- ConcatenationDiscipline: a new discipline to concatenate inputs variables into a single one.
+- Gantt chart generation to visualize the disciplines execution time.
+- An interactive web N2 chart allowing to expand or collapse the groups of strongly coupled disciplines.
+- Support pSeven algorithms for single-objective optimization.
+- DOELibrary.compute_doe computes a DOE based on a design space.
+
+Fixed
+-----
+
+- The greatest value that OT_LHSC can generate must not be 0.5 but 1.
+- Internally used HDF5 file left open.
+- The Scatter Plot Matrix post processor now plots the correct values for a subset of variables or functions.
+- MDA Jacobian fixes in specific cases (self-coupled, no strong couplings, etc).
+- Strong coupling definition.
+- Bi-level formulation implementation, following the modification of the strong coupling definition.
+- Graphviz package is no longer mandatory.
+- XDSM pdf generation bug.
+- DiscFromExe tests do not fail anymore under Windows,
+  when using a network directory for the pytest base temporary directory.
+- No longer need quotation marks on gemseo-study string option values.
+- XDSM file generated with the right name given with outfilename.
+- SellarSystem works now in the Sphinx-Gallery documentation (plot_sellar.py).
+
+
+Version 3.0.3 (May 2021)
+************************
+
+Changed
+-------
+
+- Documentation fixes and improvements.
+
+
+Version 3.0.2 (April 2021)
+**************************
+
+Changed
+-------
+
+- First open source release!
+
+Fixed
+-----
+
+- Dependency version issue for python 3.8 (pyside2).
+
+
+Version 3.0.1 (April 2021)
+**************************
+
+Fixed
+-----
+
+- Permission issue with a test.
+- Robustness of the excel discipline wrapper.
+
+
+Version 3.0.0 (January 2021)
+****************************
+
+Added
+-----
+
+- Licenses materials.
+
+Changed
+-------
+
+- Renamed gems package to gemseo.
+
+Removed
+-------
+
+- OpenOPT backend which is no longer maintained
+  and has features overlap with other backends.
+
+Fixed
+-----
+
+- Better error handling of the study CLI with missing latex tools.
+
+
+Version 2.0.1 (December 2020)
+*****************************
+
+Fixed
+-----
+
+- Improper configuration of the logger in the MDAChain test leading to GEMS crashes if the user has not write permission on the GEMS installation directory.
+- Max versions of h5py and Openturns defined in environment and configuration files to prevent incorrect environments due to API incompatibilites.
+- Max version of numpy defined in order to avoid the occurence of a fmod/OpenBlas bug with Windows 10 2004 (https://developercommunity.visualstudio.com/content/problem/1207405/fmod-after-an-update-to-windows-2004-is-causing-a.html).
+
+
+Version 2.0.0 (July 2020)
+*************************
+
+Added
+-----
+
+- Support for Python3
+- String encoding: all the strings shall now be encoded in unicode. For Python 2 users, please read carefuly the Python2 and Python3 compatibility note to migrate your existing GEMS scripts.
+- Documentation: gallery of examples and tutorials + cheat sheet
+- New conda file to automatically create a Python environment for GEMS under Linux, Windows and Mac OS.
+- ~35% improved performance on Python3
+- pyXDSM to generate latex/PDF XDSM
+- Display XDSM directly in the browser
+- Machine learning capabilities based on scikit-learn, OpenTURNS and scipy: clustering, classification, regression, dimension reduction, data scaling, quality measures, algorithm calibration.
+- Uncertainty package based on OpenTURNS and scipy: distributions, uncertain space, empirical and parametric statistics, Sobol' indices.
+- AbstractFullCache to cache inputs and outputs in memory
+- New Dataset class to store data from numpy arrays, file, Database and AbstractFullCache; Unique interface to machine learning and uncertainty algorithms.
+- Cache post-processing via Dataset
+- Make a discipline from an executable with a GUI
+- Excel-based discipline
+- Prototype a MDO study without writing any code and generating N2 and XDSM diagrams
+- Automatic finite difference step
+- Post-optimal analysis to compute the jacobian of MDO scenarios
+- Pareto front: computation and plot
+- New scalable problem from Tedford and Martins
+- New plugin mechanism for extension of features
+
+Changed
+-------
+
+- Refactored and much improved documentation
+- Moved to matplotlib 2.x and 3.x
+- Support for scipy 1.x
+- Improved API
+- Improved linear solvers robustness
+- Improved surrogate models based on machine learning capabilities and Dataset class.
+- Improved scalable models
+- Improved BasicHistory: works for design variables also
+- Improved XDSM diagrams for MDAChain
+- Improved BiLevel when no strong coupling is present
+- Improved overall tests
+
+Fixed
+-----
+
+- Bug in GradientSensitivity
+- Bug in AutoPyDiscipline for multiple returns and non pep8 code
+
+
+Version 1.3.2 (December 2019)
+*****************************
+
+Fixed
+-----
+
+- Bugfix in Discipline while updating data from the cache
+
+
+Version 1.3.1 (July 2019)
+*************************
+
+Added
+-----
+
+- COBYLA handle NaNs values and manages it to backtrack. Requires specific mod of COBYLA by IRT
+- OptHistoryView and BasicHistory handle NaNs values
+- BasicHistory works for design variable values
+
+Changed
+-------
+
+- Improved error message when missing property in JSONGrammars
+- Improved imports to handle multiple versions of sklearn, pandas and sympy (thanks Damien Guenot)
+
+Fixed
+-----
+
+- Bug in Caching and Discipline for inouts (Thanks Romain Olivanti)
+- Bug in MDASequential convergence hisotry
+
+
+Version 1.3.0 (June 2019)
+*************************
+
+Added
+-----
+
+- Refactored and much improved documentation
+- All algorithms, MDAs, Surrogates, formulations options are now automatically documented in the HTML doc
+- Enhanced API: all MDO scenarios can be fully configured and run from the API
+- AutoPyDiscipline: faster way to wrap a Python function as a discipline
+- Surrogate models: Polynomial Chaos from OpenTurns
+- Surrogate model quality metrics:Leave one out, Q2, etc.
+- MDAs can handle self-coupled disciplines (inputs that are also outputs)
+- Lagrange Multipliers
+- Multi-starting point optimization as a bi-level scenario using a DOE
+- New aerostructure toy MDO problem
+
+Changed
+-------
+
+- Bi-Level formulation can now handle black box optimization scenarios, and external MDAs
+- Improve Multiprocessing and multithreading parallelism handling (avoid deadlocks with caches)
+- Improve performance of input / output data checks, x13 faster JSONGrammars
+- Improve performance of disciplines execution: avoid memory copies
+- Enhanced Scalable discipline, DOE is now based on a driver and inputs are read from a HDF5 cache like surrogate models
+- More readable N2 graph
+- Improved logging: fix issue with output files
+- Improved progress bar and adapt units for runtime prediction
+- NLOPT Cobyla: add control for init step of the DOE (rho)
+- Surrogate GPR: add options handling
+
+
+Version 1.2.1 (August 2018)
+***************************
+
+Added
+-----
+
+- Handle integer variables in DOEs
+
+Changed
+-------
+
+- Improve performance of normalization/unnormalization
+- Improve x_xstar post processing to display the optimum
+
+Fixed
+-----
+
+- Issue to use external optimizers in a MDOScenario
+
+
+Version 1.2.0 (July 2018)
+*************************
+
+Added
+-----
+
+- New API to ease the scenario creation and use by external platforms
+- mix parallelism multithreading / multiprocessing
+- much improved and unified plugin system with factories for Optimizers, DOE, MDAs, Formulations, Disciplines, Surrogates
+- Surrogate models interfaces
+- MDAJacobi is now much faster thanks to a new acceleration set of methods
+
+Changed
+-------
+
+- HTML documentation
+- Small improvements
+
+Fixed
+-----
+
+- Many bugs
+
+
+Version 1.1.0 (April 2018)
+**************************
+
+Added
+-----
+
+- Mix finite differences in the discipline derivation and analytical jacobians or complex step to compute chain rule or adjoint method when not all disciplines' analytical derivatives are available
+- Ability to handle design spaces with integer variables
+- Analytic discipline based on symbolic calculation to easily create disciplines from analytic formulas
+- A scalable surrogate approximation of a discipline to benchmark MDO formulations
+- A HDF cache (= recorder) for disciplines to store all executions on the disk
+- The P-L-BFGS-B algorithm interface, a variant of LBFGSB with preconditioning coded in Python
+- Parallel (multiprocessing and / or multithreading) execution of disciplines and or call to functions
+- New constraints plot visualizations (radar chart) and constraints plot with values
+- Visualization to plot the distance to the best value in log scale ||x-x*||
+- Possibility to choose to normalize the design space or not for each variable
+- IDF improved for weakly coupled problems
+- On the fly backup of the optimization history (HDF5), in "append" mode
+- We can now monitor the convergence on the fly by creating optimization history plots at each iteration
+- Famous N2 plot in the CouplingStructure
+- Sphinx generated documentation in HTML (open doc/index.html), with:
+
+	- GEMS in a nutshell tutorial
+	- Discipline integration tutorial
+	- Post processing description
+	- GEMS architecture description
+	- MDO formulations description
+	- MDAs
+
+Changed
+-------
+
+- Improved automatically finding the best point in an optimization history
+- Improved callback functions during optimization / DOE
+- Improved stop criteria for optimization
+- Improved progress bar
+- Improved LGMRES solver for MDAs when using multiple RHS (recycle Krylov subspaces to accelerate convergence)
+
+Fixed
+-----
+
+- Many bugs
+
+
+Version 1.0.0 (December 2016)
+*****************************
+
+Added
+-----
+
+- Design of Experiment (DOE) capabilities from pyDOE, OpenTURNS or a custom samples set
+- Full differentiation of the process is available:
+
+	* analytical gradient based optimization
+	* analytical Newton type coupling solver for MDA (Multi Disciplinary Analyses)
+	* analytical derivation of the chains of disciplines (MDOChain) via the chain rule
+
+- Post processing of optimization history: many plots to view the constraints, objective, design variables
+- More than 10 MDA (coupled problems) solver available, some gradient based (quasi newton) and hybrid multi-step methods (SequantialMDA) !
+- OptimizationProblem and its solution can be written to disk and post processed afterwards
+- Handling of DOE and optimization algorithm options via JSON schemas
+- Introduced an OptimizationProblem class that is created by the MDOFormulation and passed to an algorithm for resolution
+- Serialization mechanism for MDODiscipline and subclasses (write objects to disk)
+- Intensive testing: 500 tests and 98 % line coverage (excluding third party source)
+- Improved code coverage by tests from 95% to 98% and all modules have a coverage of at least 95%
+- Reduced pylint warnings from 800 to 40 !
+
+Changed
+-------
+
+- Code architecture refactoring for below items
+- Modularized post processing
+- Refactored algorithms part with factories
+- Removed dependency to json_shema_generator library, switched to GENSON (embeded with MIT licence)
+- Moved from JsonSchema Draft 3 to Draft 4 standard
+- Refactored the connection between the functions and the optimizers
+- Refactored MDOScenario
+- Refactored IDF formulation
+- Refactored Bilevel formulation
+- Refactored MDAs and introduced the CouplingStructure class
+- Refactored the DataProcessor for data interface with workflow engines
+- Refactored Sobieski use case to improve code quality
+- Included AGI remarks corrections on code style and best practices
+
+
+Version 0.1.0 (April 2016)
+**************************
+
+Added
+-----
+
+- Basic MDO formulations: MDF, IDF, Bilevel formulations
+- Some optimization history views for convergence monitoring of the algorithm
+- Optimization algorithms: Scipy, OpenOPT, NLOPT
+- Possible export of the optimization history to the disk
+- Complex step and finite differences optimization
+- Benchmark cases:
+
+	* Sobieski's Supersonic Business Jet MDO case
+	* Sellar
+	* Propane
