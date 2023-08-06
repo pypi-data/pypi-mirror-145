@@ -1,0 +1,24 @@
+Metadata-Version: 2.1
+Name: abacus-icalc
+Version: 0.2.0
+Summary: Abacus is an interactive calculator using IPython
+Author-email: Aleksandar Radivojevic <rzhw3h@gmail.com>
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Environment :: Console
+Classifier: Framework :: IPython
+Requires-Dist: sympy ~= 1.9
+Requires-Dist: ipython ~= 7.21 ; extra == "full"
+Requires-Dist: pyqt5 ~= 5.15 ; extra == "gui"
+Project-URL: Home, https://sandorex.github.io/abacus
+Project-URL: Source, https://github.com/sandorex/abacus
+Provides-Extra: full
+Provides-Extra: gui
+
+# Abacus
+[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
+
+Powerful interactive calculator made in Python
+
