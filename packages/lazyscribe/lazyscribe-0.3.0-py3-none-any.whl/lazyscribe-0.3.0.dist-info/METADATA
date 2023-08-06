@@ -1,0 +1,142 @@
+Metadata-Version: 2.1
+Name: lazyscribe
+Version: 0.3.0
+Summary: Lightweight and lazy experiment logging
+Home-page: https://github.com/lazyscribe/lazyscribe
+Author: Akshay Gupta
+Author-email: akgcodes@gmail.com
+License: MIT license
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+Requires-Dist: attrs
+Requires-Dist: python-slugify
+Provides-Extra: build
+Requires-Dist: build ; extra == 'build'
+Requires-Dist: bumpver ; extra == 'build'
+Requires-Dist: twine ; extra == 'build'
+Requires-Dist: wheel ; extra == 'build'
+Provides-Extra: dev
+Requires-Dist: build ; extra == 'dev'
+Requires-Dist: bumpver ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Requires-Dist: wheel ; extra == 'dev'
+Requires-Dist: furo ; extra == 'dev'
+Requires-Dist: matplotlib ; extra == 'dev'
+Requires-Dist: pandas ; extra == 'dev'
+Requires-Dist: pillow ; extra == 'dev'
+Requires-Dist: prefect (<=1.1.0,>=0.5.0) ; extra == 'dev'
+Requires-Dist: scikit-learn ; extra == 'dev'
+Requires-Dist: sphinx ; extra == 'dev'
+Requires-Dist: sphinx-gallery ; extra == 'dev'
+Requires-Dist: sphinx-inline-tabs ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pip-tools ; extra == 'dev'
+Requires-Dist: pydocstyle ; extra == 'dev'
+Requires-Dist: types-python-slugify ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Provides-Extra: docs
+Requires-Dist: furo ; extra == 'docs'
+Requires-Dist: matplotlib ; extra == 'docs'
+Requires-Dist: pandas ; extra == 'docs'
+Requires-Dist: pillow ; extra == 'docs'
+Requires-Dist: prefect (<=1.1.0,>=0.5.0) ; extra == 'docs'
+Requires-Dist: scikit-learn ; extra == 'docs'
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: sphinx-gallery ; extra == 'docs'
+Requires-Dist: sphinx-inline-tabs ; extra == 'docs'
+Provides-Extra: qa
+Requires-Dist: black ; extra == 'qa'
+Requires-Dist: flake8 ; extra == 'qa'
+Requires-Dist: mypy ; extra == 'qa'
+Requires-Dist: pip-tools ; extra == 'qa'
+Requires-Dist: pydocstyle ; extra == 'qa'
+Requires-Dist: types-python-slugify ; extra == 'qa'
+Provides-Extra: tests
+Requires-Dist: prefect (<=1.1.0,>=0.5.0) ; extra == 'tests'
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pytest-cov ; extra == 'tests'
+
+[![codecov](https://codecov.io/github/lazyscribe/lazyscribe/branch/main/graph/badge.svg?token=M5BHYS2SSU)](https://codecov.io/github/lazyscribe/lazyscribe) ![PyPI](https://img.shields.io/pypi/v/lazyscribe) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/lazyscribe) [![Documentation Status](https://readthedocs.org/projects/lazyscribe/badge/?version=latest)](https://lazyscribe.readthedocs.io/en/latest/?badge=latest)
+
+# Lightweight, lazy experiment logging
+
+``lazyscribe`` is a lightweight package for model experiment logging. It creates a single JSON
+file per project, and an experiment is only added to the file when code finishes (errors won't
+result in partially finished experiments in your project log).
+
+``lazyscribe`` also has functionality to allow for multiple people to work on a single project.
+You can merge projects together and update the list of experiments to create a single, authoritative
+view of all executed experiments.
+
+# Installation
+
+```console
+$ python -m pip install lazyscribe
+```
+
+# Basic Usage
+
+The basic usage involves instantiating a ``Project`` and using the context manager to log
+an experiment:
+
+```python
+from lazyscribe import Project
+
+project = Project(fpath="project.json")
+with project.log(name="My experiment") as exp:
+    exp.log_metric("auroc", 0.5)
+    exp.log_parameter("algorithm", "lightgbm")
+```
+
+You've created an experiment! You can view the experimental data by using ``list``:
+
+```python
+from pprint import pprint
+
+pprint(list(project))
+```
+
+```json
+[
+    {
+        "name": "My experiment",
+        "author": "<AUTHOR>",
+        "last_updated_by": "<AUTHOR>",
+        "metrics": {"auroc": 0.5},
+        "parameters": {"algorithm": "lightgbm"},
+        "created_at": "<CREATED_AT>",
+        "last_updated": "<LAST_UPDATED>",
+        "dependencies": [],
+        "short_slug": "my-experiment",
+        "slug": "my-experiment-<CREATED_AT>"
+    }
+]
+```
+
+Once you've finished, save the project to ``project.json``:
+
+```python
+project.save()
+```
+
+Later on, you can read the project back in read-only mode ("r"), append mode ("a"),
+or editable mode ("w+"):
+
+```python
+project = Project("project.json", mode="r")
+with project.log(name="New experiment") as exp:  # Raises a RuntimeError
+    ...
+```
+
+
