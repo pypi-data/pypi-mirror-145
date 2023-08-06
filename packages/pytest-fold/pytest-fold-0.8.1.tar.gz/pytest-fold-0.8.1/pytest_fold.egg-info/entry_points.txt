@@ -1,0 +1,6 @@
+[console_scripts]
+tuitk = pytest_fold.tui_pytermtk:main
+tuitxt = pytest_fold.tui_textual:main
+
+[pytest11]
+pytest_fold = pytest_fold.plugin
