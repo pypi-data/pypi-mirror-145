@@ -1,0 +1,99 @@
+Metadata-Version: 2.1
+Name: cratex
+Version: 0.0.0.4
+Summary: 👨‍💻🛠️🔥⌛🏃📦Python bindings for the Qt cross platform application 
+Author: Anton H. dsfm
+Author-email: anto@hv.y
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+
+# vidstream
+📦 dfsd
+👨‍💻🛠️🔥⌛🏃📦Python bindings for the Qt cross platform application \ntoolkit thank you !
+![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+Under construction! Not ready for use yet! Currently experimenting and planning!
+Developed by Florian Dedov from NeuralNine (c) 2020
+
+## Examples of How To Use (Buggy Alpha Version)
+https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+### // To call gui
+```python
+odc call CLI  # or ( odc.CLI ) ==> To call CLI
+```
+```python
+odc call gui  # or ( odc.gui ) ==> To call GUI
+```
+```python
+odc call web  # or ( odc.web ) ==> To call WEB
+```
+<input> <button>search</button>  </input>
+
+```html
+<input>
+    <button>
+        search
+        </button>
+    </input>
+```
+
+```python
+from vidstream import StreamingServer
+server = StreamingServer('127.0.0.1', 9999)
+server.start_server()
+
+# Other Code
+server.stop_server()   #--> When You Are Done
+```
+
+### // Creating A Client
+```python
+odc call gui  #-> odc.gui
+```
+```python
+from vidstream import CameraClient
+from vidstream import VideoClient
+from vidstream import ScreenShareClient
+
+# Choose One
+client1 = CameraClient('127.0.0.1', 9999)
+client2 = VideoClient('127.0.0.1', 9999, 'video.mp4')
+client3 = ScreenShareClient('127.0.0.1', 9999)
+
+client1.start_stream()
+client2.start_stream()
+client3.start_stream()
+```
+
+Check out: https://www.youtube.com/c/NeuralNine
+
+markdown_code_exec
+Execute Python code in Markdown files and captures the output
+
+Copyright 2022 Sebastiaan Mathôt
+
+Command-line usage
+usage: markdown_code_exec.py [-h] [-i INPUT] [-o OUTPUT]
+
+optional arguments: -h, --help show this help message and exit -i INPUT, --input INPUT input markdown file -o OUTPUT, --output OUTPUT output markdown file
+
+Function reference
+markdown_code_exec.parse_text(md)
+
+Takes a str containing markdown text, finds code blocks in the markdown, executes these code blocks and captures the output, and then embeds the captured output in the markdown.
+
+Parameters
+md: str : The input markdown string
+Returns
+str The compiled markdown string
+
+markdown_code_exec.parse_file(src, dst)
+
+Takes a markdown input file, executes code blocks while capturing output and writes the result to a new output file.
+
+src: str The full path to the input file dst: str The full path to the output file
+
+License
+GNU General Public License 3
