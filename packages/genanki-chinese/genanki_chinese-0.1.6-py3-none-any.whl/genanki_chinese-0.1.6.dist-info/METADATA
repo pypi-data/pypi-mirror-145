@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: genanki-chinese
+Version: 0.1.6
+Summary: Packages which automates the creation and update of chinese notes for Anki
+Home-page: https://github.com/RubenSerradas/genanki-chinese
+Author: Ruben Serradas
+Author-email: rubenserradas@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/RubenSerradas/genanki-chinese/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Education
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: genanki
+Requires-Dist: requests
+Requires-Dist: OpenCC
+Requires-Dist: pypinyin
+Requires-Dist: gTTS
+Requires-Dist: googletrans (==4.0.0rc1)
+
+# genanki-chinese
+
+Simple package which automates the creation of Chinese notes for Anki.
+
+It produces notes with the following:
+* Chinese word or phrase (Simplified)
+* Chinese word or phrase (Traditional)
+* English translation
+* Audio in Chinese
+* [Pinyin](https://en.wikipedia.org/wiki/Pinyin) of the phrase or word
+
+
+## Installation
+
+```
+pip install genanki-chinese
+```
+
+## Usage
+
+```bash
+usage: genanki-chinese [-h] [-o OUTPUT] [-d DECKNAME] file
+
+positional arguments:
+  file                  Path of the file to import
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Path where to put the result
+  -d DECKNAME, --deckname DECKNAME
+                        Deck name to update
+```
+
+The `file` should have the following structure:
+
+``` 
+咖啡<br>	kāfēi<br><br>coffee	
+水<br><br>water	
+```
+
+This is done so you can export your decks from Anki and improve it creating a new one.
+
+You can also have word by word separated by newlines without the `<br>` html element.
+
+To update decks you have to install the [Anki-Connect](https://github.com/FooSoft/anki-connect) plugin in Anki.
+
+
