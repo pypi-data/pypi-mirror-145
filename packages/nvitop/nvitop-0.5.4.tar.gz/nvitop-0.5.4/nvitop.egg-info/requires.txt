@@ -1,0 +1,8 @@
+nvidia-ml-py==11.450.51
+psutil>=5.5.0
+cachetools>=1.0.1
+termcolor>=1.0.0
+
+[:platform_system == "Windows"]
+colorama>=0.4.0
+windows-curses>=2.2.0
