@@ -1,0 +1,2 @@
+import scratch
+import panorama
