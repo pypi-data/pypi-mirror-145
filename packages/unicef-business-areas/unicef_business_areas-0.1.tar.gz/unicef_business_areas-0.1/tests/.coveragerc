@@ -1,0 +1,14 @@
+[run]
+branch = true
+source = unicef_business_areas
+omit = *migrations*
+
+[report]
+fail_under = 80
+ignore_errors = True
+exclude_lines =
+   pragma: no cover
+
+[html]
+directory = ~build/coverage
+title = Validator Coverage report
