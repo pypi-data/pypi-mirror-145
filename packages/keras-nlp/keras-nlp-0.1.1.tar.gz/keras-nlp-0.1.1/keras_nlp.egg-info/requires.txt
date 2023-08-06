@@ -1,0 +1,17 @@
+absl-py
+numpy
+packaging
+tensorflow
+tensorflow_text
+
+[examples]
+datasets
+nltk
+wikiextractor
+
+[tests]
+black
+flake8
+isort
+pytest
+pytest-cov
