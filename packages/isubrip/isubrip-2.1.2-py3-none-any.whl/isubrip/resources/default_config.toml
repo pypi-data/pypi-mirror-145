@@ -1,0 +1,19 @@
+# This is the default config.
+# This file should NOT be altered. For changing settings, use a user-config file.
+# Any settings set on the user config will override these.
+
+[general]
+check-for-updates = true
+
+[downloads]
+languages = []
+format = "vtt"
+folder = "."
+zip = true
+
+[scraping]
+user-agent = "iTunes-AppleTV/15.2"
+
+[ffmpeg]
+path = "ffmpeg"
+args = "-loglevel warning -hide_banner -y"
