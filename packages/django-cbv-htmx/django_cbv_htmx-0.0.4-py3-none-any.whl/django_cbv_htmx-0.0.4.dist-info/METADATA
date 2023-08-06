@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: django-cbv-htmx
+Version: 0.0.4
+Summary: Django helpers for using CBVs with HTMX
+Home-page: https://github.com/mixmash11/django-cbv-htmx
+Author: Jesse Hunt
+Author-email: jesse@bembel-webdesign.de
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/mixmash11/django-cbv-htmx/issues
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.2
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: Django (>=3.2)
+
+# django-cbv-htmx
+
+This package helps connect Django Class-Based-Views with HTMX. These functions, tools, and mixins can be used without
+HTMX as well, they were simply designed for converting a Django app into a slightly more progressive web-app using HTMX.
+
+
