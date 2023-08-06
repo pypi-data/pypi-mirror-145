@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: asrt_sdk
+Version: 1.1.1
+Summary: A python sdk for ASRT Speech Recognition Toolkit
+Home-page: https://asrt.ailemon.net
+Author: ailemon
+Author-email: ailemon@ailemon.net
+License: GPL v3.0
+Download-URL: https://pypi.python.org/pypi/asrt_sdk
+Project-URL: Bug Tracker, https://github.com/nl8590687/ASRT_SDK_Python3/issues
+Project-URL: Documentation, https://wiki.ailemon.net/docs/asrt-doc/asrt-doc-1dkgqc3871ktt
+Project-URL: Source Code, https://github.com/nl8590687/ASRT_SDK_Python3
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+
+ASRT_SDK is a client sdk package for ASRT. 
+ASRT is a high-level deep learning API for speech recognition,
+written in Python and capable of running on top of
+Keras, TensorFlow, or MxNet.
+Use ASRT SDK if you need a speech recognition library that:
+- Allows for easy and fast prototyping for speech recognition
+  (through user friendliness, modularity, and extensibility).
+- Supports both TensorFlow and other Deep learning framework(on future) for speech recognition.
+- Applications can only run on CPU. 
+- Can call ASRT api server module for developers to test models easily.
+Read the documentation at: https://wiki.ailemon.net/docs/asrt-doc/asrt-doc-1dkgqc3871ktt
+For a detailed overview of what makes ASRT special, see:
+https://asrt.ailemon.net
+ASRT is compatible with Python 3.0-3.10
+and is distributed under the GPL v3.0 license.
+
+
