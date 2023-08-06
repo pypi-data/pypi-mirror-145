@@ -1,0 +1,47 @@
+# wowa
+This package calculates weighted OWA functions and extending bivariate means" Functions are:
+- py_owa: callback for sorting in general 
+- weightedf: symmetric base aggregator 
+
+## Documentation
+[User Manual](https://github.com/nhenseler/wowa/blob/main/docs/wowa-theory.pdf)
+
+## Installation
+To install type:
+```python
+$ pip install wowa
+```
+## Usage of py_owa( n, x, w)
+```python
+from wowa import py_owa
+```
+Callback function if sorting is needed in general 
+### Parameters
+#### Input parameters:
+Input parameters:
+n: size of arrays<br>
+x[]: NumPy array of size n, float<br>   
+w[]: NumPy array of size n, float<br>
+#### Output parameters:
+double y: sum of x[i] * w[i]  
+
+## Usage of weightedf( x, p, w, cb, L)
+```python
+from wowa import weightedf 
+```
+Symmetric base aggregator. The weights must add to one and be non-negative.
+### Parameters
+#### Input parameters:
+x[]: NumPy array of inputs, size n, float<br>   
+p[]: NumPy array of weights of inputs x[], size n, float<br>   
+w[]: NumPy array of weights for OWA, size n, float<br> 
+cb: callback function<br>
+L: number of binary tree levels. Run time = O[(n-1)L]  
+#### Output parameters:
+y = weightedf<br>
+
+## Test
+To unit test type:
+```python
+$ test/test.py
+```
