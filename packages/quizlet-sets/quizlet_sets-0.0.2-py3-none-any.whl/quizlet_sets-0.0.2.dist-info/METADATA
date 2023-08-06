@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: quizlet-sets
+Version: 0.0.2
+Summary: A package to download Quizlet study sets
+Home-page: https://github.com/ashton0223/quizlet-sets
+Author: Ashton South
+Author-email: aasouth223@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/ashton0223/quizlet-sets/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: genanki
+Requires-Dist: xlwt
+Requires-Dist: beautifulsoup4
+
+# quizlet-sets - A library to download Quizlet study sets
+
+### Usage:
+Install it useing `pip3 install quizlet-sets`. [WIP, only have example code]
+
+```py
+from quizlet_sets import sets
+
+URL = "https://quizlet.com/686459638/test-set-flash-cards/?new" # Sample study set
+
+set = sets.get_terms(URL) # Returns a TermList object
+
+name = "Sample set"
+
+# There are a few different ways to export study sets.
+set.txt(name)
+set.xls(name)
+set.csv(name)
+set.anki(name, "deck name")
+```
+
+
