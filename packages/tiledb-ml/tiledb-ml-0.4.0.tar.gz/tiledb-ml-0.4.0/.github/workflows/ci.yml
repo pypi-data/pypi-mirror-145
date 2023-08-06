@@ -1,0 +1,59 @@
+name: TileDB-ML CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+        python-version: [3.7, 3.8]
+    env:
+      run_coverage: ${{ github.ref == 'refs/heads/master' && matrix.os == 'ubuntu-latest' && matrix.python-version == '3.7' }}
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: 'Install dependencies'
+      run: |
+        pip install --upgrade pip
+        pip install -e .[full]
+
+    - name: 'Run mypy'
+      run: |
+        python -m venv mypyenv
+        mypyenv/bin/pip install mypy
+        mypyenv/bin/mypy .
+        rm -rf mypyenv
+
+    - name: 'Run tests'
+      if: ${{ !fromJSON(env.run_coverage) }}
+      run: |
+        pip install pytest-mock
+        pytest tests/
+
+    - name: 'Run test coverage statistics'
+      id: stats
+      if: ${{ fromJSON(env.run_coverage) }}
+      run: |
+        pip install pytest-mock pytest-cov
+        pytest --cov-report=term-missing --cov=tiledb tests/ | tee coverage.txt
+        TEST_COVERAGE="$(grep '^TOTAL' coverage.txt | awk -v N=4 '{print $N}')"
+        echo "::set-output name=COVERAGE::$TEST_COVERAGE"
+
+    - name: 'Create Test Coverage Badge'
+      if: ${{ fromJSON(env.run_coverage) }}
+      uses: schneegans/dynamic-badges-action@v1.1.0
+      with:
+        auth: ${{ secrets.COVERAGE_SECRET }}
+        gistID: 2506f6c9d3375e2d636cf594340d11bf
+        filename: gistfile.json
+        label: Test Coverage
+        message: ${{ steps.stats.outputs.COVERAGE }}
+        color: green
+        namedLogo: pytest
