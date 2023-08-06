@@ -1,0 +1,100 @@
+Metadata-Version: 2.1
+Name: cofi
+Version: 0.1.1.dev3
+Summary: Common Framework for Inference
+Home-page: UNKNOWN
+Author: InLab
+License: UNKNOWN
+Keywords: inversion,inference,python package,geoscience,geophysics
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: C
+Classifier: Programming Language :: Fortran
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: petsc
+
+# CoFI (Common Framework for Inference)
+
+[![PyPI version](https://img.shields.io/pypi/v/cofi)](https://pypi.org/project/cofi/)
+[![Wheels](https://img.shields.io/pypi/wheel/cofi)](https://pypi.org/project/cofi/)
+[![Python versions](https://img.shields.io/pypi/pyversions/cofi)](https://pypi.org/project/cofi/)
+[![build](https://github.com/inlab-geo/cofi/actions/workflows/build_wheels.yml/badge.svg?branch=main)](https://github.com/inlab-geo/cofi/actions/workflows/build_wheels.yml)
+[![Documentation Status](https://readthedocs.org/projects/cofi/badge/?version=latest)](https://cofi.readthedocs.io/en/latest/?badge=latest)
+[![codecov](https://codecov.io/gh/inlab-geo/cofi/branch/main/graph/badge.svg?token=T8R9VKM4D7)](https://codecov.io/gh/inlab-geo/cofi)
+[![Slack](https://img.shields.io/badge/Slack-inlab-4A154B?logo=slack)](https://inlab-geo.slack.com)
+
+
+# Introduction
+
+CoFI (Common Framework for Inference) is an open-source initiative for interfacing between generic inference algorithms and specific geoscience problems.
+
+With a mission to bridge the gap between the domain expertise and the inference expertise, this Python package provides an interface across a wide range of inference algorithms from different sources, as well as ways of defining inverse problems with examples included.
+
+> This project and [documentation](https://cofi.readthedocs.io/en/latest/) are under initial development stage. Please feel free to contact us for feedback or issues!
+
+## Installation
+
+It's optional, but recommended to use a virtual environment:
+
+```console
+conda create -n cofi_env python=3.8 scipy
+conda activate cofi_env
+```
+
+Install `cofi` with:
+
+```console
+pip install cofi
+```
+
+## Basic Usage
+
+CoFI API has flexible ways of defining an inversion problem. For instance:
+
+```python
+from cofi import BaseProblem
+
+inv_problem = BaseProblem()
+inv_problem.set_objective(my_objective_func)
+```
+
+We have a series of pre-defined problems and ways of setting up the problem. Feel free to check out
+our [getting-started](https://cofi.readthedocs.io/en/latest/getting-started.html) page on how to
+plug in your own inference problems (with different tiers of flexibility)
+
+Once a problem is defined, `cofi` can tell you what inference solvers you can use based on what level of
+information you've provided:
+
+```python
+inv_problem.suggest_solvers()   # a list will be returned
+```
+
+Run an inversion with these lines:
+
+```python
+from cofi import InversionOptions, InversionRunner
+
+inv_options = InversionOptions()
+inv_options.set_method("optimisation")
+inv_options.set_iteration_limit(100)
+
+inv_runner = InversionRunner(inv_problem, inv_options)
+result = inv_runner.run()
+print(result.ok)
+print(result.model)
+```
+
+And now we are done! Check out our [tutorial](https://cofi.readthedocs.io/en/latest/notebooks/index.html) pages for more examples and advanced usages.
+
+
+
