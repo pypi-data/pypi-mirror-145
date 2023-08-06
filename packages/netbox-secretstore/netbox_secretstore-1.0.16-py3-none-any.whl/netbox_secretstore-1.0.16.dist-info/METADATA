@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: netbox-secretstore
+Version: 1.0.16
+Summary: Netbox Secret Store
+Home-page: https://github.com/dansheps/netbox-secretstore/
+Download-URL: https://www.pypi.org/project/netbox-secretstore/
+Author: Daniel Sheppard
+Author-email: dans@dansheps.com
+License: Apache 2.0
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+License-File: LICENSE.txt
+Requires-Dist: importlib
+Requires-Dist: pycryptodome
+
+A Secret store for NetBox
+
