@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "ncli"
+version = "0.1.1"
+description = ""
+authors = ["Ryan Bradshaw <ryan@rbradshaw.dev>"]
+readme = "README.md"
+packages = [
+    { include = "cli" },
+]
+
+[tool.poetry.scripts]
+ncli = "cli.main:app"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = {extras = ["all"], version = "^0.4.0"}
+httpx = "^0.22.0"
+scrapli = {extras = ["full"], version = "^2022.1.30"}
+pydantic = "^1.9.0"
+python-dotenv = "^0.20.0"
+rich = "^12.0.1"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+flake8 = "^4.0.1"
+isort = "^5.10.1"
+pytest = "^7.1.1"
+pytest-asyncio = "^0.18.2"
+bpython = "^0.22.1"
+pre-commit = "^2.17.0"
+pytest-env = "^0.6.2"
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+
+[tool.pytest.ini_options]
+markers = [
+    "command"
+]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]
+env = [
+    "CLI_ENVIRONMENT=test"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
