@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: wordleanswer
+Version: 1.0.1
+Summary: A package to get the Wordle answers
+Home-page: https://github.com/sensoorr/wordleanswer
+Author: Sensor
+Author-email: sensoorr@hotmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/sensoorr/wordleanswer/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Wordle Answer
+
+This python package allows you to get today, yesterday and tomorrow's Wordle answer!
+
+## Code Example
+
+```
+import wordleanswer
+
+# Answers
+
+todaysAnswer = wordleanswer.getAnswer()
+yesterdaysAnswer = wordleanswer.getYesterdayAnswer()
+tomorrowsAnswer = wordleanswer.getTomorrowAnswer()
+
+# Getting answers in the past and future
+
+# Answer for 100 days ago
+
+print(wordleanswer.getPastAnswer(100))
+
+# Answer in 100 days
+
+print(wordleanswer.getFutureAnswer(100))
+```
+
