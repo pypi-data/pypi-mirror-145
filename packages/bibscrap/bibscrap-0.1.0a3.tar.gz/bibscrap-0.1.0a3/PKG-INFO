@@ -1,0 +1,155 @@
+Metadata-Version: 2.1
+Name: bibscrap
+Version: 0.1.0a3
+Summary: Semi-automated tools for systematic literature reviews.
+Home-page: https://github.com/cotterell/bibscrap
+License: MIT
+Keywords: bibscrap,literature review
+Author: Michael E. Cotterell
+Author-email: mepcotterell@gmail.com
+Maintainer: Michael E. Cotterell
+Maintainer-email: mepcotterell@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Utilities
+Provides-Extra: devtools
+Provides-Extra: docs
+Requires-Dist: Sphinx (>=4.5.0,<5.0.0); extra == "docs"
+Requires-Dist: beautifulsoup4 (>=4.10.0,<5.0.0)
+Requires-Dist: black (>=22.3.0,<23.0.0); extra == "devtools"
+Requires-Dist: cleo (>=1.0.0a4,<2.0.0)
+Requires-Dist: codecov (>=2.1.12,<3.0.0); extra == "devtools"
+Requires-Dist: coverage (>=6.3.2,<7.0.0); extra == "devtools"
+Requires-Dist: darglint (>=1.8.1,<2.0.0); extra == "devtools"
+Requires-Dist: pre-commit (>=2.18.1,<3.0.0); extra == "devtools"
+Requires-Dist: pyquery (>=1.4.3,<2.0.0)
+Requires-Dist: pytest (>=7.1.1,<8.0.0); extra == "devtools"
+Requires-Dist: requests (>=2.27.1,<3.0.0)
+Requires-Dist: single-source (>=0.2.0,<0.3.0)
+Requires-Dist: sphinx-panels (>=0.6.0,<0.7.0); extra == "docs"
+Requires-Dist: sphinx-rtd-theme (>=1.0.0,<2.0.0); extra == "docs"
+Requires-Dist: sphinxcontrib-bibtex (>=2.4.1,<3.0.0); extra == "docs"
+Requires-Dist: towncrier (>=21.9.0,<22.0.0); extra == "devtools"
+Requires-Dist: tox (>=4.0.0b1,<5.0.0); extra == "devtools"
+Project-URL: Bug Tracker, https://github.com/cotterell/bibscrap/issues
+Project-URL: Documentation, https://bibscrap.readthedocs.io/
+Project-URL: Repository, https://github.com/cotterell/bibscrap
+Description-Content-Type: text/x-rst
+
+========
+bibscrap
+========
+
+.. image:: https://img.shields.io/pypi/v/bibscrap?style=flat
+   :target: https://pypi.org/project/bibscrap/
+   :alt: PyPI version
+
+.. image:: https://readthedocs.org/projects/bibscrap/badge/?version=latest
+   :target: https://bibscrap.readthedocs.io/en/latest/
+   :alt: bibscrap's documentation
+
+.. image:: https://badges.gitter.im/bibscrap/community.svg
+   :alt: Join the chat at https://gitter.im/bibscrap/community
+   :target: https://gitter.im/bibscrap/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+.. image:: https://app.travis-ci.com/cotterell/bibscrap.svg
+   :target: https://app.travis-ci.com/cotterell/bibscrap
+   :alt: Continuous integration
+
+.. image:: https://codecov.io/gh/cotterell/bibscrap/branch/main/graph/badge.svg?token=TQQWS0OQ0E
+   :target: https://codecov.io/gh/cotterell/bibscrap
+   :alt: Code coverage
+
+.. image:: https://img.shields.io/pypi/l/bibscrap.svg
+   :target: https://github.com/cotterell/bibscrap/blob/master/LICENSE.rst
+   :alt: License: MIT
+
+.. image:: https://img.shields.io/badge/code%20style-black-161b22.svg
+   :target: https://github.com/psf/black
+   :alt: Code style: black
+
+Overview
+========
+
+The **bibscrap** package provides semi-automated tools for systematic literature reviews.
+
+Requirements
+============
+
+* Python 3.9+
+
+Install
+=======
+
+To install Bibscrap, use one of the commands below:
+
+.. table:: Bibscrap install commands
+   :widths: auto
+
+   ===============  ==========================================
+   Package Manager  Install Command
+   ===============  ==========================================
+   |pip|_           ``pip install --pre bibscrap``
+   |pipenv|_        ``pipenv install --pre bibscrap``
+   |poetry|_        ``poetry add --allow-prerelease bibscrap``
+   ===============  ==========================================
+
+.. |pip| replace:: ``pip``
+.. _pip: https://pip.pypa.io/en/stable/
+
+.. |pipenv| replace:: ``pipenv``
+.. _pipenv: https://pipenv.pypa.io/en/latest/
+
+.. |poetry| replace:: ``poetry``
+.. _poetry: https://python-poetry.org/
+
+Documentation
+=============
+
+Documentation is available online at https://bibscrap.readthedocs.io/ and in the
+``docs`` directory.
+
+Contributors: Getting Started
+=============================
+
+To download the development version of **bibscrap** and install its dependencies
+into a virtual environment, follow the instructions provided below::
+
+  $ git clone https://github.com/cotterell/bibscrap.git
+  $ cd bibscrap
+  $ poetry install -E devtools -E docs
+
+To activate the virtual environment, use the following command::
+
+  $ poetry shell
+
+If you are part of the **bibscrap** development team, then you should also
+install the pre-commit hooks once your virtual environment is activated.
+You only need to do this once. Here is the command::
+
+  $ pre-commit install
+
+Contributors
+============
+
+=====================  ==========================================================  ============
+Contributor            GitHub                                                      Role
+=====================  ==========================================================  ============
+Aidan Killer           `@aikill <https://github.com/aikill>`_                      Developer
+Jack Solomon           `@jbs26156 <https://github.com/jbs26156>`_                  Developer
+Matthew Pooser         `@mpooser <https://github.com/mpooser>`_                    Developer
+Michael E. Cotterell   `@mepcotterell <https://github.com/mepcotterell>`_          Maintainer
+Mitchell Casleton      `@MitchellCasleton <https://github.com/MitchellCasleton>`_  Developer
+My Nguyen              `@mynguyen0628 <https://github.com/mynguyen0628>`_          Developer
+=====================  ==========================================================  ============
+
