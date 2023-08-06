@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: SDPA-MR-OFDM
+Version: 0.1.0
+Summary: Software OFDM Modulator
+Home-page: UNKNOWN
+Author: Sebastien Deriaz
+Author-email: sebastien.deriaz1@gmail.com
+License: UNKNOWN
+Keywords: python,ofdm,modulation,modulator,sdr,mr-ofdm
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+
+# SDPA-MR-OFDM
+MR-OFDM Modulator (HES-SO Master, PA 2022)
+
+
+This package adds another layer on top of the SDPA-OFDM package sur support MR-OFDM specifications. These specifications are given by 802.15.4g
+
+
+
+
+## Milestones
+
+- [x] STF (still needs a $\times 8$ factor to match M.11)
+- [x] LTF (still needs a $\times 8$ factor to match M.11)
+- [x] PHR (still needs a $\times 8$ factor to match M.11)
+- [ ] Payload
+- [ ] tail bits
+- [ ] pad bits
+
+## Current note
+
+
