@@ -1,0 +1,53 @@
+#!/bin/bash
+# -*- Mode:Shell; indent-tabs-mode:nil; tab-width -*-
+#
+# Copyright 2022 Kenneth Loafman <kenneth@loafman.com>
+#
+# This file is part of duplicity.
+#
+# Duplicity is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation; either version 2 of the License, or (at your
+# option) any later version.
+#
+# Duplicity is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with duplicity; if not, write to the Free Software Foundation,
+# Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+set -e
+
+if [ "`uname`" != "Linux" ]; then
+    echo "pushsnap does not run on `uname`"
+    exit 2
+fi
+
+if [ "$#" -ne 0 ]; then
+    echo "usage: pushsnap"
+    exit 2
+fi
+
+VERSION=`./setup.py --version`
+echo "pushsnap of ${VERSION}"
+
+# make sure we're logged in
+snapcraft login --with ~/.snaplogin
+
+# push to edge and sign
+cd build/duplicity-${VERSION}/
+for f in duplicity_*.snap; do
+    if [ -e $f ]; then
+        snapcraft upload $f --release edge
+        [ ! -e /.dockerenv ] && snapcraft sign-build $f --key-name firstprime
+    fi
+done
+
+if [ ! -e /.dockerenv ]; then
+    # mv into working source tree
+    [ -e duplicity_*.snap ] && mv duplicity_*.snap ../..
+    [ -e duplicity_*.txt ] &&  mv duplicity_*.txt ../..
+fi
