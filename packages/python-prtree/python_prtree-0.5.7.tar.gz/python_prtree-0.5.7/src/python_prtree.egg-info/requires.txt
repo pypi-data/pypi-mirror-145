@@ -1,0 +1,5 @@
+numpy
+
+[:platform_machine != "x86_64" and platform_machine != "amd64" and platform_machine != "AMD64" and sys_platform == "darwin"]
+pybind11
+cmake
