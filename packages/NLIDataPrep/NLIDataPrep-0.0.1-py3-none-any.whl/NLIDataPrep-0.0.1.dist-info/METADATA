@@ -1,0 +1,45 @@
+Metadata-Version: 2.1
+Name: NLIDataPrep
+Version: 0.0.1
+Summary: Python Package for data preprocessing and preparation for REI prject metadata ingest
+Home-page: https://github.com/ygherman/NLIDataPrep
+Author: Yael Gherman
+Author-email: gh.gherman@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Requires-Dist: pytest (>=3.8) ; extra == 'dev'
+Requires-Dist: mock (>=4.0.0) ; extra == 'dev'
+
+# NLIDataPrep
+Package for data preprocessing and preparation.
+
+This package contains tools and utilities to work with messy data and prepare tabular data to MARC mapping and conversion.
+
+## Installation
+
+Run the following to install
+```python
+pip install NLIDataPrep
+```
+
+## Usage
+
+```python
+from NLIDataPrep as NDP import *
+```
+
+## Developing NLIDataPrep
+
+To install NLIDataPrep, along with the tools you need to develop and run tests, run the following
+ command in your virtualenv:
+
+ ```bash
+ $ pip install -e .[dev]
+ ```
+
