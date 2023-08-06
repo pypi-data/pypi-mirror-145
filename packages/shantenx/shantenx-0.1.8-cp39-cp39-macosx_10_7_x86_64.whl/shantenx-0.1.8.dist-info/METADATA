@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: shantenx
+Version: 0.1.8
+Description-Content-Type: text/markdown; charset=UTF-8; variant=GFM
+
+# shantenx
+
+## Usage
+
+- 通常のシャンテン数
+```
+# generate cache
+$ cargo run --release --bin shanten -- -f 'outputs/shanten.txt'
+
+# verify cache
+$ cargo run --release --bin shanten -- -f 'outputs/shanten.txt' --test
+```
+
+
+- 平和のシャンテン数
+```
+# generate cache
+$ cargo run --release --bin shanten-pinfu -- -f 'outputs/shanten-pinfu.txt'
+
+# verify cache
+$ cargo run --release --bin shanten-pinfu -- -f 'outputs/shanten-pinfu.txt' --test
+```
+
+
