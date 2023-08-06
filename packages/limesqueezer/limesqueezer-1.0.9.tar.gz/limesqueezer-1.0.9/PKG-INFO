@@ -1,0 +1,76 @@
+Metadata-Version: 2.1
+Name: limesqueezer
+Version: 1.0.9
+Summary: Lossy compression tools for smooth data series
+Home-page: https://github.com/limespy/limesqueezer
+Author: Limespy
+Author-email: 
+License: MIT
+Project-URL: Changelog, https://github.com/limespy/limesqueezer/blob/master/CHANGELOG.rst
+Project-URL: Issue Tracker, https://github.com/limespy/limesqueezer/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Chemistry
+Classifier: Topic :: Scientific/Engineering :: Physics
+Classifier: Topic :: System :: Archiving :: Compression
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+========
+Overview
+========
+
+
+
+Lossy compression tools for smooth data series. WIP
+
+* Free software: MIT license
+
+Installation
+============
+
+::
+
+    pip install limesqueezer
+
+You can also install the in-development version with::
+
+    pip install https://github.com/limespy/limesqueezer/archive/master.zip
+
+
+Documentation
+=============
+
+
+To use the project:
+
+.. code-block:: python
+
+    import limesqueezer
+    limesqueezer.longest()
+
+
+Changelog
+=========
+
+1.0.3 (2021-11-30)
+------------------
+
+* First release on PyPI.
+
+
