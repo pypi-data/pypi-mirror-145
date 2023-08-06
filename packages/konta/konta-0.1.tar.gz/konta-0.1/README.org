@@ -1,0 +1,36 @@
+#+TITLE: Konta
+#+SUBTITLE: A Woob -> Beancount data pipeline
+#+AUTHOR: Gerry Agbobada
+
+* Setting up
+You can use a simple direnv setup
+#+begin_src bash
+layout python3
+#+end_src
+
+And then use the provided [[./dev-requirements.txt][Requirements file]] to setup an environment.
+
+After this, you need to make a configuration file that can be read
+into a configuration. An example file will be given once the format
+stabilizes a bit. The file will be in TOML format (for readability),
+and read by default to the XDG location.
+
+* Running the app
+Until a proper flit packaging is done, running the draft apps is done simply
+with
+#+begin_src bash
+python -m konta
+#+end_src
+
+* Roadmap
+** TODO Find fake woob data to be able to stream
+** TODO Add argparse support
+** DONE Pull woob configuration with account listing
+** TODO Pull woob data from given woob bank backends
+Should be done by ignoring the accounts that are not in config
+** TODO Privacy option to hide amounts and optionally banks
+Necessary option to be able to start streaming development, either that or
+the first item
+** TODO Create the converter protocol/abstract class to change from woob to beancount
+** DONE Read beancount data with category listing
+** TODO Allow users to interactively choose categories

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "konta"
+authors = [{name = "Gerry Agbobada", email = "pypi@gagbo.net"}]
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+dependencies = [
+    "woob >=3.0",
+    "beancount >=2.3.5",
+    "toml >=0.10.2",
+    "xdg >=5.1.1",
+]
+
+[project.urls]
+Home = "https://git.sr.ht/~gagbo/PyKonta"
+Documentation = "https://git.sr.ht/~gagbo/PyKonta"
+Source = "https://git.sr.ht/~gagbo/PyKonta"
+
+[tool.isort]
+profile = "black"
