@@ -1,0 +1,43 @@
+numbakit-ode Changelog
+======================
+
+0.5 (2022-04-06)
+----------------
+
+- Implemented events.
+- Implemented interpolator for RungeKutta23, RungeKutta45, DOP853.
+- Added NO_NUMBA variable to nbcompat.
+- Implemented bounded bisect method for root finding.
+- Several bug fixed and code clean up.
+- Improvements to the documentation, packaging and testing infrastructure.
+
+
+0.4 (2020-12-27)
+----------------
+
+- Moved t_bound check to Solver class.
+- Created ALIAS API to allow multiple names for solvers while keeping 
+  a preferred one.
+- Changed import system in module.. 
+- Reorganized solvers into multistep and rungekutta.
+
+
+0.3 (2020-11-15)
+----------------
+
+- Improved public API: skip / step / run
+
+
+0.2 (2020-11-08)
+----------------
+
+- Tidy up part of the public API.
+- Renamed some variables in internal methods for consistency.
+- Improved docstrings.
+- API to handle the first step in higher order fixed step methods.
+
+
+0.1 (2020-11-05)
+----------------
+
+- First public release.

@@ -1,0 +1,14 @@
+packaging
+numba>=0.49
+numpy
+scipy
+
+[:python_version < "3.8"]
+importlib-metadata
+
+[test]
+pytest
+pytest-mpl
+pytest-cov
+pytest-subtests
+asv
