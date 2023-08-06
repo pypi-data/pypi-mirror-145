@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: lorettOrbital
+Version: 0.0.4
+Summary: A module that makes it easier to interact with LORETT hardware and software complexes.
+Home-page: https://gitlab.com/lpmrfentazis/lorettorbital
+Author: MrFentazis
+Author-email: lpmrfentazis@mail.ru
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.7
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: matplotlib (>=3.4.3)
+Requires-Dist: requests (>=2.26.0)
+Requires-Dist: pyorbital (>=1.6.1)
+Requires-Dist: beautifulsoup4 (>=4.10.0)
+Requires-Dist: prettytable (>=2.2.0)
+
+**LorettOrbital**
+
+A module that makes it easier to interact with LORETT hardware and software complexes.
+
+Author:
+MrFentazis
+lpmrfentazis@mail.ru
+
