@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: spicypy
+Version: 0.1.0
+Summary: A python package for signal processing & control systems. Combining several tools to facilitate signal processing, control systems modelling, and the interface between the two.
+Home-page: https://gitlab.com/pyda-group/spicypy
+Author: Artem Basalaev
+Author-email: artem.basalaev@physikDOTuni-hamburg.de
+Requires-Python: >=3.7.1,<3.11
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: h5py (>=3,<4)
+Requires-Dist: importlib-metadata (>=1.1.3,<2.0.0); python_version <= "3.7"
+Requires-Dist: lpsd (>=0.2,<0.3)
+Requires-Dist: matplotlib (>=3.0,<4.0)
+Requires-Dist: numpy (>=1.18,<2.0)
+Requires-Dist: scipy (>=1.5,<2.0)
+Project-URL: Documentation, https://gitlab.com/pyda-group/spicypy/-/blob/master/README.md
+Project-URL: Repository, https://gitlab.com/pyda-group/spicypy
