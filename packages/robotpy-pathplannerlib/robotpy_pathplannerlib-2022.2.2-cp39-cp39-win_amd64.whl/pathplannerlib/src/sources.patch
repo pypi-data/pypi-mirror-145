@@ -1,0 +1,45 @@
+--- orig/pathplanner/lib/PathPlanner.cpp	2022-04-03 03:30:25.000000000 -0500
++++ patched/pathplanner/lib/PathPlanner.cpp	2022-04-03 03:30:37.000000000 -0500
+@@ -16,18 +16,35 @@
+ 
+ PathPlannerTrajectory PathPlanner::loadPath(std::string name, units::meters_per_second_t maxVel, units::meters_per_second_squared_t maxAccel, bool reversed){
+     std::string line;
++    wpi::json json;
++
++    std::vector<std::string> prefixes = {
++        frc::filesystem::GetDeployDirectory() + "/pathplanner/",
++        "./",
++        "/home/lvuser/py/"
++    };
+ 
+-    std::string filePath = frc::filesystem::GetDeployDirectory() + "/pathplanner/" + name + ".path";
++    bool fileFound = false;
++    std::string errorMessage = "Cannot open file: \n";
+ 
+-    std::error_code error_code;
+-    wpi::raw_fd_istream input{filePath, error_code};
++    for(auto prefix : prefixes){
++        std::string filePath = prefix + name + ".path";
+ 
+-    if(error_code){
+-        throw std::runtime_error(("Cannot open file: " + filePath));
++        std::error_code error_code;
++        wpi::raw_fd_istream input{filePath, error_code};
++
++        if(!error_code){
++            fileFound = true;
++            input >> json;
++            break;
++        }
++
++        errorMessage += "  - " + filePath + "\n";
+     }
+ 
+-    wpi::json json;
+-    input >> json;
++    if(!fileFound){
++        throw std::runtime_error(errorMessage);
++    }
+ 
+     std::vector<PathPlannerTrajectory::Waypoint> waypoints;
+     for (wpi::json::reference waypoint : json.at("waypoints")){
