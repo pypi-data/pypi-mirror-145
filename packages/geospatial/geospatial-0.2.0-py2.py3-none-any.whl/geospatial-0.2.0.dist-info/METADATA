@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: geospatial
+Version: 0.2.0
+Summary: A Python package for geosptial analysis and data visualization.
+Home-page: https://github.com/giswqs/geospatial
+Author: Qiusheng Wu
+Author-email: giswqs@gmail.com
+License: MIT license
+Keywords: geospatial
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: geemap
+Requires-Dist: geopandas
+Requires-Dist: ipygany
+Requires-Dist: ipyvtklink
+Requires-Dist: keplergl
+Requires-Dist: laspy
+Requires-Dist: leafmap
+Requires-Dist: localtileserver
+Requires-Dist: netcdf4
+Requires-Dist: osmnx
+Requires-Dist: rasterio
+Requires-Dist: panel
+Requires-Dist: psycopg2
+Requires-Dist: pydeck
+Requires-Dist: pyntcloud
+Requires-Dist: pysal
+Requires-Dist: pyvista
+Requires-Dist: rio-cogeo
+Requires-Dist: rioxarray
+Requires-Dist: sqlalchemy
+Requires-Dist: streamlit-folium
+Requires-Dist: xarray-spatial
+
+# geospatial
+
+
+[![image](https://img.shields.io/pypi/v/geospatial.svg)](https://pypi.python.org/pypi/geospatial)
+
+
+**A Python package for geosptial analysis and data visualization.**
+
+
+-   Free software: MIT license
+-   Documentation: https://giswqs.github.io/geospatial
+    
+
+## Features
+
+-   TODO
+
+## Credits
+
+This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) and the [giswqs/pypackage](https://github.com/giswqs/pypackage) project template.
+
+
