@@ -1,0 +1,105 @@
+====================
+vO.1.3 Release Notes
+====================
+
+This release includes some minor bug-fixes, several new features and API changes described below. In particular, it adds compatibility with :code:`pandas` version 1.3.
+
+
+Blue Graph's core
+=================
+
+PGFrame
+-------
+
+Updates to the :code:`PGFrame` interface include:
+
+- Several minor bugfixes;
+- New :code:`from_ontology` method of :code:`PGFrame` allowing to import ontologies as property graphs (based on :code:`rdflib`).
+
+
+Backend support
+===============
+
+In this release a collection of factory utilities for creating different backend-specific objects was added (see :code:`bluegraph.backends.utils`).
+
+For example, instead of doing the following:
+
+.. code-block:: python
+
+	from bluegraph.backends.networkx import NXMetricProcessor, NXCommunityDetector
+	from bluegraph.backends.graph_tool import GTPathFinder, GTComminityDetector
+
+	processor = NXMetricProcessor(input_pgframe)
+	finder = GTPathFinder(input_pgframe)
+	nx_detector =  NXCommunityDetector(input_pgframe)
+	gt_detector =  GTComminityDetector(input_pgframe)
+
+
+(which includes a lot of backend-specific imports) users can also do:
+
+.. code-block:: python
+
+	from bluegraph.backends import create_analyzer
+
+	processor = create_analyzer("metric_processor", "network", input_pgframe)
+	finder = create_analyzer("path_finder", "graph_tool", input_pgframe)
+	nx_detector =  create_analyzer("community_detector", "networkx", input_pgframe)
+	gt_detector =  create_analyzer("community_detector", "graph_tool", input_pgframe)
+
+
+The same holds for node embedders, for example:
+
+.. code-block:: python
+
+	embedded = create_node_embedder("stellargraph", "node2vec", edge_weight="weight", **kwargs)
+
+
+graph-tool
+----------
+
+In this release we have fixed the version of :code:`graph-tool` to 2.37 due to the breaking changes in the new API of 2.4X (in particular, removal of `B_min` parameter from the interface of :code:`minimize_blockmodel_dl`).
+  
+
+Neo4j
+-----
+
+Neo4j-based analytics utils was updated to use the lastest Neo4j GDS 1.6.X, a couple of minor bugfixes to :code:`bluegraph.backends.neo4j.pgframe_to_neo4j` were added.
+
+
+Graph preprocessing with BlueGraph
+==================================
+
+
+Semantic property encoding
+--------------------------
+
+Added PCA-based dimensionality reduction as a part of :code:`SklearnPGEncoder`. This allows adding an optional dimensionality reduction step as a part of preprocessing.
+
+For example, the following snippet creates an encoder that processes node and edge properties of the input graph and further performs dimensionality reduction to 10 components for resulting node features and 3 components for edges features.
+
+.. code-block:: python
+
+	encoder = SklearnPGEncoder(
+	    node_properties=["nprop1", "nprop2", "nprop3"],
+	    edge_properties=["eprop1", "eprop2", "eprop3"],
+	    reduce_node_dims=True,
+	    reduce_edge_dims=True,
+	    n_node_components=10,
+	    n_edge_components=3)
+
+
+Services
+========
+
+
+Embedder
+--------
+
+Changes to the API of the embedding service were introduced:
+
+- The endpoint :code:`models/{model_id}/details/{component}` is replaced by :code:`/models/{model_id}/{component}`
+- The endpoint :code:`model/{model_id}/...` is replaced by :code:`models/{model_id}/...`
+- The endpoint :code:`model/{model_id}/similar-points` is replaced by :code:`models/{model_id}/neighbors`
+- The endpoint :code:`models/{model_id}/embedding` returns  :code:`{"vectors": [..., ..., ...] }`
+- Added a :code:`POST` endpoint to :code:`/models/{model_id}/embedding/` and :code:`/models/{model_id}/neighbors/` that allows to query existing points (not only to predict new ones). This endpoint is necessary, if the number of resources is large, so that the :code:`GET` request uri explodes.
+

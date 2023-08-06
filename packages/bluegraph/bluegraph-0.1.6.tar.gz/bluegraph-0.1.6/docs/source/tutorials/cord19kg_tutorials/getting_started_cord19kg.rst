@@ -1,0 +1,1 @@
+.. include:: ../../../../cord19kg/README.rst
