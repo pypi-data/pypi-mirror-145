@@ -1,0 +1,3 @@
+from nwon_baseline.typings import VersionChange as VersionChange
+
+def checking_version_argument() -> VersionChange: ...

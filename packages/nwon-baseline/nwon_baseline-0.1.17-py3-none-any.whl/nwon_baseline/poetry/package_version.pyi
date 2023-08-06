@@ -1,0 +1,3 @@
+from nwon_baseline.typings.version_change import VersionChange as VersionChange
+
+def update_package_version(version_change: VersionChange) -> str: ...

@@ -1,0 +1,3 @@
+from typing import List, Optional
+
+def import_data_from_file(path: str, split_character: str, expected_column_names: List[str]) -> Optional[List[List[str]]]: ...
