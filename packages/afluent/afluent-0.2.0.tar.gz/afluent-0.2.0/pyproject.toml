@@ -1,0 +1,50 @@
+[tool.poetry]
+name = "afluent"
+version = "0.2.0"
+description = "Automated Fault Localization Plugin for Pytest"
+authors = ["Noor Buchi <buchin@allegheny.edu>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/noorbuchi/AFLuent"
+keywords = ["pytest", "plugin", "atuomated fault localization", "test covrage"]
+classifiers = ["Framework :: Pytest"]
+
+[tool.poetry.plugins."pytest11"]
+afluent = "afluent.main"
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4.0"
+pytest = "^6.2.5"
+coverage = "^6.3"
+console = "^0.9907"
+tabulate = "^0.8.9"
+types-tabulate = "^0.8.5"
+radon = "^5.1.0"
+libcst = "^0.4.1"
+
+[tool.poetry.dev-dependencies]
+pytest-sugar = "^0.9.4"
+pytest-cov = "^3.0.0"
+black = "^21.8b0"
+taskipy = "^1.8.1"
+flake8 = "^3.9.2"
+pydocstyle = "^6.1.1"
+pylint = "^2.10.2"
+mypy = "^0.910"
+
+[tool.taskipy.tasks]
+black = { cmd = "black afluent tests --check", help = "Run the black checks for source code format" }
+coverage = {cmd = "pytest -s -vv --cov-report term-missing --cov=afluent --cov-report xml --cov-branch -p no:afluent"}
+flake8 = { cmd = "flake8 afluent tests --exclude tests/test_data", help = "Run the flake8 checks for source code documentation" }
+mypy = { cmd = "poetry run mypy afluent --show-error-codes", help = "Run the mypy type checker for potential type errors" }
+pydocstyle = { cmd = "pydocstyle afluent tests", help = "Run the pydocstyle checks for source code documentation" }
+pylint = { cmd = "pylint afluent tests", help = "Run the pylint checks for source code documentation" }
+test = { cmd = "pytest -x -s", help = "Run the pytest test suite" }
+test-verbose = { cmd = "pytest -x -s -vv", help = "Run the pytest test suite" }
+test-silent = { cmd = "pytest -x --show-capture=no", help = "Run the pytest test suite without showing output" }
+all = "task black && task flake8 && task pydocstyle && task mypy && task pylint && task test"
+lint = "task black && task flake8 && task pydocstyle && task mypy && task pylint"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
