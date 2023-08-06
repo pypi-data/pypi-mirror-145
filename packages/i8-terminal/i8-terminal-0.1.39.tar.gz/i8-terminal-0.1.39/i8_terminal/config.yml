@@ -1,0 +1,24 @@
+i8_core_endpoint: https://api.investoreight.com
+app:
+  port: 8050
+  debug: false
+metrics:
+  similarity_threshold: 0.75
+styles:
+  plot:
+    default:
+      paper_bgcolor: "#F8F9F9"
+      plot_bgcolor: "#E5E8E8"
+  table:
+    default:
+      header:
+        color: "magenta"
+        bold: true
+      row:
+        color: "white"
+      alternate_row:
+        color: "cyan"
+      show_lines: false
+  terminal:
+    command:
+      color: "magenta"
