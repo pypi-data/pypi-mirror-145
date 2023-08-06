@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: brainpylib
+Version: 0.0.5
+Summary: C++/CUDA Library for BrainPy
+Home-page: https://github.com/PKU-NIP-Lab/BrainPy
+Author: BrainPy team
+Author-email: chao.brain@qq.com
+License: GPL-3.0 License
+Platform: UNKNOWN
+Requires-Python: >=3.7
+Requires-Dist: jax
+Requires-Dist: jaxlib
+Requires-Dist: pybind11 (<2.8,>=2.6)
+Requires-Dist: cffi
+Requires-Dist: numba
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+
+UNKNOWN
+
