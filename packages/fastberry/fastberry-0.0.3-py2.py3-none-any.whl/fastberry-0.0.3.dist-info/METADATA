@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: fastberry
+Version: 0.0.3
+Summary: Easy FastAPI & Strawberry
+Home-page: https://github.com/hlop3z/fastberry
+Download-URL: https://github.com/hlop3z/fastberry/releases/download/alpha/v0.0.3.tar.gz
+Author: hlop3z
+License: UNKNOWN
+Keywords: api fastapi
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click (==8.1.2)
+Requires-Dist: PyYAML (==6.0)
+Requires-Dist: fastapi (==0.75.1)
+Requires-Dist: pydantic (==1.9.0)
+Requires-Dist: strawberry-graphql (==0.104.3)
+Requires-Dist: uvicorn (==0.17.6)
+Requires-Dist: gunicorn (==20.1.0)
+Requires-Dist: databases (==0.5.5)
+Requires-Dist: motor (==2.5.1)
+Requires-Dist: SQLAlchemy (==1.4.34)
+Requires-Dist: dbcontroller (==0.1.10)
+
+# Welcome to **Fastberry**
+
+## Built With:
+ - [Click](https://github.com/pallets/click/)
+ - [Uvicorn](https://www.uvicorn.org/)
+ - [Gunicorn](https://gunicorn.org/)
+ - [FastAPI](https://fastapi.tiangolo.com/)
+ - [Strawberry](https://strawberry.rocks/)
+ - [DataBase-Controller](https://hlop3z.github.io/dbcontroller/)
+
+---
+
+## Install
+
+```sh
+python -m pip install fastberry
+```
+
