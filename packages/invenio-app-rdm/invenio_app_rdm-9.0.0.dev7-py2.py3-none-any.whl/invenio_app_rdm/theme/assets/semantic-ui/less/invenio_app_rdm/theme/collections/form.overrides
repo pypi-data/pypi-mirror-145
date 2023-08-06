@@ -1,0 +1,34 @@
+/***********************************************
+         Invenio App RDM Form Overrides
+***********************************************/
+
+
+#deposit-form {
+
+  .ck-editor__editable {
+    min-height: 8.5em;
+  }
+
+  .ui.form .field .ui.list {
+    margin-top: 0;
+  }
+
+  .deposit-sidebar .ui.card {
+    width: unset;
+  }
+
+  .sidebar-buttons {
+    display: flex;
+  }
+
+}
+
+label.helptext {
+  display: block;
+  color: @mutedTextColor;
+  font-weight: normal;
+  font-size: 0.9em;
+  margin-top: -0.8em; // counterweight Form field bottom margin
+  margin-bottom: @defaultMargin;
+}
+
