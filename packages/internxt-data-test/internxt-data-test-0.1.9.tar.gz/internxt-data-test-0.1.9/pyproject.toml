@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "internxt-data-test"
+version = "0.1.9"
+description = ""
+authors = ["Joan Mora <elcorreudejoanmora@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.11"
+stripe = "^2.68.0"
+google-cloud-bigquery = "^2.34.2"
+pandas = "^1.4.2"
+pyarrow = "^7.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
