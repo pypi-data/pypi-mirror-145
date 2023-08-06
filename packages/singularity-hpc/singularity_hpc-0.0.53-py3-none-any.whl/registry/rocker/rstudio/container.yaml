@@ -1,0 +1,19 @@
+docker: rocker/rstudio
+url: https://hub.docker.com/r/rocker/rstudio
+maintainer: '@vsoch'
+description: Rstudio server image
+latest:
+  latest-daily: sha256:7a7766fe1b4406c1ebd8271bd0bb5aa649d9dbfb6efa660916bec851a19ed90c
+tags:
+  latest: sha256:96986731d0c91c11c00f2af5826c31c4fc8faef047ee5cc6c619e373f78e4f2c
+  latest-daily: sha256:7a7766fe1b4406c1ebd8271bd0bb5aa649d9dbfb6efa660916bec851a19ed90c
+filter:
+- latest
+aliases:
+  R: /usr/local/bin/R
+  Rscript: /usr/local/bin/Rscript
+  rocker-rstudio-run: /bin/bash
+  rserver: /usr/lib/rstudio-server/bin/rserver
+  rserver-pam: /usr/lib/rstudio-server/bin/rserver-pam
+  rsession: /usr/lib/rstudio-server/bin/rsession
+  rstudio-server: /usr/lib/rstudio-server/bin/rstudio-server

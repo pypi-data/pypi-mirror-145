@@ -1,0 +1,16 @@
+docker: ghcr.io/autamus/pandaseq
+url: https://github.com/orgs/autamus/packages/container/package/pandaseq
+maintainer: '@vsoch'
+description: A program to align Illumina reads, optionally with PCR primers embedded
+  in the sequence, and reconstruct an overlapping sequence.
+latest:
+  '2.11': sha256:7db497adb7a07587e9cd0b84e7e6c4a7bd727f1d15a6c3fdcc7eb454fb13c609
+tags:
+  '2.11': sha256:7db497adb7a07587e9cd0b84e7e6c4a7bd727f1d15a6c3fdcc7eb454fb13c609
+  latest: sha256:7db497adb7a07587e9cd0b84e7e6c4a7bd727f1d15a6c3fdcc7eb454fb13c609
+aliases:
+  pandaseq: /opt/view/bin/pandaseq
+  pandaseq-checkid: /opt/view/bin/pandaseq-checkid
+  pandaseq-diff: /opt/view/bin/pandaseq-diff
+  pandaseq-hang: /opt/view/bin/pandaseq-hang
+  pandaxs: /opt/view/bin/pandaxs
