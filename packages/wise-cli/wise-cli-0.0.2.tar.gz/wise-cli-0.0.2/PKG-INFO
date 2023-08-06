@@ -1,0 +1,86 @@
+Metadata-Version: 2.1
+Name: wise-cli
+Version: 0.0.2
+Summary: Django deployments CLI.
+Home-page: https://github.com/victoraguilarc/wise-cli/
+License: MIT
+Keywords: Django,Deployment,Poetry
+Author: Victor Aguilar C.
+Author-email: vicobits@gmail.com
+Maintainer: Victor Aguilar C.
+Maintainer-email: vicobits@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Jinja2 (>=3.1.1,<4.0.0)
+Requires-Dist: click (==8.1.2)
+Requires-Dist: fabric
+Requires-Dist: requests (>=2.27.1,<3.0.0)
+Project-URL: Documentation, https://github.com/victoraguilarc/wise-cli/
+Project-URL: Repository, https://github.com/victoraguilarc/wise-cli/
+Project-URL: issues, https://github.com/hackersandslackers/python-poetry-tutorial/issues
+Description-Content-Type: text/markdown
+
+# Wise CLI
+
+
+`wise` is a tool to deploy `Django` projects based on [django-wise template](https://github.com/victoraguilarc/django-wise)
+
+## Installation
+
+
+#### Stable Version
+```bash
+pip install wise-cli
+```
+
+#### Development Version
+```bash
+pip install git+https://github.com/victoraguilarc/wise-cli.git
+```
+
+## Usage
+
+- Clone wise Django template
+```
+git clone https://github.com/victoraguilarc/wise.git
+```
+
+- **Configure Project**. The project must have a folder called `.envs` for environment variables por development and a file `.env` for production with virtualenv deployment mode.
+
+- Add config file to cloned project.
+
+By default *wise* uses *django.json*, This file could contains configuration values, for example::
+
+    {
+        "deployment": "virtualenv",
+        "project": "wise",
+        "password": "CHANGE_THIS!!",
+        "domain": "www.xiberty.com",
+        "ipv4": "0.0.0.0",
+        "db_engine": "postgres",
+        "web_server": "nginx",
+        "https": true,
+        "superuser": "username",
+        "sshkey": "/Users/username/.ssh/id_rsa.pub"
+    }
+
+
+## Development
+```bash
+pip install poetry
+poetry install
+pip install -e .
+```
+
+## License
+
+This code is licensed under the `MIT License`.
+
+.. _`MIT License`: https://github.com/victoraguilarc/suarm/blob/master/LICENSE
+
+
+
+
