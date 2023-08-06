@@ -1,0 +1,183 @@
+# moneymade-connect-oauth-python-sdk
+
+This package contains helpers which should be useful for integration with [moneymade.io](https://docs.moneymade.io/docs/interaction/connect-flow) oauth feature.
+
+## Navigation
+
+- [Install](#install)
+- [SDK initialization](#sdk-initialization)
+- [Handling oauth request security](#handling-oauth-request-security)
+- [Finishing oauth request](#finishing-oauth-request)
+- [Pushing accounts data](#pushing-accounts-data)
+- [Pushing transactions data](#pushing-transactions-data)
+- [Migration from V1 to V2](#migration-from-v1-to-v2)
+- [Developers](#developers)
+
+<br/><br/>
+
+### Install
+  ```shell
+  pip install moneymade-connect-oauth-python-sdk
+  ```
+<!-- ## Usage
+
+See examples folder for a complete example -->
+
+<br/><br/>
+
+### SDK initialization
+  Firstly, receive public and private key from moneymade.io side.
+  You are able to get it from [console dashboard](https://console.moneymade.io).
+  (Contact moneymade devs team to add you to your project team)
+
+  ```python
+
+    from moneymade_connect_python_sdk import moneymade_connect
+
+    sdk = moneymade_connect.MoneyMadeConnect(private_key='private key',
+                                             public_key='public key',
+                                             env='development'
+                                           )
+  ```
+
+<br/><br/>
+
+### Handling oauth request security
+  Oauth page receives signature and payload according to [oauth page design](https://docs.moneymade.io/docs/interaction/connect-flow#oauth-page).
+
+  Data interchage is protected by signature.
+  Payload is base64 encoded string contains userId.
+  (The userId is a link to external user who is going to share your provider data with moneymade.io)
+
+  Use base64_to_dict sdk method to transform payload to dict:
+
+  ```python
+
+    request_payload = sdk.base64_to_dict(payload)
+  ```
+
+  Use sdk generate_signature method to generate signature for request validation:
+
+  ```python
+
+    generated_signature = sdk.generate_signature(payload_dict) 
+  ```
+
+  Full example how to validate request:
+
+  ```python
+    # this is a query string value which is received by your oauth page
+    received_qs = 'payload=eyJ1c2VySWQiOiJhYm&signature=fa595194c0'
+    query_params = sdk.query_string_to_dict(received_qs)
+
+    payload = query_params['payload']
+    signature = query_params['signature']
+
+    request_payload =  sdk.base64_to_dict(payload)
+
+    if signature == sdk.generate_signature(request_payload):
+      # handle success oauth validation
+    else 
+      # handle oauth error
+  ```
+<br/><br/>
+
+### Finishing oauth request
+
+After success request validation and handling userId linking you should to finish oauth request.
+See [docs](https://docs.moneymade.io/docs/interaction/connect-flow#finish-oauth-request) for more info.
+
+Finish oauth payload depends on chosen data interchage stategy.
+
+Payload for pushing strategy contains userId and user accounts data to be shared with moneymade.io.
+Accounts payload schema is agnostic. (Contact moneymade.io devs team to set up it for your accounts schema sample)
+
+Typicall payload for pushing strategy looks like:
+  ```python
+    payload = {
+      "userId": 'id your read from oauth payload',
+      "accounts": [{
+        "id": 'some-account-id",
+        "balance": 1000,
+        "name": 'Checking account 1'
+      }]
+    }
+  ```
+
+Payload for pushing strategy contains userId and accessToken which is used to pull your endpoint for user info.
+(Contact moneymade.io devs team to set up API url to fetch user data and other's security points)
+
+Payload for pushing strategy isn't agnostic and should look like:
+
+  ```python
+    payload = {
+      "userId": 'id your read from oauth payload',
+      "accessToken": 'access-token-to-pull-your-api'
+    }
+  ```
+<br/><br/>
+
+### Pushing accounts data
+
+  If you chose pushing strategy, you should push moneymade.io API with user data to refresh it.
+  You may use sdk push_accounts method to send us user's account data.
+
+  This payload schema is agnostic. (Contact moneymade.io devs team to set up it for your accounts schema sample)
+
+  Typically this payload looks like:
+
+  ```python
+    payload = {
+      "userId": "id your read from oauth payload before",
+      "accounts": [{
+        "id": 'some-account-id",
+        "balance": 1000,
+        "name": 'Checking account 1'
+      }]
+    }
+  ```
+
+<br/><br/>
+
+### Pushing transactions data
+
+We're working on it. Cooming soon :)
+
+<br/><br/>
+
+### Migration from V1 to V2 
+  
+  Use version = v2 to initialize sdk:
+
+  ```python
+  from moneymade_connect_python_sdk import moneymade_connect
+
+  sdk = moneymade_connect.MoneyMadeConnect(private_key='private key',
+                                              public_key='public key',
+                                              env='development',
+                                              version='v2'
+                                            )
+  ```
+
+  SDK switches all logic for V2 version under the hood, you don't need to change anything on backend side.
+  However, frontend should redirect page to callback url after handling oauth request.
+  Use get_finish_oauth_redirect_url to get this url for received oauth-signature:
+  
+  ```python
+  sdk.get_finish_oauth_redirect_url(oauth_signature)
+  ```
+<br/><br/>
+
+##### Developers:
+
+This section contains hints for sdk developers to make development easier.
+##### Testing version publishing commands:
+
+1. Install dev dependencies
+  ```python -m pip install --upgrade build```
+2. Build the package 
+  ```python -m build```
+3. Publish to test repository
+  ```python -m twine upload --repository testpypi --skip-existing dist/*```
+4. Install latest test version
+  ```python -m pip install --index-url https://test.pypi.org/simple --upgrade moneymade-connect-oauth-python-sdk```
