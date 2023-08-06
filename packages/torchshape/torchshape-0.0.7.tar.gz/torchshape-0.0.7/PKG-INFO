@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: torchshape
+Version: 0.0.7
+Summary: Calculates the output shape of Pytorch operations
+Home-page: https://github.com/yuezuegu/torchshape
+Author: Ahmer Caner Yuzuguler
+Author-email: ahmet.yuzuguler@epfl.ch
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/yuezuegu/torchshape/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Torchshape
+Calculates the output shape of Pytorch operations
+
+How to use:
+
+1) Install torchshape package:
+
+    ``pip install torchshape``
+
+2) Import torchshape package:
+
+    ``from torchshape import tensorshape``
+    
+3) Call tensorshape function in your code:
+
+    ``outshape = tensorshape(op, inshape)``
+    
+where op is a torch.nn operation (see the [list](#list-of-supported-operations) of supported operations), inshape and outshape are tuples.
+
+See [lenet.py](lenet.py) for example usage.
+
+## List of supported operations
+- nn.Conv2d
+- nn.Linear
+- nn.MaxPool2d
+- nn.AvgPool2d
+- nn.Flatten
+
+
