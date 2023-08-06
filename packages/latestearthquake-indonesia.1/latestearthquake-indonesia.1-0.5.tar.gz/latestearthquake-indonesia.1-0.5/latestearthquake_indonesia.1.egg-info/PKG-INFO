@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: latestearthquake-indonesia.1
+Version: 0.5
+Summary: This package will get the latest earthquake from BMKG | Indonesian Agency for Meteorological, Climatological and Geophysics 
+Home-page: https://github.com/WildanAruman/deteksi-gempa-terkini
+Author: Wildan Aruman
+Author-email: wildan.aruman90@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/WildanAruman/deteksi-gempa-terkini
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 5 - Production/Stable
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# latest-earthquake-indonesia
+This package will get the latest earthquake from BMKG | Indonesian Agency for Meteorological, Climatological and Geophysics 
+
+## HOW IT WORK?
+This Package will scrape from [BMKG](https://bmkg.go.id) to get latest Quake happened in Indonesia
+
+Thisa package will use BeatifulSoup4 and Request, to produce output in the form of JSON that is ready to be used in web or mobile application
+
+## HOW TO USE
+'''
+
+import gempaterkini
+if __name__ == '__main__':
+    print('Aplikasi utama')
+    result = gempaterkini.ekstraksi_data()
+    gempaterkini.tampilkan_data(result)
+
+'''
+
+
+
