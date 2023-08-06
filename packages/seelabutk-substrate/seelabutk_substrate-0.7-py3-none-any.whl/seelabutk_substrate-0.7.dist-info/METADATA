@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: seelabutk-substrate
+Version: 0.7
+Summary: Automatically deploys visualization services via Docker Swarm
+Home-page: https://github.com/seelabutk/substrate/
+Author: John Duggan
+Author-email: jduggan1@vols.utk.edu
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: aws-cdk.core (~=1.147.0)
+Requires-Dist: aws-cdk.aws-ec2 (~=1.147.0)
+Requires-Dist: aws-cdk.aws-efs (~=1.147.0)
+Requires-Dist: aws-cdk.aws-iam (~=1.147.0)
+Requires-Dist: docker (~=5.0.3)
+Requires-Dist: paramiko (~=2.9.2)
+Requires-Dist: PyYAML (~=6.0)
+
+Please visit https://github.com/seelabutk/substrate/ to view the documentation.
+
