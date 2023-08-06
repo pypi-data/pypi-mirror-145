@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: ifixit2zim
+Version: 0.0.1
+Summary: Make ZIM file from iFixit articles
+Home-page: https://kiwix.org/
+Author: Kiwix Team
+Author-email: dev@kiwix.org
+License: GPLv3+
+Keywords: kiwix zim offline ifixit
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests (<2.27,>=2.26.0)
+Requires-Dist: zimscraperlib (<1.5,>=1.4.0)
+Requires-Dist: kiwixstorage (<0.9,>=0.8.1)
+Requires-Dist: sqlalchemy (==1.4.32)
+Requires-Dist: Jinja2 (==3.1.1)
+Requires-Dist: backoff (==1.11.1)
+Requires-Dist: python-worker (==1.8.1)
+Requires-Dist: pif (<0.9,>=0.8.2)
+
+## iFixit
+
+`ifixit2zim` is an [openZIM](https://openzim.org) scraper to create offline versions of [iFixit](https://www.ifixit.com/) website, in all its supported languages.
+
+[![CodeFactor](https://www.codefactor.io/repository/github/openzim/ifixit/badge)](https://www.codefactor.io/repository/github/openzim/ifixit)
+[![Docker](https://img.shields.io/docker/v/openzim/ifixit?label=docker&sort=semver)](https://hub.docker.com/r/openzim/ifixit)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![PyPI version shields.io](https://img.shields.io/pypi/v/ifixit2zim.svg)](https://pypi.org/project/ifixit2zim/)
+
+This scraper downloads the iFixit resources (categories, guides, ...) and puts them in a ZIM file, a clean and user friendly format for storing content for offline usage.
+
+For now, this tool is still under active development. Most recent version of the tool is located in the `develop` branch or any of its sub-branches.
+
+### Develop
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.pip
+```
+
+
