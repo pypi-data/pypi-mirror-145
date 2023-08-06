@@ -1,0 +1,44 @@
+from banyan.api.base import ApiBase
+from banyan.model.policy import PolicyInfo, Policy, PolicyInfoOrName, PolicyAttachInfo
+from banyan.model.service import ServiceInfoOrName
+from typing import List
+
+
+class PolicyAPI(ApiBase):
+    class Meta:
+        data_class = Policy
+        info_class = PolicyInfo
+        arg_type = PolicyInfoOrName
+        list_uri = '/security_policies'
+        delete_uri = '/delete_security_policy'
+        insert_uri = '/insert_security_policy'
+        uri_param = 'PolicyID'
+        obj_name = 'policy'
+
+    def attach(self, policy: PolicyInfoOrName, service: ServiceInfoOrName, enforcing: bool) -> PolicyAttachInfo:
+        from banyan.api.service import ServiceAPI
+        policy = self.find(policy)
+        service = ServiceAPI(self._client).find(service)
+        json_response = self._client.api_request('POST', '/insert_security_attach_policy',
+                                                 params={
+                                                     'PolicyID': policy.id,
+                                                     'ServiceID': service.id,
+                                                     'Enabled': str(enforcing).upper()
+                                                 })
+        return PolicyAttachInfo.Schema().load(json_response)
+
+    def detach(self, policy: PolicyInfoOrName, service: ServiceInfoOrName) -> str:
+        from banyan.api.service import ServiceAPI
+        policy = self.find(policy)
+        service = ServiceAPI(self._client).find(service)
+        json_response = self._client.api_request('DELETE', '/delete_security_attach_policy',
+                                                 params={
+                                                     'PolicyID': policy.id,
+                                                     'ServiceID': service.id
+                                                 })
+        return json_response['Message']
+
+    def attachments(self, policy: PolicyInfoOrName) -> List[PolicyAttachInfo]:
+        policy = self.find(policy)
+        json_response = self._client.api_request('GET', 'security_attach_policies', params={'PolicyID': policy.id})
+        return PolicyAttachInfo.Schema().load(json_response, many=True)
