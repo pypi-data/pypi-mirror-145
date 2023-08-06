@@ -1,0 +1,63 @@
+name: Windows
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-windows:
+    strategy:
+      matrix:
+        os: [windows-2019]
+        arch: [Win32, x64]
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} ${{ matrix.arch }}
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        lfs: true
+    - name: Init
+      run: |
+        mkdir build
+    - name: Build
+      uses: lukka/run-cmake@v3
+      with:
+        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+        cmakeBuildType: Release
+        buildWithCMake: true
+        #cmakeGenerator: VS16Win${{ matrix.arch }}
+        cmakeAppendedArgs: -G"Visual Studio 16 2019" -A${{ matrix.arch }}
+        buildWithCMakeArgs: --config Release
+        buildDirectory: build
+    - name: Run Evaluator
+      run: |
+        mkdir eval_results
+        .\build\Release\kiwi-evaluator.exe -m .\ModelGenerator (Get-ChildItem eval_data\*.txt | Select-Object -Expand FullName) -o eval_results\
+    - name: Run Benchmark
+      run: |
+        curl -OL https://latina.bab2min.pe.kr/_data/kowiki1000.txt
+        $env:KIWI_ARCH_TYPE = 'none'
+        .\build\Release\kiwi-cli-*.exe -m .\ModelGenerator -e -o test.out kowiki1000.txt
+        $env:KIWI_ARCH_TYPE = 'balanced'
+        .\build\Release\kiwi-cli-*.exe -m .\ModelGenerator -e -o test.out kowiki1000.txt
+        $env:KIWI_ARCH_TYPE = 'sse2'
+        .\build\Release\kiwi-cli-*.exe -m .\ModelGenerator -e -o test.out kowiki1000.txt
+        $env:KIWI_ARCH_TYPE = 'sse4_1'
+        .\build\Release\kiwi-cli-*.exe -m .\ModelGenerator -e -o test.out kowiki1000.txt
+        $env:KIWI_ARCH_TYPE = 'avx2'
+        .\build\Release\kiwi-cli-*.exe -m .\ModelGenerator -e -o test.out kowiki1000.txt
+        $env:KIWI_ARCH_TYPE = 'avx512bw'
+        .\build\Release\kiwi-cli-*.exe -m .\ModelGenerator -e -o test.out kowiki1000.txt
+    - name: Archive binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts ${{ matrix.os }} ${{ matrix.arch }}bit
+        path: |
+          build\Release\*kiwi*
+          build\test\Release\*kiwi*
+          eval_results\*.txt
+    - name: Run Unit Test
+      run: .\build\test\Release\kiwi-test.exe

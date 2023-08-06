@@ -1,0 +1,246 @@
+name: Publish Release assets
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build-centos:
+    name: Centos5
+    runs-on: ubuntu-latest
+    container:
+      image: docker://hoshizora/manylinux1-clang_x86_64
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Checkout Old Version googletest
+      run: cd third_party/googletest && git checkout v1.8.x && cd ../..
+    - name: Update CMake
+      run: /opt/python/cp36-cp36m/bin/pip install cmake
+    - name: Configure Build
+      run: mkdir build && cd build && /opt/python/cp36-cp36m/bin/cmake -DCMAKE_BUILD_TYPE=Release -DKIWI_USE_MIMALLOC=0 -DKIWI_USE_CPUINFO=0 ..
+    - name: Build
+      run: cd build && make
+    - run: tar -zcvf asset.tgz build/*kiwi* build/test/*kiwi*
+    - name: Archive binaries
+      uses: actions/upload-artifact@v1
+      with:
+        name: asset_Centos5
+        path: asset.tgz
+
+  upload-asset-from-centos:
+    name: Upload asset from Centos5
+    needs: build-centos
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: asset_Centos5
+        path: arts
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Upload release binary
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: arts/asset.tgz
+        asset_name: kiwi_lnx_centos5_x86_64_${{ steps.get_release.outputs.tag_name }}.tgz
+        asset_content_type: application/octet-stream
+
+  build-centos6:
+    name: Centos6
+    runs-on: ubuntu-latest
+    container:
+      image: docker://quay.io/pypa/manylinux2010_x86_64
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Update CMake
+      run: /opt/python/cp36-cp36m/bin/pip install cmake
+    - name: Configure Build
+      run: mkdir build && cd build && /opt/python/cp36-cp36m/bin/cmake -DCMAKE_BUILD_TYPE=Release ..
+    - name: Build
+      run: cd build && make
+    - run: tar -zcvf asset.tgz build/*kiwi* build/test/*kiwi*
+    - name: Archive binaries
+      uses: actions/upload-artifact@v1
+      with:
+        name: asset_Centos6
+        path: asset.tgz
+
+  upload-asset-from-centos6:
+    name: Upload asset from Centos6
+    needs: build-centos6
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: asset_Centos6
+        path: arts
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Upload release binary
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: arts/asset.tgz
+        asset_name: kiwi_lnx_x86_64_${{ steps.get_release.outputs.tag_name }}.tgz
+        asset_content_type: application/octet-stream
+
+  build-macos:
+    strategy:
+      matrix:
+        include:
+          # macOS 10.15 + Xcode 11.7
+          - name: "macOS 10.15 + Xcode 11.7"
+            os: macos-10.15
+            compiler: xcode
+            version: "11.7"
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.name }}
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        lfs: true
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Configure Compiler
+      run: |
+        if [ "${{ matrix.compiler }}" = "gcc" ]; then
+          echo "CC=gcc-${{ matrix.version }}" >> $GITHUB_ENV
+          echo "CXX=g++-${{ matrix.version }}" >> $GITHUB_ENV
+        else
+          ls -ls /Applications/
+          sudo xcode-select -switch /Applications/Xcode_${{ matrix.version }}.app
+          echo "CC=clang" >> $GITHUB_ENV
+          echo "CXX=clang++" >> $GITHUB_ENV
+        fi
+    - name: Configure Build
+      run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ..
+    - name: Build
+      run: cd build && make
+    - run: tar -zcvf asset.tgz build/*kiwi* build/test/*kiwi*
+    - name: Upload release binary
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: asset.tgz
+        asset_name: kiwi_mac_x86_64_${{ steps.get_release.outputs.tag_name }}.tgz
+        asset_content_type: application/octet-stream
+    - run: tar -zcvf model.tgz ModelGenerator/sj.* ModelGenerator/extract.mdl ModelGenerator/default.dict ModelGenerator/combiningRule.txt
+    - name: Upload release binary
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: model.tgz
+        asset_name: kiwi_model_${{ steps.get_release.outputs.tag_name }}_base.tgz
+        asset_content_type: application/octet-stream
+
+  build-windows:
+    strategy:
+      matrix:
+        os: [windows-2019]
+        arch: [Win32, x64]
+
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.os }} ${{ matrix.arch }}
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        lfs: true
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Init
+      run: |
+        mkdir build
+    - name: Build
+      uses: lukka/run-cmake@v3
+      with:
+        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
+        cmakeBuildType: Release
+        buildWithCMake: true
+        cmakeAppendedArgs: -G"Visual Studio 16 2019" -A${{ matrix.arch }}
+        buildWithCMakeArgs: --config Release
+        buildDirectory: build
+    - run: Compress-Archive -Path 'build\Release\*kiwi*', 'build\test\Release\*kiwi*' -DestinationPath asset.zip
+    - name: Upload release binary
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: asset.zip
+        asset_name: kiwi_win_${{ matrix.arch }}_${{ steps.get_release.outputs.tag_name }}.zip
+        asset_content_type: application/octet-stream
+
+  build-other-arch:
+    strategy:
+      matrix:
+        arch: [aarch64, ppc64le]
+    name: Centos7-${{ matrix.arch }}
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        lfs: true
+    - uses: bab2min/run-on-arch-action@use-custom-image
+      id: runcmd
+      with:
+        image: quay.io/pypa/manylinux2014_${{ matrix.arch }}
+        githubToken: ${{ github.token }}
+        setup: |
+          mkdir -p "${PWD}/artifacts"
+        dockerRunArgs: |
+          --volume "${PWD}/artifacts:/artifacts"
+        run: |
+          mkdir build && pushd build && cmake -DCMAKE_BUILD_TYPE=Release -DKIWI_USE_MIMALLOC=0 ..
+          make && popd
+          ./build/test/kiwi-test
+          mkdir eval_results && ./build/kiwi-evaluator -m ./ModelGenerator eval_data/*.txt -o eval_results/
+          tar -zcvf /artifacts/asset.tgz build/*kiwi* build/test/*kiwi*
+    - name: Get release
+      id: get_release
+      uses: bruceadams/get-release@v1.2.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - name: Upload release binary
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release.outputs.upload_url }}
+        asset_path: artifacts/asset.tgz
+        asset_name: kiwi_lnx_${{ matrix.arch }}_${{ steps.get_release.outputs.tag_name }}.tgz
+        asset_content_type: application/octet-stream
