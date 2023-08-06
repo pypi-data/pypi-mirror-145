@@ -1,0 +1,116 @@
+{
+    "pages": {
+        "login": {
+            "url": "login",
+            "name": "login"
+        },
+        "logout": {
+            "url": "logout",
+            "name": "logout"
+        },
+        "location": {
+            "cache": "first_page",
+            "background_sync": true,
+            "map": [
+                {
+                    "mode": "list",
+                    "autoLayers": true,
+                    "layers": []
+                },
+                {
+                    "mode": "detail",
+                    "autoLayers": true,
+                    "layers": []
+                },
+                {
+                    "mode": "edit",
+                    "autoLayers": true,
+                    "layers": []
+                }
+            ],
+            "name": "location",
+            "url": "locations",
+            "list": true,
+            "form": [
+                {
+                    "name": "name",
+                    "label": "Site Name",
+                    "bind": {
+                        "required": true
+                    },
+                    "hint": "The unique name of the site",
+                    "type": "text"
+                },
+                {
+                    "name": "type",
+                    "label": "Site Type",
+                    "bind": {
+                        "required": true
+                    },
+                    "hint": "Site classification",
+                    "choices": [
+                        {
+                            "name": "water",
+                            "label": "Water"
+                        },
+                        {
+                            "name": "air",
+                            "label": "Air"
+                        },
+                        {
+                            "name": "land",
+                            "label": "Land"
+                        }
+                    ],
+                    "type": "select one"
+                },
+                {
+                    "name": "geometry",
+                    "label": "Location",
+                    "bind": {
+                        "required": true
+                    },
+                    "hint": "The location of the site",
+                    "type": "geopoint"
+                }
+            ],
+            "verbose_name": "location",
+            "verbose_name_plural": "locations"
+        },
+        "index": {
+            "url": "",
+            "name": "index",
+            "show_in_index": false,
+            "verbose_name": "test Project"
+        }
+    },
+    "site_title": "test Project",
+    "router": {
+        "base_url": ""
+    },
+    "store": {
+        "service": "",
+        "defaults": {
+            "format": "json"
+        }
+    },
+    "material": {
+        "theme": {
+            "primary": "#7500ae",
+            "secondary": "#0088bd"
+        }
+    },
+    "map": {
+        "bounds": [
+            [
+                -180,
+                -70
+            ],
+            [
+                180,
+                70
+            ]
+        ]
+    },
+    "debug": true
+}
