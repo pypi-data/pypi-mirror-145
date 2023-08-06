@@ -1,0 +1,15 @@
+Metadata-Version: 2.1
+Name: shrinky
+Version: 0.0.4
+Summary: Shrinks images in the way I want
+License: MIT
+Author: James Hogkinson
+Author-email: james@terminaloutcomes.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Pillow (>=9.0.1,<10.0.0)
+Requires-Dist: click (>=8.0.4,<9.0.0)
+Requires-Dist: loguru (>=0.6.0,<0.7.0)
