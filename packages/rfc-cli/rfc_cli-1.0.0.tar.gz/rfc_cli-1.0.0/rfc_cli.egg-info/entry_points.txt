@@ -1,0 +1,6 @@
+[console_scripts]
+rfc = rfc_cli.__main__:app
+
+[pipx.run]
+rfc_cli = rfc_cli.__main__:app
+
