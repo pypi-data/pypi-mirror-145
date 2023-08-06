@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: python-logging-discord-handler
+Version: 0.1
+Summary: Direct Python log output to Discord
+License: MIT
+Author: Mikko Ohtamaa
+Author-email: mikko@opensourcehacker.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: docs
+Requires-Dist: Sphinx (>=4.4.0,<5.0.0); extra == "docs"
+Requires-Dist: discord-webhook (>=0.15.0,<0.16.0)
+Requires-Dist: sphinx-autodoc-typehints[docs] (>=1.16.0,<2.0.0); extra == "docs"
+Requires-Dist: sphinx-rtd-theme (>=1.0.0,<2.0.0); extra == "docs"
+Requires-Dist: sphinx-sitemap (>=2.2.0,<3.0.0); extra == "docs"
