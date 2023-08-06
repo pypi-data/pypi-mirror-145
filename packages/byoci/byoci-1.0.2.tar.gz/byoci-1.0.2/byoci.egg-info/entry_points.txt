@@ -1,0 +1,5 @@
+[console_scripts]
+byo-ci-host = byoci.host.commands:run
+byo-ci-monitor = byoci.monitor.commands:run
+byo-ci-slave = byoci.slave.commands:run
+
