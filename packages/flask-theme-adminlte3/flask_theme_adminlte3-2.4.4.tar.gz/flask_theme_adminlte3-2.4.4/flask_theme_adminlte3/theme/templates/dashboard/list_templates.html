@@ -1,0 +1,42 @@
+{% macro list_templates(templates_list) %}
+<div class="card collapsed-card">
+    <div class="card-header border-transparent">
+      <h3 class="card-title">HTML Templates</h3>
+      <div class="card-tools">
+        {{ card_tools(self) }}
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table m-0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>File</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          {% for name,module,dir in templates_list %}
+            <tr>
+              {%set path = templates.get_path(name)%}
+              {% if applications %}
+              {%set edit_template = applications.url_for('editor.py',filename=path) | replace('%2F','/') %}
+              {%set edit_template_dir = applications.url_for('editor.py',filename=dir) | replace('%2F','/') %}
+              {% endif %}
+              <td><a href="{{edit_template}}">{{name}}</a></td>
+              <td><a href="{{edit_template_dir}}">{{module}}</a></td>
+            </tr>
+          {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.card-body -->
+    <!-- /.card-footer -->
+  </div>
+
+{%endmacro%}
