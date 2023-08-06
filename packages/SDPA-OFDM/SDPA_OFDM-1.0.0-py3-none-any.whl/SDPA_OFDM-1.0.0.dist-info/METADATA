@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: SDPA-OFDM
+Version: 1.0.0
+Summary: Software OFDM Modulator
+Home-page: UNKNOWN
+Author: Sebastien Deriaz
+Author-email: sebastien.deriaz1@gmail.com
+License: UNKNOWN
+Keywords: python,ofdm,modulation,modulator,sdr
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+Requires-Dist: numpy
+
+# SDPA-OFDM
+
+OFDM Modulation
+
+
+## Installation
+
+    pip install SDPA-OFDM
+
+## Usage
+
+```python
+from SDPA_OFDM import ofdm_modulator
+
+mod = ofdm_modulator(args)
+
+I, Q = mod.messageToIQ(message)
+```
+
+## Current version : 1.0.0
+
+The package has been tested with SDPA-MR-OFDM and provides correct values when compared with 802.15.4g specification
+
+
