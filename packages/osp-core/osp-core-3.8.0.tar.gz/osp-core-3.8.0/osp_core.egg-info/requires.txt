@@ -1,0 +1,16 @@
+graphviz
+numpy
+PyYaml
+requests
+websockets<11
+
+[:python_version < "3.7"]
+pyparsing<3.0.0
+rdflib<6.0.0,>=5.0.0
+rdflib-jsonld==0.6.1
+
+[:python_version >= "3.10"]
+websockets>=10
+
+[:python_version >= "3.7"]
+rdflib<7.0.0,>=6.0.0
