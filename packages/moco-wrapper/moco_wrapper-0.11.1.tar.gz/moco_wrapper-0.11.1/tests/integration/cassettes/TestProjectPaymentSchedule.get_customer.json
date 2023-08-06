@@ -1,0 +1,99 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2021-04-06T12:08:54",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"name\": \"TestProjectPaymentSchedule.get_customer\", \"type\": \"customer\"}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "71"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.0"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/companies"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAJbogA/4SRQW/cIBCF/8s7kwjvOk6Wc3PqJWrTS6MIYRhvqDBYMKS1ov3vFbXT5tYbfHrzNO/NG7yDuh3k6W7oDlKA14WgYGvhNFOGQDRzI49U+CGnH2T5wawzRf5qX8jVQNdnYv1h4CeNxXObgQDNxgeoWEMQGH0IPp71H6itfefLS4q7fjK/todxLlMp28emGjmv2ibXdJ/uIfBqWHtHkf3kKb9bsTkXqKdngVoa3QKejsehP972UmDyufCeiakwBIL5S8xoHS4NjRR2Ix+ntC+XEjfTtugWWC85LZTZU4F6uwjYTIbJacNQOMhDdyX7Kzk8dgcl79RN/x0CdXH/1XxMhs9SdjcNRqYcoSYTCv2rk1tn3elaCtiaM0W7QuH+2xcIOJpMDax9fE3eknaVtDNrgTpKgWU7aIF6er78HgDTnZHVDAIAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "334"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Tue, 06 Apr 2021 12:08:54 GMT"
+          ],
+          "Etag": [
+            "W/\"6cc90a5ff2021ad72e730116bdd9e156\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "45b1be52-92f6-4940-9cf8-00e8422f441e"
+          ],
+          "X-Runtime": [
+            "0.159514"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/companies"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

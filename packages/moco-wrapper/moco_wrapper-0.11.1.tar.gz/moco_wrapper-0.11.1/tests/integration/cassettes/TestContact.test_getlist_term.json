@@ -1,0 +1,199 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2020-11-26T08:55:15",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"lastname\": \"TestContact.test_getlist_term\", \"firstname\": \"dummy contact to search by term\", \"gender\": \"F\"}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "108"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.23.0"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/4SQwWrrMBBFf8XMWnnYybNJtC30C7JqKWJsTWK1ksZI47Yh5N+L6zTE3XR57xwuzDmDs6D/12WzbRQcKVpKoOERFBxcyhIxEGiwYwinouMo2EkhXGTC1PVFeyqEUgAFHm/wnrI8zOg/oSzmSOJdFnNFxYmfOFDwyq0ZODtxHOcmcOs8maHneGU+OL2ZA37epd9XCuj8XUZrE+U8Nz0Huie+84JoXZLe4gl0HL1XgO8omMyY/E8jeMygn18UdGMWDmZIPFASRxn0+aKg4zBgvC2MedI4y91tNs1mu6t2S6WTmaU3bDsL01YiFLIGBTSsy3W5qqrVutmXW13XuqqfQME42D8ZFw88PXj5CgAA///x8x5A5QEAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "289"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Thu, 26 Nov 2020 08:55:15 GMT"
+          ],
+          "Etag": [
+            "W/\"6d60fdbf45fc39afd3e4f8653fd1ad95\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "b6011f08-8a90-4c33-b874-f614e6921150"
+          ],
+          "X-Runtime": [
+            "0.065337"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people"
+      }
+    },
+    {
+      "recorded_at": "2020-11-26T08:55:16",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.23.0"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people?term=dummy+contact+to+search+by+term&page=1"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/+yRwYrbMBCGX8XMWSlyHLuOroU+QU4NQYytSaxWsow0bhtC3r24zgYnsCwse9zj/+tjQP+3v4A1oDabWla5gBP1hiIo+A4CjjYm7tETKDCj9+esDT1jyxmHLBHGtsuac8YUPQhw+ATfCwFs2U0PIOBnaPQQkmUb+rnxobGO9NCF/sb8CfGXPuLfRXp+JY/WLTIaEymluemCpyXxPz8QjY3cGTyD6kfnBOBvZIx6jO6lYTwlUPuDgHZMHLweYhgosqUE6nIV0AY/YH+/MKZpt3nNbVFURb3Nt48bMiV+HAqb1sB0KxIyGY0MCtZyLVd5vlpvdvKrkrkq5A8QMA7mDeYqbjJLWdXVR8ncUeJvM/pl+oE+ETubWN/QT7fvcVvtZK3KUuXl626XzPXwLwAA///P4Da/qgMAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "322"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Thu, 26 Nov 2020 08:55:16 GMT"
+          ],
+          "Etag": [
+            "W/\"768d68dfa608f744d89060b1edfd28d5\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Page": [
+            "1"
+          ],
+          "X-Per-Page": [
+            "100"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "f912db03-61c4-47c2-a412-4f650c36d821"
+          ],
+          "X-Runtime": [
+            "0.154281"
+          ],
+          "X-Total": [
+            "2"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people?term=dummy+contact+to+search+by+term&page=1"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

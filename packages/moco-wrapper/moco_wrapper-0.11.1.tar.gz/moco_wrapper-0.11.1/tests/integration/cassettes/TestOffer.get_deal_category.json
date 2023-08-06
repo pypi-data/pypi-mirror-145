@@ -1,0 +1,96 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2021-11-05T13:29:14",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.1"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/deal_categories"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAJbogA/7TPsWrDMBSF4Vcxd5ZBsipTa+tcupUOLqXI0sUWVmUjXxdCyJtly4tlcyAassT7gf8730fwDvSr5HXFIJo/BA3vUyQzkseEERjMaepM54OnA2jBwCY0hO7XEGioeCVKIUquPoXUXGnZtMBgnd2DzYnd0nJLv8Ueu4kKTAthCHlf8j0ALxngH9NiB29HygRqD4HaBF+YBhNdWGOf3693uV9v8Y/LObrg7YBFuy6mx3tA8zzAz3UAEHPS+n0CAAA=",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "200"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Fri, 05 Nov 2021 13:29:14 GMT"
+          ],
+          "Etag": [
+            "W/\"d67b381f475dc9e190ec59415c624174\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "0b88680e-6d76-429b-9d93-2e56ad6f24f0"
+          ],
+          "X-Runtime": [
+            "0.018653"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/deal_categories"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

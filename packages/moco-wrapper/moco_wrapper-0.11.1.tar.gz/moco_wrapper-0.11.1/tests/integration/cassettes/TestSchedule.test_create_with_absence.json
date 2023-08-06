@@ -1,0 +1,99 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2020-12-08T15:20:06",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"absence_code\": 4, \"date\": \"2014-04-11\", \"user_id\": 933638919}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "63"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.0"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/schedules"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/4TPwWq1MBAF4Hc5/3aERL3+ml3xFdpNN5dopkVIoiSTxaX47kVvke66C5kz32G+sDiYVnW67zqCs8IwqJVuK9VWWoMwryFwFBiAYAOMpMKE7XrlR5hWDxOL9wSb8/IZnxtPfWhvzX+lWk2INhz+W/K2TIddsqyB0/1nIJzFTrM7a/2aYPBvHEcQ5LEdgZcpc5wZO6FkTldF03RNP+iB8LGkLL84ELy9fk58J8yJrbC7WznPrVWl60r1r/pmamVU9w5C2dwfmf07AAD//wjeyi8/AQAA",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "222"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Tue, 08 Dec 2020 15:20:06 GMT"
+          ],
+          "Etag": [
+            "W/\"61ac61a71b6dc73c9786db11991065fc\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "692f91d8-003b-4341-a62e-42eb4cce3922"
+          ],
+          "X-Runtime": [
+            "0.038696"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/schedules"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

@@ -1,0 +1,193 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2021-11-05T14:11:49",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"name\": \"TestProject.test_archive_create\", \"currency\": \"EUR\", \"leader_id\": 933653237, \"customer_id\": 761108966, \"finish_date\": \"2020-01-01\", \"fixed_price\": false}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "163"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.1"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/projects"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAJbogA/7RTT28bLxD9LvO74ghY7zrmHv2uUZVeWkUIw6xDjWEFs26iyN+9wn82tlVVqtrelrfw5s17M+/gHajlvO2WvJULBt5hJN97zKDgUQouJTCIZoug4AkLPeb0DS3dERbSJtsXv0NtMxpCYGAs+R2Cojwig5UPwazCdO79Kzo9ZG8RVG9COWDRlxft6nsFkks+42LGBTCwY84Y7RsoePj8CY58Pq71zmRvIoGC4ajm4p9xLmMpoOACxK3xQVMCFccQbnFrb/GYCMsZLEhUQR9tGB1q8lvUGYeUaepiNbo10kRzOGl8HTCWSsTvOIOXNObwpvOh0wPiY5+OQm0KqTr+X9/LztwDAzLrAurrM4NgVhhO33YslLZ6yGnATL5yv+8ZBDSuJnaKs2m6tpHNorqbC53Sq4lBpZsQs7IO9mfWD4JFJwS/X3bdT5NfI+npxb4qLZsq71hc8PmiXbR8enoYmA0F9DTG9SmUy6m4mZkrJ688E5zf8T27qiOmOg+Rvnu7Cf+giJyK/J9N7zd/3sQzA5siZWPpw7p514hONHLJYCyY9e9n+Td0OTThfOO4106bumuSSzETYsbbJzFXQqj58gswGIe6u7+6s/8xAMCU4MhmBAAA",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "477"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Fri, 05 Nov 2021 14:11:49 GMT"
+          ],
+          "Etag": [
+            "W/\"3e4c79e6783667010d2c4af3d9edea81\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "77765c8b-3358-4890-886e-22f99aef4e8d"
+          ],
+          "X-Runtime": [
+            "0.156657"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/projects"
+      }
+    },
+    {
+      "recorded_at": "2021-11-05T14:11:49",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "0"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.1"
+          ]
+        },
+        "method": "PUT",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/projects/945690527/archive"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAJbogA/7RTQY/aPBD9L/NdDbIdEhbfV991VW0vrVaWsSfgYpzIntBdrfjvlQkEWFWVqra3+MV+7828mXfwDtRqUTcrXsslA+8wkm89JlDwJAWXEhhEs0dQ8IyZnlL3DS3NCTNpk+zWH1DbhIYQGBhL/oCgWhMyMlj7EMw6IChKAzJo/Ss63Sdvr3daH33ealcIFEgu+YyLGRfAwA4pYbRvoODx8ycY+Xzc6INJ3kQCBf1o5+afcS5hzqDgBsS98UFTByoOIXzErf2Ix44wX8CMRAX00YbBoSa/R52w7xJNVawHt0GaaE4nja89xlyI+Jwz2HZDCm86nSo9IT623WjUdqErLf+vbWVjHoABmU0G9fWFQTBrDOdvO2Tq9rpPXY+JfOF+PzIIaFyJ7JxnVTV1Jaslg9anTOf4SmRQ6CbErK2D44X1SrBshOAPq6b5afQbJD29OBaneVfsjeKCL5b1subT09PE7CigpyFuzqHcTsVlaMbTfSfveiY4n/Mju9MRk85jpO/e7sI/EJGTyP/JtH7350W8MLBdpGQsXVu3aCrRiEquGAwZk/79LP+GL4cmXG6Mi+20KbsmuRQzIWa8fhYLJYRarL4Ag6Evu/urO8cfAwDfxj1uZwQAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "481"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Fri, 05 Nov 2021 14:11:49 GMT"
+          ],
+          "Etag": [
+            "W/\"1a6a4f9673338fe55a9994a51d6d5920\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "21a2e8a3-759b-4b90-b14b-062f615667d6"
+          ],
+          "X-Runtime": [
+            "0.054103"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/projects/945690527/archive"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

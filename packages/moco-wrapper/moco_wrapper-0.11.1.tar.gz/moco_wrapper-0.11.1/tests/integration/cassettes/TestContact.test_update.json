@@ -1,0 +1,193 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2020-11-26T08:54:54",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"lastname\": \"TestContact.test_update_creat\", \"firstname\": \"-\", \"gender\": \"U\"}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "78"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.23.0"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/3yQTW7CMBBG7/KtTRUIIPC2V6CbVpU1iQdw63gie9IfIe5epWkRdNHl+/w0kt8JwcMuV9V6UxscOHnOsHiAwT7kook6hsUMBpEuuOOi95KUWr1TLuqG3pOyazOTwkCDxtGDwYs0rpcSNEialk6aENn1R0k/zrvkV7enjyv6+8odhXjF5H3mUqblKB1fG998YzQh69HTJ2waYjSgN1LKbsjxd1E6FNinZ4N2KCqd67P0nDVwgT2dDVrpekqXC0MZQ035tnW9rjfb+fY22ljmths1rcd4a+zE3pHCYlEtqtl8Plusd9XGrpZ2tXyEwZT0fyekvYwfPH8FAAD//wxDQmbHAQAA",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "270"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Thu, 26 Nov 2020 08:54:54 GMT"
+          ],
+          "Etag": [
+            "W/\"581753aa5935d788764bf7b800ceb4d9\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "5d37d527-a58b-4945-a332-50364f7a43b3"
+          ],
+          "X-Runtime": [
+            "0.051728"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people"
+      }
+    },
+    {
+      "recorded_at": "2020-11-26T08:54:54",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"birthday\": \"1990-01-01\", \"home_address\": \"22. Main Street\", \"work_phone\": \"12345\", \"lastname\": \"smith\", \"tags\": [\"Important\", \"Test\"], \"job_position\": \"intern\", \"work_address\": \"21. Main Street\", \"company_id\": 760897980, \"gender\": \"M\", \"title\": \"dr. med.\", \"mobile_phone\": \"45678\", \"work_email\": \"peter.smith@example.org\", \"info\": \"He is an important test contact\", \"firstname\": \"peter\", \"home_email\": \"peter.smith+personal@example.org\", \"work_fax\": \"67890\"}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "460"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.23.0"
+          ]
+        },
+        "method": "PUT",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people/450683"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/4SRT4/TMBTEv0o0V9wo6Z808QmJCxz2xJ5AKHpNXltD/Ef2C2y16ndHbsmKXSFx9NPMeDS/Z5gRerurmnajcGI3coTGAxSOJiZxZBkagYUjFCZ6OSVr5AwFMTLl9xjLwvJYQuG7P/TBJyPGO2gYJxwdFKw/mIn7cPYuO7a7Zt9C4ZePP/ojPUGj2bddtZwWXb3ebHfLkS2ZaWlU3kq85yeyYeLSx9Mio3GMnBI01nVZPJBxxWeJzAKFs7f8r5x3gWPyjqY3gTf9X4Hrt4EHE+U80iV37bpqVdWrqoYC/SSh2M9xgnbzNCkInRL0V3yywUchl92PnATfFIY5ibd9iD5wFMMJ+vmqMHgbyF2g76j2TdV2+66tFOQS8jx33w3PHzQ58YN3QoOUJ5b+RXFVmFMGfM/qNptm03Z19xq25EKvWNNhGLN5iEzCY0+Sd6jW1aquV+vmsWr1bqt32y9QmMP4X41xRw+Nj1yYVJArzDJHkf8uhnt3XH8HAAD//zHRWNKeAgAA",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "399"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Thu, 26 Nov 2020 08:54:54 GMT"
+          ],
+          "Etag": [
+            "W/\"fa2dfdab8887025d22287db2e987c1e0\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "3040ad5a-9e21-40ab-aeb6-dc5878303d7e"
+          ],
+          "X-Runtime": [
+            "0.111266"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/contacts/people/450683"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

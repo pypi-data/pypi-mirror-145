@@ -1,0 +1,193 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2020-12-08T15:20:22",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"absence_code\": 5, \"date\": \"2011-02-04\", \"user_id\": 933638919, \"comment\": \"TestSchedule.test_update_create\", \"symbol\": 3}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "122"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.0"
+          ]
+        },
+        "method": "POST",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/schedules"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/3yQvW6EQAyE32XSmmh/7ghsF/EIuSoNWsDJIbGAdo2iU8S7R0CEUqWzbM98Hn+j7+AuKtdFXhI6LwwHo7TOlMnUBYR2CoFHgcONk7y1d+6WgZ+Fk9TLvCnqNvImJPgAJ3FhwnxW6RGaaYCzBJ9S/zkebge5vFzti1K2IIw+bOzX5osTj3fuZYMvSabAsf6dblTftN1+1zBFODxVVQWCPOZDnnhsGSthSRxPjrW5LUpdEj76mOSPHQiDPzu7+Uo4InW1l/0fRmXaZKq46aszyhnzDsKR/r+d9ScAAP//k+e962ABAAA=",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "239"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Tue, 08 Dec 2020 15:20:22 GMT"
+          ],
+          "Etag": [
+            "W/\"ce25d26bea5da9e5a78ca4e3cdf3dc10\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "76d41aea-7a3a-450f-9ca7-ba2a8165da6e"
+          ],
+          "X-Runtime": [
+            "0.053040"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/schedules"
+      }
+    },
+    {
+      "recorded_at": "2020-12-08T15:20:22",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"absence_code\": 5, \"am\": false, \"pm\": true, \"comment\": \"TestSchedule.test_update\", \"overwrite\": true}"
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Length": [
+            "102"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.25.0"
+          ]
+        },
+        "method": "PUT",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/schedules/4061869"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/3yQvW6sQAyF3+Xc1lzND0tguohHyFZp0ADeLBIDaMYoWkW8ewREq1RpbZ/vs/2FoYfLVaHLoiL0XhgORmmdKZOpHIRuDoEngcOVk7x1d+7Xkf8LJ2nW5UgQfIC7+TExYQlwElcmpEdo5xHOEnxKw8d0ck5nlV/si1K2JEw+7NbX9pMTT3ceZNeuSebAsfnp7j7fdv2x0ThHOPyr6xoEeSxnPPHUMTbCmjg+PdYWtqx0RbgNMckvHAijf1YO+EboInvhvvFyfMKoTJtMlVd9cUY5Y95BOO/+a2b7DgAA//8V0WvIWgEAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "241"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Tue, 08 Dec 2020 15:20:22 GMT"
+          ],
+          "Etag": [
+            "W/\"887f41b96bfc7b4b3918d07ba5e2b7bc\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "4745a741-fe6d-479d-9328-b3c440d7b555"
+          ],
+          "X-Runtime": [
+            "0.055366"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/schedules/4061869"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}

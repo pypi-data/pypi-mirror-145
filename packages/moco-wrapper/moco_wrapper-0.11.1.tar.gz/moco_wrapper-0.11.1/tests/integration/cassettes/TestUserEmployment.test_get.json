@@ -1,0 +1,196 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2020-11-24T07:12:33",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.23.0"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/users/employments?page=1"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/8zVzW6jMBDA8VeJ5uxEBtsQ5g32ntNGUeQFJ4sKBplBVRTx7hVpS+OmiVupBw5c4M/XTwPenqEsAGMZp4IzeDbmqTrtSbujof3/pncdoOQrzqDVRMZZwDPoGnArV5x92nYM2nuHBgYH19SAEPOYL6NoySNgQA2g7auKQd8ZN158fJxMiESssyhjcChdR1bXBhDIdAQMKj3t0f/yAgYGuTOaTLHXdHWDWGx4hoqj5H+BQd8WgWZgHxqpmJuGEr7G5kbjT90a1zVWU9nY+yxywxNUGfLsPst147HI2bFIn6Xo6/rku1zOesSRIlfI1UOOqfE41Ow41Bcci0vomYzfUmmPi7yx5HROXRhIJWGgsfGAktkBJT7QO8DPRyZBJUIir40nks5OJPVFelvS7bAENKIIZRzQeGs8jfXsNNahRecbszG+6eO/69R4GtncNJLoNzTi0FozNcPuJQAA//8UpN+PkggAAA==",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "367"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Tue, 24 Nov 2020 07:12:33 GMT"
+          ],
+          "Etag": [
+            "W/\"85a569c51a17cd272905db25559240af\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Page": [
+            "1"
+          ],
+          "X-Per-Page": [
+            "100"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "93eeb764-2fad-4c7a-8603-ec1cd3be8cf9"
+          ],
+          "X-Runtime": [
+            "0.033095"
+          ],
+          "X-Total": [
+            "8"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/users/employments?page=1"
+      }
+    },
+    {
+      "recorded_at": "2020-11-24T07:12:33",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": [
+            "*/*"
+          ],
+          "Accept-Encoding": [
+            "gzip, deflate"
+          ],
+          "Authorization": [
+            "Token token=<TOKEN>"
+          ],
+          "Connection": [
+            "keep-alive"
+          ],
+          "Content-Type": [
+            "application/json"
+          ],
+          "User-Agent": [
+            "python-requests/2.23.0"
+          ]
+        },
+        "method": "GET",
+        "uri": "https://<DOMAIN>.mocoapp.com/api/v1/users/employments/242730"
+      },
+      "response": {
+        "body": {
+          "base64_string": "H4sIAAAAAAAA/4SOzUrEQBCE36XOvUtnJv6kn8OTIqHd6dXFyQ8zPYgseXfJRUQQD3WpKqq+Ky4JEvpwF5nwYfaeP0fX8mo+vi2tVEjPRyas6m5lhlyhE+SpPzL90jNh/SvaCOeyTBAEDnzougN3IPgCmVvOhFat7OM7zhDjbbwfuoFwvpTqs04GgVt1ELJ+O/pyStgIp2Lqlkb1HwchPvAgNyw9P4LQ1vRPZ/sKAAD//4d//uANAQAA",
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Cache-Control": [
+            "max-age=0, private, must-revalidate"
+          ],
+          "Content-Encoding": [
+            "gzip"
+          ],
+          "Content-Length": [
+            "186"
+          ],
+          "Content-Type": [
+            "application/json; charset=utf-8"
+          ],
+          "Date": [
+            "Tue, 24 Nov 2020 07:12:33 GMT"
+          ],
+          "Etag": [
+            "W/\"2f10b00476b84018ba8d69c8e7d1dbea\""
+          ],
+          "Referrer-Policy": [
+            "strict-origin-when-cross-origin"
+          ],
+          "Vary": [
+            "Origin",
+            "Accept-Encoding"
+          ],
+          "X-Content-Type-Options": [
+            "nosniff"
+          ],
+          "X-Download-Options": [
+            "noopen"
+          ],
+          "X-Frame-Options": [
+            "SAMEORIGIN"
+          ],
+          "X-Permitted-Cross-Domain-Policies": [
+            "none"
+          ],
+          "X-Request-Id": [
+            "43f784c0-a861-4036-af95-f2c099c46a6c"
+          ],
+          "X-Runtime": [
+            "0.039638"
+          ],
+          "X-Xss-Protection": [
+            "1; mode=block"
+          ]
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://<DOMAIN>.mocoapp.com/api/v1/users/employments/242730"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.1"
+}
