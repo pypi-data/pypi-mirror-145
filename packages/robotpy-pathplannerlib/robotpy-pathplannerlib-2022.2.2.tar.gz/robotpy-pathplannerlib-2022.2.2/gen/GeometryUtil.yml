@@ -1,0 +1,21 @@
+---
+
+classes:
+  GeometryUtil:
+    methods:
+      unitLerp:
+        overloads:
+          units::second_t, units::second_t, double:
+          units::meters_per_second_t, units::meters_per_second_t, double:
+          units::meters_per_second_squared_t, units::meters_per_second_squared_t, double:
+          units::radians_per_second_t, units::radians_per_second_t, double:
+          units::radians_per_second_squared_t, units::radians_per_second_squared_t, double:
+          units::meter_t, units::meter_t, double:
+          units::curvature_t, units::curvature_t, double:
+      rotationLerp:
+      translationLerp:
+      quadraticLerp:
+      cubicLerp:
+      modulo:
+      isFinite:
+      isNaN:

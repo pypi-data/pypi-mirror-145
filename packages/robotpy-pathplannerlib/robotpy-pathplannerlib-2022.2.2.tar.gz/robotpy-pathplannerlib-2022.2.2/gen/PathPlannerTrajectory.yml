@@ -1,0 +1,42 @@
+---
+
+classes:
+  PathPlannerTrajectory:
+    methods:
+      PathPlannerTrajectory:
+        overloads:
+          std::vector<Waypoint>, units::meters_per_second_t, units::meters_per_second_squared_t, bool:
+          std::vector<PathPlannerState>:
+          "":
+      sample:
+      getStates:
+      numStates:
+      getState:
+      getInitialState:
+      getEndState:
+      getTotalTime:
+      asWPILibTrajectory:
+  PathPlannerTrajectory::PathPlannerState:
+    attributes:
+      time:
+      position:
+      velocity:
+      acceleration:
+      pose:
+      angularVel:
+      angularAccel:
+      holonomicRotation:
+      curveRadius:
+      deltaPos:
+    methods:
+      interpolate:
+  PathPlannerTrajectory::Waypoint:
+    attributes:
+      anchorPoint:
+      prevControl:
+      nextControl:
+      velocityOverride:
+      holonomicRotation:
+      isReversal:
+    methods:
+      Waypoint:
