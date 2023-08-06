@@ -1,0 +1,56 @@
+Metadata-Version: 2.1
+Name: elwaspatid
+Version: 2.0.0
+Summary: Space-time diagrams for the propagation of elastic waves in 1D rods.
+Home-page: https://github.com/dbrizard/ELWA-SPATID
+Author: Denis Brizard
+Author-email: denis.brizard@univ-eiffel.fr
+License: UNKNOWN
+Project-URL: Documentation, https://elwaspatid.readthedocs.io
+Keywords: wave propagation,elastic wave,SHPB,rod,1D,traction,compression
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Scientific/Engineering :: Physics
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# ELastic WAve SPAce-TIme Diagrams
+
+`elwaspatid` is a Python module for the computation of space-time diagrams for
+the propagation of elastic waves in 1D rods. The rods can have impedance variations
+along the propagation axis, and it is possible to consider several rods in contact.
+
+Initial conditions can be:
+
+* a prescribed input force at the left end of the first rod;
+* a prescribed velocity of the left rod, which impacts the next rod.
+
+Boundary conditions can be:
+
+* free end;
+* fixed end;
+* contact interface with another rod;
+* infinite end (ie. anechoic condition).
+
+
+## Installation
+
+`pip install elwaspatid`
+
+## Documentation
+
+[ReadTheDocs](https://elwa-spatid.readthedocs.io)
+
+## Usage
+
+See the examples in the documentation and in the `examples` folder of the github source.
+
+
+
+
