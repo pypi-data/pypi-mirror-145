@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+
+# {{ managed_message }}
+
+# stdlib
+import os
+import re
+import sys
+
+{% if modname == "domdf_python_tools" %}
+# 3rd party
+import domdf_python_tools
+
+domdf_python_tools.__docs = True
+{% endif %}
+
+# 3rd party
+from sphinx_pyproject import SphinxConfig
+
+sys.path.append(".")
+
+config = SphinxConfig(globalns=globals())
+project = config["project"]
+author = config["author"]
+documentation_summary = config.description
+
+{% for line in sphinx_conf_preamble %}{{ line }}
+{% endfor %}
+
+github_url = "https://github.com/{github_username}/{github_repository}".format_map(config)
+
+
+rst_prolog = f""".. |pkgname| replace:: {{ modname }}
+.. |pkgname2| replace:: ``{{ modname }}``
+.. |browse_github| replace:: `Browse the GitHub Repository <{github_url}>`__
+"""
+
+slug = re.sub(r'\W+', '-', project.lower())
+release = version = config.version
+
+todo_include_todos = bool(os.environ.get("SHOW_TODOS", 0))
+
+intersphinx_mapping = {
+		'python': ('https://docs.python.org/3/', None),
+		'sphinx': ('https://www.sphinx-doc.org/en/stable/', None),
+		{% for mapping in intersphinx_mapping %}{{ mapping }},{{ '\n' }}		{% endfor %}}
+
+html_theme_options = {{ pformat(html_theme_options) }}
+
+html_context = {{ pformat(html_context) }}
+htmlhelp_basename = slug
+
+latex_documents = [('index', f'{slug}.tex', project, author, 'manual')]
+man_pages = [('index', slug, project, [author], 1)]
+texinfo_documents = [('index', slug, project, author, slug, project, 'Miscellaneous')]
+
+toctree_plus_types = set(config["toctree_plus_types"])
+
+autodoc_default_options = {
+		'members': None,  # Include all members (methods).
+		'special-members': None,
+		"autosummary": None,
+		"show-inheritance": None,
+		'exclude-members': ','.join(config["autodoc_exclude_members"]),
+		}
+
+latex_elements = {
+		"printindex": "\\begin{flushleft}\n\\printindex\n\\end{flushleft}",
+		"tableofcontents": "\\pdfbookmark[0]{\\contentsname}{toc}\\sphinxtableofcontents",
+		}
+
+
+def setup(app):
+	from sphinx_toolbox.latex import better_header_layout
+
+	app.connect("config-inited", lambda app, config: better_header_layout(config))
+
+
+{% for line in sphinx_conf_epilogue %}{{ line }}
+{% endfor %}
