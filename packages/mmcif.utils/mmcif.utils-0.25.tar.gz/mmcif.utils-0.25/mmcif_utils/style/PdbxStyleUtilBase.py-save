@@ -1,0 +1,295 @@
+##
+# File: PdbxStyleUtilBase.py
+# Date: 4-Nov-2012  John Westbrook
+#
+# Update:
+#  4-Nov-2012  jdw  generalize references to style details through 
+#                   an input object of class PdbxCategoryStyleBase().
+#  8-Nov-2012  jdw  add write/update methods to this base class.
+#
+##
+"""
+Base utility methods for accessing PDBx category data integrated with presentation
+and style details.
+
+"""
+__docformat__ = "restructuredtext en"
+__author__    = "John Westbrook"
+__email__     = "jwest@rcsb.rutgers.edu"
+__license__   = "Creative Commons Attribution 3.0 Unported"
+__version__   = "V0.01"
+
+import os,traceback
+from pdbx.reader.PdbxReader     import PdbxReader
+from pdbx.reader.PdbxContainers import *
+
+
+
+class PdbxStyleUtilBase(object):
+    ''' Utility methods for reading and writing PDBx data incorporating
+        external presentation style defintions.
+
+    '''
+    def __init__(self,styleObject=None,verbose=True,log=sys.stderr):
+        
+        self.__stObj=styleObject
+        self.__verbose=verbose
+        self.__debug=False
+        self.__lfh=log
+
+        # Target data file, current data container, and current data container identifier.
+        #
+        self.__filePath=None                
+        #
+        #
+        self.__currentContainer=None
+        self.__currentContainerId=None
+        self.__currentContainerList=[]
+
+        #
+    def _setFilePath(self,filePath,blockId=None):
+        """ Specify the target file path and data block.
+        """
+        try:
+            if blockId is not None:
+                self.__currentContainerId=str(blockId)
+            self.__filePath=filePath
+            if (not os.access(self.__filePath,os.R_OK)):
+                if (self.__verbose):
+                    self.__lfh.write("+ERROR- PdbxUtilBase.setFilePath() Missing file %s\n" % filePath)
+                return False
+            else:
+                if (self.__verbose):
+                    self.__lfh.write("+PdbxUtilBase.setFilePath() file path %s block id %s\n"
+                                     % (self.__filePath,self.__currentContainerId))
+            return True
+        
+        except:
+            if (self.__verbose):
+                self.__lfh.write("+ERROR- PdbxUtilBase.setFilePath() Missing file %s\n" % filePath)
+            traceback.print_exc(file=self.__lfh)                
+            return False
+        
+    def _getBlockId(self):
+        """  Return a reference to the current datablock container.
+        """
+        try:
+            if self.__currentContainer is not None:
+                return self.__currentContainer.getName()
+            else:
+                False
+        except:
+            return False
+
+    def _setBlock(self):
+        """ Set the current the data container for the target data block in the target data file.  If the block
+            identifer has been set, then the datablock corresponding to this identifier will be set.
+
+            Otherwise if the block id is set to None, the data in the first datablock is set.
+
+            Returns True for success or False otherwise.  
+        """
+        try:
+            self.__currentContainer=self.__getDataBlock(self.__filePath,self.__currentContainerId)
+            if self.__currentContainer is not None:
+                return True
+            else:
+                return False
+        except:
+            traceback.print_exc(file=self.__lfh)
+            return False
+
+
+    def __getDataBlock(self,filePath,blockId=None):
+        """ Internal method to read/append data input file to the current data container list.
+            The current data block is set to the input target datablock if this provided and 
+        
+            If no blockId is provided return the first data block ( block type 'data') is returned.
+        """
+        try:
+            ifh=open(filePath,'r')
+            pRd=PdbxReader(ifh)
+            pRd.read(self.__currentContainerList)
+            ifh.close()
+            #
+            # Note -   the container list is not indexed at this point - 
+            # 
+            if (blockId is not None):
+                for block in self.__currentContainerList:
+                    if (block.getType() == 'data' and block.getName() == blockId):
+                        if (self.__debug):
+                            block.printIt(self.__lfh)
+                        return block
+            else:
+                for block in self.__currentContainerList:
+                    if (block.getType() == 'data'):
+                        if (self.__debug):
+                            block.printIt(self.__lfh)
+                        return block
+                
+            return None
+        except:
+            if (self.__verbose):
+                traceback.print_exc(file=self.__lfh)
+            return None
+
+
+    # 
+    # 
+    def _getItemDictList(self,catName):
+        """Return a list of dictionaries of the input category where the dictionaries
+           represent the row with full item names as dictionary keys.
+        """
+        #
+        #itTupList= PdbxChemCompCategoryDefinition._cDict[catName]
+        #
+        # List of item names in style order -
+        #
+        itStList= self.__stObj.getItemNameList(catName)
+
+        #
+        # Get category object - from current data block        
+        dList=[]        
+        try:
+            catObj=self.__currentContainer.getObj(catName)            
+            nRows=catObj.getRowCount()
+        except:
+            return dList
+        #
+        # Get column name index.
+        #
+        itDict={}
+        itNameList=catObj.getItemNameList()
+        for idxIt,itName in enumerate(itNameList):
+            itDict[itName]=idxIt
+        #
+        # Find the mapping to the local category definition
+        #
+        colDict={}
+        # 
+        for ii,itSt in enumerate(itStList):
+            if itDict.has_key(itSt):
+                colDict[itSt] = itDict[itSt]
+        #
+        rowList=catObj.getRowList()
+
+        for row in rowList:
+            tD={}
+            for k,v in colDict.items():
+                tD[k]=row[v]
+            dList.append(tD)
+
+        return dList
+
+    def _getAttribDictList(self,catName):
+        """Return the input category as a list of dictionaries where the dictionaries
+           represent the row with attribute names as dictionary keys.
+        """
+        #
+        dList=[]
+        #
+        #itTupList= PdbxChemCompCategoryDefinition._cDict[catName]
+        #
+        # List of item names in style order -        
+        itStList= self.__stObj.getItemNameList(catName)        
+
+
+        # Get category object - from current data block
+        #
+        catObj=self.__currentContainer.getObj(catName)
+        if catObj is None:
+            return dList
+        
+        nRows=catObj.getRowCount()
+        #
+        # Get column name index.
+        #
+        itDict={}
+        itNameList=catObj.getItemNameList()
+        for idxIt,itName in enumerate(itNameList):
+            itDict[itName]=idxIt
+        #
+        # Find the mapping to the local category definition
+        #
+        colDict={}
+        # 
+        for ii,itSt in enumerate(itStList):
+            if itDict.has_key(itSt):
+                attrib = CifName.attributePart(itSt)
+                colDict[attrib] = itDict[itSt]
+        #
+        rowList=catObj.getRowList()
+        for row in rowList:
+            tD={}
+            for k,v in colDict.items():
+                tD[k]=row[v]
+            dList.append(tD)
+
+        return dList
+
+    def _getRowDataList(self,catName):
+        """Return  a list of data from the input category including
+           data types and default value replacement.
+
+           For list representing each row is column ordered according to the internal
+           style data structure.
+           
+        """
+        dataList=[]
+        #itTupList= PdbxChemCompCategoryDefinition._cDict[catName]
+        itTupList=self.__stObj.getItemNameTypeAndDefaultList(catName)
+
+        
+        catObj=self.__currentContainer.getObj(catName)
+        if (catObj is None):
+            return dataList
+        
+        nRows=catObj.getRowCount()
+        
+        itDict={}
+        itNameList=catObj.getItemNameList()
+        for idxIt,itName in enumerate(itNameList):
+            itDict[itName]=idxIt
+        #
+        colTupList=[]
+        # (column index of data or -1, type name, [default value]  )
+        for ii,(itName,itType,itDefault) in enumerate(itTupList):
+            if itDict.has_key(itName):
+                colTupList.append( (itDict[itName], itType, itDefault ))
+            else:
+                colTupList.append( (-1, itType, itDefault) )
+        #
+        rowList=catObj.getRowList()
+
+        for row in rowList:
+            uR=[]
+            for cTup in colTupList:
+                if cTup[0] < 0:
+                    uR.append(self.__applyType(cTup[1],cTup[2],cTup[2]) )
+                else:
+                    uR.append(self.__applyType(cTup[1],cTup[2],row[cTup[0]]))
+                    
+            dataList.append(uR)
+
+        return dataList
+                    
+    def __applyType(self,type,default,val):
+        """Apply type conversion to the input value and assign default values to
+           missing values. 
+        """
+        tval = val
+        if (val is None):
+            tval=default
+        if (isinstance(tval,str) and (len(tval)<1 or tval == '.' or tval == '?')):
+            tval=default
+            
+        if type == "int":
+            return int(str(tval))
+        elif type == "float":
+            return float(str(tval))
+        elif type == "str":
+            return str(tval)
+        else:
+            return tval
+
+                        
