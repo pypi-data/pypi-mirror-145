@@ -1,0 +1,45 @@
+// Entry point
+start: instructions*
+
+// Collection data structure Definitions
+?instructions: enum
+            | ruleset
+            | schema_entry
+
+schema_entry: "schema" "{" rule+ "}"
+ruleset: "ruleset" /[A-Z]{1}[a-z0-9_]+/ "{" rule+ "}"
+enum: "enum" /[A-Z]{1}[a-z0-9_]+/ "{" enum_item+ "}"
+enum_item: /[A-Z0-9_]+/ "=" /[A-Za-z0-9_]+/
+
+// Rule Definitions
+?rule: required_rule
+     | optional_rule
+
+required_rule: /[a-zA-Z0-9_]+/ type "required"
+             | /[a-zA-Z0-9_]+/ type
+optional_rule: /[a-zA-Z0-9_]+/ type "optional"
+
+// Data types for rules
+type: int_type
+     | float_type
+     | str_type
+     | list_type
+     | map_type
+     | any_type
+     | container_type
+
+str_type: "str"
+int_type: "int"
+any_type: "any"
+float_type: "float"
+list_type: "list""(" type ")"
+map_type: "map""(" type ")"
+container_type: /[A-Z]{1}[a-z0-9_]+/
+
+NEW_LINES: "\n"+
+
+%import common.INT
+%import common.ESCAPED_STRING
+%import common.WS
+%ignore WS
+%ignore NEW_LINES
