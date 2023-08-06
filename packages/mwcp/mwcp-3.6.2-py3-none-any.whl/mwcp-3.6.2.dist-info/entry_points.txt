@@ -1,0 +1,7 @@
+[console_scripts]
+mwcp = mwcp.cli:main
+mwcp_update_legacy_tests = mwcp.tools.update_legacy_tests:main
+poshdeob = mwcp.utils.poshdeob:main
+
+[mwcp.parsers]
+mwcp = mwcp.parsers
