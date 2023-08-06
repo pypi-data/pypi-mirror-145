@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: Rnd-str
+Version: 0.0.1
+Summary: Random string production library.
+Home-page: https://github.com/DrSudoSaeed
+Author: SudoSaeed
+Author-email: DrSudoSaeed@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/DrSudoSaeed/
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Example Package
+
+[GetHub Project](https://github.com/DrSudoSaeed/)
+
+Random string production library.
+
+To use, install the library according to the instructions!
+
+**Follow the steps below to use:**
+
+```
+
+**Default length: 5**
+
+
+from Rnd_str.main import random_str
+
+a = random_str(5)
+print(a)
+
+```
+
