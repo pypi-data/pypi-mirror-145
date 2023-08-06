@@ -1,0 +1,97 @@
+Metadata-Version: 2.1
+Name: sdss-skymakercam
+Version: 0.0.6
+Summary: Skymaker camera with sdss-basecam
+Home-page: https://github.com/sdss/skymakercam
+License: BSD-3-Clause
+Keywords: astronomy,software
+Author: Florian Briegel
+Author-email: briegel@mpia.de
+Requires-Python: >3.7,<3.10
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Documentation :: Sphinx
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: PyQt5 (>=5.14)
+Requires-Dist: astropy (>=4.0)
+Requires-Dist: astroquery (>0.4)
+Requires-Dist: asyncudp (>=0.4)
+Requires-Dist: click-default-group (>=1.2.2,<2.0.0)
+Requires-Dist: daemonocle (>=1.1.1,<2.0.0)
+Requires-Dist: healpy (>=1.15)
+Requires-Dist: jsonpickle (==1.3)
+Requires-Dist: keyboard (>0.13)
+Requires-Dist: matplotlib (>=3.1.1)
+Requires-Dist: numpy (>=1.0)
+Requires-Dist: scikit_image (>=0.18)
+Requires-Dist: scipy (>=1.7)
+Requires-Dist: sdss-access (>=0.2.3)
+Requires-Dist: sdss-basecam (>=0.5)
+Requires-Dist: sdss-clu (>=1.2.0)
+Requires-Dist: sdss-cluplus (>=0.0.15)
+Requires-Dist: sdss-lvmtipo (>=0.0.7)
+Requires-Dist: sdss-tree (>=2.15.2)
+Requires-Dist: sdsstools (>=0.4.0)
+Requires-Dist: sep (>=1.2)
+Requires-Dist: transitions (>0.8)
+Project-URL: Documentation, https://sdss-skymakercam.readthedocs.org
+Project-URL: Repository, https://github.com/sdss/skymakercam
+Description-Content-Type: text/markdown
+
+# skymakercam
+
+![Versions](https://img.shields.io/badge/python->3.7-blue)
+[![Documentation Status](https://readthedocs.org/projects/sdss-skymakercam/badge/?version=latest)](https://sdss-skymakercam.readthedocs.io/en/latest/?badge=latest)
+[![Travis (.org)](https://img.shields.io/travis/sdss/skymakercam)](https://travis-ci.org/sdss/skymakercam)
+[![codecov](https://codecov.io/gh/sdss/skymakercam/branch/main/graph/badge.svg)](https://codecov.io/gh/sdss/skymakercam)
+
+Virtual camera based on sdss-basecam using remote catalog
+
+## from [lvmtan](https://github.com/sdss/lvmtan) run:
+
+    poetry run container_start --name lvm.all
+
+## from [lvmpwi](https://github.com/sdss/lvmpwi) run:
+
+    poetry run container_start --name=lvm.sci.pwi --simulator
+
+## from skymakercam run:
+    poetry run python utils/plot_skymakercam.py -v -c python/skymakercam/etc/cameras.yaml lvm.sci.agw.cam
+    
+* Move lvm.sci.foc for focusing - relative 10000 steps.
+* Move lvm.sci.km absolute in degree "DEG".
+* Move lvm.sci.pwi for target.
+* Press 'o' for find stars and recenter.
+* Press 'q' to quit.
+
+![image](https://github.com/sdss/skymakercam/raw/master/docs/skymaker_plot.png)
+
+## use it in your own python code:
+With this [config example python/skymakercam/etc/cameras.yaml](https://github.com/sdss/skymakercam/blob/master/python/skymakercam/etc/cameras.yaml) and the actors running from before, it can be used like this:
+
+    import asyncio
+    from logging import DEBUG, INFO
+    from skymakercam.camera import SkymakerCameraSystem, SkymakerCamera
+
+    async def example_skymakercam(camname, exptime, verb, config):
+   
+       cs = SkymakerCameraSystem(SkymakerCamera, camera_config=config, verbose=verb)
+       cam = await cs.add_camera(name=camname, uid=cs._config[camname]["uid"])
+
+       # eg: expose or do whatever u do with a sdss-basecam type camera.
+       exp = await cam.expose(exptime, camname)
+       
+   
+    verb = DEBUG
+    camname = "lvm.sci.agw.cam"
+    config = "python/skymakercam/etc/cameras.yaml"
+
+    asyncio.run(example_skymakercam(camname, 5.0, verb, config))
+    
+
