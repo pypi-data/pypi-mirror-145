@@ -1,0 +1,35 @@
+[project]
+name = "dotcp"
+version = "0.1.0"
+description = "copy your selected dotfiles to directory"
+authors = [
+    { name = "jieggii", email = "jieggii.contact@gmail.com" },
+]
+license-expression = "MIT"
+dependencies = []
+requires-python = ">=3.6.2"
+readme = "README.md"
+keywords = [
+    "dotfiles",
+]
+
+[project.urls]
+Homepage = "https://github.com/jieggii/dotcp"
+"Bug Tracker" = "https://github.com/jieggii/dotcp/issues"
+
+[project.scripts]
+dotcp = "dotcp.__main__:main"
+
+[project.optional-dependencies]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=22.3.0",
+    "isort>=5.10.1",
+]
+
+[build-system]
+requires = [
+    "pdm-pep517>=0.12.0",
+]
+build-backend = "pdm.pep517.api"
