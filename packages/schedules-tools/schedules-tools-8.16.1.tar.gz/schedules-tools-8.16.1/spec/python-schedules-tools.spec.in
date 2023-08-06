@@ -1,0 +1,80 @@
+%global srcname schedules-tools
+
+%global log_dir /var/log/%{name}
+%global log_files debug.log
+
+%define py_setup "-m"
+
+
+Name:           python3-%{srcname}
+Version:        %{version}
+Release:        %{release_number}%{?dist}
+Epoch:          1
+Summary:        Schedule tools to handle various formats
+
+License:        BSD
+Group:          Applications/Engineering
+Url:            https://github.com/RedHat-Eng-PGM/schedules-tools
+Source0:        %{srcname}-%{version}.%{release_number}.tar.gz
+BuildArch:      noarch
+
+
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
+BuildRequires: python3-pip
+
+%description
+Schedule tools to handle various formats
+
+Requires: python3-icalendar
+Requires: python3-lxml
+
+%{?python_provide:%python_provide python3-%{srcname}}
+
+
+
+%prep
+%autosetup -n %{srcname}-%{version}.%{release_number}
+
+
+
+%build
+%{__python3} -m pip install -U build --user
+CFLAGS="${CFLAGS:-${RPM_OPT_FLAGS}}" LDFLAGS="${LDFLAGS:-${RPM_LD_FLAGS}}" %{__python3} -m build
+
+
+
+
+%install
+# py3_install macro uses plain setup.py (distutils) - can't deal with setuptools_scm
+# Had to replace with wheel macro which uses pip for installation
+%py3_install_wheel *.whl
+
+
+# create log dir
+mkdir -m 755 -p %{buildroot}%{log_dir}
+for log_file in %log_files ; do
+    touch %{buildroot}%{log_dir}/$log_file
+done
+
+
+
+%files
+%defattr(644,root,root,755)
+%{python3_sitelib}/*
+
+%attr(755,root,root) %{_bindir}/schedule-*
+
+# setup permissions so that logrotate works correctly
+%defattr(664,root,apache,755)
+%dir %log_dir
+%ghost %config %log_dir/*
+
+
+
+%changelog
+* Mon Nov 9 2020 Pavel Slama <pslama@redhat.com> 8.0-1
+- Remove py2
+
+* Wed May 13 2020 Pavel Slama <pslama@redhat.com> 7.63-5
+- Remove spec generation from python setup.py - split
