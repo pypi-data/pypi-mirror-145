@@ -1,0 +1,8 @@
+[shillelagh.adapter]
+airtable = airtabledb.adapter:AirtableAdapter
+
+[sqlalchemy.dialects]
+airtable = airtabledb.dialect:APSWAirtableDialect
+
+[superset.db_engine_specs]
+airtable = airtabledb.db_engine_specs:AirtableEngineSpec
