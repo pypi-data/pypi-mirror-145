@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: phantasy-rest
+Version: 0.4.4
+Summary: REST-like API for PHANTASY
+Home-page: https://github.com/phantasy-project/phantasy-rest
+Author: Tong Zhang
+Author-email: zhangt@frib.msu.edu
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: aioca
+Requires-Dist: fastapi
+Requires-Dist: gunicorn
+Requires-Dist: phantasy
+Requires-Dist: toml
+Requires-Dist: uvicorn[standard]
+
+# phantasy-rest
+
+REST-like API for PHANTASY.
+
+

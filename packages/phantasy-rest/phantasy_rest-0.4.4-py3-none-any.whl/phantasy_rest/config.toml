@@ -1,0 +1,31 @@
+# Configuration files for PHANTASY-REST.
+# all keyword supports override with env, env name is f'PH_{keyword}'
+#
+
+[LATTICE]
+  MACHINE = 'ARIS_VA'
+  SEGMENT = 'F1'
+
+[GUNICORN]
+  URL = '0.0.0.0'
+  PORT = '8080'
+  BACKLOG = 2048
+  WORKERS = 4
+  WORKER_CLASS = 'uvicorn.workers.UvicornWorker'
+  WORKER_CONNECTION = 1000
+  TIMEOUT = 30
+  KEEPALIVE = 2
+  SPEW = false
+  DAEMON = false
+  # PIDFILE = '/var/log/phantasy-rest/pid'
+  PIDFILE = '/tmp/phantasy-rest.pid'
+  # ERRORLOG = '/var/log/phantasy-rest/error.log'
+  ERRORLOG = '/tmp/phantasy-rest.error.log'
+  LOGLEVEL = 'info'
+  # ACCESSLOG = '/var/log/phantasy-rest/access.log'
+  ACCESSLOG = '/tmp/phantasy-rest.access.log'
+  ACCESS_LOG_FORMAT = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+
+  # SSL
+  # CERTFILE = "<cert filepath>"
+  # KEYFILE = "<key filepath>"
