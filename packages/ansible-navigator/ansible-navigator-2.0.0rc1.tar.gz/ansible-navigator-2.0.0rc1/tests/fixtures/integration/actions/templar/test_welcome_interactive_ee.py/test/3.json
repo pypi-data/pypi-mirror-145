@@ -1,0 +1,21 @@
+{
+    "name": "test[3-:{{ this[0] }}-render menu as content]",
+    "index": 3,
+    "comment": "render menu as content",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "0│---",
+        "1│changed: false",
+        "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "3│host: localhost",
+        "4│number: 0",
+        "5│result: Ok",
+        "6│task: debug print play-1 task-1",
+        "7│task_action: debug",
+        "^b/PgUp page up                                                                                      ^f/PgDn page down                                                                                      ↑↓ scroll                                                                                      esc back                                                                                      :help help                                                                                     Successful"
+    ]
+}

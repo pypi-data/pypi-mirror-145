@@ -1,0 +1,11 @@
+{
+    "name": "test[1-:0-Task list-:help help]",
+    "index": 1,
+    "comment": "Task list",
+    "output": [
+        "  Result                 Host                             Number                  Changed                    Task                Task action                             Duration",
+        "0│OK                     localhost                             0                  False                      debug               debug                                         0s",
+        "1│OK                     localhost                             1                  False                      debug               debug                                         0s",
+        "^b/PgUp page up                    ^f/PgDn page down                    ↑↓ scroll                    esc back                    [0-9] goto                    :help help                   Successful"
+    ]
+}

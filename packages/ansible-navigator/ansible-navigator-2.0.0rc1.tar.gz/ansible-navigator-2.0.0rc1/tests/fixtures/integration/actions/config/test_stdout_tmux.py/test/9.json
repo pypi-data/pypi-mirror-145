@@ -1,0 +1,39 @@
+{
+    "name": "test[config specified configuration file without ee  clear && ansible-navigator config dump -c /tests/fixtures/integration/actions/config/ansible.cfg --ee False --ll debug --mode stdout]",
+    "index": 9,
+    "comment": "config specified configuration file without ee",
+    "additional_information": {
+        "present": [
+            ".os2"
+        ],
+        "absent": [],
+        "compared_fixture": false
+    },
+    "output": [
+        "PLAYBOOK_DIR(default) = None",
+        "PLAYBOOK_VARS_ROOT(default) = top",
+        "PLUGIN_FILTERS_CFG(default) = None",
+        "PYTHON_MODULE_RLIMIT_NOFILE(default) = 0",
+        "RETRY_FILES_ENABLED(env: ANSIBLE_RETRY_FILES_ENABLED) = False",
+        "RETRY_FILES_SAVE_PATH(default) = None",
+        "RUN_VARS_PLUGINS(default) = demand",
+        "SHOW_CUSTOM_STATS(default) = False",
+        "STRING_CONVERSION_ACTION(default) = warn",
+        "STRING_TYPE_FILTERS(default) = ['string', 'to_json', 'to_nice_json', 'to_yaml', 'to_nice_yaml', 'ppretty', 'json']",
+        "SYSTEM_WARNINGS(default) = True",
+        "TAGS_RUN(default) = []",
+        "TAGS_SKIP(default) = []",
+        "TASK_DEBUGGER_IGNORE_ERRORS(default) = True",
+        "TASK_TIMEOUT(default) = 0",
+        "TRANSFORM_INVALID_GROUP_CHARS(default) = never",
+        "USE_PERSISTENT_CONNECTIONS(default) = False",
+        "VALIDATE_ACTION_GROUP_METADATA(default) = True",
+        "VARIABLE_PLUGINS_ENABLED(default) = ['host_group_vars']",
+        "VARIABLE_PRECEDENCE(default) = ['all_inventory', 'groups_inventory', 'all_plugins_inventory', 'all_plugins_play', 'groups_plugins_inventory', 'groups_plugins_play']",
+        "VERBOSE_TO_STDERR(default) = False",
+        "WIN_ASYNC_STARTUP_TIMEOUT(default) = 5",
+        "WORKER_SHUTDOWN_POLL_COUNT(default) = 0",
+        "WORKER_SHUTDOWN_POLL_DELAY(default) = 0.1",
+        "YAML_FILENAME_EXTENSIONS(/home/user/github/ansible-navigator/tests/fixtures/integration/actions/config/ansible.cfg) = ['.os2'](venv) bash-5.1$"
+    ]
+}

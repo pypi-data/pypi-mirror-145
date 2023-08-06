@@ -1,0 +1,16 @@
+{
+    "name": "test[15-:back-Back to browse company_name.coll_2 plugins window]",
+    "index": 15,
+    "comment": "Back to browse company_name.coll_2 plugins window",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "  Company name.coll 2                                    Type               Added            Deprecated                     Description",
+        "0│lookup_2                                               lookup             2.0.0            False                          This is test lookup plugin",
+        "1│mod_2                                                  module             2.0.0            False                          This is a test module",
+        "^b/PgUp page up                     ^f/PgDn page down                     ↑↓ scroll                     esc back                     [0-9] goto                     :help help"
+    ]
+}

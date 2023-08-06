@@ -1,0 +1,15 @@
+{
+    "name": "test[8-:back-return to filtered list]",
+    "index": 8,
+    "comment": "return to filtered list",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "  Name                                                                                                        Default                            Source                             Current",
+        "0│Yaml filename extensions                                                                                    True                               default                            ['.yml', '.yaml', '.json']",
+        "^b/PgUp page up                                      ^f/PgDn page down                                      ↑↓ scroll                                      esc back                                      [0-9] goto                                      :help help"
+    ]
+}

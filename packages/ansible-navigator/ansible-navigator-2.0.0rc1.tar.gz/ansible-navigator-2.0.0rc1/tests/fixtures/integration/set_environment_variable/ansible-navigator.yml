@@ -1,0 +1,8 @@
+---
+ansible-navigator:
+  execution-environment:
+    environment-variables:
+      set:
+        TEST_STR: "navigator"
+        TEST_BOOL: "true"
+        TEST_INT: "42"

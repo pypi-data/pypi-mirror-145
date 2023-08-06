@@ -1,0 +1,15 @@
+{
+    "name": "test[3-:back-return to filtered settings list]",
+    "index": 3,
+    "comment": "return to filtered settings list",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "  Name                                      Default                                                             Source                                                                                                        Current",
+        "0│App                                       False                                                               Command line                                                                                                  XXXXXXX",
+        "^b/PgUp page up                                      ^f/PgDn page down                                      ↑↓ scroll                                      esc back                                      [0-9] goto                                      :help help"
+    ]
+}

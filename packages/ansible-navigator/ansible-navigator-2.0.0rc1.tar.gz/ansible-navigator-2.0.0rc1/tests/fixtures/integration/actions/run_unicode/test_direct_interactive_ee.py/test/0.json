@@ -1,0 +1,15 @@
+{
+    "name": "test[0-ansible-navigator run /tests/fixtures/integration/actions/run_unicode/site.yaml -i /tests/fixtures/integration/actions/run_unicode/inventory --ee True --ll debug --mode interactive-ansible-navigator run playbook]",
+    "index": 0,
+    "comment": "ansible-navigator run playbook",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "  Play name                                          Ok    Changed        Unreachable           Failed       Skipped        Ignored        In progress           Task count                    Progress",
+        "0│Simple unicode output test                          2          1                  0                0             0              0                  0                    2                    Complete",
+        "^b/PgUp page up                    ^f/PgDn page down                    ↑↓ scroll                    esc back                    [0-9] goto                    :help help                   Successful"
+    ]
+}

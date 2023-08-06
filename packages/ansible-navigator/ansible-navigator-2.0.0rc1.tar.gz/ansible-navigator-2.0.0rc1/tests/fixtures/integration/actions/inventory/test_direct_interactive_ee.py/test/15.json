@@ -1,0 +1,16 @@
+{
+    "name": "test[15-:back-Previous window (Browse hosts/ungrouped window)]",
+    "index": 15,
+    "comment": "Previous window (Browse hosts/ungrouped window)",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "  Name                                                                                                                                                                                                   Taxonomy                                                                                                                                                                           Type",
+        "0│hosts                                                                                                                                                                                                  all                                                                                                                                                                                group",
+        "1│ungrouped                                                                                                                                                                                              all                                                                                                                                                                                group",
+        "^b/PgUp page up                                                                       ^f/PgDn page down                                                                       ↑↓ scroll                                                                       esc back                                                                       [0-9] goto                                                                       :help help"
+    ]
+}

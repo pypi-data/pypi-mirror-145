@@ -1,0 +1,15 @@
+{
+    "name": "test[6-:back-Previous window (group01 hosts detail window)]",
+    "index": 6,
+    "comment": "Previous window (group01 hosts detail window)",
+    "additional_information": {
+        "present": [],
+        "absent": [],
+        "compared_fixture": true
+    },
+    "output": [
+        "  Name                                     Taxonomy                                                                         Type                   Ansible network os                                                                    Ansible network cli ssh type                                                                                                       Ansible connection",
+        "0│host0101                                 all▸hosts▸group01                                                                host                   org.coll.nos                                                                          None                                                                                                                               ansible.netcommon.network_cli",
+        "^b/PgUp page up                                                                       ^f/PgDn page down                                                                       ↑↓ scroll                                                                       esc back                                                                       [0-9] goto                                                                       :help help"
+    ]
+}

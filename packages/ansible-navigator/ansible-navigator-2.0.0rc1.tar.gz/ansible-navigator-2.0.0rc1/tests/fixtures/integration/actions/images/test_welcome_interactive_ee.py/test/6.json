@@ -1,0 +1,34 @@
+{
+    "name": "test[6-:1-goto General information]",
+    "index": 6,
+    "comment": "goto General information",
+    "additional_information": {
+        "present": [
+            "friendly:"
+        ],
+        "absent": [],
+        "compared_fixture": false
+    },
+    "output": [
+        "Image: creator-ee:v0.4.2 (primary) (OS and python version information)",
+        " 0│---                                                                                                                                                                                                 ▒",
+        " 1│friendly:                                                                                                                                                                                           ▒",
+        " 2│  details: |-                                                                                                                                                                                       ▒",
+        " 3│    CentOS Stream release 8                                                                                                                                                                         ▒",
+        " 4│os:                                                                                                                                                                                                 ▒",
+        " 5│  details:                                                                                                                                                                                          ▒",
+        " 6│  - ansi-color: 0;31                                                                                                                                                                                ▒",
+        " 7│    bug-report-url: https://bugzilla.redhat.com/                                                                                                                                                    ▒",
+        " 8│    cpe-name: cpe:/o:centos:centos:8                                                                                                                                                                ▒",
+        " 9│    home-url: https://centos.org/                                                                                                                                                                   ▒",
+        "10│    id: centos                                                                                                                                                                                      ▒",
+        "11│    id-like: rhel fedora                                                                                                                                                                            ▒",
+        "12│    name: CentOS Stream                                                                                                                                                                             ▒",
+        "13│    platform-id: platform:el8                                                                                                                                                                       ▒",
+        "14│    pretty-name: CentOS Stream 8                                                                                                                                                                    ▒",
+        "15│    redhat-support-product: Red Hat Enterprise Linux 8",
+        "16│    redhat-support-product-version: CentOS Stream",
+        "17│    version: '8'",
+        "^b/PgUp page up                            ^f/PgDn page down                            ↑↓ scroll                            esc back                            :help help"
+    ]
+}

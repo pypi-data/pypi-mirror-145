@@ -1,0 +1,10 @@
+{
+    "name": "test[0-ansible-navigator replay /tests/fixtures/integration/actions/replay/playbook-artifact.json --execution-environment true --ll debug-run top window-search_within_response0]",
+    "index": 0,
+    "comment": "run top window",
+    "output": [
+        "  Play name             Ok     Changed           Unreachable                Failed          Skipped           Ignored           In progress                Task count                          Progress",
+        "0│localhost              2           0                     0                     0                0                 0                     0                         2                          Complete",
+        "^b/PgUp page up                    ^f/PgDn page down                    ↑↓ scroll                    esc back                    [0-9] goto                    :help help                   Successful"
+    ]
+}

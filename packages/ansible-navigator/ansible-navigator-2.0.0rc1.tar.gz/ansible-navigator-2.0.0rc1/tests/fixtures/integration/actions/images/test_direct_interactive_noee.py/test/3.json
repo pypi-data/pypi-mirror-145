@@ -1,0 +1,34 @@
+{
+    "name": "test[3-:0-goto Image information]",
+    "index": 3,
+    "comment": "goto Image information",
+    "additional_information": {
+        "present": [
+            "architecture:"
+        ],
+        "absent": [],
+        "compared_fixture": false
+    },
+    "output": [
+        "Image: creator-ee:v0.4.2 (primary) (Information collected from image inspection)",
+        "  0│---                                                                                                                                                                                                ▒",
+        "  1│details:                                                                                                                                                                                           ▒",
+        "  2│  annotations:",
+        "  3│    org.opencontainers.image.base.digest: sha256:8cd9915ab8f7c8e447791a62eca1db67c89030fe3092a7b2ccd733294b138176",
+        "  4│    org.opencontainers.image.base.name: quay.io/ansible/ansible-runner:latest",
+        "  5│  architecture: amd64",
+        "  6│  author: ''",
+        "  7│  comment: Imported from -",
+        "  8│  config:",
+        "  9│    cmd:",
+        " 10│    - ansible-runner",
+        " 11│    - run",
+        " 12│    - /runner",
+        " 13│    entrypoint:",
+        " 14│    - entrypoint",
+        " 15│    env:",
+        " 16│    - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        " 17│    - container=oci",
+        "^b/PgUp page up                            ^f/PgDn page down                            ↑↓ scroll                            esc back                            :help help"
+    ]
+}
