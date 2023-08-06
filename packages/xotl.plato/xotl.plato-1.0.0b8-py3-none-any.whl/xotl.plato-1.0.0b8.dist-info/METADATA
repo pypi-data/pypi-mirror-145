@@ -1,0 +1,58 @@
+Metadata-Version: 2.1
+Name: xotl.plato
+Version: 1.0.0b8
+Summary: 'Basic (non-recursive) "platonic" schemata'
+Home-page: https://gitlab.com/merchise-autrement/xotl.plato
+Author: Merchise Autrement [~º/~]
+Author-email: info@merchise.org
+Maintainer: Manuel Vázquez Acosta
+License: MIT
+Project-URL: Documentation, https://merchise-autrement.gitlab.io/xotl.plato/
+Project-URL: Bug Tracker, https://gitlab.com/merchise-autrement/xotl.plato/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Requires-Python: >=3.8
+License-File: LICENSE
+Requires-Dist: xotl.tools (>=2.2.1)
+Requires-Dist: xotless (<4.0,>=3.8.0)
+Requires-Dist: tzdata
+Requires-Dist: hypothesis (~=6.39)
+Requires-Dist: immutables (>=0.17)
+Requires-Dist: backports.zoneinfo ; python_version < "3.9"
+Requires-Dist: typing-extensions ; python_version < "3.9"
+Provides-Extra: dev
+Requires-Dist: tox ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: hypothesis (<7.0,>=6.39) ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: Sphinx (<5.0,>=4.4.0) ; extra == 'dev'
+Requires-Dist: mypy (==0.941) ; extra == 'dev'
+Requires-Dist: flake8-bugbear (==22.1.11) ; extra == 'dev'
+Requires-Dist: flake8 (~=4.0.1) ; extra == 'dev'
+Requires-Dist: black (~=22.1.0) ; extra == 'dev'
+Requires-Dist: isort (~=5.10.1) ; extra == 'dev'
+Requires-Dist: types-backports ; extra == 'dev'
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: ipython ; extra == 'dev'
+Requires-Dist: ipdb ; extra == 'dev'
+Requires-Dist: pytz ; (python_version < "3.9") and extra == 'dev'
+Provides-Extra: pytz
+Requires-Dist: pytz ; extra == 'pytz'
+
+==========================================
+ Basic (non-recursive) "platonic" schemata
+==========================================
+
+This package allows to serialize/deserialize data in a JSON friendly manner by
+using and manipulating types.
+
+It features a type system that is extensible and it has been specifically
+designed to avoid non-termination issues with recursive data.  In a word, we
+don't allow to create recursive types; any notion of recursion is not part of
+the type system itself.
+
+Having these types, we can now cast dataclasses into schemata by attaching a
+type to it.  We can automatically build the type of most basic Python types,
+enumerations and other.
+
+
