@@ -1,0 +1,80 @@
+Metadata-Version: 2.1
+Name: calcu
+Version: 0.9.8
+Summary: Very simple Python calculator for your terminal
+Home-page: https://github.com/carderne/calcu
+Author: Chris Arderne
+Author-email: chris@rdrn.me
+License: MIT
+Project-URL: Bug Tracker, https://github.com/carderne/calcu/issues
+Keywords: calculator,cli
+Platform: any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Other/Nonlisted Topic
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# calcu
+A simple calculator for your CLI.
+
+(It uses Python's `eval()` and spits out the result, with some prettifying.)
+
+![example-gif](usage.gif)
+
+## Installation
+```bash
+pip install calcu
+```
+
+## Usage
+Type `c` followed by your expression.
+
+Example:
+```bash
+c 2+2
+             = 4
+```
+
+Refer to the result of the previous calculation with an underscore `_`:
+```bash
+c _+10
+             = 14
+```
+
+Do multiplication and exponentiation:
+```bash
+c 2 x 3^2
+             = 18
+# you can also use * and ** but then you must
+# wrap your expression in quotes ' ' or bash will mess it up
+# eg: c '2*3**2'
+```
+
+And dividing and brackets:
+```bash
+c [2+10]/10
+             = 1.2
+# as above, the square brackets are to stop bash cleverness
+# if you want to use regular brackets, use quotes
+# eg: c '(2+10)/10
+```
+
+Use any function from Python's `math` library:
+```bash
+c log[e] x pi
+             = 3.141592654
+```
+
+It returns the appropriate number of decimal values, up to 9.
+
+
