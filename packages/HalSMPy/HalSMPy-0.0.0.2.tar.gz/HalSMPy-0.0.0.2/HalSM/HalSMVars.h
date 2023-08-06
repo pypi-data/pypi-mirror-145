@@ -1,0 +1,10 @@
+HalSMNull null;
+HalSMPlus plus;
+HalSMMinus minus;
+HalSMMult mult;
+HalSMDivide divide;
+HalSMEqual equal;
+HalSMNotEqual notequal;
+HalSMMore more;
+HalSMLess less;
+HalSMArray arrInt;
