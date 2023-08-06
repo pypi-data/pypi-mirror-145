@@ -1,0 +1,34 @@
+Metadata-Version: 2.1
+Name: csvtodatabase
+Version: 0.0.1
+Summary: This package add the data of csv file to database and allows to perform crud operations on it
+Home-page: UNKNOWN
+Author: Haridas
+Author-email: vrharidas141@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+Requires-Dist: Jinja2
+Requires-Dist: mysql-connector-python
+Requires-Dist: pandas
+
+# csvtodatabase
+
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
+
+
+## Description
+
+It takes a CSV file as input and converts and save the data into a database.After a successful upload user can perform CRUD operations on the data using a localhost server. 
+
+## Installation
+
+- Run Following command to install.
+ ```
+  pip install csvtodatabase
+  ```
+
+
