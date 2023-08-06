@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: yomitai
+Version: 0.1.1
+Summary: CLI Application for quick reference of Japanese-Yomikata
+Home-page: https://github.com/noxowl/yomitai
+Author: Suyeong RHIE
+Author-email: me@euc-kr.net
+License: MIT
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Natural Language :: Japanese
+Requires-Python: >=3.9
+License-File: LICENSE
+Requires-Dist: typer (>=0.4.0)
+Requires-Dist: pykakasi (>=2.2.1)
+
+# yomitai
+CLI Application for quick reference of Japanese-Yomikata.
+
+## Usage
+<pre>
+<code>$ yomitai 劈く 
+つんざく
+</code></pre>
+
+<pre>
+<code>$ yomitai --kana 齟齬
+ソゴ
+$ yomitai --k 齟齬
+ソゴ
+</code></pre>
+
+<pre>
+<code>$ yomitai --romaji 炙りカルビ
+aburi karubi
+$ yomitai --r 炙りカルビ
+aburi karubi
+</code></pre>
+
+## TODO
+- [ ] add --detail flag using Apple Dictionary or Web Dictionary
+
+
