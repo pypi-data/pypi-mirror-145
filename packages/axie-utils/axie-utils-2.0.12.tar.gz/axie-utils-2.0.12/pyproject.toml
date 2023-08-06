@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "axie-utils"
+version = "2.0.12"
+description = "Library that provides the functionality you need to build your own axie Infinity python tools"
+authors = ["Ferran Marin <ferran.marin.llobet@gmail.com>"]
+license = "GNU LGPLv3"
+readme = "README.md"
+homepage = "https://ferranmarin.github.io/axie-utils-lib/"
+repository = "https://github.com/FerranMarin/axie-utils-lib"
+keywords = ["axie", "axie infinity", "tools", "utils", "ronin", "ronin chain"]
+classifiers = [
+    "Environment :: Console",
+    "Operating System :: OS Independent",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Topic :: Games/Entertainment",
+    "Topic :: Software Development :: Libraries",
+    "License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)",
+    "Programming Language :: Python"
+]
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+web3 = "^5.25.0"
+trezor = {extras = ["hidapi"], version = "^0.13.0"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+pytest-cov = "^3.0.0"
+mock = "^4.0.3"
+pytest-mock = "^3.6.1"
+pytest-asyncio = "^0.16.0"
+requests-mock = "^1.9.3"
+freezegun = "^1.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
