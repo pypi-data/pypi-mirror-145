@@ -1,0 +1,14 @@
+dbt-core~=1.0.0rc1
+sqlparams>=3.0.0
+
+[ODBC]
+pyodbc>=4.0.30
+
+[PyHive]
+PyHive[hive]<0.7.0,>=0.6.0
+thrift<0.16.0,>=0.11.0
+
+[all]
+pyodbc>=4.0.30
+PyHive[hive]<0.7.0,>=0.6.0
+thrift<0.16.0,>=0.11.0
