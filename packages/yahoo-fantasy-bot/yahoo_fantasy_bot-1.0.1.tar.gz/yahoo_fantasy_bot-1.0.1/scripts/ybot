@@ -1,0 +1,67 @@
+#!/usr/bin/env python
+
+"""A bot that acts as a manager for Yahoo! fantasy team
+
+Usage:
+  ybot [-ayfr] [-g x] <cfg_file>
+
+  <cfg_file>  The name of the configuration file.  See sample_config.ini for
+              the format.
+
+Options:
+  -a, --apply         Will apply the roster change in Yahoo.  Omitting this
+                      assumes a dry run of the roster change.
+  -y, --assumeyes     Answer yes for all of the roster moves.                    
+  -f, --full          Does a full analysis of the entire lineup meaning all
+                      players will be evaluated in an optimized lineup.  This
+                      can potentially add a lot of churn to your lineup.  The
+                      alternative is to just consider optimizing the open slots
+                      in the lineup and the bench.
+  -g, --generations=x Number of generations to do during lineup optimization.
+                      The more generations, the more combinations of lineups we
+                      will evaluate.
+  -r, --resetcache    Remove any cache files before starting program.  This is
+                      necessary if you changed the source of prediction stats in
+                      the config file.
+
+"""
+from docopt import docopt
+from yahoo_fantasy_bot import automation, oauth2_logger
+import logging
+import os
+import pandas as pd
+import configparser
+
+
+pd.options.mode.chained_assignment = None  # default='warn'
+
+
+if __name__ == '__main__':
+    args = docopt(__doc__, version='1.0')
+
+    cfg = configparser.RawConfigParser(
+        converters={'list': lambda x: [i.strip() for i in x.split(',')]}
+    )
+    if not os.path.exists(args['<cfg_file>']):
+        raise RuntimeError("Config file does not exist: " + args['<cfg_file>'])
+    cfg.read(args['<cfg_file>'])
+    if args['--generations'] is not None:
+        cfg['LineupOptimizer']['generations'] = args['--generations']
+
+    log_dir = os.path.dirname(cfg['Logger']['file'])
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
+
+    oauth2_logger.cleanup()
+
+    logging.basicConfig(
+        filename=cfg['Logger']['file'],
+        filemode="w",
+        level=cfg['Logger']['level'],
+        format='%(asctime)s.%(msecs)03d %(module)s-%(funcName)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+    auto = automation.Driver(cfg, not args['--apply'], args['--full'],
+                             not args['--assumeyes'], args['--resetcache'])
+    auto.run()
