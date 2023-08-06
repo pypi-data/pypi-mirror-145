@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: nerddiary
+Version: 0.2.2a0
+Summary: A collection of tools to capture a personal log / diary and analyze these records
+Home-page: https://nerddiary.app
+License: Apache-2.0
+Author: mishamsk
+Author-email: mishamsk@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: Russian
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Topic :: Communications :: Chat
+Classifier: Topic :: Office/Business :: News/Diary
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Stubs Only
+Provides-Extra: client
+Provides-Extra: full
+Provides-Extra: server
+Requires-Dist: APScheduler (>=3.8.1,<4.0.0); extra == "full" or extra == "server"
+Requires-Dist: SQLAlchemy (>=1.4.29,<2.0.0); extra == "full" or extra == "server"
+Requires-Dist: arrow (>=1.2.2,<2.0.0)
+Requires-Dist: click (>=8.0.3,<9.0.0); extra == "full" or extra == "server"
+Requires-Dist: cryptography (>=36.0.1,<37.0.0); extra == "full" or extra == "server"
+Requires-Dist: fastapi (>=0.75.0,<0.76.0); extra == "full" or extra == "server"
+Requires-Dist: jsonrpcclient (>=4.0.2,<5.0.0); extra == "full" or extra == "client"
+Requires-Dist: jsonrpcserver (>=5.0.6,<6.0.0); extra == "full" or extra == "server"
+Requires-Dist: pydantic[dotenv] (>=1.9.0,<2.0.0)
+Requires-Dist: pytz (>=2022.1,<2023.0)
+Requires-Dist: uvicorn (>=0.17.4,<0.18.0); extra == "full" or extra == "server"
+Requires-Dist: websockets (>=10.1,<11.0)
+Project-URL: Repository, https://github.com/mishamsk/nerddiary
+Description-Content-Type: text/markdown
+
+# The Nerd Diary
+
+[![pypi](https://img.shields.io/pypi/v/nerddiary.svg)](https://pypi.org/project/nerddiary/)
+[![python](https://img.shields.io/pypi/pyversions/nerddiary.svg)](https://pypi.org/project/nerddiary/)
+[![Build Status](https://github.com/mishamsk/nerddiary/actions/workflows/dev.yml/badge.svg)](https://github.com/mishamsk/nerddiary/actions/workflows/dev.yml)
+
+TBD
+
+
+* Documentation: <https://mishamsk.github.io/nerddiary>
+* GitHub: <https://github.com/mishamsk/nerddiary>
+* PyPI: <https://pypi.org/project/nerddiary/>
+* Free software: Apache-2.0
+
+
+## Features
+
+* TODO
+
+## Credits
+
+This package was inspired by the [waynerv/cookiecutter-pypackage](https://github.com/waynerv/cookiecutter-pypackage) project template and others.
+
