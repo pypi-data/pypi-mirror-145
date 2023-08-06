@@ -1,0 +1,6 @@
+graft ultimate_hosts_blacklist
+global-exclude __pycache__
+global-exclude *.py[co]
+include LICENSE
+include requirements.txt
+include README.rst
