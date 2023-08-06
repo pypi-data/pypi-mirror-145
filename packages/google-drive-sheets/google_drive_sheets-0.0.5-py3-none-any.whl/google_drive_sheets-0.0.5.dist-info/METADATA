@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: google-drive-sheets
+Version: 0.0.5
+Summary: Google Drive and Sheets API utilities
+Home-page: UNKNOWN
+Author: Nishant Parmar
+Author-email: <nish240893@gmail.com>
+License: UNKNOWN
+Keywords: python,google drive,google sheets,gsuite
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: google-api-python-client
+Requires-Dist: google-auth-httplib2
+Requires-Dist: google-auth-oauthlib
+Requires-Dist: requests
+Requires-Dist: xlrd
+Requires-Dist: openpyxl
+Requires-Dist: oauth2client
+
+# google-drive-sheets
+A utility for Google Drive and Sheets APIs that helps you create folders, spreadsheets and read/save data
+
+---
+## Prerequisites
+Before executing anything, please go through the steps [here](https://developers.google.com/drive/api/v3/quickstart/python). It will kickstart the authorization process for your own app. \
+Save the `credentials.json` file (not saved in this repo) generated from the first step, in the parent directory to enable Google Drive and Sheets capabilities.
+> *Note*: the `credentials.json` file has to be present in order to work with the APIs.
+
+> *Note*: If while creating drive/sheets service objects, you get `"error": "invalid_grant", "error_description": "Bad Request"`, the `credentials.json` might have been expired. 
+> Go to the Google Cloud Console and generate a new OAuth Client ID (find more information on the [guide page](https://developers.google.com/workspace/guides/create-credentials#desktop-app) for your app).
+
+
