@@ -1,0 +1,198 @@
+Metadata-Version: 2.1
+Name: fusionsidsapi
+Version: 1.0.2
+Summary: An asynchronous api wrapper for FusionSidsAPI.
+Home-page: https://github.com/FusionSid/FusionSidAPI.py
+Author: Siddhesh Zantye
+Author-email: siddheshadsv@icloud.com
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENCE
+Requires-Dist: aiohttp (==3.8.1)
+Requires-Dist: aiofiles (==0.6.0)
+
+[![CodeFactor](https://img.shields.io/codefactor/grade/github/FusionSid/FusionSidAPI.py?style=for-the-badge)](https://www.codefactor.io/repository/github/fusionsid/fusionsidapi.py)
+[![Downloads](https://img.shields.io/pypi/dd/fusionsidsapi?style=for-the-badge)](https://pypi.org/project/fusionsidsapi/)
+[![PyPi-Version](https://img.shields.io/pypi/v/fusionsidsapi?style=for-the-badge)](https://pypi.org/project/fusionsidsapi/)
+
+
+# FusionSidAPI Wrapper for python
+
+An asynchronous api wrapper to use [FusionSidAPI](https://fusionsidapi.herokuapp.com/) in python.
+
+---
+
+# Install:
+
+You can install this library from PyPi: [Link](https://pypi.org/project/fusionsidsapi/)
+
+**Install with pip:**
+```py
+pip install fusionsidsapi
+```
+
+---
+
+# Need Help
+
+### Docs
+This package has [docs](https://fusionsid.github.io/FusionSidAPI.py/)
+
+Go to this url
+https://fusionsid.github.io/FusionSidAPI.py/  
+or look in the Enviroments tab for the latest github pages deployment
+
+### Help Function
+Each class and function has a doc string so if you need help with anything in the pacakge just use the built in python function `help()`
+
+eg:
+```py
+import fusionsid
+
+# Example 1
+help(fusionsid.RandomMeme)
+help(fusionsid.GenerateMeme)
+
+# Example 2
+help(fusionsid.Image.qrcode)
+help(fusionsid.Fun.truth_or_dare)
+
+```
+
+# Examples:
+
+Look in the [examples](https://github.com/FusionSid/FusionSidAPI.py/tree/master/examples) folder for some examples
+
+Example for getting a roast:
+```py
+import asyncio
+from fusionsid import Fun
+
+async def main():
+    roast = await Fun.roast()
+    print(roast)
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+```
+
+This package also has some decorators (also in the [examples](https://github.com/FusionSid/FusionSidAPI.py/tree/master/examples) folder) so if you want a complement before your code is run heres how:
+```py
+import asyncio
+from fusionsid import Decorators
+
+do_compliment = Decorators.compliment
+
+@do_compliment()
+async def main():
+    print("Wassup")
+
+loop = asyncio.new_event_loop()
+loop.run_until_complete(main())
+```
+
+---
+
+### [FusionSidAPI Github](https://github.com/FusionSid/FusionSidsAPI)
+
+---
+
+## Changelog:
+You can checkout the changes per version in [CHANGELOG.txt](https://github.com/FusionSid/FusionSidAPI.py/blob/master/CHANGELOG.txt)
+
+
+---
+
+## Contact:
+
+If you find a bug please make an issue, I will try my best to fix it :)
+
+Discord: `FusionSid#3645` [My Github](https://github.com/FusionSid/)
+
+---
+
+Change Log
+==========
+
+1.0.1 (6/04/2022)
+-------------------
+- Added balloon generate meme function
+
+1.0.1 (6/04/2022)
+-------------------
+- Added image filters
+- New `Filter` class for image filters
+    Current filters:
+    - blur
+    - grey_scale
+    - color
+
+1.0.0 (1/04/2022)
+-------------------
+- Added `pil` method to the Image class 
+- Added `save_bytesio` to Image class
+- Changed `self` param in classmethods to `cls`
+- Updated examples in doc strings
+
+0.0.11 (25/03/2022)
+-------------------
+- Added font converting
+- There are 1969 fonts to choose from
+    Haha I know im so funny
+- New Things Added:
+
+    `(class) FontImage`
+
+    `(method) Image.font_list: (print_all: bool = False) -> list`
+
+    `(method) Image.font_convert: (text: str, font_name: str, color: str = "black") -> FontImage`
+
+0.0.10 (22/03/2022)
+-------------------
+- Changed up readme, docs and examples
+- Not a big update
+
+0.0.9 (20/03/2022)
+-------------------
+- Added `Image.get_colors()`
+- Get colors takes in a image and finds the most dominant color and the color palette
+- Fixed examples for most functions doc strings
+
+0.0.8 (19/03/2022)
+-------------------
+- Made most funtions `@classmethod`'s so you don't have to init the class 
+- Updated all doc strings to use `:param` so IDE's show it when typing
+- Fixed `import *` to import the actual stuff
+
+**Not code but the package now has [documentation](https://fusionsid.github.io/FusionSidAPI.py/)**
+
+0.0.7 (10/03/2022)
+-------------------
+- Added 9 Text convert functions in `fusionsid.Text()` 
+- Added `reddit_search`
+
+0.0.6 (09/03/2022)
+-------------------
+- Wordle answers
+
+0.0.5 (08/03/2022)
+-------------------
+- Fixed some bugs with the stats
+
+0.0.4 (08/03/2022)
+-------------------
+- Added doc strings to every function/class
+
+0.0.3 (08/03/2022)
+-------------------
+- Added Fact, `Truth`, `Dare` and `Truth+Dare` functions in the `Fun` Class
+
+0.0.2 (06/03/2022)
+-------------------
+- Added `created_at` Attribute to `Meme`, `QRCode` and `RandomMeme` classes
+
+0.0.1 (06/03/2022)
+-------------------
+- First Release
+
