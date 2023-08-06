@@ -1,0 +1,603 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.sdk.epr_socket &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.sdk.external" href="netqasm.sdk.external.html" />
+    <link rel="prev" title="netqasm.sdk.connection" href="netqasm.sdk.connection.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.builder.html">netqasm.sdk.builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html">netqasm.sdk.classical_communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.broadcast_channel">netqasm.sdk.classical_communication.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel">netqasm.sdk.classical_communication.thread_socket.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.message">netqasm.sdk.classical_communication.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.socket">netqasm.sdk.classical_communication.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket">netqasm.sdk.classical_communication.thread_socket.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket_hub">netqasm.sdk.classical_communication.thread_socket.socket_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.compiling.html">netqasm.sdk.compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.config.html">netqasm.sdk.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.connection.html">netqasm.sdk.connection</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.sdk.epr_socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.external.html">netqasm.sdk.external</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.futures.html">netqasm.sdk.futures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.network.html">netqasm.sdk.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.progress_bar.html">netqasm.sdk.progress_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.qubit.html">netqasm.sdk.qubit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.shared_memory.html">netqasm.sdk.shared_memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html">netqasm.sdk.toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.gates">netqasm.sdk.toolbox.gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.measurements">netqasm.sdk.toolbox.measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.multi_node">netqasm.sdk.toolbox.multi_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.sim_states">netqasm.sdk.toolbox.sim_states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.state_prep">netqasm.sdk.toolbox.state_prep</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Known issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.sdk.html">netqasm.sdk</a> &raquo;</li>
+        
+      <li>netqasm.sdk.epr_socket</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_sdk/netqasm.sdk.epr_socket.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.sdk.epr_socket">
+<span id="netqasm-sdk-epr-socket"></span><h1>netqasm.sdk.epr_socket<a class="headerlink" href="#module-netqasm.sdk.epr_socket" title="Permalink to this headline">¶</a></h1>
+<p>EPR Socket interface.</p>
+<dl class="py class">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.epr_socket.</span></code><code class="sig-name descname"><span class="pre">EPRMeasBasis</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis.X">
+<code class="sig-name descname"><span class="pre">X</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis.X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis.Y">
+<code class="sig-name descname"><span class="pre">Y</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis.Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis.Z">
+<code class="sig-name descname"><span class="pre">Z</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis.Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis.MX">
+<code class="sig-name descname"><span class="pre">MX</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis.MX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis.MY">
+<code class="sig-name descname"><span class="pre">MY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis.MY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.sdk.epr_socket.EPRMeasBasis.MZ">
+<code class="sig-name descname"><span class="pre">MZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRMeasBasis.MZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.epr_socket.EPRSocket">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.epr_socket.</span></code><code class="sig-name descname"><span class="pre">EPRSocket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epr_socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_epr_socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_fidelity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>EPR socket class. Used to generate entanglement with a remote node.</p>
+<p>An EPR socket represents a connection with a single remote node through which
+EPR pairs can be generated. Its main interfaces are the <cite>create</cite> and <cite>recv</cite>
+methods. A typical use case for two nodes is that they both create an EPR socket
+to the other node, and during the protocol, one of the nodes does <cite>create</cite>
+operations on its socket while the other node does <cite>recv</cite> operations.</p>
+<p>A <cite>create</cite> operation asks the network stack to initiate generation of EPR pairs
+with the remote node. Depending on the type of generation, the result of this
+operation can be qubit objects or measurement outcomes.
+A <cite>recv</cite> operation asks the network stack to wait for the remote node to initiate
+generation of EPR pairs. Again, the result can be qubit objects or measurement
+outcomes.</p>
+<p>Each <cite>create</cite> operation on one node must be matched by a <cite>recv</cite> operation on the
+other node. Since “creating” and “receiving” must happen at the same time, a node
+that is doing a <cite>create</cite> operation on its socket cannot advance until the other
+node does the corresponding <cite>recv</cite>. This is different from classical network
+sockets where a “send” operation (roughly anologous to <cite>create</cite> in an EPR socket)
+does not block on the remote node receiving it.</p>
+<p>An EPR socket is identified by a triple consisting of (1) the remote node ID,
+(2) the local socket ID and (3) the remote socket ID.
+Two nodes that want to generate EPR pairs with each other should make sure that the
+IDs in their local sockets match.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>epr_socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>remote_epr_socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>min_fidelity</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epr_socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_epr_socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_fidelity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an EPR socket. It still needs to be registered with the network
+stack separately.</p>
+<p>Registering and opening the EPR socket is currently done automatically by the
+connection that uses this EPR socket, specifically when a context is opened
+with that connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – name of the remote party (i.e. the role, like “client”,
+not necessarily the node name like “delft”)</p></li>
+<li><p><strong>epr_socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – local socket ID, defaults to 0</p></li>
+<li><p><strong>remote_epr_socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – remote socket ID, defaults to 0. Note that this
+must match with the local socket ID of the remote node’s EPR socket.</p></li>
+<li><p><strong>min_fidelity</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – minimum desired fidelity for EPR pairs generated over this
+socket, in percentages (i.e. range 0-100). Defaults to 100.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.conn">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">conn</span></code><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.conn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the underlying <code class="xref py py-class docutils literal notranslate"><span class="pre">NetQASMConnection</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="netqasm.sdk.connection.html#netqasm.sdk.connection.BaseNetQASMConnection" title="netqasm.sdk.connection.BaseNetQASMConnection">connection.BaseNetQASMConnection</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.remote_app_name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_app_name</span></code><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.remote_app_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the remote application name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.remote_node_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_node_id</span></code><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.remote_node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the remote node ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.epr_socket_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">epr_socket_id</span></code><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.epr_socket_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the EPR socket ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.remote_epr_socket_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_epr_socket_id</span></code><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.remote_epr_socket_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the remote EPR socket ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.min_fidelity">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">min_fidelity</span></code><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.min_fidelity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the desired minimum fidelity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.create">
+<code class="sig-name descname"><span class="pre">create</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">number=1</span></em>, <em class="sig-param"><span class="pre">post_routine=None</span></em>, <em class="sig-param"><span class="pre">sequential=False</span></em>, <em class="sig-param"><span class="pre">tp=&lt;EPRType.K:</span> <span class="pre">0&gt;</span></em>, <em class="sig-param"><span class="pre">time_unit=&lt;TimeUnit.MICRO_SECONDS:</span> <span class="pre">0&gt;</span></em>, <em class="sig-param"><span class="pre">max_time=0</span></em>, <em class="sig-param"><span class="pre">basis_local=None</span></em>, <em class="sig-param"><span class="pre">basis_remote=None</span></em>, <em class="sig-param"><span class="pre">rotations_local=(0</span></em>, <em class="sig-param"><span class="pre">0</span></em>, <em class="sig-param"><span class="pre">0)</span></em>, <em class="sig-param"><span class="pre">rotations_remote=(0</span></em>, <em class="sig-param"><span class="pre">0</span></em>, <em class="sig-param"><span class="pre">0)</span></em>, <em class="sig-param"><span class="pre">random_basis_local=None</span></em>, <em class="sig-param"><span class="pre">random_basis_remote=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask the network stack to generate EPR pairs with the remote node.</p>
+<p>A <cite>create</cite> operation must always be matched by a <cite>recv</cite> operation on the remote
+node.</p>
+<p>If the type of request is Create and Keep (CK, or just K) and if <cite>sequential</cite>
+is False (default), this operation returns a list of Qubit objects representing
+the local qubits that are each one half of the generated pairs. These qubits
+can then be manipulated locally just like locally initialized qubits, by e.g.
+applying gates or measuring them.
+Each qubit also contains information about the entanglement generation that
+lead to its creation, and can be accessed by its <cite>entanglement_info</cite> property.</p>
+<p>A typical example for just generating one pair with another node would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">epr_socket</span><span class="o">.</span><span class="n">create</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># `q` can now be used as a normal qubit</span>
+</pre></div>
+</div>
+<p>If the type of request is Measure Directly (MD, or just M), this operation
+returns a list of Linklayer response objects. These objects contain information
+about the entanglement generation and includes the measurement outcome and
+basis used. Note that all values are <cite>Future</cite> objects. This means that the
+current subroutine must be flushed before the values become defined.</p>
+<p>An example for generating 10 pairs with another node that are immediately
+measured:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># list of Futures that become defined when subroutine is flushed</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="n">NetQASMConnection</span><span class="p">(</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span> <span class="n">epr_sockets</span><span class="o">=</span><span class="p">[</span><span class="n">epr_socket</span><span class="p">]):</span>
+    <span class="n">ent_infos</span> <span class="o">=</span> <span class="n">epr_socket</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">tp</span><span class="o">=</span><span class="n">EPRType</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ent_info</span> <span class="ow">in</span> <span class="n">ent_infos</span><span class="p">:</span>
+        <span class="n">outcomes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ent_info</span><span class="o">.</span><span class="n">measurement_outcome</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For “Measure Directly”-type requests, the basis to measure in can also be
+specified. There are 3 ways to specify a basis:</p>
+<ul class="simple">
+<li><p>using one of the <cite>EPRMeasBasis</cite> variants</p></li>
+<li><p>by specifying 3 rotation angles, interpreted as an X-rotation, a Y-rotation
+and another X-rotation. For example, setting <cite>rotations_local</cite> to (8, 0, 0)
+means that before measuring, an X-rotation of 8*pi/16 = pi/2 radians is
+applied to the qubit.</p></li>
+<li><p>using one of the <cite>RandomBasis</cite> variants, in which case one of the bases of
+that variant is chosen at random just before measuring</p></li>
+</ul>
+<p>NOTE: the node that initiates the entanglement generation, i.e. the one that
+calls <cite>create</cite> on its EPR socket, also controls the measurement bases of the
+receiving node (by setting e.g. <cite>rotations_remote</cite>). The receiving node cannot
+change this.</p>
+<p>If <cite>sequential</cite> is False (default), the all requested EPR pairs are generated
+at once, before returning the results (qubits or entanglement info objects).</p>
+<p>If <cite>sequential</cite> is True, a callback function (<cite>post_routine</cite>) should be
+specified. After generating one EPR pair, this callback will be called, before
+generating the next pair. This method can e.g. be used to generate many EPR
+pairs (more than the number of physical qubits available), by measuring (and
+freeing up) each qubit before the next pair is generated.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">outcomes</span> <span class="o">=</span> <span class="n">alice</span><span class="o">.</span><span class="n">new_array</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">post_create</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">H</span><span class="p">()</span>
+    <span class="n">outcome</span> <span class="o">=</span> <span class="n">outcomes</span><span class="o">.</span><span class="n">get_future_index</span><span class="p">(</span><span class="n">pair</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">outcome</span><span class="p">)</span>
+<span class="n">epr_socket</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">num</span><span class="p">,</span> <span class="n">post_routine</span><span class="o">=</span><span class="n">post_create</span><span class="p">,</span> <span class="n">sequential</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of EPR pairs to generate, defaults to 1</p></li>
+<li><p><strong>post_routine</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – callback function for each genated pair. Only used if
+<cite>sequential</cite> is True.
+The callback should take three arguments <cite>(conn, q, pair)</cite> where
+* <cite>conn</cite> is the connection (e.g. <cite>self</cite>)
+* <cite>q</cite> is the entangled qubit (of type <cite>FutureQubit</cite>)
+* <cite>pair</cite> is a register holding which pair is handled (0, 1, …)</p></li>
+<li><p><strong>sequential</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to use callbacks after each pair, defaults to False</p></li>
+<li><p><strong>tp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">EPRType</span></code>) – type of entanglement generation, defaults to EPRType.K. Note that
+corresponding <cite>recv</cite> of the remote node’s EPR socket must specify the
+same type.</p></li>
+<li><p><strong>time_unit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeUnit</span></code>) – which time unit to use for the <cite>max_time</cite> parameter</p></li>
+<li><p><strong>max_time</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – maximum number of time units (see <cite>time_unit</cite>) the Host is
+willing to wait for entanglement generation of a single pair. If generation
+does not succeed within this time, the whole subroutine that this request
+is part of is reset and run again by the quantum node controller.</p></li>
+<li><p><strong>basis_local</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#netqasm.sdk.epr_socket.EPRMeasBasis" title="netqasm.sdk.epr_socket.EPRMeasBasis"><code class="xref py py-class docutils literal notranslate"><span class="pre">EPRMeasBasis</span></code></a>]) – basis to measure in on this node for M-type requests</p></li>
+<li><p><strong>basis_remote</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#netqasm.sdk.epr_socket.EPRMeasBasis" title="netqasm.sdk.epr_socket.EPRMeasBasis"><code class="xref py py-class docutils literal notranslate"><span class="pre">EPRMeasBasis</span></code></a>]) – basis to measure in on the remote node for M-type requests</p></li>
+<li><p><strong>rotations_local</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – rotations to apply before measuring on this node
+(for M-type requests)</p></li>
+<li><p><strong>rotations_remote</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – rotations to apply before measuring on remote node
+(for M-type requests)</p></li>
+<li><p><strong>random_basis_local</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">RandomBasis</span></code>]) – random bases to choose from when measuring on this
+node (for M-type requests)</p></li>
+<li><p><strong>random_basis_remote</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">RandomBasis</span></code>]) – random bases to choose from when measuring on
+the remote node (for M-type requests)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="netqasm.sdk.qubit.html#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerOKTypeK</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerOKTypeM</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerOKTypeR</span></code>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>For K-type requests: list of qubits created. For M-type requests:
+list of entanglement info objects per created pair.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.create_context">
+<code class="sig-name descname"><span class="pre">create_context</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">number=1</span></em>, <em class="sig-param"><span class="pre">sequential=False</span></em>, <em class="sig-param"><span class="pre">time_unit=&lt;TimeUnit.MICRO_SECONDS:</span> <span class="pre">0&gt;</span></em>, <em class="sig-param"><span class="pre">max_time=0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.create_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a context that is executed for each generated EPR pair consecutively.</p>
+<p>Creates EPR pairs with a remote node and handles each pair by
+the operations defined in a subsequent context. See the example below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">epr_socket</span><span class="o">.</span><span class="n">create_context</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="k">as</span> <span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">pair</span><span class="p">):</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">H</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>NOTE: even though all pairs are handled consecutively, they are still
+generated concurrently by the network stack. By setting <cite>sequential</cite> to True,
+the network stack only generates the next pair after the context for the
+previous pair has been executed, similar to using a callback (<cite>post_routine</cite>)
+in the <cite>create</cite> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of EPR pairs to generate, defaults to 1</p></li>
+<li><p><strong>sequential</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to generate pairs sequentially, defaults to False</p></li>
+<li><p><strong>time_unit</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TimeUnit</span></code>) – </p></li>
+<li><p><strong>max_time</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.recv">
+<code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">number=1</span></em>, <em class="sig-param"><span class="pre">post_routine=None</span></em>, <em class="sig-param"><span class="pre">sequential=False</span></em>, <em class="sig-param"><span class="pre">tp=&lt;EPRType.K:</span> <span class="pre">0&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ask the network stack to wait for the remote node to generate EPR pairs.</p>
+<p>A <cite>recv</cite> operation must always be matched by a <cite>create</cite> operation on the remote
+node. See also the documentation of <cite>create</cite>.
+The number and type of generation must also match.</p>
+<p>In case of Measure Directly requests, it is the initiating node (that calls
+<cite>create</cite>) which specifies the measurement bases. This should not and cannot be
+done in <cite>recv</cite>.</p>
+<p>For more information see the documentation of <cite>create</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of pairs to generate, defaults to 1</p></li>
+<li><p><strong>post_routine</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – callback function used when <cite>sequential</cite> is True</p></li>
+<li><p><strong>sequential</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to call the callback after each pair generation,
+defaults to False</p></li>
+<li><p><strong>tp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">EPRType</span></code>) – type of entanglement generation, defaults to EPRType.K</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="netqasm.sdk.qubit.html#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerOKTypeK</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerOKTypeM</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerOKTypeR</span></code>]]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>For K-type requests: list of qubits created. For M-type requests:
+list of entanglement info objects per created pair.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.epr_socket.EPRSocket.recv_context">
+<code class="sig-name descname"><span class="pre">recv_context</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequential</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.epr_socket.EPRSocket.recv_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives EPR pair with a remote node (see doc of <a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.epr_socket.EPRSocket.create_context" title="netqasm.sdk.epr_socket.EPRSocket.create_context"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_context()</span></code></a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>number</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>sequential</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.sdk.external.html" class="btn btn-neutral float-right" title="netqasm.sdk.external" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.sdk.connection.html" class="btn btn-neutral float-left" title="netqasm.sdk.connection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

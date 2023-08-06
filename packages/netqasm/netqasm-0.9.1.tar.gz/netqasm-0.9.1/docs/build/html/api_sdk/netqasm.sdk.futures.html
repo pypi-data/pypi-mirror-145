@@ -1,0 +1,1116 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.sdk.futures &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.sdk.network" href="netqasm.sdk.network.html" />
+    <link rel="prev" title="netqasm.sdk.external" href="netqasm.sdk.external.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.builder.html">netqasm.sdk.builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html">netqasm.sdk.classical_communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.broadcast_channel">netqasm.sdk.classical_communication.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel">netqasm.sdk.classical_communication.thread_socket.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.message">netqasm.sdk.classical_communication.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.socket">netqasm.sdk.classical_communication.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket">netqasm.sdk.classical_communication.thread_socket.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket_hub">netqasm.sdk.classical_communication.thread_socket.socket_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.compiling.html">netqasm.sdk.compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.config.html">netqasm.sdk.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.connection.html">netqasm.sdk.connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.epr_socket.html">netqasm.sdk.epr_socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.external.html">netqasm.sdk.external</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.sdk.futures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.network.html">netqasm.sdk.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.progress_bar.html">netqasm.sdk.progress_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.qubit.html">netqasm.sdk.qubit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.shared_memory.html">netqasm.sdk.shared_memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html">netqasm.sdk.toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.gates">netqasm.sdk.toolbox.gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.measurements">netqasm.sdk.toolbox.measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.multi_node">netqasm.sdk.toolbox.multi_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.sim_states">netqasm.sdk.toolbox.sim_states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.state_prep">netqasm.sdk.toolbox.state_prep</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Known issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.sdk.html">netqasm.sdk</a> &raquo;</li>
+        
+      <li>netqasm.sdk.futures</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_sdk/netqasm.sdk.futures.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.sdk.futures">
+<span id="netqasm-sdk-futures"></span><h1>netqasm.sdk.futures<a class="headerlink" href="#module-netqasm.sdk.futures" title="Permalink to this headline">¶</a></h1>
+<p>Abstractions for classical runtime values.</p>
+<p>This module contains the <cite>BaseFuture</cite> class and its subclasses.</p>
+<dl class="py exception">
+<dt id="netqasm.sdk.futures.NoValueError">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">NoValueError</span></code><a class="headerlink" href="#netqasm.sdk.futures.NoValueError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></p>
+<dl class="py attribute">
+<dt id="netqasm.sdk.futures.NoValueError.args">
+<code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#netqasm.sdk.futures.NoValueError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.NoValueError.with_traceback">
+<code class="sig-name descname"><span class="pre">with_traceback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.NoValueError.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="netqasm.sdk.futures.NonConstantIndexError">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">NonConstantIndexError</span></code><a class="headerlink" href="#netqasm.sdk.futures.NonConstantIndexError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">RuntimeError</span></code></p>
+<dl class="py attribute">
+<dt id="netqasm.sdk.futures.NonConstantIndexError.args">
+<code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#netqasm.sdk.futures.NonConstantIndexError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.NonConstantIndexError.with_traceback">
+<code class="sig-name descname"><span class="pre">with_traceback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.NonConstantIndexError.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.sdk.futures.as_int_when_value">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">as_int_when_value</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.as_int_when_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>A decorator for the <cite>BaseFuture</cite> class which makes is behave like an <cite>int</cite>
+when the property <cite>value</cite> is not <cite>None</cite>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.futures.BaseFuture">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">BaseFuture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+<p>Base class for Future-like objects.</p>
+<p>A Future represents a classical value that becomes available at some point
+in the future. At the moment, a Future always represents an integer value.</p>
+<p>Futures have a <cite>value</cite> property that is either <cite>None</cite> (when the value is not yet
+available), or has a concrete integer value.
+Executing a subroutine on the quantum node controller makes the value property go
+from <cite>None</cite> to a concrete value, granted that the subroutine sets the value of
+whatever the Future represents.
+When the <cite>value</cite> property has a concrete value, the Future behaves like an <cite>int</cite>
+and can then also be used in Python expressions just like integers.</p>
+<p>Typically, a Future instance is obtained as the result of an SDK function, and not
+directly instantiated in application code.
+For example, calling <cite>measure()</cite> on a Qubit returns a Future representing the
+measurement outcome. Only after the subroutine containing the operations has been
+executed by the quantum node controller (by flushing the subroutine), the
+measurement outcome will have an actual value, and the Future can be resolved into
+an <cite>int</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.value">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">value</span></code><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the future.
+If it’s not set yet, <cite>None</cite> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.add">
+<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another value to this Future’s value.</p>
+<p>The result is stored in this Future.</p>
+<p>Let the quantum node controller add a value to the value represented by this
+Future. The addition operation is compiled into a subroutine and is fully
+executed by the quantum node controller.
+This avoids the need to wait for a subroutine result (which resolves the
+Future’s <cite>value</cite>) and then doing the addition on the Host.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>, <a class="reference internal" href="#netqasm.sdk.futures.BaseFuture" title="netqasm.sdk.futures.BaseFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFuture</span></code></a>]) – value to add to this Future’s value</p></li>
+<li><p><strong>mod</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – do the addition modulo <cite>mod</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.if_eq">
+<code class="sig-name descname"><span class="pre">if_eq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.if_eq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.if_ne">
+<code class="sig-name descname"><span class="pre">if_ne</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.if_ne" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.if_lt">
+<code class="sig-name descname"><span class="pre">if_lt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.if_lt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.if_ge">
+<code class="sig-name descname"><span class="pre">if_ge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.if_ge" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.if_ez">
+<code class="sig-name descname"><span class="pre">if_ez</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.if_ez" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.if_nz">
+<code class="sig-name descname"><span class="pre">if_nz</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.if_nz" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.as_integer_ratio">
+<code class="sig-name descname"><span class="pre">as_integer_ratio</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.as_integer_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return integer ratio.</p>
+<p>Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(10, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(-10, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(0, 1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.bit_length">
+<code class="sig-name descname"><span class="pre">bit_length</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.bit_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.conjugate">
+<code class="sig-name descname"><span class="pre">conjugate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.conjugate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.denominator">
+<code class="sig-name descname"><span class="pre">denominator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.denominator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.from_bytes">
+<code class="sig-name descname"><span class="pre">from_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">byteorder</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.from_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the integer represented by the given array of bytes.</p>
+<dl class="simple">
+<dt>bytes</dt><dd><p>Holds the array of bytes to convert.  The argument must either
+support the buffer protocol or be an iterable object producing bytes.
+Bytes and bytearray are examples of built-in objects that support the
+buffer protocol.</p>
+</dd>
+<dt>byteorder</dt><dd><p>The byte order used to represent the integer.  If byteorder is ‘big’,
+the most significant byte is at the beginning of the byte array.  If
+byteorder is ‘little’, the most significant byte is at the end of the
+byte array.  To request the native byte order of the host system, use
+<a href="#id1"><span class="problematic" id="id2">`</span></a>sys.byteorder’ as the byte order value.</p>
+</dd>
+<dt>signed</dt><dd><p>Indicates whether two’s complement is used to represent the integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.imag">
+<code class="sig-name descname"><span class="pre">imag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.imag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.numerator">
+<code class="sig-name descname"><span class="pre">numerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.numerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.real">
+<code class="sig-name descname"><span class="pre">real</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.real" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.BaseFuture.to_bytes">
+<code class="sig-name descname"><span class="pre">to_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.BaseFuture.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.futures.Future">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">Future</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.futures.BaseFuture" title="netqasm.sdk.futures.BaseFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.futures.BaseFuture</span></code></a></p>
+<p>Represents a single array entry value that will become available in the future.</p>
+<p>See <cite>BaseFuture</cite> for more explanation about Futures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – </p></li>
+<li><p><strong>address</strong> (<em>int</em>) – </p></li>
+<li><p><strong>index</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><em>Future</em></a><em>, </em><a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><em>operand.Register</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Future constructor. Typically not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – connection through which subroutines are sent that contain
+the array entry corresponding to this Future</p></li>
+<li><p><strong>address</strong> (<em>int</em>) – address of the array</p></li>
+<li><p><strong>index</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><em>Future</em></a><em>, </em><a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><em>operand.Register</em></a><em>]</em>) – index in the array</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.add">
+<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another value to this Future’s value.</p>
+<p>The result is stored in this Future.</p>
+<p>Let the quantum node controller add a value to the value represented by this
+Future. The addition operation is compiled into a subroutine and is fully
+executed by the quantum node controller.
+This avoids the need to wait for a subroutine result (which resolves the
+Future’s <cite>value</cite>) and then doing the addition on the Host.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>, <a class="reference internal" href="#netqasm.sdk.futures.BaseFuture" title="netqasm.sdk.futures.BaseFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFuture</span></code></a>]) – value to add to this Future’s value</p></li>
+<li><p><strong>mod</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – do the addition modulo <cite>mod</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.as_integer_ratio">
+<code class="sig-name descname"><span class="pre">as_integer_ratio</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.as_integer_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return integer ratio.</p>
+<p>Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(10, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(-10, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(0, 1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.bit_length">
+<code class="sig-name descname"><span class="pre">bit_length</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.bit_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.conjugate">
+<code class="sig-name descname"><span class="pre">conjugate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.conjugate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.denominator">
+<code class="sig-name descname"><span class="pre">denominator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.denominator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.from_bytes">
+<code class="sig-name descname"><span class="pre">from_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">byteorder</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.from_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the integer represented by the given array of bytes.</p>
+<dl class="simple">
+<dt>bytes</dt><dd><p>Holds the array of bytes to convert.  The argument must either
+support the buffer protocol or be an iterable object producing bytes.
+Bytes and bytearray are examples of built-in objects that support the
+buffer protocol.</p>
+</dd>
+<dt>byteorder</dt><dd><p>The byte order used to represent the integer.  If byteorder is ‘big’,
+the most significant byte is at the beginning of the byte array.  If
+byteorder is ‘little’, the most significant byte is at the end of the
+byte array.  To request the native byte order of the host system, use
+<a href="#id3"><span class="problematic" id="id4">`</span></a>sys.byteorder’ as the byte order value.</p>
+</dd>
+<dt>signed</dt><dd><p>Indicates whether two’s complement is used to represent the integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.if_eq">
+<code class="sig-name descname"><span class="pre">if_eq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.if_eq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.if_ez">
+<code class="sig-name descname"><span class="pre">if_ez</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.if_ez" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.if_ge">
+<code class="sig-name descname"><span class="pre">if_ge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.if_ge" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.if_lt">
+<code class="sig-name descname"><span class="pre">if_lt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.if_lt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.if_ne">
+<code class="sig-name descname"><span class="pre">if_ne</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.if_ne" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.if_nz">
+<code class="sig-name descname"><span class="pre">if_nz</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.if_nz" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.imag">
+<code class="sig-name descname"><span class="pre">imag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.imag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.numerator">
+<code class="sig-name descname"><span class="pre">numerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.numerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.real">
+<code class="sig-name descname"><span class="pre">real</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.real" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.to_bytes">
+<code class="sig-name descname"><span class="pre">to_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Future.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Future.value">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">value</span></code><a class="headerlink" href="#netqasm.sdk.futures.Future.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the future.
+If it’s not set yet, <cite>None</cite> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.futures.RegFuture">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">RegFuture</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.futures.BaseFuture" title="netqasm.sdk.futures.BaseFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.futures.BaseFuture</span></code></a></p>
+<p>Represents a single register value that will become available in the future.</p>
+<p>See <cite>BaseFuture</cite> for more explanation about Futures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – </p></li>
+<li><p><strong>reg</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><em>operand.Register</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>RegFuture constructor. Typically not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – connection through which subroutines are sent that contain
+the array entry corresponding to this Future</p></li>
+<li><p><strong>reg</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><em>operand.Register</em></a><em>]</em>) – specific NetQASM register that will hold the Future’s value.
+If None, a suitable register is automatically used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.reg">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">reg</span></code><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.reg" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.add">
+<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add another value to this Future’s value.</p>
+<p>The result is stored in this Future.</p>
+<p>Let the quantum node controller add a value to the value represented by this
+Future. The addition operation is compiled into a subroutine and is fully
+executed by the quantum node controller.
+This avoids the need to wait for a subroutine result (which resolves the
+Future’s <cite>value</cite>) and then doing the addition on the Host.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>, <a class="reference internal" href="#netqasm.sdk.futures.BaseFuture" title="netqasm.sdk.futures.BaseFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFuture</span></code></a>]) – value to add to this Future’s value</p></li>
+<li><p><strong>mod</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – do the addition modulo <cite>mod</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.as_integer_ratio">
+<code class="sig-name descname"><span class="pre">as_integer_ratio</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.as_integer_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return integer ratio.</p>
+<p>Return a pair of integers, whose ratio is exactly equal to the original int
+and with a positive denominator.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(10, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(-10, 1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">as_integer_ratio</span><span class="p">()</span>
+<span class="go">(0, 1)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.bit_length">
+<code class="sig-name descname"><span class="pre">bit_length</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.bit_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.conjugate">
+<code class="sig-name descname"><span class="pre">conjugate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.conjugate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.denominator">
+<code class="sig-name descname"><span class="pre">denominator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.denominator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.from_bytes">
+<code class="sig-name descname"><span class="pre">from_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">byteorder</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.from_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the integer represented by the given array of bytes.</p>
+<dl class="simple">
+<dt>bytes</dt><dd><p>Holds the array of bytes to convert.  The argument must either
+support the buffer protocol or be an iterable object producing bytes.
+Bytes and bytearray are examples of built-in objects that support the
+buffer protocol.</p>
+</dd>
+<dt>byteorder</dt><dd><p>The byte order used to represent the integer.  If byteorder is ‘big’,
+the most significant byte is at the beginning of the byte array.  If
+byteorder is ‘little’, the most significant byte is at the end of the
+byte array.  To request the native byte order of the host system, use
+<a href="#id5"><span class="problematic" id="id6">`</span></a>sys.byteorder’ as the byte order value.</p>
+</dd>
+<dt>signed</dt><dd><p>Indicates whether two’s complement is used to represent the integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.if_eq">
+<code class="sig-name descname"><span class="pre">if_eq</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.if_eq" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.if_ez">
+<code class="sig-name descname"><span class="pre">if_ez</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.if_ez" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.if_ge">
+<code class="sig-name descname"><span class="pre">if_ge</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.if_ge" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.if_lt">
+<code class="sig-name descname"><span class="pre">if_lt</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.if_lt" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.if_ne">
+<code class="sig-name descname"><span class="pre">if_ne</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.if_ne" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ForwardRef</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.if_nz">
+<code class="sig-name descname"><span class="pre">if_nz</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.if_nz" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_IfContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.imag">
+<code class="sig-name descname"><span class="pre">imag</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.imag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.numerator">
+<code class="sig-name descname"><span class="pre">numerator</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.numerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.real">
+<code class="sig-name descname"><span class="pre">real</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.real" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.to_bytes">
+<code class="sig-name descname"><span class="pre">to_bytes</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the value is set, otherwise raise an error</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.RegFuture.value">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">value</span></code><a class="headerlink" href="#netqasm.sdk.futures.RegFuture.value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of the future.
+If it’s not set yet, <cite>None</cite> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.futures.Array">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.futures.</span></code><code class="sig-name descname"><span class="pre">Array</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wrapper around an array in Shared Memory.</p>
+<p>An <cite>Array</cite> instance provides methods to inspect and operate on an array that
+exists in shared memory.
+They are typically obtained as return values to certain SDK methods.</p>
+<p>Elements or slices of the array can be captured as Futures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – </p></li>
+<li><p><strong>length</strong> (<em>int</em>) – </p></li>
+<li><p><strong>address</strong> (<em>int</em>) – </p></li>
+<li><p><strong>init_values</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>Optional</em><em>[</em><em>int</em><em>]</em><em>]</em><em>]</em>) – </p></li>
+<li><p><strong>lineno</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../api_util/netqasm.util.log.html#netqasm.util.log.HostLine" title="netqasm.util.log.HostLine"><em>HostLine</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Array.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Array constructor. Typically not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – connection of the application this array is part of</p></li>
+<li><p><strong>length</strong> (<em>int</em>) – length of the array</p></li>
+<li><p><strong>address</strong> (<em>int</em>) – address of the array</p></li>
+<li><p><strong>init_values</strong> (<em>Optional</em><em>[</em><em>List</em><em>[</em><em>Optional</em><em>[</em><em>int</em><em>]</em><em>]</em><em>]</em>) – initial values of the array. Must have length <cite>length</cite>.</p></li>
+<li><p><strong>lineno</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../api_util/netqasm.util.log.html#netqasm.util.log.HostLine" title="netqasm.util.log.HostLine"><em>HostLine</em></a><em>]</em>) – line number where the array is created in the Python source code</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.lineno">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">lineno</span></code><a class="headerlink" href="#netqasm.sdk.futures.Array.lineno" title="Permalink to this definition">¶</a></dt>
+<dd><p>What line in host application file initiated this array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="../api_util/netqasm.util.log.html#netqasm.util.log.HostLine" title="netqasm.util.log.HostLine"><code class="xref py py-class docutils literal notranslate"><span class="pre">HostLine</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.address">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">address</span></code><a class="headerlink" href="#netqasm.sdk.futures.Array.address" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.get_future_index">
+<code class="sig-name descname"><span class="pre">get_future_index</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Array.get_future_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a Future representing a particular array element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.get_future_slice">
+<code class="sig-name descname"><span class="pre">get_future_slice</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Array.get_future_slice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a list of Futures each representing one element in a particular
+array slice</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">slice</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.foreach">
+<code class="sig-name descname"><span class="pre">foreach</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Array.foreach" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a context of code that gets called for each element in the array.</p>
+<p>Returns a future of the array value at the current index.</p>
+<p>Code inside the context <em>must</em> be compilable to NetQASM, that is,
+it should only contain quantum operations and/or classical values that are
+are stored in shared memory (arrays and registers).
+No classical communication is allowed.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">NetQASMConnection</span><span class="p">(</span><span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;alice&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">alice</span><span class="p">:</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">alice</span><span class="o">.</span><span class="n">new_array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">alice</span><span class="o">.</span><span class="n">new_array</span><span class="p">(</span>
+        <span class="mi">10</span><span class="p">,</span>
+        <span class="n">init_values</span><span class="o">=</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">with</span> <span class="n">values</span><span class="o">.</span><span class="n">foreach</span><span class="p">()</span> <span class="k">as</span> <span class="n">v</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Qubit</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">v</span><span class="o">.</span><span class="n">if_eq</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">H</span><span class="p">()</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">future</span><span class="o">=</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get_future_index</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_ForEachContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.futures.Array.enumerate">
+<code class="sig-name descname"><span class="pre">enumerate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.futures.Array.enumerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a context of code that gets called for each element in the array
+and includes a counter.</p>
+<p>Returns a tuple (<cite>index</cite>, <cite>future</cite>) where <cite>future</cite> is a Future of the array
+value at the current index.</p>
+<p>Code inside the context <em>must</em> be compilable to NetQASM, that is,
+it should only contain quantum operations and/or classical values that are
+are stored in shared memory (arrays and registers).
+No classical communication is allowed.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">NetQASMConnection</span><span class="p">(</span><span class="n">app_name</span><span class="o">=</span><span class="s2">&quot;alice&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">alice</span><span class="p">:</span>
+    <span class="n">outcomes</span> <span class="o">=</span> <span class="n">alice</span><span class="o">.</span><span class="n">new_array</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">alice</span><span class="o">.</span><span class="n">new_array</span><span class="p">(</span>
+        <span class="mi">10</span><span class="p">,</span>
+        <span class="n">init_values</span><span class="o">=</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">with</span> <span class="n">values</span><span class="o">.</span><span class="n">enumerate</span><span class="p">()</span> <span class="k">as</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">Qubit</span><span class="p">(</span><span class="n">alice</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">v</span><span class="o">.</span><span class="n">if_eq</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">H</span><span class="p">()</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">future</span><span class="o">=</span><span class="n">outcomes</span><span class="o">.</span><span class="n">get_future_index</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_ForEachContext</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.sdk.network.html" class="btn btn-neutral float-right" title="netqasm.sdk.network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.sdk.external.html" class="btn btn-neutral float-left" title="netqasm.sdk.external" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

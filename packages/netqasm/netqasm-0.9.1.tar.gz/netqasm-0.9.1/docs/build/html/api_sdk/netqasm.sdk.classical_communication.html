@@ -1,0 +1,976 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.sdk.classical_communication &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.sdk.compiling" href="netqasm.sdk.compiling.html" />
+    <link rel="prev" title="netqasm.sdk.builder" href="netqasm.sdk.builder.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.builder.html">netqasm.sdk.builder</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.sdk.classical_communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.sdk.classical_communication.broadcast_channel">netqasm.sdk.classical_communication.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel">netqasm.sdk.classical_communication.thread_socket.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.sdk.classical_communication.message">netqasm.sdk.classical_communication.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.sdk.classical_communication.socket">netqasm.sdk.classical_communication.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.sdk.classical_communication.thread_socket.socket">netqasm.sdk.classical_communication.thread_socket.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.sdk.classical_communication.thread_socket.socket_hub">netqasm.sdk.classical_communication.thread_socket.socket_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.compiling.html">netqasm.sdk.compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.config.html">netqasm.sdk.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.connection.html">netqasm.sdk.connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.epr_socket.html">netqasm.sdk.epr_socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.external.html">netqasm.sdk.external</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.futures.html">netqasm.sdk.futures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.network.html">netqasm.sdk.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.progress_bar.html">netqasm.sdk.progress_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.qubit.html">netqasm.sdk.qubit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.shared_memory.html">netqasm.sdk.shared_memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html">netqasm.sdk.toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.gates">netqasm.sdk.toolbox.gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.measurements">netqasm.sdk.toolbox.measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.multi_node">netqasm.sdk.toolbox.multi_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.sim_states">netqasm.sdk.toolbox.sim_states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.state_prep">netqasm.sdk.toolbox.state_prep</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.sdk.html">netqasm.sdk</a> &raquo;</li>
+        
+      <li>netqasm.sdk.classical_communication</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_sdk/netqasm.sdk.classical_communication.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="netqasm-sdk-classical-communication">
+<h1>netqasm.sdk.classical_communication<a class="headerlink" href="#netqasm-sdk-classical-communication" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-netqasm.sdk.classical_communication.broadcast_channel">
+<span id="netqasm-sdk-classical-communication-broadcast-channel"></span><h1>netqasm.sdk.classical_communication.broadcast_channel<a class="headerlink" href="#module-netqasm.sdk.classical_communication.broadcast_channel" title="Permalink to this headline">¶</a></h1>
+<p>Interface for classical broadcasting between Hosts.</p>
+<p>This module contains the <cite>BroadcastChannel</cite> class which is a base for representing
+classical broadcasting (sending classical messages to all other nodes in the network)
+between Hosts.</p>
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.broadcast_channel.</span></code><code class="sig-name descname"><span class="pre">BroadcastChannel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Socket for sending messages to all nodes in the network (broadcasting).</p>
+<p>A BroadcastChannel can be used by Hosts to broadcast a message to all other nodes
+in the network. It is very similar to a Socket object, just without an explicit
+single remote node.</p>
+<p>A BroadcastChannel is a local object that each node (that wants to send and
+receive broadcast messages) must instantiate themselves.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – </p></li>
+<li><p><strong>use_callbacks</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>BroadcastChannel constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – application/Host name of this channel’s constructor</p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – maximum time to try and create this channel before aborting</p></li>
+<li><p><strong>use_callbacks</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to use the <cite>recv_callback</cite> and
+<cite>conn_lost_callback</cite> callback methods</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.send">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast a message to all remote nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.recv">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message that was broadcast and from whom.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>block</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.recv_callback">
+<code class="sig-name descname"><span class="pre">recv_callback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.recv_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets called when a message is received.</p>
+<p>Subclass to define behaviour.</p>
+<p>NOTE: This only happens if <cite>self.use_callbacks</cite> is set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.conn_lost_callback">
+<code class="sig-name descname"><span class="pre">conn_lost_callback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel.conn_lost_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets called when the connection is lost.</p>
+<p>Subclass to define behaviour.</p>
+<p>NOTE: This only happens if <cite>self.use_callbacks</cite> is set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.broadcast_channel.</span></code><code class="sig-name descname"><span class="pre">BroadcastChannelBySockets</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel" title="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannel</span></code></a></p>
+<p>Implementation of a BroadcastChannel using a Socket for each remote node.</p>
+<p>Technically this is a multicast channel since the receiving nodes must be
+explicitly listed. It simply uses one-to-one sockets for every remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>remote_app_names</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>BroadcastChannel constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – application/Host name of self</p></li>
+<li><p><strong>remote_app_names</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – list of receiving remote Hosts</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets.send">
+<code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast a message to all remote nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets.recv">
+<code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message that was broadcast.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<em>bool</em>) – Whether to block for an available message</p></li>
+<li><p><strong>timeout</strong> (<em>float</em><em>, </em><em>optional</em>) – Optionally use a timeout for trying to recv a message. Only used if <cite>block=True</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(remote_node_name, msg)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If <cite>block=False</cite> and there is no available message</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel">
+<span id="netqasm-sdk-classical-communication-thread-socket-broadcast-channel"></span><h1>netqasm.sdk.classical_communication.thread_socket.broadcast_channel<a class="headerlink" href="#module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel" title="Permalink to this headline">¶</a></h1>
+<p>BroadcastChannel implementation using ThreadSockets.</p>
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.thread_socket.broadcast_channel.ThreadBroadcastChannel">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.broadcast_channel.</span></code><code class="sig-name descname"><span class="pre">ThreadBroadcastChannel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_names</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.broadcast_channel.ThreadBroadcastChannel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets" title="netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.classical_communication.broadcast_channel.BroadcastChannelBySockets</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>remote_app_names</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-netqasm.sdk.classical_communication.message">
+<span id="netqasm-sdk-classical-communication-message"></span><h1>netqasm.sdk.classical_communication.message<a class="headerlink" href="#module-netqasm.sdk.classical_communication.message" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.message.StructuredMessage">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.message.</span></code><code class="sig-name descname"><span class="pre">StructuredMessage</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">header</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.message.StructuredMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>header</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>payload</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.sdk.classical_communication.message.StructuredMessage.header">
+<code class="sig-name descname"><span class="pre">header</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.sdk.classical_communication.message.StructuredMessage.header" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.sdk.classical_communication.message.StructuredMessage.payload">
+<code class="sig-name descname"><span class="pre">payload</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.sdk.classical_communication.message.StructuredMessage.payload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-netqasm.sdk.classical_communication.socket">
+<span id="netqasm-sdk-classical-communication-socket"></span><h1>netqasm.sdk.classical_communication.socket<a class="headerlink" href="#module-netqasm.sdk.classical_communication.socket" title="Permalink to this headline">¶</a></h1>
+<p>Interface for classical communication between Hosts.</p>
+<p>This module contains the <cite>Socket</cite> class which is a base for representing classical
+communication (sending and receiving classical messages) between Hosts.</p>
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.socket.Socket">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.socket.</span></code><code class="sig-name descname"><span class="pre">Socket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>Base class for classical sockets.</p>
+<p>Classical communication is modelled by sockets, which are also widely used
+in purely classical applications involving communication.</p>
+<p>If a node wants to communicate arbitrary classical messages with another node, this
+communication must be done between the Hosts of these nodes. Both Hosts should
+instantiate a Socket object with the other Host as ‘remote’. Upon creation, the
+Socket objects try to connect to each other. Only after this has succeeded, the
+sockets can be used.</p>
+<p>The main methods of a Socket are <cite>send</cite> and <cite>recv</cite>, which are used to send a
+message to the remote Host, and wait to receive a message from the other Host,
+respectively. Messages are str (string) objects. To send a number, convert it
+to a string before sending, and convert it back after receiving.</p>
+<p>There are some variations on the <cite>send</cite> and <cite>recv</cite> methods which may be useful
+in specific scenarios. See their own documentation for their use.</p>
+<p>NOTE: At the moment, Sockets are not part of the compilation process yet. Therefore,
+they don’t need to be part of a Connection, and operations on Sockets do not need
+to be flushed before they are executed (they are executed immediately).
+This also means that e.g. a <cite>recv</cite> operation, which is blocking by default,
+acutally blocks the whole application script. <strong>So, if any quantum operations
+should be executed before such a `recv` statement, make sure that these operations
+are flushed before blocking on `recv`</strong>.</p>
+<p>Implementations (subclasses) of Sockets may be quite different, depending on the
+runtime environment. A physical setup (with real hardware) may implement this as
+TCP sockets. A simulator might use inter-thread communication (see e.g.
+<cite>ThreadSocket</cite>), or another custom object type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>remote_app_name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>socket_id</strong> (<em>int</em>) – </p></li>
+<li><p><strong>timeout</strong> (<em>Optional</em><em>[</em><em>float</em><em>]</em>) – </p></li>
+<li><p><strong>use_callbacks</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>log_config</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="netqasm.sdk.config.html#netqasm.sdk.config.LogConfig" title="netqasm.sdk.config.LogConfig"><em>config.LogConfig</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Socket constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<em>str</em>) – application/Host name of this socket’s owner</p></li>
+<li><p><strong>remote_app_name</strong> (<em>str</em>) – application/Host name of this socket’s remote</p></li>
+<li><p><strong>socket_id</strong> (<em>int</em>) – local ID to use for this socket</p></li>
+<li><p><strong>timeout</strong> (<em>Optional</em><em>[</em><em>float</em><em>]</em>) – maximum amount of real time to try to connect to the remote
+socket</p></li>
+<li><p><strong>use_callbacks</strong> (<em>bool</em>) – whether to call the <cite>recv_callback</cite> method upon receiving
+a message</p></li>
+<li><p><strong>log_config</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="netqasm.sdk.config.html#netqasm.sdk.config.LogConfig" title="netqasm.sdk.config.LogConfig"><em>config.LogConfig</em></a><em>]</em>) – logging configuration for this socket</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.send">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a message to the remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.recv">
+<em class="property"><span class="pre">abstract</span> </em><code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message from the remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – </p></li>
+<li><p><strong>maxsize</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.send_structured">
+<code class="sig-name descname"><span class="pre">send_structured</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.send_structured" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a structured message (with header and payload) to the remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="#netqasm.sdk.classical_communication.message.StructuredMessage" title="netqasm.sdk.classical_communication.message.StructuredMessage"><code class="xref py py-class docutils literal notranslate"><span class="pre">StructuredMessage</span></code></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.recv_structured">
+<code class="sig-name descname"><span class="pre">recv_structured</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.recv_structured" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message (with header and payload) from the remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – </p></li>
+<li><p><strong>maxsize</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#netqasm.sdk.classical_communication.message.StructuredMessage" title="netqasm.sdk.classical_communication.message.StructuredMessage"><code class="xref py py-class docutils literal notranslate"><span class="pre">StructuredMessage</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.send_silent">
+<code class="sig-name descname"><span class="pre">send_silent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.send_silent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a message without logging</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.recv_silent">
+<code class="sig-name descname"><span class="pre">recv_silent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.recv_silent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message without logging</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – </p></li>
+<li><p><strong>maxsize</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.recv_callback">
+<code class="sig-name descname"><span class="pre">recv_callback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.recv_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets called when a message is received.</p>
+<p>Subclass to define behaviour.</p>
+<p>NOTE: This only happens if <cite>self.use_callbacks</cite> is set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.socket.Socket.conn_lost_callback">
+<code class="sig-name descname"><span class="pre">conn_lost_callback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.socket.Socket.conn_lost_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets called when the connection is lost.</p>
+<p>Subclass to define behaviour.</p>
+<p>NOTE: This only happens if <cite>self.use_callbacks</cite> is set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-netqasm.sdk.classical_communication.thread_socket.socket">
+<span id="netqasm-sdk-classical-communication-thread-socket-socket"></span><h1>netqasm.sdk.classical_communication.thread_socket.socket<a class="headerlink" href="#module-netqasm.sdk.classical_communication.thread_socket.socket" title="Permalink to this headline">¶</a></h1>
+<p>Classical socket implementation using a hub that is shared across threads.</p>
+<p>This module contains the ThreadSocket class which is an implementation of the Socket
+interface that can be used by Hosts that run in a multi-thread simulation.</p>
+<dl class="py function">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.trim_msg">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">trim_msg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.trim_msg" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.log_send">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">log_send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.log_send" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.log_send_structured">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">log_send_structured</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.log_send_structured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.log_recv">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">log_recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.log_recv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.log_recv_structured">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">log_recv_structured</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.log_recv_structured" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">ThreadSocket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.classical_communication.socket.Socket" title="netqasm.sdk.classical_communication.socket.Socket"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.classical_communication.socket.Socket</span></code></a></p>
+<p>Classical socket implementation for multi-threaded simulations.</p>
+<p>This implementation should be used when the simulation consists of a single process,
+with a thread for each Host. A global SocketHub instance must be available and
+shared between all threads. The ThreadSocket instance for a Host can then ‘send’
+and ‘receive’ messages to/from other Hosts by writing/reading from the shared
+SocketHub memory.</p>
+<p>Currently only used with the SquidASM simulator backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – </p></li>
+<li><p><strong>use_callbacks</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+<li><p><strong>log_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.sdk.config.html#netqasm.sdk.config.LogConfig" title="netqasm.sdk.config.LogConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogConfig</span></code></a>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_callbacks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>ThreadSocket constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – application/Host name of this socket’s owner</p></li>
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – remote application/Host name</p></li>
+<li><p><strong>socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – local ID to use for this socket</p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – maximum amount of real time to try to connect to the remote
+socket</p></li>
+<li><p><strong>use_callbacks</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to call the <cite>recv_callback</cite> method upon receiving
+a message</p></li>
+<li><p><strong>log_config</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.sdk.config.html#netqasm.sdk.config.LogConfig" title="netqasm.sdk.config.LogConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogConfig</span></code></a>]) – logging configuration for this socket</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.get_comm_logger">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get_comm_logger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comm_log_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.get_comm_logger" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>comm_log_dir</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../api_logging/netqasm.logging.glob.html#netqasm.logging.output.ClassCommLogger" title="netqasm.logging.output.ClassCommLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassCommLogger</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.app_name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">app_name</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.app_name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.remote_app_name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_app_name</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.remote_app_name" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.id" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.key">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">key</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.key" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.remote_key">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_key</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.remote_key" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.connected">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">connected</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.connected" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.use_callbacks">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">use_callbacks</span></code><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.use_callbacks" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.send">
+<code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a message to the remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.recv">
+<code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message from the remote node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.send_structured">
+<code class="sig-name descname"><span class="pre">send_structured</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="#netqasm.sdk.classical_communication.message.StructuredMessage" title="netqasm.sdk.classical_communication.message.StructuredMessage"><span class="pre">netqasm.sdk.classical_communication.message.StructuredMessage</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.send_structured" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a structured message (with header and payload) to the remote node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="#netqasm.sdk.classical_communication.message.StructuredMessage" title="netqasm.sdk.classical_communication.message.StructuredMessage"><code class="xref py py-class docutils literal notranslate"><span class="pre">StructuredMessage</span></code></a>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.recv_structured">
+<code class="sig-name descname"><span class="pre">recv_structured</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.recv_structured" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message (with header and payload) from the remote node.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.wait">
+<code class="sig-name descname"><span class="pre">wait</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits until the connection gets lost</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.send_silent">
+<code class="sig-name descname"><span class="pre">send_silent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.send_silent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a message without logging</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.recv_silent">
+<code class="sig-name descname"><span class="pre">recv_silent</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">block</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket.recv_silent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message without logging</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>block</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+<li><p><strong>timeout</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – </p></li>
+<li><p><strong>maxsize</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.StorageThreadSocket">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.</span></code><code class="sig-name descname"><span class="pre">StorageThreadSocket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.StorageThreadSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket" title="netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket.ThreadSocket</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.StorageThreadSocket.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_app_name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.StorageThreadSocket.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>ThreadSocket that simply stores any message comming in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>remote_app_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket.StorageThreadSocket.recv_callback">
+<code class="sig-name descname"><span class="pre">recv_callback</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket.StorageThreadSocket.recv_callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method gets called when a message is received.</p>
+<p>Subclass to define behaviour.</p>
+<p>NOTE: This only happens if <cite>self.use_callbacks</cite> is set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-netqasm.sdk.classical_communication.thread_socket.socket_hub">
+<span id="netqasm-sdk-classical-communication-thread-socket-socket-hub"></span><h1>netqasm.sdk.classical_communication.thread_socket.socket_hub<a class="headerlink" href="#module-netqasm.sdk.classical_communication.thread_socket.socket_hub" title="Permalink to this headline">¶</a></h1>
+<p>Global management for classical sockets that live in separate threads.</p>
+<p>This module contains the _SocketHub that manages sockets that are in separate threads
+and need to communicate with each other.</p>
+<dl class="py function">
+<dt id="netqasm.sdk.classical_communication.thread_socket.socket_hub.reset_socket_hub">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.classical_communication.thread_socket.socket_hub.</span></code><code class="sig-name descname"><span class="pre">reset_socket_hub</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.classical_communication.thread_socket.socket_hub.reset_socket_hub" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.sdk.compiling.html" class="btn btn-neutral float-right" title="netqasm.sdk.compiling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.sdk.builder.html" class="btn btn-neutral float-left" title="netqasm.sdk.builder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

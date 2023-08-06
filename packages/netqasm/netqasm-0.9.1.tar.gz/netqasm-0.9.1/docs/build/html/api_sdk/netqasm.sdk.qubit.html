@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.sdk.qubit &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.sdk.shared_memory" href="netqasm.sdk.shared_memory.html" />
+    <link rel="prev" title="netqasm.sdk.progress_bar" href="netqasm.sdk.progress_bar.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.builder.html">netqasm.sdk.builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html">netqasm.sdk.classical_communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.broadcast_channel">netqasm.sdk.classical_communication.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel">netqasm.sdk.classical_communication.thread_socket.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.message">netqasm.sdk.classical_communication.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.socket">netqasm.sdk.classical_communication.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket">netqasm.sdk.classical_communication.thread_socket.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket_hub">netqasm.sdk.classical_communication.thread_socket.socket_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.compiling.html">netqasm.sdk.compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.config.html">netqasm.sdk.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.connection.html">netqasm.sdk.connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.epr_socket.html">netqasm.sdk.epr_socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.external.html">netqasm.sdk.external</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.futures.html">netqasm.sdk.futures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.network.html">netqasm.sdk.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.progress_bar.html">netqasm.sdk.progress_bar</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.sdk.qubit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.shared_memory.html">netqasm.sdk.shared_memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html">netqasm.sdk.toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.gates">netqasm.sdk.toolbox.gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.measurements">netqasm.sdk.toolbox.measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.multi_node">netqasm.sdk.toolbox.multi_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.sim_states">netqasm.sdk.toolbox.sim_states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.state_prep">netqasm.sdk.toolbox.state_prep</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Known issues</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../known_issues.html">Known issues</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.sdk.html">netqasm.sdk</a> &raquo;</li>
+        
+      <li>netqasm.sdk.qubit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_sdk/netqasm.sdk.qubit.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.sdk.qubit">
+<span id="netqasm-sdk-qubit"></span><h1>netqasm.sdk.qubit<a class="headerlink" href="#module-netqasm.sdk.qubit" title="Permalink to this headline">¶</a></h1>
+<p>Qubit representation.</p>
+<p>This module contains the <cite>Qubit</cite> class, which are used by application scripts
+as handles to in-memory qubits.</p>
+<dl class="py exception">
+<dt id="netqasm.sdk.qubit.QubitNotActiveError">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.qubit.</span></code><code class="sig-name descname"><span class="pre">QubitNotActiveError</span></code><a class="headerlink" href="#netqasm.sdk.qubit.QubitNotActiveError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryError</span></code></p>
+<dl class="py attribute">
+<dt id="netqasm.sdk.qubit.QubitNotActiveError.args">
+<code class="sig-name descname"><span class="pre">args</span></code><a class="headerlink" href="#netqasm.sdk.qubit.QubitNotActiveError.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.QubitNotActiveError.with_traceback">
+<code class="sig-name descname"><span class="pre">with_traceback</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.QubitNotActiveError.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.qubit.Qubit">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.qubit.</span></code><code class="sig-name descname"><span class="pre">Qubit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_new_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ent_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">virtual_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Representation of a qubit that has been allocated in the quantum node.</p>
+<p>A <cite>Qubit</cite> instance represents a quantum state that is stored in a physical qubit
+somewhere in the quantum node.
+The particular qubit is identified by its virtual qubit ID.
+To which physical qubit ID this is mapped (at a given time), is handled completely
+by the quantum node controller and is not known to the <cite>Qubit</cite> itself.</p>
+<p>A <cite>Qubit</cite> object can be instantiated in an application script.
+Such an instantiation is automatically compiled into NetQASM instructions that
+allocate and initialize a new qubit in the quantum node controller.</p>
+<p>A <cite>Qubit</cite> object may also be obtained by SDK functions that return them, like
+the <cite>create()</cite> method on an <cite>EPRSocket</cite>, which returns the object as a handle to
+the qubit that is now entangled with one in another node.</p>
+<p>Qubit operations like applying gates and measuring them are done by calling
+methods on a <cite>Qubit</cite> instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – </p></li>
+<li><p><strong>add_new_command</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>ent_info</strong> (<em>Optional</em><em>[</em><em>qlink_compat.LinkLayerOKTypeK</em><em>]</em>) – </p></li>
+<li><p><strong>virtual_address</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_new_command</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ent_info</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">virtual_address</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Qubit constructor. This is the standard way to allocate a new qubit in
+an application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – connection of the application in which to allocate the qubit</p></li>
+<li><p><strong>add_new_command</strong> (<em>bool</em>) – whether to automatically add NetQASM instructions to
+the current subroutine to allocate and initialize the qubit</p></li>
+<li><p><strong>ent_info</strong> (<em>Optional</em><em>[</em><em>qlink_compat.LinkLayerOKTypeK</em><em>]</em>) – entanglement generation information in case this qubit is
+the result of an entanglement generation request</p></li>
+<li><p><strong>virtual_address</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – explicit virtual ID to use for this qubit. If None,
+a free ID is automatically chosen.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.connection">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">connection</span></code><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the NetQASM connection of this qubit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sdkconn.BaseNetQASMConnection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.qubit_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">qubit_id</span></code><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.qubit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the qubit ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.active">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">active</span></code><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.active" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.entanglement_info">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">entanglement_info</span></code><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.entanglement_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about the successful link layer request that resulted in
+this qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optional[qlink_compat.LinkLayerOKTypeK]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.remote_entangled_node">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_entangled_node</span></code><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.remote_entangled_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the remote node the qubit is entangled with.</p>
+<p>If not entanled, <cite>None</cite> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.assert_active">
+<code class="sig-name descname"><span class="pre">assert_active</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.assert_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that the qubit is active, i.e. allocated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.measure">
+<code class="sig-name descname"><span class="pre">measure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measure the qubit in the standard basis and get the measurement outcome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>future</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>, <a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.RegFuture" title="netqasm.sdk.futures.RegFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegFuture</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – the <cite>Future</cite> to place the outcome in. If None, a Future is
+created automatically.</p></li>
+<li><p><strong>inplace</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If False, the measurement is destructive and the qubit is
+removed from memory. If True, the qubit is left in the post-measurement
+state.</p></li>
+<li><p><strong>store_array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to store the outcome in an array. If not, it is
+placed in a register. Only used if <cite>future</cite> is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>, <a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.RegFuture" title="netqasm.sdk.futures.RegFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegFuture</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Future representing the measurement outcome. It is a <cite>Future</cite> if</p>
+</dd>
+</dl>
+<p>the result is in an array (default) or <cite>RegFuture</cite> if the result is in a
+register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.X">
+<code class="sig-name descname"><span class="pre">X</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.X" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply an X gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.Y">
+<code class="sig-name descname"><span class="pre">Y</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.Y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Y gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.Z">
+<code class="sig-name descname"><span class="pre">Z</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Z gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.T">
+<code class="sig-name descname"><span class="pre">T</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a T gate on the qubit.</p>
+<p>A T gate is a Z-rotation with angle pi/4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.H">
+<code class="sig-name descname"><span class="pre">H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Hadamard gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.K">
+<code class="sig-name descname"><span class="pre">K</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a K gate on the qubit.</p>
+<p>A K gate moves the <a href="#id1"><span class="problematic" id="id2">|</span></a>0&gt; state to +|i&gt; (positive Y) and vice versa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.S">
+<code class="sig-name descname"><span class="pre">S</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.S" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply an S gate on the qubit.</p>
+<p>An S gate is a Z-rotation with angle pi/2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.rot_X">
+<code class="sig-name descname"><span class="pre">rot_X</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.rot_X" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a rotation around the X-axis of the specified angle.</p>
+<p>The angle is interpreted as ǹ * pi / 2 ^d` radians.
+For example, (n, d) = (1, 2) represents an angle of pi/4 radians.
+If <cite>angle</cite> is specified, <cite>n</cite> and <cite>d</cite> are ignored and this instruction is
+automatically converted into a sequence of (n, d) rotations such that the
+discrete (n, d) values approximate the original angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – numerator of discrete angle specification</p></li>
+<li><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – denomerator of discrete angle specification</p></li>
+<li><p><strong>angle</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – exact floating-point angle, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.rot_Y">
+<code class="sig-name descname"><span class="pre">rot_Y</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.rot_Y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a rotation around the Y-axis of the specified angle.</p>
+<p>The angle is interpreted as ǹ * pi / 2 ^d` radians.
+For example, (n, d) = (1, 2) represents an angle of pi/4 radians.
+If <cite>angle</cite> is specified, <cite>n</cite> and <cite>d</cite> are ignored and this instruction is
+automatically converted into a sequence of (n, d) rotations such that the
+discrete (n, d) values approximate the original angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – numerator of discrete angle specification</p></li>
+<li><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – denomerator of discrete angle specification</p></li>
+<li><p><strong>angle</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – exact floating-point angle, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.rot_Z">
+<code class="sig-name descname"><span class="pre">rot_Z</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.rot_Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a rotation around the Z-axis of the specified angle.</p>
+<p>The angle is interpreted as ǹ * pi / 2 ^d` radians.
+For example, (n, d) = (1, 2) represents an angle of pi/4 radians.
+If <cite>angle</cite> is specified, <cite>n</cite> and <cite>d</cite> are ignored and this instruction is
+automatically converted into a sequence of (n, d) rotations such that the
+discrete (n, d) values approximate the original angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – numerator of discrete angle specification</p></li>
+<li><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – denomerator of discrete angle specification</p></li>
+<li><p><strong>angle</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – exact floating-point angle, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.cnot">
+<code class="sig-name descname"><span class="pre">cnot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.cnot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a CNOT gate between this qubit (control) and a target qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<a class="reference internal" href="#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code></a>) – target qubit. Should have the same connection as this qubit.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.cphase">
+<code class="sig-name descname"><span class="pre">cphase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.cphase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a CPHASE (CZ) gate between this qubit (control) and a target qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<a class="reference internal" href="#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code></a>) – target qubit. Should have the same connection as this qubit.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the qubit to the state |0&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.Qubit.free">
+<code class="sig-name descname"><span class="pre">free</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.Qubit.free" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free the qubit and its virtual ID.</p>
+<p>After freeing, the underlying physical qubit can be used to store another state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.qubit.FutureQubit">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.qubit.</span></code><code class="sig-name descname"><span class="pre">FutureQubit</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.sdk.qubit.Qubit</span></code></a></p>
+<p>A Qubit that will be available in the future.</p>
+<p>This class is very similar to the <cite>Future</cite> class which is used for classical
+values.
+A <cite>FutureQubit</cite> acts like a <cite>Qubit</cite> so that all qubit operations can be applied on
+it. FutureQubits are typically the result of EPR creating requests, where they
+represent the qubits that will be available when EPR generation has finished.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – </p></li>
+<li><p><strong>future_id</strong> (<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><em>Future</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">future_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>FutureQubit constructor. Typically not used directly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>conn</strong> (<em>sdkconn.BaseNetQASMConnection</em>) – connection through which subroutines are sent that contain this
+qubit</p></li>
+<li><p><strong>future_id</strong> (<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><em>Future</em></a>) – the virtual ID this qubit will have</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.H">
+<code class="sig-name descname"><span class="pre">H</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.H" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Hadamard gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.K">
+<code class="sig-name descname"><span class="pre">K</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.K" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a K gate on the qubit.</p>
+<p>A K gate moves the <a href="#id3"><span class="problematic" id="id4">|</span></a>0&gt; state to +|i&gt; (positive Y) and vice versa.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.S">
+<code class="sig-name descname"><span class="pre">S</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.S" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply an S gate on the qubit.</p>
+<p>An S gate is a Z-rotation with angle pi/2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.T">
+<code class="sig-name descname"><span class="pre">T</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a T gate on the qubit.</p>
+<p>A T gate is a Z-rotation with angle pi/4.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.X">
+<code class="sig-name descname"><span class="pre">X</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.X" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply an X gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.Y">
+<code class="sig-name descname"><span class="pre">Y</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.Y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Y gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.Z">
+<code class="sig-name descname"><span class="pre">Z</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a Z gate on the qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.active">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">active</span></code><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.active" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.assert_active">
+<code class="sig-name descname"><span class="pre">assert_active</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.assert_active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assert that the qubit is active, i.e. allocated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.cnot">
+<code class="sig-name descname"><span class="pre">cnot</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.cnot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a CNOT gate between this qubit (control) and a target qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<a class="reference internal" href="#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code></a>) – target qubit. Should have the same connection as this qubit.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.connection">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">connection</span></code><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the NetQASM connection of this qubit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>sdkconn.BaseNetQASMConnection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.cphase">
+<code class="sig-name descname"><span class="pre">cphase</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.cphase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a CPHASE (CZ) gate between this qubit (control) and a target qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<a class="reference internal" href="#netqasm.sdk.qubit.Qubit" title="netqasm.sdk.qubit.Qubit"><code class="xref py py-class docutils literal notranslate"><span class="pre">Qubit</span></code></a>) – target qubit. Should have the same connection as this qubit.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.free">
+<code class="sig-name descname"><span class="pre">free</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.free" title="Permalink to this definition">¶</a></dt>
+<dd><p>Free the qubit and its virtual ID.</p>
+<p>After freeing, the underlying physical qubit can be used to store another state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.measure">
+<code class="sig-name descname"><span class="pre">measure</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">future</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Measure the qubit in the standard basis and get the measurement outcome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>future</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>, <a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.RegFuture" title="netqasm.sdk.futures.RegFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegFuture</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]) – the <cite>Future</cite> to place the outcome in. If None, a Future is
+created automatically.</p></li>
+<li><p><strong>inplace</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If False, the measurement is destructive and the qubit is
+removed from memory. If True, the qubit is left in the post-measurement
+state.</p></li>
+<li><p><strong>store_array</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – whether to store the outcome in an array. If not, it is
+placed in a register. Only used if <cite>future</cite> is None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.Future" title="netqasm.sdk.futures.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>, <a class="reference internal" href="../quickstart/modules.html#netqasm.sdk.futures.RegFuture" title="netqasm.sdk.futures.RegFuture"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegFuture</span></code></a>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the Future representing the measurement outcome. It is a <cite>Future</cite> if</p>
+</dd>
+</dl>
+<p>the result is in an array (default) or <cite>RegFuture</cite> if the result is in a
+register.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.qubit_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">qubit_id</span></code><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.qubit_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the qubit ID</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.reset">
+<code class="sig-name descname"><span class="pre">reset</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the qubit to the state |0&gt;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.rot_X">
+<code class="sig-name descname"><span class="pre">rot_X</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.rot_X" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a rotation around the X-axis of the specified angle.</p>
+<p>The angle is interpreted as ǹ * pi / 2 ^d` radians.
+For example, (n, d) = (1, 2) represents an angle of pi/4 radians.
+If <cite>angle</cite> is specified, <cite>n</cite> and <cite>d</cite> are ignored and this instruction is
+automatically converted into a sequence of (n, d) rotations such that the
+discrete (n, d) values approximate the original angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – numerator of discrete angle specification</p></li>
+<li><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – denomerator of discrete angle specification</p></li>
+<li><p><strong>angle</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – exact floating-point angle, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.rot_Y">
+<code class="sig-name descname"><span class="pre">rot_Y</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.rot_Y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a rotation around the Y-axis of the specified angle.</p>
+<p>The angle is interpreted as ǹ * pi / 2 ^d` radians.
+For example, (n, d) = (1, 2) represents an angle of pi/4 radians.
+If <cite>angle</cite> is specified, <cite>n</cite> and <cite>d</cite> are ignored and this instruction is
+automatically converted into a sequence of (n, d) rotations such that the
+discrete (n, d) values approximate the original angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – numerator of discrete angle specification</p></li>
+<li><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – denomerator of discrete angle specification</p></li>
+<li><p><strong>angle</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – exact floating-point angle, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.rot_Z">
+<code class="sig-name descname"><span class="pre">rot_Z</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.rot_Z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do a rotation around the Z-axis of the specified angle.</p>
+<p>The angle is interpreted as ǹ * pi / 2 ^d` radians.
+For example, (n, d) = (1, 2) represents an angle of pi/4 radians.
+If <cite>angle</cite> is specified, <cite>n</cite> and <cite>d</cite> are ignored and this instruction is
+automatically converted into a sequence of (n, d) rotations such that the
+discrete (n, d) values approximate the original angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – numerator of discrete angle specification</p></li>
+<li><p><strong>d</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – denomerator of discrete angle specification</p></li>
+<li><p><strong>angle</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – exact floating-point angle, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.entanglement_info">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">entanglement_info</span></code><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.entanglement_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get information about the successful link layer request that resulted in
+this qubit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optional[qlink_compat.LinkLayerOKTypeK]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.qubit.FutureQubit.remote_entangled_node">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">remote_entangled_node</span></code><a class="headerlink" href="#netqasm.sdk.qubit.FutureQubit.remote_entangled_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of the remote node the qubit is entangled with.</p>
+<p>If not entanled, <cite>None</cite> is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.sdk.shared_memory.html" class="btn btn-neutral float-right" title="netqasm.sdk.shared_memory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.sdk.progress_bar.html" class="btn btn-neutral float-left" title="netqasm.sdk.progress_bar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

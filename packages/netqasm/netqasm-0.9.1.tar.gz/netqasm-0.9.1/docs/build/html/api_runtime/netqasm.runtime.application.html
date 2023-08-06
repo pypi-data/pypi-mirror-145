@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.runtime.application &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.runtime.cli" href="netqasm.runtime.cli.html" />
+    <link rel="prev" title="netqasm.runtime.app_config" href="netqasm.runtime.app_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.app_config.html">netqasm.runtime.app_config</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.runtime.application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.cli.html">netqasm.runtime.cli</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.debug.html">netqasm.runtime.debug</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.env.html">netqasm.runtime.env</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.hardware.html">netqasm.runtime.hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.interface.html">netqasm.runtime.interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.interface.html#module-netqasm.runtime.interface.config">netqasm.runtime.interface.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.interface.html#module-netqasm.runtime.interface.logging">netqasm.runtime.interface.logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.interface.html#module-netqasm.runtime.interface.results">netqasm.runtime.interface.results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.process_logs.html">netqasm.runtime.process_logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.runtime.settings.html">netqasm.runtime.settings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.runtime.html">netqasm.runtime</a> &raquo;</li>
+        
+      <li>netqasm.runtime.application</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_runtime/netqasm.runtime.application.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.runtime.application">
+<span id="netqasm-runtime-application"></span><h1>netqasm.runtime.application<a class="headerlink" href="#module-netqasm.runtime.application" title="Permalink to this headline">¶</a></h1>
+<p>NetQASM application definitions.</p>
+<p>NetQASM applications are modeled as pieces of Python code together with metadata.
+Generally, applications are multi-node, i.e. they consist of separate chunks of code
+that are run by separate nodes.</p>
+<p>To distinguish the notion of a multiple-node-spanning collection of code and single-node
+piece of code, the following terminology is used:</p>
+<ul class="simple">
+<li><p>A <em>Program</em> is code that runs on a single node. It is a Python script whose code is
+executed on (1) the Host component of that node and (2) the quantum node controller
+of that node.</p></li>
+<li><p>An <em>Application</em> is a collection of Programs (specifically, one Program per node).</p></li>
+</ul>
+<dl class="py class">
+<dt id="netqasm.runtime.application.Program">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">Program</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">party</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">entry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.Program" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Program running on one specific node. Part of a multi-node application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>party</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – name of the party or role in the multi-node application (protocol).
+E.g. a blind computation application may have two parties: “client” and
+“server”. Note that the party name is not necessarily the name of the node this
+Program runs on (which may be, e.g. “Delft”).</p></li>
+<li><p><strong>entry</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>) – entry point of the Program. This must be Python function.</p></li>
+<li><p><strong>args</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – list of argument names that the entry point expects</p></li>
+<li><p><strong>results</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – list of result names that are keys in the dictionary that this
+Program returns on completion</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.Program.party">
+<code class="sig-name descname"><span class="pre">party</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.runtime.application.Program.party" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.Program.entry">
+<code class="sig-name descname"><span class="pre">entry</span></code><em class="property"><span class="pre">:</span> <span class="pre">Callable</span></em><a class="headerlink" href="#netqasm.runtime.application.Program.entry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.Program.args">
+<code class="sig-name descname"><span class="pre">args</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.Program.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.Program.results">
+<code class="sig-name descname"><span class="pre">results</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.Program.results" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.runtime.application.AppMetadata">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">AppMetadata</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.AppMetadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Metadata about a NetQASM application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – name of the application</p></li>
+<li><p><strong>description</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – description of the application</p></li>
+<li><p><strong>authors</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – list of authors of the application</p></li>
+<li><p><strong>version</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – application version</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.AppMetadata.name">
+<code class="sig-name descname"><span class="pre">name</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.runtime.application.AppMetadata.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.AppMetadata.description">
+<code class="sig-name descname"><span class="pre">description</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.runtime.application.AppMetadata.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.AppMetadata.authors">
+<code class="sig-name descname"><span class="pre">authors</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.AppMetadata.authors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.AppMetadata.version">
+<code class="sig-name descname"><span class="pre">version</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.runtime.application.AppMetadata.version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.runtime.application.Application">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">Application</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">programs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.Application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Static NetQASM application (or protocol) information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>programs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="#netqasm.runtime.application.Program" title="netqasm.runtime.application.Program"><code class="xref py py-class docutils literal notranslate"><span class="pre">Program</span></code></a>]) – list of programs for each of the parties that are involved
+in this application (or protocol).</p></li>
+<li><p><strong>metadata</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#netqasm.runtime.application.AppMetadata" title="netqasm.runtime.application.AppMetadata"><code class="xref py py-class docutils literal notranslate"><span class="pre">AppMetadata</span></code></a>]) – application metadata</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.Application.programs">
+<code class="sig-name descname"><span class="pre">programs</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#netqasm.runtime.application.Program" title="netqasm.runtime.application.Program"><span class="pre">netqasm.runtime.application.Program</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.Application.programs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.Application.metadata">
+<code class="sig-name descname"><span class="pre">metadata</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#netqasm.runtime.application.AppMetadata" title="netqasm.runtime.application.AppMetadata"><span class="pre">netqasm.runtime.application.AppMetadata</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.Application.metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.runtime.application.ApplicationInstance">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">ApplicationInstance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">program_inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">party_alloc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logging_cfg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.ApplicationInstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="simple">
+<dt>Instantiation of a NetQASM application with concrete input values and</dt><dd><p>configuration of the underlying network.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app</strong> (<a class="reference internal" href="#netqasm.runtime.application.Application" title="netqasm.runtime.application.Application"><code class="xref py py-class docutils literal notranslate"><span class="pre">Application</span></code></a>) – static application info</p></li>
+<li><p><strong>program_inputs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]) – program input values for each of the application’s programs</p></li>
+<li><p><strong>network</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.runtime.interface.html#netqasm.runtime.interface.config.NetworkConfig" title="netqasm.runtime.interface.config.NetworkConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetworkConfig</span></code></a>]) – configuration for a simulated network</p></li>
+<li><p><strong>party_alloc</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – mapping of application parties to nodes in the network</p></li>
+<li><p><strong>logging_cfg</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="../api_sdk/netqasm.sdk.config.html#netqasm.sdk.config.LogConfig" title="netqasm.sdk.config.LogConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogConfig</span></code></a>]) – logging configuration</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.ApplicationInstance.app">
+<code class="sig-name descname"><span class="pre">app</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#netqasm.runtime.application.Application" title="netqasm.runtime.application.Application"><span class="pre">netqasm.runtime.application.Application</span></a></em><a class="headerlink" href="#netqasm.runtime.application.ApplicationInstance.app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.ApplicationInstance.program_inputs">
+<code class="sig-name descname"><span class="pre">program_inputs</span></code><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.ApplicationInstance.program_inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.ApplicationInstance.network">
+<code class="sig-name descname"><span class="pre">network</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="netqasm.runtime.interface.html#netqasm.runtime.interface.config.NetworkConfig" title="netqasm.runtime.interface.config.NetworkConfig"><span class="pre">netqasm.runtime.interface.config.NetworkConfig</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.ApplicationInstance.network" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.ApplicationInstance.party_alloc">
+<code class="sig-name descname"><span class="pre">party_alloc</span></code><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.ApplicationInstance.party_alloc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.runtime.application.ApplicationInstance.logging_cfg">
+<code class="sig-name descname"><span class="pre">logging_cfg</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../api_sdk/netqasm.sdk.config.html#netqasm.sdk.config.LogConfig" title="netqasm.sdk.config.LogConfig"><span class="pre">netqasm.sdk.config.LogConfig</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.runtime.application.ApplicationInstance.logging_cfg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.runtime.application.ApplicationOutput">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">ApplicationOutput</span></code><a class="headerlink" href="#netqasm.runtime.application.ApplicationOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Results of a finished run of an ApplicationInstance. Should be subclassed.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.runtime.application.load_yaml_file">
+<code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">load_yaml_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.load_yaml_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.runtime.application.app_instance_from_path">
+<code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">app_instance_from_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.app_instance_from_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an Application Instance based on files in a directory.
+Uses the current working directory if <cite>app_dir</cite> is None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>app_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#netqasm.runtime.application.ApplicationInstance" title="netqasm.runtime.application.ApplicationInstance"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationInstance</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.runtime.application.default_app_instance">
+<code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">default_app_instance</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">programs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.default_app_instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an Application Instance with programs that take no arguments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>programs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#netqasm.runtime.application.ApplicationInstance" title="netqasm.runtime.application.ApplicationInstance"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationInstance</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.runtime.application.network_cfg_from_path">
+<code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">network_cfg_from_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">network_config_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.network_cfg_from_path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+<li><p><strong>network_config_file</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.runtime.interface.html#netqasm.runtime.interface.config.NetworkConfig" title="netqasm.runtime.interface.config.NetworkConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetworkConfig</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.runtime.application.post_function_from_path">
+<code class="sig-prename descclassname"><span class="pre">netqasm.runtime.application.</span></code><code class="sig-name descname"><span class="pre">post_function_from_path</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">post_function_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.runtime.application.post_function_from_path" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+<li><p><strong>post_function_file</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.runtime.cli.html" class="btn btn-neutral float-right" title="netqasm.runtime.cli" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.runtime.app_config.html" class="btn btn-neutral float-left" title="netqasm.runtime.app_config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.backend.executor &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.backend.messages" href="netqasm.backend.messages.html" />
+    <link rel="prev" title="netqasm.backend" href="../netqasm.backend.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.backend.executor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.backend.messages.html">netqasm.backend.messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.backend.network_stack.html">netqasm.backend.network_stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.backend.qnodeos.html">netqasm.backend.qnodeos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.backend.html">netqasm.backend</a> &raquo;</li>
+        
+      <li>netqasm.backend.executor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_backend/netqasm.backend.executor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.backend.executor">
+<span id="netqasm-backend-executor"></span><h1>netqasm.backend.executor<a class="headerlink" href="#module-netqasm.backend.executor" title="Permalink to this headline">¶</a></h1>
+<p>NetQASM execution interface for simulators.</p>
+<p>This module provides the <cite>Executor</cite> class which can be used by simulators
+as a base class for executing NetQASM instructions.</p>
+<dl class="py class">
+<dt id="netqasm.backend.executor.EprCmdData">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.backend.executor.</span></code><code class="sig-name descname"><span class="pre">EprCmdData</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subroutine_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ent_results_array_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q_array_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tot_pairs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pairs_left</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.EprCmdData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Container for info about EPR pending requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subroutine_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>ent_results_array_address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>q_array_address</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+<li><p><strong>request</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">LinkLayerCreate</span></code>]) – </p></li>
+<li><p><strong>tot_pairs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>pairs_left</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.EprCmdData.subroutine_id">
+<code class="sig-name descname"><span class="pre">subroutine_id</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#netqasm.backend.executor.EprCmdData.subroutine_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.EprCmdData.ent_results_array_address">
+<code class="sig-name descname"><span class="pre">ent_results_array_address</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#netqasm.backend.executor.EprCmdData.ent_results_array_address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.EprCmdData.q_array_address">
+<code class="sig-name descname"><span class="pre">q_array_address</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.backend.executor.EprCmdData.q_array_address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.EprCmdData.request">
+<code class="sig-name descname"><span class="pre">request</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">netqasm.qlink_compat.LinkLayerCreate</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.backend.executor.EprCmdData.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.EprCmdData.tot_pairs">
+<code class="sig-name descname"><span class="pre">tot_pairs</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#netqasm.backend.executor.EprCmdData.tot_pairs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.EprCmdData.pairs_left">
+<code class="sig-name descname"><span class="pre">pairs_left</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#netqasm.backend.executor.EprCmdData.pairs_left" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.backend.executor.inc_program_counter">
+<code class="sig-prename descclassname"><span class="pre">netqasm.backend.executor.</span></code><code class="sig-name descname"><span class="pre">inc_program_counter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.inc_program_counter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator that automatically increases the current program counter.</p>
+<p>Should be used on functions that interpret a single NetQASM instruction.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.backend.executor.Executor">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.backend.executor.</span></code><code class="sig-name descname"><span class="pre">Executor</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instr_log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for entities that execute NetQASM applications.</p>
+<p>An Executor represents the component in a quantum node controller that handles
+the registration and execution of NetQASM applications.
+It can execute NetQASM subroutines by interpreting their instructions.</p>
+<p>This base class provides handlers for classical NetQASM instructions.
+These are methods with names <cite>_instr_XXX</cite>.
+Methods that handle quantum instructions are a no-op and should be overridden
+by subclasses.
+Entanglement instructions are handled and forwarded to the network stack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+<li><p><strong>instr_log_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.backend.executor.Executor.instr_logger_class">
+<code class="sig-name descname"><span class="pre">instr_logger_class</span></code><a class="headerlink" href="#netqasm.backend.executor.Executor.instr_logger_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="../api_logging/netqasm.logging.glob.html#netqasm.logging.output.InstrLogger" title="netqasm.logging.output.InstrLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">netqasm.logging.output.InstrLogger</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instr_log_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executor constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – name of the executor for logging purposes, defaults to None</p></li>
+<li><p><strong>instr_log_dir</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]) – directory to log instructions to, defaults to None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.name">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">name</span></code><a class="headerlink" href="#netqasm.backend.executor.Executor.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the name of this executor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.node_id">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">node_id</span></code><a class="headerlink" href="#netqasm.backend.executor.Executor.node_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the ID of the node this Executor runs on</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>NotImplementedError</strong> – This should be overridden by a subclass</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ID of the node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.set_instr_logger">
+<code class="sig-name descname"><span class="pre">set_instr_logger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instr_log_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.set_instr_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Let the executor use an instruction logger that logs to <cite>instr_log_dir</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instr_log_dir</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – path to the log directory</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.get_instr_logger">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get_instr_logger</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instr_log_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">executor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.get_instr_logger" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>instr_log_dir</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>executor</strong> (<a class="reference internal" href="#netqasm.backend.executor.Executor" title="netqasm.backend.executor.Executor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Executor</span></code></a>) – </p></li>
+<li><p><strong>force_override</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../api_logging/netqasm.logging.glob.html#netqasm.logging.output.InstrLogger" title="netqasm.logging.output.InstrLogger"><code class="xref py py-class docutils literal notranslate"><span class="pre">InstrLogger</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.network_stack">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">network_stack</span></code><a class="headerlink" href="#netqasm.backend.executor.Executor.network_stack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the network stack (if any) connected to this Executor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.backend.network_stack.html#netqasm.backend.network_stack.BaseNetworkStack" title="netqasm.backend.network_stack.BaseNetworkStack"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseNetworkStack</span></code></a>]</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the network stack</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.init_new_application">
+<code class="sig-name descname"><span class="pre">init_new_application</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.init_new_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register a new application.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – App ID of the application.</p></li>
+<li><p><strong>max_qubits</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – Maximum number of qubits the application is allowed to
+allocate at the same time.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.setup_epr_socket">
+<code class="sig-name descname"><span class="pre">setup_epr_socket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epr_socket_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_node_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_epr_socket_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.setup_epr_socket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instruct the Executor to open an EPR Socket.</p>
+<p>The Executor forwards this instruction to the Network Stack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>epr_socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – ID of local EPR socket</p></li>
+<li><p><strong>remote_node_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – ID of remote node</p></li>
+<li><p><strong>remote_epr_socket_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – ID of remote EPR socket</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yield</dt>
+<dd class="field-even"><p>[description]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.stop_application">
+<code class="sig-name descname"><span class="pre">stop_application</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.stop_application" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop an application and clear all qubits and classical memories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>app_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – ID of the application to stop</p>
+</dd>
+<dt class="field-even">Yield</dt>
+<dd class="field-even"><p>[description]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Generator</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.consume_execute_subroutine">
+<code class="sig-name descname"><span class="pre">consume_execute_subroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subroutine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.consume_execute_subroutine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consume the generator returned by <cite>execute_subroutine</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>subroutine</strong> (<em>subrt_module.Subroutine</em>) – subroutine to execute</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.execute_subroutine">
+<code class="sig-name descname"><span class="pre">execute_subroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subroutine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.execute_subroutine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a NetQASM subroutine.</p>
+<p>This is a generator to allow simulators to yield at certain points during execution,
+e.g. to yield control to a asynchronous runtime.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>subroutine</strong> (<em>subrt_module.Subroutine</em>) – subroutine to execute</p>
+</dd>
+<dt class="field-even">Yield</dt>
+<dd class="field-even"><p>[description]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Generator[Any, None, None]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.backend.executor.Executor.allocate_new_qubit_unit_module">
+<code class="sig-name descname"><span class="pre">allocate_new_qubit_unit_module</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.backend.executor.Executor.allocate_new_qubit_unit_module" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>num_qubits</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.backend.messages.html" class="btn btn-neutral float-right" title="netqasm.backend.messages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../netqasm.backend.html" class="btn btn-neutral float-left" title="netqasm.backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

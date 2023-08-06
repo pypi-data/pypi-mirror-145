@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.sdk.shared_memory &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.sdk.toolbox" href="netqasm.sdk.toolbox.html" />
+    <link rel="prev" title="netqasm.sdk.qubit" href="netqasm.sdk.qubit.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.builder.html">netqasm.sdk.builder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html">netqasm.sdk.classical_communication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.broadcast_channel">netqasm.sdk.classical_communication.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.broadcast_channel">netqasm.sdk.classical_communication.thread_socket.broadcast_channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.message">netqasm.sdk.classical_communication.message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.socket">netqasm.sdk.classical_communication.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket">netqasm.sdk.classical_communication.thread_socket.socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.classical_communication.html#module-netqasm.sdk.classical_communication.thread_socket.socket_hub">netqasm.sdk.classical_communication.thread_socket.socket_hub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.compiling.html">netqasm.sdk.compiling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.config.html">netqasm.sdk.config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.connection.html">netqasm.sdk.connection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.epr_socket.html">netqasm.sdk.epr_socket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.external.html">netqasm.sdk.external</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.futures.html">netqasm.sdk.futures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.network.html">netqasm.sdk.network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.progress_bar.html">netqasm.sdk.progress_bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.qubit.html">netqasm.sdk.qubit</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.sdk.shared_memory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html">netqasm.sdk.toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.gates">netqasm.sdk.toolbox.gates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.measurements">netqasm.sdk.toolbox.measurements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.multi_node">netqasm.sdk.toolbox.multi_node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.sim_states">netqasm.sdk.toolbox.sim_states</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.sdk.toolbox.html#module-netqasm.sdk.toolbox.state_prep">netqasm.sdk.toolbox.state_prep</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.sdk.html">netqasm.sdk</a> &raquo;</li>
+        
+      <li>netqasm.sdk.shared_memory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_sdk/netqasm.sdk.shared_memory.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.sdk.shared_memory">
+<span id="netqasm-sdk-shared-memory"></span><h1>netqasm.sdk.shared_memory<a class="headerlink" href="#module-netqasm.sdk.shared_memory" title="Permalink to this headline">¶</a></h1>
+<p>Abstractions for the classical memory shared between the Host and
+the quantum node controller.</p>
+<dl class="py class">
+<dt id="netqasm.sdk.shared_memory.RegisterGroup">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.shared_memory.</span></code><code class="sig-name descname"><span class="pre">RegisterGroup</span></code><a class="headerlink" href="#netqasm.sdk.shared_memory.RegisterGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A register group (like “R”, or “Q”) in shared memory.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.sdk.shared_memory.setup_registers">
+<code class="sig-prename descclassname"><span class="pre">netqasm.sdk.shared_memory.</span></code><code class="sig-name descname"><span class="pre">setup_registers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.setup_registers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<a class="reference internal" href="../api_lang/netqasm.lang.encoding.html#netqasm.lang.encoding.RegisterName" title="netqasm.lang.encoding.RegisterName"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegisterName</span></code></a>, <a class="reference internal" href="#netqasm.sdk.shared_memory.RegisterGroup" title="netqasm.sdk.shared_memory.RegisterGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegisterGroup</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.shared_memory.Arrays">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.shared_memory.</span></code><code class="sig-name descname"><span class="pre">Arrays</span></code><a class="headerlink" href="#netqasm.sdk.shared_memory.Arrays" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.Arrays.has_array">
+<code class="sig-name descname"><span class="pre">has_array</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.Arrays.has_array" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.Arrays.init_new_array">
+<code class="sig-name descname"><span class="pre">init_new_array</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.Arrays.init_new_array" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.shared_memory.SharedMemory">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.shared_memory.</span></code><code class="sig-name descname"><span class="pre">SharedMemory</span></code><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Representation of the classical memory that is shared between the Host
+and the quantum node controller.</p>
+<p>Each application is associated with a single <cite>SharedMemory</cite>.
+Although the name contains “shared”, it is typically only used in one “direction”:
+the quantum node controller writes to it, and the Host reads from it.</p>
+<p>Shared memory consists of two types of memory: registers and arrays.
+The quantum node controller writes to the shared memory if it executes a “return”
+NetQASM instruction (<cite>ret_reg</cite> or <cite>ret_arr</cite>). This is typically done at the end
+of a subroutine. The Host can then read the values from the shared memory, which
+means that the Host effectively receives the returned values.</p>
+<p>When trying to use a value represented by a <cite>Future</cite>, it will try to get the value
+from the shared memory. So, <em>only</em> after the quantum node controller has executed
+a subroutine containing the relevant <cite>ret_reg</cite> or <cite>ret_arr</cite> NetQASM instruction,
+the shared memory is updated and the value from the Future can be used.</p>
+<p>The specific runtime context determines how a shared memory is implemented and
+by which component it is controlled. In the case of a physical setup, where the
+Host and the quantum node controller may be separate devices, “writing to the
+shared memory” may simply be “sending values from the quantum node controller to
+the Host”. On the other hand, a simulator that runs the Host and the quantum node
+controller in the same process might e.g. use a global shared object.</p>
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemory.get_register">
+<code class="sig-name descname"><span class="pre">get_register</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">register</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemory.get_register" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>register</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemory.set_register">
+<code class="sig-name descname"><span class="pre">set_register</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">register</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemory.set_register" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>register</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <a class="reference internal" href="../api_lang/netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a>]) – </p></li>
+<li><p><strong>value</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemory.get_array_part">
+<code class="sig-name descname"><span class="pre">get_array_part</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemory.get_array_part" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>index</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">slice</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemory.set_array_part">
+<code class="sig-name descname"><span class="pre">set_array_part</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemory.set_array_part" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>index</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">slice</span></code>]) – </p></li>
+<li><p><strong>value</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]]) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemory.init_new_array">
+<code class="sig-name descname"><span class="pre">init_new_array</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_array</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemory.init_new_array" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>length</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>new_array</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.sdk.shared_memory.SharedMemoryManager">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.sdk.shared_memory.</span></code><code class="sig-name descname"><span class="pre">SharedMemoryManager</span></code><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemoryManager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Global object that manages shared memories. Typically used by simulators.</p>
+<p>This class can be used as a global object that stores <cite>SharedMemory</cite> objects.
+Simulators that simulate Hosts and the quantum node controllers in the same
+process may use this to have a single location for creating and accessing shared
+memories.</p>
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemoryManager.create_shared_memory">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">create_shared_memory</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemoryManager.create_shared_memory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>key</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#netqasm.sdk.shared_memory.SharedMemory" title="netqasm.sdk.shared_memory.SharedMemory"><code class="xref py py-class docutils literal notranslate"><span class="pre">SharedMemory</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemoryManager.get_shared_memory">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">get_shared_memory</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemoryManager.get_shared_memory" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>key</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#netqasm.sdk.shared_memory.SharedMemory" title="netqasm.sdk.shared_memory.SharedMemory"><code class="xref py py-class docutils literal notranslate"><span class="pre">SharedMemory</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.sdk.shared_memory.SharedMemoryManager.reset_memories">
+<em class="property"><span class="pre">classmethod</span> </em><code class="sig-name descname"><span class="pre">reset_memories</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.sdk.shared_memory.SharedMemoryManager.reset_memories" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.sdk.toolbox.html" class="btn btn-neutral float-right" title="netqasm.sdk.toolbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.sdk.qubit.html" class="btn btn-neutral float-left" title="netqasm.sdk.qubit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

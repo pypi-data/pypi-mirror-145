@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.lang.parsing &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.lang.subroutine" href="netqasm.lang.subroutine.html" />
+    <link rel="prev" title="netqasm.lang.operand" href="netqasm.lang.operand.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.encoding.html">netqasm.lang.encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html">netqasm.lang.instr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.base">netqasm.lang.instr.base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.core">netqasm.lang.instr.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.flavour">netqasm.lang.instr.flavour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.nv">netqasm.lang.instr.nv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.vanilla">netqasm.lang.instr.vanilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.ir.html">netqasm.lang.ir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.operand.html">netqasm.lang.operand</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.lang.parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.lang.parsing.binary">netqasm.lang.parsing.binary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-netqasm.lang.parsing.text">netqasm.lang.parsing.text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.subroutine.html">netqasm.lang.subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.symbols.html">netqasm.lang.symbols</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.lang.html">netqasm.lang</a> &raquo;</li>
+        
+      <li>netqasm.lang.parsing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_lang/netqasm.lang.parsing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="netqasm-lang-parsing">
+<h1>netqasm.lang.parsing<a class="headerlink" href="#netqasm-lang-parsing" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-netqasm.lang.parsing.binary">
+<span id="netqasm-lang-parsing-binary"></span><h1>netqasm.lang.parsing.binary<a class="headerlink" href="#module-netqasm.lang.parsing.binary" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="netqasm.lang.parsing.binary.Deserializer">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.binary.</span></code><code class="sig-name descname"><span class="pre">Deserializer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flavour</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.binary.Deserializer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Deserializes raw bytes into a Subroutine, given a Flavour.
+<code class="xref py py-class docutils literal notranslate"><span class="pre">NetQASMInstructions</span></code> are immediately created from the binary encoding.</p>
+<p>(This is in contrast with the parsing.text module, which first converts the input
+to a <a class="reference internal" href="netqasm.lang.ir.html#netqasm.lang.ir.PreSubroutine" title="netqasm.lang.ir.PreSubroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreSubroutine</span></code></a>, consisting of <code class="xref py py-class docutils literal notranslate"><span class="pre">ICmd</span></code> s, before transforming it into
+a <a class="reference internal" href="netqasm.lang.subroutine.html#netqasm.lang.subroutine.Subroutine" title="netqasm.lang.subroutine.Subroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subroutine</span></code></a> containing <a class="reference internal" href="netqasm.lang.instr.html#netqasm.lang.instr.base.NetQASMInstruction" title="netqasm.lang.instr.base.NetQASMInstruction"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetQASMInstruction</span></code></a> s.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>flavour</strong> (<a class="reference internal" href="netqasm.lang.instr.html#netqasm.lang.instr.flavour.Flavour" title="netqasm.lang.instr.flavour.Flavour"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flavour</span></code></a>) – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="netqasm.lang.parsing.binary.Deserializer.deserialize_subroutine">
+<code class="sig-name descname"><span class="pre">deserialize_subroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.binary.Deserializer.deserialize_subroutine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.subroutine.html#netqasm.lang.subroutine.Subroutine" title="netqasm.lang.subroutine.Subroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subroutine</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.lang.parsing.binary.Deserializer.deserialize_command">
+<code class="sig-name descname"><span class="pre">deserialize_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">raw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.binary.Deserializer.deserialize_command" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>raw</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.instr.html#netqasm.lang.instr.base.NetQASMInstruction" title="netqasm.lang.instr.base.NetQASMInstruction"><code class="xref py py-class docutils literal notranslate"><span class="pre">NetQASMInstruction</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.parsing.binary.deserialize">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.binary.</span></code><code class="sig-name descname"><span class="pre">deserialize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flavour</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.binary.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a binary encoding into a Subroutine object.
+The Vanilla flavour is used by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>) – </p></li>
+<li><p><strong>flavour</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.lang.instr.html#netqasm.lang.instr.flavour.Flavour" title="netqasm.lang.instr.flavour.Flavour"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flavour</span></code></a>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.subroutine.html#netqasm.lang.subroutine.Subroutine" title="netqasm.lang.subroutine.Subroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subroutine</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-netqasm.lang.parsing.text">
+<span id="netqasm-lang-parsing-text"></span><h1>netqasm.lang.parsing.text<a class="headerlink" href="#module-netqasm.lang.parsing.text" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt id="netqasm.lang.parsing.text.parse_text_presubroutine">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.text.</span></code><code class="sig-name descname"><span class="pre">parse_text_presubroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.text.parse_text_presubroutine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a text representation of a subroutine into a PreSubroutine object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.ir.html#netqasm.lang.ir.PreSubroutine" title="netqasm.lang.ir.PreSubroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreSubroutine</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.parsing.text.parse_text_subroutine">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.text.</span></code><code class="sig-name descname"><span class="pre">parse_text_subroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subroutine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assign_branch_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make_args_operands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_constants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flavour</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.text.parse_text_subroutine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a text representation of a subroutine into a Subroutine object.</p>
+<p>Internally, first a <cite>PreSubroutine</cite> object is created, consisting of <cite>ICmd`s.
+This is then converted into a `Subroutine</cite> using <cite>assemble_subroutine</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subroutine</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p></li>
+<li><p><strong>flavour</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.lang.instr.html#netqasm.lang.instr.flavour.Flavour" title="netqasm.lang.instr.flavour.Flavour"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flavour</span></code></a>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.subroutine.html#netqasm.lang.subroutine.Subroutine" title="netqasm.lang.subroutine.Subroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subroutine</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.parsing.text.assemble_subroutine">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.text.</span></code><code class="sig-name descname"><span class="pre">assemble_subroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pre_subroutine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assign_branch_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">make_args_operands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace_constants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flavour</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.text.assemble_subroutine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <cite>PreSubroutine</cite> into a <cite>Subroutine</cite>, given a Flavour (default: vanilla).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pre_subroutine</strong> (<a class="reference internal" href="netqasm.lang.ir.html#netqasm.lang.ir.PreSubroutine" title="netqasm.lang.ir.PreSubroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreSubroutine</span></code></a>) – </p></li>
+<li><p><strong>flavour</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="netqasm.lang.instr.html#netqasm.lang.instr.flavour.Flavour" title="netqasm.lang.instr.flavour.Flavour"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flavour</span></code></a>]) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.subroutine.html#netqasm.lang.subroutine.Subroutine" title="netqasm.lang.subroutine.Subroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subroutine</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.parsing.text.parse_register">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.text.</span></code><code class="sig-name descname"><span class="pre">parse_register</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">register</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.text.parse_register" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>register</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="netqasm.lang.operand.html#netqasm.lang.operand.Register" title="netqasm.lang.operand.Register"><code class="xref py py-class docutils literal notranslate"><span class="pre">Register</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.parsing.text.parse_address">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.text.</span></code><code class="sig-name descname"><span class="pre">parse_address</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.text.parse_address" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>address</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="netqasm.lang.operand.html#netqasm.lang.operand.Address" title="netqasm.lang.operand.Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">Address</span></code></a>, <a class="reference internal" href="netqasm.lang.operand.html#netqasm.lang.operand.ArraySlice" title="netqasm.lang.operand.ArraySlice"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArraySlice</span></code></a>, <a class="reference internal" href="netqasm.lang.operand.html#netqasm.lang.operand.ArrayEntry" title="netqasm.lang.operand.ArrayEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrayEntry</span></code></a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.parsing.text.get_current_registers">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.parsing.text.</span></code><code class="sig-name descname"><span class="pre">get_current_registers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">commands</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.parsing.text.get_current_registers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>commands</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="netqasm.lang.ir.html#netqasm.lang.ir.ICmd" title="netqasm.lang.ir.ICmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICmd</span></code></a>, <a class="reference internal" href="netqasm.lang.ir.html#netqasm.lang.ir.BranchLabel" title="netqasm.lang.ir.BranchLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BranchLabel</span></code></a>]]) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Set</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.lang.subroutine.html" class="btn btn-neutral float-right" title="netqasm.lang.subroutine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.lang.operand.html" class="btn btn-neutral float-left" title="netqasm.lang.operand" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

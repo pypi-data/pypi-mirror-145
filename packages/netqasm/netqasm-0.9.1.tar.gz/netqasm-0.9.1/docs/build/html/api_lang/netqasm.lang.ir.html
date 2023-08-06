@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>netqasm.lang.ir &mdash; netqasm 0.8.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="netqasm.lang.operand" href="netqasm.lang.operand.html" />
+    <link rel="prev" title="netqasm.lang.instr" href="netqasm.lang.instr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> netqasm
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Quick start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Getting started</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../api_root.html">netqasm package</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.backend.html">netqasm.backend</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netqasm.lang.html">netqasm.lang</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.encoding.html">netqasm.lang.encoding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html">netqasm.lang.instr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.base">netqasm.lang.instr.base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.core">netqasm.lang.instr.core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.flavour">netqasm.lang.instr.flavour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.nv">netqasm.lang.instr.nv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.instr.html#module-netqasm.lang.instr.vanilla">netqasm.lang.instr.vanilla</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">netqasm.lang.ir</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.operand.html">netqasm.lang.operand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.parsing.html">netqasm.lang.parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.parsing.html#module-netqasm.lang.parsing.binary">netqasm.lang.parsing.binary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.parsing.html#module-netqasm.lang.parsing.text">netqasm.lang.parsing.text</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.subroutine.html">netqasm.lang.subroutine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="netqasm.lang.symbols.html">netqasm.lang.symbols</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.logging.html">netqasm.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.runtime.html">netqasm.runtime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.sdk.html">netqasm.sdk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netqasm.util.html">netqasm.util</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">netqasm</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api_root.html">netqasm package</a> &raquo;</li>
+        
+          <li><a href="../netqasm.lang.html">netqasm.lang</a> &raquo;</li>
+        
+      <li>netqasm.lang.ir</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api_lang/netqasm.lang.ir.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-netqasm.lang.ir">
+<span id="netqasm-lang-ir"></span><h1>netqasm.lang.ir<a class="headerlink" href="#module-netqasm.lang.ir" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="netqasm.lang.ir.GenericInstr">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">GenericInstr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.GenericInstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.QALLOC">
+<code class="sig-name descname"><span class="pre">QALLOC</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.QALLOC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.INIT">
+<code class="sig-name descname"><span class="pre">INIT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.INIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.ARRAY">
+<code class="sig-name descname"><span class="pre">ARRAY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">3</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.ARRAY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.SET">
+<code class="sig-name descname"><span class="pre">SET</span></code><em class="property"> <span class="pre">=</span> <span class="pre">4</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.SET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.STORE">
+<code class="sig-name descname"><span class="pre">STORE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">5</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.STORE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.LOAD">
+<code class="sig-name descname"><span class="pre">LOAD</span></code><em class="property"> <span class="pre">=</span> <span class="pre">6</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.LOAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.UNDEF">
+<code class="sig-name descname"><span class="pre">UNDEF</span></code><em class="property"> <span class="pre">=</span> <span class="pre">7</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.UNDEF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.LEA">
+<code class="sig-name descname"><span class="pre">LEA</span></code><em class="property"> <span class="pre">=</span> <span class="pre">8</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.LEA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.JMP">
+<code class="sig-name descname"><span class="pre">JMP</span></code><em class="property"> <span class="pre">=</span> <span class="pre">9</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.JMP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BEZ">
+<code class="sig-name descname"><span class="pre">BEZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BEZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BNZ">
+<code class="sig-name descname"><span class="pre">BNZ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">11</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BNZ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BEQ">
+<code class="sig-name descname"><span class="pre">BEQ</span></code><em class="property"> <span class="pre">=</span> <span class="pre">12</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BEQ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BNE">
+<code class="sig-name descname"><span class="pre">BNE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">13</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BNE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BLT">
+<code class="sig-name descname"><span class="pre">BLT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">14</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BLT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BGE">
+<code class="sig-name descname"><span class="pre">BGE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">15</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.ADD">
+<code class="sig-name descname"><span class="pre">ADD</span></code><em class="property"> <span class="pre">=</span> <span class="pre">16</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.ADD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.SUB">
+<code class="sig-name descname"><span class="pre">SUB</span></code><em class="property"> <span class="pre">=</span> <span class="pre">17</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.SUB" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.ADDM">
+<code class="sig-name descname"><span class="pre">ADDM</span></code><em class="property"> <span class="pre">=</span> <span class="pre">18</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.ADDM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.SUBM">
+<code class="sig-name descname"><span class="pre">SUBM</span></code><em class="property"> <span class="pre">=</span> <span class="pre">19</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.SUBM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.X">
+<code class="sig-name descname"><span class="pre">X</span></code><em class="property"> <span class="pre">=</span> <span class="pre">20</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.Y">
+<code class="sig-name descname"><span class="pre">Y</span></code><em class="property"> <span class="pre">=</span> <span class="pre">21</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.Z">
+<code class="sig-name descname"><span class="pre">Z</span></code><em class="property"> <span class="pre">=</span> <span class="pre">22</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.H">
+<code class="sig-name descname"><span class="pre">H</span></code><em class="property"> <span class="pre">=</span> <span class="pre">23</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.H" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.S">
+<code class="sig-name descname"><span class="pre">S</span></code><em class="property"> <span class="pre">=</span> <span class="pre">24</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.S" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.K">
+<code class="sig-name descname"><span class="pre">K</span></code><em class="property"> <span class="pre">=</span> <span class="pre">25</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.K" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.T">
+<code class="sig-name descname"><span class="pre">T</span></code><em class="property"> <span class="pre">=</span> <span class="pre">26</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.T" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.ROT_X">
+<code class="sig-name descname"><span class="pre">ROT_X</span></code><em class="property"> <span class="pre">=</span> <span class="pre">27</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.ROT_X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.ROT_Y">
+<code class="sig-name descname"><span class="pre">ROT_Y</span></code><em class="property"> <span class="pre">=</span> <span class="pre">28</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.ROT_Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.ROT_Z">
+<code class="sig-name descname"><span class="pre">ROT_Z</span></code><em class="property"> <span class="pre">=</span> <span class="pre">29</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.ROT_Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.CNOT">
+<code class="sig-name descname"><span class="pre">CNOT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">30</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.CNOT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.CPHASE">
+<code class="sig-name descname"><span class="pre">CPHASE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">31</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.CPHASE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.MEAS">
+<code class="sig-name descname"><span class="pre">MEAS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">32</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.MEAS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.CREATE_EPR">
+<code class="sig-name descname"><span class="pre">CREATE_EPR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">33</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.CREATE_EPR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.RECV_EPR">
+<code class="sig-name descname"><span class="pre">RECV_EPR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">34</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.RECV_EPR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.WAIT_ALL">
+<code class="sig-name descname"><span class="pre">WAIT_ALL</span></code><em class="property"> <span class="pre">=</span> <span class="pre">35</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.WAIT_ALL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.WAIT_ANY">
+<code class="sig-name descname"><span class="pre">WAIT_ANY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">36</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.WAIT_ANY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.WAIT_SINGLE">
+<code class="sig-name descname"><span class="pre">WAIT_SINGLE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">37</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.WAIT_SINGLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.QFREE">
+<code class="sig-name descname"><span class="pre">QFREE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">38</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.QFREE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.RET_REG">
+<code class="sig-name descname"><span class="pre">RET_REG</span></code><em class="property"> <span class="pre">=</span> <span class="pre">39</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.RET_REG" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.RET_ARR">
+<code class="sig-name descname"><span class="pre">RET_ARR</span></code><em class="property"> <span class="pre">=</span> <span class="pre">40</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.RET_ARR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.CROT_X">
+<code class="sig-name descname"><span class="pre">CROT_X</span></code><em class="property"> <span class="pre">=</span> <span class="pre">41</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.CROT_X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.CROT_Y">
+<code class="sig-name descname"><span class="pre">CROT_Y</span></code><em class="property"> <span class="pre">=</span> <span class="pre">42</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.CROT_Y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.CROT_Z">
+<code class="sig-name descname"><span class="pre">CROT_Z</span></code><em class="property"> <span class="pre">=</span> <span class="pre">43</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.CROT_Z" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.MOV">
+<code class="sig-name descname"><span class="pre">MOV</span></code><em class="property"> <span class="pre">=</span> <span class="pre">44</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.MOV" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.GenericInstr.BREAKPOINT">
+<code class="sig-name descname"><span class="pre">BREAKPOINT</span></code><em class="property"> <span class="pre">=</span> <span class="pre">45</span></em><a class="headerlink" href="#netqasm.lang.ir.GenericInstr.BREAKPOINT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.lang.ir.BreakpointAction">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">BreakpointAction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.BreakpointAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BreakpointAction.NOP">
+<code class="sig-name descname"><span class="pre">NOP</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#netqasm.lang.ir.BreakpointAction.NOP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BreakpointAction.DUMP_LOCAL_STATE">
+<code class="sig-name descname"><span class="pre">DUMP_LOCAL_STATE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#netqasm.lang.ir.BreakpointAction.DUMP_LOCAL_STATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BreakpointAction.DUMP_GLOBAL_STATE">
+<code class="sig-name descname"><span class="pre">DUMP_GLOBAL_STATE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">2</span></em><a class="headerlink" href="#netqasm.lang.ir.BreakpointAction.DUMP_GLOBAL_STATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.lang.ir.BreakpointRole">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">BreakpointRole</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.BreakpointRole" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BreakpointRole.CREATE">
+<code class="sig-name descname"><span class="pre">CREATE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#netqasm.lang.ir.BreakpointRole.CREATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BreakpointRole.RECEIVE">
+<code class="sig-name descname"><span class="pre">RECEIVE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">1</span></em><a class="headerlink" href="#netqasm.lang.ir.BreakpointRole.RECEIVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.ir.instruction_to_string">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">instruction_to_string</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.instruction_to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.ir.flip_branch_instr">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">flip_branch_instr</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.flip_branch_instr" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>instr</strong> (<a class="reference internal" href="#netqasm.lang.ir.GenericInstr" title="netqasm.lang.ir.GenericInstr"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericInstr</span></code></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#netqasm.lang.ir.GenericInstr" title="netqasm.lang.ir.GenericInstr"><code class="xref py py-class docutils literal notranslate"><span class="pre">GenericInstr</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="netqasm.lang.ir.string_to_instruction">
+<code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">string_to_instruction</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instr_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.string_to_instruction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.lang.ir.ICmd">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">ICmd</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instruction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.ICmd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instruction</strong> (<a class="reference internal" href="#netqasm.lang.ir.GenericInstr" title="netqasm.lang.ir.GenericInstr"><em>GenericInstr</em></a>) – </p></li>
+<li><p><strong>args</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – </p></li>
+<li><p><strong>operands</strong> (<em>List</em><em>[</em><em>T_OperandUnion</em><em>]</em>) – </p></li>
+<li><p><strong>lineno</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../api_util/netqasm.util.log.html#netqasm.util.log.HostLine" title="netqasm.util.log.HostLine"><em>log.HostLine</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.ICmd.instruction">
+<code class="sig-name descname"><span class="pre">instruction</span></code><em class="property"><span class="pre">:</span> <a class="reference internal" href="#netqasm.lang.ir.GenericInstr" title="netqasm.lang.ir.GenericInstr"><span class="pre">GenericInstr</span></a></em><a class="headerlink" href="#netqasm.lang.ir.ICmd.instruction" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.ICmd.args">
+<code class="sig-name descname"><span class="pre">args</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#netqasm.lang.ir.ICmd.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.ICmd.operands">
+<code class="sig-name descname"><span class="pre">operands</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">T_OperandUnion</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#netqasm.lang.ir.ICmd.operands" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.ICmd.lineno">
+<code class="sig-name descname"><span class="pre">lineno</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">log.HostLine</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#netqasm.lang.ir.ICmd.lineno" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.lang.ir.ICmd.debug_str">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">debug_str</span></code><a class="headerlink" href="#netqasm.lang.ir.ICmd.debug_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.lang.ir.BranchLabel">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">BranchLabel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.BranchLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – </p></li>
+<li><p><strong>lineno</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="../api_util/netqasm.util.log.html#netqasm.util.log.HostLine" title="netqasm.util.log.HostLine"><em>log.HostLine</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BranchLabel.name">
+<code class="sig-name descname"><span class="pre">name</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><a class="headerlink" href="#netqasm.lang.ir.BranchLabel.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.BranchLabel.lineno">
+<code class="sig-name descname"><span class="pre">lineno</span></code><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">log.HostLine</span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">None</span></em><a class="headerlink" href="#netqasm.lang.ir.BranchLabel.lineno" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="netqasm.lang.ir.BranchLabel.debug_str">
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">debug_str</span></code><a class="headerlink" href="#netqasm.lang.ir.BranchLabel.debug_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="netqasm.lang.ir.PreSubroutine">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">netqasm.lang.ir.</span></code><code class="sig-name descname"><span class="pre">PreSubroutine</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">netqasm_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">commands</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#netqasm.lang.ir.PreSubroutine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A <a class="reference internal" href="#netqasm.lang.ir.PreSubroutine" title="netqasm.lang.ir.PreSubroutine"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreSubroutine</span></code></a> object represents a preliminary subroutine that consists of
+general ‘commands’ that might not yet be valid NetQASM instructions.
+These commands can include labels, or instructions with immediates that still need
+to be converted to registers.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">Subroutine</span></code> objects before given to other package components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>netqasm_version</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>) – </p></li>
+<li><p><strong>app_id</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – </p></li>
+<li><p><strong>commands</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<a class="reference internal" href="#netqasm.lang.ir.ICmd" title="netqasm.lang.ir.ICmd"><code class="xref py py-class docutils literal notranslate"><span class="pre">ICmd</span></code></a>, <a class="reference internal" href="#netqasm.lang.ir.BranchLabel" title="netqasm.lang.ir.BranchLabel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BranchLabel</span></code></a>]]) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.PreSubroutine.netqasm_version">
+<code class="sig-name descname"><span class="pre">netqasm_version</span></code><em class="property"><span class="pre">:</span> <span class="pre">tuple</span></em><a class="headerlink" href="#netqasm.lang.ir.PreSubroutine.netqasm_version" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.PreSubroutine.app_id">
+<code class="sig-name descname"><span class="pre">app_id</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><a class="headerlink" href="#netqasm.lang.ir.PreSubroutine.app_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="netqasm.lang.ir.PreSubroutine.commands">
+<code class="sig-name descname"><span class="pre">commands</span></code><em class="property"><span class="pre">:</span> <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#netqasm.lang.ir.ICmd" title="netqasm.lang.ir.ICmd"><span class="pre">netqasm.lang.ir.ICmd</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="#netqasm.lang.ir.BranchLabel" title="netqasm.lang.ir.BranchLabel"><span class="pre">netqasm.lang.ir.BranchLabel</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#netqasm.lang.ir.PreSubroutine.commands" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="netqasm.lang.operand.html" class="btn btn-neutral float-right" title="netqasm.lang.operand" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="netqasm.lang.instr.html" class="btn btn-neutral float-left" title="netqasm.lang.instr" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, QuTech.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
