@@ -1,0 +1,115 @@
+diff -ur omptl.old/omptl_algorithm omptl/omptl_algorithm
+--- omptl.old/omptl_algorithm	2012-04-22 16:29:41.000000000 +0200
++++ omptl/omptl_algorithm	2021-06-20 15:40:29.000000000 +0200
+@@ -20,7 +20,7 @@
+ #define OMPTL_ALGORITHM 1
+ 
+ #include <algorithm>
+-#include <omptl/omptl>
++#include "omptl"
+ 
+ namespace omptl
+ {
+@@ -553,9 +553,9 @@
+ } // namespace omptl
+ 
+ #ifdef _OPENMP
+-  #include <omptl/omptl_algorithm_par.h>
++  #include "omptl_algorithm_par.h"
+ #else
+-  #include <omptl/omptl_algorithm_ser.h>
++  #include "omptl_algorithm_ser.h"
+ #endif
+ 
+ #endif /* OMPTL_ALGORITHM */
+diff -ur omptl.old/omptl_algorithm_par.h omptl/omptl_algorithm_par.h
+--- omptl.old/omptl_algorithm_par.h	2012-04-22 16:29:41.000000000 +0200
++++ omptl/omptl_algorithm_par.h	2021-06-20 15:40:50.000000000 +0200
+@@ -21,8 +21,8 @@
+ #include <cmath>
+ #include <cstdlib>
+ 
+-#include <omptl/omptl_tools.h>
+-#include <omptl/omptl_numeric>
++#include "omptl_tools.h"
++#include "omptl_numeric"
+ 
+ #include <iterator>
+ 
+@@ -1700,7 +1700,7 @@
+ 
+ 	std::vector<char> pivot_used(pivots.size(), false); // can't be bool due to parallel write
+ 
+-	const unsigned max_depth = std::floor(std::tr1::log2(P));
++	const unsigned max_depth = unsigned(std::floor(std::log2(P)));
+ 	assert(1u << max_depth <= P);
+ 	for (unsigned i = 0; i < max_depth; ++i)
+ 	{
+diff -ur omptl.old/omptl_numeric omptl/omptl_numeric
+--- omptl.old/omptl_numeric	2012-04-22 16:29:41.000000000 +0200
++++ omptl/omptl_numeric	2021-06-20 15:40:29.000000000 +0200
+@@ -19,7 +19,7 @@
+ #define OMPTL_NUMERIC 1
+ 
+ #include <numeric>
+-#include <omptl/omptl>
++#include "omptl"
+ 
+ namespace omptl
+ {
+@@ -73,11 +73,11 @@
+ } // namespace omptl
+ 
+ #ifdef _OPENMP
+-  #include <omptl/omptl_numeric_par.h>
++  #include "omptl_numeric_par.h"
+ #else
+-  #include <omptl/omptl_numeric_ser.h>
++  #include "omptl_numeric_ser.h"
+ #endif
+ 
+-#include <omptl/omptl_numeric_extensions.h>
++#include "omptl_numeric_extensions.h"
+ 
+ #endif /* OMPTL_NUMERIC */
+diff -ur omptl.old/omptl_numeric_extensions.h omptl/omptl_numeric_extensions.h
+--- omptl.old/omptl_numeric_extensions.h	2012-04-22 16:29:41.000000000 +0200
++++ omptl/omptl_numeric_extensions.h	2021-06-20 15:40:29.000000000 +0200
+@@ -51,9 +51,9 @@
+ } // namespace
+ 
+ #ifdef _OPENMP
+-  #include <omptl/omptl_numeric_extensions_par.h>
++  #include "omptl_numeric_extensions_par.h"
+ #else
+-  #include <omptl/omptl_numeric_extensions_ser.h>
++  #include "omptl_numeric_extensions_ser.h"
+ #endif
+ 
+ namespace omptl
+diff -ur omptl.old/omptl_numeric_par.h omptl/omptl_numeric_par.h
+--- omptl.old/omptl_numeric_par.h	2012-04-22 16:29:41.000000000 +0200
++++ omptl/omptl_numeric_par.h	2021-06-20 15:40:29.000000000 +0200
+@@ -23,8 +23,8 @@
+ #include <functional>
+ #include <iterator>
+ 
+-#include <omptl/omptl_algorithm>
+-#include <omptl/omptl_tools.h>
++#include "omptl_algorithm"
++#include "omptl_tools.h"
+ 
+ namespace omptl
+ {
+diff -ur omptl.old/omptl_tools.h omptl/omptl_tools.h
+--- omptl.old/omptl_tools.h	2012-04-22 16:29:41.000000000 +0200
++++ omptl/omptl_tools.h	2021-06-20 15:40:42.000000000 +0200
+@@ -25,7 +25,7 @@
+ #include <climits>
+ #include <iterator>
+ 
+-#include <tr1/cmath>
++#include <cmath>
+ 
+ namespace omptl
+ {
