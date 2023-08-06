@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: async-drf
+Version: 0.0.3
+Summary: Async views and viewsets for DRF
+Author: Diyor Khaydarov
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+### Django REST framework async views
+
+
+## How to use
+```
+from async_drf.mixins import AsyncMixin, AsyncListModelMixin
+from async_drf.viewsets import AsyncGenericViewSet
+
+class ProductsViewSet(AsyncMixin, AsyncGenericViewSet, AsyncListModelMixin):
+	serializer_class = ProductsSerializer
+	queryset = ProductModel.objects.prefetch_related().all()
+
+	async def list(self, request: Request, *args, **kwargs):
+	    # do async stuff here
+		return Response(data=data)
+```
+
+
+
