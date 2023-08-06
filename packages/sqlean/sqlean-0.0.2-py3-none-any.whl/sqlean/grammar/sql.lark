@@ -1,0 +1,69 @@
+?start: query_file
+
+////////////////////
+// for dbt config //
+////////////////////
+query_file: [CONFIG] query_expr
+
+/////////////////////////
+// general sql queries //
+/////////////////////////
+!?query_expr: "WITH"i with_clause ("," with_clause)* select_expr
+    | select_expr
+!with_clause: CNAME "AS"i "(" query_expr ")"
+    | MACRO
+
+!select_expr: select_type select_list ["FROM"i from_clause] [limit_clause]
+!select_type: "SELECT"i
+
+//////////
+// from //
+//////////
+!from_clause: from_item ["WHERE"i indented_bool_expression] [groupby_modifier] [orderby_modifier]
+!?from_item: join_operation
+    | table_item
+    | sub_query_expr
+
+!sub_query_expr: "(" query_expr ")"
+
+///////////
+// joins //
+///////////
+?join_operation: cross_join_operation
+    | join_operation_with_condition
+
+cross_join_operation: from_item cross_join from_item
+cross_join: "CROSS"i "JOIN"i
+
+join_operation_with_condition: from_item join_type from_item (on_clause | using_clause)
+?join_type: inner_join
+    | full_join
+    | left_join
+    | right_join
+
+inner_join: ["INNER"i] "JOIN"i
+full_join: "FULL"i ["OUTER"i] "JOIN"i
+left_join: "LEFT"i ["OUTER"i] "JOIN"i
+right_join: "RIGHT"i ["OUTER"i] "JOIN"i
+
+!on_clause: "ON"i indented_bool_expression
+!using_clause: "USING"i "(" using_list ")"
+using_list: CNAME ("," CNAME)*
+
+///////////
+// limit //
+///////////
+!limit_clause: "LIMIT"i INT ["OFFSET"i INT]
+
+
+%import expression.indented_bool_expression
+%import expression.groupby_modifier
+%import expression.orderby_modifier
+%import expression.select_list
+%import jinja.CONFIG
+%import jinja.MACRO
+%import table.table_item
+%import common.CNAME
+%import common.INT
+%import common.WS
+%ignore WS

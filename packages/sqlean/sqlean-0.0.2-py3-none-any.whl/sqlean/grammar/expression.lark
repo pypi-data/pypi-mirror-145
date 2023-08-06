@@ -1,0 +1,159 @@
+////////////
+// select //
+////////////
+select_list: select_item ("," [INLINE_COMMENT] select_item)* [","] [INLINE_COMMENT]
+?select_item: select_item_unaliased
+    | select_item_aliased
+select_item_aliased: base_expression as_alias
+!select_item_unaliased: base_expression
+    | "*"
+
+/////////////////////
+// base_expression //
+/////////////////////
+?base_expression: table_referenced_field
+    | standard_function_expression
+    | window_function_expression
+    | case_expression
+    | MACRO
+    | CNAME
+    | literal
+
+table_referenced_field: CNAME "." CNAME
+    | explicit_table_name "." CNAME
+
+///////////////
+// functions //
+///////////////
+standard_function_expression: function_name "(" arg_list ")"
+window_function_expression: function_name "(" [arg_list] ")" "OVER"i over_clause
+!function_name: CNAME
+    | ["`" PROJECT_ID  "`."] CNAME "." CNAME
+
+over_clause: "(" window_specification  ")" // or named_window
+window_specification: [partition_modifier] [window_orderby_modifier] // [window_frame_clause] TODO
+partition_modifier: PARTITION_BY field_list
+PARTITION_BY: "PARTITION"i WS "BY"i
+window_orderby_modifier: ORDER_BY orderby_list
+
+arg_list: arg_item ("," arg_item)*
+!arg_item: interval
+    | base_expression
+    | base_expression "AS"i data_type
+    | interval "FROM"i base_expression
+
+//////////////
+// literals //
+//////////////
+?literal: SIGNED_NUMBER
+    | string
+    | NULL
+    | boolean
+
+?string: DOUBLE_QUOTED_STRING
+    | SINGLE_QUOTED_STRING
+DOUBLE_QUOTED_STRING: "\"" _STRING_ESC_INNER "\""
+SINGLE_QUOTED_STRING: "'" _STRING_ESC_INNER "'"
+
+?boolean: TRUE
+    | FALSE
+
+NULL: "NULL"i
+TRUE: "TRUE"i
+FALSE: "FALSE"i
+
+//////////
+// case //
+//////////
+?case_expression: common_case_expression
+    | separate_case_expression
+!common_case_expression: "CASE"i base_expression when_list [else_clause] "END"i
+!separate_case_expression: "CASE"i when_list [else_clause] "END"i
+when_list: when_item+
+!when_item: "WHEN"i bool_expression "THEN"i base_expression
+!else_clause: "ELSE"i base_expression
+
+/////////////////////
+// bool_expression //
+/////////////////////
+indented_bool_expression: bool_expression
+!?bool_expression: binary_bool_operation
+    | comparison_expression
+    | "(" bool_expression ")" -> parenthetical_bool_expression
+    | unary_bool_operation
+    | base_expression
+
+binary_bool_operation: bool_expression AND bool_expression
+    | bool_expression OR bool_expression
+AND: "AND"i
+OR: "OR"i
+
+//////////////////////////
+// unary_bool_operation //
+//////////////////////////
+?unary_bool_operation: leading_unary_bool_operation
+    | trailing_unary_bool_operation
+leading_unary_bool_operation: LEADING_UNARY_BOOL_OPERATOR base_expression
+trailing_unary_bool_operation: base_expression trailing_unary_bool_operator
+LEADING_UNARY_BOOL_OPERATOR: NOT
+trailing_unary_bool_operator: IS [NOT] NULL
+    | IS [NOT] TRUE
+    | IS [NOT] FALSE
+NOT: "NOT"i
+IS: "IS"i
+
+///////////////////////////
+// comparison_expression //
+///////////////////////////
+?comparison_expression: binary_comparison_operation
+    | like_comparison_operation
+    | in_comparison_operation
+    | between_comparison_operation
+
+binary_comparison_operation: base_expression BINARY_COMPARISON_OPERATOR base_expression
+BINARY_COMPARISON_OPERATOR: "="
+    | ">"
+    | ">="
+    | "<"
+    | "<="
+    | NOT_EQUAL
+NOT_EQUAL: "!="
+    | "<>"
+
+like_comparison_operation: base_expression [NOT] LIKE string
+LIKE: "LIKE"i
+
+in_comparison_operation: base_expression [NOT] IN in_list
+IN: "IN"i
+in_list: "(" literal ("," literal)* ")"
+
+between_comparison_operation: base_expression [NOT] BETWEEN base_expression AND base_expression
+BETWEEN.2: "BETWEEN"i
+
+////////////////////////////////
+// group by, having, order by //
+////////////////////////////////
+!groupby_modifier: GROUP_BY field_list [having_clause]
+GROUP_BY.2: "GROUP"i WS "BY"i
+field_list: base_expression ("," base_expression)*
+
+!having_clause: "HAVING"i indented_bool_expression
+
+!orderby_modifier: ORDER_BY orderby_list
+ORDER_BY.2: "ORDER"i WS "BY"i
+orderby_list: orderby_item ("," orderby_item)*
+!orderby_item: base_expression ["ASC"i | "DESC"i]
+
+
+%import common.CNAME
+%import common.SIGNED_NUMBER
+%import common._STRING_ESC_INNER
+%import common.WS
+%import alias.as_alias
+%import comment.INLINE_COMMENT
+%import jinja.MACRO
+%import reserved_words.data_type
+%import reserved_words.interval
+%import table.explicit_table_name
+%import table.PROJECT_ID
+%import table.DATASET_ID
