@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "git-pr-branch"
+version = "0.0.7"
+description = "A command line tool to manage the relationship between branches and pull-requests."
+authors = ["Aurélien Bompard <aurelien@bompard.org>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+repository = "https://gitlab.com/abompard/git-pr-branch"
+homepage = "https://gitlab.com/abompard/git-pr-branch"
+
+keywords = ["git", "github"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Environment :: Console",
+    "Operating System :: POSIX",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+click = "^8.0.0"
+attrs = ">=19.3.0"
+requests = "^2.22.0"
+colorama = "^0.4.1"
+python-dateutil = "^2.8.0"
+tabulate = "^0.8.7"
+toml = "^0.10.1"
+
+[tool.poetry.dev-dependencies]
+black = ">=19.10b0"
+flake8 = ">=3.8.2"
+bandit = ">=1.6.2"
+pytest = ">=5.4.3"
+pytest-cov = ">=2.9.0"
+
+[tool.poetry.scripts]
+git-pr-branch = "git_pr_branch.cli:cli"
+
+[tool.isort]
+profile = "black"
+lines_after_imports = 2
+force_alphabetical_sort_within_sections = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
