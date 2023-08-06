@@ -1,0 +1,393 @@
+# Wizard
+Fireball:
+  name: Fireball
+  description: launches a fireball in the nearby enemy
+  base: 5
+  cost: 2
+  kind: inflict
+  level_requirement: 1
+  ranged: 1
+  area: 0
+  job: Wizard
+  base_attribute: intelligence
+Frost:
+  name: Frost
+  description: Ice magic, that can paralyze an enemy
+  base: 4
+  cost: 2
+  kind: inflict
+  level_requirement: 1
+  ranged: 1
+  area: 0
+  job: Wizard
+  base_attribute: intelligence
+Thunder:
+  name: Thunder
+  description: Cast a thunderbolt in the enemy
+  base: 4
+  cost: 2
+  kind: inflict
+  level_requirement: 1
+  ranged: 2
+  area: 0
+  job: Wizard
+  base_attribute: intelligence
+Firestorm:
+  name: Firestorm
+  description: A big firestorm that falls from the air, damaging many foes
+  base: 3
+  cost: 5
+  kind: inflict
+  level_requirement: 2
+  ranged: 2
+  area: 2
+  job: Wizard
+  base_attribute: intelligence
+  side_effects: [ burn ]
+Leech:
+  name: Leech
+  description: Inflicts damage into a player and recover itself
+  base: 2
+  cost: 5
+  kind: inflict
+  level_requirement: 2
+  ranged: 2
+  area: 2
+  job: Wizard
+  base_attribute: intelligence
+Windblast:
+  name: Windblast
+  description: A huge blow of wind in the enemy
+  base: 8
+  cost: 5
+  kind: inflict
+  level_requirement: 3
+  ranged: 2
+  area: 0
+  job: Wizard
+  base_attribute: intelligence
+DarkEnergy:
+  name: Dark energy
+  description: A dark energy that curse player's will
+  base: 0
+  cost: 4
+  kind: debuff
+  level_requirement: 2
+  ranged: 2
+  area: 0
+  job: Wizard
+  base_attribute: intelligence
+  side_effects: [ curse ]
+Thunderstorm:
+  name: Thunderstorm
+  description: A thunderstorm that inflicts area damage
+  base: 5
+  cost: 8
+  kind: inflict
+  level_requirement: 4
+  ranged: 2
+  area: 2
+  job: Wizard
+  base_attribute: intelligence
+Blizzard:
+  name: Blizzard
+  description: A snow storm that does area damage and applies slow to players.
+  base: 3
+  cost: 8
+  kind: inflict
+  level_requirement: 4
+  ranged: 2
+  area: 2
+  job: Wizard
+  base_attribute: intelligence
+  side_effects: [ slow ]
+# Archer
+Pierce:
+  name: Pierce Arrow
+  description: Launches a heavy charged blow with your bow
+  base: 4
+  cost: 3
+  kind: inflict
+  level_requirement: 1
+  ranged: 2
+  area: 0
+  job: Archer
+  base_attribute: strength
+Longshot:
+  name: Longshot
+  description: Charges the bow to reach incredible range
+  base: 1
+  cost: 3
+  kind: inflict
+  level_requirement: 1
+  ranged: 4
+  area: 0
+  job: Archer
+  base_attribute: strength
+ExplosiveArrow:
+  name: Explosive Arrow
+  description: An explosive arrow that can hit multiple targets
+  base: 3
+  cost: 5
+  kind: inflict
+  level_requirement: 2
+  ranged: 2
+  area: 2
+  job: Archer
+  base_attribute: strength
+FocusedBlow:
+  name: Focused Blow
+  description: Focus all its energy to one single hit, doing great damage, but being exhaust in the next turn
+  base: 7
+  cost: 4
+  kind: inflict
+  level_requirement: 3
+  ranged: 2
+  area: 0
+  job: Archer
+  base_attribute: strength
+  punishment_side_effects: [ exhaust ]
+RainOfArrows:
+  name: Rain of Arrows
+  description: Draws a rain of arrows that hits enemies in multiple places
+  base: 5
+  cost: 7
+  kind: inflict
+  level_requirement: 3
+  ranged: 1
+  area: 2
+  job: Archer
+  base_attribute: strength
+Focus:
+  name: Focus
+  description: Wait one turn, focusing, and earning + 2 accuracy in the next 2 turns.
+  base: 0
+  cost: 4
+  kind: buff
+  level_requirement: 3
+  ranged: 0
+  area: 0
+  job: Archer
+  base_attribute: strength
+  side_effects: [ focus ]
+  applies_caster_only: true
+# Priest
+Heal:
+  name: Heal
+  description: basic healing magic
+  base: 4
+  cost: 2
+  kind: recover
+  level_requirement: 1
+  ranged: 1
+  area: 0
+  job: Priest
+  base_attribute: intelligence
+Protect:
+  name: Protect
+  description: Increases player's defense
+  base: 0
+  cost: 3
+  kind: buff
+  level_requirement: 1
+  ranged: 1
+  area: 0
+  job: Priest
+  base_attribute: intelligence
+  side_effects: [ protect ]
+Shell:
+  name: Shell
+  description: Increases player's magic defense
+  base: 0
+  cost: 3
+  kind: buff
+  level_requirement: 1
+  ranged: 1
+  area: 0
+  job: Priest
+  base_attribute: intelligence
+  side_effects: [ shell ]
+Regen:
+  name: Regen
+  description: Regenerate player's life each turn
+  base: 0
+  cost: 6
+  kind: buff
+  level_requirement: 2
+  ranged: 1
+  area: 0
+  job: Priest
+  base_attribute: intelligence
+  side_effects: [ regen ]
+HolyLight:
+  name: Holy Light
+  description: Recover life from players in area
+  base: 4
+  cost: 7
+  kind: recover
+  level_requirement: 2
+  ranged: 1
+  area: 2
+  job: Priest
+  base_attribute: intelligence
+Pray:
+  name: Pray
+  description: Pray, increasing will for 1 in the next turn.
+  base: 0
+  cost: 3
+  kind: buff
+  level_requirement: 2
+  ranged: 1
+  area: 0
+  job: Priest
+  base_attribute: intelligence
+  applies_caster_only: true
+  side_effects: [ pray ]
+# Rogue
+Steal:
+  name: Steal
+  description: Steal an item from a foe
+  base: 0
+  cost: 2
+  kind: inflict
+  level_requirement: 1
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+PoisonousTrap:
+  name: Poisonous Trap
+  description: Places a hidden trap, inflicting poison to enemies that step into it
+  base: 0
+  cost: 2
+  kind: trap
+  level_requirement: 1
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+  side_effects: [ blind ]
+ThrowStone:
+  name: Throw Stone
+  description: Throws a stone on the enemy
+  base: 1
+  cost: 2
+  kind: inflict
+  level_requirement: 1
+  ranged: 2
+  area: 0
+  job: Rogue
+  base_attribute: strength
+ThrowKnife:
+  name: Throw Knife
+  description: Throws a knife on the enemy
+  base: 3
+  cost: 3
+  kind: inflict
+  level_requirement: 2
+  ranged: 1
+  area: 0
+  job: Rogue
+  base_attribute: strength
+PoisonousBlow:
+  name: Poisonous blow
+  description: Strikes the enemy with a poisonous dagger, applying poison
+  base: 1
+  cost: 3
+  kind: inflict
+  level_requirement: 1
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+  side_effects: [ poison ]
+SandBlow:
+  name: Sand blow
+  description: Throws sand into enemy's eyes
+  base: 1
+  cost: 4
+  kind: inflict
+  level_requirement: 2
+  ranged: 1
+  area: 0
+  job: Rogue
+  base_attribute: strength
+  side_effects: [ blind ]
+Pitfalltrap:
+  name: Pitfall trap
+  description: Places a trap, so enemies can fall into it, applying poison and exhaust to them.
+  base: 0
+  cost: 3
+  kind: trap
+  level_requirement: 2
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+  side_effects: [ poison, exhaust ]
+NinjaTrap:
+  name: Ninja Trap
+  description: Ninja trap, that applies poison, exhaust and blind on the foe
+  base: 0
+  cost: 5
+  kind: trap
+  level_requirement: 3
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+  side_effects: [ poison, exhaust, blind ]
+EscapeIntoShadows:
+  name: Escape Into Shadows
+  description: you will have plus 2 points on movement speed for 1 turn, but will reduce your strength in 5
+  base: 0
+  cost: 5
+  kind: buff
+  level_requirement: 3
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+  applies_caster_only: true
+  side_effects: [ swift ]
+  punishment_side_effects: [ weaken ]
+BearTrap:
+  name: Bear Trap
+  description: The target is unable to play the next turn
+  base: 0
+  cost: 2
+  kind: trap
+  level_requirement: 4
+  ranged: 0
+  area: 0
+  job: Rogue
+  base_attribute: strength
+# Knight
+BreakArmour:
+  name: Break Armour
+  description: Really heavy attack, that decreases the armour of the enemy by 3 turns, applying exhaust to caster
+  base: 0
+  cost: 4
+  kind: inflict
+  level_requirement: 1
+  ranged: 0
+  area: 0
+  job: Knight
+  base_attribute: strength
+  side_effects: [ injured ]
+  punishment_side_effects: [ exhaust ]
+  applies_caster_only: true
+BreakSpellShield:
+  name: Break Spell Shield
+  description: Really heavy holly attack, that decreases the magic resist of the enemy by 3 turns, applying exhaust to caster
+  base: 0
+  cost: 4
+  kind: inflict
+  level_requirement: 1
+  ranged: 0
+  area: 0
+  job: Knight
+  base_attribute: strength
+  side_effects: [ tired ]
+  punishment_side_effects: [ exhaust ]
+  applies_caster_only: true
