@@ -1,0 +1,73 @@
+Universal RSS Parser with AI.
+
+extra features:
+
+- work with any rss and atom feed format.
+- smart cache
+- multiple rss support
+- parallel parser
+- parse podcast
+
+## Now it work?
+
+this library use regex model to parse common rss 2.0 tag syntax and if nothing is match, parser will use another model.
+
+## how smart cache is work?
+
+please read at https://www.facebook.com/groups/pythonuniversity/permalink/1283173465507458/
+
+## Installation
+
+```
+pip install kolak
+```
+
+## Usage Example
+
+```python
+from kolak import Parser
+
+url = ""
+rss = Parser(url)
+item = rss.parse()
+print("title:", rss.title)
+print("description:", rss.description)
+print("permalink:", rss.permalink)
+print("updated:", rss.updated)
+print("author:", rss.author)
+print("-"*10)
+for item in items:
+	print("title:", item["title"])
+	print("description:",item["description"])
+	print("link:",item["link"])
+	print("link_image", item["link_image"])
+	print("link_podcast:",item["link_podcat"])
+	print("-"*10) # line
+```
+
+multiple rss processing
+
+```
+url1 = ""
+url2 = ""
+rss = Parser(url1)
+rss.parse()
+rss.retry(url2)
+rss.parse()
+items = rss.items
+```
+also you can pass raw xml feed as url input in `Parser()` and `rss.retry()`.
+
+### parse option
+
+```python
+rss.parse(limit=0, debug=False, parallel=False)
+
+"""
+limit: limitable items parse, 0 = nolimited
+
+debug: activate debug mode. when no model is match, you will see what happened on kolak.log
+
+parallel: use multiprocessing to parse items (experimental)
+"""
+```
