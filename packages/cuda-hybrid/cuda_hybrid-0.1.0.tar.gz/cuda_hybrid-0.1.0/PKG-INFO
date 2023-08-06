@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: cuda-hybrid
+Version: 0.1.0
+Summary: Runs ABM/FCM hybrid models on CUDA cores to drastically reduce runtime.
+Home-page: https://gitlab.csi.miamioh.edu/620_final/cse620c_finalproject/-/tree/add-docs
+License: GPL-3.0-only
+Keywords: Hybrid Models,CUDA,ABM,FCM
+Author: Kareem Ghumrawi
+Author-email: kghumrawi@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: networkx
+Requires-Dist: numba
+Requires-Dist: numpy
+Project-URL: Documentation, https://gitlab.csi.miamioh.edu/620_final/cse620c_finalproject/-/blob/add-docs/docs/build/html/index.html
+Project-URL: Repository, https://gitlab.csi.miamioh.edu/620_final/cse620c_finalproject/-/tree/add-docs
+Description-Content-Type: text/markdown
+
+# CUDA_HYBRID
+
+This repository contains the first ever ABM/FCM Hybrid Model on CUDA cores that can help run the simulation in parallel, 
+reducing the runtime
+
+## Requirements:
+The project requires Python 3.7 or higher, depending on the version of the packages in `requirements.txt`.
+
+## Installation
+
+```bash
+$ pip install cuda-hybrid
+```
+
+## Quick Start
+
