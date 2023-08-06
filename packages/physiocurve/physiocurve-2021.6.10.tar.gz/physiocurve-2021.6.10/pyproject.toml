@@ -1,0 +1,25 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "physiocurve"
+author = "Jona JOACHIM"
+author-email = "jona@joachim.cc"
+home-page = "https://framagit.org/jaj/physiocurve"
+classifiers = [ "License :: OSI Approved :: ISC License (ISCL)",]
+description-file = "README.md"
+requires-python=">=3.8"
+requires=[
+    "numpy>=1.16.4",
+    "pandas>=1.0",
+    "numba>=0.46",
+    "scipy>=1.2.0",
+    "py-ecg-detectors>=1.0.2",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py36', 'py37', 'py38', 'py39']
+extend-exclude = 'ui'
+skip-string-normalization = true
