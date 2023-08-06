@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %} Project list {% endblock %}
+
+{% block header %}
+<h2>Projects</h2>
+{% endblock %}
+
+{% block content %}
+  <table id="project_table" class="stripe hover row-border order-column cell-border">
+    <thead>
+      <tr>
+        <th>Project ID</th>
+        <th>Name</th>
+        <th>Note</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for project, url in contexts %}
+        <tr>
+          <td><a href="{{ url }}"> {{ project.project_id }} </a></td>
+          <td>{{ project.name }}</td>
+          <td>{{ project.note }}</td>
+          <td>{{ project.created }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{{ url_for('projects.create') }}">Create a New Project</a>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#project_table').DataTable({
+        columns: [
+            {className: 'dt-right'},
+            {className: 'dt-left'},
+            {orderable: false, className: 'dt-left'},
+            {searchable: false, className: 'dt-right'}
+        ],
+      });
+    });
+  </script>
+{% endblock %}
