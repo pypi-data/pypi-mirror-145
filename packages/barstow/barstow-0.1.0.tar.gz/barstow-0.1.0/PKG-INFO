@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: barstow
+Version: 0.1.0
+Summary: Library for managing Arrow datasets
+Author: Mat Leonard
+Author-email: leonard.mat@gmail.com
+Requires-Python: >=3.10,<3.11
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: pandas (>=1.4.1,<2.0.0)
+Requires-Dist: pyarrow (>=7.0.0,<8.0.0)
