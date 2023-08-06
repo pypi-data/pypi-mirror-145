@@ -1,0 +1,3 @@
+include setup.py README.rst LICENSE MANIFEST.in requirements.txt
+global-exclude *~
+exclude wikimarkup/tests.py
