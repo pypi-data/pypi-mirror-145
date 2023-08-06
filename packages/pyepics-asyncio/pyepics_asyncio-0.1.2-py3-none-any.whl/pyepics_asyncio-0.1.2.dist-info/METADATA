@@ -1,0 +1,65 @@
+Metadata-Version: 2.1
+Name: pyepics-asyncio
+Version: 0.1.2
+Summary: Async/await wrapper for PyEpics
+Home-page: https://github.com/agerasev/pyepics-asyncio
+License: MIT
+Keywords: pyepics,epics,asyncio,async,await
+Author: Alexey Gerasev
+Author-email: alexey.gerasev@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Scientific/Engineering
+Requires-Dist: pyepics (>=3.5.1,<4.0.0)
+Project-URL: Repository, https://github.com/agerasev/pyepics-asyncio
+Description-Content-Type: text/markdown
+
+# pyepics-asyncio
+
+Simple `async`/`await` wrapper for [PyEpics](https://github.com/pyepics/pyepics).
+
+Currently there is a wrapper only for `PV` class.
+
+## Usage
+
+### Import
+
+```python
+from pyepics_asyncio import Pv
+```
+
+### Connect to PV
+
+```python
+pv = await Pv.connect("pvname")
+```
+
+### Read PV value
+
+```python
+print(await pv.get())
+```
+
+### Write value to PV
+
+```python
+await pv.put(3.1415)
+```
+
+### Monitor PV
+
+```python
+async with pv.monitor() as mon:
+    async for value in mon:
+        print(value)
+```
+
+*NOTE: By default values are yielded only on PV update.*
+*If you need monitor to also provide current value on start use `pv.monitor(current=True)`.*
+
