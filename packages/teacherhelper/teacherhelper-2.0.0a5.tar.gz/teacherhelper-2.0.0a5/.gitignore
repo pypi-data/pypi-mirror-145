@@ -1,0 +1,19 @@
+# file types
+*.db
+*.log
+
+# editor
+Session.vim
+tags
+.vscode/
+.idea/
+
+# python
+dist/
+*.egg-info
+__pycache__
+*.pyc
+venv
+
+# terraform
+.terraform*
