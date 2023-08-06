@@ -1,0 +1,96 @@
+poison:
+  type: debuff
+  attribute: health_points
+  base: 2
+  duration: 4
+  occurrence: iterated
+regen:
+  type: buff
+  attribute: health_points
+  base: 2
+  duration: 4
+  occurrence: iterated
+haste:
+  type: buff
+  attribute: move_speed
+  base: 1
+  duration: 3
+  occurrence: constant
+swift:
+  type: buff
+  attribute: move_speed
+  base: 2
+  duration: 1
+  occurrence: constant
+slow:
+  type: debuff
+  attribute: move_speed
+  base: 1
+  duration: 3
+  occurrence: constant
+exhaust:
+  type: debuff
+  attribute: move_speed
+  base: 2
+  duration: 1
+  occurrence: constant
+blind:
+  type: debuff
+  attribute: accuracy
+  base: 2
+  duration: 3
+  occurrence: constant
+protect:
+  type: buff
+  attribute: armour
+  base: 3
+  duration: 3
+  occurrence: constant
+shell:
+  type: buff
+  attribute: magic_resist
+  base: 3
+  duration: 3
+  occurrence: constant
+burn:
+  type: debuff
+  attribute: health_points
+  base: 2
+  duration: 1
+  occurrence: iterated
+curse:
+  type: debuff
+  attribute: will
+  base: 2
+  duration: 2
+  occurrence: constant
+focus:
+  type: buff
+  attribute: accuracy
+  base: 2
+  duration: 2
+  occurrence: constant
+pray:
+  type: buff
+  attribute: will
+  base: 1
+  duration: 1
+  occurrence: constant
+weaken:
+  type: debuff
+  attribute: strength
+  base: 5
+  duration: 2
+  occurrence: constant
+injured:
+  type: debuff
+  attribute: armour
+  base: 4
+  duration: 2
+  occurrence: constant
+tired:
+  type: debuff
+  attribute: magic_resist
+  base: 4
+  duration: 2
+  occurrence: constant
