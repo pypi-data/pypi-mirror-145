@@ -1,0 +1,489 @@
+.gitignore
+README.rst
+setup.py
+.github/workflows/unit_test-action.yaml
+PDIpy.egg-info/PKG-INFO
+PDIpy.egg-info/SOURCES.txt
+PDIpy.egg-info/dependency_links.txt
+PDIpy.egg-info/requires.txt
+PDIpy.egg-info/top_level.txt
+docs/Makefile
+docs/make.bat
+docs/source/conf.py
+docs/source/index.rst
+docs/source/parameter_files.rst
+docs/source/pdipy_api.rst
+docs/source/pdipy_usage.rst
+examples/Beirao_et_al/Beirao_et_al, S_aureus.ipynb
+examples/Beirao_et_al/Beirao_et_al, 10 uM solution/inactivation.svg
+examples/Beirao_et_al/Beirao_et_al, 10 uM solution/parameters.csv
+examples/Beirao_et_al/Beirao_et_al, 10 uM solution/pdipy_input.omex
+examples/Beirao_et_al/Beirao_et_al, 10 uM solution/processed_data.csv
+examples/Beirao_et_al/Beirao_et_al, 10 uM solution/raw_data.csv
+examples/Beirao_et_al/Beirao_et_al, 10 uM solution/variables.csv
+examples/Beirao_et_al/Beirao_et_al, 20 uM solution/inactivation.svg
+examples/Beirao_et_al/Beirao_et_al, 20 uM solution/parameters.csv
+examples/Beirao_et_al/Beirao_et_al, 20 uM solution/pdipy_input.omex
+examples/Beirao_et_al/Beirao_et_al, 20 uM solution/processed_data.csv
+examples/Beirao_et_al/Beirao_et_al, 20 uM solution/raw_data.csv
+examples/Beirao_et_al/Beirao_et_al, 20 uM solution/variables.csv
+examples/Beirao_et_al/Beirao_et_al, 5 uM solution/inactivation.svg
+examples/Beirao_et_al/Beirao_et_al, 5 uM solution/parameters.csv
+examples/Beirao_et_al/Beirao_et_al, 5 uM solution/pdipy_input.omex
+examples/Beirao_et_al/Beirao_et_al, 5 uM solution/processed_data.csv
+examples/Beirao_et_al/Beirao_et_al, 5 uM solution/raw_data.csv
+examples/Beirao_et_al/Beirao_et_al, 5 uM solution/variables.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 10 uM solution/inactivation.svg
+examples/Beirao_et_al/Beirao_et_al, biofilm, 10 uM solution/parameters.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 10 uM solution/pdipy_input.omex
+examples/Beirao_et_al/Beirao_et_al, biofilm, 10 uM solution/processed_data.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 10 uM solution/raw_data.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 10 uM solution/variables.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 20 uM solution/inactivation.svg
+examples/Beirao_et_al/Beirao_et_al, biofilm, 20 uM solution/parameters.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 20 uM solution/pdipy_input.omex
+examples/Beirao_et_al/Beirao_et_al, biofilm, 20 uM solution/processed_data.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 20 uM solution/raw_data.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 20 uM solution/variables.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 5 uM solution/inactivation.svg
+examples/Beirao_et_al/Beirao_et_al, biofilm, 5 uM solution/parameters.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 5 uM solution/pdipy_input.omex
+examples/Beirao_et_al/Beirao_et_al, biofilm, 5 uM solution/processed_data.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 5 uM solution/raw_data.csv
+examples/Beirao_et_al/Beirao_et_al, biofilm, 5 uM solution/variables.csv
+examples/Bozja_et_al/cross_linked_nylon.ipynb
+examples/GSWL/GSWL.ipynb
+examples/GSWL/processed_data.csv
+examples/GSWL/.ipynb_checkpoints/GSWL-checkpoint.ipynb
+examples/GSWL/solution_system/input.omex
+examples/GSWL/solution_system/output.svg
+examples/GSWL/solution_system/parameters.csv
+examples/GSWL/solution_system/processed_data.csv
+examples/GSWL/solution_system/raw_data.csv
+examples/GSWL/solution_system/variables.csv
+examples/GSWL/solution_system_biofilm/input.omex
+examples/GSWL/solution_system_biofilm/output.svg
+examples/GSWL/solution_system_biofilm/parameters.csv
+examples/GSWL/solution_system_biofilm/processed_data.csv
+examples/GSWL/solution_system_biofilm/raw_data.csv
+examples/GSWL/solution_system_biofilm/variables.csv
+examples/GSWL/surface_system/input.omex
+examples/GSWL/surface_system/output.svg
+examples/GSWL/surface_system/parameters.csv
+examples/GSWL/surface_system/processed_data.csv
+examples/GSWL/surface_system/raw_data.csv
+examples/GSWL/surface_system/variables.csv
+examples/GSWL/surface_system-1/input.omex
+examples/GSWL/surface_system-1/output.svg
+examples/GSWL/surface_system-1/parameters.csv
+examples/GSWL/surface_system-1/processed_data.csv
+examples/GSWL/surface_system-1/raw_data.csv
+examples/GSWL/surface_system-1/variables.csv
+examples/GSWL/surface_system-10/input.omex
+examples/GSWL/surface_system-10/output.svg
+examples/GSWL/surface_system-10/parameters.csv
+examples/GSWL/surface_system-10/processed_data.csv
+examples/GSWL/surface_system-10/raw_data.csv
+examples/GSWL/surface_system-10/variables.csv
+examples/GSWL/surface_system-11/input.omex
+examples/GSWL/surface_system-11/raw_data.csv
+examples/GSWL/surface_system-12/input.omex
+examples/GSWL/surface_system-12/output.svg
+examples/GSWL/surface_system-12/parameters.csv
+examples/GSWL/surface_system-12/processed_data.csv
+examples/GSWL/surface_system-12/raw_data.csv
+examples/GSWL/surface_system-12/variables.csv
+examples/GSWL/surface_system-13/input.omex
+examples/GSWL/surface_system-13/output.svg
+examples/GSWL/surface_system-13/parameters.csv
+examples/GSWL/surface_system-13/processed_data.csv
+examples/GSWL/surface_system-13/raw_data.csv
+examples/GSWL/surface_system-13/variables.csv
+examples/GSWL/surface_system-14/input.omex
+examples/GSWL/surface_system-14/output.svg
+examples/GSWL/surface_system-14/parameters.csv
+examples/GSWL/surface_system-14/processed_data.csv
+examples/GSWL/surface_system-14/raw_data.csv
+examples/GSWL/surface_system-14/variables.csv
+examples/GSWL/surface_system-15/input.omex
+examples/GSWL/surface_system-15/output.svg
+examples/GSWL/surface_system-15/parameters.csv
+examples/GSWL/surface_system-15/processed_data.csv
+examples/GSWL/surface_system-15/raw_data.csv
+examples/GSWL/surface_system-15/variables.csv
+examples/GSWL/surface_system-16/input.omex
+examples/GSWL/surface_system-16/output.svg
+examples/GSWL/surface_system-16/parameters.csv
+examples/GSWL/surface_system-16/processed_data.csv
+examples/GSWL/surface_system-16/raw_data.csv
+examples/GSWL/surface_system-16/variables.csv
+examples/GSWL/surface_system-17/input.omex
+examples/GSWL/surface_system-17/output.svg
+examples/GSWL/surface_system-17/parameters.csv
+examples/GSWL/surface_system-17/processed_data.csv
+examples/GSWL/surface_system-17/raw_data.csv
+examples/GSWL/surface_system-17/variables.csv
+examples/GSWL/surface_system-18/input.omex
+examples/GSWL/surface_system-18/output.svg
+examples/GSWL/surface_system-18/parameters.csv
+examples/GSWL/surface_system-18/processed_data.csv
+examples/GSWL/surface_system-18/raw_data.csv
+examples/GSWL/surface_system-18/variables.csv
+examples/GSWL/surface_system-19/input.omex
+examples/GSWL/surface_system-19/output.svg
+examples/GSWL/surface_system-19/parameters.csv
+examples/GSWL/surface_system-19/processed_data.csv
+examples/GSWL/surface_system-19/raw_data.csv
+examples/GSWL/surface_system-19/variables.csv
+examples/GSWL/surface_system-2/input.omex
+examples/GSWL/surface_system-2/output.svg
+examples/GSWL/surface_system-2/parameters.csv
+examples/GSWL/surface_system-2/processed_data.csv
+examples/GSWL/surface_system-2/raw_data.csv
+examples/GSWL/surface_system-2/variables.csv
+examples/GSWL/surface_system-20/input.omex
+examples/GSWL/surface_system-20/output.svg
+examples/GSWL/surface_system-20/parameters.csv
+examples/GSWL/surface_system-20/processed_data.csv
+examples/GSWL/surface_system-20/raw_data.csv
+examples/GSWL/surface_system-20/variables.csv
+examples/GSWL/surface_system-21/input.omex
+examples/GSWL/surface_system-21/output.svg
+examples/GSWL/surface_system-21/parameters.csv
+examples/GSWL/surface_system-21/processed_data.csv
+examples/GSWL/surface_system-21/raw_data.csv
+examples/GSWL/surface_system-21/variables.csv
+examples/GSWL/surface_system-22/input.omex
+examples/GSWL/surface_system-22/output.svg
+examples/GSWL/surface_system-22/parameters.csv
+examples/GSWL/surface_system-22/processed_data.csv
+examples/GSWL/surface_system-22/raw_data.csv
+examples/GSWL/surface_system-22/variables.csv
+examples/GSWL/surface_system-23/input.omex
+examples/GSWL/surface_system-23/output.svg
+examples/GSWL/surface_system-23/parameters.csv
+examples/GSWL/surface_system-23/processed_data.csv
+examples/GSWL/surface_system-23/raw_data.csv
+examples/GSWL/surface_system-23/variables.csv
+examples/GSWL/surface_system-24/input.omex
+examples/GSWL/surface_system-24/output.svg
+examples/GSWL/surface_system-24/parameters.csv
+examples/GSWL/surface_system-24/processed_data.csv
+examples/GSWL/surface_system-24/raw_data.csv
+examples/GSWL/surface_system-24/variables.csv
+examples/GSWL/surface_system-25/input.omex
+examples/GSWL/surface_system-25/output.svg
+examples/GSWL/surface_system-25/parameters.csv
+examples/GSWL/surface_system-25/processed_data.csv
+examples/GSWL/surface_system-25/raw_data.csv
+examples/GSWL/surface_system-25/variables.csv
+examples/GSWL/surface_system-26/input.omex
+examples/GSWL/surface_system-26/output.svg
+examples/GSWL/surface_system-26/parameters.csv
+examples/GSWL/surface_system-26/processed_data.csv
+examples/GSWL/surface_system-26/raw_data.csv
+examples/GSWL/surface_system-26/variables.csv
+examples/GSWL/surface_system-27/input.omex
+examples/GSWL/surface_system-27/output.svg
+examples/GSWL/surface_system-27/parameters.csv
+examples/GSWL/surface_system-27/processed_data.csv
+examples/GSWL/surface_system-27/raw_data.csv
+examples/GSWL/surface_system-27/variables.csv
+examples/GSWL/surface_system-28/input.omex
+examples/GSWL/surface_system-28/output.svg
+examples/GSWL/surface_system-28/parameters.csv
+examples/GSWL/surface_system-28/processed_data.csv
+examples/GSWL/surface_system-28/raw_data.csv
+examples/GSWL/surface_system-28/variables.csv
+examples/GSWL/surface_system-3/input.omex
+examples/GSWL/surface_system-3/output.svg
+examples/GSWL/surface_system-3/parameters.csv
+examples/GSWL/surface_system-3/processed_data.csv
+examples/GSWL/surface_system-3/raw_data.csv
+examples/GSWL/surface_system-3/variables.csv
+examples/GSWL/surface_system-4/input.omex
+examples/GSWL/surface_system-4/output.svg
+examples/GSWL/surface_system-4/parameters.csv
+examples/GSWL/surface_system-4/processed_data.csv
+examples/GSWL/surface_system-4/raw_data.csv
+examples/GSWL/surface_system-4/variables.csv
+examples/GSWL/surface_system-5/input.omex
+examples/GSWL/surface_system-5/output.svg
+examples/GSWL/surface_system-5/parameters.csv
+examples/GSWL/surface_system-5/processed_data.csv
+examples/GSWL/surface_system-5/raw_data.csv
+examples/GSWL/surface_system-5/variables.csv
+examples/GSWL/surface_system-6/input.omex
+examples/GSWL/surface_system-6/output.svg
+examples/GSWL/surface_system-6/parameters.csv
+examples/GSWL/surface_system-6/processed_data.csv
+examples/GSWL/surface_system-6/raw_data.csv
+examples/GSWL/surface_system-6/variables.csv
+examples/GSWL/surface_system-7/input.omex
+examples/GSWL/surface_system-7/output.svg
+examples/GSWL/surface_system-7/parameters.csv
+examples/GSWL/surface_system-7/processed_data.csv
+examples/GSWL/surface_system-7/raw_data.csv
+examples/GSWL/surface_system-7/variables.csv
+examples/GSWL/surface_system-8/input.omex
+examples/GSWL/surface_system-8/output.svg
+examples/GSWL/surface_system-8/parameters.csv
+examples/GSWL/surface_system-8/processed_data.csv
+examples/GSWL/surface_system-8/raw_data.csv
+examples/GSWL/surface_system-8/variables.csv
+examples/GSWL/surface_system-9/input.omex
+examples/GSWL/surface_system-9/output.svg
+examples/GSWL/surface_system-9/parameters.csv
+examples/GSWL/surface_system-9/processed_data.csv
+examples/GSWL/surface_system-9/raw_data.csv
+examples/GSWL/surface_system-9/variables.csv
+examples/Surface_system_calibration/GSWL_calibration.ipynb
+examples/Surface_system_calibration/.ipynb_checkpoints/GSWL_calibration-checkpoint.ipynb
+examples/Surface_system_calibration/surface_system_calibration/input.omex
+examples/Surface_system_calibration/surface_system_calibration/output.svg
+examples/Surface_system_calibration/surface_system_calibration/parameters.csv
+examples/Surface_system_calibration/surface_system_calibration/processed_data.csv
+examples/Surface_system_calibration/surface_system_calibration/raw_data.csv
+examples/Surface_system_calibration/surface_system_calibration/variables.csv
+examples/Surface_system_calibration/surface_system_calibration-1/input.omex
+examples/Surface_system_calibration/surface_system_calibration-1/output.svg
+examples/Surface_system_calibration/surface_system_calibration-1/parameters.csv
+examples/Surface_system_calibration/surface_system_calibration-1/processed_data.csv
+examples/Surface_system_calibration/surface_system_calibration-1/raw_data.csv
+examples/Surface_system_calibration/surface_system_calibration-1/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/range_cfu-mls.ipynb
+examples/sensitivity_analyses/bacteria/cfu_ml/10.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/10.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/10.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/10.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/10.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/10.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/4.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/4.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/4.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/4.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/4.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/4.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/5.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/5.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/5.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/5.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/5.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/5.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/6.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/6.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/6.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/6.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/6.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/6.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/7.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/7.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/7.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/7.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/7.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/7.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/8.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/8.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/8.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/8.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/8.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/8.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/9.0-log CFU-mL/inactivation.svg
+examples/sensitivity_analyses/bacteria/cfu_ml/9.0-log CFU-mL/parameters.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/9.0-log CFU-mL/pdipy_input.omex
+examples/sensitivity_analyses/bacteria/cfu_ml/9.0-log CFU-mL/processed_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/9.0-log CFU-mL/raw_data.csv
+examples/sensitivity_analyses/bacteria/cfu_ml/9.0-log CFU-mL/variables.csv
+examples/sensitivity_analyses/light/emission/variable_visible_emission.ipynb
+examples/sensitivity_analyses/light/emission/1-10th visible/inactivation.svg
+examples/sensitivity_analyses/light/emission/1-10th visible/parameters.csv
+examples/sensitivity_analyses/light/emission/1-10th visible/pdipy_input.omex
+examples/sensitivity_analyses/light/emission/1-10th visible/processed_data.csv
+examples/sensitivity_analyses/light/emission/1-10th visible/raw_data.csv
+examples/sensitivity_analyses/light/emission/1-10th visible/variables.csv
+examples/sensitivity_analyses/light/emission/10-10th visible/inactivation.svg
+examples/sensitivity_analyses/light/emission/10-10th visible/parameters.csv
+examples/sensitivity_analyses/light/emission/10-10th visible/pdipy_input.omex
+examples/sensitivity_analyses/light/emission/10-10th visible/processed_data.csv
+examples/sensitivity_analyses/light/emission/10-10th visible/raw_data.csv
+examples/sensitivity_analyses/light/emission/10-10th visible/variables.csv
+examples/sensitivity_analyses/light/emission/2-10th visible/inactivation.svg
+examples/sensitivity_analyses/light/emission/2-10th visible/parameters.csv
+examples/sensitivity_analyses/light/emission/2-10th visible/pdipy_input.omex
+examples/sensitivity_analyses/light/emission/2-10th visible/processed_data.csv
+examples/sensitivity_analyses/light/emission/2-10th visible/raw_data.csv
+examples/sensitivity_analyses/light/emission/2-10th visible/variables.csv
+examples/sensitivity_analyses/light/emission/4-10th visible/inactivation.svg
+examples/sensitivity_analyses/light/emission/4-10th visible/parameters.csv
+examples/sensitivity_analyses/light/emission/4-10th visible/pdipy_input.omex
+examples/sensitivity_analyses/light/emission/4-10th visible/processed_data.csv
+examples/sensitivity_analyses/light/emission/4-10th visible/raw_data.csv
+examples/sensitivity_analyses/light/emission/4-10th visible/variables.csv
+examples/sensitivity_analyses/light/emission/6-10th visible/inactivation.svg
+examples/sensitivity_analyses/light/emission/6-10th visible/parameters.csv
+examples/sensitivity_analyses/light/emission/6-10th visible/pdipy_input.omex
+examples/sensitivity_analyses/light/emission/6-10th visible/processed_data.csv
+examples/sensitivity_analyses/light/emission/6-10th visible/raw_data.csv
+examples/sensitivity_analyses/light/emission/6-10th visible/variables.csv
+examples/sensitivity_analyses/light/emission/8-10th visible/inactivation.svg
+examples/sensitivity_analyses/light/emission/8-10th visible/parameters.csv
+examples/sensitivity_analyses/light/emission/8-10th visible/pdipy_input.omex
+examples/sensitivity_analyses/light/emission/8-10th visible/processed_data.csv
+examples/sensitivity_analyses/light/emission/8-10th visible/raw_data.csv
+examples/sensitivity_analyses/light/emission/8-10th visible/variables.csv
+examples/sensitivity_analyses/light/intensity/variable_intensity.ipynb
+examples/sensitivity_analyses/light/intensity/10 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/10 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/10 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/10 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/10 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/10 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/100000 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/100000 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/100000 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/100000 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/100000 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/100000 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/12915 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/12915 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/12915 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/12915 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/12915 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/12915 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/1668 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/1668 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/1668 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/1668 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/1668 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/1668 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/215 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/215 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/215 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/215 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/215 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/215 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/27 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/27 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/27 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/27 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/27 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/27 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/35938 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/35938 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/35938 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/35938 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/35938 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/35938 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/4641 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/4641 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/4641 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/4641 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/4641 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/4641 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/599 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/599 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/599 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/599 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/599 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/599 lux/variables.csv
+examples/sensitivity_analyses/light/intensity/77 lux/inactivation.svg
+examples/sensitivity_analyses/light/intensity/77 lux/parameters.csv
+examples/sensitivity_analyses/light/intensity/77 lux/pdipy_input.omex
+examples/sensitivity_analyses/light/intensity/77 lux/processed_data.csv
+examples/sensitivity_analyses/light/intensity/77 lux/raw_data.csv
+examples/sensitivity_analyses/light/intensity/77 lux/variables.csv
+examples/sensitivity_analyses/light/sources/variable_sources.ipynb
+examples/sensitivity_analyses/light/sources/LED/LED.svg
+examples/sensitivity_analyses/light/sources/LED/parameters.csv
+examples/sensitivity_analyses/light/sources/LED/pdipy_input.omex
+examples/sensitivity_analyses/light/sources/LED/processed_data.csv
+examples/sensitivity_analyses/light/sources/LED/raw_data.csv
+examples/sensitivity_analyses/light/sources/LED/variables.csv
+examples/sensitivity_analyses/light/sources/fluorescent/fluorescent.svg
+examples/sensitivity_analyses/light/sources/fluorescent/parameters.csv
+examples/sensitivity_analyses/light/sources/fluorescent/pdipy_input.omex
+examples/sensitivity_analyses/light/sources/fluorescent/processed_data.csv
+examples/sensitivity_analyses/light/sources/fluorescent/raw_data.csv
+examples/sensitivity_analyses/light/sources/fluorescent/variables.csv
+examples/sensitivity_analyses/light/sources/incandescent/incandescent.svg
+examples/sensitivity_analyses/light/sources/incandescent/parameters.csv
+examples/sensitivity_analyses/light/sources/incandescent/pdipy_input.omex
+examples/sensitivity_analyses/light/sources/incandescent/processed_data.csv
+examples/sensitivity_analyses/light/sources/incandescent/raw_data.csv
+examples/sensitivity_analyses/light/sources/incandescent/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/photobleaching_constant.ipynb
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.01 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.01 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.01 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.01 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.01 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.01 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.1 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.1 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.1 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.1 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.1 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/0.1 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1.0 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1.0 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1.0 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1.0 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1.0 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1.0 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10.0 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10.0 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10.0 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10.0 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10.0 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10.0 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100.0 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100.0 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100.0 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100.0 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100.0 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100.0 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1000.0 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1000.0 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1000.0 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1000.0 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1000.0 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/1000.0 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10000.0 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10000.0 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10000.0 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10000.0 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10000.0 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/10000.0 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100000.0 constant/inactivation.svg
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100000.0 constant/parameters.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100000.0 constant/pdipy_input.omex
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100000.0 constant/processed_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100000.0 constant/raw_data.csv
+examples/sensitivity_analyses/photosensitizer/photobleaching_constant/100000.0 constant/variables.csv
+examples/sensitivity_analyses/photosensitizer/photosensitizer_absorbance/absorbance_data.ipynb
+examples/sensitivity_analyses/photosensitizer/photosensitizer_mass/variable_mass.ipynb
+examples/simple_example/simple_example.ipynb
+examples/simple_example/test-PDIpy-7/inactivation.svg
+examples/simple_example/test-PDIpy-7/parameters.csv
+examples/simple_example/test-PDIpy-7/pdipy_input.omex
+examples/simple_example/test-PDIpy-7/processed_data.csv
+examples/simple_example/test-PDIpy-7/raw_data.csv
+examples/simple_example/test-PDIpy-7/variables.csv
+examples/simple_example/test-PDIpy-7/hillfit-regression/equation.txt
+examples/simple_example/test-PDIpy-7/hillfit-regression/fitted_data.csv
+examples/simple_example/test-PDIpy-7/hillfit-regression/raw_data.csv
+examples/simple_example/test-PDIpy-7/hillfit-regression/regression.svg
+ipdipy/2021-09-06_sample_execution_1.ipynb
+ipdipy/draft_core_GUI.py
+ipdipy/ipdipy.py
+ipdipy/.ipynb_checkpoints/2021-09-06_sample_execution_1-checkpoint.ipynb
+pdipy/__init__.py
+pdipy/pdi.py
+pdipy/parameters/light.json
+pdipy/parameters/photosensitizers.json
+pdipy/parameters/wells.json
+pdipy/parameters/bacteria/S_aureus.json
+supplementary/photosensitizer_volume_proportion.ipynb
+supplementary/.ipynb_checkpoints/photosensitizer_volume_proportion-checkpoint.ipynb
+test/__init__.py
+test/test_pdi.py
