@@ -1,0 +1,74 @@
+Metadata-Version: 2.1
+Name: fastberry
+Version: 0.0.4
+Summary: Easy FastAPI & Strawberry
+Home-page: https://github.com/hlop3z/fastberry
+Download-URL: https://github.com/hlop3z/fastberry/releases/download/alpha/v0.0.4.tar.gz
+Author: hlop3z
+License: UNKNOWN
+Keywords: api fastapi
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Welcome to **Fastberry**
+
+## Built With:
+ - [Click](https://github.com/pallets/click/)
+ - [Uvicorn](https://www.uvicorn.org/)
+ - [Gunicorn](https://gunicorn.org/)
+ - [FastAPI](https://fastapi.tiangolo.com/)
+ - [Strawberry](https://strawberry.rocks/)
+ - [DataBase-Controller](https://hlop3z.github.io/dbcontroller/)
+
+---
+
+## Install
+
+---
+
+### Create New Directory
+
+```sh
+mkdir my-project
+cd my-project/
+```
+
+### (PipEnv) Install Fastberry
+
+```sh
+python -m pipenv --python 3.10 install fastberry
+```
+
+### (PipEnv) Shell
+
+```sh
+python -m pipenv shell
+```
+
+$~~$
+
+---
+
+## Start Project
+
+---
+
+### Run (Command) Start-Project
+
+```sh
+startproject
+```
+
+### Run Server
+
+```sh
+./manage.py run
+```
+
+
