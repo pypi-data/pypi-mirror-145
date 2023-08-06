@@ -1,0 +1,36 @@
+start: assignment
+     | match_spec
+
+assignment: variable "=" match_spec pipes
+
+variable: typed_variable
+        | untyped_variable
+
+typed_variable: IDENTITY IDENTITY
+untyped_variable: IDENTITY
+
+match_spec: match_name
+         | function
+
+match_name: IDENTITY
+
+function: IDENTITY "(" args ")"
+
+args: | const
+    | const ("," const)*
+
+const: INT
+     | FLOAT
+     | ESCAPED_STRING
+
+pipes: ("|" function)*
+
+IDENTITY: ("_"|LETTER) ("_"|LETTER|DIGIT|".")*
+
+%import common.LETTER
+%import common.DIGIT
+%import common.FLOAT
+%import common.INT
+%import common.ESCAPED_STRING
+%import common.WS
+%ignore WS
