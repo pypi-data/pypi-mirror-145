@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; Djagger 1.1.2 1.1.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release History" href="release_history.html" />
+    <link rel="prev" title="User Guide" href="user_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Djagger 1.1.2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openapi-3-0-schema-objects">OpenAPI 3.0 Schema Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enums">Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-functions">Utility functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decorators">Decorators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Djagger</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Djagger 1.1.2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-djagger.openapi"></span><section id="openapi-3-0-schema-objects">
+<h2>OpenAPI 3.0 Schema Objects<a class="headerlink" href="#openapi-3-0-schema-objects" title="Permalink to this headline"></a></h2>
+<p>For official specs, see <a class="reference external" href="https://swagger.io/specification/">https://swagger.io/specification/</a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.Contact">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">Contact</span></span><a class="headerlink" href="#djagger.openapi.Contact" title="Permalink to this definition"></a></dt>
+<dd><p>OpenAPI <cite>contact</cite> object</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.Header">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">Header</span></span><a class="headerlink" href="#djagger.openapi.Header" title="Permalink to this definition"></a></dt>
+<dd><p>The Header Object follows the structure of the Parameter Object with the following changes:
+1. <code class="docutils literal notranslate"><span class="pre">name</span></code> MUST NOT be specified, it is given in the corresponding headers map.
+2. <code class="docutils literal notranslate"><span class="pre">in</span></code> MUST NOT be specified, it is implicitly in header.
+3. All traits that are affected by the location MUST be applicable to a location of header (for example, style).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.Info">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">Info</span></span><a class="headerlink" href="#djagger.openapi.Info" title="Permalink to this definition"></a></dt>
+<dd><p>OpenAPI document information</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.License">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">License</span></span><a class="headerlink" href="#djagger.openapi.License" title="Permalink to this definition"></a></dt>
+<dd><p>OpenAPI <cite>license</cite> object</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.Logo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">Logo</span></span><a class="headerlink" href="#djagger.openapi.Logo" title="Permalink to this definition"></a></dt>
+<dd><p>Logo image for display on redoc documents.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.Tag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">Tag</span></span><a class="headerlink" href="#djagger.openapi.Tag" title="Permalink to this definition"></a></dt>
+<dd><p>OpenAPI <cite>tags</cite></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.openapi.TagGroup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.openapi.</span></span><span class="sig-name descname"><span class="pre">TagGroup</span></span><a class="headerlink" href="#djagger.openapi.TagGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Tag grouping for <code class="docutils literal notranslate"><span class="pre">x-tagGroups</span></code> setting in redoc.
+This beyond the OpenAPI 3.0 specs but is included for redoc.</p>
+</dd></dl>
+
+</section>
+<span class="target" id="module-djagger.enums"></span><section id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this headline"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerAttributeEnumType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.enums.</span></span><span class="sig-name descname"><span class="pre">DjaggerAttributeEnumType</span></span><a class="headerlink" href="#djagger.enums.DjaggerAttributeEnumType" title="Permalink to this definition"></a></dt>
+<dd><p>Enum type with helper class methods to initialize View-level and operation-level djagger view attributes as enums</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerAttributeEnumType.items">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerAttributeEnumType.items" title="Permalink to this definition"></a></dt>
+<dd><p>List of tuples of the enum attr names and the corresponding value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerAttributeEnumType.location">
+<span class="sig-name descname"><span class="pre">location</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerAttributeEnumType.location" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the ‘in’ location value for parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optional[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerAttributeEnumType.values">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerAttributeEnumType.values" title="Permalink to this definition"></a></dt>
+<dd><p>List of enum attr string values</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerViewAttributes">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.enums.</span></span><span class="sig-name descname"><span class="pre">DjaggerViewAttributes</span></span><a class="headerlink" href="#djagger.enums.DjaggerViewAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Contains enums for djagger attributes that can be extracted from a view class of function</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerViewAttributes.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">custom_prefix</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">http_methods</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerViewAttributes.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>custom_prefix</strong> (<em>str</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerViewAttributes.from_view">
+<span class="sig-name descname"><span class="pre">from_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerViewAttributes.from_view" title="Permalink to this definition"></a></dt>
+<dd><p>Given a FBV view or CBV view, the general attribute name, and a http method, extracts the attribute from the view starting at the operation-level attribute i.e. get_body_params.
+If it does not exist, try to extract at the API-level attribute i.e. body_params.
+If the attribute still does not exist, return None.
+If http_method is not passed, only extract the API-level attribute.</p>
+<dl>
+<dt>Example::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ViewAttrs</span> <span class="o">=</span> <span class="n">DjaggerViewAttributes</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ViewAttrs</span><span class="o">.</span><span class="n">from_view</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="s1">&#39;operation_id&#39;</span><span class="p">,</span> <span class="n">HttpMethod</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+<span class="go">&quot;get_operation_id&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>view</strong> (<em>Union</em><em>[</em><em>Type</em><em>, </em><em>Callable</em><em>]</em>) – </p></li>
+<li><p><strong>attr</strong> (<em>str</em>) – </p></li>
+<li><p><strong>http_method</strong> (<em>Optional</em><em>[</em><a class="reference internal" href="#djagger.enums.HttpMethod" title="djagger.enums.HttpMethod"><em>djagger.enums.HttpMethod</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerViewAttributes.operation">
+<span class="sig-name descname"><span class="pre">operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">http_method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerViewAttributes.operation" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the DjaggerAttributeEnumType value for the corresponding HttpMethod</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>http_method</strong> (<a class="reference internal" href="#djagger.enums.HttpMethod" title="djagger.enums.HttpMethod"><em>djagger.enums.HttpMethod</em></a>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#djagger.enums.DjaggerAttributeEnumType" title="djagger.enums.DjaggerAttributeEnumType">djagger.enums.DjaggerAttributeEnumType</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerViewAttributes.prefix_attrs">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">prefix_attrs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method_prefix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerViewAttributes.prefix_attrs" title="Permalink to this definition"></a></dt>
+<dd><p>Prefixes view_attrs values with string prefix e.g. <code class="docutils literal notranslate"><span class="pre">get_</span></code> in ‘get_operation_id’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method_prefix</strong> (<em>str</em>) – </p></li>
+<li><p><strong>custom_prefix</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.DjaggerViewAttributes.retrieve_operation_attr_value">
+<span class="sig-name descname"><span class="pre">retrieve_operation_attr_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">http_method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.DjaggerViewAttributes.retrieve_operation_attr_value" title="Permalink to this definition"></a></dt>
+<dd><p>Converts an API-level attribute value to the operation-level equivalent given a string attribute value <code class="docutils literal notranslate"><span class="pre">attr</span></code> and a given http method.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">retrieve_operation_attr_value</span><span class="p">(</span><span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="n">HttMethod</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+<span class="go">&#39;get_summary&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr</strong> (<em>str</em>) – </p></li>
+<li><p><strong>http_method</strong> (<a class="reference internal" href="#djagger.enums.HttpMethod" title="djagger.enums.HttpMethod"><em>djagger.enums.HttpMethod</em></a>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.enums.HttpMethod">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.enums.</span></span><span class="sig-name descname"><span class="pre">HttpMethod</span></span><a class="headerlink" href="#djagger.enums.HttpMethod" title="Permalink to this definition"></a></dt>
+<dd><p>An enumeration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="djagger.enums.HttpMethod.values">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#djagger.enums.HttpMethod.values" title="Permalink to this definition"></a></dt>
+<dd><p>Returns list of http method strings [ ‘get’, ‘post’, … ]</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="djagger.enums.ParameterLocation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">djagger.enums.</span></span><span class="sig-name descname"><span class="pre">ParameterLocation</span></span><a class="headerlink" href="#djagger.enums.ParameterLocation" title="Permalink to this definition"></a></dt>
+<dd><p>An enumeration.</p>
+</dd></dl>
+
+</section>
+<span class="target" id="module-djagger.utils"></span><section id="utility-functions">
+<h2>Utility functions<a class="headerlink" href="#utility-functions" title="Permalink to this headline"></a></h2>
+<p>The core module of Djagger project</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.clean_regex_string">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">clean_regex_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.clean_regex_string" title="Permalink to this definition"></a></dt>
+<dd><p>Converts regex string pattern for a path into OpenAPI format.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;^toy\/^(?P&lt;toyId&gt;[a-zA-Z0-9-_]+)\/details&#39;</span>
+<span class="o">&gt;&gt;</span><span class="n">clean_regex_string</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="s1">&#39;toy/</span><span class="si">{toyId}</span><span class="s1">/details&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.clean_resolver_url_pattern">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">clean_resolver_url_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">route</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.clean_resolver_url_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>Cleans the full url path pattern from a url resolver into a OpenAPI schema url pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>route</strong> (<em>str</em>) – Full URL path pattern including any prefixed paths.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>str</em> – OpenAPI path format</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="n">clean_resolver_url_pattern</span><span class="p">(</span><span class="s2">&quot;toy/</span><span class="si">%(toyId)s</span><span class="s2">/uploadImage&quot;</span><span class="p">)</span>
+<span class="n">toy</span><span class="o">/</span><span class="p">{</span><span class="n">toyId</span><span class="p">}</span><span class="o">/</span><span class="n">uploadImage</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.clean_route_url_pattern">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">clean_route_url_pattern</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">route</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.clean_route_url_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a django path route string format into an openAPI route format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>route</strong> (<em>str</em>) – URL path pattern from URLPattern object.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>str</em> – OpenAPI path format</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="n">clean_route_url_pattern</span><span class="p">(</span><span class="s2">&quot;/list/&lt;int:pk&gt;&quot;</span><span class="p">)</span>
+<span class="o">/</span><span class="nb">list</span><span class="o">/</span><span class="p">{</span><span class="n">pk</span><span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.field_to_pydantic_args">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">field_to_pydantic_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.field_to_pydantic_args" title="Permalink to this definition"></a></dt>
+<dd><p>Given a DRF Field, returns a dictionary of arguments to be passed
+to pydantic.create_model() field configs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>f</strong> (<em>rest_framework.fields.Field</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.get_app_name">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">get_app_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.get_app_name" title="Permalink to this definition"></a></dt>
+<dd><p>Given the value of <code class="docutils literal notranslate"><span class="pre">__module__</span></code> dunder attr, return the
+name of the top level module i.e. the app name.</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span><span class="n">get_app_name</span><span class="p">(</span><span class="s1">&#39;MyApp.urls.resolvers&#39;</span><span class="p">)</span>
+<span class="s1">&#39;MyApp&#39;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>module</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.get_pattern_str">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">get_pattern_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.get_pattern_str" title="Permalink to this definition"></a></dt>
+<dd><p>Given a URLPattern.pattern, or a URLResolver.pattern, return
+the path string in regex form.</p>
+<p>A pattern can exist as <code class="docutils literal notranslate"><span class="pre">RegexPattern</span></code> or <code class="docutils literal notranslate"><span class="pre">RoutePattern</span></code>. The
+string returned will be in the regex pattern form for consistency</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>Union</em><em>[</em><em>django.urls.resolvers.RegexPattern</em><em>, </em><em>django.urls.resolvers.RoutePattern</em><em>]</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.get_url_patterns">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">get_url_patterns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.get_url_patterns" title="Permalink to this definition"></a></dt>
+<dd><p>Given a list of app names in the project, return a filtered list of URLPatterns that contains a view function or class
+that are part of the listed apps. Include all apps, less <code class="docutils literal notranslate"><span class="pre">djagger</span></code> if <code class="docutils literal notranslate"><span class="pre">app_names</span></code> is an empty list.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">url_names</span></code> is provided, will further filter the list to only include URLPatterns that match the URL names as provided in the <code class="docutils literal notranslate"><span class="pre">url_names</span></code> list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>app_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>url_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[Tuple[str, django.urls.resolvers.URLPattern]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.infer_field_type">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">infer_field_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.infer_field_type" title="Permalink to this definition"></a></dt>
+<dd><p>Classifies DRF Field types into primitive python types or
+creates an appropriate pydantic model metaclass types if the field itself
+is a Serializer class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>field</strong> (<em>rest_framework.fields.Field</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.list_urls">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">list_urls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resolver</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.list_urls" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a list of tuples containing the ‘cleaned’ full url path and the
+corresponding URLPattern object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resolver</strong> (<em>django.urls.resolvers.URLResolver</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[Tuple[str, django.urls.resolvers.URLPattern]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.model_field_schemas">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">model_field_schemas</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.model_field_schemas" title="Permalink to this definition"></a></dt>
+<dd><p>Returns list of tuple with a JSON Schema for it as the first item.
+Also return a dictionary of definitions with models as keys and their schemas as values.
+Refer to <code class="docutils literal notranslate"><span class="pre">pydantic.fields.field_schema</span></code> for reference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<em>Any</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[Tuple[Dict, Dict]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.schema_from_serializer">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">schema_from_serializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.schema_from_serializer" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a DRF Serializer type into a pydantic model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>rest_framework.serializers.Serializer</em>) – </p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pydantic.main.ModelMetaclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.utils.schema_set_examples">
+<span class="sig-prename descclassname"><span class="pre">djagger.utils.</span></span><span class="sig-name descname"><span class="pre">schema_set_examples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schema</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.utils.schema_set_examples" title="Permalink to this definition"></a></dt>
+<dd><p>Check if a class has callable <cite>example()</cite> and if so, sets the schema ‘example’ field
+to the result of <cite>example()</cite> callable. The callable should return an instance of the pydantic base model type.
+<cite>example()</cite> should return a single instance of the pydantic base model type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schema</strong> (<em>Dict</em>) – </p></li>
+<li><p><strong>model</strong> (<em>Any</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<span class="target" id="module-djagger.decorators"></span><section id="decorators">
+<h2>Decorators<a class="headerlink" href="#decorators" title="Permalink to this headline"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.decorators.schema">
+<span class="sig-prename descclassname"><span class="pre">djagger.decorators.</span></span><span class="sig-name descname"><span class="pre">schema</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methods</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attrs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.decorators.schema" title="Permalink to this definition"></a></dt>
+<dd><p>Decorator for function based views to set Djagger attributes into the view.
+A list of http method strings are needed to inform Djagger which endpoint schemas to create
+I.e. <code class="docutils literal notranslate"><span class="pre">GET</span></code> <code class="docutils literal notranslate"><span class="pre">POST</span></code> <code class="docutils literal notranslate"><span class="pre">PUT</span></code> <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> <code class="docutils literal notranslate"><span class="pre">DELETE</span></code></p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@schema</span><span class="p">(</span>
+    <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">],</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;My FBV Endpoint&quot;</span><span class="p">,</span>
+    <span class="n">get_response_schema</span><span class="o">=</span><span class="n">MyFBVResponseSchema</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_fb_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="c1"># Your code logic</span>
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span><span class="s2">&quot;bar&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>methods</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<span class="target" id="module-djagger.views"></span><dl class="py function">
+<dt class="sig sig-object py" id="djagger.views.open_api_json">
+<span class="sig-prename descclassname"><span class="pre">djagger.views.</span></span><span class="sig-name descname"><span class="pre">open_api_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.views.open_api_json" title="Permalink to this definition"></a></dt>
+<dd><p>View for auto generated OpenAPI JSON document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>django.http.request.HttpRequest</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="djagger.views.redoc">
+<span class="sig-prename descclassname"><span class="pre">djagger.views.</span></span><span class="sig-name descname"><span class="pre">redoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#djagger.views.redoc" title="Permalink to this definition"></a></dt>
+<dd><p>Redoc openAPI document that is initialized from the JSON output of
+open_api_json()
+See <a class="reference external" href="https://github.com/Redocly/redoc">https://github.com/Redocly/redoc</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>django.http.request.HttpRequest</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-djagger.urls"></span></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_guide.html" class="btn btn-neutral float-left" title="User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release_history.html" class="btn btn-neutral float-right" title="Release History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, royhzq.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

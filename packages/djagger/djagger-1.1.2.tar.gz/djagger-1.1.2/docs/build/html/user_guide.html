@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide &mdash; Djagger 1.1.2 1.1.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Djagger 1.1.2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-it-works">How It Works</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-schema-object">The Schema Object</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#request-parameters">Request Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#path-query-header-cookie">Path, Query, Header, Cookie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#request-body">Request Body</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#response-objects">Response Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#single-response">Single Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-responses">Multiple Responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#response-headers">Response Headers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-examples">Schema Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-schemas">Advanced Schemas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nested-schemas">Nested Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#non-object-schemas">Non-object Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-of-djagger-view-attributes">List of Djagger View attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-based-views">Function-based Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-serializers">Using Serializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic-views">Generic Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viewsets">Viewsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tags">Tags</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#defining-tags-at-the-document-level">Defining tags at the document level</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#document-generation">Document Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-the-built-in-djagger-views">Configuring the built-in Djagger views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#customized-documentation-views">Customized documentation views</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#global-attribute-prefix">Global attribute prefix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Djagger</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Djagger 1.1.2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="user-guide">
+<h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline"></a></h1>
+<section id="how-it-works">
+<h2>How It Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline"></a></h2>
+<p>Under the hood, Djagger inspects the URLConf (URL configuration) of your Django project to obtain a manifest of all the views to document. Djagger proceeds to extract schema information from specific class (or function) attributes from these views. As the user, you configure the documentation by configuring these attributes in your views.</p>
+<section id="the-schema-object">
+<h3>The Schema Object<a class="headerlink" href="#the-schema-object" title="Permalink to this headline"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Schema</span></code> object is simply an alias of pydantic’s <code class="docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code> class. This is to avoid confusion with Django models. From here on, this documentation will use the alias <code class="docutils literal notranslate"><span class="pre">Schema</span></code> but you may choose to go without an alias, or use another one in your own projects.</p>
+<p>Thanks to pydantic, the <code class="docutils literal notranslate"><span class="pre">Schema</span></code> object is a clean and powerful tool to document your requests and responses. In djagger, the <code class="docutils literal notranslate"><span class="pre">Schema</span></code> object is used to document request parameters (headers, cookies, path, query), request bodies, and responses.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">class</span> <span class="nc">MyResponse</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This docstring will be used to describe the response&quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">age</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">remarks</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">email</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;default@example.com&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;This is a description of the field)</span>
+</pre></div>
+</div>
+<p>In the example above, a response for an API is documented as such. A few things to take note of:</p>
+<ul class="simple">
+<li><p>Docstrings will be extracted to describe the particular schema in the generated documentation.</p></li>
+<li><p>For non-required fields, use <code class="docutils literal notranslate"><span class="pre">Optional[]</span></code></p></li>
+<li><p>For more information regarding the fields, use <code class="docutils literal notranslate"><span class="pre">Field</span></code> for setting things like default values, descriptions, min and max values etc.</p></li>
+</ul>
+<p>See <a class="reference external" href="https://pydantic-docs.helpmanual.io/">pydantic’s documentation</a> for more details.</p>
+</section>
+</section>
+<section id="request-parameters">
+<h2>Request Parameters<a class="headerlink" href="#request-parameters" title="Permalink to this headline"></a></h2>
+<section id="path-query-header-cookie">
+<h3>Path, Query, Header, Cookie<a class="headerlink" href="#path-query-header-cookie" title="Permalink to this headline"></a></h3>
+<p>The following parameters can be documented for API requests:</p>
+<ul class="simple">
+<li><p><strong>path</strong> - Where the parameter value is part of the URL. E.g. <code class="docutils literal notranslate"><span class="pre">/article/&lt;int:pk&gt;</span></code> where <code class="docutils literal notranslate"><span class="pre">pk</span></code> is the path parameter. Document using <code class="docutils literal notranslate"><span class="pre">path_params</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_path_params</span></code> attribute in the view.</p></li>
+<li><p><strong>query</strong> - Parameters that are appended to the URL. E.g. <code class="docutils literal notranslate"><span class="pre">/articles?page=3</span></code> where <code class="docutils literal notranslate"><span class="pre">page</span></code> is the query parameter. Document using <code class="docutils literal notranslate"><span class="pre">query_params</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_query_params</span></code> attribute in the view.</p></li>
+<li><p><strong>header</strong> - Custom headers that are expected as part of the request. Document using <code class="docutils literal notranslate"><span class="pre">header_params</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_header_params</span></code> attribute in the view.</p></li>
+<li><p><strong>cookie</strong> - Cookie value specific the API. Document using <code class="docutils literal notranslate"><span class="pre">cookie_params</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_cookie_params</span></code> attribute in the view.</p></li>
+<li><p><strong>request body</strong> - HTTP body Data sent to the API commonly used for POST, PUT, UPDATE methods. Document using <code class="docutils literal notranslate"><span class="pre">request_schema</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_request_schema</span></code> attribute in the view.</p></li>
+</ul>
+<p>Documenting path, query and cookie parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">.schema</span> <span class="kn">import</span> <span class="n">ListArticleDetailSchema</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleYearSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">year</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">ArticlePageSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">page</span> <span class="p">:</span> <span class="nb">int</span>
+
+<span class="k">class</span> <span class="nc">ArticleHeaderSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">api_key</span> <span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span> <span class="nc">ArticleCookieSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">username</span> <span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">ArticlesYearAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;List all articles given a year&quot;&quot;&quot;</span>
+
+    <span class="n">path_params</span> <span class="o">=</span> <span class="n">ArticleYearSchema</span>
+    <span class="n">query_params</span> <span class="o">=</span> <span class="n">ArticlePageSchema</span>
+    <span class="n">header_params</span> <span class="o">=</span> <span class="n">ArticleHeaderSchema</span>
+    <span class="n">cookie_params</span> <span class="o">=</span> <span class="n">ArticleCookieSchema</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">ListArticleDetailSchema</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1articles~1{year}~1/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L72" target="_blank">here</a>.</p></section>
+<section id="request-body">
+<h3>Request Body<a class="headerlink" href="#request-body" title="Permalink to this headline"></a></h3>
+<p>Document request body with <code class="docutils literal notranslate"><span class="pre">request_schema</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_request_schema</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+<span class="k">class</span> <span class="nc">ArticleCreateSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;POST schema for blog article creation&quot;&quot;&quot;</span>
+
+    <span class="n">title</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Title of Blog article&quot;</span><span class="p">)</span>
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Blog article content&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleCreateAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">request_schema</span> <span class="o">=</span> <span class="n">ArticleCreateSchema</span>
+    <span class="o">...</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1articles~1create/post" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L45" target="_blank">here</a>.</p><p>By default, the media type documented is <code class="docutils literal notranslate"><span class="pre">application/json</span></code> if a pydantic model or a DRF serializer is passed as the value for <code class="docutils literal notranslate"><span class="pre">request_schema</span></code>. To customize for multiple media types or to change the default media type, pass in a dictionary with the string media type value as the key and the schema  (pydantic model / DRF serializer) as the value.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">ToyUploadImageSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Example values are not available for application/octet-stream media types.&quot;&quot;&quot;</span>
+    <span class="o">...</span>
+    <span class="n">__root__</span> <span class="p">:</span> <span class="nb">bytes</span>
+
+
+<span class="k">class</span> <span class="nc">UploadImageAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Uploads an image&quot;</span>
+    <span class="n">path_params</span> <span class="o">=</span> <span class="n">ToyIdSchema</span>
+    <span class="n">query_params</span> <span class="o">=</span> <span class="n">ToyMetaDataSchema</span>
+    <span class="n">request_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;application/octet-stream&quot;</span><span class="p">:</span> <span class="n">ToyUploadImageSchema</span>
+    <span class="p">}</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">ToyUploadImageSuccessSchema</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">toyId</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Toy/paths/~1toy~1{toyId}~1uploadImage/post" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Toy/views.py#L110" target="_blank">here</a>.</p></section>
+</section>
+<section id="response-objects">
+<h2>Response Objects<a class="headerlink" href="#response-objects" title="Permalink to this headline"></a></h2>
+<section id="single-response">
+<h3>Single Response<a class="headerlink" href="#single-response" title="Permalink to this headline"></a></h3>
+<p>Response objects are documented using the attribute <code class="docutils literal notranslate"><span class="pre">response_schema</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;http_method&gt;_response_schema</span></code>. By default, if aa pydantic model or a DRF serializer class is passed as the value, the response is documented by default as a successful one i.e. 200 status code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleCreateSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;POST schema for blog article creation&quot;&quot;&quot;</span>
+    <span class="n">title</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Title of Blog article&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Blog article content&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">ArticleDetailSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">created</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span>
+    <span class="n">title</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">author</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">content</span> <span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleCreateAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">request_schema</span> <span class="o">=</span> <span class="n">ArticleCreateSchema</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">ArticleDetailSchema</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1articles~1create/post" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L45" target="_blank">here</a>.</p></section>
+<section id="multiple-responses">
+<h3>Multiple Responses<a class="headerlink" href="#multiple-responses" title="Permalink to this headline"></a></h3>
+<p>For multiple responses, or to change the default response, you may pass in a dictionary to <code class="docutils literal notranslate"><span class="pre">response_schema</span></code> with HTTP status code as a key and a pydantic model or DRF serializer as the value.</p>
+<p>To customize the content type of the response, pass in a string tuple containing the status code and the content type as the key.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Login</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Logs user into the system&quot;</span>
+    <span class="n">query_params</span> <span class="o">=</span> <span class="n">LoginRequestSchema</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;200&quot;</span><span class="p">:</span><span class="n">LoginSuccessSchema</span><span class="p">,</span>
+        <span class="s2">&quot;400&quot;</span><span class="p">:</span><span class="n">LoginErrorSchema</span><span class="p">,</span>
+        <span class="p">(</span><span class="s2">&quot;403&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">):</span> <span class="n">ForbiddenSchema</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/User/paths/~1user~1login/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/User/views.py#L38" target="_blank">here</a>.</p></section>
+<section id="response-headers">
+<h3>Response Headers<a class="headerlink" href="#response-headers" title="Permalink to this headline"></a></h3>
+<p>To document response headers, add <code class="docutils literal notranslate"><span class="pre">headers</span></code> to the <code class="docutils literal notranslate"><span class="pre">Config</span></code> class in the pydantic model schema. The value should be a dictionary with the header value as key and a Header object as the value. Refer the OpenAPI 3 docs for more information on the Header object specification.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span>
+
+<span class="k">class</span> <span class="nc">LoginSuccessSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+
+    <span class="n">__root__</span> <span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;X-Rate-Limit&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;calls per hour allowed by the user&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;schema&quot;</span><span class="p">:{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;integer&quot;</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;X-Expires-After&quot;</span><span class="p">:{</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;date in UTC when token expires&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;schema&quot;</span><span class="p">:{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;strings&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/User/paths/~1user~1login/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/User/schemas.py#L56" target="_blank">here</a>.</p></section>
+</section>
+<section id="schema-examples">
+<h2>Schema Examples<a class="headerlink" href="#schema-examples" title="Permalink to this headline"></a></h2>
+<p>To set examples for the schemas, define a classmethod <code class="docutils literal notranslate"><span class="pre">example</span></code> in the pydantic Schema model that returns an instance of itself with specific values. Defining examples this way has the added benefit of your examples being validated by the schema itself.
+Examples defined this way only apply to documenting request bodies and responses i.e. <code class="docutils literal notranslate"><span class="pre">request_schema</span></code> and <code class="docutils literal notranslate"><span class="pre">response_schema</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+
+
+<span class="k">class</span> <span class="nc">UserSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A User object&quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">username</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">firstName</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">lastName</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">email</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">password</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">phone</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">userStatus</span> <span class="p">:</span> <span class="nb">int</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">example</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="nb">id</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;theUser&quot;</span><span class="p">,</span>
+            <span class="n">firstName</span><span class="o">=</span><span class="s2">&quot;John&quot;</span><span class="p">,</span>
+            <span class="n">lastName</span><span class="o">=</span><span class="s2">&quot;James&quot;</span><span class="p">,</span>
+            <span class="n">email</span><span class="o">=</span><span class="s2">&quot;john@email.com&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;12345&quot;</span><span class="p">,</span>
+            <span class="n">phone</span><span class="o">=</span><span class="s2">&quot;12345&quot;</span><span class="p">,</span>
+            <span class="n">userStatus</span><span class="o">=</span><span class="mi">4</span>
+        <span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">CreateUserAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This can only be done by the logged in user.&quot;&quot;&quot;</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Create user&quot;</span>
+    <span class="n">request_schema</span> <span class="o">=</span> <span class="n">UserSchema</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">UserSchema</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/User/paths/~1user~1/post" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/User/views.py#L16" target="_blank">here</a>.</p><p>Defining examples for path, query, header and cookie parameters are done within the <code class="docutils literal notranslate"><span class="pre">Field</span></code> itself. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">class</span> <span class="nc">ArticleYearSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">year</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">example</span><span class="o">=</span><span class="s2">&quot;2009&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-schemas">
+<h2>Advanced Schemas<a class="headerlink" href="#advanced-schemas" title="Permalink to this headline"></a></h2>
+<p>All <code class="docutils literal notranslate"><span class="pre">Schema</span></code> objects here are simply aliases of the pydantic <code class="docutils literal notranslate"><span class="pre">BaseModel</span></code>. So all features of a pydantic model object can be utilized to define your schemas.</p>
+<section id="nested-schemas">
+<h3>Nested Schemas<a class="headerlink" href="#nested-schemas" title="Permalink to this headline"></a></h3>
+<p>To document nested schemas, you may use pydantic models as field types. This allows complex schemas to be managed easily and its components reusable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+
+<span class="k">class</span> <span class="nc">Status</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Enum</span><span class="p">):</span>
+    <span class="n">available</span> <span class="o">=</span> <span class="s1">&#39;available&#39;</span>
+    <span class="n">pending</span> <span class="o">=</span> <span class="s1">&#39;pending&#39;</span>
+    <span class="n">sold</span> <span class="o">=</span> <span class="s1">&#39;sold&#39;</span>
+
+<span class="k">class</span> <span class="nc">Category</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Toy Category&quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">name</span> <span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Toy Tag&quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="p">:</span> <span class="nb">int</span>
+    <span class="n">name</span> <span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span> <span class="nc">ToySchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Toy Schema&quot;&quot;&quot;</span>
+    <span class="nb">id</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="n">name</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">category</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Category</span><span class="p">]</span>
+    <span class="n">photoUrls</span> <span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">tags</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">Tag</span><span class="p">]]</span>
+    <span class="n">status</span> <span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Status</span><span class="p">]</span> <span class="o">=</span> <span class="n">Status</span><span class="o">.</span><span class="n">available</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Toy/paths/~1toy~1/post" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Toy/schemas.py#L20" target="_blank">here</a>.</p></section>
+<section id="non-object-schemas">
+<h3>Non-object Schemas<a class="headerlink" href="#non-object-schemas" title="Permalink to this headline"></a></h3>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">Schema</span></code> objects will be documented as a JSON <em>object</em> i.e. an unordered set of name/value pairs.
+To change this, for example, if your API returns an array instead, change the <code class="docutils literal notranslate"><span class="pre">__root__</span></code> value of the <code class="docutils literal notranslate"><span class="pre">Schema</span></code>.
+Following from the example above:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ToyArraySchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An array of Toys&quot;&quot;&quot;</span>
+    <span class="n">__root__</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ToySchema</span><span class="p">]</span>
+
+<span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">FindToyByStatusAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Find Toys by status&quot;&quot;&quot;</span>
+
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;Find Toys by status&quot;</span>
+    <span class="n">query_params</span> <span class="o">=</span> <span class="n">StatusSchema</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;200&quot;</span><span class="p">:</span><span class="n">ToyArraySchema</span><span class="p">,</span>
+        <span class="s2">&quot;400&quot;</span><span class="p">:</span><span class="n">InvalidToySchema</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Toy/paths/~1toy~1findByStatus/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Toy/views.py#L44" target="_blank">here</a>.</p></section>
+</section>
+<section id="list-of-djagger-view-attributes">
+<h2>List of Djagger View attributes<a class="headerlink" href="#list-of-djagger-view-attributes" title="Permalink to this headline"></a></h2>
+<p>The table below lists the attributes that can be defined in a view that will be extracted by Djagger to build the documentation.
+For class-based views encompassing multiple HTTP methods, the attributes below will apply to ALL HTTP methods.</p>
+<p>To differentiate the attributes for different HTTP methods, prefix the method name in front of any of the attributes in the table below. For example, instead of declaring the class attribute <code class="docutils literal notranslate"><span class="pre">response_schema</span></code>, you may declare both <code class="docutils literal notranslate"><span class="pre">get_response_schema</span></code> and <code class="docutils literal notranslate"><span class="pre">post_response_schema</span></code> to differentiate between GET and POST responses. See example below.</p>
+<p>The available HTTP method names for the prefix are <code class="docutils literal notranslate"><span class="pre">get</span></code>, <code class="docutils literal notranslate"><span class="pre">post</span></code>, <code class="docutils literal notranslate"><span class="pre">patch</span></code>, <code class="docutils literal notranslate"><span class="pre">delete</span></code>, <code class="docutils literal notranslate"><span class="pre">put</span></code>, <code class="docutils literal notranslate"><span class="pre">options</span></code>, <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">trace</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Hierarchy of Specificity</strong> - A more specific declaration of a Djagger view attribute will override a less specific one.
+For example, having both <code class="docutils literal notranslate"><span class="pre">summary</span></code> and <code class="docutils literal notranslate"><span class="pre">post_summary</span></code> attributes will result in the POST endpoint taking on the value of <code class="docutils literal notranslate"><span class="pre">post_summary</span></code> while the other endpoints will take on the summary value of <code class="docutils literal notranslate"><span class="pre">summary</span></code> in the documentation.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 21%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attribute</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>path_params</p></td>
+<td><p>pydantic.main.ModelMetaclass | rest_framework.serializers.SerializerMetaclass</p></td>
+<td><p>Schema for the parameter values that are part of the URL E.g. /article/&lt;int:pk&gt; where pk is the path parameter.</p></td>
+</tr>
+<tr class="row-odd"><td><p>query_params</p></td>
+<td><p>pydantic.main.ModelMetaclass | rest_framework.serializers.SerializerMetaclass</p></td>
+<td><p>Schema for the parameter values that are appended to the URL. E.g. /articles?page=3 where page is the query parameter.</p></td>
+</tr>
+<tr class="row-even"><td><p>header_params</p></td>
+<td><p>pydantic.main.ModelMetaclass | rest_framework.serializers.SerializerMetaclass</p></td>
+<td><p>Schema for custom headers that are expected as part of the request.</p></td>
+</tr>
+<tr class="row-odd"><td><p>cookie_params</p></td>
+<td><p>pydantic.main.ModelMetaclass | rest_framework.serializers.SerializerMetaclass</p></td>
+<td><p>Schema for cookie values specific to the API.</p></td>
+</tr>
+<tr class="row-even"><td><p>request_schema</p></td>
+<td><p>pydantic.main.ModelMetaclass | rest_framework.serializers.SerializerMetaclass | Dict</p></td>
+<td><p>Schema for HTTP body Data sent to the API commonly used for POST, PUT, UPDATE methods. Can accept a dictionary of string keys representing media types and values of ModelMetaclass or SerializerMetaclass.</p></td>
+</tr>
+<tr class="row-odd"><td><p>response_schema</p></td>
+<td><p>pydantic.main.ModelMetaclass | rest_framework.serializers.SerializerMetaclass | Dict</p></td>
+<td><p>Schema for responses returned by the API. By default, if aa pydantic model or a DRF serializer class is passed as the value, the response is documented by default as a successful one i.e. 200 status code. Can accept a dictionary of string HTTP status codes and values of ModelMetaclass or SerializerMetaclass</p></td>
+</tr>
+<tr class="row-even"><td><p>summary</p></td>
+<td><p>str</p></td>
+<td><p>Summary of the API. By default, the value used will be the __name__ value of the view if this attribute is not specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tags</p></td>
+<td><p>List[str]</p></td>
+<td><p>List of string tag names.</p></td>
+</tr>
+<tr class="row-even"><td><p>description</p></td>
+<td><p>str</p></td>
+<td><p>String description of the API. By default, the docstrings of the view will be used if this attribute is not specified.</p></td>
+</tr>
+<tr class="row-odd"><td><p>operation_id</p></td>
+<td><p>str</p></td>
+<td><p>Unique string used to identify the operation</p></td>
+</tr>
+<tr class="row-even"><td><p>deprecated</p></td>
+<td><p>bool</p></td>
+<td><p>Boolean value to indicate if API is deprecated. Defaults to True</p></td>
+</tr>
+<tr class="row-odd"><td><p>external_docs</p></td>
+<td><p>dict</p></td>
+<td><p>Dictionary containing url and description fields to describe external documentation for the API.</p></td>
+</tr>
+<tr class="row-even"><td><p>servers</p></td>
+<td><p>List[dict]</p></td>
+<td><p>List of dictionary Server objects which provide connectivity information to a target server.</p></td>
+</tr>
+<tr class="row-odd"><td><p>security</p></td>
+<td><p>List[dict]</p></td>
+<td><p>A declaration of which security mechanisms can be used across the API.</p></td>
+</tr>
+<tr class="row-even"><td><p>djagger_exclude</p></td>
+<td><p>bool</p></td>
+<td><p>Declare this attribute as True to skip documentation of the API.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example with HTTP method specific attributes</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">FindToyByIdAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">get_summary</span> <span class="o">=</span> <span class="s2">&quot;Find Toy by ID&quot;</span>
+    <span class="n">get_path_params</span> <span class="o">=</span> <span class="n">ToyIdSchema</span>
+    <span class="n">get_response_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;200&quot;</span><span class="p">:</span><span class="n">ToySchema</span><span class="p">,</span>
+        <span class="s2">&quot;400&quot;</span><span class="p">:</span><span class="n">InvalidToySchema</span><span class="p">,</span>
+        <span class="s2">&quot;404&quot;</span><span class="p">:</span><span class="n">ToyNotFoundSchema</span>
+    <span class="p">}</span>
+
+    <span class="n">post_summary</span> <span class="o">=</span> <span class="s2">&quot;Update Toy with form data&quot;</span>
+    <span class="n">post_request_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;multipart/form-data&quot;</span><span class="p">:</span><span class="n">ToyIdFormSchema</span>
+    <span class="p">}</span>
+    <span class="n">post_response_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;405&quot;</span><span class="p">:</span><span class="n">InvalidToySchema</span>
+    <span class="p">}</span>
+
+    <span class="n">delete_summary</span> <span class="o">=</span> <span class="s2">&quot;Deletes a Toy&quot;</span>
+    <span class="n">delete_header_params</span> <span class="o">=</span> <span class="n">ToyDeleteHeaderSchema</span>
+    <span class="n">delete_path_params</span> <span class="o">=</span> <span class="n">ToyIdSchema</span>
+    <span class="n">delete_response_schema</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;400&quot;</span><span class="p">:</span><span class="n">InvalidToySchema</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">toyId</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">toyId</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">toyId</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Toy/paths/~1toy~1{toyId}/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Toy/views.py#L74" target="_blank">here</a>.</p></section>
+<section id="function-based-views">
+<h2>Function-based Views<a class="headerlink" href="#function-based-views" title="Permalink to this headline"></a></h2>
+<p>Djagger supports documenting function-based views (FBV). For FBVs, add the decorator <code class="docutils literal notranslate"><span class="pre">&#64;schema</span></code> to the view function. The decorator takes in a required <code class="docutils literal notranslate"><span class="pre">methods</span></code> list of string HTTP methods that indicate the HTTP methods handled by the view. Arguments can be passed based on the List of Djagger View attributes into the decorator, these arguments work in the same manner as the class attributes for class-based views.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span>
+<span class="kn">from</span> <span class="nn">djagger.decorators</span> <span class="kn">import</span> <span class="n">schema</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+
+<span class="k">class</span> <span class="nc">AuthorSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">last_name</span> <span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span> <span class="nc">AuthorListSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">authors</span> <span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AuthorSchema</span><span class="p">]</span>
+
+
+<span class="nd">@schema</span><span class="p">(</span>
+    <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;POST&#39;</span><span class="p">],</span>
+    <span class="n">get_summary</span><span class="o">=</span><span class="s2">&quot;List Authors&quot;</span><span class="p">,</span>
+    <span class="n">get_response_schema</span><span class="o">=</span><span class="n">AuthorListSchema</span><span class="p">,</span>
+    <span class="n">post_summary</span><span class="o">=</span><span class="s2">&quot;Create Author&quot;</span><span class="p">,</span>
+    <span class="n">post_request_schema</span><span class="o">=</span><span class="n">AuthorSchema</span><span class="p">,</span>
+    <span class="n">post_response_schema</span><span class="o">=</span><span class="n">AuthorSchema</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">author_api</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;API to create an author or list all authors&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;get&#39;</span><span class="p">:</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+
+    <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;post&#39;</span><span class="p">:</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1author/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L85" target="_blank">here</a>.</p></section>
+<section id="using-serializers">
+<h2>Using Serializers<a class="headerlink" href="#using-serializers" title="Permalink to this headline"></a></h2>
+<p>Wherever a pydantic model is used as a schema e.g. in documenting responses or request parameters, a Django REST Framework (DRF) Serializer object can also be used as an alternative.</p>
+<p>Under the hood, Djagger converts the serializer class (<code class="docutils literal notranslate"><span class="pre">rest_framework.serializers.SerializerMetaclass</span></code>) to a valid pydantic model (<code class="docutils literal notranslate"><span class="pre">pydantic.main.ModelMetaclass</span></code>).</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>
+<span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">.schemas</span> <span class="kn">import</span> <span class="n">ArticleDetailSchema</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleUpdateSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">Serializer</span><span class="p">):</span>
+
+    <span class="n">pk</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">(</span><span class="n">help_text</span><span class="o">=</span><span class="s2">&quot;Primary key of article to update&quot;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">serializers</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleUpdateAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">request_schema</span> <span class="o">=</span> <span class="n">ArticleUpdateSerializer</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">ArticleDetailSchema</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1articles~1update/put" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L54" target="_blank">here</a>.</p></section>
+<section id="generic-views">
+<h2>Generic Views<a class="headerlink" href="#generic-views" title="Permalink to this headline"></a></h2>
+<p>For generic views, if a <code class="docutils literal notranslate"><span class="pre">serializer_class</span></code> attribute is defined for the generic view, Djagger will treat it as a <code class="docutils literal notranslate"><span class="pre">response_schema</span></code> attribute. Setting <code class="docutils literal notranslate"><span class="pre">response_schema</span></code> directly in the generic view will override this. Other than that, documenting generic views is the same as a regular class-based view.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CategoryList</span><span class="p">(</span><span class="n">generics</span><span class="o">.</span><span class="n">ListCreateAPIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Example Generic View Documentation&quot;&quot;&quot;</span>
+
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">CategorySerializer</span><span class="p">(</span><span class="n">many</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">get_summary</span> <span class="o">=</span> <span class="s2">&quot;Category List&quot;</span>
+    <span class="n">post_summary</span> <span class="o">=</span> <span class="s2">&quot;Category List Create&quot;</span>
+
+    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1categories~1/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L104" target="_blank">here</a>.</p></section>
+<section id="viewsets">
+<h2>Viewsets<a class="headerlink" href="#viewsets" title="Permalink to this headline"></a></h2>
+<p>Documenting DRF viewsets is supported. To document each viewset action e.g. <code class="docutils literal notranslate"><span class="pre">list()</span></code>, <code class="docutils literal notranslate"><span class="pre">create()</span></code>, decorate the action method with the <code class="docutils literal notranslate"><span class="pre">&#64;schema</span></code> decorator similar to how a function-based view is documented in Djagger.</p>
+<p>For viewsets, the parent viewset class attributes can also be used for documenting the actions, and they will apply to all actions under the viewset. The <code class="docutils literal notranslate"><span class="pre">&#64;schema</span></code> values will take priority over the parent class djagger atributes.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CategoryViewset</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ViewSet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Example Viewset documentation&quot;&quot;&quot;</span>
+
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">CategoryListSchema</span>
+
+    <span class="nd">@schema</span><span class="p">(</span>
+        <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;List Categories&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+
+    <span class="nd">@schema</span><span class="p">(</span>
+        <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Get Category&quot;</span><span class="p">,</span>
+        <span class="n">response_schema</span><span class="o">=</span><span class="n">CategorySerializer</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">retrieve</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1cat~1/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/7293a78388498ec6d9fc74c6b299bfc16374bf57/Blog/views.py#L119" target="_blank">here</a>.</p></section>
+<section id="tags">
+<h2>Tags<a class="headerlink" href="#tags" title="Permalink to this headline"></a></h2>
+<p>You can group APIs with tags. Tags are an OpenAPi 3 schema object and they can be declared using the <code class="docutils literal notranslate"><span class="pre">tags</span></code> djagger attribute. <code class="docutils literal notranslate"><span class="pre">tags</span></code> should be a list of string tag names for which the operation should be assigned to.</p>
+<p>By default, djagger will create tags for each Django app included in the project, unless overwritten in the <code class="docutils literal notranslate"><span class="pre">DJAGGER_DOCUMENT</span></code> settings configuration. In your views, if <code class="docutils literal notranslate"><span class="pre">tags</span></code> attribute is not set, the API will be automatically assigned the tag name of the Django app in which it resides.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The http method prefix is also applicable to the <code class="docutils literal notranslate"><span class="pre">tags</span></code> attribute. So a view with <code class="docutils literal notranslate"><span class="pre">tags=['MyApp']</span></code> and <code class="docutils literal notranslate"><span class="pre">post_tags=['Admin']</span></code>
+will have POST operations take on the <code class="docutils literal notranslate"><span class="pre">Admin</span></code> tag while other operations assigned the <code class="docutils literal notranslate"><span class="pre">MyApp</span></code> tag.</p>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">tags</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MyApp&#39;</span><span class="p">]</span>
+    <span class="n">post_tags</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Admin&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># Assigned to &#39;MyApp&#39; tag</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="c1"># Assigned to &#39;Admin&#39; tag</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<section id="defining-tags-at-the-document-level">
+<h3>Defining tags at the document level<a class="headerlink" href="#defining-tags-at-the-document-level" title="Permalink to this headline"></a></h3>
+<p>Define the tags at the document level in with the <code class="docutils literal notranslate"><span class="pre">DJAGGER_DOCUMENT</span></code> settings in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code>.
+<code class="docutils literal notranslate"><span class="pre">tags</span></code> key should be a list of tag dictionaries of type <code class="docutils literal notranslate"><span class="pre">Dict[str,str]</span></code> containing <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> keys.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># settings.py</span>
+
+<span class="n">DJAGGER_DOCUMENT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;tags&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Tag1&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Example Tag&#39;</span><span class="p">},</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Tag2&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Example Tag&#39;</span><span class="p">},</span>
+    <span class="p">],</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Defining document-level tags in this way overrides the default tags created for each django app.</p>
+</section>
+</section>
+<section id="document-generation">
+<h2>Document Generation<a class="headerlink" href="#document-generation" title="Permalink to this headline"></a></h2>
+<p>To see the generated documentation, ensure that the Djagger URLs are installed correctly. See <a class="reference internal" href="getting_started.html#getting-started"><span class="std std-ref">Getting Started</span></a>.</p>
+<section id="configuring-the-built-in-djagger-views">
+<h3>Configuring the built-in Djagger views<a class="headerlink" href="#configuring-the-built-in-djagger-views" title="Permalink to this headline"></a></h3>
+<p>Configuration for the built-in document view is managed in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> via the dictionary parameter <code class="docutils literal notranslate"><span class="pre">DJAGGER_DOCUMENT</span></code>.
+See table below for the valid dict keys in <code class="docutils literal notranslate"><span class="pre">settings.DJAGGER_DOCUMENT</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keys</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>app_names</p></td>
+<td><p>List[str]</p></td>
+<td><p>Required list of string names for the Django apps to be documented. Apps not included in this list will not be documented.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tags</p></td>
+<td><p>List[dict]</p></td>
+<td><p>List of dictionary objects with name and description fields representing the OpenAPI Tag object. By default, the list of declared app names in DJAGGER_APP_NAMES will be created as the OpenAPI Tags, unless overridden by this variable.</p></td>
+</tr>
+<tr class="row-even"><td><p>openapi</p></td>
+<td><p>str</p></td>
+<td><p>OpenAPI 3 version. Defaults to 3.0.0.</p></td>
+</tr>
+<tr class="row-odd"><td><p>version</p></td>
+<td><p>str</p></td>
+<td><p>Project version. Defaults to 1.0.0.</p></td>
+</tr>
+<tr class="row-even"><td><p>servers</p></td>
+<td><p>List[dict]</p></td>
+<td><p>List of dictionary Server objects. Each object is a dictionary with url and description string fields.</p></td>
+</tr>
+<tr class="row-odd"><td><p>security</p></td>
+<td><p>List[dict]</p></td>
+<td><p>List of dictionary Security objects.</p></td>
+</tr>
+<tr class="row-even"><td><p>title</p></td>
+<td><p>str</p></td>
+<td><p>Title of documentation.</p></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>str</p></td>
+<td><p>Description of documentation.</p></td>
+</tr>
+<tr class="row-even"><td><p>terms_of_service</p></td>
+<td><p>str</p></td>
+<td><p>Terms of service.</p></td>
+</tr>
+<tr class="row-odd"><td><p>contact_name</p></td>
+<td><p>str</p></td>
+<td><p>Contact name.</p></td>
+</tr>
+<tr class="row-even"><td><p>contact_email</p></td>
+<td><p>str</p></td>
+<td><p>Contact email.</p></td>
+</tr>
+<tr class="row-odd"><td><p>contact_url</p></td>
+<td><p>str</p></td>
+<td><p>Contact URL.</p></td>
+</tr>
+<tr class="row-even"><td><p>license_name</p></td>
+<td><p>str</p></td>
+<td><p>Name of license</p></td>
+</tr>
+<tr class="row-odd"><td><p>license_url</p></td>
+<td><p>str</p></td>
+<td><p>URL of license</p></td>
+</tr>
+<tr class="row-even"><td><p>kwargs</p></td>
+<td></td>
+<td><p>Additional key/value pairs to be appended to the generated JSON document. Usually used for <code class="docutils literal notranslate"><span class="pre">x-</span></code> fields for specific document generating clients.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Djagger Document settings</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># settings.py</span>
+
+<span class="n">DJAGGER_DOCUMENT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span> <span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Djagger Toy Store&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;&quot;This is a sample OpenAPI 3.0 schema generated from a Django project using Djagger.</span>
+
+<span class="s2">View the Django project that generated this document on Github: https://github.com/royhzq/djagger-example.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;license_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;app_names&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;Toy&#39;</span><span class="p">,</span> <span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span> <span class="s1">&#39;Blog&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;tags&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Toy&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Toy App&#39;</span><span class="p">},</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Store App&#39;</span><span class="p">},</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;User&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;User App&#39;</span><span class="p">},</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Blog&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Blog App&#39;</span><span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;x-tagGroups&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Toy&#39;</span><span class="p">,</span> <span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;Blog&#39;</span><span class="p">]},</span>
+        <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;USER MANAGEMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;User&#39;</span><span class="p">]}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;servers&quot;</span> <span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;https://example.org&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Production API server&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;https://staging.example.org&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Staging API server&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See the generated docs for this example <a href="https://djagger-example.netlify.app/" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/285af0109155f6ef13e94302a0d40749501388cf/djagger_example/settings.py#L134" target="_blank">here</a>.</p></section>
+<section id="customized-documentation-views">
+<h3>Customized documentation views<a class="headerlink" href="#customized-documentation-views" title="Permalink to this headline"></a></h3>
+<p>To create your own documentation view, generate the document via Djagger’s <code class="docutils literal notranslate"><span class="pre">Document</span></code> class. See example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">djagger.openapi</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+
+<span class="k">def</span> <span class="nf">custom_doc_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot; Custom documentation View for auto generated OpenAPI JSON document &quot;&quot;&quot;</span>
+
+    <span class="n">doc_settings</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;version&quot;</span> <span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;title&quot;</span> <span class="p">:</span> <span class="s2">&quot;Djagger Toy Store&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;&quot;This is a sample OpenAPI 3.0 schema generated from a Django project using Djagger.</span>
+
+<span class="s2">    View the Django project that generated this document on Github: https://github.com/royhzq/djagger-example.</span>
+
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;license_name&quot;</span> <span class="p">:</span> <span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;app_names&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;Toy&#39;</span><span class="p">,</span> <span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span> <span class="s1">&#39;Blog&#39;</span><span class="p">],</span>
+        <span class="s2">&quot;tags&quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Toy&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Toy App&#39;</span><span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Store App&#39;</span><span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;User&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;User App&#39;</span><span class="p">},</span>
+            <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;Blog&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Blog App&#39;</span><span class="p">},</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;x-tagGroups&quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Toy&#39;</span><span class="p">,</span> <span class="s1">&#39;Store&#39;</span><span class="p">,</span> <span class="s1">&#39;Blog&#39;</span><span class="p">]},</span>
+            <span class="p">{</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span><span class="s1">&#39;USER MANAGEMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;tags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;User&#39;</span><span class="p">]}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;servers&quot;</span> <span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;https://example.org&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Production API server&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;url&quot;</span><span class="p">:</span><span class="s2">&quot;https://staging.example.org&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span><span class="s2">&quot;Staging API server&quot;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="n">document</span> <span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Document</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="o">**</span><span class="n">doc_settings</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">document</span><span class="p">)</span>
+    <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Cache-Control&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;no-cache, no-store, must-revalidate&quot;</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">custom_doc_view</span></code> view in the example returns a JSON response containing the OpenAPI 3 compliant JSON schema. You may then use your preferred documentation client generator to consume the JSON schema from the view to generate your desired documentation.</p>
+</section>
+</section>
+<section id="global-attribute-prefix">
+<h2>Global attribute prefix<a class="headerlink" href="#global-attribute-prefix" title="Permalink to this headline"></a></h2>
+<p>In the event that certain djagger attributes come into conflict with those from other packages when used together in the same view, you can set a global prefix for all djagger attributes to overcome this.</p>
+<p>For example, a global prefix of <code class="docutils literal notranslate"><span class="pre">dj_</span></code> will mean that all djagger attributes will need to be prefixed as such for all class-based views as well as the parameters of the <code class="docutils literal notranslate"><span class="pre">&#64;schema</span></code> function-based view decorator. I.e. Instead of <code class="docutils literal notranslate"><span class="pre">get_summary</span></code>, the attribute will be <code class="docutils literal notranslate"><span class="pre">dj_get_summary</span></code>.</p>
+<p>To set the prefix, add the following in <code class="docutils literal notranslate"><span class="pre">settings.py</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DJAGGER_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;global_prefix&quot;</span> <span class="o">=</span> <span class="s2">&quot;dj_&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>With the prefix, an example of a documented view will be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Class-based view</span>
+
+<span class="k">class</span> <span class="nc">TestView</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">dj_get_summary</span><span class="o">=</span><span class="s2">&quot;Test View&quot;</span>
+    <span class="n">dj_request_schema</span><span class="o">=...</span>
+    <span class="n">dj_response_schema</span><span class="o">=...</span>
+
+
+<span class="c1"># Function-based view</span>
+
+<span class="nd">@schema</span><span class="p">(</span>
+    <span class="n">dj_get_summary</span><span class="o">=</span><span class="s2">&quot;Test View&quot;</span>
+    <span class="n">dj_request_schema</span><span class="o">=...</span>
+    <span class="n">dj_response_schema</span><span class="o">=...</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">fbv</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, royhzq.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

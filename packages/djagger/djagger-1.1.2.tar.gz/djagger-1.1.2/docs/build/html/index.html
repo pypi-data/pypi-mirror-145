@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🗡️Djagger - OpenAPI schema generator for Django using pydantic &mdash; Djagger 1.1.2 1.1.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Djagger 1.1.2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Djagger</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Djagger 1.1.2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>🗡️Djagger - OpenAPI schema generator for Django using pydantic</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="djagger-openapi-schema-generator-for-django-using-pydantic">
+<h1>🗡️Djagger - OpenAPI schema generator for Django using pydantic<a class="headerlink" href="#djagger-openapi-schema-generator-for-django-using-pydantic" title="Permalink to this headline"></a></h1>
+<p><img alt="Package Badge" src="https://github.com/royhzq/djagger/actions/workflows/python-package.yml/badge.svg" /> <img alt="Pypi Badge" src="https://badge.fury.io/py/djagger.svg" /></p>
+<p>Automated OpenAPI documentation generator for Django. Djagger provides you with a clean and straightforward way to generate a comprehensive API documentation of your Django project by utilizing pydantic to create schema objects for your views.</p>
+<div class="line-block">
+<div class="line">Example Django project using Djagger:</div>
+<div class="line"><a class="reference external" href="https://github.com/royhzq/djagger-example">https://github.com/royhzq/djagger-example</a></div>
+</div>
+<div class="line-block">
+<div class="line">Generated API documentation from the example project:</div>
+<div class="line"><a class="reference external" href="https://djagger-example.netlify.app/">https://djagger-example.netlify.app/</a></div>
+</div>
+<div class="line-block">
+<div class="line">The Djagger repo:</div>
+<div class="line"><a class="reference external" href="https://github.com/royhzq/djagger">https://github.com/royhzq/djagger</a></div>
+</div>
+<p>Djagger is designed to be:</p>
+<p>🧾 <strong>Comprehensive</strong> - Every aspect of your API should be document-able straight from your views, to the full extent of the OpenAPi 3.0 specification.</p>
+<p>👐 <strong>Unintrusive</strong> - Integrate easily with your existing Django project. Djagger can document vanilla Django views (function-based and class-based views), as well as any Django REST framework views. As long as you are using Django’s default URL routing, you are good to go. You do not need to redesign your APIs for better documentation.</p>
+<p>🍭 <strong>Easy</strong> - Djagger uses pure, unadulterated pydantic models to generate schemas. If you have used pydantic, there is no learning curve. If you have not heard of pydantic, it is a powerful data validation library that is pretty straightforward to pickup (like dataclasses). <a class="reference external" href="https://pydantic-docs.helpmanual.io/">Check it out here</a>. Either way, documenting your APIs will feel less like a chore.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<section id="example-get-endpoint">
+<h3>Example GET Endpoint<a class="headerlink" href="#example-get-endpoint" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleDetailSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">created</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span>
+    <span class="n">title</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">author</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">content</span> <span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="k">class</span> <span class="nc">RandomArticleAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a random article from the Blog&quot;&quot;&quot;</span>
+
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">ArticleDetailSchema</span>
+
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p><strong>Generated documentation</strong></p>
+<p>See the generated docs <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1articles~1random/get" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/285af0109155f6ef13e94302a0d40749501388cf/Blog/views.py#L26" target="_blank">here</a>.</p><a class="reference internal image-reference" href="https://user-images.githubusercontent.com/32057276/148027310-3248b5aa-f8a5-46d1-b044-044d001dcddd.png"><img alt="UserDetailsAPI Redoc" src="https://user-images.githubusercontent.com/32057276/148027310-3248b5aa-f8a5-46d1-b044-044d001dcddd.png" style="width: 800px;" /></a>
+</section>
+<section id="example-post-endpoint">
+<h3>Example POST Endpoint<a class="headerlink" href="#example-post-endpoint" title="Permalink to this headline"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rest_framework.views</span> <span class="kn">import</span> <span class="n">APIView</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span> <span class="k">as</span> <span class="n">Schema</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleDetailSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="n">created</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span>
+    <span class="n">title</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">author</span> <span class="p">:</span> <span class="nb">str</span>
+    <span class="n">content</span> <span class="p">:</span> <span class="nb">str</span>
+
+<span class="k">class</span> <span class="nc">ArticleCreateSchema</span><span class="p">(</span><span class="n">Schema</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;POST schema for blog article creation&quot;&quot;&quot;</span>
+    <span class="n">title</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Title of Blog article&quot;</span><span class="p">)</span>
+    <span class="n">content</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Blog article content&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ArticleCreateAPI</span><span class="p">(</span><span class="n">APIView</span><span class="p">):</span>
+
+    <span class="n">request_schema</span> <span class="o">=</span> <span class="n">ArticleCreateSchema</span>
+    <span class="n">response_schema</span> <span class="o">=</span> <span class="n">ArticleDetailSchema</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({})</span>
+</pre></div>
+</div>
+<p><strong>Generated documentation</strong></p>
+<p>See the generated docs <a href="https://djagger-example.netlify.app/#tag/Blog/paths/~1blog~1articles~1create/post" target="_blank">here</a>, and the code <a href="https://github.com/royhzq/djagger-example/blob/285af0109155f6ef13e94302a0d40749501388cf/Blog/views.py#L45" target="_blank">here</a>.</p><a class="reference internal image-reference" href="https://user-images.githubusercontent.com/32057276/148027403-4acca98c-e4af-4265-a9f5-c385f143be73.png"><img alt="CreateItemAPI Redoc" src="https://user-images.githubusercontent.com/32057276/148027403-4acca98c-e4af-4265-a9f5-c385f143be73.png" style="width: 800px;" /></a>
+</section>
+<section id="documentation-support">
+<h3>Documentation &amp; Support<a class="headerlink" href="#documentation-support" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>This project is in continuous development. If you have any questions or would like to contribute, please email <a class="reference external" href="mailto:royhung&#37;&#52;&#48;protonmail&#46;com">royhung<span>&#64;</span>protonmail<span>&#46;</span>com</a></p></li>
+<li><p>If you want to support this project, do give it a ⭐ on github!</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#package-overview">Package Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quickstart">Quickstart</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#how-it-works">How It Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#request-parameters">Request Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#response-objects">Response Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#schema-examples">Schema Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#advanced-schemas">Advanced Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#list-of-djagger-view-attributes">List of Djagger View attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#function-based-views">Function-based Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#using-serializers">Using Serializers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#generic-views">Generic Views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#viewsets">Viewsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#tags">Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#document-generation">Document Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_guide.html#global-attribute-prefix">Global attribute prefix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#openapi-3-0-schema-objects">OpenAPI 3.0 Schema Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#enums">Enums</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#utility-functions">Utility functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#decorators">Decorators</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_history.html">Release History</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#id1">1.1.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#id2">1.1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release_history.html#id3">1.1.0</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to Djagger</a></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, royhzq.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
