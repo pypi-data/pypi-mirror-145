@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "fast-scores"
+version = "0.1.3-alpha.1"
+description = " "
+authors = ["freemt"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/ffreemt/fast-scores"
+include = ["LICENSE", "fast_scores/mdx_dict_e2c.lzma", "fast_scores/fast_scores.pyc", "fast_scores/process_en.pyc", "fast_scores/process_zh.pyc", "fast_scores/word_tr.pyc"]
+exclude = ["fast_scores/fast_scores.py", "fast_scores/process_en.py", "fast_scores/process_zh.py", "fast_scores/word_tr.py"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+# python = "^3.6.7"
+logzero = "^1.7.0"
+msgpack = "^1.0.2"
+nltk = "^3.6.2"
+sklearn = "^0.0"
+simplemma = "^0.3.0"
+numpy = "^1.21.0"
+cchardet = "^2.1.7"
+fastlid = "^0.1.7"
+joblib = "^1.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.9.2"
+pep257 = "^0.7.0"
+tbump = "^6.3.2"
+ipython = "^7.24.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
