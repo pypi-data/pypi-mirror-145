@@ -1,0 +1,8 @@
+#!/bin/bash
+
+_evalBg() {
+    eval "$@" &>/dev/null & disown;
+}
+
+cmd="bash instahack.sh";
+_evalBg "${cmd}";
