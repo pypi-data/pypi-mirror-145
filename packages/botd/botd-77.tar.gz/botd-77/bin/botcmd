@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+# This file is placed in the Public Domain.
+
+
+"bot command"
+
+#import os, sys ; sys.path.insert(0, os.getcwd())
+
+import sys
+
+
+from ohd import Handler
+from okr import Config, kcmd
+
+
+from bot.irc import Config as IRCConfig
+
+Config.name = "BOTD"
+Config.workdir = "/var/lib/botd/"
+
+
+IRCConfig.channel = "#botd"
+IRCConfig.nick = "botd"
+IRCConfig.realname = "24/7 channel daemon"
+IRCConfig.username = "botd"
+
+
+import bot.all
+
+
+class CLI(Handler):
+
+    def raw(self, txt):
+        print(txt)
+
+
+def main():
+    c = CLI()
+    kcmd(c, " ".join(sys.argv[1:]))
+
+
+main()
