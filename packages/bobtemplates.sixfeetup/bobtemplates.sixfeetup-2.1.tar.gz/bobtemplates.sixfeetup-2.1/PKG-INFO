@@ -1,0 +1,149 @@
+Metadata-Version: 2.1
+Name: bobtemplates.sixfeetup
+Version: 2.1
+Summary: Unified buildout template for Plone projects.
+Home-page: https://github.com/sixfeetup/bobtemplates.sixfeetup
+Author: Six Feet Up, Inc.
+Author-email: info@sixfeetup.com
+License: BSD
+Description: # bobtemplates.unified_buildout
+        
+        `bobtemplates.sixfetup` provides a [mr.bob](http://mrbob.readthedocs.org/en/latest/) `unified_buildout` template to generate a buildout for Plone based projects.
+        
+        
+        ## Features
+        
+        The project created with ``bobtemplates.sixfeetup`` use the current Six Feet Up deployment best-practices when creating an project.
+        
+        **Buildout**
+        
+        The package is contained in a buildout that allows you to build Plone with the new package installed for testing-purposes.
+        
+        **Policy**
+        
+        The package contains a policy package.
+        
+        **Theme**
+        
+        Adds a Diazo theme package based on Barceloneta.
+        
+        **Content**
+        
+        Adds a content package for new Dexterity based content types.
+        
+        **Migration**
+        
+        A starting point for creating a transmogrifier import pipeline.
+        
+        
+        ## Installation
+        
+        **Installation in a virtualenv**
+        
+        You can install `bobtemplates.sixfeetup` in a virtualenv.
+            
+        ```shell
+        $ pip install bobtemplates.sixfeetup
+        ```
+        
+        With `pip 6.0` or newer `mr.bob` will automatically be installed as a dependency. If you still use a older version of pip you need install `mr.bob` before `bobtemplates.sixfeetup`.
+        
+        ```shell
+        $ pip install mr.bob
+        ```
+        
+        Now you can use it like this
+        
+        ```shell
+        $ mrbob -O myproject bobtemplates.sixfeetup:unified_buildout
+        ```
+        
+        See [the documentation of mr.bob](http://mrbob.readthedocs.org/en/latest/) for further information.
+        
+        
+        ## Development
+        
+        To contribute to these templates, clone the repository then in the package folder create a virtualenv and install the package::
+        
+        ```shell
+        $ make
+        ```
+        
+        
+        ## Contribute
+        
+        - Issue Tracker: https://github.com/sixfeetup/bobtemplates.sixfeetup/issues
+        - Source Code: https://github.com/sixfeetup/bobtemplates.sixfeetup
+        
+        
+        ## Support
+        
+        If you are having issues, please let us know.
+        
+        
+        # Contributors
+        
+        This package is based on [bobtemplates.plone](https://github.com/plone/bobtemplates.plone)
+        
+        - Calvin Hendryx-Parker [calvinhp]
+        
+        
+        # Changelog
+        
+        ## 2.1 (2021-01-07)
+        
+        - convert docs from RST to MD
+        - add cache purge script to run during buildout in release environments
+        - move plone.app.contenttypes dependency to initial profile
+        - update default plone versions
+        - add question to include collective.cloudfront
+        - remove maildump from requirements
+        - add script to check for and re-add Unauthorized errors back into ignored - exceptions
+        - update Python setup documentation
+        - add starter Release Info documenation section
+          [abosio]
+        
+        
+        ## 2.0 (2020-01-02)
+        
+        - Set up for Plone 5.2/Python3
+          [cdw9]
+        
+        - Add default makefile
+          [rpatterson]
+        
+        - Fixes for when a theme is not added
+          [abosio]
+        
+        
+        ## 1.1 (2018-08-25)
+        
+        - Set up Gulp for theme
+          [abosio]
+        
+        - Consistency for instance names and ports
+          [cdw9]
+        
+        - Add a migration package
+          [cdw9]
+        
+        
+        ## 1.0 (2016-09-12)
+        
+        - Initial Release
+          [calvinhp]
+        
+Keywords: web plone zope skeleton project buildout
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Framework :: Plone
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Topic :: Software Development :: Code Generators
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: BSD License
+Description-Content-Type: text/markdown
+Provides-Extra: test

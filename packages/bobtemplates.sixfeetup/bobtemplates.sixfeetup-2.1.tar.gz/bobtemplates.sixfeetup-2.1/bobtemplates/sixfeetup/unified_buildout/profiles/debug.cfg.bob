@@ -1,0 +1,109 @@
+[debugging]
+parts =
+    ipzope
+    zopepy
+# If you need these tools, uncomment them
+#    pylint
+#    pyflakes
+#    pep8
+
+# plone.reload:
+#     you can reload the zcml in your site by running the following
+#     http://<zope host>:<zope port>/@@reload
+# zope.testrecorder:
+#     record tests by running the following
+#     http://<zope host>:<zope port>/++resource++recorder/index.html
+eggs =
+    plone.reload
+    Products.PDBDebugMode
+    Products.PrintingMailHost
+{{% if pre_plone52 %}}
+    Products.DocFinderTab
+    Products.DCWorkflowGraph
+{{% endif %}}
+{{% if not pre_plone4 %}}
+    plone.app.debugtoolbar
+{{% endif %}}
+#    ipdb
+# The following might be useful, uncomment them if needed
+#    Products.ZopeProfiler
+#    Products.Clouseau
+#    Products.PolicyTestCase
+#    Products.PTProfiler
+#    zope.testrecorder
+{{% if pre_plone4 %}}
+#    collective.workflowed
+{{% endif %}}
+
+{{% if plone_version == '3.1' %}}
+zcml =
+    plone.reload
+#    zope.testrecorder
+#    collective.workflowed
+
+{{% endif %}}
+# Here are some interactive shells.  one based on IPython that loads up like zopectl debug
+# zopepy is a simple interpreter that gives you access to all the eggs/Products but without loading up the Plone site
+
+[ipzope]
+# a IPython Shell for interactive use with zope running.
+# you also need to put
+# https://svn.plone.org/svn/collective/dotipython/trunk/ipy_profile_zope.py
+# to your $HOME/.ipython directory for the following to work.
+recipe = zc.recipe.egg
+eggs =
+    ipython
+    ${instance1:eggs}
+initialization =
+    import sys, os
+{{% if pre_plone4 %}}
+    os.environ["SOFTWARE_HOME"] = "${instance1:zope2-location}/lib/python"
+{{% endif %}}
+    os.environ["INSTANCE_HOME"] = "${instance1:location}"
+    sys.argv[1:1] = "--profile zope2".split()
+{{% if pre_plone4 %}}
+extra-paths = ${instance1:zope2-location}/lib/python
+{{% endif %}}
+scripts = ipython=ipzope
+
+[zopepy]
+recipe = zc.recipe.egg
+eggs = ${instance1:eggs}
+interpreter = zopepy
+{{% if pre_plone4 %}}
+extra-paths = ${instance1:zope2-location}/lib/python
+{{% endif %}}
+scripts = zopepy
+
+# Here are some more coding tools. pylint analyzes Python source code
+# looking for bugs and signs of poor quality. pyflakes is focused on
+# identifying common errors quickly without executing Python code.
+# pep8 is a tool to check your Python code against some of the style
+# conventions in PEP 8.
+[pylint]
+recipe = zc.recipe.egg
+eggs =
+    pylint
+    ${instance1:eggs}
+entry-points = pylint=pylint.lint:Run
+scripts = pylint
+arguments = [
+    '--output-format=colorized',
+    '--zope=y',
+    '--reports=no',
+#Suppress certain errors (interfaces missing __init__, invalid imports etc)
+    '--disable=E0611,F0401,W0232',
+    ] + sys.argv[1:]
+
+[pyflakes]
+recipe = zc.recipe.egg
+scripts = pyflakes
+eggs =
+    {{{ pyflakes_version }}}
+#pyflakes reads sys.argv directly
+entry-points = pyflakes=pyflakes.scripts.pyflakes:main
+
+[pep8]
+recipe = zc.recipe.egg
+eggs =
+   pep8

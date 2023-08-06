@@ -1,0 +1,173 @@
+[buildout]
+find-links =
+    http://dist.sixfeetup.com/public
+    http://dist.plone.org/thirdparty/
+    http://effbot.org/downloads
+
+extensions =
+{{% if pre_plone52 %}}
+    jarn.setuptoolsfixer
+{{% endif %}}
+    mr.developer
+
+# we set up base-parts so that we can add in parts in other configs
+base-parts =
+{{% if plone_version == '3.1' %}}
+    plone
+{{% endif %}}
+{{% if pre_plone4 %}}
+    zope2
+{{% endif %}}
+    instance1
+    zeoserver
+    checkinterval
+    z3c.offlinepack
+    ${buildout:cronjobs}
+
+parts = ${buildout:base-parts}
+
+# List of cron jobs, usually applied in release configurations like
+# prod. We default the value here so we can add it into the list of
+# parts.
+cronjobs =
+
+# Extend the version config file
+extends =
+{{% if plone_version != '3.1' %}}
+    http://dist.plone.org/release/{{{ plone_version }}}/versions.cfg
+{{% endif %}}
+    versions.cfg
+versions = versions
+
+{{% if unified_buildout %}}
+develop = .
+{{% endif %}}
+
+[sources]
+# <name> = <kind> [key=value] <url> [path] [key=value]
+{{% if include_policy and not unified_buildout %}}
+#{{{ project_name }}}.policy = git git@bitbucket.org:sixfeetup/{{{ project_name}}}.policy.git
+{{% endif %}}
+{{% if include_policy and not unified_buildout %}}
+#{{{ project_name }}}.content = git git@bitbucket.org:sixfeetup/{{{ project_name}}}.content.git
+{{% endif %}}
+{{% if include_policy and not unified_buildout %}}
+#{{{ project_name }}}.theme = git git@bitbucket.org:sixfeetup/{{{ project_name}}}.theme.git
+{{% endif %}}
+
+{{% if pre_plone4 %}}
+[zope2]
+recipe = plone.recipe.zope2install
+{{% if plone_version == '3.1' %}}
+url = ${plone:zope2-url}
+
+{{% else %}}
+url = ${versions:zope2-url}
+
+{{% endif %}}
+{{% if plone_version == '3.1' %}}
+fake-zope-eggs = true
+skip-fake-eggs =
+additional-fake-eggs =
+    ZODB3
+    ZConfig
+    pytz
+
+{{% endif %}}
+{{% endif %}}
+{{% if plone_version == '3.1' %}}
+[plone]
+recipe = plone.recipe.plone
+
+{{% endif %}}
+[instance1]
+recipe = plone.recipe.zope2instance
+user = {{{ zope_user }}}:{{{ zope_password }}}
+zeo-client = True
+{{% if pre_plone4 %}}
+zope2-location = ${zope2:location}
+{{% else %}}
+# Set the shared blob option so blobs work with zeoserver
+shared-blob = on
+blob-storage = ${zeoserver:blob-storage}
+{{% endif %}}
+
+# DO NOT put any other eggs here. Put them in the `install_requires`
+# of the package that is actually requiring it.
+eggs =
+    Pillow
+    Plone
+{{% if pre_plone52 %}}
+# Make the signal stack always available
+    Products.signalstack
+{{% endif %}}
+{{% if plone_version == '3.1' %}}
+    ${plone:eggs}
+    elementtree
+{{% endif %}}
+{{% if unified_buildout %}}
+    {{{ project_name }}}
+{{% elif project_name %}}
+#    {{{ project_name }}}.policy
+{{% endif %}}
+{{% if plone_version == '3.1' %}}
+products =
+    ${plone:products}
+{{% endif %}}
+
+# this should already be the default
+default-zpublisher-encoding = utf-8
+
+# set the timezone at a bare MINIMUM
+environment-vars =
+    TZ America/New_York
+    PYTHON_EGG_CACHE ${buildout:directory}/var/.python-eggs
+    PTS_LANGUAGES en
+#    TMPDIR /var/tmp
+
+[zeoserver]
+{{% if pre_plone4 %}}
+recipe = plone.recipe.zope2zeoserver
+zope2-location = ${instance1:zope2-location}
+{{% else %}}
+recipe = plone.recipe.zeoserver
+blob-storage = ${buildout:directory}/var/blobstorage
+{{% endif %}}
+zeo-address = ${instance1:zeo-address}
+pack-days = 7
+
+[checkinterval]
+recipe = zc.recipe.egg
+eggs = jarn.checkinterval
+
+[z3c.offlinepack]
+recipe = zc.recipe.egg:scripts
+{{% if pre_plone4 %}}
+extra-paths = ${zope2:location}/lib/python
+{{% endif %}}
+
+[cron-dbpack]
+recipe = z3c.recipe.usercrontab
+# Once a week on sunday at midnight
+times = @weekly
+command = ${buildout:bin-directory}/zeopack
+
+[cron-backup]
+recipe = z3c.recipe.usercrontab
+# Once a week on Monday at midnight
+times = 0 0 * * 1
+command = ${buildout:bin-directory}/backup
+
+[plonesite]
+recipe = collective.recipe.plonesite
+instance = instance1
+zeoserver = zeoserver
+site-id = {{{ site_name }}}
+admin-user = {{{ zope_user }}}
+{{% if include_policy %}}
+profiles-initial = {{{ project_name }}}.policy:initial
+profiles = {{{ project_name }}}.policy:default
+{{% else %}}
+#profiles-initial = {{{ project_name }}}.policy:initial
+#profiles = {{{ project_name }}}.policy:default
+{{% endif %}}
