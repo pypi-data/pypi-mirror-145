@@ -1,0 +1,23 @@
+{% include "head.html" %}
+
+<h2>Development Environment</h2>
+
+{% if 'brew' in data.environment.packages %}
+<h3>Brew Packages:</h3>
+<ul>
+  {% for pkg in data.environment.packages.brew %}
+  <li>{{ pkg }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if 'apt' in data.environment.packages %}
+<h3>Apt Packages:</h3>
+<ul>
+  {% for pkg in data.environment.packages.apt %}
+  <li>{{ pkg }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% include "tail.html" %}

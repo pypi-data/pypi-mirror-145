@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "lfnt"
+version = "0.1.4"
+description = "For eating development-environment elephants."
+authors = ["Dan Swartz <2fifty6@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.scripts]
+lfnt = "lfnt.cli:lfnt"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ansible = "^5.5.0"
+GitPython = "^3.1.27"
+click = "^8.0.4"
+pulumi = "^3.27.0"
+Flask = "^2.0.3"
+awscli = "^1.22.82"
+click-configfile = "^0.2.3"
+Flask-Bower = "^1.3.0"
+configparser = "^5.2.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.1.0"
+flake8 = "^4.0.1"
+autopep8 = "^1.6.0"
+pycodestyle = "^2.8.0"
+pydocstyle = "^6.1.1"
+bandit = "^1.7.4"
+pre-commit = "^2.17.0"
+keyring = "^23.5.0"
+dbus-python = "^1.2.18"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
