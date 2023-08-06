@@ -1,0 +1,121 @@
+Metadata-Version: 2.1
+Name: jupyterlab-commands
+Version: 0.3.3
+Summary: Arbitrary python commands for notebooks in JupyterLab
+Home-page: https://github.com/timkpaine/jupyterlab_commands
+Author: Tim Paine
+Author-email: t.paine154@gmail.com
+License: Apache 2.0
+Keywords: Jupyter,Jupyterlab
+Platform: Linux
+Platform: Mac OS X
+Platform: Windows
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Framework :: Jupyter
+Classifier: Framework :: Jupyter :: JupyterLab
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: jupyterlab (>=3.0.0)
+Provides-Extra: dev
+Requires-Dist: jupyterlab (>=3.0.0) ; extra == 'dev'
+Requires-Dist: pytest (>=4.3.0) ; extra == 'dev'
+Requires-Dist: pytest-cov (>=2.6.1) ; extra == 'dev'
+Requires-Dist: black (>=20.8b1) ; extra == 'dev'
+Requires-Dist: bump2version (>=1.0.0) ; extra == 'dev'
+Requires-Dist: check-manifest ; extra == 'dev'
+Requires-Dist: flake8 (>=3.7.8) ; extra == 'dev'
+Requires-Dist: flake8-black (>=0.2.1) ; extra == 'dev'
+Requires-Dist: jupyter-packaging ; extra == 'dev'
+Requires-Dist: Sphinx (>=1.8.4) ; extra == 'dev'
+Requires-Dist: sphinx-markdown-builder (>=0.5.2) ; extra == 'dev'
+Provides-Extra: develop
+Requires-Dist: jupyterlab (>=3.0.0) ; extra == 'develop'
+Requires-Dist: pytest (>=4.3.0) ; extra == 'develop'
+Requires-Dist: pytest-cov (>=2.6.1) ; extra == 'develop'
+Requires-Dist: black (>=20.8b1) ; extra == 'develop'
+Requires-Dist: bump2version (>=1.0.0) ; extra == 'develop'
+Requires-Dist: check-manifest ; extra == 'develop'
+Requires-Dist: flake8 (>=3.7.8) ; extra == 'develop'
+Requires-Dist: flake8-black (>=0.2.1) ; extra == 'develop'
+Requires-Dist: jupyter-packaging ; extra == 'develop'
+Requires-Dist: Sphinx (>=1.8.4) ; extra == 'develop'
+Requires-Dist: sphinx-markdown-builder (>=0.5.2) ; extra == 'develop'
+
+# jupyterlab_commands
+
+Support for arbitrary python commands in the command palette. 
+
+[![Build Status](https://github.com/timkpaine/jupyterlab_commands/workflows/Build%20Status/badge.svg?branch=main)](https://github.com/timkpaine/jupyterlab_commands/actions?query=workflow%3A%22Build+Status%22)
+[![codecov](https://codecov.io/gh/timkpaine/jupyterlab_commands/branch/main/graph/badge.svg?token=wWAQ6QqP6M)](https://codecov.io/gh/timkpaine/jupyterlab_commands)
+[![PyPI](https://img.shields.io/pypi/l/jupyterlab_commands.svg)](https://pypi.python.org/pypi/jupyterlab_commands)
+[![PyPI](https://img.shields.io/pypi/v/jupyterlab_commands.svg)](https://pypi.python.org/pypi/jupyterlab_commands)
+[![npm](https://img.shields.io/npm/v/jupyterlab_commands.svg)](https://www.npmjs.com/package/jupyterlab_commands)
+
+## About
+
+This code lets you inject arbitrary commands into the JLab frontend. There are a variety of reasons why one might want to execute python commands outside of a notebook and a console:
+
+- a predefined NBConvert function that you dont want included in the converted result
+- interacting with VCS without including that interaction in the notebook
+- etc...
+
+## Installation
+```
+pip install jupyterlab_commands
+jupyter labextension install jupyterlab_commands
+jupyter serverextension enable --py jupyterlab_commands
+```
+
+## Example 
+
+#### jupyter_notebook_config.py
+
+```python
+def convertMe(request, *args, **kwargs):
+    import subprocess, tornado, os, os.path, json
+    data = json.loads(tornado.escape.json_decode(request.body))
+    path = os.path.join(os.getcwd(), data['path'])
+    subprocess.run(["jupyter", "nbconvert", path, '--template', '/Users/theocean154/.jupyter/test.tpl', '--to', 'html'])
+    return {'body': 'ok'}
+
+c.JupyterLabCommands.commands = {'sample_command': convertMe}
+```
+
+#### command palette
+
+![](https://raw.githubusercontent.com/timkpaine/jupyterlab_commands/main/docs/2.png)
+
+#### terminal log
+
+![](https://raw.githubusercontent.com/timkpaine/jupyterlab_commands/main/docs/3.png)
+
+#### No Code
+
+Moved to [jupyterlab_nbconvert_nocode](https://github.com/timkpaine/jupyterlab_nbconvert_nocode)
+
+![](https://raw.githubusercontent.com/timkpaine/jupyterlab_commands/main/docs/4.png)
+
+
+## Install
+
+```bash
+pip install jupyterlab_commands
+jupyter labextension install jupyterlab_commands
+jupyter serverextension enable --py jupyterlab_commands
+```
+
+## Adding commands
+
+install the server extension, and add the following to `jupyter_notebook_config.py`
+
+```python3
+c.JupyterLabCommands.commands = {'command display name': python_function, ...}
+```
+
+
