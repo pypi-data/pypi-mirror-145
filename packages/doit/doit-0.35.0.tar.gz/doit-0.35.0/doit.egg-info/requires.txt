@@ -1,0 +1,13 @@
+cloudpickle
+
+[:sys.platform == "darwin"]
+macfsevents
+
+[:sys.platform == "linux"]
+pyinotify
+
+[plugins]
+setuptools
+
+[toml]
+toml>=0.10.1

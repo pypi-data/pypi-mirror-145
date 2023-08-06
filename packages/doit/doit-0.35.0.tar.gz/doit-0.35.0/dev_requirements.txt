@@ -1,0 +1,9 @@
+# modules required for development only
+# $ pip install --requirement dev_requirements.txt
+
+setuptools # for plugins
+pyflakes
+pytest>=5.4.1
+coverage>=4.0,<5
+doit-py>=0.4.0
+toml>=0.10.1
