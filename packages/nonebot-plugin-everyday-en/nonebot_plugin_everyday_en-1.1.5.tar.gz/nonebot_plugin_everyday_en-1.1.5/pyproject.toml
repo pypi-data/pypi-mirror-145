@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "nonebot_plugin_everyday_en"
+version = "1.1.5"
+description = "每日一句英文句子。完整帮助文档，可选搭配软依赖nonebot_plugin_apscheduler实现定时发送"
+authors = ["MelodyYuuka"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/MelodyYuuka/nonebot_plugin_everyday_en"
+repository = "https://github.com/MelodyYuuka/nonebot_plugin_everyday_en"
+
+[tool.poetry.dependencies]
+python = ">=3.7"
+nonebot2 = ">=2.0.0-beta.1"
+nonebot-adapter-onebot = ">=2.0.0-beta.1"
+httpx = ">=0.19.0"
+aiofiles = ">=0.7.0"
+
+[tool.poetry.dev-dependencies]
+nb-cli = ">=0.6.0"
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
