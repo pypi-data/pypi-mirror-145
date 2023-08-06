@@ -1,0 +1,99 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    name: Run linter and formatter
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install tools
+        run: pip install flake8==4.0.1 yapf==0.32.0 mypy==0.942 toml==0.10.2
+
+      - name: Run flake8
+        run: flake8 setup.py animeface
+
+      - name: Run yapf
+        run: yapf -d -r setup.py animeface
+
+      - name: Run mypy
+        run: mypy --ignore-missing-imports animeface
+
+  build_sdist:
+    name: Build sdist
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+
+      - name: Build sdist
+        run: python3 setup.py sdist
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: sdist
+          path: ./dist/*.tar.gz
+
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, macos-10.15]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: "0"
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.3.1
+        env:
+          # TODO: Remove this option adn build wheels for musllinux.
+          # Currently CLAPACK fails to build for musllinux due to lack of
+          # fpu_control.h.
+          CIBW_SKIP: "*-musllinux_*"
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: wheels
+          path: ./wheelhouse/*.whl
+
+  upload_pypi:
+    name: Upload to PyPI
+    runs-on: ubuntu-20.04
+    needs:
+      - build_sdist
+      - build_wheels
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Download artifacts (sdist)
+        uses: actions/download-artifact@v3
+        with:
+          name: sdist
+          path: dist
+
+      - name: Download artifacts (wheels)
+        uses: actions/download-artifact@v3
+        with:
+          name: wheels
+          path: dist
+
+      - name: Publish package to Test PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages_dir: dist
+          user: __token__
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
