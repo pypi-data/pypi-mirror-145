@@ -1,0 +1,15 @@
+rawFileSearch: /Users/everettschlawin/es_programs/mirage_runs/mirage_output_009_test_tser2D/sim_data/*_uncal.fits
+outputDir: /Users/everettschlawin/Documents/jwst/ers/sim_data/proc_files
+photParam: null
+noutputs: null
+add_noutputs_keyword: False
+ROEBACorrection: True
+autoROEBAmasks: True
+maxCores: quarter
+ROEBAmaskfromRate: null
+ROEBAmaskfromRateThreshold: 0.5 # DN/s
+custBias: null
+saveBiasStep: False
+saveROEBAdiagnostics: False
+jumpRejectionThreshold: 15.0
+ROEBAmaskGrowthSize: null
