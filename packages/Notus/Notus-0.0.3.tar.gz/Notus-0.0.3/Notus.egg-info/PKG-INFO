@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: Notus
+Version: 0.0.3
+Summary: A package for providing a system notification interface
+Home-page: https://github.com/cnheider/notus
+Download-URL: https://github.com/cnheider/notus/releases
+Author: Christian Heider Nielsen
+Author-email: christian.heider@alexandra.dk
+Maintainer: Christian Heider Nielsen
+Maintainer-email: christian.heider@alexandra.dk
+License: Apache License, Version 2.0
+Keywords: app path paths data logs cache
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Natural Language :: English
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: docs
+Provides-Extra: dev
+Provides-Extra: windows
+Provides-Extra: tests
+Provides-Extra: gtk
+Provides-Extra: setup
+Provides-Extra: all
+License-File: LICENSE.md
+
+<!--![notus](.github/images/toaster.svg)-->
+
+<p align="center">
+  <img src=".github/images/toaster.svg" alt='Toaster' />
+</p>
+
+<h1 align="center">Notus</h1>
+
+<!--# Notus-->
+
+| [![Build Status](https://travis-ci.com/pything/apppath.svg?branch=master)](https://travis-ci.com/pything/apppath) | [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black) | [![Coverage Status](https://coveralls.io/repos/github/pything/apppath/badge.svg?branch=master)](https://coveralls.io/github/pything/apppath?branch=master) |
+|---|---|---|
+
+___
+> Clutter-free app data
+___
+
+![python](.github/images/python.svg)
+
+- A class for displaying GTK toasts (Notifications, Dialogs...)
+
+
