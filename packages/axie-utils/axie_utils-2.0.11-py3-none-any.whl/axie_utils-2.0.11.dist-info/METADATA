@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: axie-utils
+Version: 2.0.11
+Summary: Library that provides the functionality you need to build your own axie Infinity python tools
+Home-page: https://ferranmarin.github.io/axie-utils-lib/
+License: GNU LGPLv3
+Keywords: axie,axie infinity,tools,utils,ronin,ronin chain
+Author: Ferran Marin
+Author-email: ferran.marin.llobet@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v3 (LGPLv3)
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Games/Entertainment
+Classifier: Topic :: Software Development :: Libraries
+Requires-Dist: trezor[hidapi] (>=0.13.0,<0.14.0)
+Requires-Dist: web3 (>=5.25.0,<6.0.0)
+Project-URL: Repository, https://github.com/FerranMarin/axie-utils-lib
+Description-Content-Type: text/markdown
+
+# Axie Utils Library
+
+Aim of this library is to contain all the actions one might want to do when building tools around the Axie Infinity videogame. It started with me building an automation tool and needing to build different solutions. Extracting this functionality allows for that easily.
+
+**NOTE: Only v1 of this library uses free tx, from v2 and onwards all transactions consume RON. That is due to now free tx being much more rare to have available.**
+
+
+# Installation
+
+Install and update using pip:
+
+```
+pip install -U axie-utils
+```
+
+# Simple Example
+
+This example would send 100 SLP from `ronin:from_where_to_send_SLP` to `ronin:to_where_we_send_SLP`.
+
+``` python
+from axie_utils import Payment
+
+p = Payment(
+    "Testing Account",
+    "ronin:from_where_to_send_SLP",
+    "0x:private_key_from_the_from_acc",
+    "ronin:to_where_we_send_SLP",
+    100)
+
+p.execute()
+```
+
+This example, shows how we would claim SLP from an account.
+
+``` python
+from axie_utils import Claim
+
+c = Claim(
+    "Testing Account",
+    "ronin:acc_to_claim",
+    "0x:private_key_from_acc_to_claim"
+)
+c.execute()
+
+```
+
+# Documentation
+
+For furhter documentation, please visit this [link](https://ferranmarin.github.io/axie-utils-lib/).
+
