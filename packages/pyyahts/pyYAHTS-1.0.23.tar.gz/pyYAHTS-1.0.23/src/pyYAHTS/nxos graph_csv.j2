@@ -1,0 +1,20 @@
+Source,Target,Weight
+{%- if command == "arp" %}
+{%-     for interface in data_to_template['interfaces'] %}
+{%-         if data_to_template['interfaces'][interface].ipv4 is defined %}
+{%-             for neighbor in data_to_template['interfaces'][interface].ipv4.neighbors %}
+{{ hostname }},{{ interface }},1
+{{ interface }},{{ neighbor }},2
+{{ neighbor }},{{ data_to_template['interfaces'][interface].ipv4.neighbors[neighbor].link_layer_address }},3
+{%-             endfor %}
+{%-         endif %}
+{%-     endfor %}
+{%- else %}
+{%- if command == "show cdp neighbors" %}
+{%-     for neighbor in data_to_template['cdp'].index %}
+{{ hostname}},{{ data_to_template['cdp'].index[neighbor].local_interface }},1
+{{ data_to_template['cdp'].index[neighbor].local_interface }},{{ data_to_template['cdp'].index[neighbor].port_id }},1
+{{ data_to_template['cdp'].index[neighbor].port_id }},{{ data_to_template['cdp'].index[neighbor].device_id }},2
+{{ data_to_template['cdp'].index[neighbor].device_id }},Platform: {{ data_to_template['cdp'].index[neighbor].platform }},3
+{%-     endfor %}
+{%- endif %}{%- endif %}
