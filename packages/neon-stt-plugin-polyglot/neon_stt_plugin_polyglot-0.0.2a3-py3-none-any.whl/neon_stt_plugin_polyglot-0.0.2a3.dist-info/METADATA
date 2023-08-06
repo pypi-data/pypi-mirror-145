@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: neon-stt-plugin-polyglot
+Version: 0.0.2a3
+Summary: A Polyglot stt plugin for Neon
+Home-page: https://github.com/NeonGeckoCom/neon-stt-plugin-polyglot
+Author: Neongecko
+Author-email: mariia@neon.ai
+License: BSD-3.0
+Keywords: mycroft plugin stt
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Text Processing :: Linguistic
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+Requires-Dist: dataclasses
+Requires-Dist: ovos-lingua-franca (>=0.4.4a2)
+Requires-Dist: deepspeech (>=0.9.3)
+Requires-Dist: json-database (~=0.6)
+Requires-Dist: ovos-utils (~=0.0.12)
+Requires-Dist: neon-speech
+Requires-Dist: neon-utils (>=0.15.1a18,~=0.15)
+Requires-Dist: wave
+Requires-Dist: huggingface-hub
+Requires-Dist: pyaudio
+
+# NeonAI Template STT Plugin Polyglot
+[Mycroft](https://mycroft-ai.gitbook.io/docs/mycroft-technologies/mycroft-core/plugins) compatible
+STT Plugin for Polyglot DeepSpeech stt models streaming Speech-to-Text. 
+# Tkinter installation if python version < 3.1
+sudo apt-get install python3-tk-dbg
+
+# Configuration:
+```yaml
+stt:
+    module: polyglot  
+    polyglot : {}
+
+```
+
