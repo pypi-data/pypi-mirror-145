@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "juselara_qtile"
+version = "0.1.2"
+description = "My setup for the Qtile window manager"
+authors = ["Juan Lara <julara@unal.edu.co>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">3.8,<3.11"
+cffi = "^1.15.0"
+xcffib = "^0.11.1"
+cairocffi = "^1.3.0"
+qtile = "^0.21.0"
+psutil = "^5.9.0"
+yacmmal = "^0.1.6"
+pydantic = "^1.9.0"
+
+[tool.poetry.dev-dependencies]
+neovim = "^0.3.1"
+pytest = "^7.1.1"
+ipython = "^8.2.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
