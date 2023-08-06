@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: HandWrittenDigitRecognition
+Version: 0.0.1
+Summary: A Handwritten Digit Recognition Neural Network Model: By Pranav Sai
+Home-page: 
+Author: Pranav Sai
+Author-email: pranavs31899@gmail.com
+License: MIT
+Keywords: Handwritten Digit Recognition,Neural Networks
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+License-File: LICENCE.txt
+
+Created by Pranav Sai ; 
+
+Youtube: https://www.youtube.com/channel/UC3VQFrTfI-sI3LZtVKFhLDg
+
+--------------------------------------------------------------------------
+
+First Release: (0-9) Handwritten Digit Recognition
+
+    
+    
+
+CHANGELOG
+=============================
+0.0.1(4/3/2022)
+-----------------------------------
+-First Release: (0-9) Handwritten Digit Recognition
+
+
+    #Initialize a Network
+
+    Net=Network()
+
+    #Run Network with a 24x24 file of aHandwritten digit from 0-9
+    
+    Net.run(filename)
+
