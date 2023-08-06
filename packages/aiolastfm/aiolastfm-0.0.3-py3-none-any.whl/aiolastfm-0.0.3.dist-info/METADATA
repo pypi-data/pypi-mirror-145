@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: aiolastfm
+Version: 0.0.3
+Summary: An async wrapper for the last.fm API.
+Home-page: https://github.com/Axelware/aiolastfm
+License: MIT
+Keywords: lastfm,api,wrapper,async
+Author: Axel
+Author-email: axelancerr@gmail.com
+Requires-Python: >=3.10.0,<4.0.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Other Environment
+Classifier: Framework :: AsyncIO
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Provides-Extra: docs
+Requires-Dist: aiohttp (>=3.8.0,<4.0.0)
+Requires-Dist: furo; extra == "docs"
+Requires-Dist: sphinx (>=4.5.0,<5.0.0); extra == "docs"
+Requires-Dist: sphinx-copybutton; extra == "docs"
+Requires-Dist: sphinx-inline-tabs; extra == "docs"
+Requires-Dist: sphinxcontrib-trio; extra == "docs"
+Project-URL: Documentation, https://aiolastfm.readthedocs.io/en/latest/
+Project-URL: Discord, https://discord.com/invite/w9f6NkQbde
+Project-URL: Issue Tracker, https://github.com/Axelware/aiolastfm/issues
+Project-URL: Repository, https://github.com/Axelware/aiolastfm
+Description-Content-Type: text/markdown
+
+# aiolastfm
+
