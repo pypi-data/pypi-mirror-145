@@ -1,0 +1,17 @@
+[MESSAGES CONTROL]
+
+disable =
+    # Disabled on purpose
+    wrong-import-order,  # managed by isort
+    line-too-long,  # managed by black
+    # TODO(ssbarnea): remove temporary skips adding during initial adoption:
+    fixme,
+    import-error,
+    unused-argument,
+
+[REPORTS]
+output-format = colorized
+
+[IMPORTS]
+preferred-modules =
+    ansible:,

@@ -1,0 +1,13 @@
+ansible-compat>=0.5.0
+molecule>=3.5.0a0
+
+[:sys_platform == "linux"]
+selinux
+
+[:sys_platform == "linux2"]
+selinux
+
+[docs]
+simplejson
+Sphinx
+sphinx_ansible_theme>=0.2.2
