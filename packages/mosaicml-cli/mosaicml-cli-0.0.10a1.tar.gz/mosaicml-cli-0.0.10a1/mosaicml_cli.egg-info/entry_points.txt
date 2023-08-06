@@ -1,0 +1,7 @@
+[console_scripts]
+m = mcli.cli.cli:main
+mcli = mcli.cli.cli:main
+mos = mcli.cli.cli:main
+mosaic = mcli.cli.cli:main
+script_mcli_add_stable_s3 = mcli_scripts.add_stable_s3:main
+script_mcli_migrate_from_mctl = mcli_scripts.migrate_from_mctl:main
