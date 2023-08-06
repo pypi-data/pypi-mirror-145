@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "robolson"
+version = "0.3.60"
+description = "My collection of utilty scripts"
+authors = ["Rob L Olson <rob.louis@gmail.com>"]
+include = ["config/clean.toml", "pyproject.toml"]
+exclude = []
+packages = [
+    {include="rob", from=".."},
+    {include="parser"},
+    {include="loggers"},
+    {include="ticktick"}
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+rich = "^11.2.0"
+toml = "^0.10.2"
+praw = "^7.5.0"
+openai = "^0.15.0"
+pydub = "^0.25.1"
+pytaglib = "^1.5.0"
+
+[tool.poetry.dev-dependencies]
+venvPath = "C:\\Users\\sterl\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\robolson-tTkljxzG-py3.10\\Lib\\site-packages"
+
+[tool.pyright]
+include = ["C:\\Users\\sterl\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\robolson-tTkljxzG-py3.10\\Lib\\site-packages"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
