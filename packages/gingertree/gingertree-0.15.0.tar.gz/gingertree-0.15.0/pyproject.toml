@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gingertree"
+version = "0.15.0"
+description = "Format conversion and graphical representation of [Universal Dependencies](http://universaldependencies.org) trees."
+license = {text = "MIT"}
+authors = [{name = "Loïc Grobol", email = "loic.grobol@gmail.com"}]
+keywords = [
+    "nlp",
+    "syntax",
+    "universal dependencies",
+]
+urls = {Homepage = "https://github.com/LoicGrobol/ginger"}
+requires-python = ">= 3.8"
+dependencies = [
+    "click >= 8.0.4",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.optional-dependencies]
+images = ["pycairo >= 1.15.10"]
+
+[project.scripts]
+ginger = "ginger.main:main_entry_point"
+
+[tool.setuptools]
+packages = ["ginger"]
+
