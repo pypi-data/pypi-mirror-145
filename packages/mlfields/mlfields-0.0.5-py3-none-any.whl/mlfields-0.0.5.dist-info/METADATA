@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: mlfields
+Version: 0.0.5
+Summary: UI system to manage ML input
+Home-page: https://github.com/not-so-fat/mlfields
+Author: @not-so-fat
+Author-email: conjurer.not.so.fat@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: flask
+Requires-Dist: waitress
+Requires-Dist: Flask-SQLAlchemy
+Requires-Dist: flask-restful
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: scikit-learn
+Requires-Dist: requests
+
+# MLFields: ML input management 
+
+## Why I develop this
+I feel it is hard to manage features in ML projects;
+- During experiment phase, I often do many experiments and lose track of feature history
+- During oepration phase, I need to build monitoring system each time
+
+## The solution I want to build in this library
+System manages features in following structure
+- Project: unit of managing features
+    - Set of feature definitions
+    - Generated features 
+    - Experiments (evaluation of generated features)
+
+
