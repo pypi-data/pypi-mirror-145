@@ -1,0 +1,2595 @@
+Metadata-Version: 2.1
+Name: bancorml
+Version: 0.1.6
+Summary: BancorML is a library that builds, optimizes, and evaluates machine learning pipelines in the context of a multi-agent system
+Home-page: https://github.com/gcode-ai/bancorml
+Author: Bancor Network
+Author-email: mike@bancor.network
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: pydantic
+Requires-Dist: fxpmath
+Requires-Dist: matplotlib
+Provides-Extra: complete
+
+<p align="center">
+<img width="300" src="https://bancorml.s3.us-east-2.amazonaws.com/images/bancorml_horizontal.png" alt="bciAVM" height="150"/>
+</p>
+
+[![PyPI](https://vsrm.dev.azure.com/gcode-ai/_apis/public/Release/badge/52109c77-be71-4849-9d35-4fc861db41a6/1/1)](https://vsrm.dev.azure.com/gcode-ai/_apis/public/Release/badge/52109c77-be71-4849-9d35-4fc861db41a6/1/1)
+[![bancorml-0.1.0-py3-none-any.whl package in bancorml@Release feed in Azure Artifacts](https://feeds.dev.azure.com/gcode-ai/52109c77-be71-4849-9d35-4fc861db41a6/_apis/public/Packaging/Feeds/bancorml@Release/Packages/0926c7d3-1ac4-4316-a132-cf9867850696/Badge)](https://dev.azure.com/gcode-ai/BancorML/_artifacts/feed/bancorml@Release/UPack/bancorml-0.1.0-py3-none-any.whl/0.0.16)
+[![PyPI version](https://badge.fury.io/py/bancorml.svg)](https://badge.fury.io/py/bancorml)
+[![Documentation Status](https://readthedocs.com/projects/gcodeai-bancorml/badge/?version=latest&token=55e06511a714e5d89e1eea25f71fe67e6a96aa5d3b813aa09547303f31b088e4)](https://gcodeai-bancorml.readthedocs-hosted.com/en/latest/?badge=latest)
+
+**BancorML** is a simulation library for Bancor v3.
+
+The library demonstrates the following:
+
+ 
+**Key Functionality**
+
+
+* **[BIP15](https://docs.google.com/document/d/1WFMWRCOqgYHuWXeT02n82f044EDmReGg9hhdeS3TEY8/edit#heading=h.dhq318m9x0qp) Demo** - Most Bancor v3 features are supported.
+
+    - ***[Withdrawal Algorithm](https://docs.google.com/document/d/1WFMWRCOqgYHuWXeT02n82f044EDmReGg9hhdeS3TEY8/edit#heading=h.xcp024a3u96f)*** - All BIP15 described examples and features are supported.
+
+    - ***[Trades](https://docs.google.com/document/d/1WFMWRCOqgYHuWXeT02n82f044EDmReGg9hhdeS3TEY8/edit#heading=h.lv6h9mwm7cc9)*** - All BIP15 described examples and features are supported.
+
+    - ***[Staking](https://docs.google.com/document/d/1WFMWRCOqgYHuWXeT02n82f044EDmReGg9hhdeS3TEY8/edit#heading=h.sgl4pk3y4gp)*** - All BIP15 described examples and features are supported.
+
+    - ***[Instant IL protection](https://docs.google.com/document/d/1WFMWRCOqgYHuWXeT02n82f044EDmReGg9hhdeS3TEY8/edit#heading=h.gv59ergbn2s5)*** - All BIP15 described examples and features are supported.
+  
+* **Multi-Agent Oriented** - High-level architecture designed for multi-agent-oriented programming.
+
+
+
+### Project setup
+
+If you don't already have one, create a virtualenv using [these instructions](https://docs.python.org/3/library/venv.html) 
+
+
+# Install
+
+**BancorML** is available for Python 3.6+
+
+To install using [pypi](https://pypi.org/project/bancorml/), run this command:
+
+````{tab} PyPI
+$ pip install bancorml
+````
+
+# Start
+
+# BIP15: Bancor v3 Simulation Code
+
+#### Bancor 3 Product Specifications
+
+The BancorML library is organized into two main classes:
+
+* **Environment(s)** - The Bancor v3 protocol is modeled as an environment through which all other agent types act.
+
+* **Agent(s)** - Traders, Liquidity Providers, Arbitrageurs, and the Bancor DAO are modeled as agents which interact with their environment.
+
+
+```python
+from bancorml.environments import Bancor3
+
+protocol = Bancor3( block_num=0,
+                    alpha=0.2,
+                    is_solidity=False,
+                    min_liquidity_threshold=1000,
+                    exit_fee=.0025,
+                    cooldown_period=7,
+                    bnt_funding_limit=4000,
+                    external_price_feed={},
+                    pool_fees={},
+                    whitelisted_tokens=[],
+                    bootstrapped_tokens=[],
+                    dao_msig_initialized_pools=[],
+                    verbose=True)
+```
+
+## A 7-day Cool-Off Period
+
+If an attack vector exists, either discretely or abstractly, its frequency and potential damage can be effectively nullified with the introduction of a mandatory waiting period, prior to the withdrawal of user’s funds. Compared to the current 100 day vesting period, a 7-day cool-off represents an effective drop of 93% in mandatory wait time prior to full protection. In context, the additional prudency still affords users an improved offering, without conceding any vulnerabilities to the system.
+
+
+```python
+protocol.set_param(cooldown_period=7)
+protocol.cooldown_period
+```
+
+
+
+
+    7
+
+
+
+## Exit Fees
+As a final circumspection against bad behavior, exit fees are introduced into the Bancor ecosystem for the first time. The exit fee is designed to temper the profit motive of the imagined exploit vector. Fortuitously, the severity of the speculative attack is fairly minor, and a 0.25% exit fee is sufficient to render it void. The exit fee is treated as a relief mechanism, and allows the pools from which a withdrawal is processed to retain a small amount of residual value, which alleviates the insurance burden by the same amount. It also serves a financial purpose in defining a geometric surface, beneath which users can withdraw their stake entirely in its own denomination, regardless of the relative surplus or deficit state of the network. This point is discussed in detail while addressing the behavior of the withdrawal algorithm.
+
+
+
+```python
+protocol.set_param(exit_fee=0.0025)
+protocol.exit_fee
+```
+
+
+
+
+    0.0025
+
+
+
+The protocol is in the `bootstrapping phase` for all three assets. Users can still interact with the system and deposit liquidity - which is essential for the process. The system needs to attract sufficient quantities of each token to overcome the minimum liquidity threshold prior to the activation of each liquidity pool, respectively. The default `minimum_liquidity_threshold` is 1,000 BNT, meaning that the pool must mint 1,000 BNT during its activation, and therefore there must be at least a commensurate value of TKN available in the vault. Assume that the prices of each asset are as follows: BNT = $2.50, LINK = $15.00, ETH = $2,500.00, wBTC = $40,000.00.
+
+
+```python
+spot_prices = {
+    "BNT": 2.50,
+    "LINK": 15.00,
+    "ETH": 2500.00,
+    "wBTC": 40000.00
+}
+
+protocol.set_param(spot_prices=spot_prices)
+protocol.spot_prices
+```
+
+
+
+
+    {'BNT': 2.5, 'LINK': 15.0, 'ETH': 2500.0, 'wBTC': 40000.0}
+
+
+
+Note that when we set the `spot_prices`, the `exchange_rates` are automatically updated. In our example, the BancorDAO msig signers will sign transactions with the rate of BNT/TKN for each of the bootstrapping assets. In this case, BNT/ETH = 1,000, BNT/wBTC = 16,000, BNT/LINK =  6.
+
+
+```python
+protocol.exchange_rates
+```
+
+
+
+
+    {'BNT': 1.0, 'LINK': 6.0, 'ETH': 1000.0, 'wBTC': 16000.0}
+
+
+
+Similarly, the `whitelisted_tokens` are also automatically updated.
+
+
+```python
+protocol.whitelisted_tokens
+```
+
+
+
+
+    ['BNT', 'LINK', 'ETH', 'wBTC']
+
+
+
+Based on the `minimum_liquidity_threshold` and the `spot_prices` mentioned above, in order to bootstrap each pool, at least $25,000 of each asset must be available in the vault. This criterea is automatically tracked on a per token basis and the `bootstrapped_tokens` are updated accordingly. In our current example, no pools meet the bootsrapping initialization criterea.
+
+
+```python
+protocol.bootstrapped_tokens
+```
+
+
+
+
+    []
+
+
+
+This is because the condition to initialize a pool is that there must be at least 10,000 BNT ($25,000 at the quoted price) worth of each token - in this case all three satisfy the criteria.
+
+
+```python
+from bancorml.agents.liquidity_provider_agent import LiquidityProviderAgent
+```
+
+During the bootstrap phase, **Alice** deposits 10 wBTC, **Bob** deposits 10 ETH, and **Charlie** deposits 1,000 LINK.
+
+
+```python
+alice = LiquidityProviderAgent(env=protocol, unique_id="Alice")
+bob = LiquidityProviderAgent(env=protocol, unique_id="Bob")
+charlie = LiquidityProviderAgent(env=protocol, unique_id="Charlie")
+```
+
+
+```python
+alice.deposit(tkn="wBTC", amount=10, block_num=0)
+bob.deposit(tkn="ETH", amount=10, block_num=0)
+charlie.deposit(tkn="LINK", amount=1000, block_num=0)
+protocol.describe()
+```
+
+    spot_rate=16000.0 
+     ema=16000.0 
+     EMA Test = True, (0.99 * 16000.0) <= 16000.0 <= (1.01 * 16000.0), tkn=wBTC
+    spot_rate=1000.0 
+     ema=1000.0 
+     EMA Test = True, (0.99 * 1000.0) <= 1000.0 <= (1.01 * 1000.0), tkn=ETH
+    spot_rate=6.0 
+     ema=6.0 
+     EMA Test = True, (0.99 * 6.0) <= 6.0 <= (1.01 * 6.0), tkn=LINK
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:0 - ETH:0</td>
+      <td>BNT:0</td>
+      <td>BNT:0</td>
+      <td>bnBNT:0</td>
+      <td>Balance:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:0 - wBTC:0</td>
+      <td>ETH:10</td>
+      <td>ETH:10</td>
+      <td>bnETH:10</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:0 - LINK:0</td>
+      <td>wBTC:10</td>
+      <td>wBTC:10</td>
+      <td>bnwBTC:10</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1000</td>
+      <td>LINK:1000</td>
+      <td>bnLINK:1000</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+Note that the trading liquidity available on the pools remains unchanged until the BancorDAO msig signers initialize each pool.
+
+
+```python
+protocol.dao_msig_initialize_pools()
+protocol.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:1000 - ETH:1.0</td>
+      <td>BNT:3000</td>
+      <td>BNT:3000</td>
+      <td>bnBNT:3000</td>
+      <td>Balance:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:1000 - wBTC:0.0625</td>
+      <td>ETH:10</td>
+      <td>ETH:10</td>
+      <td>bnETH:10</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:1000 - LINK:166.66666666666666</td>
+      <td>wBTC:10</td>
+      <td>wBTC:10</td>
+      <td>bnwBTC:10</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1000</td>
+      <td>LINK:1000</td>
+      <td>bnLINK:1000</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+By default, the initial pool token value is 1:1 with the underlying asset, and only changes after revenue begins accumulating. Therefore, each of these characters receive 10 bnTKN pool tokens for their contribution...
+
+
+```python
+alice.wallet
+```
+
+
+
+
+    {'block_num': [0, 0], 'wBTC': [10000, 9990], 'bnwBTC': [0, 10]}
+
+
+
+
+```python
+alice.get_wallet("wBTC"), bob.get_wallet("ETH"), charlie.get_wallet("LINK")
+```
+
+
+
+
+    (('wBTC=9990', 'bnwBTC=10'),
+     ('ETH=9990', 'bnETH=10'),
+     ('LINK=999000', 'bnLINK=1000'))
+
+
+
+Remember that the condition to initialise new pools is that there must be at least 1,000 BNT ($2,500 at the quoted price) worth of each token - in this case all three satisfy the criteria. We can now double check that the pools have been automatically initialized, as expected.
+
+
+```python
+protocol.bootstrapped_tokens
+```
+
+
+
+
+    ['LINK', 'ETH', 'wBTC']
+
+
+
+Fortunately, the rate at which the pool can grow is independent of the new liquidity additions, and is determined entirely by the token balances available in the vault. To demonstrate, suppose that each user deposits just 1 more TKN each to their respective pools; Alice deposits 1 ETH, Bob deposits 1 wBTC, and Charlie deposits 1 LINK.
+
+
+```python
+alice.deposit(tkn="ETH", amount=1, block_num=0)
+bob.deposit(tkn="wBTC", amount=1, block_num=0)
+charlie.deposit(tkn="LINK", amount=1, block_num=0)
+protocol.describe()
+```
+
+    spot_rate=1000.0 
+     ema=1000.0 
+     EMA Test = True, (0.99 * 1000.0) <= 1000.0 <= (1.01 * 1000.0), tkn=ETH
+    spot_rate=16000.0 
+     ema=16000.0 
+     EMA Test = True, (0.99 * 16000.0) <= 16000.0 <= (1.01 * 16000.0), tkn=wBTC
+    spot_rate=6.0 
+     ema=6.0 
+     EMA Test = True, (0.99 * 6.0) <= 6.0 <= (1.01 * 6.0), tkn=LINK
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:2000 - ETH:2.0</td>
+      <td>BNT:6000.0</td>
+      <td>BNT:6000.0</td>
+      <td>bnBNT:6000.0</td>
+      <td>Balance:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2000 - wBTC:0.125</td>
+      <td>ETH:11</td>
+      <td>ETH:11</td>
+      <td>bnETH:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:2000 - LINK:333.3333333333333</td>
+      <td>wBTC:11</td>
+      <td>wBTC:11</td>
+      <td>bnwBTC:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1001</td>
+      <td>LINK:1001</td>
+      <td>bnLINK:1001.0</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/initial_deposits.png" width="680">
+
+Each of these tokens is accepted directly to the vault. The most important point to note in the change in the system state depicted above is that the additional 1 TKN unit staked was essentially ignored - when the protocol is changing the available trading liquidity, the total vault balance is taken into account, rather than the amount the user has just provided. Each of the pools where a new TKN was staked resulted in a doubling of the available trading liquidity.
+
+## Trading and Fees: BNT to TKN
+
+Continuing from the system state described above, the details of how the trading pools are used as a price oracle, the behavior and purpose of the price EMA, and the response of the staking ledger to the accumulation of swap revenue will now be discussed in detail. For the purpose of demonstration, let each of these pools have a 1% swap fee...
+
+
+
+```python
+pool_fees = {
+    "BNT": 0.01,
+    "LINK": 0.01,
+    "ETH": 0.01,
+    "wBTC": 0.01
+}
+
+protocol.set_param(pool_fees=pool_fees)
+protocol.pool_fees
+```
+
+
+
+
+    {'BNT': 0.01, 'LINK': 0.01, 'ETH': 0.01, 'wBTC': 0.01}
+
+
+
+...and a Vortex rate of 20%.
+
+
+```python
+vortex_rates = {
+    "BNT": 0.2,
+    "LINK": 0.2,
+    "ETH": 0.2,
+    "wBTC": 0.2
+}
+
+protocol.set_param(vortex_rates=vortex_rates)
+protocol.vortex_rates
+```
+
+
+
+
+    {'BNT': 0.2, 'LINK': 0.2, 'ETH': 0.2, 'wBTC': 0.2}
+
+
+
+Assume a trader MrT...
+
+
+```python
+from bancorml.agents.trader_agent import TraderAgent
+MrT_agent = TraderAgent(env=protocol, unique_id="MrT")
+```
+
+...swaps 200 BNT for LINK; from the perspective of the trader, 200 BNT are sent into the vault, and 30 LINK are removed from the vault and sent back to him.
+
+
+```python
+MrT_agent.swap('BNT', 200, 'LINK', block_num=1)
+protocol.describe()
+```
+
+    bnt_trading_liquidity=2199.5604395604396, 
+    tkn_trading_liquidity=303.3333333333333, 
+    tkn_out=29.999999999999993, 
+    tkn_fee=0.24242424242424243, 
+    vortex_fee=0.43956043956043955 
+    
+    
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:2000 - ETH:2.0</td>
+      <td>BNT:6200.0</td>
+      <td>BNT:6000.0</td>
+      <td>bnBNT:6000.0</td>
+      <td>Balance:0.43956043956043955</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2000 - wBTC:0.125</td>
+      <td>ETH:11</td>
+      <td>ETH:11</td>
+      <td>bnETH:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:2199.5604395604396 - LINK:303.3333333333333</td>
+      <td>wBTC:11</td>
+      <td>wBTC:11</td>
+      <td>bnwBTC:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:971.0</td>
+      <td>LINK:1001.2424242424242</td>
+      <td>bnLINK:1001.0</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/Trading_and_Fees_BNT_to_TKN_1.png" width="680">
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/Trading_and_Fees_BNT_to_TKN_2.png" width="680">
+
+The change to the system state is much more involved. The change in the vault balances agrees with the trader; 200 BNT is received, and 30 LINK was emitted. However, the change in the available trading liquidity presents the first evidence of a consequence of the new design.
+
+## The Moving Average
+
+A moving average is utilized as a security measure, where sudden changes in the pool reserves can be detected, and prevent abuse of the protocol’s features. The moving average (ema) is updated with the first trade of the block, for any asset according to the following formula:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/ema.png" height="75">
+
+where r is the spot rate in units of BNT/TKN as determined by the trading liquidity balances of the pool, and α is an arbitrary constant that determines the responsiveness of the moving average. The α term is a global variable, set at 0.2 (or 20%) at launch of Bancor 3, and is intended to provide a consensus rate for the pool that is resistant to virtual price manipulation attacks. The following chart is an arbitrary depiction of the ema behavior relative to the spot price on a per-block basis. The ema is measured and updated before an action is executed; therefore, the ema response is delayed by a minimum of one action (e.g. a trade or add/remove liquidity event). Further, the ema is only adjusted once per pool, per block.
+
+At genesis, the ema rate is set equal to the spot rate. Therefore, in the above scenario each of the liquidity pools began with the following rates:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/ema1.png" width="680">
+
+We can confirm the history of our EMA matches the genesis state as follows:
+
+
+```python
+protocol.ema
+```
+
+
+
+
+    {'BNT': {'block_num': [0], 'ema': [1.0]},
+     'wBTC': {'block_num': [0], 'ema': [16000.0]},
+     'ETH': {'block_num': [0], 'ema': [1000.0]},
+     'LINK': {'block_num': [0], 'ema': [6.0]}}
+
+
+
+
+```python
+protocol.alpha
+```
+
+
+
+
+    0.2
+
+
+
+However, the trading situations do have an effect. To demonstrate, assume that the trades described above happen on consecutive blocks. For the LINK trading pool, both the spot rate and the ema begin at 6, as set at the genesis of the pool. Since the ema is adjusted before the trade is executed, the first trade has no effect on the ema; the spot price changes as expected. The new spot price becomes relevant in the next block, as the ema is updated prior to performing the second trade. First, the ema is updated using the new spot rate, then the second trade is processed. In this example, the lag of the ema means there is a significant gap between it and the spot price after the first block; however, the adjustment in the second block, prior to executing the second trade, results in a close agreement thereafter.
+
+
+```python
+protocol.get_spot_rate('LINK')
+```
+
+
+
+
+    7.251298152397054
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/ema2.png" width="680">
+
+## Trading and Fees: TKN to BNT
+
+Assume now that a trader wants to perform the opposite action, perhaps to close an arbitrage opportunity left open by the previous swap. The trader sends 30.299 LINK into the vault, and the vault sends 197.756685 BNT to the trader. As before, the trader’s intuition agrees with the changing state of the vault balances; however, the changes in the trading liquidity and staked balances require closer examination.
+
+
+```python
+MrT_agent.swap('LINK', 30.299, 'BNT', block_num=1)
+protocol.describe()
+```
+
+    bnt_trading_liquidity=2001.404207987633, 
+    tkn_trading_liquidity=333.6323333333333, 
+    tkn_out=197.75672304140988, 
+    tkn_fee=1.5980341255871509, 
+    vortex_fee=0.39950853139678766 
+    
+    
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:2000 - ETH:2.0</td>
+      <td>BNT:6002.24327695859</td>
+      <td>BNT:6001.598034125587</td>
+      <td>bnBNT:6000.0</td>
+      <td>Balance:0.8390689709572272</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2000 - wBTC:0.125</td>
+      <td>ETH:11</td>
+      <td>ETH:11</td>
+      <td>bnETH:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:2001.404207987633 - LINK:333.6323333333333</td>
+      <td>wBTC:11</td>
+      <td>wBTC:11</td>
+      <td>bnwBTC:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1001.299</td>
+      <td>LINK:1001.2424242424242</td>
+      <td>bnLINK:1001.0</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/Trading_and_Fees_TKN_to_BNT.png" height="400">
+
+
+Confirm that the trading liquidity ledger matches:
+
+
+```python
+protocol.get_available_liquidity_ledger('LINK').iloc[-2:]
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block_num</th>
+      <th>funding_limit</th>
+      <th>BNT</th>
+      <th>LINK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>1000</td>
+      <td>2199.560440</td>
+      <td>303.333333</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>1000</td>
+      <td>2001.404208</td>
+      <td>333.632333</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Trading and Fees: TKN to TKN
+
+Assume now that a trader wishes to exchange 0.1 ETH for wBTC. From their perspective the process is similar to that described above. A total of 0.1 ETH tokens were sent into the vault, and the vault sent 0.005571 wBTC tokens back, and the change in the vault balances agree with the trader’s intuition (as before).
+
+However, this situation compounds the effects described in the previous two sections. The changes in the trading liquidity balances, and the accumulation of value to the vortex ledger, can be deduced by considering the two separate legs of the process:
+
+Swap  0.1 ETH for 94.285714 BNT
+* Add 0.76191905 BNT to the staking ledger
+* Add 0.190476 BNT to the vortex ledger
+
+Swap 94.285714 BNT for 0.002271282 wBTC
+* Add 0.0000450205 wBTC to the staking ledger
+* Add 0.197368179 BNT to the vortex ledger
+
+
+
+```python
+protocol.vortex_ledger
+MrT_agent.swap('ETH', 0.1, 'wBTC', block_num=1)
+protocol.describe()
+```
+
+    spot_rate=1000.0 
+     ema=1000.0 
+     EMA Test = True, (0.99 * 1000.0) <= 1000.0 <= (1.01 * 1000.0), tkn=ETH
+    spot_rate=16000.0 
+     ema=16000.0 
+     EMA Test = True, (0.99 * 16000.0) <= 16000.0 <= (1.01 * 16000.0), tkn=wBTC
+    bnt_source_trading_liquidity=1905.5238095238094, 
+     tkn_source_trading_liquidity=2.1, 
+     bnt_destination_trading_liquidity=2094.0883461062235, 
+     tkn_destination_trading_liquidity=0.11942871759890858, 
+     tkn_out=0.005571282401091405, 
+     bnt_fee=0.7619047619047619, 
+     tkn_fee=4.5020463847203275e-05, 
+     vortex_fee=0.3878443699670836 
+    
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:1905.5238095238094 - ETH:2.1</td>
+      <td>BNT:6002.24327695859</td>
+      <td>BNT:6002.359938887492</td>
+      <td>bnBNT:6000.0</td>
+      <td>Balance:1.2269133409243107</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2094.0883461062235 - wBTC:0.11942871759890858</td>
+      <td>ETH:11.1</td>
+      <td>ETH:11</td>
+      <td>bnETH:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:2001.404207987633 - LINK:333.6323333333333</td>
+      <td>wBTC:10.99442871759891</td>
+      <td>wBTC:11.000045020463848</td>
+      <td>bnwBTC:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1001.299</td>
+      <td>LINK:1001.2424242424242</td>
+      <td>bnLINK:1001.0</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/Trading_and_Fees_TKN_to_TKN.png" height="400">
+
+It is important to realize that there is no BNT transfer, despite both pools reporting a change to the BNT trading liquidity. A virtual trade has been performed, where BNT is still used as numeraire, and which allows for the relative value of ETH and wBTC to be known. Since the liquidity pools are virtual, their relative balance of BNT can be adjusted as though the tokens were sent, when in fact the BNT remains where it was in the vault. Thus, a quasi-single hop trade is achieved.
+
+
+```python
+protocol.get_available_liquidity_ledger('wBTC').iloc[-1:]
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block_num</th>
+      <th>funding_limit</th>
+      <th>BNT</th>
+      <th>wBTC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>1000</td>
+      <td>2094.088346</td>
+      <td>0.119429</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Staking TKN
+
+The ema serves as a detection mechanism for unusual spikes in the price of an asset against BNT, and prevents changes to the depth of the trading pools to protect the system from harm. To illustrate the effects of the ema, the current state of the system in the present narrative will be carried forward, with each of Alice, Bob, and Charlie providing one additional TKN to the system. Unlike the prior examples where liquidity is added, both the ema, and the pool token valuation need to be taken under consideration.
+
+Before the demonstration continues, recall that each of the pools have a preset 4,000 BNT funding limit at this point in the narrative, and up to this point in time all three have only exhausted half of that amount. Further, recall that the ability to increase the available trading liquidity is determined by the vault balance of the TKN in question, and the current depth of the pool, rather than the amount being contributed by a user during any deposit event.
+
+Assume that the following deposit is occurring on a block wherein no actions have taken place on the ETH pool. Therefore, the ema has not been updated in this block, and it remains where it was.
+
+Alice now deposits 1 ETH. Since no fees have yet accrued to the bnETH pool tokens (i.e. ETH has not yet been the target of any particular trade), the value of the bnETH pool token remains unchanged. Her 1 ETH is added to the vault, the staking ledger is updated, and a new pool token is created for Alice.
+
+
+```python
+alice.deposit('ETH', 1, block_num=1)
+protocol.describe()
+```
+
+    spot_rate=907.392290249433 
+     ema=1000.0 
+     EMA Test = False, (0.99 * 1000.0) <= 907.392290249433 <= (1.01 * 1000.0), tkn=ETH
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:1905.5238095238094 - ETH:2.1</td>
+      <td>BNT:6002.24327695859</td>
+      <td>BNT:6002.359938887492</td>
+      <td>bnBNT:6000.0</td>
+      <td>Balance:1.2269133409243107</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2094.0883461062235 - wBTC:0.11942871759890858</td>
+      <td>ETH:12.1</td>
+      <td>ETH:12</td>
+      <td>bnETH:12.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:2001.404207987633 - LINK:333.6323333333333</td>
+      <td>wBTC:10.99442871759891</td>
+      <td>wBTC:11.000045020463848</td>
+      <td>bnwBTC:11.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1001.299</td>
+      <td>LINK:1001.2424242424242</td>
+      <td>bnLINK:1001.0</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/staking1.png" width="680">
+
+This allows for the effective price quoted by the pool to be evaluated with a view to detecting artificial price manipulation. The protocol’s confidence is determined by the relative deviation between the ema and spot prices; the protocol will only allow the pool’s trading liquidity to be changed if the difference between these values is small.
+
+In this instance, the addition of Alice’s 1 ETH occurs when the ema on ETH remains at 1,000, whereas its spot rate is 907.26. The deviation between the spot rate and the ema is measured relative to the ema, as follows:
+
+
+```python
+protocol.is_within_ema_tolerance('ETH')
+```
+
+    spot_rate=907.392290249433 
+     ema=1000.0 
+     EMA Test = False, (0.99 * 1000.0) <= 907.392290249433 <= (1.01 * 1000.0), tkn=ETH
+
+
+
+
+
+    False
+
+
+
+
+```python
+protocol.get_available_liquidity_ledger('ETH').iloc[-2:]
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block_num</th>
+      <th>funding_limit</th>
+      <th>BNT</th>
+      <th>ETH</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>1000</td>
+      <td>2000.00000</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>1000</td>
+      <td>1905.52381</td>
+      <td>2.1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+The staking ledger is reporting a staked amount of wBTC of 11.00004502
+
+
+```python
+protocol.staking_ledger['wBTC'][-1]
+```
+
+
+
+
+    11.000045020463848
+
+
+
+and the supply of bnwBTC is 11. Therefore, the rate of bnwBTC to wBTC is 0.999996, and this quotient determines the number of bnwBTC pool tokens Bob will receive.
+
+
+```python
+protocol.get_pool_token_supply_ledger('wBTC').iloc[-1:]
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>block_num</th>
+      <th>supply</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+Bob now deposits 1 wBTC. In contrast to Alice’s situation, fees have accumulated on the wBTC pool token. Therefore, the rate of pool token issuance is affected. Assume that this deposit is occurring on the same block as Alice’s deposit, where the trade between ETH and wBTC had been executed on the prior block. Therefore, the wBTC ema has not been updated in this block, and also remains at the genesis rate.
+
+
+
+```python
+bob.deposit('wBTC', 1, block_num=1)
+protocol.describe()
+```
+
+    spot_rate=17534.21110271857 
+     ema=16000.0 
+     EMA Test = False, (0.99 * 16000.0) <= 17534.21110271857 <= (1.01 * 16000.0), tkn=wBTC
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:1905.5238095238094 - ETH:2.1</td>
+      <td>BNT:6002.24327695859</td>
+      <td>BNT:6002.359938887492</td>
+      <td>bnBNT:6000.0</td>
+      <td>Balance:1.2269133409243107</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2094.0883461062235 - wBTC:0.11942871759890858</td>
+      <td>ETH:12.1</td>
+      <td>ETH:12</td>
+      <td>bnETH:12.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:2001.404207987633 - LINK:333.6323333333333</td>
+      <td>wBTC:11.99442871759891</td>
+      <td>wBTC:12.000045020463848</td>
+      <td>bnwBTC:11.99999590724731</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1001.299</td>
+      <td>LINK:1001.2424242424242</td>
+      <td>bnLINK:1001.0</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/staking2.png" width="680">
+
+In this instance, the addition of Bob’s 1 wBTC coccurs when the ema on wBTC remains at 16,000, whereas its spot rate is at 17,534. The deviation (Δ) between the spot rate and the ema is 0.0959, and as before, the protocol will not allow the trading liquidity to be changed on this block. Regardless, the vault still accepts Bob’s wBTC, and issues him bnwBTC as normal.
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/ema5.png" width="680">
+
+Charlie now deposits 1 LINK.
+
+
+```python
+protocol.available_liquidity_ledger['LINK']['funding_limit']
+```
+
+
+
+
+    [4000, 3000, 3000, 3000, 1000, 1000, 1000, 1000]
+
+
+
+
+```python
+protocol.available_liquidity_ledger['LINK']['funding_limit'][-1] = 2000
+```
+
+
+```python
+charlie.deposit('LINK', 1, block_num=2)
+protocol.describe()
+```
+
+    spot_rate=5.998831671953158 
+     ema=5.999766334390633 
+     EMA Test = True, (0.99 * 5.999766334390633) <= 5.998831671953158 <= (1.01 * 5.999766334390633), tkn=LINK
+
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:1905.5238095238094 - ETH:2.1</td>
+      <td>BNT:8002.945380952407</td>
+      <td>BNT:8003.062042881308</td>
+      <td>bnBNT:8000.702103993816</td>
+      <td>Balance:1.2269133409243107</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2094.0883461062235 - wBTC:0.11942871759890858</td>
+      <td>ETH:12.1</td>
+      <td>ETH:12</td>
+      <td>bnETH:12.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:4001.404207987633 - LINK:667.1476265441543</td>
+      <td>wBTC:11.99442871759891</td>
+      <td>wBTC:12.000045020463848</td>
+      <td>bnwBTC:11.99999590724731</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1002.299</td>
+      <td>LINK:1002.2424242424242</td>
+      <td>bnLINK:1001.9997578765776</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+As was the case for Bob, the fee accrual on bnLINK will affect the issuance of pool tokens. The staking ledger is reporting a staked amount of LINK of 1,001.2424, and the supply of bnLINK is 1,001. Therefore, the rate of bnLINK to LINK is 0.9998, and the issuance of bnLINK to Charlie is determined by this number.
+
+Assume that this deposit occurs on the block following the two LINK trades previously discussed. In this instance, the addition of Charlie’s 1 LINK occurs when the ema on LINK is 5.9998, whereas its spot rate is at 5.9988. The deviation (Δ) between the spot rate and the ema is 0.00017, which is inside the tolerance levels of the protocol, and the protocol will allow the trading liquidity to update.
+
+
+```python
+spot_rate = protocol.get_spot_rate('LINK')
+spot_rate
+```
+
+
+
+
+    5.99777927520335
+
+
+
+
+```python
+ema = protocol.ema['LINK']['ema'][-1]
+ema
+```
+
+
+
+
+    5.999766334390633
+
+
+
+Trading liquidity always updates according to a strict set of criteria. In simple terms, the protocol will always try to increase the liquidity by as much as possible, up to a maximum BNT liquidity increase of 2× relative to the current depth, and without exceeding the preset funding limit. In this example, the current BNT depth on the LINK pool is 2,094.0883. Therefore, with a sufficient funding limit, the pool could double in size, up to a maximum BNT depth of 4,188.1766 BNT. However, the protocol has previously contributed 2,000 BNT of its 4,000 BNT funding limit - it can only increase the trading liquidity by a maximum of 2,000 BNT. The protocol will always default to the smallest of these two values.
+
+By convention, the protocol trusts the ema rate over the spot price. Therefore, in this example, the BNT/LINK quotient is treated as 5.9998. The maximum allowed increase is the BNT funding limit, 2,000 BNT. Therefore, 333.34444 LINK and 2,000 BNT are added to the trading liquidity. As the protocol is minting BNT, it is simultaneously issuing new bnBNT pool tokens for itself. Since the bnBNT pool token has appreciated in value, this will need to be taken into account. The
+
+The staking ledger is reporting a staked amount of BNT of 6,002.3599, and the supply of bnBNT is 6,000. Therefore, the rate of bnBNT to BNT is 0.9996. As the protocol mints 2,000 BNT to increase the trading liquidity, this amount is added to the BNT staking ledger, and the protocol issues itself 1999.2137 bnBNT pool tokens.
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/ema6.png" width="680">
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/staking3.png" width="680">
+
+
+
+```python
+protocol.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:1905.5238095238094 - ETH:2.1</td>
+      <td>BNT:8002.945380952407</td>
+      <td>BNT:8003.062042881308</td>
+      <td>bnBNT:8000.702103993816</td>
+      <td>Balance:1.2269133409243107</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:2094.0883461062235 - wBTC:0.11942871759890858</td>
+      <td>ETH:12.1</td>
+      <td>ETH:12</td>
+      <td>bnETH:12.0</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:4001.404207987633 - LINK:667.1476265441543</td>
+      <td>wBTC:11.99442871759891</td>
+      <td>wBTC:12.000045020463848</td>
+      <td>bnwBTC:11.99999590724731</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1002.299</td>
+      <td>LINK:1002.2424242424242</td>
+      <td>bnLINK:1001.9997578765776</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## Unstaking TKN
+Withdrawals are predicated on two equally important concepts:
+
+Liquidity providers should be able to withdraw their stake entirely in the token they provided.
+Any withdrawal should not affect the stakes of other users.
+
+The challenge to meeting these criteria is that the staked amounts will rarely be in agreement with the vault balances. The scale of the problem is also dependent on the proportion of the overall staked amounts being withdrawn by the user, and the relative deficit or surplus for the same TKN. Bancor 3 introduces a novel algorithm for processing withdrawals, which has been constructed specifically for use with the new architecture. This aspect of the protocol’s activities is the most technically challenging to understand. To help structure this part of the discussion, the examples will diverge from the narrative presented up to this point, and will instead use arbitrary cases to demonstrate the logic and consequences of the algorithm.
+
+The state of the system is described using the following variables, and each is a discrete input in the withdrawal algorithm:
+
+a, the BNT balance of the trading liquidity, as judged from the spot rate.
+b, the TKN balance of the trading liquidity, as judged from the spot rate.
+c, the difference between the TKN balance of the vault, and the TKN trading liquidity.
+e, the TKN balance of the staking ledger.
+m, the associated pool fee for the TKN being unstaked.
+n, the exit fee of the system.
+w, the TKN balance of the external protection wallet.
+x, the precise TKN value of the bnTKN tokens being withdrawn.
+
+The role of the moving average in unstaking actions is slightly different to staking actions. First and foremost, if the deviation (Δ) exceeds the protocol tolerance, the transaction is simply reverted; it is not possible to calculate a ‘default’ withdrawal if there is strong disagreement between the moving average and the spot rate. For the rest of this discussion, it is assumed that this tolerance check has passed.
+
+The withdrawal algorithm has six different outputs:
+
+P, BNT quantity to remove (burn) from the available trading liquidity.
+Q, BNT ownership renounced by the protocol (i.e. removed from the staking ledger).
+R, TKN quantity to add to the available trading liquidity from the non-trading liquidity.
+S, TKN quantity to remove from the vault (and send to the user).
+T, BNT quantity minted for, and sent to the user as compensation.
+U, TKN removed from the external protection wallet and sent to the user as compensation.
+
+
+## TKN Surplus Examples
+A TKN is in surplus if the total vault balance is greater than the staked amount, after accounting for the exit fee. It is necessary to separate the vault balance into the trading liquidity (b), and non-trading liquidity (c) components; b + c is the vault balance of TKN:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake1.png" width="680">
+
+where e is the TKN balance of the staking ledger, and n is the withdrawal fee (e.g. 0.0025, or 0.25%). So long as the above expression evaluates as True, the protocol is in an effective surplus (i.e. the quantity of TKN exceeds that of the combined user stakes). Therefore in all cases, it is guaranteed that any user withdrawing will receive only TKN. However, the protocol will also attempt to reduce the surplus and recover BNT from the secondary markets. The following paragraphs will explore the three different situations that cover the discrete behaviors of the withdrawal algorithm during a surplus state of TKN.
+
+The most important decision the protocol makes is to evaluate the abuse vector described above. To do this, two important thresholds are calculated, hlim and hmax; the former determines whether there is sufficient non-trading TKN in the vault to support the user’s withdrawal without changing the trading pool depth, and the latter determines if an apparent abuse vector exists. These two values are calculated as follows:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake2.png" width="680">
+
+These two values, hlim and hmax, define the maximum value for x that is allowable without creating a possible abuse incentive. Therefore, the user’s withdrawal amount (x) must be less than both hlim and hmax:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake3.png" width="680">
+
+To examine this further, consider the following case: the staking ledger reports a staked balance of 1,400 TKN (e), the vault balance of TKN is 1,500 TKN (b+c), the TKN trading pool has 1,000 TKN (b) and 1,000 BNT (a) in available liquidity. Then, a user confirms a withdrawal for 100 TKN (x).
+
+
+```python
+tkn = 'TKN'
+pool_fees = {tkn:0.0020}
+exit_fee = 0.0025
+
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 1400
+protocol_base.vault_ledger[tkn][-1] = 1500
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1000
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1000
+
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+random_agent.get_wallet('TKN')
+```
+
+
+
+
+    ('TKN=99.7500', 'bnTKN=0')
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake4.png" width="680">
+
+In this case, hlim evaluates to 466.6667 TKN, and hmax evaluates to 501.486064 TKN. As the user’s withdrawal amount (x) is less than both of these values, there must be sufficient non-trading TKN in the vault to support the withdrawal, and there is no financial incentive to create the withdrawal for the purpose of back running. Therefore the protocol can attempt to recover a small amount of BNT from the outside markets.
+
+
+```python
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1000</td>
+      <td>hlim:466.6666666666666666666666667</td>
+      <td>p:7.353310513678116682899602871</td>
+      <td>BNT:992.6466894863218833171003971</td>
+      <td>TKN:1400.2500</td>
+      <td>TKN:1300</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1000</td>
+      <td>hmax:501.4860639152701538342385254</td>
+      <td>q:0</td>
+      <td>TKN:1007.392857142857142857142857</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:500</td>
+      <td>is_surplus:True</td>
+      <td>r:7.392857142857142857142857143</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:1400</td>
+      <td>case=arbitrage surplus</td>
+      <td>s:99.7500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:True</td>
+      <td>t:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:True</td>
+      <td>u:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake5.png" width="680">
+
+Such actions can only be taken if the hlim and hmax tests evaluate to True. To examine a case wherein these tests do not pass, consider a scenario nearly identical to that presented above, but where the non-trading TKN balance (c) is increased to 1,000 TKN. Therefore, the staking ledger reports a staked balance of 1,400 TKN (e), the vault balance of TKN is 2,000 TKN (b+c), the TKN trading pool has 1,000 TKN (b) and 1,000 BNT (a) in available liquidity, and the user confirms a withdrawal for 100 TKN (x).
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 1400
+protocol_base.vault_ledger[tkn][-1] = 2000
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1000
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1000
+
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1000</td>
+      <td>hlim:700</td>
+      <td>p:0</td>
+      <td>BNT:1000</td>
+      <td>TKN:1900.2500</td>
+      <td>TKN:1300</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1000</td>
+      <td>hmax:18.20819213682819934262338541</td>
+      <td>q:0</td>
+      <td>TKN:1000</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:1000</td>
+      <td>is_surplus:True</td>
+      <td>r:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:1400</td>
+      <td>case=bootstrap surplus</td>
+      <td>s:99.7500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:True</td>
+      <td>t:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:False</td>
+      <td>u:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td>x(1-n) &lt;= c:True</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake6.png" width="680">
+
+The last remaining case for withdrawals is when there are insufficient non-trading funds to process the user’s withdrawal - when the inequality presented above is False. Consider the situation where the vault balance of TKN is the same, but the proportion of funds used for trading liquidity is much higher. Instead of a pool only 1,000 TKN deep, let it be 1,995 TKN deep instead, while maintaining the same vault balance (i.e. the non-trading TKN balance (c) is reduced while the trading liquidity balance (a) is increased). As before, the staking ledger reports a staked balance of 1,400 TKN (e), the vault balance of TKN is 2,000 TKN (b+c), the TKN trading pool has 1,995 TKN (b) and 1,995 BNT (a) in available liquidity, and the user confirms a withdrawal for 100 TKN (x).
+
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 1400
+protocol_base.vault_ledger[tkn][-1] = 2000
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1995
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1995
+
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1995</td>
+      <td>hlim:3.5</td>
+      <td>p:94.7500</td>
+      <td>BNT:1900.2500</td>
+      <td>TKN:1900.2500</td>
+      <td>TKN:1300</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1995</td>
+      <td>hmax:36.32534331297225768853365389</td>
+      <td>q:94.7500</td>
+      <td>TKN:1900.2500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:5</td>
+      <td>is_surplus:True</td>
+      <td>r:94.7500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:1400</td>
+      <td>case=default surplus</td>
+      <td>s:99.7500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:False</td>
+      <td>t:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:False</td>
+      <td>u:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td>x(1-n) &lt;= c:False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake7.png" width="680">
+
+TKN Deficit Examples
+A TKN is in deficit if the total vault balance is less than or equal to the staked amount, after accounting for the exit fee. It is necessary to separate the vault balance into the trading liquidity (b), and non-trading liquidity (c) components; b + c is the vault balance of TKN:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake8.png" width="680">
+
+where e is the TKN balance of the staking ledger, and n is the withdrawal fee (e.g. 0.0025, or 0.25%). So long as the above expression is True, the protocol is in an effective deficit (i.e. the quantity of TKN is insufficient to reimburse the totality of all user stakes). In this state, it is possible that some users will receive partial reimbursement in BNT. However, the protocol will also attempt to reimburse users entirely in TKN using the reverse of the repricing strategy described for the surplus case - essentially to recapture TKN from the external markets. The following paragraphs will explore the three different situations that cover the discrete behaviors of the withdrawal algorithm during a deficit state of TKN.
+
+As before, the potential for abuse is the most important component of the decision tree. The same thresholds, hlim and hmax, defined previously are used again here; however, the hmax calculation is modified to account for the reversed direction:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake9.png" width="680">
+
+The hlim and hmax terms are used in exactly the same fashion as before; they define the maximum value for x that is allowable without creating a possible abuse incentive. Therefore, the user’s withdrawal amount (x) must be less than both hlim and hmax:
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake10.png" width="680">
+
+The withdrawal algorithm outputs are the same, although the sign is effectively reversed in P and R, relative to the surplus calculations. To maintain unsigned arithmetic, the following descriptions are provided:
+
+P, BNT quantity to add (mint) to the available trading liquidity.
+Q, BNT ownership renounced by the protocol (i.e. removed from the staking ledger).
+R, TKN quantity to remove from the available trading liquidity (and send to the user).
+S, TKN quantity to remove from the vault (and send to the user).
+T, BNT quantity minted for, and sent to the user as compensation.
+U, TKN removed from the external protection wallet and sent to the user as compensation.
+
+To examine this further, consider the following case: the staking ledger reports a staked balance of 2,000 TKN (e), the vault balance of TKN is 1,800 TKN (b+c), the TKN trading pool has 1,000 TKN (b) and 1,000 BNT (a) in available liquidity. Then, a user confirms a withdrawal for 100 TKN (x).
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 2000
+protocol_base.vault_ledger[tkn][-1] = 1800
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1000
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1000
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1000</td>
+      <td>hlim:888.8888888888888888888888889</td>
+      <td>p:9.826112992473261066810600549</td>
+      <td>BNT:1009.826112992473261066810601</td>
+      <td>TKN:1700.2500</td>
+      <td>TKN:1900</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1000</td>
+      <td>hmax:276.9641847798160423410924413</td>
+      <td>q:0</td>
+      <td>TKN:990.2500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:800</td>
+      <td>is_surplus:False</td>
+      <td>r:9.7500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:2000</td>
+      <td>case=arbitrage deficit</td>
+      <td>s:99.7500</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:True</td>
+      <td>t:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:True</td>
+      <td>u:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+In this case, hlim evaluates to 888.888889 TKN, and hmax evaluates to 1138.958507 TKN. As the user’s withdrawal amount (x) is less than both of these values, there must be sufficient non-trading TKN in the vault to support the withdrawal, and there is no financial incentive to create the withdrawal for the purpose of back running. Therefore the protocol can attempt to recover a small amount of TKN from the outside markets.
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake11.png" width="680">
+
+To examine a case where these abusability thresholds are exceeded, consider a scenario nearly identical to that presented above, but where the TKN balance of the staking ledger (e) is increased to 2,200 TKN. Therefore, the vault balance of TKN remains at 1,800 TKN (b+c), the TKN trading pool has 1,000 TKN (b) and 1,000 BNT (a) in available liquidity, and the user confirms a withdrawal for 100 TKN (x).
+
+For this scenario, hlim evaluates to 977.777778 TKN, and hmax evaluates to 87.855051 TKN. As the user’s withdrawal is still 100 TKN, the hlim test still passes, but the hmax test fails. Therefore, the protocol’s repricing strategy is potentially abusable. Similar to what was discussed in the surplus sections, the withdrawal algorithm defaults to another set of operations, and a bifurcation occurs depending on the sufficiency of the non-trading TKN balance of the vault.
+
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 2200
+protocol_base.vault_ledger[tkn][-1] = 1800
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1000
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1000
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1000</td>
+      <td>hlim:977.7777777777777777777777778</td>
+      <td>p:0</td>
+      <td>BNT:1000</td>
+      <td>TKN:1718.386363636363636363636364</td>
+      <td>TKN:2100</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1000</td>
+      <td>hmax:87.85505103997602302196281028</td>
+      <td>q:0</td>
+      <td>TKN:1000</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:800</td>
+      <td>is_surplus:False</td>
+      <td>r:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:2200</td>
+      <td>case=bootstrap deficit</td>
+      <td>s:81.61363636363636363636363636</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:True</td>
+      <td>t:18.13636363636363636363636364</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:False</td>
+      <td>u:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td>x(1-n)(b+c)/e &lt;= c:True</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake12.png" width="680">
+
+The most intuitive way to interpret the result above is to add the TKN and BNT amounts together. In this case, the BNT/TKN rate is precisely 1:1, which makes it easy. The S and T outputs represent an amount of TKN, and BNT tokens sent to the user, respectively. Since these tokens have the same value, their sum should represent the total value the user was expecting, save for the exit fee. In this case, the sum is precisely 99.75, which is what we expect. These BNT tokens received in reimbursement are minted at withdrawal, and do not originate from inside the protocol. While this example uses a 1:1 valuation of BNT:TKN, the output T handles any BNT valuation.
+
+Lastly, the case wherein the hlim or hmax test fails, and where it is impossible to refund the user without affecting the trading liquidity, should be considered. For this example, let the BNT trading liquidity (a) be 1,800 BNT, let the TKN trading liquidity (b) be 1,800 TKN, let the vault balance of TKN (b+c) be 1,850 TKN, and let the balance of TKN on the staking ledger (e) be 2,200 TKN, and assume the user confirms a withdrawal for 100 TKN (x).
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 2200
+protocol_base.vault_ledger[tkn][-1] = 1850
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1800
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1800
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1800</td>
+      <td>hlim:59.45945945945945945945945946</td>
+      <td>p:33.88068181818181818181818182</td>
+      <td>BNT:1833.880681818181818181818182</td>
+      <td>TKN:1766.119318181818181818181818</td>
+      <td>TKN:2100</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1800</td>
+      <td>hmax:203.6703720524191655132782671</td>
+      <td>q:33.88068181818181818181818182</td>
+      <td>TKN:1766.119318181818181818181818</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:50</td>
+      <td>is_surplus:False</td>
+      <td>r:33.88068181818181818181818182</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:2200</td>
+      <td>case=default deficit</td>
+      <td>s:83.88068181818181818181818182</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:False</td>
+      <td>t:15.86931818181818181818181818</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:True</td>
+      <td>u:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td>x(1-n)(b+c)/e &lt;= c:False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake13.png" width="680">
+
+## External Impermanent Loss Protection
+Withdrawals of TKN during a deficit can result in partial reimbursement in BNT, if the thresholds defined by hlim and hmax are exceeded. This is apparent in the algorithm output T, which represents the number of BNT tokens that should be created for the user. In all of the examples examined above, there is an input variable, w, that has been completely neglected, and which gives the protocol access to TKN of last resort.
+
+The external impermanent loss protection feature of Bancor 3 provides token projects with the means to shoulder part of the insurance burden of the network. This is done by providing a fixed quantity of TKN to an external contract - not the vault - which the protocol can use to subsidize users directly in TKN if, and only if they would otherwise receive a partial reimbursement in BNT. The number of TKN provided to this contract is the w variable.
+
+To explore this behavior thoroughly, at least two examples are required. Since the behavior of the external protection wallet is only relevant in cases where a user has received BNT from the protocol while withdrawing TKN, it seems appropriate to revisit the two examples above where this phenomenon has already played out (i.e. the previous two scenarios where either of the hlim or  hmax tests failed. Consider the situation where the TKN trading pool has 1,000 BNT (a) and 1,000 TKN (b) in available liquidity, the vault balance of TKN is 1,800 TKN (b+c), the balance of TKN on the staking ledger is 2,200 TKN, and the user confirms a withdrawal for 100 TKN (x). However, this time, let the external protection balance be 1,000 TKN.
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 2200
+protocol_base.vault_ledger[tkn][-1] = 1800
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1000
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1000
+
+# Newly introduced in this example
+protocol_base.external_protection_wallet_ledger[tkn][-1] = 1000
+
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1000</td>
+      <td>hlim:977.7777777777777777777777778</td>
+      <td>p:0</td>
+      <td>BNT:1000</td>
+      <td>TKN:1718.386363636363636363636364</td>
+      <td>TKN:2100</td>
+      <td>TKN:981.8636363636363636363636364</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1000</td>
+      <td>hmax:87.85505103997602302196281028</td>
+      <td>q:0</td>
+      <td>TKN:1000</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:800</td>
+      <td>is_surplus:False</td>
+      <td>r:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:2200</td>
+      <td>case=bootstrap deficit ep1</td>
+      <td>s:81.61363636363636363636363636</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:True</td>
+      <td>t:0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:False</td>
+      <td>u:18.13636363636363636363636364</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td>x(1-n)(b+c)/e &lt;= c:True</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake14.png" width="680">
+
+Lastly, let the BNT trading liquidity (a) be 1,800 BNT, let the TKN trading liquidity (b) be 1,800 TKN, let the vault balance of TKN (b+c) be 1,850 TKN, and let the balance of TKN on the staking ledger (e) be 2,200 TKN, and assume the user confirms a withdrawal for 100 TKN (x). However, this time, let the external protection balance be 10 TKN.
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_whitelisted_tokens([tkn, 'BNT'])
+protocol_base.staking_ledger[tkn][-1] = 2200
+protocol_base.vault_ledger[tkn][-1] = 1850
+protocol_base.available_liquidity_ledger[tkn][tkn][-1] = 1800
+protocol_base.available_liquidity_ledger[tkn]['BNT'][-1] = 1800
+protocol_base.external_protection_wallet_ledger[tkn][-1] = 10
+random_agent = LiquidityProviderAgent(unique_id='Random User', env=protocol_base)
+random_agent.withdraw('TKN', 100)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>inputs</th>
+      <th>tests</th>
+      <th>outputs</th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>external_protection_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a:1800</td>
+      <td>hlim:59.45945945945945945945945946</td>
+      <td>p:33.88068181818181818181818182</td>
+      <td>BNT:1766.119318181818181818181818</td>
+      <td>TKN:1766.119318181818181818181818</td>
+      <td>TKN:2100</td>
+      <td>TKN:0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b:1800</td>
+      <td>hmax:203.6703720524191655132782671</td>
+      <td>q:33.88068181818181818181818182</td>
+      <td>TKN:1766.119318181818181818181818</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c:50</td>
+      <td>is_surplus:False</td>
+      <td>r:33.88068181818181818181818182</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>e:2200</td>
+      <td>case=default deficit ep2</td>
+      <td>s:83.88068181818181818181818182</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>m:0.002</td>
+      <td>satisfies_hlim:False</td>
+      <td>t:5.869318181818181818181818178</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>n:0.0025</td>
+      <td>satisfies_hmax:True</td>
+      <td>u:10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>x:100</td>
+      <td>x(1-n)(b+c)/e &lt;= c:False</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/unstake15.png" width="680">
+
+## Staking BNT
+
+In Bancor 3, assume that BNT liquidity providers are receiving protocol bnBNT tokens in return for destroying BNT. The calculation is essentially identical to the standard pool token method, and its outcome is relatively easy to understand. However, there are some nuances to the process that should be highlighted.
+
+For this section, we can consider the state of the system after the initial bootstrapping and first trading activity described earlier. The system snapshot is as follows:
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/stakingbnt1.png" width="680">
+
+
+To demonstrate, assume a fourth participant, David, wishes to provide 1,000 BNT liquidity to the protocol. The only calculations the protocol must perform are to value the BNT David is providing. The staking ledger is reporting a total of 6,002.3599 BNT, and the bnBNT pool token supply is 6,000 bnBNT. Therefore, the bnBNT/BNT exchange rate is 0.9996068, and David’s 1,000 BNT is worth 999.60683797 bnBNT. When David confirms this transaction, the protocol simply transfers this amount of bnBNT to him, from its own balance; the BNT that David provided is burned immediately.
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_param(spot_prices=spot_prices)
+
+# vault
+protocol_base.vault_ledger['BNT'][-1] = 6002.2433
+protocol_base.vault_ledger['ETH'][-1] = 12.1
+protocol_base.vault_ledger['wBTC'][-1] = 10.99
+protocol_base.vault_ledger['LINK'][-1] = 1001.299
+
+# staking_ledger
+protocol_base.staking_ledger['BNT'][-1] = 6002.3599
+protocol_base.staking_ledger['ETH'][-1] = 12
+protocol_base.staking_ledger['wBTC'][-1] = 11.00004502
+protocol_base.staking_ledger['LINK'][-1] = 1001.2424
+
+# staking_ledger
+protocol_base.pool_token_supply_ledger['bnBNT_ERC20_contract']['supply'][-1] = 6000
+protocol_base.pool_token_supply_ledger['bnETH_ERC20_contract']['supply'][-1] = 12
+protocol_base.pool_token_supply_ledger['bnwBTC_ERC20_contract']['supply'][-1] = 11
+protocol_base.pool_token_supply_ledger['bnLINK_ERC20_contract']['supply'][-1] = 1001
+
+protocol_base.vortex_ledger['BNT'][-1] = 1.22691
+
+david = LiquidityProviderAgent(unique_id='David', env=protocol_base)
+david.deposit('BNT', 1000)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:0 - ETH:0</td>
+      <td>BNT:6002.2433</td>
+      <td>BNT:6002.3599</td>
+      <td>bnBNT:6000</td>
+      <td>Balance:1.22691</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:0 - wBTC:0</td>
+      <td>ETH:12.1</td>
+      <td>ETH:12</td>
+      <td>bnETH:12</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:0 - LINK:0</td>
+      <td>wBTC:10.99</td>
+      <td>wBTC:11.00004502</td>
+      <td>bnwBTC:11</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:1001.299</td>
+      <td>LINK:1001.2424</td>
+      <td>bnLINK:1001</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+david.get_wallet('BNT')
+```
+
+
+
+
+    ('BNT=999000', 'bnBNT=999.6068379705122')
+
+
+
+<img src="https://bancorml.s3.us-east-2.amazonaws.com/images/stakingbnt2.png" width="680">
+
+## Unstaking BNT
+
+The BNT unstaking process is the reverse of the staking process. Users return their bnBNT tokens, and vBNT at a 1:1 rate; the vBNT is destroyed, and the bnBNT becomes the property of the Bancor Protocol. The protocol mints new BNT, equal in value to the bnBNT tokens the user is relinquishing back to the protocol (save for the withdrawal fee).
+
+To demonstrate the process, imagine an arbitrary period of time has elapsed, where the future system snapshot is as follows. In this hypothetical, lots of trading activity has occurred, and the network participants have added new liquidity; however, David has maintained his bnBNT position, and for the sake of demonstration remains the sole BNT liquidity provider for the system.
+
+
+As David withdraws, the protocol calculates the BNT value of his bnBNT pool tokens (BNT/bnBNT = 1.0877723) and mints BNT for David at this rate. Therefore, after David has completed the 7-day cooldown, the protocol destroys his vBNT and repossesses his bnBNT. David then receives 1,084.6263 BNT (after accounting for the exit fee). Nothing else in the protocol is changed.
+
+
+```python
+protocol_base = Bancor3(pool_fees=pool_fees, exit_fee=exit_fee)
+protocol_base.set_param(spot_prices=spot_prices, exit_fee=exit_fee)
+
+# vault
+protocol_base.vault_ledger['BNT'][-1] = 10156.354
+protocol_base.vault_ledger['ETH'][-1] = 20.2131241
+protocol_base.vault_ledger['wBTC'][-1] = 20.2323152
+protocol_base.vault_ledger['LINK'][-1] = 10997.778
+
+# staking_ledger
+protocol_base.staking_ledger['BNT'][-1] = 9789.951
+protocol_base.staking_ledger['ETH'][-1] = 19.789951
+protocol_base.staking_ledger['wBTC'][-1] = 20.569877
+protocol_base.staking_ledger['LINK'][-1] = 11357.65
+
+# staking_ledger
+protocol_base.pool_token_supply_ledger['bnBNT_ERC20_contract']['supply'][-1] = 9000
+protocol_base.pool_token_supply_ledger['bnETH_ERC20_contract']['supply'][-1] = 19
+protocol_base.pool_token_supply_ledger['bnwBTC_ERC20_contract']['supply'][-1] = 18
+protocol_base.pool_token_supply_ledger['bnLINK_ERC20_contract']['supply'][-1] = 9000
+
+protocol_base.vortex_ledger['BNT'][-1] = 123.456
+
+david = LiquidityProviderAgent(unique_id='David', env=protocol_base)
+david.withdraw('BNT', 1000)
+protocol_base.describe()
+```
+
+
+
+
+<div>
+
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>trading_liquidity</th>
+      <th>vault_ledger</th>
+      <th>staking_ledger</th>
+      <th>pool_token_supply_ledger</th>
+      <th>vortex_ledger</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>BNT:0 - ETH:0</td>
+      <td>BNT:10156.354</td>
+      <td>BNT:9789.951</td>
+      <td>bnBNT:9000</td>
+      <td>Balance:123.456</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>BNT:0 - wBTC:0</td>
+      <td>ETH:20.2131241</td>
+      <td>ETH:19.789951</td>
+      <td>bnETH:19</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BNT:0 - LINK:0</td>
+      <td>wBTC:20.2323152</td>
+      <td>wBTC:20.569877</td>
+      <td>bnwBTC:18</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td></td>
+      <td>LINK:10997.778</td>
+      <td>LINK:11357.65</td>
+      <td>bnLINK:9000</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+ 
+## Support
+
+Project support can be found in four places depending on the type of question:
+
+1. For bugs, issues, or feature requests start a [Github issue](https://github.com/gcode-ai/bancorml/issues).
+2. For everything else, the core developers can be reached by email at mike@bancor.network
+
+ 
+ 
+## Built by Bancor Research Team
+
+**bancorml** is a project built by [bancor.network](https://try.bancor.network). 
+
+
+<a href="https://try.bancor.network">
+<img width="75" height="75" src="https://130351921-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LjjvEh4hW5E6OcD80nn%2Fuploads%2FjyKAdivy42MaSH2SXGgp%2FBNT%20Token.png?alt=media&token=ada4053a-d1a7-4e79-a071-38985420d463" alt="bancorml" />
+</a>
+
+
+
+
