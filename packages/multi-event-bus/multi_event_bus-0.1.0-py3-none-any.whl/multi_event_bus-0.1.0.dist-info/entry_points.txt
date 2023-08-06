@@ -1,0 +1,8 @@
+[console_scripts]
+all=scripts.poetry_scripts:run_all
+run_black=scripts.poetry_scripts:run_black
+run_flake8=scripts.poetry_scripts:run_flake8
+run_mypy=scripts.poetry_scripts:run_mypy
+run_pytest=scripts.poetry_scripts:run_pytest
+test=scripts.poetry_scripts:run_all_tests
+
