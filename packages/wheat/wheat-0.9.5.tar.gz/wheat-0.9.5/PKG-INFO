@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: wheat
+Version: 0.9.5
+Summary: A concise and fast CLI to log hours in Harvest.
+Home-page: https://github.com/etschz/wheat
+License: MIT
+Keywords: time,harvest,zoom,calendar,wheat
+Author: etschz
+Author-email: ethanschmitz214@gmail.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Dist: cleo (==1.0.0a4)
+Requires-Dist: google-api-python-client (>=2.42.0,<3.0.0)
+Requires-Dist: google-auth-httplib2 (>=0.1.0,<0.2.0)
+Requires-Dist: google-auth-oauthlib (>=0.5.1,<0.6.0)
+Requires-Dist: pendulum (>=2.1.2,<3.0.0)
+Requires-Dist: tomlkit (>=0.10.1,<0.11.0)
+Project-URL: Repository, https://github.com/etschz/wheat
+Description-Content-Type: text/markdown
+
+# Wheat #
+
+A concise and fast CLI to log hours in Harvest.
+
+## Managing Projects ##
+
+Wheat keeps a "projects" file somewhere that it stores task information in. Users can set tasks as active/not active at will. Whatever tasks are present in the task file are shown each time the user is asked to do anything regarding tasks.
+
+## Commands ##
+
+auth: Authenticate with Harvest by providing a personal access token and account id.
+
+task:
+    list: Displays your Current Projects and Tasks.
+    activate: Set a Project or Task as active.
+    sleep: Set a Project or Task as inactive.
+
+meetings:
+    next: Displays your next meeting.
+    today: Displays today's meetings.
+    join: Joins a meeting's video chat if a link is provided.
+        Supports <c1>Zoom</c1> and <c1>Google Meets</c1>.
+            * Takes Meeting ID as an argument. If none is provided, joins the next meeting on the calendar, if it can.
+
+Note: Meetings commands require you to have logged into your Google account, and will use events from your google calendar.
+
