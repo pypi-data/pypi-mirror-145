@@ -1,0 +1,20 @@
+include setup.py
+include README.rst
+include tox.ini
+
+recursive-include cubicweb_dataprocessing *
+recursive-include cubicweb_dataprocessing/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_dataprocessing/i18n *.po
+recursive-include cubicweb_dataprocessing/wdoc *
+
+recursive-include test *.py *.txt *.msg *.ini *.zip *.egg
+recursive-include test/data *
+
+exclude .gitlab-ci.yml
+exclude cubicweb-dataprocessing.spec
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
+exclude .gitlab-ci-extended.yml
+exclude .yamllint

@@ -1,0 +1,2 @@
+sync_schema_props_perms("transformation_sequence")
+sync_schema_props_perms("TransformationSequence")
