@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: rbfopt-go
+Version: 0.3.0
+Summary: Find better configuration of your Go service with derivative-free optimization algorithms
+Home-page: https://github.com/vitalyisaev2/rbfopt-go
+Author: Vitaly Isaev
+Author-email: vitalyisaev2@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Scientific/Engineering :: Mathematics
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: jsons (==1.6.0)
+Requires-Dist: numpy (==1.21.4)
+Requires-Dist: Pyomo (==6.1.2)
+Requires-Dist: rbfopt (==4.2.2)
+Requires-Dist: requests (==2.26.0)
+Requires-Dist: urllib3 (==1.26.7)
+Requires-Dist: pandas (==1.3.5)
+Requires-Dist: matplotlib (==3.5.1)
+Requires-Dist: scipy (==1.7.3)
+Requires-Dist: colorhash (==1.0.4)
+
+UNKNOWN
+
