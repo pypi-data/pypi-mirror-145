@@ -1,0 +1,13 @@
+repobee>=3.0.0-beta.1
+
+[TEST]
+pytest
+pytest-cov
+repobee
+codecov
+black
+flake8
+mypy
+
+[TEST:python_version < "3.7"]
+types-dataclasses
