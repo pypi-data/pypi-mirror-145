@@ -1,0 +1,11 @@
+numpy>=1.15
+jax>=0.3.0
+tqdm
+
+[cpu]
+jaxlib>=0.3.0
+brainpylib>=0.0.4
+
+[cuda]
+jaxlib>=0.3.0
+brainpylib>=0.0.4
