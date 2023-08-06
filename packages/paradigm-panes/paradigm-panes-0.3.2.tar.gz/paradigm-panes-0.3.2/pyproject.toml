@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "paradigm-panes"
+version = "0.3.2"
+description = "Paradigm panes meant to provide layout specification to be reused elsewhere."
+authors = ["Uladzimir Bondarau <bondarau@ualberta.ca>"] # TODO
+maintainers = []
+license = "Apache License v2.0"
+readme = "README.md"
+homepage = "https://github.com/UAlbertaALTLab/paradigm-panes"
+repository = "https://github.com/UAlbertaALTLab/paradigm-panes"
+keywords = ["paradigm", "panes"]
+classifiers = []
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+more-itertools = "~=8.7.0"
+hfst-optimized-lookup = "~=0.0.13"
+typing-extensions = "~=3.7"
+pathlib = "*"
+
+# extra
+# sudo apt-get install -y hfst
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
