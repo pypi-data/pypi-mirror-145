@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: projectkiwi
+Version: 0.1.1
+Summary: Python tools for project-kiwi.org
+Home-page: https://github.com/michaelthoreau/projectkiwi
+Author: Michael Thoreau
+Author-email: michael@project-kiwi.org
+License: MIT
+Download-URL: https://github.com/michaelthoreau/projectkiwi/archive/refs/tags/v0.1.1.tar.gz
+Keywords: GIS,ML,OTHERBUZZWORDS
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# project-kiwi
+
+Tools to interact with project-kiwi.org
+
+---
+
+### Installation
+```Bash
+pip install project kiwi
+```
+
+--- 
+
+### Getting Started
+```Python
+import projectkiwi
+
+conn = projectkiwi.connector("****api_key****")
+
+conn.getImagery()
+
+# Result:
+# [{'id': 'fff907e728f7', 'project': '85c5eb85e76d', 'name': 'example', 'url': 'https://project-kiwi-tiles.s3.amazonaws.com/fff907e728f7/{z}/{x}/{y}', 'ref': 'False', 'status': 'live', 'invert_y': 1}]
+```
+
