@@ -1,0 +1,38 @@
+#!python
+# This file is placed in the Public Domain.
+
+
+"bot daemon"
+
+import os, sys ; sys.path.insert(0, os.getcwd())
+
+
+from okr import Config, wait
+from oth import launch
+
+
+from bot.irc import IRC
+from bot.irc import Config as IRCConfig
+from bot.rss import Fetcher
+
+Config.name = "BOTD"
+Config.workdir = "/var/lib/botd/"
+
+
+IRCConfig.channel = "#botd"
+IRCConfig.nick = "botd"
+IRCConfig.realname = "24/7 channel daemon"
+IRCConfig.username = "botd"
+
+
+import bot.all
+
+def main():
+    i = IRC()
+    launch(i.start)
+    f = Fetcher()
+    f.start()
+    wait()
+
+
+main()
