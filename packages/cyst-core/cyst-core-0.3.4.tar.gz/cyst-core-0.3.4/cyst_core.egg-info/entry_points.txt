@@ -1,0 +1,6 @@
+[cyst.models]
+cyst = cyst_models.cyst.main:action_interpreter_description
+meta = cyst_models.meta.main:action_interpreter_description
+
+[cyst.services]
+scripted_actor = cyst_services.scripted_actor.main:service_description
