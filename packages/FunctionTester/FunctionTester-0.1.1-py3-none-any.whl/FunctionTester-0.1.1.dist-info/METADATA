@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: FunctionTester
+Version: 0.1.1
+Summary: A python library that allows you to easily test functions in your code
+Home-page: https://github.com/Fort-P/functiontester
+Author: Fort-P
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# Function Tester
+A python library that allows you to easily test functions in your code
+
+## Authors
+- [Fort-P](https://github.com/fort-p)
+
+## Installation
+Install with pip:
+```powershell
+pip install functiontester
+```
+
+## Usage
+Import the code at the top of your file:
+```python
+from functiontester.functiontester import testCode
+```
+
+
