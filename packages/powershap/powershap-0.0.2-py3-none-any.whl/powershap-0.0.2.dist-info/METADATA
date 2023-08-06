@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: powershap
+Version: 0.0.2
+Summary: Feature selection using statistical significance of shap values
+License: MIT
+Author: Jarne Verhaeghe, Jeroen Van Der Donckt
+Requires-Python: >=3.8,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: catboost (>=1.0.5,<2.0.0)
+Requires-Dist: numpy (>=1.22.3,<2.0.0)
+Requires-Dist: pandas (>=1.4.1,<2.0.0)
+Requires-Dist: shap (>=0.40.0,<0.41.0)
+Requires-Dist: sklearn (>=0.0,<0.1)
