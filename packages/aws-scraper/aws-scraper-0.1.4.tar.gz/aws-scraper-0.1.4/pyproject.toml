@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "aws-scraper"
+version = "0.1.4"
+description = "A Python utility for submitting and running scraping jobs in parallel on AWS ECS Fargate."
+authors = ["Nick Hand <nick.hand@phila.gov>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+loguru = "^0.5.3"
+python-dotenv = "^0.19.2"
+aiobotocore = "^2.1.0"
+s3fs = "^2022.1.0"
+boto3 = "<2"
+pandas = "^1.4.1"
+selenium = "^4.1.3"
+webdriver-manager = "^3.5.3"
+tryagain = "^1.0"
+selenium-stealth = "^1.0.6"
+simplejson = "^3.17.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^21.12b0"
+isort = "^5.10.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+aws-scraper = "aws_scraper.__main__:cli"
