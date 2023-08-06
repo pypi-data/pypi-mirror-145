@@ -1,0 +1,51 @@
+[build-system]
+requires = [
+    "setuptools>=36.2.1", # environment markers
+    "setuptools_scm",
+    "wheel",
+]
+
+[tool.setuptools_scm]
+write_to = "src/tensorwaves/version.py"
+
+[tool.black]
+exclude = '''
+/(
+    .*\.egg-info
+    | .*build
+    | \.eggs
+    | \.git
+    | \.pytest_cache
+    | \.tox
+    | \.venv
+    | \.vscode
+    | dist
+)/
+'''
+include = '\.pyi?$'
+line-length = 79
+preview = true
+target-version = [
+    "py36",
+    "py37",
+    "py38",
+    "py39",
+]
+
+[tool.isort]
+profile = "black"
+src_paths = [
+    "src",
+    "tests",
+]
+line_length = 79
+
+[tool.nbqa.addopts]
+flake8 = [
+    "--extend-ignore=E402,F821",
+]
+
+[tool.nbqa.skip_celltags]
+flake8 = [
+    "skip-flake8",
+]
