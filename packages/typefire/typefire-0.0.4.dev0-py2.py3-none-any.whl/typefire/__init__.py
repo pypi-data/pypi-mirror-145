@@ -1,0 +1,1 @@
+from .typefire import Switch, Agreement, TypeFire, typefire, composed, typeswitch, likefire
