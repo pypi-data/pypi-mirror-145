@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: avroSchemaToCsvConvertor
+Version: 0.1.3
+Summary: Convert Avro schema to CSV.
+Home-page: UNKNOWN
+Author: Nalin Das
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# avroSchemaToCsvConvertor
+
+[![License:MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/nalindas9/avro-schema-to-csv/blob/master/LICENSE)
+
+avroSchemaToCsvConvertor is a utility to convert from Avro schema to CSV.
+
+## Dependencies
+- avro-python3==1.9.1
+- pycodestyle==2.8.0
+
+## How to Run
+1. Import avroSchemaToCsv
+2. Use function as so - `avroSchemaToCsv.avscToCsv(file=<path to .avsc Avro Schema files>)`
+
+## Current Limitations
+
+In the Avro Schema file (.avsc), the format should be like this - 
+
+`
+{
+    "type": "record",
+    "name": "SampleRecord",
+    "namespace": "com.example.avro",
+    "doc": "An autonomous vehicle (AV) debug record.",
+    "fields": [
+        {
+            "name": "id",
+            "doc": "The unique identifier for the record.",
+            "type": "int"
+        },
+        {
+            "name": "timestamp",
+            "doc": "Timestamp (datetime) of the record.",
+            "type": "long"
+        }
+    ]
+}
+`
+
