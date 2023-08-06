@@ -1,0 +1,79 @@
+Metadata-Version: 2.1
+Name: pyqtmd
+Version: 0.1.1
+Summary: A qt markdown viewer because why doesn't a good gui md viewer exist already ffs
+Home-page: https://git.tristans.cloud/tristan/pyqtmd
+Author: MyBeansAreBaked
+Author-email: tristan@tristans.cloud
+License: GPLv3+
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: pyqt5
+Requires-Dist: requests
+
+# pyqtmd
+
+A very simple markdown viewer made with python and qt. ripped out of my lyberry-qt app.
+
+## Installation
+
+First [install a recent version of Python 3](https://www.python.org/downloads/).
+
+Then install the package with pip:
+
+```
+pip install pyqtmd
+```
+
+Get more info from Python about installing packages:
+<https://packaging.python.org/en/latest/tutorials/installing-packages/>
+
+## Usage
+
+```
+pyqtmd ( FILENAME | FILE_URL )
+```
+
+## Help
+
+Join my space on matrix! I am happy to help you getting started, and I welcome feedback and discussion.
+
+General Matrix Space: [#bean-machine:tristans.cloud](https://matrix.to/#/#bean-machine:tristans.cloud)
+
+## Contributing
+
+Sharing my project is the best way to support it! If you can contribute code too, that would be awesome!
+
+Otherwise, I would greatly appreciate any donations with Monero (XMR), a secure and private currency for the internet:
+
+openalias: tristans.cloud
+
+87uvs847voZW4QzLqCb3prfSeTjVgxo8PKCAGmeYQTKYd58yU7FD9PJY2eoDXW7y4jNozfHW3bq6SC6MZaB6Qgcz9Cib1DS
+
+You can also support my channel on LBRY, where I sometimes post updates: <lbry://@MyBeansAreBaked:b>
+
+I put more frequent low effort updates on <lbry://@MyBeansAreBaking#3>
+
+## License
+
+Copyright (C) 2022 MyBeansAreBaked
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
