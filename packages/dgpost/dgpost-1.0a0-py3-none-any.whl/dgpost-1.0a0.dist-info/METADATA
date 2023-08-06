@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: dgpost
+Version: 1.0a0
+Summary: datagram postprocessing tools
+Home-page: https://github.com/dgbowl/dgpost
+Author: Peter Kraus
+Author-email: peter@tondon.de
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/dgbowl/dgpost/issues
+Project-URL: Documentation, https://dgbowl.github.io/dgpost/
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: uncertainties
+Requires-Dist: pandas
+Requires-Dist: openpyxl
+Requires-Dist: pint (>=0.18)
+Requires-Dist: chemicals (>=1.0.0)
+Requires-Dist: rdkit-pypi (>=2021)
+Requires-Dist: yadg (>=4.1.0rc1)
+Requires-Dist: dgbowl-schemas (>=102)
+Requires-Dist: matplotlib (>=3.5.0)
+Provides-Extra: docs
+Requires-Dist: sphinx ; extra == 'docs'
+Requires-Dist: sphinx-rtd-theme ; extra == 'docs'
+Requires-Dist: sphinx-autodoc-typehints ; extra == 'docs'
+Requires-Dist: autodoc-pydantic ; extra == 'docs'
+Provides-Extra: testing
+Requires-Dist: pytest ; extra == 'testing'
+Requires-Dist: Pillow ; extra == 'testing'
+
+# dgpost: datagram postprocessing tools
+
+Set of tools to post-process instrument data in `datagram` format.
+
+### Capabilities:
+
+### Features:
+
+### Contributors:
+- [Peter Kraus](http://github.com/PeterKraus)
+- [Nicolas Vetsch](http://github.com/vetschn)
+- [Ulrich Sauter](http://github.com/ileu)
+
+
