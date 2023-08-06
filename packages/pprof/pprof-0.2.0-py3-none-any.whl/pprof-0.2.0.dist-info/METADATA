@@ -1,0 +1,87 @@
+Metadata-Version: 2.1
+Name: pprof
+Version: 0.2.0
+Summary: Python profiling tool
+License: MIT
+Keywords: timing,timer,profiling,profiler,perfomance
+Author: mirecl
+Author-email: grazhdankov@gmail.com
+Requires-Python: >=3.6.2,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development
+Requires-Dist: line-profiler (>=3.5.1,<4.0.0)
+Project-URL: Documentation, https://github.com/mirecl/pprof
+Project-URL: Homepage, https://github.com/mirecl/pprof
+Project-URL: Repository, https://github.com/mirecl/pprof
+Description-Content-Type: text/markdown
+
+<p align="center">
+  <a href="https://github.com/mirecl/pprof"><img src="https://github.com/mirecl/pprof/blob/master/examples/report.png?raw=true" alt="pprof"></a>
+</p>
+
+[![PyPI](https://img.shields.io/pypi/v/pprof)](https://pypi.org/project/pprof/)
+[![Downloads](https://pepy.tech/badge/pprof)](https://pepy.tech/project/pprof)
+[![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![PyPI - License](https://img.shields.io/pypi/l/pprof)](https://github.com/mirecl/pprof/blob/master/LICENSE)
+[![Tests](https://github.com/mirecl/pprof/actions/workflows/test.yaml/badge.svg)](https://github.com/mirecl/pprof/actions/workflows/test.yaml)
+[![codecov](https://codecov.io/gh/mirecl/pprof/branch/master/graph/badge.svg?token=UFDA1JG40A)](https://codecov.io/gh/mirecl/pprof)
+[![python version](https://img.shields.io/pypi/pyversions/pprof.svg)](https://pypi.org/project/pprof/)
+
+## Installing
+
+```sh
+pip install pprof
+```
+
+or
+
+```sh
+poetry add pprof
+```
+
+## A Simple Example
+
+```python
+from time import sleep
+from typing import List
+from pprof import cpu
+
+cpu.auto_report()
+
+def foo():
+    sleep(1.01)
+    return 3
+
+@cpu
+def run(arr: List) -> float:
+    tmp = []
+    cnt = foo()
+
+    # comment action #1
+    for row in arr:
+        # comment action #2 row 1
+        # comment action #2 row 2
+        if row % cnt == 0:
+            tmp.append(row)
+    result = (sum(tmp * 200) + len(arr)) / len(tmp)  # comment action #3
+    return result
+
+run(list(range(250000)))
+```
+
+```sh
+(venv) python run.py
+```
+
+## Links
+
++ **line_profiler** (<https://github.com/pyutils/line_profiler>)
+
