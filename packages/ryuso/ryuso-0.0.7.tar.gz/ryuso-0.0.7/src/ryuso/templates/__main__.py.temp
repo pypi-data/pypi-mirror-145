@@ -1,0 +1,73 @@
+import sys
+import json
+import getopt
+from pathlib import Path
+
+from ryuso import Orchestrator, OrchestratorServer, Hook
+import {{ pkg_name }}
+
+
+# Fetch the RYU spec
+spec_path = Path(__file__).parent / 'ryu_spec.json'
+
+with open(spec_path, 'r') as ryu_spec_f:
+    ryu_spec = json.load(ryu_spec_f)
+
+# Create the orchestrator
+orch = Orchestrator(ryu_spec)
+
+for h in ryu_spec.get('hooks'):
+    qual_name = ryu_spec.get('hooks').get(h).get('reference')
+
+    prev_obj = {{ pkg_name }}
+    for obj_name in qual_name.split('.')[1:]:
+        prev_obj = getattr(prev_obj, obj_name)
+
+    f = prev_obj
+
+    new_hook = Hook(f, qual_name)
+
+    # Now we need to fetch and attach the rectifiers
+    for rect in ryu_spec.get('hooks').get(h).get('rectifiers'):
+        rect_base_name = rect.split('.')[1]
+        rect_qual_name = ryu_spec.get('hooks').get(rect_base_name).get('reference')
+
+        # Fetch the actual function object that runs the rectifier
+        prev_obj = {{ pkg_name }}
+        for obj_name in rect_qual_name.split('.')[1:]:
+            prev_obj = getattr(prev_obj, obj_name)
+
+        f = prev_obj
+
+        rect_hook = Hook(f, rect_qual_name)
+
+        new_hook.add_rectifier(rect_hook)
+
+    # Then finally add the dependencies
+    for dep in ryu_spec.get('hooks').get(h).get('dependencies'):
+        dep_base_name = dep.split('.')[1]
+        dep_qual_name = ryu_spec.get('hooks').get(dep_base_name).get('reference')
+
+        # Fetch the actual function object that runs the dependency
+        prev_obj = {{ pkg_name }}
+        for obj_name in dep_qual_name.split('.')[1:]:
+            prev_obj = getattr(prev_obj, obj_name)
+
+        f = prev_obj
+
+        dep_hook = Hook(f, dep_qual_name)
+
+        new_hook.add_dependency(dep_hook)
+
+    orch.add_hook(new_hook)
+
+port = 60856
+
+opts, args = getopt.getopt(sys.argv[1:], 'p:', [])
+
+for opt, arg in opts:
+    if opt == '-p':
+        port = int(arg)
+
+server = OrchestratorServer(orch, port=port)
+server.start_server()
