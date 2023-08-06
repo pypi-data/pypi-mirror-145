@@ -1,0 +1,85 @@
+[tool.poetry]
+name = "gobjectservicelib"
+version = "1.4.0"
+description = "GObject mainloop implementation of https://gitlab.com/advian-oss/python-datastreamservicelib"
+authors = ["Eero af Heurlin <eero.afheurlin@advian.fi>"]
+homepage = "https://gitlab.com/advian-oss/python-gobjectservicelib/"
+repository = "https://gitlab.com/advian-oss/python-gobjectservicelib/"
+license = "MIT"
+readme = "README.rst"
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  |  __pycache__
+)
+'''
+[tool.pytest.ini_options]
+asyncio_mode="auto"
+junit_family="xunit2"
+addopts="--cov=gobjectservicelib --cov-fail-under=65 --cov-branch"
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pylint.similarities]
+min-similarity-lines = 8
+ignore-imports = true
+
+[tool.coverage.run]
+omit = ["tests/*"]
+branch = true
+
+[tool.pylint.messages_control]
+disable=["fixme", "W1202", "C0209"]
+
+[tool.poetry.dependencies]
+python = ">=3.6.2,<4.0"  # fresh black requires at least 3.6.2 so we can't use ^3.6
+datastreamservicelib = { version = "^1.12" }
+# 3.6 dataclasses backport comes from the datastreamservicelib -> datastreamcorelib deps
+PyGObject = "^3.42"  # Generally you will want the operating system to take care of this package
+
+[tool.poetry.dev-dependencies]
+pytest = [
+    { version = "^7.1", python="^3.7" },
+    { version = "^6.2", python="~3.6" }
+]
+coverage = [
+    { version = "^6.3", extras = ["toml"], python="^3.7" },
+    { version = "^5.4", extras = ["toml"], python="~3.6" }
+]
+pytest-cov = "^3.0"
+pylint = "^2.13"
+black = "^22.3"
+bandit = [
+    { version = "^1.7", extras = ["toml"], python="^3.7" },
+    { version = "=1.7.1", extras = ["toml"], python="~3.6" }
+]
+mypy = "^0.942"
+pre-commit = "^2.17"
+pytest-asyncio = [
+    { version="^0.18", python="^3.7" },
+    { version="^0.14", python="~3.6" }
+]
+bump2version = "^1.0"
+PyGObject-stubs = "^0.0.8"
+detect-secrets = "^1.2"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
