@@ -1,0 +1,33 @@
+<!--| includes/sidebar/user_menu.html |-->
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+{% if current_user and current_user.is_authenticated %}
+    <div class="image">
+        <img src="{{ current_user.email | gravatar }}" class="img-circle elevation-2" alt="User Image">
+    </div>
+    {% if config.THEME_PROFILE_ENDPOINT %}
+    <div class="info" title="See Profile" >
+        <a href="{{ url_for(config.THEME_PROFILE_ENDPOINT) }}" class="d-block">
+            {{ current_user }}
+        </a>
+    </div>
+    {% else %}
+    <div class="info" title="Sign Out">
+        <a href="{{ url_for(config.THEME_LOGOUT_ENDPOINT) }}" class="d-block">
+            {{ current_user }}
+        </a>
+    </div>
+    {% endif %}
+{% else %}
+{% if config.THEME_LOGIN_ENDPOINT %}
+    <div class="image">
+        <img src="{{ 'Unkown' | gravatar }}" class="img-circle elevation-2" alt="User Image">
+    </div>
+    <div class="info" title="Sign In">
+        <a href="{{ url_for(config.THEME_LOGIN_ENDPOINT) }}" class="d-block">
+            Sign In
+        </a>
+    </div>
+{% endif %}
+{% endif %}
+</div>
+<!--|END|-->

@@ -1,0 +1,12 @@
+<!--| includes/footer.html |-->
+<footer class="main-footer{{ config.THEME_FOOTER_SMALL_TEXT|if_true(' text-sm') }}">
+
+{% if config.APP_VERSION %}
+<div class="float-right d-none d-sm-block">
+  <b>Version</b> {{config.APP_VERSION}}
+</div>
+{%endif%}
+<strong>Copyright &copy; 2014-2021 <a href="{{request.url_root}}" target="_blank">{{config.THEME_BRAND_HTML|safe}}</a>.</strong>
+All rights reserved.
+</footer>
+<!--|END|-->

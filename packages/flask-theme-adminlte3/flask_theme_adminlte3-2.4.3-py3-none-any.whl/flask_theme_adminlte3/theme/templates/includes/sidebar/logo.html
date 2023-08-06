@@ -1,0 +1,22 @@
+
+{% set url = config.THEME_BRAND_IMAGE_URL %}
+
+{% if url and not url.startswith('http') and not url.startswith('/') %}
+  {# its a relative URL, treat it relative to static #}
+  {% set url = url_for('static', filename=config.THEME_BRAND_IMAGE_URL) %}
+{% endif %}
+
+{% set class_attr='brand-link' %}
+{% set home_page = config.get('HOME_PAGE','/') %}
+
+<a href="{{ home_page }}" class="{{ class_attr }}
+  {{ config.THEME_LOGO_COLOR|if_true|navbar_skin }}
+  {{ config.THEME_BRAND_SMALL_TEXT|if_true(' text-sm') }}">
+    {%if url%}
+  <img src="{{ url }}"
+       alt="{{ config.THEME_BRAND_IMAGE_ALT }}"
+       class="{{ config.THEME_BRAND_IMAGE_CLASS }}"
+       style="{{ config.THEME_BRAND_IMAGE_STYLE }}">
+    {%endif%}
+  <span class="brand-text font-weight-light">{{ config.THEME_BRAND_HTML | safe}}</span>
+</a>
