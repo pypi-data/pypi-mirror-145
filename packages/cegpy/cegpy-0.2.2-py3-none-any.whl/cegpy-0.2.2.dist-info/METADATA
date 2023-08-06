@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: cegpy
+Version: 0.2.2
+Summary: Package for creating, manipulating, and analysing Chain Event Graphs. Built on networkx.
+Home-page: https://github.com/g-walley/cegpy
+Author: Gareth Walley
+Author-email: gareth@walley.me
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/g-walley/cegpy/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas (>=1.3.0)
+Requires-Dist: pydotplus (>=2.0.2)
+Requires-Dist: pathlib (>=1.0.1)
+Requires-Dist: ipython (>=7.25.0)
+Requires-Dist: openpyxl (>=3.0.7)
+Requires-Dist: scipy (>=1.7.0)
+Requires-Dist: colorutils (>=0.3.0)
+Requires-Dist: networkx (>=2.6.3)
+
+# cegpy
+
+Python Library for creating and manipulating Chain Event Graphs from panda dataframes.
+
+Currently in development, documentation to be updated once first version is completed.
+
+
