@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "csdatatools"
+version = "0.1.0-alpha.1"
+description = "Children's Services Data Tools - Utilities for cleaning and normalising CS data by Social Finance"
+authors = ["Kaj Siebert <kaj@k-si.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+lxml = "^4.8.0"
+more-itertools = "^8.12.0"
+sfdata-stream-parser = "0.3.0"
+xmlschema = "^1.10.0"
+click = "^8.1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
