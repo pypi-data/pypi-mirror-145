@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: cubicweb-prometheus
+Version: 0.2.0
+Summary: Exporting prometheus metrics
+Home-page: https://forge.extranet.logilab.fr/cubicweb/cubes/prometheus
+Author: LOGILAB S.A. (Paris, FRANCE)
+Author-email: contact@logilab.fr
+License: LGPL
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: CubicWeb
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: JavaScript
+Description-Content-Type: text/markdown
+
+Summary
+-------
+
+Exporting prometheus metrics.
+
+This cube provides a pyramid tween that will, when active, collect the metrics
+configured in the settings pyramid.ini and expose them on route `/metrics`.
+
+Configuration
+-------------
+
+Include the metrics you want in pyramid.ini:
+
+```
+prometheus.pyramid.http_requests = True
+prometheus.pyramid.current_requests = True
+prometheus.pyramid.slow_routes = True
+prometheus.pyramid.time_routes = True
+prometheus.pyramid.count_routes = True
+
+prometheus.cubicweb.sql.time = Histogram
+prometheus.cubicweb.rql.time = Histogram
+...
+```
+
+
+
