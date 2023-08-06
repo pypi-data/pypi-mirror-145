@@ -1,0 +1,11 @@
+---
+name: 'Prometheus'
+desc: 'Prometheus'
+prefix: ''
+class: ''
+routes:
+    /webhook/prometheus:
+        desc: 'Receive Prometheus alerts'
+        class: PrometheusRoute
+        authorization_policy:
+            write: [any]
