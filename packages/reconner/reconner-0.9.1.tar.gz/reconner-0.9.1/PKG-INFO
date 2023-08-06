@@ -1,0 +1,32 @@
+Metadata-Version: 2.1
+Name: reconner
+Version: 0.9.1
+Summary: Recon NER, Debug and correct annotated Named Entity Recognition (NER) data for inconsitencies and get insights on improving the quality of your data.
+Home-page: https://kabirkhan.github.io
+Author: Kabir Khan
+Author-email: kabirkhan1137@outlook.com
+Requires-Python: >=3.8,<3.11
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Typing :: Typed
+Provides-Extra: all
+Provides-Extra: doc
+Requires-Dist: numpy (>=1.22.0,<1.23.0)
+Requires-Dist: scipy (>=1.8.0,<1.9)
+Requires-Dist: spacy (>=3.2.0,<3.4.0)
+Requires-Dist: xxhash (>=3.0.0,<3.1.0)
+Project-URL: Repository, https://github.com/kabirkhan/recon
