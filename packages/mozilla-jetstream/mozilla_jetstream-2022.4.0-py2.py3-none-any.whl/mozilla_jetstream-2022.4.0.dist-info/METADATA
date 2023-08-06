@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: mozilla-jetstream
+Version: 2022.4.0
+Summary: Runs a thing that analyzes experiments
+Home-page: https://github.com/mozilla/jetstream
+Author: Mozilla Corporation
+Author-email: fx-data-dev@mozilla.org
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: attrs
+Requires-Dist: cattrs
+Requires-Dist: Click
+Requires-Dist: dask[distributed]
+Requires-Dist: GitPython
+Requires-Dist: google-cloud-bigquery
+Requires-Dist: google-cloud-bigquery-storage
+Requires-Dist: google-cloud-container
+Requires-Dist: google-cloud-storage
+Requires-Dist: grpcio
+Requires-Dist: jinja2
+Requires-Dist: mozanalysis
+Requires-Dist: pyarrow
+Requires-Dist: pytz
+Requires-Dist: PyYAML
+Requires-Dist: requests
+Requires-Dist: smart-open[gcs]
+Requires-Dist: statsmodels
+Requires-Dist: toml
+Provides-Extra: testing
+Requires-Dist: coverage ; extra == 'testing'
+Requires-Dist: isort ; extra == 'testing'
+Requires-Dist: jsonschema ; extra == 'testing'
+Requires-Dist: pytest ; extra == 'testing'
+Requires-Dist: pytest-black ; extra == 'testing'
+Requires-Dist: pytest-cov ; extra == 'testing'
+Requires-Dist: pytest-flake8 ; extra == 'testing'
+Requires-Dist: mypy ; extra == 'testing'
+Requires-Dist: types-futures ; extra == 'testing'
+Requires-Dist: types-pkg-resources ; extra == 'testing'
+Requires-Dist: types-protobuf ; extra == 'testing'
+Requires-Dist: types-pytz ; extra == 'testing'
+Requires-Dist: types-PyYAML ; extra == 'testing'
+Requires-Dist: types-requests ; extra == 'testing'
+Requires-Dist: types-six ; extra == 'testing'
+Requires-Dist: types-toml ; extra == 'testing'
+
+[![CircleCI](https://circleci.com/gh/mozilla/jetstream/tree/main.svg?style=shield)](https://circleci.com/gh/mozilla/jetstream/tree/main)
+
+# jetstream
+
+Automated experiment analysis.
+
+Jetstream automatically calculates metrics and applies statistical treatments to collected experiment data for different analysis windows.
+
+For more information, see [the documentation](https://experimenter.info/jetstream/jetstream/).
+
+## Running tests
+
+Make sure `tox` is installed globally (run `brew install tox` or `pip install tox`).
+
+Then, run `tox` from wherever you cloned this repository. (You don't need to install jetstream first.)
+
+To run integration tests, run `tox -e py38-integration`.
+
+
+## Local installation
+
+```bash
+# Create and activate a python virtual environment.
+python3 -m venv venv/
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+
