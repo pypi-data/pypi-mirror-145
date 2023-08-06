@@ -1,0 +1,66 @@
+[tool.black]
+line-length = 120
+py38 = true
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.poetry]
+name = "uval"
+version = "0.1.7"
+description = "This python package is meant to provide a high level interface to facilitate the evaluation of object detection and segmentation algorithms that operate on 3D volumetric data."
+authors = ["Geert Heilmann <geert.heilmann@smithsdetection.com>"]
+maintainers = ["Faraz Saeedan <faraz.saeedan@smithsdetection.com>","Mohammad Razavi <mohammad.razavi@smithsdetection.com>","Geert Heilmann <geert.heilmann@smithsdetection.com>"]
+license = "GPL-3.0-only"
+readme = "README.md"
+repository = "https://gitlab.com/smithsdetection/uval"
+documentation = "https://uval.readthedocs.io/"
+keywords = ["evaluation","object detection","3D","x-ray","CT"]
+
+[tool.poetry.scripts]
+uval = "uval.main:main"
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^8.0.4"
+h5py = "^3.6.0"
+"ruamel.yaml" = "^0.17.21"
+numpy = "^1.22.3"
+Pillow = "^9.0.1"
+tqdm = "^4.63.0"
+pandas = "^1.4.1"
+matplotlib = "^3.5.1"
+scikit-learn = "^1.0.2"
+Jinja2 = "^3.0.3"
+fvcore = "^0.1.5"
+ipykernel = "^6.9.2"
+rich = "^12.0.1"
+pipx = "^1.0.0"
+randomname = "^0.1.5"
+sphinx-rtd-theme = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+pytest-cov = "^3.0.0"
+coverage = "^6.3.2"
+black = "^22.1.0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+pep8-naming = "^0.12.1"
+pre-commit = "^2.17.0"
+poetry2setup = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
