@@ -1,0 +1,24 @@
+name: lbsntransform
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - pip
+  - emoji>=0.5.1
+  - numpy
+  - pycodestyle
+  - protobuf
+  - psycopg2
+  - pylint
+  - shapely
+  - requests
+  - bitarray
+  - nltk
+  - regex
+  - pip:
+    - pylint-exit
+    - ppygis3
+    - lbsnstructure>=0.5.1
+    - geos
+

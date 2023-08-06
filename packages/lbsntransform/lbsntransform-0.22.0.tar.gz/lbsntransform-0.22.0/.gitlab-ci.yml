@@ -1,0 +1,125 @@
+variables:
+  # relative namespace of project
+  REL_NAMESPACE: "/lbsntransform/"
+
+stages:
+  - test
+  - mkdocs
+  - deploy
+
+test:
+  image: registry.gitlab.vgiscience.org/tud_ifk/miniconda-cidefault
+  before_script:
+    # initialize conda shell
+    - conda init bash
+    - source ~/.bashrc
+    # activate default ci_env from registry image
+    # contains anybadge
+    - conda activate ci_env
+    - conda env create -f environment_dev.yml
+    # activate tagmaps env
+    # with --stack environments
+    - conda activate lbsntransform --stack
+    # install additional packages
+    # needed in lbsntransform ci job
+    - pip install git+https://gitlab-ci-token:${CI_JOB_TOKEN}@gitlab.vgiscience.de/tud_ifk/argdown.git
+    - conda install pylint bitarray
+    - pip install pdoc3 pylint-exit
+  stage: test
+  script:
+    # test dev install
+    - pip install -e . --no-dependencies
+    # argparse to markdown conversion
+    # for mkdocs args page
+    - python docs/argparse/argparse_doc.py
+    - argdown --truncate-help parse_args.py > docs/argparse/args.md
+    - python docs/argparse/argparse_after_doc.py
+    # to enable all warnings during ci doc generation
+    # - export PYTHONWARNINGS='error::UserWarning'
+    - python -c "import nltk;nltk.download('stopwords')"
+    - pdoc --config show_type_annotations=True --template-dir docs/apidoc/ --html --output-dir docs/api/ lbsntransform
+    # create badges
+    - pylint --output-format=text lbsntransform | tee pylint.txt || pylint-exit $?
+    - score=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' pylint.txt)
+    - echo "Pylint score was $score"
+    - anybadge -l pylint --value=$score --file=pylint.svg 2=red 4=orange 9=yellow 10=green
+    - anybadge -l pipeline --value=passing --file=pipeline.svg passing=green failing=red
+    - version_var=$(sed -n "s#__version__ =\s*'\(.*\)'#\1#p" lbsntransform/version.py)
+    - echo "Version for badges $version_var"
+    - anybadge -l version --value="${version_var}" --file=pypi.svg --color=green
+    - anybadge -l mkdocs --value="Documentation" --file=documentation.svg --color=green
+  artifacts:
+    paths:
+      # quote because * is a
+      # special character in YAML
+      - '*.svg'
+      - docs/argparse/args.md
+      - docs/api/
+  rules:
+    # always execute on master or ci-test
+    - if:
+        $CI_COMMIT_BRANCH == "master" ||
+        $CI_COMMIT_BRANCH == "ci-test"
+
+mkdocs:
+  stage: mkdocs
+  image: registry.gitlab.vgiscience.org/tud_ifk/alpine-mkdocs
+  script:
+    - mkdir -p "public/${REL_NAMESPACE}"
+    - cp *.svg "public/${REL_NAMESPACE}"
+    # build docs
+    - mkdocs build
+    - mv site "public/${REL_NAMESPACE}"
+    # copy pdoc3 compiled API ref
+    - mv docs/api/lbsntransform/* "public/${REL_NAMESPACE}/site/api/"
+    - mv public/lbsntransform/site "public/${REL_NAMESPACE}/docs"
+  artifacts:
+    name: pages
+    paths:
+    - public
+  rules:
+    # always execute on master or ci-test
+    - if:
+        $CI_COMMIT_BRANCH == "master" ||
+        $CI_COMMIT_BRANCH == "ci-test"
+
+rsync:
+  stage: deploy
+  image: registry.gitlab.vgiscience.org/lbsn/lbsn.vgiscience.org/rsync-ssh:latest
+  before_script:
+  - eval $(ssh-agent -s)
+  - echo "${SSH_PRIVKEY}" | ssh-add -
+  - mkdir -p ~/.ssh
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+  - ssh "${STAGING_SERVER}" mkdir -p "${STAGING_PATH}${REL_NAMESPACE}"
+  - rsync -avu -zz --no-perms --omit-dir-times --del --chown=www-data:www-data --chmod=D775,F664 "public/${REL_NAMESPACE}" "${STAGING_SERVER}:${STAGING_PATH}${REL_NAMESPACE}"
+  rules:
+    # always execute on master or ci-test
+    - if: $CI_COMMIT_BRANCH == "master"
+
+docker-image-branch:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull --tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+  rules:
+    - if: $CI_COMMIT_BRANCH != "master"
+
+docker-image:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - docker build --pull --tag "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE"
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master"
