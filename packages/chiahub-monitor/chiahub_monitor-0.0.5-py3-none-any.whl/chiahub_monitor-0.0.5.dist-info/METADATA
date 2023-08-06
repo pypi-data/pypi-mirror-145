@@ -1,0 +1,51 @@
+Metadata-Version: 2.1
+Name: chiahub-monitor
+Version: 0.0.5
+Summary: A monitoring utility for chia blockchain
+Home-page: https://github.com/yan74/chiahub-monitor
+Author: Yan Hackl-Feldbusch
+Author-email: yan@cryptico.io
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/yan74/chiahub-monitor/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: setuptools (~=57.0.0)
+Requires-Dist: aiohttp (~=3.7.4)
+Requires-Dist: PyYAML (~=5.4.1)
+
+# chiahub-monitor
+
+The official chia pooling protocol allows a pool to only **estimate** the plot size for a
+farmer. That's why we created a small helper program that connects to your farmer and retrieves the actual number of
+plots you have. We don't use this to calculate your share (still using the official pooling protocol) but it enables the
+pool to warn you if your actual plot size differs a lot from your estimated plot size. We believe in transparency that's why
+we made this little helper open-source
+
+## Installation
+
+1. Install Python3
+2. Create and activate a new environment
+
+```
+python3 -m venv venv
+source venv/bin/activate (Windows: venv\Scripts\activate.bat)
+```
+
+3. Install chiahub-monitor
+```
+pip install chiahub-monitor
+```
+
+3. Start with
+
+```
+python -m chiahub_monitor.main
+```
+
+Chiahub-monitor will automatically find your chia config.yaml and use it to connect to the local running farmer. Upon
+retrieving plots known to the farmer it will upload that list to your farmers profile at chiahub.io.
+
