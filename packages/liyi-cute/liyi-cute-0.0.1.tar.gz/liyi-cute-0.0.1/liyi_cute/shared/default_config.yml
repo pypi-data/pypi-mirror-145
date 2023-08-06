@@ -1,0 +1,11 @@
+# Configuration for the Rasa NLU components.
+# https://rasa.com/docs/rasa/components
+language: en
+
+importers:
+  path: "data"
+
+processor:
+  max_len: 512
+  tokenizer: LanguageModelTokenizer
+
