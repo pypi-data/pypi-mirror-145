@@ -1,0 +1,85 @@
+[tool.poetry]
+name = "tf-transformers"
+version = "v2.0.0"
+description = "NLP with Transformer based models on Tensorflow 2.0"
+authors = ["Sarath R Nair <s4sarath@gmail.com>"]
+maintainers = ["Sarath R Nair <s4sarath@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = ""
+repository = ""
+documentation = ""
+keywords = [
+    "tensorflow",
+    "transformers",
+    "nlp",
+    "keras",
+    "bert",
+    "deep learning"
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+tqdm = "^4.62.3"
+transformers = "^4.15.0"
+sentencepiece = "^0.1.96"
+absl-py = "^1.0.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pylint = "^2.6.0"
+coverage = {extras = ["toml"], version = "^5.5"}
+pytest-cov = "^2.11.1"
+python-semantic-release = "^7.23.0"
+
+[tool.semantic_release]
+version_variable = [
+    "src/tf_transformers/__init__.py:__version__",
+    "tests/test_tf_transformers.py:version"
+]
+version_toml = [
+    "pyproject.toml:tool.poetry.version"
+]
+version_pattern = [
+    "README.md:version: v{version}"
+
+    ]
+branch = "main"
+dist_path = "dist/"
+upload_to_pypi = false
+remove_dist = false
+build_command = "pip install poetry && poetry build"
+
+[build-system]
+requires = ["poetry-core>=1.0.4"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+skip-string-normalization = true
+line-length = 120
+target-version = ['py37']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | tutorials
+  )/
+  | foo.py           # also separately exclude a file named foo.py in
+                     # the root of the project
+)
+'''
