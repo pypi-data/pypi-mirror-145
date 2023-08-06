@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: STPN
+Version: 0.0.4
+Summary: Library for Spatiotemporal Pattern Network
+Home-page: https://github.com/tsyong98/STPN
+Author: Sin Yong Tan
+Author-email: tsyong98@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/tsyong98/STPN/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# STPN
+This is the official homepage for SpatioTemporal Pattern Network (STPN) PyPi releases
+
+## STPN Flowchart
+
+
+
+## To-do
+- [x] Multi-target
+- [ ] Complete demo
+- [ ] Link STPN Papers
+- [ ] Release new version in PyPi
+- [ ] Doc explaining different discetization
+- [ ] Doc explaining depth, tau and complexity
+- [ ] Flowchart explaining STPN process
+- [ ] Use UCI dataset as demo
+- [ ] Discuss get_close_match() in util.py
+- [ ] Test pd.crosstab() missing states when constructing TM
+- [ ] Modify inference() to optionally return probabilities
+- [ ] Update eval_() for multiclass results and add results saving option
+
+
+
+
+
+
+## Author
+- [Sin Yong Tan](https://github.com/tsyong98)
+
