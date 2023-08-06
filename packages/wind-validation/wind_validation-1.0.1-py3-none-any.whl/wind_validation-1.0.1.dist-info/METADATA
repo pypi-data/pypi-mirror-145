@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: wind-validation
+Version: 1.0.1
+Summary: A tool for validating wind data
+Author: DTU Wind Energy
+License: BSD-3-Clause
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: jinja2 (>=3)
+Requires-Dist: matplotlib (>=3)
+Requires-Dist: numpy (>=1.21)
+Requires-Dist: pandas (>=1)
+Requires-Dist: plotly (>=5.1)
+Requires-Dist: scipy (>=1)
+Requires-Dist: windkit
+Requires-Dist: xarray
+Requires-Dist: xskillscore
+
+Wind Validation
+===============
+
+Wind validation is a python package that makes it easy to validate
+wind measurements for wind resource applications. The data structures
+are time series, histograms and Weibull distributions and adopted from
+and defined in [windkit](https://docs-wasp.ramtt.xyz/windkit/wind_climates.html).
+
+![image1](https://docs-wasp.ramtt.xyz/wind_validation/_images/diagram.png)
+
+The available validation options are shown in the figure above. There is an information reduction by going through the diagram from left to right. A time series is the most complete data structure to represent a wind climate and contains data series of wind speed and wind direction at one or many points. A histogram does not have a time dimension but instead represent the wind climate by describing frequency distributions for bins along the dimensions wind speed (`wsbin`) and wind direction (`sector`).
+
+When measuring over a long period the frequency of occurrence usually follows a
+[Weibull distribution](https://en.wikipedia.org/wiki/Weibull_distribution),
+particularly when looking at a single sector. It is therefore common
+practice in the wind energy industry to use the Weibull *A* and *k* parameters to denote the wind resource at a certain location. For computational efficiency wind resource assessment often operate on histograms or Weibull distributions.
+There is a filtering step, which is generally needed to make the two time series
+similar in space and time. Some examples of spatially aligning data
+are given in the [examples](https://docs-wasp.ramtt.xyz/wind_validation/examples.html)
+
+## Installation
+The package is installable by conda or pip. For more information, read the complete [installation instructions](https://docs-wasp.ramtt.xyz/wind_validation/installation.html)
+
+Please note that we only support Python >= 3.8!
+
+## Documentation
+
+You can find the full documentation https://docs-wasp.ramtt.xyz/wind_validation/. There is also a [WAsP Python tools](https://www.wasptechnical.dk/forum/forum/19-wasp-python-tools/) forum, where you can ask questions or help other users.
+
+
+
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/sorttable@1.0.2"></script>
+    <title>{{ title }}</title>
+    {{ md_css }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.css">
+</head>
+
+<body>
+    <!-- TODO: might reuse this general template -->
+
+    <div id="parent" class="js-toc-content">
+        <div id="sidebar">
+            <h3>Table of Contents</h3>
+            <div class="js-toc"></div>
+            <br>
+        </div>
+        <div id="main-content">
+            {{ html_content }}
+        </div>
+    </div>
+
+    {{ js_content }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+    <script>
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.js-toc',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.js-toc-content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h2',
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: true,
+        });
+    </script>
+</body>
+
+</html>
