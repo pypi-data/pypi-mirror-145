@@ -1,0 +1,50 @@
+[project]
+name = "branthebuilder"
+dynamic = ["version", "description"]
+authors = [{name = "Endre Márk Borza", email = "endremborza@gmail.com"}]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "typer",
+    "flit",
+    "jupyter",
+    "black",
+    "sphinx",
+    "pytest",
+    "pytest-cov",
+    "codecov",
+    "toml",
+    "flake8",
+    "isort",
+    "pandoc",
+    "cookiecutter",
+]
+
+[project.optional-dependencies]
+test = []
+doc = [
+    "sphinx",
+    "graphviz",
+    "pandoc",
+    "sphinx-automodapi",
+    "sphinx-rtd-theme",
+    "myst-parser",
+    "pygments",
+    "jupyter",
+    "toml"
+]
+
+[project.urls]
+Homepage = "https://github.com/endremborza/branthebuilder"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.branb]
+line-length = 88
+
+
+[project.scripts]
+branb = "branthebuilder:app"
