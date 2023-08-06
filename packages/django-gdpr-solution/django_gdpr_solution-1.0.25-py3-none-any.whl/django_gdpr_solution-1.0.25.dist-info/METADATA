@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: django-gdpr-solution
+Version: 1.0.25
+Summary: Add GDPR compliant cookie consent to your website.
+Home-page: https://github.com/lorenzomonte-it/django-gdpr-solution
+Author: Lorenzo
+License: MIT
+Project-URL: Homepage, https://github.com/lorenzomonte-it/django-gdpr-solution
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Framework :: Django
+Classifier: Framework :: Wagtail
+Description-Content-Type: text/markdown
+Requires-Dist: Django (>=1.11.0)
+
+# django-gdpr-solution
+
+
+### 📖 Dependencies
+[CookieConsentJs](https://github.com/orestbida/cookieconsent/tree/v2.8.0) repository (orestbida/cookieconsent) for gdpr compliant cookie consent.
+For customize the cookie banner and all its functionality, go to the official repo.
+
+------------------
+
+## 🚀️ Installation
+- Install app with pip
+```console
+$ pip install django-gdpr-solution
+```
+
+
+- Add app on INSTALLED APPS
+```bash
+INSTALLED_APPS = [
+    ...
+    'gdpr_solution',
+    ...
+]
+```
+
+
+- Include urls of app 
+```bash
+urlpatterns = [
+    ...
+    path('django-gdpr-solution/', include('gdpr_solution.urls')),
+    ...
+]
+```
+`--> [OPTIONAL] You can change the name path of the url`
+
+
+- Complete the installation with migrations
+```console
+$ ./manage.py makemigrations
+$ ./manage.py migrate
+```
+
+
+- Last step is to load gdpr_solution and add templatetag on top of head tag on template
+```
+{% load gdpr_solution %}
+
+<head>
+    {% gdpr_cookie_banner %}
+    ...
+    ...
+</head>
+```
+
