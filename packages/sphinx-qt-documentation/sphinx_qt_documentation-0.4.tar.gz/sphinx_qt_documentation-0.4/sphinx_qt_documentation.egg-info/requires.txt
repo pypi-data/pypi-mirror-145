@@ -1,0 +1,14 @@
+docutils
+sphinx
+
+[dev]
+pre-commit
+
+[lint]
+black
+flake8
+pylint
+
+[test]
+pytest>=3.0.0
+pytest-cov
