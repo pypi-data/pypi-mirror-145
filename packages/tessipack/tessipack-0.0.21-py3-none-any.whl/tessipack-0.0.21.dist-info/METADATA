@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: tessipack
+Version: 0.0.21
+Summary: Interactive package for analysing TESS FFI
+Home-page: https://github.com/dinilbose/tessipack
+Author: Dinil Bose P
+Author-email: dinilbose@gmail.com
+License: gpl-3.0
+Download-URL: https://github.com/dinilbose/ismrpy/archive/0.2.9.tar.gz
+Keywords: FFI,TESS
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+Requires-Dist: pandas (>=0.13.1)
+Requires-Dist: bokeh (==1.4.0)
+Requires-Dist: photutils (>=0.7)
+Requires-Dist: tqdm
+Requires-Dist: lightkurve (>=1.1.0)
+Requires-Dist: astropy
+Requires-Dist: astroquery (<=0.4.2)
+Requires-Dist: scipy
+Requires-Dist: setuptools (>=41.0.0)
+Requires-Dist: tensorflow (<=1.14.0)
+Requires-Dist: vaneska
+Requires-Dist: beautifulsoup4 (>=4.6.0)
+Requires-Dist: tess-point (>=0.3.6)
+
+# tessipack
+
+tessipack is an interactive software to analyse TESS FFI images.
+See [documentation](https://tessipack.readthedocs.io/en/latest/) for installation and usage instructions.
+
+
