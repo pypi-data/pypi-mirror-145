@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: hackhan-hello
+Version: 0.0.3
+Summary: A hello-world package
+Home-page: https://github.com/hack-han/hello-pypi
+Author: hackhan
+Author-email: hackhan@xxx.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/hack-han/hello-pypi/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# hackhan_hello
+This ia a hello-world project for PyPI.
+
+# Quickstart
+Install:
+    pip install hackhan-hello
+
+Usage:
+    # example.py
+    from hello_pypi import hello
+    print(hello.hello())
+    print(hello.hello_you('jack'))
+
+
