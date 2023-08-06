@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: lektor-groupby
+Version: 0.9.5
+Summary: Cluster arbitrary records with field attribute keyword.
+Home-page: https://github.com/relikd/lektor-groupby-plugin
+Author: relikd
+License: MIT
+Description: # Lektor Plugin: groupby
+        
+        A generic grouping / clustering plugin.
+        Can be used for tagging or similar tasks.
+        The grouping algorithm is performed once.
+        Contrary to, at least, cubic runtime if doing the same with Pad queries.
+        
+        Install this plugin or modify your Lektor project file:
+        
+        ```sh
+        lektor plugin add groupby
+        ```
+        
+        Optionally, enable a basic config:
+        
+        ```ini
+        [tags]
+        root = /
+        slug = tag/{group}.html
+        template = tag.html
+        split = ' '
+        ```
+        
+        Or dive into plugin development...
+        
+        For usage examples, refer to the [examples](https://github.com/relikd/lektor-groupby-plugin/tree/main/examples) readme.
+        
+Keywords: lektor,plugin,groupby,grouping,cluster
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Environment :: Plugins
+Classifier: Framework :: Lektor
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
