@@ -1,0 +1,463 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-04 13:59+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "There was a problem converting com.sun.star.util.DateTime to datetime."
+msgstr ""
+
+msgid "Developed by Mariano Muñoz 2020-{}"
+msgstr ""
+
+#, python-brace-format
+msgid "I couldn't detect unogenerator process info ({attempt}/{attempts} attempts)"
+msgstr ""
+
+msgid "Have you launched unogenerator instances?. Please run unogenerator_start"
+msgstr ""
+
+msgid "I couldn't detect unogenerator instances"
+msgstr ""
+
+msgid "Error deleting: {} -> {}"
+msgstr ""
+
+msgid "Create example files using unogenerator module"
+msgstr ""
+
+msgid "Debug program information"
+msgstr ""
+
+msgid "All process took {}"
+msgstr ""
+
+#, python-brace-format
+msgid "Launching concurrent demo with {num_instances} workers to a daemon with {num_instances} instances from {first_port} port"
+msgstr ""
+
+msgid "UnoGenerator ODS example"
+msgstr ""
+
+msgid "Demo with ODS class"
+msgstr ""
+
+#, python-brace-format
+msgid "This file have been generated with UnoGenerator-{__version__}. You can see UnoGenerator main page in http://github.com/turulomio/unogenerator"
+msgstr ""
+
+msgid "Style name"
+msgstr ""
+
+msgid "Date and time"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Integer"
+msgstr ""
+
+msgid "Euros"
+msgstr ""
+
+msgid "Dollars"
+msgstr ""
+
+msgid "Percentage"
+msgstr ""
+
+msgid "Number with 2 decimals"
+msgstr ""
+
+msgid "Number with 6 decimals"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Boolean"
+msgstr ""
+
+msgid "unogenerator_example_{language}{suffix}.ods took {datetime.now()-doc.statistics.init} in {port}"
+msgstr ""
+
+msgid "UnoGenerator documentation"
+msgstr ""
+
+msgid "Unogenerator python module documentation"
+msgstr ""
+
+#, python-brace-format
+msgid "Version: {__version__}"
+msgstr ""
+
+msgid "Introduction"
+msgstr ""
+
+msgid "UnoGenerator uses Libreoffice UNO API python bindings to generate documents."
+msgstr ""
+
+msgid "So in order to use, you need to launch a --headless libreoffice instance."
+msgstr ""
+
+msgid "We recomend to launch then easily with 'unogenerator_start' script."
+msgstr ""
+
+msgid "UnoGenerator has standard templates to help you with edition, although you can use your own templates."
+msgstr ""
+
+msgid "You can edit this one or create your own."
+msgstr ""
+
+msgid "This document has been created with 'standard.odt' files that you can find inside this python module."
+msgstr ""
+
+msgid "Installation"
+msgstr ""
+
+msgid "You can use pip to install this python package:"
+msgstr ""
+
+msgid "ODT 'Hello World' example"
+msgstr ""
+
+msgid "This is a Hello World example. You get the example in odt, docx and pdf formats:"
+msgstr ""
+
+msgid "ODT"
+msgstr ""
+
+msgid "ODT files can be quickly generated with UnoGenerator."
+msgstr ""
+
+msgid "There is a predefined template in code called 'standard.odt' to help you with edition."
+msgstr ""
+
+msgid "Calling the ODT constructor"
+msgstr ""
+
+msgid "You can call ODT constructor in this ways:"
+msgstr ""
+
+msgid "ODT with standard template (Recomended)."
+msgstr ""
+
+msgid "There is a predefined template in code called 'standard.odt', inside this python module, to help you with edition, although you can use your own ones."
+msgstr ""
+
+msgid "With this mode you can create new documents"
+msgstr ""
+
+msgid "ODT with template or file (Recomended)."
+msgstr ""
+
+msgid "With this mode you can read your files to overwrite them or use your file as a new template to create new documents"
+msgstr ""
+
+msgid "ODT without template."
+msgstr ""
+
+msgid "With this mode you can write your files with Libreoffice default styles."
+msgstr ""
+
+msgid "If you want to create new ones, you should write them using Libreoffice API code"
+msgstr ""
+
+msgid "Styles"
+msgstr ""
+
+msgid "To call default Libreoffice paragraph styles you must use their english name."
+msgstr ""
+
+msgid "You can see their names with this method:"
+msgstr ""
+
+msgid "Tables"
+msgstr ""
+
+msgid "Concept"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "This is a text"
+msgstr ""
+
+msgid "Good"
+msgstr ""
+
+msgid "Datetime"
+msgstr ""
+
+msgid "Float"
+msgstr ""
+
+msgid "Currency"
+msgstr ""
+
+msgid "We can create tables with diferent font sizes and formats:"
+msgstr ""
+
+msgid "Lists and numbered lists"
+msgstr ""
+
+msgid "Simple list"
+msgstr ""
+
+msgid "Hyperlinks"
+msgstr ""
+
+msgid "If you want to go to Google, click on this "
+msgstr ""
+
+msgid "That's all folks!"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Este es un ejemplo de imagen as char: "
+msgstr ""
+
+msgid "This is an image loaded from bytes: "
+msgstr ""
+
+msgid "As you can see, I can reuse it one hundred times. File size will not be increased because I used reference names."
+msgstr ""
+
+msgid "The next paragraph is generated with the illustration method"
+msgstr ""
+
+msgid "Search and Replace"
+msgstr ""
+
+msgid "Below this paragraph is a paragraph with a % REPLACEME % (Without white spaces) text and it's going to be replaced after all document is been generated"
+msgstr ""
+
+msgid "ODS"
+msgstr ""
+
+msgid "ODS 'Hello World' example"
+msgstr ""
+
+msgid "This is a Hello World example. You'll get the example in ods, xlsx and pdf formats:"
+msgstr ""
+
+msgid "This paragraph was set at the end of the code after a find and replace command."
+msgstr ""
+
+msgid "This paragraph was set after replacement."
+msgstr ""
+
+msgid "This paragraph was set after a page break."
+msgstr ""
+
+msgid "This paragraph was set after a page break with Landscape style."
+msgstr ""
+
+msgid "This is a pair of brackets ()."
+msgstr ""
+
+msgid "NOW)("
+msgstr ""
+
+msgid "This is a set of symbols: .,:;?ºª\\_-/()."
+msgstr ""
+
+msgid "unogenerator_documentation_{language}{suffix}.odt took {datetime.now()-doc.statistics.init} in {port}"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "No data to show"
+msgstr ""
+
+msgid "Launches libreoffice server to run unogenerator code"
+msgstr ""
+
+#, python-brace-format
+msgid "It seems that server is already launched in port {first_port}"
+msgstr ""
+
+#, python-brace-format
+msgid "Preparing {instances} libreoffice server instances from port {first_port}:"
+msgstr ""
+
+msgid "You can see instances output in /var/log/unogenerator"
+msgstr ""
+
+#, python-brace-format
+msgid "  - Launched LibreOffice headless instance in port {port}"
+msgstr ""
+
+msgid "Stops libreoffice server to finish using unogenerator code"
+msgstr ""
+
+msgid "  - Server was stopped killing {s.stdout.decode('UTF-8').strip()} processes"
+msgstr ""
+
+msgid "Monitor unogenerator statistics"
+msgstr ""
+
+msgid "Instances: {green(instances)}"
+msgstr ""
+
+msgid "Ports used: {green(list2string(list_ports))}"
+msgstr ""
+
+msgid "CPU used: {green(list2string(cpu_nums))}"
+msgstr ""
+
+#, python-brace-format
+msgid "Memory used: {str_mem_total}"
+msgstr ""
+
+msgid "Max memory recommended: {green(naturalsize(max_mem_recommended))}"
+msgstr ""
+
+#, python-brace-format
+msgid "CPU percentage: {str_cpu_percentage}"
+msgstr ""
+
+#, python-brace-format
+msgid "Connections: {str_connections}"
+msgstr ""
+
+msgid "Restarting server"
+msgstr ""
+
+msgid "Server restarted"
+msgstr ""
+
+msgid "Server wasn't restarted because it's busy"
+msgstr ""
+
+msgid "Server doesn't need to be restarted"
+msgstr ""
+
+msgid "Number"
+msgstr ""
+
+msgid "Total seconds"
+msgstr ""
+
+msgid "Average"
+msgstr ""
+
+msgid "Cells"
+msgstr ""
+
+msgid "Merged cells"
+msgstr ""
+
+msgid "Cell gets"
+msgstr ""
+
+msgid "Sheet creations"
+msgstr ""
+
+msgid "Sheet freezes"
+msgstr ""
+
+msgid "Generate a po and pot file from ODF"
+msgstr ""
+
+msgid "Language to translate from. Example codes: es, fr, en, md"
+msgstr ""
+
+msgid "Language to translate to. Example codes: es, fr, en, md"
+msgstr ""
+
+msgid "Files to translate. You can set several files."
+msgstr ""
+
+msgid "Output directory with results and catalogues. Default: ./unogenerator_translation/"
+msgstr ""
+
+msgid "Undetected strings to append to translation. Default: []"
+msgstr ""
+
+msgid "Sets a fake translation to all strings. Default: False"
+msgstr ""
+
+msgid "Creates translated file in pdf. Default: False"
+msgstr ""
+
+msgid "Perhaps a merged string"
+msgstr ""
+
+msgid "Extracting strings from:"
+msgstr ""
+
+msgid "Only ODT files are supported"
+msgstr ""
+
+#, python-brace-format
+msgid "Generating {pot}"
+msgstr ""
+
+msgid "   - {len(set_strings)} different strings detected"
+msgstr ""
+
+msgid "Translating files to:"
+msgstr ""
+
+#, python-brace-format
+msgid "Changing port {old} to {self.loserver_port} {i} times"
+msgstr ""
+
+msgid "This process died"
+msgstr ""
+
+msgid "You can't use the same filename as your template or you will overwrite it."
+msgstr ""
+
+msgid "You can force it, setting overwrite_template paramter to True"
+msgstr ""
+
+msgid "Document hasn't been saved."
+msgstr ""
+
+msgid "Filename extension must be 'odt'."
+msgstr ""
+
+msgid "Filename extension must be 'pdf'."
+msgstr ""
+
+msgid "Filename extension must be 'docx'."
+msgstr ""
+
+#, python-brace-format
+msgid "ERROR: You can't create '{name}' sheet, because it already exists."
+msgstr ""
+
+msgid "addListOfRowsWithStyle has {rows} rows and {columns } columns. Nothing to write. Ignoring..."
+msgstr ""
+
+msgid "Filename extension must be 'ods'."
+msgstr ""
+
+msgid "Filename extension must be 'xlsx'."
+msgstr ""
