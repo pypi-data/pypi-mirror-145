@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=54", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra --doctest-modules"
+testpaths = [
+    "crf_pos",
+    "main.py",
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py37', 'py38', 'py39']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+src_paths = ["crf_pos"]
+line_length = 120
+force_sort_within_sections = "False"
+order_by_type = "False"
