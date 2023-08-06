@@ -1,0 +1,24 @@
+[package]
+name = "pymangle"
+license = "MIT"
+homepage = "https://mangle.ga"
+repository = "https://github.com/matheusfillipe/mangle" 
+documentation = "https://github.com/matheusfillipe/mangle" 
+readme = "../README.md"
+keywords = ["exolang", "python", "pyo3", "repl"]
+categories = ["exolang", "repl", "python"]
+description = "Python lib for mangle. Exolang that can take any utf8 text as valid code and return some result out of it"
+version = "0.0.4"
+edition = "2021"
+authors = ["mattf <matheusfillipeag@gmail.com>"]
+exclude = [".env/*"]
+
+
+[lib]
+name = "mangle"
+path = "src/lib.rs"
+crate-type = ["lib", "cdylib"]
+
+[dependencies]
+mangle = { path = "local_dependencies/mangle" }
+pyo3 = { version = "0.16.1", features = ["extension-module"] }
