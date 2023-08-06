@@ -1,0 +1,125 @@
+{% extends "seevooplay/base.html" %}
+{% load i18n static %}
+
+{% block title %}{{ event.name }} {{ block.super }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'seevooplay/css/event.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>{{ event.name }}</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if event.image %}
+        <div class="event-image">
+            <img alt="" src="{{ event.image.url }}">
+        </div>
+    {% endif %}
+
+    <p class="greeting">
+        {% if guest %}
+            Greetings, {{ guest.name }}!
+        {% else %}
+            Greetings, admin {{ request.user.username }}!
+            <a class="admin-link" href="{% url 'admin:seevooplay_event_change' event.id %}">Edit this event</a>
+        {% endif %}
+    </p>
+    <p>
+        You are invited to the following event. Please <a href="#rsvp">RSVP</a> below!
+    </p>
+
+    <table class="event-details">
+        <tr><td>Event:</td><td>{{ event.name }}</td></tr>
+        <tr>
+            <td>
+                {% if event.host2_name %}Hosts:{% else %}Host:{% endif %}
+            </td>
+            <td>
+                {% if event.host1_email %}<a href="mailto:{{ event.host1_email }}">{% endif %}{{ event.host1_name }}{% if event.host1_email %}</a>{% endif %}
+                {% if event.host2_name %}and {% if event.host2_email %}<a href="mailto:{{ event.host2_email }}">{% endif %}{{ event.host2_name }}{% if event.host2_email %}</a>{% endif %}{% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>When:</td>
+            <td>{{ date_display }}</td>
+        </tr>
+        <tr>
+            <td>Where:</td>
+            <td>
+                {{ event.location_name }}<br>
+                <a target="_blank" href="https://duckduckgo.com/?q={{ event.location_address|urlencode }}&iaxm=maps">{{ event.location_address }}</a>
+            </td>
+        </tr>
+        <tr><td>Details:</td><td>{{ event.details|safe }}</td></tr>
+    </table>
+
+    <div class="bottom-container">
+        <div id="rsvp" class="reply-form">
+            <h2>RSVP</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="field-wrapper {{ field.html_name }}">
+                        {{ field.errors }}
+                        {% if field.name != 'extra_guests' %}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {% endif %}
+                        {% if field.name == 'extra_guests' %}I will bring {% endif %}
+                        {{ field }}
+                        {% if field.name == 'extra_guests' %} people with me.{% endif %}
+                        {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <input type="submit" value="post my reply">
+            </form>
+        </div>
+
+        <div class="replies">
+            <h2>Replies</h2>
+            <div class="replycount">
+                <div class="yes">Yes: {{ yes_replies_count }}</div>
+                <div class="maybe">Maybe: {{ maybe_replies_count }}</div>
+                <div class="no">No: {{ no_replies.count }}</div>
+                <div class="none">No Reply: {{ none_replies.count }}</div>
+            </div>
+            {% if yes_replies_count > 0 %}
+                <h3 class="yes">Yes</h3>
+                {% with yes_replies as replies %}
+                    {% include 'seevooplay/event_replies.html' %}
+                {% endwith %}
+            {% endif %}
+            {% if maybe_replies_count > 0 %}
+                <h3 class="maybe">Maybe</h3>
+                {% with maybe_replies as replies %}
+                    {% include 'seevooplay/event_replies.html' %}
+                {% endwith %}
+            {% endif %}
+            {% if no_replies.count > 0 %}
+                <h3 class="no">No</h3>
+                {% with no_replies as replies %}
+                    {% include 'seevooplay/event_replies.html' %}
+                {% endwith %}
+            {% endif %}
+            {% if none_replies.count > 0 %}
+                <h3>No reply</h3>
+                {% with none_replies as replies %}
+                    {% include 'seevooplay/event_replies.html' %}
+                {% endwith %}
+            {% endif %}
+        </div>
+    </div>
+    <footer>
+        powered by
+        <a target="_blank" href="https://github.com/matthewn/seevooplay">Seevooplay</a>
+    </footer>
+{% endblock %}
