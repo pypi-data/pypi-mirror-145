@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: ayx-python-sdk
+Version: 2.0.1
+Summary: The Python plugin SDK for Alteryx Designer.
+Home-page: UNKNOWN
+Author: Alteryx, Inc.
+Author-email: support@alteryx.com
+License: UNKNOWN
+Platform: Windows
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Requires-Python: >=3.8, <3.9
+Description-Content-Type: text/markdown
+Requires-Dist: Click (==7.1.2)
+Requires-Dist: grpcio (==1.39.0)
+Requires-Dist: numpy (>=1.17.1)
+Requires-Dist: deprecation (==2.1.0)
+Requires-Dist: pyarrow (==5.0.0)
+Requires-Dist: pandas (==1.1.0)
+Requires-Dist: protobuf (>=3.5.0.post1)
+Requires-Dist: psutil (==5.6.3)
+Requires-Dist: pydantic (==1.8.2)
+Requires-Dist: python-dateutil (==2.8.1)
+Requires-Dist: pytz (==2020.1)
+Requires-Dist: shiv (==0.3.1)
+Requires-Dist: six (==1.14.0)
+Requires-Dist: typer (==0.3.1)
+Requires-Dist: xmltodict (==0.12.0)
+Requires-Dist: requests (==2.24.0)
+Requires-Dist: PyPAC (==0.15.0)
+
+# Alteryx Python SDK (ayx-python-sdk)
+
+## Overview
+The Alteryx Python SDK can be used to extend the functionality of Alteryx Designer
+by allowing developers to create custom tools/plugins.
+
+
+## Licensing
+
+https://www.alteryx.com/alteryx-sdk-and-api-license-agreement
+
+
