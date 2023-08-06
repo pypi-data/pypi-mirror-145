@@ -1,0 +1,22 @@
+# Scenario 1
+# Sets layouts and fst resources and creates a paradigm of amisk, which is NA paradigm
+# need to update resources directories based on your system
+
+import paradigm_panes
+pg = paradigm_panes.PaneGenerator()
+pg.set_layouts_dir("/home/ubuntu/cmput401/paradigm-panes/paradigm_panes/resources/layouts")
+pg.set_fst_filepath("/home/ubuntu/cmput401/paradigm-panes/paradigm_panes/resources/fst/crk-strict-generator.hfstol")
+lemma = "amisk"
+p_type = "NA"
+pg.generate_pane(lemma, p_type)
+
+# Scenario 2
+# Sets layouts, fst, and tag style (or default) and returns all_analysis_template_tags from a paradigm manager
+
+import paradigm_panes
+pg = paradigm_panes.PaneGenerator()
+pg.set_layouts_dir("/home/ubuntu/cmput401/paradigm-panes/paradigm_panes/resources/layouts")
+pg.set_fst_filepath("/home/ubuntu/cmput401/paradigm-panes/paradigm_panes/resources/fst/crk-strict-generator.hfstol")
+pg.set_tag_style("Bracket")
+p_type = "NA"
+pg.all_analysis_template_tags(p_type)
