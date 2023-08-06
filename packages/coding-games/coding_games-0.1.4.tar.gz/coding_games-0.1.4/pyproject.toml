@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "coding_games"
+version = "0.1.4"
+description = "The library to quickly create 2D games based on the game Dizzy - Prince of Yolkfolk.. The documentation can be found here: https://mirka-filcakova.gitbook.io/dizzy/"
+authors = ["Gabriel Adamcak <adamcakg@gmail.com>", "Miroslava Filcakova <mirka.filcakova@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pgzero = "^1.2.1"
+PyTMX = "^3.31"
+matches = "^0.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
