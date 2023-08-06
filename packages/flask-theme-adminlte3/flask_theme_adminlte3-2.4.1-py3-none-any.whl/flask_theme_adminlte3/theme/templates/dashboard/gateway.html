@@ -1,0 +1,45 @@
+{% macro list_mounts(gateway) %}
+<div class="card collapsed-card">
+    <div class="card-header border-transparent">
+      <h3 class="card-title">Mounted Apps at {{gateway.url() or '/'}}</h3>
+      <div class="card-tools">
+        {{ card_tools(self) }}
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table m-0">
+          <thead>
+            <tr>
+              <th>Prefix</th>
+              <th>FLASK_APP</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              {% for prefix,import_name in gateway.mounts.items() if prefix not in config.DEFAULT_APPS %}
+            <tr>
+              <td><a href="{{gateway.url(prefix)}}">{{prefix}}</a></td>
+              <td>{{import_name}}</td>
+              <td>{%-if prefix not in gateway.instances-%}
+                Not Created Yet
+                    {%-else-%}
+                {{ gateway.instances[prefix].name }}
+                    {%-endif-%}
+              </td>
+
+            </tr>
+              {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.card-body -->
+    <!-- /.card-footer -->
+  </div>
+
+{%endmacro%}

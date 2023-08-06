@@ -1,0 +1,61 @@
+{% extends config.BASE_TEMPLATE %}
+{% from "security/_macros.html" import render_field, render_field_with_errors, render_checkbox_field %}
+
+{% block page_title %}{{ _('Login') }}{% endblock %}
+
+{% block body_class %}login-page{% endblock %}
+
+{% block _body %}
+{% include "security/_messages.html" %}
+
+<div class="login-box">
+  {% block page_header %}
+  <div class="login-logo">
+    {% block logo %}
+    {% if logo_url %}
+    <a href="{{ logo_url }}">{{ config.THEME_BRAND_HTML|safe }}</a>
+    {% else %}
+    <div>{{ config.THEME_BRAND_HTML|safe }}</div>
+    {% endif %}
+    {% endblock logo %}
+  </div>
+  {% endblock %}
+
+  <div class="card">
+    <div class="card-body login-card-body">
+      {% block page_content %}
+
+      <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+        {% if login_user_form %}
+        {{ login_user_form.hidden_tag() }}
+        {{ render_field_with_errors(login_user_form.email,"fa fa-at") }}
+        {{ render_field_with_errors(login_user_form.password, "fas fa-lock") }}
+        {{ render_field(login_user_form.next) }}
+        <div class="row">
+          <div class="col-8">
+            {{ render_checkbox_field(login_user_form.remember) }}
+          </div>
+          <div class="col-4">
+            {{ render_field(login_user_form.submit, class="btn btn-primary btn-block") }}
+          </div>
+        </div>
+        {% endif %}
+      </form>
+
+      {% if security.recoverable %}
+      <p class="mb-1">
+        <a href="{{ url_for_security('forgot_password') }}">I forgot my password</a>
+      </p>
+      {% endif %}
+      {% if security.registerable %}
+      <p class="mb-0">
+        <a href="{{ url_for_security('register') }}" class="text-center">Register a new membership</a>
+      </p>
+      {% endif %}
+
+      {% endblock page_content %}
+      {% block custom_links %}{% endblock custom_links %}
+    </div>
+  </div>
+</div>
+{% endblock %}

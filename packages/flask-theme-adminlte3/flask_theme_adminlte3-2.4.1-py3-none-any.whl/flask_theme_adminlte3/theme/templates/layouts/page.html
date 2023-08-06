@@ -1,0 +1,67 @@
+{% extends 'layouts/base.html' %}
+{% from 'macros/breadcrumb.html' import breadcrumb %}
+{% from 'macros/flash.html' import flash_messages %}
+
+{%- block body_class -%}
+{{super()}}
+{{ config.THEME_LAYOUT_BOXED|if_true('layout-boxed') }}
+{{ config.THEME_LAYOUT_COLLAPSED_SIDEBAR|if_true('sidebar-collapse') }}
+{{ config.THEME_LAYOUT_SIDEBAR_MINI|if_true('sidebar-mini') }}
+{{ config.THEME_LAYOUT_FIXED_FOOTER|if_true('layout-footer-fixed') }}
+{{ config.THEME_LAYOUT_FIXED_SIDEBAR|if_true('layout-fixed') }}
+{{ config.THEME_LAYOUT_FIXED_TOP_NAV|if_true('layout-navbar-fixed') }}
+{{ config.THEME_LAYOUT_TOP_NAV|if_true('layout-top-nav') }}
+{{ config.THEME_ACCENT_COLOR|if_true('accent-$value') }}
+{{ config.THEME_BODY_SMALL_TEXT|if_true('text-sm') }}
+{%- endblock -%}
+
+{% block _body %}
+{% include 'includes/preloader.html' %}
+{{super()}}
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper {% block content_class%}{%endblock%}" {% block content_attrs%}{%endblock%}>
+    {% block content_wrapper %}
+
+        {% block content_header %}    
+        <section class="content-header">
+            <div class="{% if config.THEME_LAYOUT_TOP_NAV %}container{% else %}container-fluid{% endif %}">
+                <div class="row mb-2">
+                    {% block page_header %}
+                    <div class="col-sm-6">
+                        <h1>{% block page_title %}{% endblock %}</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right" itemscope itemtype="http://schema.org/BreadcrumbList">
+                            {% block breadcrumbs %}
+                            {% set home_page = config.get('HOME_PAGE','/') %}
+                            {{ breadcrumb(title=home_page.title, url=home_page, icon='fas fa-home') }}
+                            {% endblock breadcrumbs %}
+                        </ol>
+                    </div>
+                    {% endblock%}
+                </div>
+            </div>
+        </section>
+        {% endblock content_header %}
+
+        {% block content_body %}
+        <section class="content">
+            <div class="{% if config.THEME_LAYOUT_TOP_NAV %}container{% else %}container-fluid{% endif %}">
+                {{ flash_messages(get_flashed_messages(with_categories=True)) }}  
+                              
+                {% block page_content %}{% endblock %}
+            </div>
+        </section>
+        {% endblock content_body %}
+        
+    {% endblock content_wrapper %}
+
+    {% if config.THEME_BACK_TO_TOP_ENABLED %}
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+    {% endif %}
+</div>
+{% endblock %}

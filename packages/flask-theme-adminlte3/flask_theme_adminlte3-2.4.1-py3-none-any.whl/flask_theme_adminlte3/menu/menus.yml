@@ -1,0 +1,44 @@
+sidebar:
+  - title: Main Menu
+    program_name: main_menu
+    items:
+    - title: Home
+      icon: fas fa-home
+      endpoint: onboard.device
+    - title: Wifi
+      icon: fas fa-wifi
+      endpoint: wifi.main
+      endpoint_kwargs:
+        route: /privacy
+    - title: Events
+      icon: fa fa-bell
+      endpoint: sse.events
+    - title: Chat
+      icon: fa fa-comments
+      endpoint: chat.root
+    - title: Version
+      icon: fas fa-map-signs
+      endpoint: version
+
+topbar: 
+  - title: Navigation Bar Menu
+    program_name: navbar_menu
+    items: 
+    - title: Roadmap
+      icon: fas fa-map-signs
+      endpoint: pages
+      endpoint_kwargs:
+        route: /roadmap
+
+  
+.second_sidebar:
+  - title: App Settings
+    program_name: second_sidebar
+    items:
+    - title: Pages
+      help: Manage Pages
+      icon: far fa-file-word
+      items:
+        - title: Add Page
+          endpoint: page.create_view
+          icon: fas fa-plus-square

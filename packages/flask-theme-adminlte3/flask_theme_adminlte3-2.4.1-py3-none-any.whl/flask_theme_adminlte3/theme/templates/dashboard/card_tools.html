@@ -1,0 +1,8 @@
+{% macro card_tools(s) %}
+{% if templates %}
+{%set edit_template = templates.editor_url(s) | replace('%2F','/') %}
+<button type="button" onclick="window.location.href='{{edit_template}}'" class="btn btn-tool" data-toggle="tooltip" data-placement="top" title="{{ templates.get_name(s) }}"><i class="far fa-file-code"></i></i></button>  
+{%endif%}      
+<button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+<button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i></button>
+{% endmacro %}
