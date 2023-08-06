@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+from typing import Tuple
+import sys
+import click
+import os
+import glob
+
+from docshund import Docshund
+
+
+def path_for(filename: str) -> str:
+    dirname = os.path.basename(os.path.dirname(filename))
+    if os.path.basename(filename).endswith("__init__.py"):
+        markdown_fname = dirname + "/" + dirname + ".md"
+    else:
+        markdown_fname = dirname + "/" + os.path.basename(filename) + ".md"
+
+    return markdown_fname
+
+
+@click.command()
+@click.argument("path", default=".")
+def main_cli(path: str):
+    """
+    Document a file or folder [PATH].
+    """
+    D = Docshund()
+    if os.path.isfile(path):
+        print(D.parse_document(open(path, "r").read()))
+    elif os.path.isdir(path):
+        for fn in glob.glob(path + "/**/*") + glob.glob(path + "/*"):
+            basename = os.path.basename(fn)
+            if basename.startswith(".") or basename.startswith("test"):
+                continue
+            if fn.endswith(".py"):
+                markdown_path = "docs/reference/" + path_for(fn)
+                if not os.path.exists(os.path.dirname(markdown_path)):
+                    os.makedirs(os.path.dirname(markdown_path))
+                with open(markdown_path, "w") as fh:
+                    fh.write(D.parse_document(open(fn, "r").read()))
+
+
+if __name__ == "__main__":
+    main_cli()
