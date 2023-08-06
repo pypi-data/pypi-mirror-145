@@ -1,0 +1,22 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - MLFields</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"/>
+</head>
+<nav>
+    <h1><a href="{{ url_for('projects.list') }}">MLFields</a></h1>
+    {% block nav %}{% endblock %}
+</nav>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    {% block content %}{% endblock %}
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.11.3/dataRender/datetime.js"></script>
+    {% block scripts %}{% endblock %}
+</section>
