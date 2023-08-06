@@ -1,0 +1,54 @@
+Metadata-Version: 2.1
+Name: galleries-qt
+Version: 0.4.3
+Summary: Qt implementation to manage galleries.
+Home-page: https://github.com/mnicolas94/galleries_qt
+Author: Miguel Nicolás-Díaz
+Author-email: miguelcok27@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: galleries (>=0.4.3)
+Requires-Dist: mnd-utils (>=0.1.7)
+Requires-Dist: mnd-qtutils
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: propsettings-qt (>=0.2.8)
+Requires-Dist: pyrulo-qt (>=0.3.6)
+Requires-Dist: PySide2
+
+# Galleries-qt
+
+Galleries-qt provides Qt widgets to create and manage images galleries through a user interface. The galleries are created with [galleries](https://github.com/mnicolas94/galleries) python package.
+
+# Installation
+
+`pip install galleries-qt`
+
+# Usage
+
+Galleries-qt provides two widgets. A galleries manager to create, update and delete galleries:
+
+```python
+from galleries_qt.galleries_manager import GalleriesManager
+
+widget = GalleriesManager()
+```
+
+and a combobox that allows to select from all galleries you have created
+
+```python
+from galleries_qt.galleries_combobox import GalleriesCombobox
+
+widget = GalleriesCombobox()
+```
+
+
+
