@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: cornflow-core
+Version: 0.0.1a8
+Summary: REST API backend components used by cornflow and other REST APIs
+Home-page: https://github.com/baobabsoluciones/cornflow
+Author: baobab soluciones
+Author-email: sistemas@baobabsoluciones.es
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 2 - Pre-Alpha
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst
+Requires-Dist: bcrypt
+Requires-Dist: cffi
+Requires-Dist: click
+Requires-Dist: Flask
+Requires-Dist: Flask-Bcrypt
+Requires-Dist: Flask-SQLAlchemy
+Requires-Dist: greenlet
+Requires-Dist: importlib-metadata
+Requires-Dist: itsdangerous
+Requires-Dist: Jinja2
+Requires-Dist: MarkupSafe
+Requires-Dist: marshmallow
+Requires-Dist: packaging
+Requires-Dist: pycparser
+Requires-Dist: pyparsing
+Requires-Dist: six
+Requires-Dist: SQLAlchemy (==1.3.21)
+Requires-Dist: typing-extensions
+Requires-Dist: webargs
+Requires-Dist: Werkzeug
+Requires-Dist: zipp
+
+UNKNOWN
+
+
