@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+import scrapy
+from scrapy_newrabbit import Engine
+from $project_name.items import ${ProjectName}Item
+
+
+class $classname(Engine):
+    name = '$name'
+    priority_queue = True
+    proxy = False
+    allow_status_code = []
+    custom_settings = {}
+    timeout = 60
+
+    def __init__(self, *args, **kwargs):
+        super($classname, self).__init__(*args, **kwargs)
+        # self.start_urls = ["$domain"]
+        self.post_header = {}
+        self.post_data = {}
+
+    def start_requests(self):
+        url = "$domain"
+        yield scrapy.Request(
+            url=url,
+            dont_filter=True,
+            callback=self.parse,
+        )
+
+    def parse(self, response):
+        pass
+
+
+if __name__ == '__main__':
+    from scrapy_newrabbit import run
+
+    run(['$class_name', '$name', 'auto', 10])

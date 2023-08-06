@@ -1,0 +1,8 @@
+include scrapy_newrabbit/templates/spiders/basic.tmpl
+include scrapy_newrabbit/templates/project/rabbitmq_delect.py.tmpl
+include scrapy_newrabbit/templates/project/scrapy.cfg
+include scrapy_newrabbit/templates/project/module/items.py.tmpl
+include scrapy_newrabbit/templates/project/module/middlewares.py.tmpl
+include scrapy_newrabbit/templates/project/module/pipelines.py.tmpl
+include scrapy_newrabbit/templates/project/module/settings.py.tmpl
+include scrapy_newrabbit/templates/project/module/conf/config.ini

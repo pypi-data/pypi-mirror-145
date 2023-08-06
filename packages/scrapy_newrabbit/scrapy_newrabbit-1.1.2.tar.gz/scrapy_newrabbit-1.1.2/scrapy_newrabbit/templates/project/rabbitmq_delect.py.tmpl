@@ -1,0 +1,67 @@
+import configparser
+import datetime
+from requests.auth import HTTPBasicAuth
+import pika,time,requests
+
+config_file_path = '$project_name/conf/config.ini'
+conf = configparser.ConfigParser()
+conf.read(config_file_path, encoding='utf-8')
+items = list()
+for section in conf.sections():
+    items += conf.items(section)
+items = dict(items)
+# 连接消息队列
+def connect_rabbit():
+    hostname = items['rabbit_host']
+    credentials = pika.PlainCredentials(items['rabbit_username'], items['rabbit_password'])
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=hostname,credentials=credentials))
+    channel = connection.channel()
+    return channel
+
+
+
+params = {
+    'page': '1',
+    'page_size': '100',
+    'name': '',
+    'use_regex': 'false',
+    'pagination': 'true',
+}
+
+channel = connect_rabbit()
+# ==================================================
+old = set()
+new = set()
+kill = set()
+# todo 删除消息队列
+while True:
+    try:
+        response = requests.get(f"http://{items['rabbit_host']}:15672/api/queues", auth=HTTPBasicAuth(username=items['rabbit_username'], password=items['rabbit_password']),params=params)
+        js = response.json()
+        for i in js['items']:
+            try:
+                messages = i['messages']
+            except Exception as e:
+                print("*****************", e, "******************")
+                continue
+            if messages == 0:
+                name = i['name']
+                if name in kill:
+                    kill.remove(name)
+                    new.add(name)
+                elif name in new:
+                    new.remove(name)
+                    old.add(name)
+                elif name in old:
+                    channel.queue_delete(queue=i['name'])
+                    old.remove(name)
+                    print("kill %s" % name)
+                else:
+                    kill.add(name)
+    except Exception as e:
+        print(str(e), "重连中...")
+        channel = connect_rabbit()
+    print(datetime.datetime.now(), " waiting ~~~")
+    time.sleep(3)
+
+
