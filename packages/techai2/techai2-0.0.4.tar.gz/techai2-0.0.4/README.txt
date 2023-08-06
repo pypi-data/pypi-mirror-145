@@ -1,0 +1,1 @@
+techai2 can be used to make large and fast neural networks that will slove anny problem
