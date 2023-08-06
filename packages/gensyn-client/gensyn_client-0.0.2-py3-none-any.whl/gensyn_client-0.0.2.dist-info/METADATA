@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: gensyn-client
+Version: 0.0.2
+Summary: General Synthesis
+Home-page: 
+Author: General Synthesis
+Author-email: info@general-synthesis.com
+License: UNKNOWN
+Keywords: OpenAPI,OpenAPI-Generator,General Synthesis
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: urllib3 (>=1.25.3)
+Requires-Dist: python-dateutil
+
+    # General Synthesis Service for Electronic Lab Notebooks (ELN)  ## Setup  ### Python  Recommended:  - [pyenv](https://github.com/pyenv/pyenv) - to manage Python versions - [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) - to manage virtual environments  &#x60;&#x60;&#x60;sh pyenv install 3.9.10 pyenv virtualenv 3.9.10 gensyn-eln pyenv local gensyn-eln pip install --upgrade pip pip install -r requirements.txt &#x60;&#x60;&#x60;  ## Running  Ensure Ray is running:  &#x60;&#x60;&#x60;sh ray start --head &#x60;&#x60;&#x60;  Run the service:  &#x60;&#x60;&#x60;sh python src/main.py &#x60;&#x60;&#x60;   # noqa: E501
+    
+
