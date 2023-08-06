@@ -1,0 +1,14 @@
+include *.py
+include */*.py
+recursive-include test *.py
+recursive-include test/data bootstrap_cubes *.py
+recursive-include data *.gif *.png *.ico *.css *.js
+recursive-include i18n *.po
+recursive-include wdoc *
+include README.rst
+
+include tox.ini
+exclude .gitlab-ci.yml
+exclude .yamllint
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
