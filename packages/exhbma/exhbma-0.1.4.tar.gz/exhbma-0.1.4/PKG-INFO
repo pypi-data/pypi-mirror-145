@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: exhbma
+Version: 0.1.4
+Summary: Exhaustive Search with Bayesian Model Averaging
+Home-page: https://github.com/okada-lab/exhbma
+License: MIT
+Author: Koki Obinata
+Author-email: koki.obi.321@gmail.com
+Requires-Python: >=3.8,<3.11
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: matplotlib (>=3.5.1,<4.0.0)
+Requires-Dist: numpy (>=1.22.1,<2.0.0)
+Requires-Dist: pydantic (>=1.9.0,<2.0.0)
+Requires-Dist: scikit-learn (>=1.0.2,<2.0.0)
+Requires-Dist: scipy (>=1.7.3,<2.0.0)
+Requires-Dist: tqdm (>=4.62.3,<5.0.0)
+Project-URL: Repository, https://github.com/okada-lab/exhbma
+Description-Content-Type: text/markdown
+
+# Exhaustive Search with Bayesian Model Averaging (ExhBMA)
+
+# Installation
+```
+pip install exhbma
+```
+
+# Documentation
+User documentation is available [here](https://exhbma.readthedocs.io/en/latest/index.html).
+You can also try sample notebooks in `tutorials` directory.
+
+# Reference paper
+In preparing.
+
