@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: robocadSimPy
+Version: 0.0.6.5
+Summary: python lib for robocadSim
+Home-page: https://readthedocs.org/projects/robocadsim/
+Author: Abdrakov Airat
+Author-email: abdrakovairat@gmail.com
+License: MIT
+Keywords: simulator,robotics,robot,3d
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: Microsoft :: Windows :: Windows 10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+License-File: LICENCE.txt
+
+Python lib for robocadSim
+
+Change Log
+==============================
+
+0.0.1 (06.10.2020)
+------------------------------
+- First Release
+
+0.0.6 (19.03.2022)
+------------------------------
+- RT-1 and RT-2 robots added
+
+0.0.6.4 (02.04.2022)
+------------------------------
+- Scene restart fixed
+- Memory leaks fixed
+- UDP connection instead of TCP
+
+0.0.6.5 (03.04.2022)
+------------------------------
+- TCP connections instead of UDP :)
+- Camera fixed
+
