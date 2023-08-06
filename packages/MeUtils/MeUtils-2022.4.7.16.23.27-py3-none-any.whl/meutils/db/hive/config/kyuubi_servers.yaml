@@ -1,0 +1,15 @@
+hz8:
+  zookeeper_hosts: 'hive1.jd.163.org:2181,hive2.jd.163.org:2181,spark5.jd.163.org:2181'
+  namespace: 'spark-hivethrfitserver'
+hz9:
+  zookeeper_hosts: 'hive1.jd.163.org:2181,hive2.jd.163.org:2181,spark5.jd.163.org:2181'
+  namespace: 'spark-cluster9'
+hz10:
+  zookeeper_hosts: 'hive5.jd.163.org:12181,hive6.jd.163.org:12181,azkaban9.jd.163.org:12181'
+  namespace: 'spark-cluster10'
+hz11:
+  zookeeper_hosts: 'hive7.jd.163.org:2181,hive8.jd.163.org:2181,spark10.jd.163.org:2181'
+  namespace: 'spark-hivethrfitserver'
+hz12:
+  zookeeper_hosts: 'hz12-hive15.jd.163.org:12181,hz12-hive16.jd.163.org:12181,hz12-spark12.jd.163.org:12181'
+  namespace: 'kyuubi-cluster12'

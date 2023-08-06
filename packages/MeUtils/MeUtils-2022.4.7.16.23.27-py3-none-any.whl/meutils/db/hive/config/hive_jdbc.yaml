@@ -1,0 +1,1 @@
+easyops-cluster: jdbc:hive2://bigdata001.nesc.com.cn:2182,bigdata002.nesc.com.cn:2182,bigdata003.nesc.com.cn:2182/;serviceDiscoveryMode=zooKeeper;zooKeeperNamespace=hiveserver2;principal=hive/_HOST@BIGDATA.NESC.COM

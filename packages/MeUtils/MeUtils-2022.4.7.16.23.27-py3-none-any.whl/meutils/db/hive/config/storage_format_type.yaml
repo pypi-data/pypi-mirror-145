@@ -1,0 +1,10 @@
+alias:
+  org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat: Text
+  org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat: Parquet
+  org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat: ORC
+  org.apache.hadoop.hive.ql.io.avro.AvroContainerOutputFormat: Avro
+  org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat: SequenceFile
+support_type:
+  - Text
+  - Parquet
+  - ORC
