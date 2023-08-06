@@ -1,0 +1,19 @@
+Metadata-Version: 2.1
+Name: hexafonter
+Version: 0.1.2
+Summary: Generate a C font file for a small LCD from a PNG image
+Author-email: Petr Viktorin <encukou@gmail.com>
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Requires-Dist: pypng
+Project-URL: Source, https://github.com/encukou/hexafonter
+
+# Hexafonter
+
+A command-line tool that will convert a PNG file with a fixed-width pixel font
+for small LCD displays, to a C file with a sideways preview and a character
+code legend.
+
+See [GitHub](https://github.com/encukou/hexafonter) for more info.
+

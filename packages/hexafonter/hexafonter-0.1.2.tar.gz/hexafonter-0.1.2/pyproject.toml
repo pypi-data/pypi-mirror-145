@@ -1,0 +1,27 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "hexafonter"
+authors = [
+    {name = "Petr Viktorin", email = "encukou@gmail.com"},
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+]
+requires-python = ">=3.6"
+dependencies = [
+    "pypng",
+]
+dynamic = ["version", "description"]
+
+# I don't know of a good way to include images on PyPI,
+# so just show a small blurb with a link to GitHub.
+readme = "pypi-readme.md"
+
+[project.scripts]
+hexafonter = "hexafonter:main"
+
+[project.urls]
+Source = "https://github.com/encukou/hexafonter"
