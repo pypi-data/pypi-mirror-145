@@ -1,0 +1,101 @@
+Metadata-Version: 2.1
+Name: django-fritzconnection
+Version: 0.0.2
+Summary: Web based FritzBox management using Python/Django.
+Home-page: https://github.com/jedie/django-fritzconnection
+Keywords: fritzbox,django,fritzconnect
+Author: JensDiemer
+Author-email: git@jensdiemer.de
+Requires-Python: >=3.7,<4.0.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Database :: Front-Ends
+Classifier: Topic :: Documentation
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Internet :: WWW/HTTP :: Site Management
+Classifier: Topic :: Internet :: WWW/HTTP :: WSGI :: Application
+Requires-Dist: bx_django_utils
+Requires-Dist: bx_py_utils
+Requires-Dist: colorlog
+Requires-Dist: django
+Requires-Dist: django-admin-sortable2
+Requires-Dist: django-debug-toolbar
+Requires-Dist: django-reversion-compare
+Requires-Dist: django-tagulous
+Requires-Dist: django-tools
+Requires-Dist: fritzconnection
+Project-URL: Bug Tracker, https://github.com/jedie/django-fritzconnection/issues
+Description-Content-Type: text/markdown
+
+# django-fritzconnection
+
+![django-fritzconnection @ PyPi](https://img.shields.io/pypi/v/django-fritzconnection?label=django-fritzconnection%20%40%20PyPi)
+![Python Versions](https://img.shields.io/pypi/pyversions/django-fritzconnection)
+![License GPL V3+](https://img.shields.io/pypi/l/django-fritzconnection)
+
+Web based FritzBox management using Python/Django and the great [fritzconnection](https://github.com/kbr/fritzconnection) library.
+
+The destination is Web based management of "WAN access" for hosts groups.
+The idea is to collect hosts, group them and be able to quick change WAN access for all hosts of a group...
+
+Current state: **early development stage**
+
+Existing features:
+
+* actions:
+  * Change WAN access of a host
+* models:
+  * HostModel
+    * "Static" storage for all `FritzHosts().get_hosts_info()` information
+    * Update in Admin via change list tools link and manage command
+* a few "test" views:
+  * Host information
+    * Get information about registered hosts
+    * Get raw mesh topology
+  * Diagnose
+    * Test FritzBox connection
+    * List all FritzBox services
+
+
+[![Install django-fritzconnection with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=django-fritzconnection)
+
+> *This package allows you to install django-fritzconnection quickly and simply on a YunoHost server.
+If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
+
+Pull requests welcome ;)
+
+
+## Quick start for developers
+
+```
+~$ git clone https://github.com/jedie/django-fritzconnection.git
+~$ cd django-fritzconnection
+~/django-fritzconnection$ ./devshell.py
+...
+Developer shell - djfritz - v0.0.2
+...
+
+(djfritz) run_testserver
+```
+
+## versions
+
+* [*dev*](https://github.com/jedie/django-fritzconnection/compare/v0.0.2.rc1...main)
+  * TBC
+* [v0.0.2 - 04.04.2022](https://github.com/jedie/django-fritzconnection/compare/v0.0.1-alpha...v0.0.2)
+  * Store Host information
+  * Possible to set WAN access for one host
+* v0.0.1-alpha - 24.03.2022
+  * init the project
+
