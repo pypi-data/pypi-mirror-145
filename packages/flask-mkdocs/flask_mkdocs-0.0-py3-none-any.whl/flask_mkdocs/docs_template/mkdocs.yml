@@ -1,0 +1,295 @@
+# [[[cog 
+# p(f"""
+# site_name: {values.project.name}
+# site_url: {values.project.url}
+# repo_name: saasless/saasless
+# repo_url: {values.project.repo_url}
+# """)
+# ]]]
+
+site_name: Flask-MkDocs
+site_url: https://flaskless.gitlab.io/flask-mkdocs
+repo_name: flaskless/flask-mkdocs
+repo_url: https://gitlab.com/flaskless/flask-mkdocs
+# [[[end]]]
+site_dir: ./build
+
+site_description: The easiest way to start your next Flask project.
+site_author: Metaprise Systems, Inc.
+
+docs_dir: src
+copyright: "&copy; 2021 Metaprise Systems, Inc. FlaskJoy&trade; is a trademark of Metaprise Systems"
+
+edit_uri: -/edit/dev/docs/src # need to add the /src
+
+#---start-nav
+nav:
+  - Home: index.md
+  - Documentation:
+    - Overview: 
+      - Overview: overview.md
+      - FAQ: FAQ.md
+      - Releases: changelog.md
+    - Getting Started: 
+      - Install SaaSLess: installation.md  
+      - Deploying your app: quickstart.md
+    - Key Concepts:
+      - Background: background/background.md
+      - Modules and Extensions: background/architecture.md
+      - Development Environment: background/devenv.md
+      - Deployment Targets: background/deploy.md
+      - Integrations: background/integrations.md
+      - Navigation System: background/navsystem.md
+    - App Settings: 
+        Settings: Settings/settings.md
+        Auth0: Settings/auth0.md
+        Brand: Settings/brand.md
+        Endpoints: Settings/endpoints.md
+        AdminLTE Theme: Settings/theme.md
+
+  - Features:
+    - Authentication: features/authentication.md
+    - Connecting Databases: features/databases.md
+    - Roles and Permissions: features/permissions.md
+    - Branding and Theme: theme/customize.md
+    - Test Suite: features/tests.md
+    - Development Environment: features/devenv.md
+    - Architectural Decision Docs: features/adr.md
+    - Languages and Translations: features/translate.md
+    - Automatic Docs: features/documentation.md
+    - Pages and Content: features/pages.md
+    - Containerized with Docker: features/docker.md
+    - Feature Flags: features/flags.md
+    - Automated CHANGELOG.md: features/changelog.md
+    - Command-Line Tools: features/cli.md
+  - Integrations:
+    - Overview: features/integrations.md
+    - Cloud Tools:
+      - AWS Lambda: serverless/deploy.md
+      - AWS S3: features/storage.md
+      - Stripe: features/stripe.md
+      - Sentry: features/sentry.md
+      - Kubernetes: features/k8s.md
+      - GitLab-CI: features/gitlab-ci.md
+      - Unleash: features/flags.md
+      - Intercom: features/intercom.md
+      - Auth0: features/auth0.md
+    - Flask Extensions:
+      - Admin: features/admin.md
+      - Security: features/security.md
+      - SQLAlchemy: features/sqla.md
+      - Babel: features/translate.md
+      - Email: features/email.md
+  - User Guides:
+    - Guides: guides/guides.md
+    - Setting up SSH Keys: guides/ssh.md
+    - Using GitLab-CI: gitlab/cicd.md
+    - Customizing the Theme: theme/customize.md
+    - Changing the Navigation: navigation.md
+  - Example Apps:
+    - Create a RaspberryPi App:
+        - Deploying to a RaspberryPi: raspberrypi/deploy.md
+        - Integrating Existing Flask App: raspberrypi/app_integration.md
+        - Tweaking UI settings: raspberrypi/settings.md
+    - Control your Android Phone:
+        - Overview: android/overview.md
+    - Create a Serverless App:
+        - Deploying to AWSLambda: serverless/deploy.md
+  - Developer Docs:
+    - References: references/references.md
+    - App Factory: app-factory.md
+    - Modules and Extensions: guide/modules.md
+    - Command Line: commands.md
+    - HTML Templates: guide/templates.md
+    
+    - Documentation Sample 🐢: documentation/reference.md
+    - HTML Theme:
+        Overview: theme/overview.md
+        Layouts: theme/layouts.md
+        Colors: theme/colors.md
+        Templates: theme/templates.md
+        Settings: theme/settings.md
+    
+    - Navigation Menus: features/menus.md
+    - Admin System: 
+        Overview: admin/overview.md
+        Views: admin/views.md
+    - Extensions: 
+        Extensions: extensions/index.md
+        Flask Admin: extensions/admin.md
+        SQLAlchemy: extensions/sqla.md
+        Menus: menus/configuration.md
+        Security: extensions/security.md
+  - Community:
+    - Getting Involved: community/get-involved.md
+    - Support: community/support.md
+    - Roadmap: community/roadmap.md
+    - Editing the Documentation: 
+      - Getting Started: documentation/usage.md
+      - Adding Images: documentation/images.md
+      - Creating Diagrams: documentation/diagrams.md
+    - Reporting Issues: 
+        Getting Help: help.md
+        Create Issue: https://gitlab.com/saasless/saasless/-/issues/new?issuable_template=Bug
+        Fix Documentation: https://gitlab.com/saasless/saasless/-/issues/new?issuable_template=Documentation
+  - Project Status:
+    - Overview: 
+      - Status: status.md
+      - Test Results: tests/report.html
+      - Test Code Coverage: tests/coverage/index.html
+      - Architectural Decisions: adr/report.html
+    - Architectural Decision Records:
+        Overview: architectural-decision-records.md
+        # [[[cog p(adr_to_yml('docs/src/adr')) ]]]
+        1. Record Architecture Decisions: adr/0001-record-architecture-decisions.md
+        2. Use Component Based Directory Layout: adr/0002-Use-Component-Based-Directory-Layout.md
+        2. Expose Command Line Interface: adr/0002-expose-command-line-interface.md
+        3. Use Gitlab Ci For Deployment: adr/0003-Use-GitLab-CI-for-Deployment.md
+        3. Use Same Colour For All Headers: adr/0003-use-same-colour-for-all-headers.md
+        4. Distinguish Superceded Records With Colour: adr/0004-distinguish-superceded-records-with-colour.md
+        5. Distinguish Amendments To Records With Colour: adr/0005-distinguish-amendments-to-records-with-colour.md
+        6. Accessibility As A First-Class Concern: adr/0006-accessibility-as-a-first-class-concern.md
+        # [[[end]]]
+
+#---end-nav
+
+  
+theme:
+  #favicon: ./images/saasycheffavicon.png
+  #logo: ./images/saasycheffavicon.png
+  favicon: ./images/logo.png
+  logo: ./images/logo.png
+  name: material
+  custom_dir: overrides
+  language: 'en'
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+  #  - toc.integrate
+  font:
+    text: 'Roboto'
+    code: 'JetBrains Mono'
+  palette:
+    - scheme: dracula
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: white
+      accent: deep purple
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+extra:
+  alternate:
+    - name: English
+      lang: en
+    #- name: Español
+    #  link: lang/es
+    #  lang: es
+    #- name: Tieng Viet
+    #  link: lang/vi
+    #  lang: vi
+    #- name: Rusian
+    #  link: lang/ru
+    #  lang: ru
+  manifest: 'manifest.webmanifest'
+  social:
+    - icon: fontawesome/brands/gitlab
+      link: https://gitlab.com/saasless
+    - icon: fontawesome/brands/docker
+      link: https://gitlab.com/saasless
+  announcement: |
+    See the latest demo version at <a href="https://saasjoy.app">saasjoy.app</a>
+
+extra_css: []
+  #- https://facelessuser.github.io/pymdown-extensions/assets/pymdownx-extras/extra-5ee9fa49a5.css
+
+extra_javascript: []
+  #- https://facelessuser.github.io/pymdown-extensions/assets/pymdownx-extras/material-extra-theme-7c147bb7.js
+  
+#---start-plugins
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      slugify: !!python/name:pymdownx.slugs.uslugify
+      permalink: true
+      toc_depth: 3
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - lightgallery:
+      show_description_in_lightgallery: true # false
+      show_description_as_inline_caption: true # false
+      #custom_inline_caption_css_class: 'my-caption-class'
+  - mkdocs-click
+
+plugins:
+  - include-markdown
+  - exclude:
+      glob:
+        - Settings/auth0.md
+        # excluded because uncompatible with mkdocs-mdpo
+  #      - commands.md
+  #      - theme/*.md
+  #      - pages.md
+  #      - documentation/reference.md
+  #- mdpo
+  - search
+  - git-revision-date:
+      enabled_if_env: USE_GIT_REVISION
+  - mkdocstrings:
+      watch:
+        - ../flask-mkdocs
+      default_handler: python
+      handlers:
+        python:
+          rendering:
+            #heading_level: 1
+            show_root_heading: yes
+            show_signature_annotations: true
+          setup_commands:
+          - from flask_mkdocs.app import create_app
+          - app = create_app()
+          - app_context = app.app_context()
+          - app_context.push()
+  - macros:
+      module_name: macros
+  - minify:
+      minify_html: true
+      htmlmin_opts:
+        remove_comments: true
+  - diagrams:
+      file_extension: ".diagrams.py"
+      max_workers: 5
+#---end-plugins
