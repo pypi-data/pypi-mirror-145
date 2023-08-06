@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "PyGoogleBooks"
+version = "0.1.0"
+description = "Python package for convenient work with Google Books service"
+authors = ["tankalxat34 <tankalxat34@gmail.com>"]
+license = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/tankalxat34/PyGoogleBooks"
+
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
