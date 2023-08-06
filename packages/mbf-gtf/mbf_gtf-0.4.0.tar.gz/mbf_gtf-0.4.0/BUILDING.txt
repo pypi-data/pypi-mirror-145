@@ -1,0 +1,12 @@
+# development
+
+Use nix develop.
+
+# 
+
+
+Build Wheels using maturin.
+
+```
+docker run --rm -v $(pwd):/io ghcr.io/pyo3/maturin:v0.12.11 build --release -i py38 -b cffi # or other maturin arguments
+```
