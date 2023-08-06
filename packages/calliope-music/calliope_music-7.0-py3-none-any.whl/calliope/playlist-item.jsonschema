@@ -1,0 +1,50 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://gitlab.com/samthursfield/calliope/-/tree/main/calliope/playlist-item.jsonschema",
+    "title": "Playlist item",
+    "description": "An item in a Calliope playlist.\n\nCore properties are taken from the `XSPF standard <https://www.xspf.org/xspf-v1.html>`_.",
+    "type": "object",
+    "properties": {
+        "location": {
+            "description": "URI of resource to be rendered. Probably an audio resource, but MAY be any type of resource with a well-known duration, such as video.",
+            "type": "string"
+        },
+        "identifier": {
+            "description": "Canonical ID for this resource. Likely to be a hash or other location-independent name, such as a MusicBrainz identifier.",
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "creator": {
+            "type": "string"
+        },
+        "annotation": {
+            "description": "A human-readable comment on the track. This is character data, not HTML, and it may not contain markup.",
+            "type": "string"
+        },
+        "info": {
+            "description": "URI of a place where this resource can be bought or more info can be found.",
+            "type": "string"
+        },
+        "image": {
+            "description": "URI of an image to display for the duration of the track.",
+            "type": "string"
+        },
+        "album": {
+            "type": "string"
+        },
+        "trackNum": {
+            "type": "integer"
+        },
+        "duration": {
+            "description": "The time to render a resource, in milliseconds.",
+            "type": "number",
+            "minimum": 0
+        }
+    },
+    "patternProperties": {
+        "^[\\w_]+(\\.[\\w_]+)+$": {}
+    },
+    "additionalProperties": false
+}
