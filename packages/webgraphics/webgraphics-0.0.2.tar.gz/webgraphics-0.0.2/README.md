@@ -1,0 +1,3 @@
+## webgraphics
+
+https://towardsdatascience.com/create-your-own-python-package-and-publish-it-into-pypi-9306a29bc116
