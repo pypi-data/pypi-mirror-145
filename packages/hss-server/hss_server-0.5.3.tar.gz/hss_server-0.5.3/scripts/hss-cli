@@ -1,0 +1,1361 @@
+#!/usr/bin/env python
+# -----------------------------------------------------------------------------
+# HSS - Hermes Skill Server
+# Copyright (c) 2020 - Patrick Fial
+# -----------------------------------------------------------------------------
+# hss_cli
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Imports
+# -----------------------------------------------------------------------------
+
+from __future__ import print_function
+import sys
+import os
+import signal
+import subprocess
+import configparser
+import shutil
+import datetime
+import json
+import getpass
+
+import requests
+
+from appdirs import user_config_dir
+from pid import PidFile
+
+import pkg_resources
+
+from git import Repo
+
+# ------------------------------------------------------------------------------
+# globals
+# ------------------------------------------------------------------------------
+
+try:
+    __version__ = pkg_resources.require("hss_server")[0].version
+except Exception as e:
+    __version__ = "0.0.0"
+
+config_dir = None
+skills_directory = None
+python_bin = None
+ignored_files = ["__init__.py", "__pycache__", ".DS_Store"]
+hss_config_ini = None
+registry_host = None
+registry_path = None
+rhasspy_url = None
+server_pid = None
+known_types = ['weather', 'calendar', 'music', 'datetime', 'news', 'games', 'fun', 'utility', 'automation']
+known_platforms = ['hss-python', 'hss-node']
+
+# ------------------------------------------------------------------------------
+# eprint
+# ------------------------------------------------------------------------------
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+# ------------------------------------------------------------------------------
+# error
+# ------------------------------------------------------------------------------
+
+
+def error(message):
+    eprint(message)
+    eprint("Sorry.")
+    sys.exit(-1)
+
+# ------------------------------------------------------------------------------
+# parseArgs
+# ------------------------------------------------------------------------------
+
+
+def parseArgs():
+    res = {}
+
+    for i in range(len(sys.argv)):
+        arg = sys.argv[i]
+
+        if arg.startswith("--") or arg.startswith("-"):
+            if i+1 < len(sys.argv) and not sys.argv[i+1].startswith("-"):
+                res[arg.replace("-", "")] = sys.argv[i+1]
+            else:
+                res[arg.replace("-", "")] = None
+
+    return res
+
+# ------------------------------------------------------------------------------
+# help
+# ------------------------------------------------------------------------------
+
+
+def help():
+    version()
+
+    print("\nUsage:")
+    print("   $ hss-cli [options]")
+    print("\nSkills:")
+    print("\n   -l                             List all installed skills.")
+    print("\n   -i ([name]) (--url [url])      Install a new skill using [name]. [name] must be a valid HSS registry skill name.")
+    print("                                  Optionally, [url] can be used to directly install a skill from a git repository.")
+    print("   -u ([name])                    Update an already installed skill named [name].")
+    print("                                  If [name] is ommited, ALL skills will be updated.")
+    print("   -r [name]                      Uninstall an already installed skill named [name]")
+
+    print("\nRegistry:")
+
+    print("\n   --search                       Query HSS registry for a list of available skills")
+    print("       (--type [type])            Restrict registry query to the given type")
+    print("       (--platform [platform])    Restrict registry query to the given platform")
+    print("       (--lang [language])        Restrict registry query to the given language")
+
+    print("\n   --publish -s [dir] -t [token]        Publishes a skill to the HSS registry. Required parameters are the")
+    print("                                        skill's directory [dir] (containing skill.json) and the token [token] which was obtained")
+    print("                                        when registering at the HSS registry.")
+    print("\n   --unpublish -s [name] -t [token]     Removes an already published skill from the HSS registry. Required parameters are the")
+    print("                                        skill's name [name] and the token [token] which was obtained")
+    print("                                        when registering at the HSS registry.")
+    print("\n   --register                           Registers a new account at the HSS registry.")
+    print("   --unregister                         Deletes an existing account from the HSS registry. Will also delete all associated skills.")
+
+    print("\nHelp:")
+    print("\n   -h, --help      Show this help and exit")
+    print("   -v, --version   Show version and exit")
+    print("\n")
+
+# ------------------------------------------------------------------------------
+# version
+# ------------------------------------------------------------------------------
+
+
+def version():
+    print("Hermes Skill Server CLI v{}".format(__version__))
+
+# ------------------------------------------------------------------------------
+# run
+# ------------------------------------------------------------------------------
+
+
+def run():
+    global skills_directory
+    global python_bin
+    global hss_config_ini
+    global registry_host
+    global registry_path
+    global rhasspy_url
+    global config_dir
+    global server_pid
+
+    config = configparser.ConfigParser()
+    config_dir = args["config-dir"] if "config-dir" in args else user_config_dir("hss_server", "s710")
+    hss_config_ini = os.path.join(config_dir, "config.ini") if config_dir else None
+    server_pidfile = os.path.join(config_dir, "server.pid") if config_dir else None
+
+    if not config_dir:
+        raise Exception("Unable to get configuration dir. Use --config-dir option.")
+
+    if not os.path.exists(hss_config_ini):
+        return error("Config file '{}' does not exist. Did you set up the skill-server?".format(hss_config_ini))
+
+    config.read(hss_config_ini)
+
+    if not "server" in config or not "skill_directory" in config["server"]:
+        return error("Skills-directory not found in config file '{}'. Did you set up the skill-server?".format(hss_config_ini))
+
+    skills_directory = config["server"]["skill_directory"]
+
+    python_bin = sys.executable
+
+    if not python_bin or not os.path.exists(python_bin) or not os.path.isfile(python_bin):
+        return error("No python3 binary found at '{}'".format(python_bin))
+
+    if not skills_directory or not os.path.exists(skills_directory) or not os.path.isdir(skills_directory):
+        return error("Invalid skills directory '{}'".format(skills_directory))
+
+    if not "registry" in config or not "host" in config["registry"]:
+        registry_host = "https://hss-registry.herokuapp.com"
+    else:
+        registry_host = config["registry"]["host"].rstrip("/")
+
+    if not "registry" in config or not "svcroot" in config["registry"]:
+        registry_path = "services/v1"
+    else:
+        registry_path = config["registry"]["svcroot"].lstrip("/").rstrip("/")
+
+    if not "rhasspy" in config or not "api_url" in config["rhasspy"]:
+        rhasspy_url = "http://localhost:12101/api"
+    else:
+        rhasspy_url = config["rhasspy"]["api_url"].lstrip("/").rstrip("/")
+
+    server_pid = None
+
+    if server_pidfile and os.path.exists(server_pidfile) and os.path.isfile(server_pidfile):
+        try:
+            with open(server_pidfile, 'r') as file:
+                server_pid = int(file.read().replace("\n", ""))
+        except Exception as e:
+            pass
+
+    if "l" in args:
+        do_list()
+    elif "i" in args:
+        do_install(args["i"], config, args["url"] if "url" in args else None)
+    elif "u" in args:
+        do_update_all(args["u"], config)
+    elif "r" in args:
+        do_uninstall(args["r"])
+    elif "search" in args:
+        do_search(args["type"] if "type" in args else None,
+            args["platform"] if "platform" in args else None,
+            args["lang"] if "lang" in args else None)
+    elif "register" in args:
+        do_register()
+    elif "unregister" in args:
+        do_unregister()
+    elif "publish" in args:
+        do_publish(args["s"] if "s" in args else None, args["t"] if "t" in args else None)
+    elif "unpublish" in args:
+        do_unpublish(args["s"] if "s" in args else None, args["t"] if "t" in args else None)
+    else:
+        help()
+
+# ------------------------------------------------------------------------------
+# open_info_file
+# ------------------------------------------------------------------------------
+
+
+def open_info_file(skill_directory):
+    def check_info_file(contents):
+        if not "platform" in contents:
+            print("Missing property 'platform' in skill.json")
+            return False
+
+        if not contents["platform"] in known_platforms:
+            print("Unknown/invalid skill platform '{}' in skill.json".format(contents["platform"]))
+            return False
+
+        if not "intents" in contents:
+            print("Missing property 'intents' in skill.json")
+            return False
+
+        if not "type" in contents:
+            print("Missing property 'type' in skill.json")
+            return False
+
+        if not contents["type"] in known_types:
+            print("Unknown/invalid skill type '{}' in skill.json".format(contents["type"]))
+            return False
+
+        return True
+
+    info_file = os.path.join(skill_directory, "skill.json")
+    info = None
+
+    # get skill.json infos
+
+    if not os.path.isfile(info_file):
+        print("Error: Missing file '{}'".format(info_file))
+        return False
+
+    with open(info_file) as json_file:
+        try:
+            info = json.load(json_file)
+        except Exception as e:
+            print("Invalid/malformed file '{}' ({})".format(info_file, e))
+            return False
+
+    if not check_info_file(info):
+        return None
+
+    return info
+
+# ------------------------------------------------------------------------------
+# do_list
+# ------------------------------------------------------------------------------
+
+
+def do_list():
+    print("-----------------------------------------------------------------------------------------------------------------")
+    print("{0: <40} {1: <13} {2: <10} {3: <15} {4: <12} {5: <9} {6: <10}".format(
+            "Skill", "Type", "Version", "Platform", "Date", "Config", "Language"))
+    print("-----------------------------------------------------------------------------------------------------------------")
+
+    for skill_name in os.listdir(skills_directory):
+        if skill_name not in ignored_files:
+            skill_directory = os.path.join(skills_directory, skill_name)
+            config_ini = os.path.join(skill_directory, "config.ini")
+            skill_json = os.path.join(skill_directory, "skill.json")
+            repo = Repo(skill_directory)
+            config = None
+
+            info = None
+
+            try:
+                with open(skill_json) as skill_json:
+                    try:
+                        info = json.load(skill_json)
+                    except Exception as e:
+                        print("Invalid/malformed file '{}' ({})".format(info_file, e))
+                        return
+            except Exception as e:
+                pass
+
+            version = info["version"] if info and "version" in info else "-"
+            platform = info["platform"] if info and "platform" in info else "-"
+            type = info["type"] if info and "type" in info else "-"
+            cfg = "y" if os.path.exists(config_ini) else "n"
+            lang = None
+
+            if os.path.exists(config_ini):
+                config = configparser.ConfigParser()
+                config.read(config_ini)
+
+                if "skill" in config and "language" in config["skill"]:
+                    lang = config["skill"]["language"]
+
+            if not lang and "language" in info:
+                if not isinstance(info["language"], list):
+                    lang = info["language"]
+
+            try:
+                headcommit = repo.head.commit
+                commit = headcommit.hexsha[:7]
+                dt = datetime.datetime.utcfromtimestamp(headcommit.committed_date).strftime("%D")
+
+                print("{0: <40} {1: <13} {2: <10} {3: <15} {4: <12} {5: <9} {6: <1}".format(
+                    skill_name, type, version, platform, dt, cfg, lang if lang else "en_GB (?)"))
+            except Exception as e:
+                pass
+
+# ------------------------------------------------------------------------------
+# do_install
+# ------------------------------------------------------------------------------
+
+
+def do_install(name, config, direct_url):
+    if not direct_url:
+        url = "{}/{}/get".format(registry_host, registry_path)
+
+        # query HSS registry for skill information (= repo url)
+
+        try:
+            req = requests.get(url, params = { "skillname": name })
+        except Exception as e:
+            print("Failed to execute HTTP request ({})".format(e))
+            return None
+
+        if req.status_code != 200:
+            print("Failed to get skill at registry (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+            return None
+
+        try:
+            response_content = json.loads(req.content.decode('utf-8'))
+        except Exception as e:
+            print("Failed to parse response content from registry ({})".format(e))
+            return None
+
+        if "error" in response_content:
+            print("Failed to get skill: {}".format(response_content["error"] if "error" in response_content else "unknown error"))
+            return
+
+        if not "skill" in response_content or not "repository" in response_content["skill"]:
+            print("No repository info received from HSS registry, cannot install skill")
+            return
+
+        url = response_content["skill"]["repository"]
+    else:
+        url = direct_url
+
+    repo_name = os.path.basename(os.path.normpath(url))
+    skill_directory = os.path.join(skills_directory, repo_name)
+
+    def cleanup():
+        shutil.rmtree(skill_directory)
+
+    config_ini = os.path.join(skill_directory, "config.ini")
+    sentences_ini = os.path.join(skill_directory, "sentences.ini")
+    slots_json = os.path.join(skill_directory, "slots.json")
+    config_ini_default = os.path.join(skill_directory, "config.ini.default")
+
+    if os.path.exists(skill_directory):
+        return error("Cannot install skill '{}', directory '{}' already exists".format(repo_name, skill_directory))
+
+    print("Installing '{}' into '{}'".format(repo_name, skill_directory))
+
+    # try to clone git repository first. assume skill-name equals repo name
+    # e.g. https://github.com/patrickjane/hss-skill-s710-weather -> hss-skill-s710-weather
+
+    print("Cloning repository ...")
+
+    try:
+        Repo.clone_from(url, skill_directory)
+    except Exception as e:
+        error("Failed to clone repo from '{}'".format(e))
+
+    # get skill.json infos
+
+    info = open_info_file(skill_directory)
+
+    if not info:
+        return False
+
+    if info["platform"] == "hss-python":
+        venv_directory = os.path.join(skill_directory, "venv")
+        venv_python = os.path.join(venv_directory, "bin", "python3")
+
+        # setup python virtualenv and install dependencies
+        # using subprocesses
+
+        print("Creating venv ...")
+
+        res = subprocess.run([python_bin, "-m", "venv", venv_directory], cwd=skill_directory)
+
+        if not res or res.returncode != 0:
+            print("Failed to setup venv");
+            return cleanup()
+
+        print("Installing dependencies ...")
+
+        res = subprocess.run([venv_python, "-m", "pip",
+                        "install", "-r", "requirements.txt"], cwd=skill_directory)
+
+        if not res or res.returncode != 0:
+            print("Failed to install dependencies venv");
+            return cleanup()
+
+    elif info["platform"] == "hss-node":
+        if not "npm" in config["server"]:
+            print("'npm' path not configured in '{}', cannot install Node.JS based skill".format(hss_config_ini))
+            return cleanup()
+
+        print("Installing dependencies ...")
+
+        res = subprocess.run([config["server"]["npm"], "install"], cwd=skill_directory)
+
+    else:
+        print("Platform '{}' is not supported, cannot install skill".format(info["platform"]))
+        return cleanup()
+
+    # finally, check if there is a config.ini.default. if so,
+    # it should be copied to config.ini, and empty parameters should be queried
+    # from the user.
+
+    if os.path.exists(config_ini_default) and os.path.isfile(config_ini_default):
+        print("Initializing config.ini ...")
+
+        config = configparser.ConfigParser()
+        config.read(config_ini_default)
+
+        for sect in config.sections():
+            print("Section '{}'".format(sect))
+
+            for key in list(config[sect].keys()):
+                if not config[sect][key]:
+                    val = input("Enter value for parameter '{}': ".format(key))
+                    config[sect][key] = val
+                else:
+                    val = input("Enter value for parameter '{}' [{}]: ".format(key, config[sect][key]))
+
+                    if val:
+                        config[sect][key] = val
+
+        install_languages = info["language"] if "language" in info else None
+        install_language = None
+
+        if isinstance(install_languages, list):
+            if "skill" not in config or not "language" in config["skill"]:
+
+                while not install_language or not install_language in install_languages:
+                    install_language = input("Skill supports multiple languages. Select installation language [{}]: ".format(", ".join(install_languages)))
+
+                    if install_language and not install_language in install_languages:
+                        print("'{}' is not a valid language".format(install_language))
+
+                if not "skill" in config:
+                    config.add_section("skill")
+
+                config["skill"]["language"] = install_language
+
+                sentences_ini = os.path.join(skill_directory, "sentences.{}.ini".format(install_language).lower())
+                slots_json = os.path.join(skill_directory, "slotsdict.{}.json".format(install_language).lower())
+
+        # then write back the changes to the config.ini
+
+        with open(config_ini, 'w') as file:
+            config.write(file)
+
+    # check if we have sentences & slots. if so, use rhasspy API to update & train assistant
+
+    if os.path.exists(sentences_ini):
+        print("Updating sentences ...")
+        update_sentences(sentences_ini)
+
+    if os.path.exists(slots_json):
+        print("Updating slots ...")
+        update_slots(slots_json, True if install_language else False)
+
+    if os.path.exists(sentences_ini):
+        print("Triggering traing ...")
+        do_train()
+
+    if not server_pid:
+        print("hss-server does not seem to be running. Not triggering for reload.")
+    else:
+        print("Triggering hss-server with pid {} for reload".format(server_pid))
+        os.kill(server_pid, signal.SIGHUP)
+
+    print("\nSkill '{}' version {} successfully installed.\n".format(
+            repo_name, info["version"] if "version" in info else "-"))
+
+# ------------------------------------------------------------------------------
+# do_uninstall
+# ------------------------------------------------------------------------------
+
+
+def do_uninstall(name):
+    if not name:
+        return error("Skill name must be given in order to uninstall a skill")
+
+    # just plain and silly remove the skill directory. nothing fancy here.
+
+    skill_directory = os.path.join(skills_directory, name)
+    sentences_ini = os.path.join(skill_directory, "sentences.ini")
+
+    if not os.path.exists(skill_directory) or not os.path.isdir(skill_directory):
+        return error("Unknown/invalid skill '{}' given: '{}' is not a valid skill directory".format(name, skill_directory))
+
+    print("Uninstalling skill '{}'".format(name))
+    print("This will erase the directory '{}'".format(skill_directory))
+    print("WARNING: The operation cannot be undone. Continue? (yes|NO) ")
+
+    cont = input("")
+
+    if cont != "yes" and cont != "Yes":
+        print("Aborted.")
+        sys.exit(0)
+
+    print("Uninstalling ...")
+
+    # check if we have sentences & slots. if so, use rhasspy API to update & train assistant
+
+    if os.path.exists(sentences_ini):
+        print("Removing sentences ...")
+        remove_sentences(sentences_ini)
+
+        train = input("Trigger training? (YES|no)")
+
+        if train.lower() != "no":
+            print("Triggering training ...")
+            do_train()
+
+    shutil.rmtree(skill_directory)
+
+    if not server_pid:
+        print("hss-server does not seem to be running. Not triggering for reload.")
+    else:
+        print("Triggering hss-server with pid {} for reload".format(server_pid))
+        os.kill(server_pid, signal.SIGHUP)
+
+    print("\nSkill '{}' successfully uninstalled.\n".format(name))
+
+
+# ------------------------------------------------------------------------------
+# do_update_one
+# ------------------------------------------------------------------------------
+
+
+def do_update_one(name, hss_config):
+    if not name:
+        return error("Skill name must be given in order to uninstall a skill")
+
+    skill_directory = os.path.join(skills_directory, name)
+    config_ini = os.path.join(skill_directory, "config.ini")
+    config_ini_default = os.path.join(skill_directory, "config.ini.default")
+
+    old_headcommit = None
+
+    if not os.path.exists(skill_directory) or not os.path.isdir(skill_directory):
+        return error("Unknown/invalid skill '{}' given: '{}' is not a valid skill directory".format(name, skill_directory))
+
+    print("Updating skill '{}' ... ".format(name))
+
+    # first, open existing config, if it exists
+
+    existing_cfg = None
+    config = configparser.ConfigParser()
+
+    if os.path.exists(config_ini) and os.path.isfile(config_ini):
+        config.read(config_ini)
+
+    # git pull to get the updates
+
+    try:
+        repo = Repo(skill_directory)
+        old_headcommit = repo.head.commit
+
+        origin = repo.remotes['origin']
+        origin.pull()
+    except Exception as e:
+        return error("Failed to pull changes from git ({})".format(e))
+
+    new_headcommit = repo.head.commit
+
+    # check if actually theres an update
+
+    if not new_headcommit or not old_headcommit or new_headcommit == old_headcommit:
+        print("\nNo update for skill '{}' available.\n".format(name))
+        return False
+
+    info = open_info_file(skill_directory)
+
+    if not info:
+        return False
+
+    # update dependencies
+
+    print("Installing/updating dependencies ...")
+
+    res = None
+
+    if info["platform"] == "hss-python":
+        venv_directory = os.path.join(skill_directory, "venv")
+        venv_python = os.path.join(venv_directory, "bin", "python3")
+
+        res = subprocess.run([venv_python, "-m", "pip",
+                        "install", "-r", "requirements.txt"], cwd=skill_directory)
+
+    elif info["platform"] == "hss-node":
+        if not "npm" in hss_config["server"]:
+            print("'npm' path not configured in '{}', cannot update dependencies".format(hss_config_ini))
+        else:
+            res = subprocess.run([hss_config["server"]["npm"], "install"], cwd=skill_directory)
+
+    if res and res.returncode != 0:
+        print("Updating dependencies failed")
+
+    # now evaluate the (potentially changed) config.ini.default and get the delta
+    # prompt for new unknown values
+
+    if os.path.exists(config_ini_default) and os.path.isfile(config_ini_default) and config:
+        new_config = configparser.ConfigParser()
+        new_config.read(config_ini_default)
+        count = 0
+
+        print("Checking existing config.ini parameters")
+
+        for sect in config.sections():
+            print("Section '{}'".format(sect))
+
+            for key in list(config[sect].keys()):
+                count = count + 1
+
+                if not config[sect][key]:
+                    val = input("Enter value for parameter '{}': ".format(key))
+                    config[sect][key] = val
+                else:
+                    val = input("Enter value for parameter '{}' [{}]: ".format(key, config[sect][key]))
+
+                    if val:
+                        config[sect][key] = val
+
+        if count == 0:
+            print("None.")
+
+        print("Checking new config.ini parameters")
+        count = 0
+
+        for sect in new_config.sections():
+            if not sect in config:
+                config.add_section(sect)
+
+            print("Section '{}'".format(sect))
+
+            for key in list(new_config[sect].keys()):
+                if not key in config[sect]:
+                    count = count + 1
+
+                    if new_config[sect][key]:
+                        val = input(
+                            "Enter value for new parameter '{}' [{}]: ".format(key, new_config[sect][key]))
+
+                        config[sect][key] = val if val else new_config[sect][key]
+                    else:
+                        val = input(
+                            "Enter value for new parameter '{}': ".format(key))
+                        config[sect][key] = val
+
+                    if val:
+                        config[sect][key] = val
+
+        if count == 0:
+            print("None.")
+
+        # then write back the changes to the config.ini
+
+        with open(config_ini, 'w') as file:
+            config.write(file)
+
+    print("\nSkill '{}' successfully updated to version {}.\n".format(
+        name, info["version"] if info and "version" in info else "-"))
+
+    return True
+
+# ------------------------------------------------------------------------------
+# do_update_all
+# ------------------------------------------------------------------------------
+
+
+def do_update_all(name, config):
+    if name:
+        do_update_one(name, config)
+
+        if not server_pid:
+            print("hss-server does not seem to be running. Not triggering for reload.")
+        else:
+            print("Triggering hss-server with pid {} for reload".format(server_pid))
+            os.kill(server_pid, signal.SIGHUP)
+
+        return
+
+    # update all skills one by one
+
+    n_updates = 0
+    n_nones = 0
+
+    cont = input("Updating ALL skills. Continue? (YES|no) ")
+
+    if cont and cont is not "YES" and cont is not "yes":
+        return
+
+    for filename in os.listdir(skills_directory):
+        if filename not in ignored_files:
+            if do_update_one(filename):
+                n_updates = n_updates + 1
+            else:
+                n_nones = n_nones + 1
+
+    if not server_pid:
+        print("hss-server does not seem to be running. Not triggering for reload.")
+    else:
+        print("Triggering hss-server with pid {} for reload".format(server_pid))
+        os.kill(server_pid, signal.SIGHUP)
+
+    print("{} Skills updated, {} skills without update".format(n_updates, n_nones))
+
+# ------------------------------------------------------------------------------
+# do_search
+# ------------------------------------------------------------------------------
+
+
+def do_search(type, platform, lang):
+    url = "{}/{}/search".format(registry_host, registry_path)
+    params = {}
+
+    if type:
+        params["type"] = type
+
+    if platform:
+        params["platform"] = platform
+
+    if lang:
+        params["language"] = lang
+
+    try:
+        req = requests.post(url, json = params)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return None
+
+    if req.status_code != 200:
+        print("Failed to query registry (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return None
+
+    try:
+        response_content = json.loads(req.content.decode('utf-8'))
+    except Exception as e:
+        print("Failed to parse response content from registry ({})".format(e))
+        return None
+
+    if not response_content or not "skills" in response_content or len(response_content["skills"]) <= 0:
+        print("No skills found in registry")
+        return None
+
+
+    print("----------------------------------------------------------------------------------------------------------------------------------------")
+    print("{0: <40} {1: <14} {2: <15} {3: <7} {4: <20} {5: <1}".format(
+            "Name", "Type",  "Platform", "Lang", "Author", "Description"))
+    print("----------------------------------------------------------------------------------------------------------------------------------------")
+
+    for skill in response_content["skills"]:
+        skill_name = skill["skillname"] if "skillname" in skill else "-"
+        type = skill["type"] if "type" in skill else "-"
+        platform = skill["platform"] if "platform" in skill else "-"
+        author = skill["author"] if "author" in skill else "-"
+        lang = skill["language"] if "language" in skill else "-"
+        description = skill["shortDescription"] if "shortDescription" in skill else "-"
+
+        description = description.replace("\n", " ")
+
+        if len(description) > 40:
+            description = description[:40] + "..."
+
+        print("{0: <40} {1: <14} {2: <15} {3: <7} {4: <20} {5: <1}".format(
+            skill_name, type, platform, lang, author, description))
+
+# ------------------------------------------------------------------------------
+# do_register
+# ------------------------------------------------------------------------------
+
+
+def do_register():
+    print("")
+    print("Registering new user at HSS registry.")
+
+    user = input("Username: ")
+    mail = input("E-Mail: ")
+    pass1 = getpass.getpass("Password: ")
+    pass2 = getpass.getpass("Password (confirm): ")
+
+    if pass1 != pass2:
+        print("Passwords don't match.")
+        return
+
+    print("Creating account: {} / {}, continue? (YES|no) ".format(user, mail))
+
+    cont = input("")
+
+    if cont and cont.lower() != "yes":
+        print("Aborted.")
+        return
+
+    url = "{}/{}/register".format(registry_host, registry_path)
+    params = { "username": user, "password": pass1, "email": mail }
+
+    try:
+        req = requests.post(url, json = params)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return None
+
+    if req.status_code != 200:
+        print("Failed to register at registry (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return None
+
+    try:
+        response_content = json.loads(req.content.decode('utf-8'))
+    except Exception as e:
+        print("Failed to parse response content from registry ({})".format(e))
+        return None
+
+    if not response_content or not "token" in response_content:
+        print("Failed to parse response content from registry ({})".format(e))
+        return None
+
+    print("")
+    print("Registration successful. Your token is: {}".format(response_content["token"]))
+    print("")
+    print("Please SAFELY store this token, as there is no way to recover it.")
+    print("The token will be needed to publish/unpublish skills to the registry.")
+    print("")
+
+# ------------------------------------------------------------------------------
+# do_unregister
+# ------------------------------------------------------------------------------
+
+
+def do_unregister():
+    print("")
+    print("Unregistering user at HSS registry.")
+    print("")
+    print("WARNING: This will remove your account and ALL published skills. This operation can NOT be undone. Continue? (yes|NO)")
+
+    cont = input("")
+
+    if cont.upper() != "YES":
+        print("Aborted.")
+        return
+
+    user = input("Username: ")
+    password = getpass.getpass("Password: ")
+
+    url = "{}/{}/unregister".format(registry_host, registry_path)
+    params = { "username": user, "password": password }
+
+    try:
+        req = requests.post(url, json = params)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return None
+
+    if req.status_code != 200:
+        print("Failed to register at registry (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return None
+
+    try:
+        response_content = json.loads(req.content.decode('utf-8'))
+    except Exception as e:
+        print("Failed to parse response content from registry ({})".format(e))
+        return None
+
+    if "error" in response_content:
+        print("Failed to unregister account: {}".format(response_content["error"] if "error" in response_content else "unknown error"))
+        return
+
+    print("Successfully unregistered account.")
+    print("")
+
+# ------------------------------------------------------------------------------
+# do_publish
+# ------------------------------------------------------------------------------
+
+
+def do_publish(dir, token):
+    if not dir or not os.path.exists(dir) or not os.path.isdir(dir):
+        print("Missing/invalid skill directory '{}'".format(dir if dir else ""))
+        return
+
+    if not token:
+        print("Missing token")
+        return
+
+    info = open_info_file(dir)
+
+    if not info:
+        print("Missing/invalid skill.json file")
+        return
+
+    sentences_ini = os.path.join(dir, "sentences.ini")
+    slots_json = os.path.join(dir, "slots.json")
+
+    params = {
+        "token": token,
+        "skillname": info["skillname"],
+        "platform": info["platform"],
+        "type": info["type"],
+        "author": info["author"],
+        "repository": info["repository"],
+        "intents": info["intents"],
+        "shortDescription": info["shortDescription"],
+        "sentences": True if os.path.exists(sentences_ini) else False,
+        "slots": True if os.path.exists(slots_json) else False,
+        "language": info["language"] if "language" in info else None
+    }
+
+    url = "{}/{}/publish".format(registry_host, registry_path)
+
+    try:
+        req = requests.post(url, json = params)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return None
+
+    if req.status_code != 200:
+        print("Failed to publish skill at registry (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return None
+
+    try:
+        response_content = json.loads(req.content.decode('utf-8'))
+    except Exception as e:
+        print("Failed to parse response content from registry ({})".format(e))
+        return None
+
+    if "error" in response_content:
+        print("Failed to publish skill: {}".format(response_content["error"] if "error" in response_content else "unknown error"))
+        return
+
+    print("Successfully published skill.")
+    print("")
+
+# ------------------------------------------------------------------------------
+# do_unpublish
+# ------------------------------------------------------------------------------
+
+
+def do_unpublish(name, token):
+    if not token:
+        print("Missing token")
+        return
+
+    params = { "token": token, "skillname": name }
+    url = "{}/{}/unpublish".format(registry_host, registry_path)
+
+    try:
+        req = requests.post(url, json = params)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return None
+
+    if req.status_code != 200:
+        print("Failed to unpublish skill at registry (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return None
+
+    try:
+        response_content = json.loads(req.content.decode('utf-8'))
+    except Exception as e:
+        print("Failed to parse response content from registry ({})".format(e))
+        return None
+
+    if "error" in response_content:
+        print("Failed to unpublish skill: {}".format(response_content["error"] if "error" in response_content else "unknown error"))
+        return
+
+    print("Successfully unpublish skill.")
+    print("")
+
+# ------------------------------------------------------------------------------
+# update_sentences
+# ------------------------------------------------------------------------------
+
+
+def update_sentences(sentences_ini_file):
+    url = "{}/sentences".format(rhasspy_url)
+
+    # query existing sentences at rhasspy
+
+    try:
+        req = requests.get(url)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to receive sentences from rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    old_sentences = {}
+    sect = None
+    buffer = []
+
+    # build a dict, which will make things a bit easier
+
+    try:
+        for line in req.content.decode('utf-8').splitlines():
+            if line.startswith("["):
+                if sect:
+                    old_sentences[sect] = buffer
+                    buffer = []
+
+                sect = line
+            else:
+                if len(line):
+                    buffer.append(line)
+
+        if len(buffer):
+            old_sentences[sect] = buffer
+
+    except Exception as e:
+        print("Failed to parse response content from rhasspy ({})".format(e))
+        return False
+
+    new_sentences = None
+
+    # open skill's sentences.ini
+
+    try:
+        with open(sentences_ini_file,'r') as f:
+            new_sentences = f.readlines()
+    except Exception as e:
+        print("Failed to read file '{}', cannot update sentences ({})".format(sentences_ini_file, e))
+        return False
+
+    sect = None
+    buffer = []
+    to_overwrite = []
+
+    # match to existing sentences, or add if new
+
+    for line in new_sentences:
+        if line.startswith("["):
+            if sect:
+                if sect in old_sentences:
+                    to_overwrite.append(sect)
+
+                old_sentences[sect] = buffer
+                buffer = []
+
+            sect = line.rstrip("\n").rstrip("\r\n")
+        else:
+            sent = line.rstrip("\n").rstrip("\r\n")
+
+            if len(sent):
+                buffer.append(sent)
+
+    if len(buffer):
+        if sect in old_sentences:
+            to_overwrite.append(sect)
+
+        old_sentences[sect] = buffer
+
+    # ask for user confirmation if overwriting existing sentences
+
+    if len(to_overwrite):
+        print("The following intents already exist: " + ", ".join(to_overwrite))
+        print("Overwrite? (YES|no) ")
+
+        cont = input()
+
+        if cont.lower() == "no":
+            print("Not updating sentences.")
+            return True
+
+    res = ''
+
+    for sect in old_sentences:
+        res += sect + "\n"
+
+        for sent in old_sentences[sect]:
+            res += sent + "\n"
+
+        res += "\n"
+
+    # finally POST full sentences list to rhasspy (including other skill's sentences)
+
+    url = "{}/sentences".format(rhasspy_url)
+
+    try:
+        req = requests.post(url, data = res.encode('utf8'))
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to update sentences at rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    print("Sentences successfully updated")
+
+# ------------------------------------------------------------------------------
+# remove_sentences
+# ------------------------------------------------------------------------------
+
+
+def remove_sentences(sentences_ini_file):
+    url = "{}/sentences".format(rhasspy_url)
+
+    # query existing sentences at rhasspy
+
+    try:
+        req = requests.get(url)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to receive sentences from rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    old_sentences = {}
+    sect = None
+    buffer = []
+
+    # build a dict, which will make things a bit easier
+
+    try:
+        for line in req.content.decode('utf-8').splitlines():
+            if line.startswith("["):
+                if sect:
+                    old_sentences[sect] = buffer
+                    buffer = []
+
+                sect = line
+            else:
+                if len(line):
+                    buffer.append(line)
+
+        if len(buffer):
+            old_sentences[sect] = buffer
+
+    except Exception as e:
+        print("Failed to parse response content from rhasspy ({})".format(e))
+        return False
+
+    new_sentences = None
+
+    # open skill's sentences.ini
+
+    try:
+        with open(sentences_ini_file,'r') as f:
+            new_sentences = f.readlines()
+    except Exception as e:
+        print("Failed to read file '{}', cannot update sentences ({})".format(sentences_ini_file, e))
+        return False
+
+    sect = None
+    to_delete = []
+
+    # match to existing sentences, or add if new
+
+    for line in new_sentences:
+        if line.startswith("["):
+            sect = line.rstrip("\n").rstrip("\r\n")
+
+            to_delete.append(sect)
+            del old_sentences[sect]
+
+    # ask for user confirmation if overwriting existing sentences
+
+    if len(to_delete):
+        print("The following intents will be deleted: " + ", ".join(to_delete))
+        print("Continue? (YES|no) ")
+
+        cont = input()
+
+        if cont.lower() == "no":
+            print("Not updating sentences.")
+            return True
+
+    res = ''
+
+    for sect in old_sentences:
+        res += sect + "\n"
+
+        for sent in old_sentences[sect]:
+            res += sent + "\n"
+
+        res += "\n"
+
+    # finally POST full sentences list to rhasspy (including other skill's sentences)
+
+    url = "{}/sentences".format(rhasspy_url)
+
+    try:
+        req = requests.post(url, data = res.encode('utf8'))
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to update sentences at rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    print("Sentences successfully updated")
+
+# ------------------------------------------------------------------------------
+# update_slots
+# ------------------------------------------------------------------------------
+
+
+def update_slots(slots_json, is_dictionary = False):
+    def convert_slots(slots):
+        res = {}
+
+        for k,v in slots.items():
+            vals = []
+
+            for subk, subv in v.items():
+                vals = vals + subv
+
+            res[k] = vals
+
+        return res
+
+    url = "{}/slots".format(rhasspy_url)
+
+    # get existing slots from rhasspy (this one's a bit easier than sentences)
+
+    try:
+        req = requests.get(url)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to get slots from rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    try:
+        old_slots = json.loads(req.content.decode('utf-8'))
+    except Exception as e:
+        print("Failed to parse response content from rhasspy ({})".format(e))
+        return False
+
+    # open our skill's slots
+
+    new_slots = None
+
+    with open(slots_json) as json_file:
+        try:
+            new_slots = json.load(json_file)
+        except Exception as e:
+            print("Invalid/malformed file '{}' ({}), cannot update slots".format(slots_json, e))
+            return False
+
+    if is_dictionary:
+        new_slots = convert_slots(new_slots)
+
+    # do matching
+
+    to_overwrite = []
+
+    for key, value in new_slots.items():
+        if key in old_slots:
+            to_overwrite.append(key)
+
+        old_slots[key] = value
+
+    if len(to_overwrite):
+        print("The following slots already exist: " + ", ".join(to_overwrite))
+        print("Overwrite? (YES|no) ")
+
+        cont = input()
+
+        if cont.lower() == "no":
+            print("Not updating slots.")
+            return True
+
+    url = "{}/slots".format(rhasspy_url)
+
+    try:
+        req = requests.post(url, json = new_slots, params = { "overwrite_all": True })
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to update slots at rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    print("Slots successfully updated")
+
+# ------------------------------------------------------------------------------
+# do_train
+# ------------------------------------------------------------------------------
+
+
+def do_train():
+    url = "{}/train".format(rhasspy_url)
+
+    # get existing slots from rhasspy (this one's a bit easier than sentences)
+
+    try:
+        req = requests.post(url)
+    except Exception as e:
+        print("Failed to execute HTTP request ({})".format(e))
+        return False
+
+    if req.status_code != 200:
+        print("Failed to trigger training at rhasspy (HTTP {} / {})".format(req.status_code, req.content.decode('utf-8')[:80] if req.content else "-"))
+        return False
+
+    print("Training successful")
+
+# ------------------------------------------------------------------------------
+# main
+# ------------------------------------------------------------------------------
+
+
+if __name__ == "__main__":
+    args = parseArgs()
+
+    if args is None or "help" in args or "h" in args:
+        help()
+    elif "version" in args or "v" in args:
+        version()
+    else:
+        try:
+            run()
+        except KeyboardInterrupt:
+            print("")

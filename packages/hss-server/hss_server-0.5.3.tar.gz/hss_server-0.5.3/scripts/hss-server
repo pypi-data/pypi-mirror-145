@@ -1,0 +1,276 @@
+#!/usr/bin/env python
+# -----------------------------------------------------------------------------
+# HSS - Hermes Skill Server
+# Copyright (c) 2020 - Patrick Fial
+# -----------------------------------------------------------------------------
+# hss-server
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Imports
+# -----------------------------------------------------------------------------
+
+import logging
+import sys
+import os
+import signal
+import configparser
+import pkg_resources
+import asyncio
+
+from pid import PidFile
+from appdirs import user_config_dir
+
+from hss_server import logger
+from hss_server import skillserver
+
+# ------------------------------------------------------------------------------
+# globals
+# ------------------------------------------------------------------------------
+
+try:
+    __version__ = pkg_resources.require("hss_server")[0].version
+except Exception as e:
+    __version__ = "0.0.0"
+
+server = None
+log = None
+skill_directory = None
+config_dir = None
+
+# ------------------------------------------------------------------------------
+# parseArgs
+# ------------------------------------------------------------------------------
+
+
+def parseArgs():
+    res = {}
+
+    for i in range(len(sys.argv)):
+        arg = sys.argv[i]
+
+        if arg.startswith("--") or arg.startswith("-"):
+            if i+1 < len(sys.argv) and not sys.argv[i+1].startswith("-"):
+                res[arg.replace("-", "")] = sys.argv[i+1]
+            else:
+                res[arg.replace("-", "")] = None
+
+    return res
+
+# ------------------------------------------------------------------------------
+# help
+# ------------------------------------------------------------------------------
+
+
+def help():
+    version()
+
+    print("\nUsage:")
+    print("   $ ./hss-server [-dhv][-cl arg]")
+    print("\nOptions:")
+    print("\n   -c [dir]           Directory path where the server's config.ini is located (default: user config dir)")
+    print("\n   -l [file]          Log file to write log entries to (default: console)")
+    print("   -d                 Enable debug log output")
+    print("\n   --help             Show this help and exit")
+    print("   -v, --version      Show version and exit")
+    print("\n")
+
+# ------------------------------------------------------------------------------
+# version
+# ------------------------------------------------------------------------------
+
+
+def version(log=None):
+    if log:
+        log.info("Hermes Skill Server v{}".format(__version__))
+    else:
+        print("Hermes Skill Server v{}".format(__version__))
+
+# ------------------------------------------------------------------------------
+# init_config
+# ------------------------------------------------------------------------------
+
+
+def init_config(args):
+    global skill_directory
+    global config_dir
+
+    config = configparser.ConfigParser()
+    config_dir = args["c"] if "c" in args else user_config_dir("hss_server", "s710")
+    config_ini = os.path.join(config_dir, "config.ini")
+    skill_directory = os.path.join(config_dir, "skills")
+
+    # bail out of anything is weird
+
+    if not config_dir:
+        raise Exception("Unable to get configuration dir. Use -c option.")
+
+    # create config dir if it does not yet exist (~/.config/hss_server)
+
+    if not os.path.exists(config_dir):
+        os.makedirs(config_dir, exist_ok=True)
+        os.makedirs(skill_directory, exist_ok=True)
+
+    # if ~/.config/hss_server/config.ini exists, load it
+
+    if os.path.exists(config_ini) and os.path.isfile(config_ini):
+        config.read(config_ini)
+
+    # read config values which we need, fill in defaults
+
+    return read_config(config, skill_directory, args)
+
+# ------------------------------------------------------------------------------
+# read_config
+# ------------------------------------------------------------------------------
+
+
+def read_config(config, default_skill_dir, args):
+    def set_cfg_value(target, name, sect, item, default, type = "str"):
+        res = None
+
+        if not sect in config or not item in config[sect]:
+            res = default
+        else:
+            if type == "int":
+                res = int(config[sect][item])
+            else:
+                res = config[sect][item]
+
+        target[name] = res
+
+    res = { "debug": True if "d" in args else False }
+
+    set_cfg_value(res, "skill_directory", "server", "skill_directory", default_skill_dir)
+    set_cfg_value(res, "rpc_start_port", "server", "rpc_start_port", 51000, type = "int")
+    set_cfg_value(res, "tts_url", "server", "tts_url", None)
+    set_cfg_value(res, "node", "server", "node", None)
+    set_cfg_value(res, "npm", "server", "npm", None)
+
+    set_cfg_value(res, "mqtt_server", "mqtt", "server", "localhost")
+    set_cfg_value(res, "mqtt_port", "mqtt", "port", 1883, type = "int")
+    set_cfg_value(res, "mqtt_user", "mqtt", "username", None)
+    set_cfg_value(res, "mqtt_password", "mqtt", "password", None)
+
+    set_cfg_value(res, "intents_topic", "topics", "intents", "hermes/intent/#")
+    set_cfg_value(res, "start_session_topic", "topics", "start_session", "hermes/dialogueManager/startSession")
+    set_cfg_value(res, "continue_session_topic", "topics", "continue_session", "hermes/dialogueManager/continueSession")
+    set_cfg_value(res, "end_session_topic", "topics", "end_session", "hermes/dialogueManager/endSession")
+
+    return res
+
+# ------------------------------------------------------------------------------
+# run
+# ------------------------------------------------------------------------------
+
+
+async def run(cfg):
+    global server
+    global log
+
+    if 'l' not in args:
+        logger.Logger.static_init(
+            None, logging.DEBUG if "d" in args else logging.INFO)
+    else:
+        logger.Logger.static_init(
+            args["l"], logging.DEBUG if "d" in args else logging.INFO)
+
+    log = logging.getLogger("hss")
+    logging.getLogger("transitions.core").setLevel(logging.WARNING)
+
+    version(log)
+
+    log.info("Using config directory: '{}'".format(config_dir))
+    log.info("Using skills directory: '{}'".format(skill_directory))
+
+    loop = asyncio.get_event_loop()
+
+    s = signal.SIGTERM
+
+    loop.add_signal_handler(
+        s, lambda s=s: asyncio.create_task(shutdown(s, loop)))
+
+    s = signal.SIGHUP
+
+    loop.add_signal_handler(
+        s, lambda s=s: asyncio.create_task(reload(s)))
+
+    server = skillserver.SkillServer(cfg)
+
+    await server.start()
+
+# ------------------------------------------------------------------------------
+# shutdown (signal handler)
+# ------------------------------------------------------------------------------
+
+
+async def shutdown(signal, loop):
+    global server
+
+    if log:
+        log.info(f"Received {signal.name}, shutting down ...")
+
+    await server.stop()
+    server = None
+
+    loop.stop()
+
+# ------------------------------------------------------------------------------
+# reload (signal handler)
+# ------------------------------------------------------------------------------
+
+
+async def reload(signal):
+    global server
+
+    if log:
+        log.info(f"Received {signal.name}, reloading ...")
+
+    try:
+        res = await server.reload()
+
+        if not res:
+            log.error("Failed to reload")
+        else:
+            log.info("Done reloading")
+    except Exception as e:
+        log.error("Failed to reload ({})".format(e))
+
+# ------------------------------------------------------------------------------
+# main
+# ------------------------------------------------------------------------------
+
+def main():
+    loop = asyncio.get_event_loop()
+
+    try:
+        asyncio.run(run(cfg))
+    except KeyboardInterrupt:
+        pass
+    except Exception as e:
+        log.error("Got exception: {}".format(e))
+    finally:
+        if server:
+            loop.run_until_complete(server.stop())
+
+        loop.close()
+
+# ------------------------------------------------------------------------------
+# main
+# ------------------------------------------------------------------------------
+
+if __name__ == "__main__":
+    args = parseArgs()
+
+    cfg = init_config(args)
+
+    if args is None or "help" in args:
+        help()
+    elif "version" in args or "v" in args:
+        version()
+    else:
+        with PidFile(os.path.join(config_dir, "server.pid")) as p:
+            main()
+
+    if log:
+        log.info("Bye.")
+
