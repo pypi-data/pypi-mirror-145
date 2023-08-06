@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: hypertrain
+Version: 0.1.0
+Summary: Hypertrain Package
+Home-page: https://github.com/gohypergiant/hyperdrive
+Author: @hypergiant
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/gohypergiant/hyperdrive/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: lightgbm
+Requires-Dist: numpy
+Requires-Dist: onnx
+Requires-Dist: onnxmltools
+Requires-Dist: openpyxl
+Requires-Dist: optuna
+Requires-Dist: pandas (>=1.2.4)
+Requires-Dist: python-daemon
+Requires-Dist: python-dotenv
+Requires-Dist: scikit-learn
+Requires-Dist: skl2onnx (>=1.9.3)
+Requires-Dist: xgboost
+Provides-Extra: pytorch
+Requires-Dist: torch ; extra == 'pytorch'
+Provides-Extra: tensorflow
+Requires-Dist: tensorflow ; extra == 'tensorflow'
+Requires-Dist: tf2onnx ; extra == 'tensorflow'
+Provides-Extra: xgboost
+Requires-Dist: onnxmltools ; extra == 'xgboost'
+Requires-Dist: xgboost ; extra == 'xgboost'
+
+# hypertrain
+A repository for code that runs hyperparameter experiments.
+
+
+## Setup development environment
+
+
+```bash
+  conda create -n hypertrain python=3.9 --yes
+  conda activate hypertrain
+  pip install -r requirements-dev.txt
+  pre-commit install
+```
+
+### Run pre-commit
+```bash
+  pre-commit run --all-files
+```
+
+
