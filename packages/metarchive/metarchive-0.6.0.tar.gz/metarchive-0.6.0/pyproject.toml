@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "metarchive"
+version = "0.6.0"
+description = "Tool for analysing links within a website archived by archive.org"
+readme = "Readme.md"
+authors = ["Patrick Greß <patrick.daniel.gress@gmail.com>"]
+license = "GPLv3"
+keywords = ['archive.org', 'analysis']
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Science/Research',
+    'Operating System :: OS Independent',
+    'Topic :: Internet :: WWW/HTTP :: Indexing/Search',
+    'Topic :: Text Processing :: Markup :: HTML',
+    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
+]
+include = [
+    "LICENSE"
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic = "^1.9.0"
+requests = "^2.27.1"
+beautifulsoup4 = "^4.10.0"
+toolz = "^0.11.2"
+tqdm = "^4.63.0"
+more-itertools = "^8.12.0"
+PyYAML = "^6.0"
+python-magic = "^0.4.25"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+pytest-cov = "^3.0.0"
+Sphinx = "^4.4.0"
+sphinx-rtd-theme = "^1.0.0"
+more-itertools = "^8.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
