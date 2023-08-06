@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: reducss
+Version: 1.1.1
+Summary: simple & flexible SSG
+Home-page: https://github.com/laddge/reducss
+Author: Laddge
+Author-email: dev.laddge@gmail.com
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: beautifulsoup4 (>=4.5.0)
+
+# reducss
+Reduce CSS size with Python
+
+## Install
+```
+pip install reducss
+```
+
+## Usage
+### Quick start
+```python3
+import reducss
+reducss.auto(dirname="./")
+```
+
+## License
+This project is under the MIT-License.  
+See also [LICENSE](LICENSE).
+
+## Author
+Laddge
+
+
