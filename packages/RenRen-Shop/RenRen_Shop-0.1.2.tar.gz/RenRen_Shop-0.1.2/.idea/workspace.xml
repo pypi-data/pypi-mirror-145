@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0320431c-2aa2-4605-926c-394be34cd999" name="Changes" comment="优化">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/MyLog/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/MyLog/error.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/MyLog/log.log" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/MyLog/log.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/RenRen_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/RenRen_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/app/del_bug.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/app/del_bug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/app/goods_to_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/app/goods_to_csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/app/mass_update_goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/app/mass_update_goods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/category/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/category/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/category/category_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/category/category_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/add_goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/add_goods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/edit_goods.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/edit_goods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/fetch_goods_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/fetch_goods_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/goods_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/goods_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/goods_commission_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/goods_commission_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/goods_edit_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/goods_edit_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/goods_infos_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/goods_infos_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/goods_list_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/goods_list_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/goods_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/goods_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/member_level_discount.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/member_level_discount.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/options_edit_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/options_edit_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/options_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/options_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/spec_edit_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/spec_edit_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/goods/template/spec_template.json" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/goods/template/spec_template.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/group/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/group/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/group/add_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/group/add_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/group/fetch_groups_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/group/fetch_groups_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/group/groups_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/group/groups_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/group/update_groups.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/group/update_groups.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/log/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/log/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/log/fetch_log_list.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/log/fetch_log_list.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/log/log_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/log/log_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/login/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/login/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/login/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/login/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/photo_album/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/photo_album/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/photo_album/add_album.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/photo_album/add_album.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/uploader/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/uploader/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/uploader/img_uploader.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/uploader/img_uploader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/uploader/uploader.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/uploader/uploader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/url/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/url/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/api/url/url.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/api/url/url.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/common/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/common/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/common/conDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/common/conDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/common/fetch.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/common/fetch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/common/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/common/log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/configs/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/configs/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/configs/configs.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/configs/configs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/factory/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/factory/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renren_mall/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/RenRen_Shop/factory/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27MNaEYfLyTzm9xH8vKhrU4FJr8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.test (1)">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RenRenMall" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RenRenMall" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="RenRenMall" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test (1)" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0320431c-2aa2-4605-926c-394be34cd999" name="Changes" comment="" />
+      <created>1649126057376</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649126057376</updated>
+    </task>
+    <task id="LOCAL-00001" summary="优化">
+      <created>1649143429046</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649143429046</updated>
+    </task>
+    <task id="LOCAL-00002" summary="优化">
+      <created>1649145628093</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649145628093</updated>
+    </task>
+    <task id="LOCAL-00003" summary="优化">
+      <created>1649145953326</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649145953326</updated>
+    </task>
+    <task id="LOCAL-00004" summary="优化">
+      <created>1649146484447</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649146484447</updated>
+    </task>
+    <task id="LOCAL-00005" summary="优化">
+      <created>1649146514053</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649146514053</updated>
+    </task>
+    <task id="LOCAL-00006" summary="优化">
+      <created>1649150243773</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649150243773</updated>
+    </task>
+    <task id="LOCAL-00007" summary="优化">
+      <created>1649151545286</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649151545286</updated>
+    </task>
+    <task id="LOCAL-00008" summary="优化">
+      <created>1649151722589</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649151722589</updated>
+    </task>
+    <task id="LOCAL-00009" summary="优化">
+      <created>1649152674428</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649152674428</updated>
+    </task>
+    <task id="LOCAL-00010" summary="优化">
+      <created>1649153728045</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649153728045</updated>
+    </task>
+    <task id="LOCAL-00011" summary="优化">
+      <created>1649154654740</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649154654740</updated>
+    </task>
+    <task id="LOCAL-00012" summary="优化">
+      <created>1649154697633</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649154697633</updated>
+    </task>
+    <task id="LOCAL-00013" summary="优化">
+      <created>1649155576726</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1649155576726</updated>
+    </task>
+    <task id="LOCAL-00014" summary="优化">
+      <created>1649155823631</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649155823631</updated>
+    </task>
+    <task id="LOCAL-00015" summary="优化">
+      <created>1649209531933</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649209531933</updated>
+    </task>
+    <task id="LOCAL-00016" summary="优化">
+      <created>1649209770068</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1649209770068</updated>
+    </task>
+    <task id="LOCAL-00017" summary="优化">
+      <created>1649210640324</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649210640324</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化" />
+  </component>
+</project>
