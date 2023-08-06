@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:arrow="http://www.x-and-y.ai/schema/bpmn/arrow"
+                  targetNamespace="http://bpmn.io/schema/bpmn">
+    <bpmn:process id="main_process" isExecutable="true">
+
+        <bpmn:startEvent id="main_startevent"/>
+        <bpmn:sequenceFlow sourceRef="main_startevent" targetRef="callActivity"/>
+
+        <bpmn:callActivity id="callActivity" calledElement="subprocess">
+            <bpmn:extensionElements>
+                <arrow:incomingState>
+                    <arrow:variable source="x" target="x1"/>
+                    <arrow:expression source="process.env.x + 5" target="x2"/>
+                </arrow:incomingState>
+                <arrow:outgoingState>
+                    <arrow:variable source="y" target="y1"/>
+                    <arrow:expression source="process.env.y * 2" target="y2"/>
+                </arrow:outgoingState>
+            </bpmn:extensionElements>
+        </bpmn:callActivity>
+
+        <bpmn:sequenceFlow sourceRef="callActivity" targetRef="main_endevent"/>
+        <bpmn:endEvent id="main_endevent"/>
+    </bpmn:process>
+
+    <bpmn:process id="subprocess" isExecutable="true">
+        <bpmn:startEvent id="sub_startevent">
+            <bpmn:outgoing>startevent_manualTask</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sequenceFlow sourceRef="sub_startevent" targetRef="task1"/>
+
+        <bpmn:scriptTask id="task1" scriptFormat="javascript" arrow:varName="y">
+            <bpmn:script>
+                process.env.x1 * 3 / 2
+            </bpmn:script>
+        </bpmn:scriptTask>
+
+        <bpmn:manualTask id="task2" />
+
+        <bpmn:sequenceFlow sourceRef="task1" targetRef="task2"/>
+        <bpmn:sequenceFlow sourceRef="task2" targetRef="sub_endevent"/>
+        <bpmn:endEvent id="sub_endevent" />
+    </bpmn:process>
+</bpmn:definitions>

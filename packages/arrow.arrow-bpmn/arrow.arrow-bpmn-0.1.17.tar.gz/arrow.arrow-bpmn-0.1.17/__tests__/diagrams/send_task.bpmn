@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  id="Definitions_1rkmw67" targetNamespace="http://bpmn.io/schema/bpmn">
+
+    <bpmn:message id="Message_0z0aft4" name="custom-message"/>
+    <bpmn:process id="Process_0elkd69" isExecutable="false">
+        <bpmn:startEvent id="StartEvent_0cbvzh4">
+            <bpmn:outgoing>Flow_1c19tzp</bpmn:outgoing>
+        </bpmn:startEvent>
+        <bpmn:sendTask id="task" messageRef="Message_0z0aft4" />
+        <bpmn:sequenceFlow id="Flow_1c19tzp" sourceRef="StartEvent_0cbvzh4" targetRef="task"/>
+        <bpmn:endEvent id="Event_0nkzmo4">
+            <bpmn:incoming>Flow_1eall36</bpmn:incoming>
+        </bpmn:endEvent>
+        <bpmn:sequenceFlow id="Flow_1eall36" sourceRef="task" targetRef="Event_0nkzmo4"/>
+    </bpmn:process>
+</bpmn:definitions>
