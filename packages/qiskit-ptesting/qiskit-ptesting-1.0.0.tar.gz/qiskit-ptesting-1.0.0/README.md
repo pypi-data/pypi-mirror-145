@@ -1,0 +1,291 @@
+# Qiskit-PTesting
+
+   This project aims to implement property-based testing for quantum circuits using the qiskit library for Python 3.6+.
+
+   To learn more about qiskit, follow this [link](https://qiskit.org/).
+
+   I also recommend following [their tutorials on quantum computing](https://qiskit.org/learn/).
+
+   To learn more about property-based testing in general, follow these ressources:
+   [Intro to property based testing](https://dev.to/jdsteinhauser/intro-to-property-based-testing-2cj8),
+   [Wikipedia page](https://en.wikipedia.org/wiki/Property\_testing).
+
+
+## Installation
+
+   1) Run `pip install qiskit-ptesting` in a terminal environement
+
+   2) In any python file where you want to define property tests, add:
+```python
+   from Qiskit_PTesting.Qiskit_PTesting import QiskitPropertyTest, TestProperty, Qarg
+```
+
+   That's it, you should be able to define tests in the same file.
+
+
+# Usage
+
+   1) Create a superclass of "QiskitPropertyTest" using any name you want
+   2) In that class, define 3 functions (optionally leave them out for default behaviour):
+   - `property(self)`
+   - `quantumFunction(self, qc)`
+   - `assertions(self)`
+   3) Inside of the function `property()`, define a TestProperty object and return it
+   4) Inside of the function `quantumFunction()`, define which steps are needed to be applied to qc (the quantum circuit). All of the generated tests will have those operations applied.
+   5) Inside of the function `assertion()`, define which properties you would like to hold true using the built-in assertions.
+   6) Run the test class you created using the "runTests()" method.
+
+
+
+## How to define a TestProperty
+
+   A TestProperty object contains all of the necessary information to generate random tests.
+
+   It contains:
+   1) `p_value`: The p\_value for all tests (float between 0 and 1)
+   2) `nbTests`: The number of randomly generated tests (int greater than 0)
+   3) `nbTrials`: The number of times each generated test will be run, otherwise called the amount of trials (int greater than 0)
+   4) `nbMeasurement`: The number of times each trial will be measured (int greater than 0)
+   5) `nbQubits`: The amount of required qubits for each test (int greater than 0, or a list of 2 integers, the 2nd one being greater of equal to the first)
+   6) `nbClassicalBits`: The amount of classical bits required for each test(int greater or equal to 0)
+   7) `qargs`: A dictionary of Qarg objects for each qubit that you want to initialise to a specific range/value (can be empty)
+   8) `backend`: A string that expresses which backend should be used for the measurements.
+      It can be any backend from Aer or `"ibmq"`, which automatically uses the API token stored on the computer.
+
+   These are the default values:
+
+```python
+testProperty = TestProperty(p_value=0.01,
+                            nbTests=10,
+                            nbTrials=100,
+                            nbMeasurements=500,
+                            nbQubits=5,
+                            nbClassicalBits=0,
+                            qargs={},
+                            backend="aer_simulator")
+```
+
+
+   NbQubits can be an integer or a list.
+   In that case, the framework will generate each test with a random amount of qubits between the two specified values.
+
+
+## How to initalise a Qarg
+
+   A Qarg object holds 4 ints that define 2 ranges.
+   A test property will apply this Qarg to initialise a qubit to a random value between those 2 ranges.
+   Any qubit of a quantum circuit can be initilised using 2 values: a theta and a phi.
+   The first range specifies what values theta can be used to initialise a qubit.
+   The second range specifies what values phi can take.
+
+   Here is an example Qarg, that specifies that a qubit needs to be initialised with w theta between 0 and 90 degrees, and a phi of 40 to 60 degrees:
+
+```python
+qarg = Qarg(0, 90, 45, 60)
+```
+
+   The same Qarg can be specified using radians, if the last paramter, isRad, is set to True:
+
+```python
+from math import pi
+qarg = Qarg(0, pi/2, pi/4, pi/3, True)
+```
+
+
+   A Qarg can also be specified with a statevector with two complex values in the following way:
+
+```python
+from math import sqrt
+qarg = Qarg([1/sqrt(2), 1/sqrt(2)], [10, 10], False)
+```
+
+
+   The above code initialises a qubit to the state |+>.
+   The second argument specifies that the theta can be up to 10 degrees higher or lower than the specified statevector, and same for the phi.
+   The False means that degrees are used instead of radians.
+
+   Finally, some common states can be directly initialised with just one string:
+
+- Qarg("0") initialises to state 0
+- Qarg("1") to state 1
+- Qarg("+") to state +
+- Qarg("-") to state -
+- Qarg("Any") to any state on the Bloch sphere
+
+
+
+
+# Assertions
+
+   6 assertions are up to your disposition:
+
+## Single-Qubit assertions
+
+### Assert the probability of a qubit to be in state |0>
+```python
+assertProbability(qu0, expectedProba, qu0_pre=False, basis="z", filter_qc=None)
+assertNotProbability(qu0, expectedProba, qu0_pre=False, basis="z", filter_qc=None)
+```
+
+   This assertion requires 2 arguments: first, the index of the qubit to be tested, and secondly the expected probability of measuring the qubit in the state |0> along the Z-axis.
+   It can also optionally take in an extra bool argument, that specifies whether the sampling will occur before the quantumFunction is applied.
+   It defaults to False, so the sampling occurs after the function.
+
+### Assert that a qubit is in a given state
+```python
+assertState(qu0, theta, phi, isRadian=False, qu0_pre=False, filter_qc=None)
+assertNotState(qu0, theta, phi, isRadian=False, qu0_pre=False, filter_qc=None)
+```
+
+### Assert that a qubit has teleported into another
+```python
+assertTeleported(sent, received, basis="z", filter_qc=None)
+assertNotTeleported(sent, received, basis="z", filter_qc=None)
+```
+
+   This assertion requires 2 positional arguments: a sent and a received qubit.
+   It evaluates whether quantum teleportation has occured between the qubits.
+
+## Multi-Qubit Assertions
+
+### Assert the equality or inequality of qubits:
+```python
+assertEqual(qu0, qu1, qu0_pre=False, qu1_pre=False, basis="z", filter_qc=None)
+assertNotEqual(qu0, qu1, qu0_pre=False, qu1_pre=False, basis="z", filter_qc=None)
+```
+
+   This assertion requires 2 arguments, which are the indexes of the qubits to be tested, and 2 optional arguments that specify whether the qubits are to be tested before the quantumFunction() is applied.
+   It defaults to False, so if no arguments are specified there, it will compare the qubits after the function is applied.
+   This assertion tests whether the probabilities of measuring two qubits in the states |0> or |1> are the same.
+   The tests are done on the Z-axis.
+
+
+
+### Assert that two qubits are entangled
+```python
+assertEntangled(qu0, qu1, basis="z", filter_qc=None)
+assertNotEntangled(qu0, qu1, basis="z", filter_qc=None)
+```
+
+   This assertion requires 2 positional arguments which are the indexes of qubits.
+   This assertion evaluates whether those two input qubits are entangled.
+
+
+
+### Assert The Most Common Output(s) Of The Circuit
+
+```python
+assertMostCommon(output, filter_qc=None)
+```
+
+   This assertion takes in one required positional argument: a string or a list of strings showing the most common states of a circuit
+
+
+# Features
+
+### Measure qubit values before the quantum algorithm
+
+   By specifying the boolean parameters "qu0\_pre" or "qu1\_pre" to be True, it is possbile to tell the framework to measure the specified qubit values before or after running the quantum function
+   This is useful in many cases, for example ensuring that a qubit has changed values, or that a qubit is in the same state as another, etc...
+
+   An example of using this would be:
+
+```python
+
+class example(QiskitPropertyTest):
+   def property(self):
+      return TestProperty(nbQubits=2,
+                          qargs={0: Qarg("0"),
+                                 1: Qarg("+")})
+
+   def quantumFunction(self, qc):
+      qc.h(0)
+
+   def assertions(self):
+      #compares the qubits after the quantumFunction is run
+      self.assertEqual(0, 1)
+
+      #compares both qubits before
+      self.assertNotEqual(0, 1, qu0_pre=True, qu1_pre=True)
+
+      #compares qubit 0 after quantumFunction to qubit 1 before
+      self.assertEqual(0, 1, qu0_pre=False, qu1_pre=True)
+```
+
+### Filter generated tests
+
+   It is possible to apply a certain assertion to only the generated tests that have a certain attribute.
+   That attribute can be ANY function that returns a boolean and that takes a QuantumCircuit as input.
+   This feature can give a lot of depth to the defined tests, and enables the users to give very general properties about the input program.
+
+   Here is an example of a use case of this feature: enabling properties on tests of any length:
+```python
+from Qiskit_PTesting.Qiskit_PTesting import QiskitPropertyTest, TestProperty, Qarg
+
+min, max = (2, 10)
+class example(QiskitPropertyTest):
+   def property(self):
+      return TestProperty(nbQubits=[min, max])
+
+   def quantumFunction(self, qc):
+      for index in range(len(qc.qubits):
+         qc.h(index)
+
+   def assertions(self):
+      #specifies that all the qubits should be equal to each other
+      for index in range(max):
+         self.assertEqual(0, index, filter_qc=lamda qc: len(qc.qubits) > index)
+
+example().run()
+```
+
+
+
+### Change The Backend Used For The Measurements
+
+#### Aer Simulators
+
+   The default simulator is `aer_simulator`, but all Aer simulators are available to choose.
+   Simply pass down `backend="<any Aer backend>"` replacing the string with your chosen backend.
+
+#### Run Tests On Quantum Computers
+
+   In order to run the code on quantum comupters, you have to create an IBMQ account, and specify in the testProperty `backend="ibmq"`
+
+   1. Create an account with [IBMQ](https://quantum-computing.ibm.com/) and login
+   2. Copy the API key found in the settings panel of the "My Account" section of the website
+   3. Run the following python code:
+   ```python
+from qiskit import IBMQ
+IBMQ.save_account("<replace_with_api_token>")
+   ```
+
+# Examples
+
+```python
+from Qiskit_PTesting.Qiskit_PTesting import QiskitPropertyTest, TestProperty, Qarg
+
+class example(QiskitPropertyTest):
+   def property(self):
+      return TestProperty(nbQubits=2,
+                          qargs={0: Qarg("0"),
+                                 1: Qarg("+")})
+
+   def quantumFunction(self, qc):
+      qc.h(0)
+
+   def assertions(self):
+      self.assertEqual(0, 1)
+
+example().run()
+```
+
+
+
+# Inner-workings of the framework
+
+There are 4 main parts in this project:
+- Test case generator
+- Test execution engine
+- Statistical analysis engine
+- Programming interface
