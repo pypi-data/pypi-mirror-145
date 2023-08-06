@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: django-fees
+Version: 0.1.0
+Summary: Packages and plan subscriptions for Django
+Home-page: https://github.com/PragmaticMates/django-fees
+Author: Pragmatic Mates
+Author-email: info@pragmaticmates.com
+Maintainer: Pragmatic Mates
+Maintainer-email: info@pragmaticmates.com
+License: BSD License
+Keywords: django packages plans subscriptions pricing limitations
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Framework :: Django
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Development Status :: 5 - Production/Stable
+License-File: LICENSE
+
+# django-fee
+A django package for managing the pricing plans with quotas and their expiration.
+
+Plan > Package
+PlanQuota > PackageQuota
+UserPlan > Plan !!!
+user > purchaser / subscriber / consumer
+
