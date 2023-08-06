@@ -1,0 +1,12 @@
+terminado>=0.8.3
+
+[:os_name == "nt"]
+pywinpty>=2.0.3
+
+[test]
+coverage
+pytest>=6.0
+pytest_tornasync
+pytest-cov
+pytest-timeout
+jupyter_server[test]@ git+https://github.com/Zsailer/jupyter_server.git@jupyter_server_terminals
