@@ -1,0 +1,36 @@
+Metadata-Version: 2.1
+Name: doc-workflow
+Version: 0.1.0a6
+Summary: A Python Document Management Framework for generating and sending (pdf, docx, etc) documents to customers
+Home-page: https://github.com/iulica/doc-workflow
+Author: Iulian Ciorăscu
+Author-email: ciulian@gmail.com
+License: MIT
+Keywords: docx,pdf,split,watermark,email,mailmerge,qrbill,xlsx
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Customer Service
+Classifier: Intended Audience :: Information Technology
+Classifier: Topic :: Office/Business :: Financial :: Accounting
+Classifier: Topic :: Utilities
+Classifier: Topic :: Text Processing
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PyPDF2
+Requires-Dist: cairosvg
+Requires-Dist: qrbill
+Requires-Dist: openpyxl
+Requires-Dist: svglib
+Requires-Dist: reportlab
+Requires-Dist: docx-mailmerge2
+Requires-Dist: docx2pdf
+
+# doc-workflow
+A Python Document Management Framework for generating and sending (pdf, docx, etc) documents to customers
+
+
