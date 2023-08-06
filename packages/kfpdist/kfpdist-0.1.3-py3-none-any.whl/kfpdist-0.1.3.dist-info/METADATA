@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: kfpdist
+Version: 0.1.3
+Summary: Use Kubeflow Pipeline to run distributed training jobs
+Home-page: https://github.com/typhoonzero/kfp-dist-train
+Author: typhoonzero
+Author-email: typhoonzero@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/typhoonzero/kfp-dist-train/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: kubernetes
+Requires-Dist: kfp (==1.7.1)
+
+# Kubeflow Pipeline distributed training support
+
+kfp-dist-train contains utilities to use together with
+[Kubeflow Pipeline](https://www.kubeflow.org/docs/components/pipelines/)
+to enable writing distributed training code directly using Kubeflow Pipeline SDK.
+
+
+## Get Started
+
+1. Setup an Kubeflow environment (maybe use https://github.com/alauda/kubeflow-chart).
+2. Upload the example [kfp-dist-train.ipynb](./kfkp-dist-train.ipynb) into a Notebook
+   instance, or setup local pipeline submit.
+3. Execute the example to submit a workflow, you can configure the number of workers
+   in the Kubeflow web UI. The job should look like below:
+
+![](./doc/kfpdist.png)
+
+
+# Some Roadmap
+
+- support `kfpdist.component(dist=True)` decorator as an wrap of `dsl.component`
+- support parameter server strategy
+- support pytorch
+
+
