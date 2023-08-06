@@ -1,0 +1,57 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "aquaparser"
+
+[project]
+name = "aqua-parser"
+authors = [
+    {name = "Vladimir Puzakov", email = "vppuzakov@rambler.ru"},
+    {name = "Roman Zorkin", email = "zorkin.roman@gmail.com"},
+    {name = "Pavel Vinnikov", email = "vinnpavel@gmail.com"},
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    'Development Status :: 4 - Beta',
+    'Environment :: Web Environment',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Information Technology',
+    'Intended Audience :: System Administrators',
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3 :: Only',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Operating System :: OS Independent',
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development",
+    "Typing :: Typed",
+]
+dynamic = ["version", "description"]
+dependencies = [
+    "pydantic >=1.9.0,<2",
+    "pdfplumber >=0.6.0,<1",
+    "typer >=0.4.0,<1"
+]
+requires-python = ">=3.7.0"
+
+[project.urls]
+Source = "https://github.com/pdf-reports-parser/aqua-parser"
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=0.910,<1",
+    "wemake_python_styleguide>=0.15.3,<1",
+    "bandit ==1.7.2",
+]

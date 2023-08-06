@@ -1,0 +1,85 @@
+Metadata-Version: 2.1
+Name: aqua-parser
+Version: 0.2.1
+Summary: An amazing aquaparser-parser.
+Author-email: Vladimir Puzakov <vppuzakov@rambler.ru>, Roman Zorkin <zorkin.roman@gmail.com>, Pavel Vinnikov <vinnpavel@gmail.com>
+Requires-Python: >=3.7.0
+Description-Content-Type: text/markdown
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: System Administrators
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Software Development :: Libraries :: Application Frameworks
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development
+Classifier: Typing :: Typed
+Requires-Dist: pydantic >=1.9.0,<2
+Requires-Dist: pdfplumber >=0.6.0,<1
+Requires-Dist: typer >=0.4.0,<1
+Requires-Dist: mypy>=0.910,<1 ; extra == "dev"
+Requires-Dist: wemake_python_styleguide>=0.15.3,<1 ; extra == "dev"
+Requires-Dist: bandit ==1.7.2 ; extra == "dev"
+Project-URL: Source, https://github.com/pdf-reports-parser/aqua-parser
+Provides-Extra: dev
+
+# Aqua-parser
+
+## Description
+
+Aqua-parser is a package for extracting data from structured reports in pdf format.
+
+## How to use
+
+First of all, you need to install the package:
+
+```bash
+pip install aqua-parser
+```
+Next, the package must be imported into your project:
+```python
+import aquaparser
+```
+To extract the data, you just need to pass the file to the function:
+```python
+measurement = aquaparser.parse('document.pdf')
+```
+The function will return you the dataclass "Measurement" object:
+```python
+@dataclass
+class Measurement:
+    title: MeasurementTitle
+    toc: list[MeasurementTOC]
+
+
+@dataclass
+class MeasurementTitle:
+    measurement_object: str
+    project: str
+    report_date: datetime
+    responsible_person: str
+
+
+@dataclass
+class MeasurementTOC:
+    smd: str
+    status: Optional[str]
+    value_description: Optional[str]
+    single_value: Optional[str]
+    trial_object: Optional[str]
+```
+
+
