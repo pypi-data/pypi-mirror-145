@@ -1,0 +1,106 @@
+Metadata-Version: 2.1
+Name: place-cz-bot
+Version: 1.0.4
+Summary: PlaceNL: bot to automatically place pixels on /r/place 2022
+Home-page: https://github.com/PlaceCZ/PythonBot
+Author: Lucas van Dijk, fuho
+Author-email: info@lucasvandijk.nl
+License: MIT
+Project-URL: Documentation, https://github.com/PlaceCZ/PythonBot/blob/main/README.md
+Project-URL: Source, https://github.com/PlaceCZ/PythonBot
+Project-URL: Tracker, https://github.com/PlaceCZ/PythonBot/issues
+Keywords: bot
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: Unix
+Classifier: Operating System :: POSIX :: BSD
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Topic :: Internet
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: HTTP Servers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: test
+License-File: LICENSE
+
+# Reddit /r/place 2022 headless bot
+
+This headless Python bot will automatically login to reddit, obtain access 
+tokens (and refreshes them when they expire), obtain orders from the C&C server
+and automatically place pixels at the desired locations.
+
+## Installation and usage
+
+First install the package:
+
+```bash
+pip install place_cz_bot
+````
+
+... then run it ...
+
+```bash
+place_cz_bot -u reddit_username reddit_password
+```
+
+or if you have more than one account...  
+
+```bash
+place_cz_bot -u uname_a pw_a -e uname_b pw_b
+```
+## Dev Installation
+
+ 1. Clone the repo
+    - If using SSH `git clone git@github.com:PlaceCZ/PythonBot.git`
+    - Else: `git clone https://github.com/PlaceCZ/PythonBot.git`
+ 3. CD into it `cd Pythonbot`
+ 4. Create Virtual Environment
+    - Win: `py -m venv venv`
+    - *nix: `python -m venv venv`
+ 5. Activate venv
+    - Win: `venv\Scripts\activate`
+    - *nix: `source ./venv/bin/activate`
+ 6. `python -m pip install -e .`
+ 7. `place_cz_bot`
+ 8. That's it!
+
+## Usage
+
+#### If venv not running
+- Win: `venv\Scripts\activate`
+- *nix: `source ./venv/bin/activate`
+
+#### Start bot
+
+```bash
+place_cz_bot -u "USERNAME" "PASSWORD"
+```
+
+#### The bot supports multiple users:
+```bash
+place_cz_bot -u "USERNAME1" "PASSWORD1" -u "USERNAME2" "PASSWORD2"
+```
+
+## Requirements
+
+- Python >= 3.8
+- NumPy
+- Matplotlib
+- Rich
+- aiohttp
+
+
+
+
