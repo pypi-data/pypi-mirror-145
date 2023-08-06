@@ -1,0 +1,69 @@
+---
+driver=<class 'textual.drivers.linux_driver.LinuxDriver'>
+Load() >>> CliDB(title='Textual')
+Mount() >>> CliDB(title='clidb')
+Mount() >>> DockView(name='DockView#1')
+Mount() >>> DockView(name='Sidebar')
+Mount() >>> ScrollView(name='ScrollView#2')
+Mount() >>> ScrollView(name='ScrollView#2')
+Mount() >>> ScrollView(name='ScrollView#3')
+Mount() >>> ScrollView(name='ScrollView#3')
+Mount() >>> ScrollView(name='ResultsView')
+Mount() >>> ScrollView(name='ResultsView')
+Mount() >>> WindowView(name='WindowView#2')
+Mount() >>> WindowView(name='WindowView#3')
+Mount() >>> WindowView(name='WindowView#1')
+Mount() >>> DataFileTree(name='DirTree')
+TRANSLATING layout
+WindowChange(WindowView(name='WindowView#2')) >>> ScrollView(name='ScrollView#2')
+WindowChange(WindowView(name='WindowView#3')) >>> ScrollView(name='ScrollView#3')
+WindowChange(WindowView(name='WindowView#1')) >>> ScrollView(name='ResultsView')
+WindowChange(WindowView(name='WindowView#2')) >>> ScrollView(name='ScrollView#2')
+TRANSLATING layout
+set_focus DataFileTree(name='DirTree')
+Focus() >>> DataFileTree(name='DirTree')
+MouseDown(x=10, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+WindowChange(WindowView(name='WindowView#2')) >>> ScrollView(name='ScrollView#2')
+MouseUp(x=10, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+Click(x=10, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+set_focus DataFileTree(name='DirTree')
+MouseDown(x=10, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+MouseUp(x=10, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+Click(x=10, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+TRANSLATING layout
+TRANSLATING layout
+set_focus DataFileTree(name='DirTree')
+MouseDown(x=9, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+MouseUp(x=9, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+Click(x=9, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+TRANSLATING layout
+set_focus DataFileTree(name='DirTree')
+MouseDown(x=10, y=2, screen_y=5, button=1) >>> DataFileTree(name='DirTree')
+MouseUp(x=10, y=2, screen_y=5, button=1) >>> DataFileTree(name='DirTree')
+Click(x=10, y=2, screen_y=5, button=1) >>> DataFileTree(name='DirTree')
+ACTION DataFileTree(name='DirTree') click_label
+TreeClick(node=TreeNode(id=1, label='clidb', data=DirEntry(path='../clidb', is_dir=True))) >>> DataFileTree(name='DirTree')
+TRANSLATING layout
+TRANSLATING layout
+CursorMove(DataFileTree(name='DirTree')) >>> ScrollView(name='ScrollView#2')
+WindowChange(WindowView(name='WindowView#2')) >>> ScrollView(name='ScrollView#2')
+TRANSLATING layout
+set_focus DataFileTree(name='DirTree')
+MouseDown(x=13, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+MouseUp(x=13, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+Click(x=13, y=3, screen_y=6, button=1) >>> DataFileTree(name='DirTree')
+ACTION DataFileTree(name='DirTree') click_label
+TreeClick(node=TreeNode(id=2, label='__pycache__', data=DirEntry(path='../clidb/__pycache__', is_dir=True))) >>> DataFileTree(name='DirTree')
+TRANSLATING layout
+TRANSLATING layout
+TRANSLATING layout
+set_focus DataFileTree(name='DirTree')
+MouseDown(x=17, y=4, screen_y=7, button=1) >>> DataFileTree(name='DirTree')
+MouseUp(x=17, y=4, screen_y=7, button=1) >>> DataFileTree(name='DirTree')
+Click(x=17, y=4, screen_y=7, button=1) >>> DataFileTree(name='DirTree')
+Key(key='q') >>> DataFileTree(name='DirTree')
+Key(key='q') >>> ScrollView(name='ScrollView#2')
+Key(key='q') >>> CliDB(title='clidb')
+ACTION CliDB(title='clidb') quit
+CLOSED CliDB(title='clidb')
+PROCESS END
