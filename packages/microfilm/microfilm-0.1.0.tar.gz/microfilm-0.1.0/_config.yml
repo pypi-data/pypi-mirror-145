@@ -1,0 +1,25 @@
+# Book settings
+title: microfilm
+logo: 'illustrations/microanim_logo.png'
+execute:
+  execute_notebooks: "off"
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/guiwitz/microfilm
+  branch: b1898e8
+
+launch_buttons:
+  notebook_interface: "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url: "https://mybinder.org"
+  colab_url: "https://colab.research.google.com"
+  thebe: true
+
+html:
+  use_repository_button: true
+
+sphinx:
+  extra_extensions: [
+  'sphinx.ext.autodoc',
+  'sphinx.ext.napoleon'
+  ]
