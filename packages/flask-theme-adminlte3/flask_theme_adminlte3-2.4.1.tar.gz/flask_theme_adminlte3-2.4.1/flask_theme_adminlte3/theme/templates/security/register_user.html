@@ -1,0 +1,22 @@
+{% extends 'security/login_user.html' %}
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+{% block body_class %}register-page{% endblock %}
+
+
+{% block page_content %}
+
+    <form action="{{ url_for_security('register') }}" method="POST" name="register_user_form">
+              {{ register_user_form.hidden_tag() }}
+              {{ render_field_with_errors(register_user_form.email, 'fa fa-at') }}
+              {{ render_field_with_errors(register_user_form.password, 'fa fa-lock') }}
+              {% if register_user_form.password_confirm %}
+              {{ render_field_with_errors(register_user_form.password_confirm, 'fa fa-lock') }}
+              {% endif %}
+          {{ render_field(register_user_form.submit, class="float-right btn btn-primary btn-block btn-flat") }}
+        <!-- /.col -->
+    </form>
+
+    <a href="{{ url_for('security.login') }}" class="text-center">I already have a membership</a>
+
+{% endblock page_content %}

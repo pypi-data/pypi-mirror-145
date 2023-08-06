@@ -1,0 +1,53 @@
+{% extends config.BASE_ADMIN_TEMPLATE %}
+{% from 'dashboard/card_tools.html' import card_tools with context %}
+{% from 'dashboard/list_users.html' import list_users with context %}
+{% from 'dashboard/list_pages.html' import list_pages with context %}
+{% from 'dashboard/list_roles.html' import list_roles with context %}
+{% from 'dashboard/refresh_card.html' import refresh_card with context %}
+
+{% block title %}Dashboard | {{super()}}{%endblock%}
+
+{% block body %}
+
+<div class="row">
+  <section class="col-lg-6">
+    {#
+    {{list_pages(models.Page.query.all())}}
+    #}
+    {% if templates %}
+      {% from 'dashboard/list_templates.html' import list_templates with context %}
+      {{list_templates(templates.list_all(blueprints=True))}}
+    {% endif %}
+
+    {% if gateway %}
+      {% from 'dashboard/gateway.html' import list_mounts with context %}
+      {{list_mounts(gateway)}}
+    {% endif %}
+
+  
+  </section>
+
+  <section class="col-lg-6">
+    {{list_users(models.User.query.all())}}
+    {{list_roles(models.Role.query.all())}}
+
+    {% if sqlalchemy %}
+      {% from 'dashboard/sqla.html' import list_databases with context %}
+      {{list_databases(sqlalchemy)}}
+    {% endif %}
+  </section>
+
+
+</div>
+
+<div class="row">
+
+  <section class="col-lg-6">
+    {{refresh_card(source='/admin/user',selector='.col-md-12 > div:nth-child(1)')}}
+  </section>
+  <section class="col-lg-6">
+  </section>
+
+</div>
+
+{% endblock %}
