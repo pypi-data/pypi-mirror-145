@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: rfc-tidy
+Version: 0.1.1
+Summary: Cleanup RFC XML
+Home-page: https://github.com/martinthomson/rfc-tidy
+Author: Martin Thomson
+Author-email: mt@lowentropy.net
+License: MIT
+Keywords: rfc ietf xml
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# rfc-tidy
+
+A simple tool that cleans up RFC XML.
+
+## Usage
+
+Install from pypi with:
+
+```sh
+pip install --user rfc-tidy
+```
+
+Like `black`, `rfc-tidy` cannot be tuned.  Feed XML into `stdin`, get XML
+from `stdout` (it also accepts the input file as the first argument).
+
+```sh
+rfc-tidy < draft-blah-blah-blah.xml > draft-tidied.xml
+```
+
+## Features
+
+Adds `<bcp14>` tags for your "MUST", "SHOULD", and "MAY" statements in text.
+
+Removes extraneous XML, comments, and whitespace.
+
+Indents elements consistently.
+
+Replaces non-ASCII characters in text with XML numeric entities so that you
+don't miss them.
+
+
