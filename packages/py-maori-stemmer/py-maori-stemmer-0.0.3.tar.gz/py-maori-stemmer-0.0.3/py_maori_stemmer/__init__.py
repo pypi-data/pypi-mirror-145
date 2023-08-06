@@ -1,0 +1,1 @@
+from .maori import MaoriStemmer

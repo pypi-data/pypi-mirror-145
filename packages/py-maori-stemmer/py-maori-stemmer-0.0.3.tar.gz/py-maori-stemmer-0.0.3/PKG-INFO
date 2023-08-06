@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: py-maori-stemmer
+Version: 0.0.3
+Summary: Stemmer for Maori language
+Home-page: https://github.com/fzyukio/py-maori-stemmer
+Author: Yukio Fukuzawa
+Author-email: nishinokaze8@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+Snowball stemmer for Maori language, implementing PorterStemmer (https://snowballstem.org/projects.html)
+
+Maori snowball syntax written by kshepherd (https://github.com/kshepherd/maoristemmer)
+
+# Install
+```bash
+pip install py_maori_stemmer 
+```
+
+# Usage
+To stem one word:
+```python
+from py_maori_stemmer import MaoriStemmer
+stemmer = MaoriStemmer()
+stemmer.stemWord('waihangatia')
+# waihanga
+```
+
+To stem a sentence:
+```python
+from py_maori_stemmer import MaoriStemmer
+stemmer = MaoriStemmer()
+stemmer.stemWord('i waihangatia mō ngā akomanga kaupapa')
+# ['i', 'waihanga', 'mō', 'ngā', 'akoma', 'kaupap']
+```
+
+
+# Test
+```bash
+nosetests --nocapture -v
+```
+
+
