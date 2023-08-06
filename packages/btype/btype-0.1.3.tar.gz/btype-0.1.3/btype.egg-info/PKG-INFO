@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: btype
+Version: 0.1.3
+Summary: Package for dealing with binary structures
+Home-page: https://github.com/tgree/btype
+Author: Terry Greeniaus
+Author-email: terrygreeniaus@gmail.com
+License: LGPLv2
+Keywords: struct type binary
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU Lesser General Public License v2 (LGPLv2)
+Requires-Python: >=3.0
+Description-Content-Type: text/x-rst
+License-File: LICENSE
+
+btype
+=====
+Package for easily declaring data types in Python that can then be manipulated like normal objects but packed into a bytes() object.  Also supports instantiating data types by unpacking from a bytes() object.
+
+
