@@ -1,0 +1,11 @@
+{% load i18n %}
+<section>
+  <h4>{% trans "Category" %}</h4>
+  <div>
+    <ul>
+      {% for category in categories %}
+        <li><a href="{{ category.get_absolute_url }}">{{ category.name|title }} ({{ category.pages.count }})</a></li>  
+      {% endfor %}
+    </ul>
+  </div>
+</section>

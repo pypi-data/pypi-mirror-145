@@ -1,0 +1,11 @@
+{% load i18n %}
+<section>
+  <h4>{% trans "Tags" %}</h4>
+  <div>
+    <ul>
+      {% for tag in tags %}
+        <li><a href="{{ tag.get_absolute_url }}">{{ tag.name|title }} ({{ tag.tagged_pages.count }})</a></li>  
+      {% endfor %}
+    </ul>
+  </div>
+</section>

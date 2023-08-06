@@ -1,0 +1,20 @@
+{% load i18n %}
+<section>
+  <h4>{{ title }}</h4>
+  <div>
+    <ul>
+      {% for page in pages %}
+        <li>
+          <a href="{{ page.get_absolute_url }}"><strong>{{ page.title|title }}</strong></a>
+          {% if object.content %}
+            <div>
+              {{ object.content|safe|truncatechars:60 }}
+            </div>
+          {% endif %}
+        </li>
+      {% empty %}
+        {% trans "No results!" %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>

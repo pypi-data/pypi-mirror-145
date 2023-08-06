@@ -1,0 +1,22 @@
+{% extends 'simpel_pages/base.html' %}
+{% load i18n pages_tags %}
+
+{% block content %}
+  <h1>{{ object.title }}</h1>
+  {% if object.content %}
+    <div>{{ object.content|safe }}</div>
+  {% endif %}
+  {% if object.parent %}
+    <div><strong>{% trans "Back to" %}</strong>: <a href="{{ object.parent.get_absolute_url }}">{{ object.parent.title }}</a></div>
+  {% endif %}
+  <div>
+    {% for page in object_list %}
+      {% include 'simpel_pages/includes/page.html' with page=page %}
+    {% empty %}
+      {% include 'simpel_pages/includes/no_results.html' %}
+    {% endfor %}
+    {% if is_paginated %}
+      {% include 'simpel_pages/includes/pagination.html' %}
+    {% endif %}
+  </div>
+{% endblock content %}
