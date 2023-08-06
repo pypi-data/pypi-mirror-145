@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: csvcubed-pmd
+Version: 0.1.0rc7
+Summary: Provides functionality necessary to transform RDF Data Cube style CSV-Ws into a format compatible with the Publish My Data platform. Part of the csvcubed family.
+License: Apache-2.0
+Author: Integrated Data Service - Dissemination
+Author-email: csvcubed@gsscogs.uk
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: chardet (>=4.0.0,<5.0.0)
+Requires-Dist: click (>=8.0.3,<9.0.0)
+Requires-Dist: csvw
+Requires-Dist: pandas
+Requires-Dist: pyparsing (>=2.4.7,<2.5.0)
+Requires-Dist: rdflib
+Requires-Dist: requests
+Requires-Dist: unidecode
+Requires-Dist: uritemplate
+Description-Content-Type: text/markdown
+
+# csvcubed - PMD
+
+> Tools to transform a CSV-qb into RDF which is compatible with the [Publish My Data](https://publishmydata.com) platform.
+
+It is anticipated that this library will only be for internal IDP-D usage and does not need to be installed or distributed to external data producers.
+
+## API Documentation
+
+The latest API Documentation for the package can be found [here](https://ci.floop.org.uk/job/GSS_data/job/csvwlib/job/main/lastSuccessfulBuild/artifact/pmd/docs/_build/html/index.html).
+
