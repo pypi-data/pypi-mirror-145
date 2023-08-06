@@ -1,0 +1,57 @@
+Documentum Examples
+===================
+**Example 1: Getting all repositories**
+
+    #. Import ``DOCUMENTUM_API``
+
+        .. code-block:: python
+
+            from pynexusic import DOCUMENTUM_API as api
+
+    #. Initialize ``DOCUMENTUM_API`` class
+
+        .. code-block:: python
+
+           doc_api = api.DOCUMENTUM_API(url, username=username, password=password, verbose=True)
+
+    #. Getting all repositories
+
+        .. code-block:: python
+
+            repos = doc_api.get_repositories()
+
+        Output:
+
+        .. code-block:: python
+
+            repos = [{'id': 'xxxx', 'title': 'xxxx' ...}
+                      ...
+                    ]
+
+**Example 2: Getting a specific repositories**
+
+    #. Import ``DOCUMENTUM_API``
+        .. code-block:: python
+
+            from pynexusic import DOCUMENTUM_API as api
+
+    #. Initialize ``DOCUMENTUM_API`` class
+
+        .. code-block:: python
+
+            doc_api = api.DOCUMENTUM_API(url, username=username, password=password, verbose=True)
+
+    #. Getting a specific repositories
+
+        .. code-block:: python
+
+            repo = doc_api.get_repository(repo_name)
+
+       *where* **repo_name** *is the name of the repository to be extracted from Documentum*
+
+        Output:
+
+        .. code-block:: python
+
+            repo = {'id': 'xxxx', 'title': 'xxxx' ...}
+

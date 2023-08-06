@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OSI PI API Class &mdash; pynexusic 2.3.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OSI PI Examples" href="osipi_examples.html" />
+    <link rel="prev" title="OSI PI" href="osipi_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pynexusic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#python-library-installation">Python library installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#library-documentation">Library documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#external-documentation">External documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NEXUSIC_RESTAPI/nexusic_api.html">NEXUS IC REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAXIMO_API/maximo_api.html">Maximo</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="osipi_api.html">OSI PI</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OSI PI API Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osipi_examples.html">OSI PI Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../DOCUMENTUM_API/documentum_api.html">Documentum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changehistory.html">Change History</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pynexusic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="osipi_api.html">OSI PI</a> &raquo;</li>
+      <li>OSI PI API Class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/OSIPI_WEBAPI/osipi_class.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="osi-pi-api-class">
+<h1>OSI PI API Class<a class="headerlink" href="#osi-pi-api-class" title="Permalink to this headline"></a></h1>
+<p>OSI PI Web API class allows the user to communicate with OSI PI web API using python</p>
+<p><strong>Prerequisites:</strong></p>
+<ul class="simple">
+<li><p>Python &gt; 3.7</p></li>
+<li><p>OSI PI access</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">OSIPI_WebAPI.</span></span><span class="sig-name descname"><span class="pre">OSIPI_WebAPI</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">piwebapi_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authentication_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'basic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_attempts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>piwebapi_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - OSI PI base URL.</p></li>
+<li><p><strong>username</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - OSI PI username.</p></li>
+<li><p><strong>password</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - OSI PI password.</p></li>
+<li><p><strong>authentication_type</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - This can be either ntlm or basic (default value basic).</p></li>
+<li><p><strong>max_attempts</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Maximum number of attempts if disconnected (default value 1).</p></li>
+<li><p><strong>timeout</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Timeout threshold in seconds (default value None).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+<li><p><strong>verify</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - By pass SSL verification if True (default value True).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.authenticate">
+<span class="sig-name descname"><span class="pre">authenticate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">authentication_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.authenticate" title="Permalink to this definition"></a></dt>
+<dd><p>Authenticate and create API call security method</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>authentication_type</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Authentication method to use:  basic or ntlm.</p></li>
+<li><p><strong>username</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - The user’s credentials name.</p></li>
+<li><p><strong>password</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - The user’s credentials password.</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">HttpNtlmAuth</span></code> or <code class="docutils literal notranslate"><span class="pre">HTTpBasicAuth</span></code>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.getPointAttributes">
+<span class="sig-name descname"><span class="pre">getPointAttributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">webID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.getPointAttributes" title="Permalink to this definition"></a></dt>
+<dd><p>Get point (sensor) system attributes</p>
+<p>For more details see <a class="reference external" href="https://techsupport.osisoft.com/Documentation/PI-Web-API/help/controllers/point/actions/getattributes.html">https://techsupport.osisoft.com/Documentation/PI-Web-API/help/controllers/point/actions/getattributes.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>webID</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Point (sensor) web ID.</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default OSI PI page size will be used (1000).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.getPointsList">
+<span class="sig-name descname"><span class="pre">getPointsList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataServerName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.getPointsList" title="Permalink to this definition"></a></dt>
+<dd><p>Get full point list (sensors) in a specified data server. If data server is None, then all points from all data servers will be returned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataServerName</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Specific data server to retrieve data from (default value None).</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default OSI PI page size will be used (1000).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict, None) - List of all points (sensors). The second argument of the tuple is always None</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">([{</span><span class="s1">&#39;ServerName&#39;</span><span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;Points&#39;</span><span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;ResponseStatus&#39;</span><span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">}],</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.getStreamData">
+<span class="sig-name descname"><span class="pre">getStreamData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">webID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">searchType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'end'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.getStreamData" title="Permalink to this definition"></a></dt>
+<dd><p>Get stream data for a specified point (sensor) using point’s webID. Search filter can be applied to narrow down the result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>webID</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Point (sensor) web ID.</p></li>
+<li><p><strong>searchType</strong> – <p>(<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Search type to be used, can be one of the following values (default value <code class="docutils literal notranslate"><span class="pre">end</span></code>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;interpolated&#39;</span><span class="p">,</span> <span class="s1">&#39;recorded&#39;</span><span class="p">,</span> <span class="s1">&#39;plot&#39;</span><span class="p">,</span> <span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>parameters</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Additional parameters to filter the query (default value None).
+See <a class="reference external" href="https://techsupport.osisoft.com/Documentation/PI-Web-API/help/controllers/stream.html">https://techsupport.osisoft.com/Documentation/PI-Web-API/help/controllers/stream.html</a> for additional information for each search type.</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default OSI PI page size will be used (1000).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.getStreamDataSummary">
+<span class="sig-name descname"><span class="pre">getStreamDataSummary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">webID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">startTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endTime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">summaryType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.getStreamDataSummary" title="Permalink to this definition"></a></dt>
+<dd><p>Get stream data summary for a specified point (sensor) using point’s webID. Search filter can be applied to narrow down the result.</p>
+<p>For more details see <a class="reference external" href="https://techsupport.osisoft.com/Documentation/PI-Web-API/help/controllers/stream/actions/getsummary.html">https://techsupport.osisoft.com/Documentation/PI-Web-API/help/controllers/stream/actions/getsummary.html</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>webID</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Point (sensor) web ID.</p></li>
+<li><p><strong>startTime</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) -Start time filter (default vale None)</p></li>
+<li><p><strong>endTime</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) -End time filter (default vale None)</p></li>
+<li><p><strong>summaryType</strong> – <p>(<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Summary type requested, can be one of the following values (default value None).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">,</span> <span class="s1">&#39;Average&#39;</span><span class="p">,</span> <span class="s1">&#39;Minimum&#39;</span><span class="p">,</span> <span class="s1">&#39;Maximum&#39;</span><span class="p">,</span> <span class="s1">&#39;Range&#39;</span><span class="p">,</span>
+<span class="s1">&#39;StdDev&#39;</span><span class="p">,</span> <span class="s1">&#39;PopulationStdDev&#39;</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="s1">&#39;PercentGood&#39;</span><span class="p">,</span>
+<span class="s1">&#39;TotalWithUOM&#39;</span><span class="p">,</span> <span class="s1">&#39;All&#39;</span><span class="p">,</span> <span class="s1">&#39;AllForNonNumeric&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default OSI PI page size will be used (1000).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.get_system_links">
+<span class="sig-name descname"><span class="pre">get_system_links</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.get_system_links" title="Permalink to this definition"></a></dt>
+<dd><p>Get OSI PI DataServers and AssetServers available databases</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default OSI PI page size will be used (1000).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - System links dictionary</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;&lt;serverType&gt;&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;Link&#39;</span><span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="s1">&#39;WebID&#39;</span><span class="p">:</span> <span class="s1">&#39;xxx&#39;</span><span class="p">}]}</span>
+</pre></div>
+</div>
+<p><strong>&lt;serverType&gt;</strong> is either DataServers or AssetServers</p>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.validate_and_return_response">
+<span class="sig-name descname"><span class="pre">validate_and_return_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.validate_and_return_response" title="Permalink to this definition"></a></dt>
+<dd><p>Validate response by comparing it against the acceptable status codes. Returns response and status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>response</strong> – (<code class="docutils literal notranslate"><span class="pre">requests.response</span></code>) - The response from the query.</p></li>
+<li><p><strong>message</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Desired custom error message.</p></li>
+<li><p><strong>raw</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response raw format or json (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json, raw or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="OSIPI_WebAPI.OSIPI_WebAPI.webapi_get_request">
+<span class="sig-name descname"><span class="pre">webapi_get_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pageSize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#OSIPI_WebAPI.OSIPI_WebAPI.webapi_get_request" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request and validate response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>pageSize</strong> – (<code class="docutils literal notranslate"><span class="pre">int</span></code> - optional) - Page size for response (default value None). When default is used the default OSI PI page size will be used (1000).</p></li>
+<li><p><strong>message</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Desired custom error message.</p></li>
+<li><p><strong>raw</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response raw format or json (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json, raw or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="osipi_api.html" class="btn btn-neutral float-left" title="OSI PI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="osipi_examples.html" class="btn btn-neutral float-right" title="OSI PI Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mahmoud Aboelatta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; pynexusic 2.3.8 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="NEXUS IC REST" href="NEXUSIC_RESTAPI/nexusic_api.html" />
+    <link rel="prev" title="Welcome to pynexusic’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> pynexusic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#python-library-installation">Python library installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#library-documentation">Library documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#external-documentation">External documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NEXUSIC_RESTAPI/nexusic_api.html">NEXUS IC REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MAXIMO_API/maximo_api.html">Maximo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OSIPI_WEBAPI/osipi_api.html">OSI PI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DOCUMENTUM_API/documentum_api.html">Documentum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changehistory.html">Change History</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pynexusic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/intro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h1>
+<p><strong>pynexusic</strong> is a package that allows communication with the following tools:</p>
+<ol class="arabic simple">
+<li><p>Wood NEXUS IC</p></li>
+<li><p>Maximo</p></li>
+<li><p>OSI PI</p></li>
+<li><p>Documentum</p></li>
+</ol>
+<p>Each one of these tools has a separate class that can be used to build the connector.</p>
+</section>
+<section id="python-library-installation">
+<h1>Python library installation<a class="headerlink" href="#python-library-installation" title="Permalink to this headline"></a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">pynexusic</span>
+</pre></div>
+</div>
+</section>
+<section id="library-documentation">
+<h1>Library documentation<a class="headerlink" href="#library-documentation" title="Permalink to this headline"></a></h1>
+<p><strong>Steps to launch library documentation</strong></p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Import <code class="docutils literal notranslate"><span class="pre">utils</span></code></p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pynexusic</span> <span class="kn">import</span> <span class="n">utils</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Launch documentation</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">launchDocs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="external-documentation">
+<h1>External documentation<a class="headerlink" href="#external-documentation" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>NEXUS IC</p>
+<blockquote>
+<div><p>NEXUS IC REST API documentation can be found in the following link:</p>
+<p><a class="reference external" href="https://docs.nexusic.com/6.6/ic-web.rest.v2.html">https://docs.nexusic.com/6.6/ic-web.rest.v2.html</a></p>
+<p><em>A specific NEXUS IC version can be specified in the above link by changing</em> <strong>6.6</strong> <em>to the desired NEXUS IC version</em></p>
+</div></blockquote>
+</li>
+<li><p>OSI PI</p>
+<blockquote>
+<div><p>OSI PI API documentation can be found in the following link:</p>
+<p><a class="reference external" href="https://techsupport.osisoft.com/Documentation/PI-Web-API/help.html">https://techsupport.osisoft.com/Documentation/PI-Web-API/help.html</a></p>
+</div></blockquote>
+</li>
+<li><p>Maximo</p>
+<blockquote>
+<div><p>Maximo API documentation can be found in the following link:</p>
+<p><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS8CCV_7.6.0.8/com.ibm.mams.doc/overview/c_product_overview.html">https://www.ibm.com/support/knowledgecenter/SS8CCV_7.6.0.8/com.ibm.mams.doc/overview/c_product_overview.html</a></p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="license">
+<h1>License<a class="headerlink" href="#license" title="Permalink to this headline"></a></h1>
+<p>This project is licensed under the <em>MIT</em> license.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to pynexusic’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="NEXUSIC_RESTAPI/nexusic_api.html" class="btn btn-neutral float-right" title="NEXUS IC REST" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mahmoud Aboelatta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

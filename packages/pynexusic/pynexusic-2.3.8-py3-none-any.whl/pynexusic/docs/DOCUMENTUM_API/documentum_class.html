@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentum API Class &mdash; pynexusic 2.3.8 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Documentum Examples" href="documentum_examples.html" />
+    <link rel="prev" title="Documentum" href="documentum_api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> pynexusic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#python-library-installation">Python library installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#library-documentation">Library documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#external-documentation">External documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NEXUSIC_RESTAPI/nexusic_api.html">NEXUS IC REST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../MAXIMO_API/maximo_api.html">Maximo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OSIPI_WEBAPI/osipi_api.html">OSI PI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="documentum_api.html">Documentum</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Documentum API Class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documentum_examples.html">Documentum Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changehistory.html">Change History</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pynexusic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="documentum_api.html">Documentum</a> &raquo;</li>
+      <li>Documentum API Class</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/DOCUMENTUM_API/documentum_class.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="documentum-api-class">
+<h1>Documentum API Class<a class="headerlink" href="#documentum-api-class" title="Permalink to this headline"></a></h1>
+<p>Documentum API class allows the user to communicate with Documentum REST API using python</p>
+<p><strong>Prerequisites:</strong></p>
+<ul class="simple">
+<li><p>Python &gt; 3.7</p></li>
+<li><p>Documentum access</p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">DOCUMENTUM_API.</span></span><span class="sig-name descname"><span class="pre">DOCUMENTUM_API</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_uri</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">authentication_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Basic'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_attempts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API" title="Permalink to this definition"></a></dt>
+<dd><p>Documentum API class allows the user to communicate with Documentum API using python</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Python &gt; 3.7</p></li>
+<li><p>Documentum access</p></li>
+</ul>
+</div></blockquote>
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.authenticate">
+<span class="sig-name descname"><span class="pre">authenticate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.authenticate" title="Permalink to this definition"></a></dt>
+<dd><p>Authenticate with Documentum using the defined authentication type used in the class constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json, raw or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.generate_base64">
+<span class="sig-name descname"><span class="pre">generate_base64</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.generate_base64" title="Permalink to this definition"></a></dt>
+<dd><p>Generate base64 string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - String value to be converted to base64.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">String</span></code>) - base64 string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_cabinet">
+<span class="sig-name descname"><span class="pre">get_cabinet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cabinet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cabinets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_cabinet" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get a specific cabinet.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>cabinet_name</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Cabinet name.</p></li>
+<li><p><strong>cabinets</strong> – (<code class="docutils literal notranslate"><span class="pre">list</span></code> - optional) - List of all cabinets (default value None).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Cabinet found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_cabinets">
+<span class="sig-name descname"><span class="pre">get_cabinets</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_cabinets" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get all cabinets.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">list</span></code>) - Repositories found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_document">
+<span class="sig-name descname"><span class="pre">get_document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">documents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_document" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get a specific document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>doc_name</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Document name.</p></li>
+<li><p><strong>documents</strong> – (<code class="docutils literal notranslate"><span class="pre">list</span></code> - optional) - List of all documents (default value None).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Document found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_document_content">
+<span class="sig-name descname"><span class="pre">get_document_content</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">document_obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_document_content" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get the content of a specific document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>document_obj</strong> – (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Document object.</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code> - dict, bytes) - Document content (properties and data).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_documents">
+<span class="sig-name descname"><span class="pre">get_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_documents" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get all documents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">list</span></code>) - Repositories found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_folder">
+<span class="sig-name descname"><span class="pre">get_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folders</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_folder" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get a specific folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>folder_name</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Folder name.</p></li>
+<li><p><strong>folders</strong> – (<code class="docutils literal notranslate"><span class="pre">list</span></code> - optional) - List of all folders (default value None).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Folder found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_folders">
+<span class="sig-name descname"><span class="pre">get_folders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_folders" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get all folders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">list</span></code>) - Repositories found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_repositories">
+<span class="sig-name descname"><span class="pre">get_repositories</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_repositories" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get all repositories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">list</span></code>) - Repositories found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_repository">
+<span class="sig-name descname"><span class="pre">get_repository</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_repository" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get a specific repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo_name</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Repository name.</p></li>
+<li><p><strong>repos</strong> – (<code class="docutils literal notranslate"><span class="pre">list</span></code> - optional) - List of all repositories (default value None).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Repository found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_request">
+<span class="sig-name descname"><span class="pre">get_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accept</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errormsg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_request" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>accept</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Request accept string (default value None).</p></li>
+<li><p><strong>content_type</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Request content_type string (default value None).</p></li>
+<li><p><strong>raw</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response raw format or json (default value False).</p></li>
+<li><p><strong>content</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response content or json (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json, raw or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_resource">
+<span class="sig-name descname"><span class="pre">get_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_resource" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get a specific resource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>resource_type</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Resource type (e.g. cabinets, folders…etc.).</p></li>
+<li><p><strong>resource_name</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Resource name.</p></li>
+<li><p><strong>resources</strong> – (<code class="docutils literal notranslate"><span class="pre">list</span></code> - optional) - List of all resources (default value None).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">dict</span></code>) - Resource found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.get_resources">
+<span class="sig-name descname"><span class="pre">get_resources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resource_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.get_resources" title="Permalink to this definition"></a></dt>
+<dd><p>Execute get request to get all resources.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>base_url</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - URL to be executed in the get request.</p></li>
+<li><p><strong>resource_type</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code>) - Resource type (e.g. cabinets, folders…etc.).</p></li>
+<li><p><strong>verbose</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Print internal messages if True (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">list</span></code>) - Resources found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="DOCUMENTUM_API.DOCUMENTUM_API.validate_and_return_response">
+<span class="sig-name descname"><span class="pre">validate_and_return_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">response</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DOCUMENTUM_API.DOCUMENTUM_API.validate_and_return_response" title="Permalink to this definition"></a></dt>
+<dd><p>Validate response by comparing it against the acceptable status codes. Returns response and status code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>response</strong> – (<code class="docutils literal notranslate"><span class="pre">requests.response</span></code>) - The response from the query.</p></li>
+<li><p><strong>message</strong> – (<code class="docutils literal notranslate"><span class="pre">string</span></code> - optional) - Desired custom error message.</p></li>
+<li><p><strong>raw</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response raw format or json (default value False).</p></li>
+<li><p><strong>content</strong> – (<code class="docutils literal notranslate"><span class="pre">bool</span></code> - optional) - Defines whether to return response content or json (default value False).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(<code class="docutils literal notranslate"><span class="pre">tuple</span></code> - dict or string, string) - response (json, raw or error string) and response status code.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="documentum_api.html" class="btn btn-neutral float-left" title="Documentum" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documentum_examples.html" class="btn btn-neutral float-right" title="Documentum Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Mahmoud Aboelatta.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
