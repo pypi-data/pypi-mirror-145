@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: bodotokenizer
+Version: 0.1.0
+Summary: Package for Bodo Tokenizer
+Home-page: https://github.com/bodonlp/bodo-tokenizer
+Author: Maharaj Brahma
+Author-email: mraj.brahma@gmail.com
+License: MIT License
+        
+        Copyright (c) 2022 Bodo NLP
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Keywords: Bodo language,Bodo Tokenizer
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+Bodo Tokenizer
+==============
+### About:
+Bodo is one of the scheduled languages of India and belongs to the Tibeto-Burman branch of the Sino-Tibetan language family. It uses a Devanagari script like other Indian languages such as Hindi, Konkani, Maithili, Marathi, Nepali, Sanskrit, Sindhi, and Dogri. However there are some differences, this python library tokenizes Bodo sentences into its tokens that is useful for NLP tasks.
+
+### Prerequisite:
+Python 3.6+
+
+### Installation:
+```bash
+git clone https://github.com/bodonlp/bodo-tokenizer.git
+cd bodo-tokenizer
+python setup.py install
+```
+### Available functions:
+```python
+    # Tokenize single sentence
+    from bodotokenizer import tokenize
+    tokenize(sentence)
+```
+```python
+    # Tokenize sentences from a file
+    # Suitable for tokenize sentences in parallel corpus
+    from bodotokenizer import tokenize_file
+    tokenize_file(input_file, out_file)
+```
+### Usage:
+```python
+    from bodotokenizer import tokenize
+    sentence = "नोंसिनि फरायसालियाव य'गा फोरोंगुरु दङ नामा?"
+    tokenized_sentence = tokenize(sentence)
+    # Output: Tokenized Sentence
+    # "नोंसिनि फरायसालियाव य'गा फोरोंगुरु दङ नामा ?"
+```
+
