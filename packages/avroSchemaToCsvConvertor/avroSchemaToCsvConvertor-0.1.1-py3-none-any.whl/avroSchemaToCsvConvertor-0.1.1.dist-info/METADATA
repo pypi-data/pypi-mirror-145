@@ -1,0 +1,35 @@
+Metadata-Version: 2.1
+Name: avroSchemaToCsvConvertor
+Version: 0.1.1
+Summary: Convert Avro schema to CSV.
+Home-page: UNKNOWN
+Author: Nalin Das
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+
+# avro-schema-to-csv
+[![License:MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/nalindas9/object-detection/blob/master/LICENSE)
+
+## About
+Avro schema to CSV converter.
+
+## Output
+
+https://user-images.githubusercontent.com/44141068/161920566-f87b0fb4-63ff-49e4-a1c8-1a5250c3c073.mp4
+
+## System and library requirements
+
+## How to Run
+1. Clone this repo. <br>
+2. Navigate into the folder `avro-schema-to-csv` <br>
+3. Create and activate [Virtual Environment](https://docs.python.org/3/library/venv.html) <br>
+4. Upgrade pip using `python -m pip install --upgrade pip`.
+5. Install requirements.txt using command `pip install -r requirements.txt`
+6. To run the code, from the terminal, run the command `python3 main.py --file <path to your .avsc Avro Schema File>` <br>
+7. The converted CSV file is stored in the `csv` folder.
+
+
