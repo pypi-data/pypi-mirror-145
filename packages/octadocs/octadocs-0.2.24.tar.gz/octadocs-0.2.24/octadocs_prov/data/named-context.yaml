@@ -1,0 +1,11 @@
+$context:
+  prov: http://www.w3.org/ns/prov#
+
+  prov:wasDerivedFrom:
+    $type: $id
+
+  ⇐:
+    $id: prov:wasDerivedFrom
+    $type: $id
+
+  =: prov:value

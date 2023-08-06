@@ -1,0 +1,18 @@
+$context:
+  table: https://octadocs.io/table/
+
+  self: table:self
+
+  columns:
+    $id: table:columns
+    $type: $id
+    $container: $list
+
+  class:
+    $id: table:class
+    $type: $id
+
+  ordering:
+    $id: table:ordering
+    $type: $id
+    $container: $list
