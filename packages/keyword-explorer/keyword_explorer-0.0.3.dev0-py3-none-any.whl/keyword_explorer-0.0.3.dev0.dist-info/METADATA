@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: keyword-explorer
+Version: 0.0.3.dev0
+Summary: A tool for producing and exploring keywords
+Home-page: https://github.com/pgfeldman/KeywordExplorer
+Author: Philip Feldman
+Author-email: phil@philfeldman.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE
+Requires-Dist: pandas (~=1.3.5)
+Requires-Dist: matplotlib (~=3.2.2)
+Requires-Dist: numpy (~=1.19.5)
+Requires-Dist: sklearn (~=0.0)
+Requires-Dist: scikit-learn (~=0.24.2)
+Requires-Dist: requests (~=2.27.1)
+Requires-Dist: wikipedia (~=1.4.0)
+Requires-Dist: openai (~=0.11.5)
+Requires-Dist: networkx (~=2.6.2)
+Requires-Dist: tkinterweb (~=3.12.2)
+
+A tool for producing and exploring keywords
+
