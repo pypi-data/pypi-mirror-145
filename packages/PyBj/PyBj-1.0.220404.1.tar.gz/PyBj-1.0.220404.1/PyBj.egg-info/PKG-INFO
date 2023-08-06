@@ -1,0 +1,57 @@
+Metadata-Version: 2.1
+Name: PyBj
+Version: 1.0.220404.1
+Summary: PyBj (Python Blackjack)
+Home-page: https://github.com/destrianto/pybj
+Download-URL: https://github.com/destrianto/pybj/releases/download/1.0.220404.0001/malas_1.0.220404.0001.zip
+Author: Ade Destrianto
+Author-email: ade.destrianto@mail.ru
+License: MIT
+Keywords: blackjack,games
+Platform: UNKNOWN
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Games/Entertainment
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# PyBj (Python Blackjack)<br>
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pybj)](https://pypi.org/project/PyBj)
+[![PyPI](https://img.shields.io/pypi/v/pybj)](https://pypi.org/project/PyBj)
+[![Downloads](https://pepy.tech/badge/pybj)](https://pepy.tech/project/pybj)
+<br>
+<br>
+**What does the PyBj stand for?**<br>
+The PyBj stands for Python Blackjack. <br>
+<br>
+**What PyBj really is?**<br>
+PyBj is a casino banking game (Blackjack) powered by Python.<br>
+## Main features
+- Blackjack basics
+- Surrender
+- Insurance
+- Split
+- Friendly and neat CLI
+## WIP
+- Multi-player
+## Getting started
+**Installation:**
+```
+python -m pip install pybj
+or
+python3 -m pip install pybj
+```
+**Start the game:**
+```
+python -m pybj
+or
+python3 -m pybj
+```
+---
+**Ade Destrianto**<br/>
+https://destrianetworks.id
+
