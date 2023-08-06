@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "httpunixsocketconnection"
+version = "1.0.1"
+description = "Really small Python class that extends native http.client.HTTPConnection allowing sending HTTP requests to Unix Sockets"
+authors = ["Marek Sierociński <mareksierocinski@gmail.com>"]
+license = "Apache-2.0"
+
+readme = "README.md"
+
+repository = "https://github.com/marverix/HTTPUnixSocketConnection"
+homepage = "https://github.com/marverix/HTTPUnixSocketConnection"
+
+keywords = ["http", "unix", "sockets", "socket", "requests", "connection"]
+
+classifiers = [
+    "Operating System :: Unix",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
