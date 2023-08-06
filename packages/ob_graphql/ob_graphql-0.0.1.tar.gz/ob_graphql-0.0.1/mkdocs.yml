@@ -1,0 +1,70 @@
+site_name: OB-GraphQL
+site_description: Setup a simple GraphQL client over web socket using Apollo Transport WS protocol.✨
+site_url: https://github.com/obytes/ob-graphql
+
+theme:
+  name: 'material'
+  palette:
+    - scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+          icon: material/lightbulb
+          name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: orange
+      toggle:
+          icon: material/lightbulb-outline
+          name: Switch to light mode
+  icon:
+    logo: material/graphql
+
+repo_name: obytes/ob-graphql
+repo_url: https://github.com/obytes/ob-graphql
+edit_uri: ""
+
+
+markdown_extensions:
+  - markdown_include.include:
+      base_path: docs
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.tasklist
+  - pymdownx.tabbed
+
+plugins:
+  - search
+  - mermaid2:
+      arguments:
+        theme: |
+          ^(JSON.parse(window.localStorage.getItem('/.__palette')).index == 1) ? 'dark' : 'light'
+extra_javascript:
+    - https://unpkg.com/mermaid/dist/mermaid.min.js
+
+nav:
+  - About: index.md
+  - Overview: overview.md
+  - Example: example.md
+  - Code of Conduct: code_of_conduct.md
+  - License: license.md
+
+extra:
+  social:
+  - icon: fontawesome/brands/github-alt
+    link: https://github.com/obytes/
+  - icon: fontawesome/brands/twitter
+    link: https://twitter.com/obytesio
+  - icon: fontawesome/brands/linkedin
+    link: https://www.linkedin.com/company/obytes/
+  - icon: fontawesome/solid/globe
+    link: https://www.obytes.com/
+
+copyright: Copyright &copy; 2022 - OBytes. All rights reserved.

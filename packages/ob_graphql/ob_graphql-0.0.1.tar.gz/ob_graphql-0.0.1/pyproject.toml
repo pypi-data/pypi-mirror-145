@@ -1,0 +1,39 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.metadata]
+module = "ob_graphql"
+dist-name = "ob_graphql"
+author = "Yasser Tahiri"
+author-email = "yasserth19@gmail.com"
+home-page = "https://github.com/obytes/ob-graphql"
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+description-file = "README.md"
+requires-python = ">=3.8"
+requires = ["websocket-client"]
+
+[tool.flit.metadata.requires-extra]
+lint = ["pre-commit==2.18.0"]
+
+docs = [
+    "mkdocs",
+    "mkdocs-markdownextradata-plugin",
+    "mkdocs-material",
+    "jinja2",
+    "mkdocs-mermaid2-plugin",
+    "markdown-include",
+    "pymdown-extensions",
+    "mdx-include",
+]
