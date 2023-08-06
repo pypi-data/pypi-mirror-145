@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: yapper
+Version: 0.2.0b1
+Summary: Simple python parser converting docstrings to .astro files for the Astro static site generator.
+License: MIT
+Author: Gareth Simons
+Author-email: garethsimons@me.com
+Requires-Python: >=3.9,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Markdown (>=3.3.6,<4.0.0)
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: docstring-parser (>=0.13,<0.14)
+Requires-Dist: dominate (>=2.6.0,<3.0.0)
+Requires-Dist: python-slugify (>=6.1.1,<7.0.0)
