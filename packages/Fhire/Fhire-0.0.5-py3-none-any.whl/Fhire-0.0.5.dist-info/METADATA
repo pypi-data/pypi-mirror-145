@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: Fhire
+Version: 0.0.5
+Summary: Fhire framework for Python
+Home-page: https://github.com/sheikhjebran/Fhire
+Author: Sheikh Jebran
+Author-email: sheikhjebran@gmail.com
+License: MIT License
+Keywords: python Fhire HL7 H7
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Requires-Python: >3.5.0
+Description-Content-Type: text/markdown
+Requires-Dist: pyyaml (>=4.2b1)
+Requires-Dist: python-dateutil (~=2.8.2)
+Requires-Dist: setuptools (~=60.2.0)
+Requires-Dist: requests (~=2.27.1)
+
+# Fhire
+
+## Usage
+
+### Parse Patient response.txt
+
+```python
+from fhire import Fhire
+
+Fhire(my_value).parse_https_get_patient_list_response()
+```
+
+
