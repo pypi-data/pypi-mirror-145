@@ -1,0 +1,121 @@
+Metadata-Version: 2.1
+Name: oarepo-tokens
+Version: 0.1.10
+Summary: OArepo module that adds support for tokens
+Home-page: https://github.com/oarepo/oarepo-tokens
+Author: Tomas Hlava
+Author-email: hlava@cesnet.cz
+License: MIT
+Keywords: invenio oarepo tokens
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Development Status :: 1 - Planning
+Description-Content-Type: text/markdown
+Provides-Extra: tests
+Provides-Extra: all
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+# oarepo-tokens
+
+[![][license_badge]][license]
+[![][status_badge]][actions]
+[![][pypi_badge]][pypi_url]
+
+OARepo library generating tokens for upload from command-line utility [oarepo-s3-cli](https://github.com/oarepo/oarepo-s3-cli/)
+
+## Installation
+  TBD
+
+## Configuration
+  TBD
+
+## API
+  * **POST /access-tokens/status**
+
+    Returns status of token sent in auth.header.
+
+
+  * POST /access-tokens/revoke
+
+    Revoke token sent in auth.header.
+
+
+  * POST /<DRAFT_RECORD_PATH>/create_token
+
+    Create new token for upload file to draft record.
+
+
+  * GET /<DRAFT_RECORD_PATH>/access-tokens
+
+    List tokens created for uploading to draft record.
+
+
+  * DELETE /<DRAFT_RECORD_PATH>/access-tokens/<TOKEN_ID>
+
+    Revoke token by token_id.
+
+
+  [license_badge]: https://img.shields.io/github/license/oarepo/oarepo-tokens.svg "license badge"
+  [license]: https://github.com/oarepo/oarepo-tokens/blob/master/LICENSE "license text"
+  [status_badge]: https://github.com/oarepo/oarepo-tokens/actions/workflows/main.yml/badge.svg "status badge"
+  [actions]: https://github.com/oarepo/oarepo-tokens/actions/ "actions"
+  [pypi_badge]: https://img.shields.io/pypi/v/oarepo-tokens.svg "pypi badge"
+  [pypi_url]: https://pypi.org/pypi/oarepo-tokens "pypi url"
+
+
+..
+    Copyright (C) 2021 CESNET.
+
+    OARepo-tokens is free software; you can redistribute it and/or
+    modify it under the terms of the MIT License; see LICENSE file for more
+    details.
+
+Changes
+=======
+
+Version 0.1.0 (released TBD)
+ - Initial public release.
+
+Version 0.1.2
+ - Create_token API call rewrited using oarepo-actions.
+
+Version 0.1.3
+ - revoke_token impl.
+ - permissions for create_token action added
+ - sleeps on calls w. invalid token added
+
+Version 0.1.4
+ - get_by_uuid returns all; disable token_detail
+
+Version 0.1.5
+ - pid_type test fixed
+
+Version 0.1.6
+ - versioning typo fixed
+
+Version 0.1.7
+ - added permission check on create_token
+ - fix: used canonical_url instead of url_for
+
+Version 0.1.8
+ - oarepo-actions added to requires + flask ver.limited
+ 
+Version 0.1.9
+ - celery task; cleanup script; fixes;
+
+Version 0.1.10
+ - fix in tests
+
+
