@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: ivanov
+Version: 0.2.4
+Summary: All sh*t in one place!
+Home-page: https://github.com/GenericUser3/ivanov
+Author: Yaroslav Ivanov
+Author-email: mr.yaroslav.ivanov@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: saspy
+Requires-Dist: hvac
+Requires-Dist: sqlparse
+
+# Ivanov
+##=====================
+### All sh*t in one place!
+##===================== 
+
+a
+##Example:
+sas = SASMA(user='sas', password='pass')
+df_from_sas = sas.read_dataset(tablename='AAA', libname='CPC_AD')
+print(df_from_sas.head())
+sas.write_dataset(df=df_from_sas, libname='WORK', tablename='IVANOV')
+sas.endsas()
+
+
+sas = SASCS(user='srvSASCSPROD_LOAD', password='pass')
+df_from_sas = sas.read_dataset(tablename='ENTITY_MASTER', libname='dabt_sub')
+print(df_from_sas.head())
+sas.write_dataset(df=df_from_sas, libname='WORK', tablename='IVANOV')
+sas.endsas()
+
+
