@@ -1,0 +1,58 @@
+#!python
+from datetime import date
+from pathlib import Path
+from typing import Optional
+
+import typer
+
+from voxcharta_my_voting_record.logger import LogClass
+from voxcharta_my_voting_record import extract, __version__
+
+today = date.today()
+
+help1 = "Full path of VoxCharta My Voting Record HTML"
+help2 = "Full path and prefix of output JSON/CSV files"
+
+
+def main(
+    filename: str = typer.Argument(..., help=help1, metavar="filename"),
+    out_prefix: Optional[str] = typer.Argument(
+        None, help=help2, metavar="out_prefix"
+    ),
+):
+    """
+    Process VoxCharta voting records that are provided in HTML
+
+    If ``out_prefix`` is not provided, prefix will be based on input file
+    """
+
+    p = Path(filename)
+
+    log_outfile = p.parent / f"vox_run.{today.strftime('%Y-%m-%d')}.log"
+    log = LogClass(log_outfile).get_logger()
+
+    log.info("********************")
+    log.info("Starting vox_run ...")
+    log.info(f"Version: {__version__}")
+    log.info(f"Logs are stored in : {log_outfile}")
+
+    if not out_prefix:
+        out_prefix = p.with_suffix("")
+
+    vox_extract = extract.Extract(filename, out_prefix, log=log)
+
+    # BeautifulSoup it
+    soup = vox_extract.soup_it()
+
+    # Get records
+    records_dict = vox_extract.get_records(soup)
+
+    # Write files
+    vox_extract.export_data(records_dict)
+
+    log.info("Finished vox_run!")
+    log.info("*****************")
+
+
+if __name__ == "__main__":
+    typer.run(main)
