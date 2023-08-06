@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: infra-enver
+Version: 1.0.7
+Summary: Infra Enver
+Home-page: UNKNOWN
+Author: Daniil Vladimirov
+License: MIT
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: requests
+Requires-Dist: pydantic
+Requires-Dist: redis
+
+<h1>INFRA_ENVER</h1>
+
+example
+```py
+from infra_enver import infra_enver
+import typing as t
+import random
+import redis
+
+redis_db = redis.Redis(
+    host="localhost", port=6379, db=2, password="pass"
+)
+
+
+if __name__ == '__main__':
+    env = infra_enver.Enver("TEST", "I_zNOoADzwnVcEQRn2Xr8NK3aXClLkibZw", redis_db, True)
+
+    # get setting
+    print(env.MY_SETT)
+
+    # experiment
+    for i in range(10):
+        print(env.get_experiment("TEST_EXP_2", random.randint(3, 1000000)))
+
+```
+
+
