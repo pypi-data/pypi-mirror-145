@@ -1,0 +1,28 @@
+Quickstart
+**********
+
+Let's assume that you want to use *apollinaire* to fit p-mode parameters for
+a given star. 
+First, import the package::
+ 
+   import apollinaire as apn
+
+The name of the stars we are going to work with is KIC6603624, also known as Saxo. 
+The package include a version of the lightcurves calibrated following the KEPSEISMIC method (see García et al. 2014)::
+
+   from astropy.io import fits
+   from os import path
+   import matplotlib.pyplot as plt
+   
+   modDir = path.abspath ('..')
+   filename = path.join (modDir, 'timeseries/kplr006603624_52_COR_filt_inp.fits')
+   hdu = fits.open (filename) [0]
+   data = np.array (hdu.data)
+   t = data[:,0]
+   v = data[:,1]
+   
+   fig, ax = plt.subplots ()
+   ax.plot (t, v, color='black')
+   
+   ax.set_xlabel ('Time (days)')
+   ax.set_ylabel ('Luminosity variation (ppm)')
