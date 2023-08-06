@@ -1,0 +1,140 @@
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                            Aminoglycoside                                                                                            |
++-------------------+------------+--------------------------------+------------+-------------------------+------------------------+----------------------+---------------------------+-----------------+
+| Resistance gene   |   Identity | Alignment Length/Gene Length   |   Coverage | Position in reference   | Contig                 | Position in contig   | Phenotype                 | Accession no.   |
+|-------------------+------------+--------------------------------+------------+-------------------------+------------------------+----------------------+---------------------------+-----------------|
+| aac(6')-Iaa       |    99.3151 | 438/438                        |        100 | 1..438                  | contig2|denovo|gx19S81 | 163603..164040       | Aminoglycoside resistance | NC_003197       |
++-------------------+------------+--------------------------------+------------+-------------------------+------------------------+----------------------+---------------------------+-----------------+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                            Phenicol                                                                                             |
++-------------------+------------+--------------------------------+------------+-------------------------+-------------------------+----------------------+---------------------+-----------------+
+| Resistance gene   |   Identity | Alignment Length/Gene Length   |   Coverage | Position in reference   | Contig                  | Position in contig   | Phenotype           | Accession no.   |
+|-------------------+------------+--------------------------------+------------+-------------------------+-------------------------+----------------------+---------------------+-----------------|
+| floR              |    98.1878 | 1214/1215                      |    99.9177 | 1..1214                 | contig42|denovo|gx19S81 | 6506..7719           | Phenicol resistance | AF118107        |
++-------------------+------------+--------------------------------+------------+-------------------------+-------------------------+----------------------+---------------------+-----------------+
+
+##################### aminoglycoside #####################
+aac(6')-Iaa, ID: 99.32 %, Alignment Length/Gene Length: 438/438, Coverage: 100.0, Positions in reference: 1..438, Contig name: contig2|denovo|gx19S81, Position: 163603..164040
+
+ATGGACATCAGGCAAATGAACAGAACCCATCTGGATCACTGGCGCGGATTGCGAAAACAG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATGGACATCAGGCAAATGAACAGAACCCATCTGGATCACTGGCGCGGATTGCGAAAACAG
+
+CTCTGGCCTGGTCACCCGGATGACGCCCATCTGGCGGACGGCGAAGAAATTCTGCAAGCC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CTCTGGCCTGGTCACCCGGATGACGCCCATCTGGCGGACGGCGAAGAAATTCTGCAAGCC
+
+GATCATCTGGCATCATTTATTGCGATGGCAGACGGGGTGGCGATTGGCTTTGCGGATGCC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GATCATCTGGCATCATTTATTGCGATGGCAGACGGGGTGGCGATTGGCTTTGCGGATGCC
+
+TCAATCCGCCACGATTATGTCAATGGCTGTGACAGTTCGCCCGTGGTTTTCCTTGAAGGT
+|||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||
+TCAATCCGCCACGATTATGTCAATGGCTGTGACAGTTCGCCCGTGGCTTTCCTTGAAGGT
+
+ATTTTTGTTCTCCCCTCATTCCGTCAACGCGGCGTAGCGAAACAATTGATTGCAGCGGTG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATTTTTGTTCTCCCCTCATTCCGTCAACGCGGCGTAGCGAAACAATTGATTGCAGCGGTG
+
+CAACGATGGGGAACGAATAAAGGGTGTCGGGAAATGGCCTCCGATACCTCGCCGGAAAAT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CAACGATGGGGAACGAATAAAGGGTGTCGGGAAATGGCCTCCGATACCTCGCCGGAAAAT
+
+ACAATTTCCCAGAAAGTTCATCAGGCGTTAGGATTTGAGGAAACAGAGCGCGTCATTTTC
+|||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||
+ACAATTTCCCAGAAAGTTCACCAGGCGTTAGGATTTGAGGAAACAGAGCGCGTCATTTTC
+
+TACCGAAAGCGTTGTTGA
+||||| ||||||||||||
+TACCGGAAGCGTTGTTGA
+
+
+##################### phenicol #####################
+floR, ID: 98.19 %, Alignment Length/Gene Length: 1214/1215, Coverage: 99.91769547325103, Positions in reference: 1..1214, Contig name: contig42|denovo|gx19S81, Position: 6506..7719
+
+ATGACCACCACACGCCCCGCGTGGGCCTATACGCTGCCGGCAGCACTGCTGCTGATGGCT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATGACCACCACACGCCCCGCGTGGGCCTATACGCTGCCGGCAGCACTGCTGCTGATGGCT
+
+CCTTTCGACATCCTCGCTTCACTGGCGATGGATATTTATCTCCCTGTCGTTCCAGCGATG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CCTTTCGACATCCTCGCTTCACTGGCGATGGATATTTATCTCCCTGTCGTTCCAGCGATG
+
+CCCGGCATCCTGAACACGACGCCCGCTATGATCCAACTCACGTTGAGCCTCTATATGGTG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CCCGGCATCCTGAACACGACGCCCGCTATGATCCAACTCACGTTGAGCCTCTATATGGTG
+
+ATGCTCGGCGTGGGCCAGGTGATTTTTGGTCCGCTCTCAGACAGAATCGGGCGACGGCCA
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATGCTCGGCGTGGGCCAGGTGATTTTTGGTCCGCTCTCAGACAGAATCGGGCGACGGCCA
+
+ATTCTACTTGCGGGCGCAACGGCTTTCGTCATTGCGTCTCTGGGAGCAGCTTGGTCTTCA
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATTCTACTTGCGGGCGCAACGGCTTTCGTCATTGCGTCTCTGGGAGCAGCTTGGTCTTCA
+
+ACTGCACCGGCCTTTGTCGCTTTCCGTCTACTTCAAGCAGTGGGCGCGTCGGCCATGCTG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ACTGCACCGGCCTTTGTCGCTTTCCGTCTACTTCAAGCAGTGGGCGCGTCGGCCATGCTG
+
+GTGGCGACGTTCGCGACGGTTCGCGACGTTTATGCCAACCGTCCTGAGGGTGTCGTCATC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GTGGCGACGTTCGCGACGGTTCGCGACGTTTATGCCAACCGTCCTGAGGGTGTCGTCATC
+
+TACGGCCTTTTCAGTTCGATGCTGGCGTTCGTGCCTGCGCTCGGCCCTATCGCCGGAGCA
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+TACGGCCTTTTCAGTTCGATGCTGGCGTTCGTGCCTGCGCTCGGCCCTATCGCCGGAGCA
+
+TTGATCGGCGAGTTCTTGGGATGGCAGGCGATATTCATTACTTTGGCTATACTGGCGATG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+TTGATCGGCGAGTTCTTGGGATGGCAGGCGATATTCATTACTTTGGCTATACTGGCGATG
+
+CTCGCACTCCTAAATGCGGGTTTCAGGTGGCACGAAACCCGCCCTCTGGATCAAGTCAAG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CTCGCACTCCTAAATGCGGGTTTCAGGTGGCACGAAACCCGCCCTCTGGATCAAGTCAAG
+
+ACGCGCCGATCTGTCTTGCCGATCTTCGCGAGTCCGGCTTTTTGGGTTTACACTGTCGGC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ACGCGCCGATCTGTCTTGCCGATCTTCGCGAGTCCGGCTTTTTGGGTTTACACTGTCGGC
+
+TTTAGCGCCGGTATGGGCACCTTCTTCGTCTTCTTCTCGACGGCTCCCCGTGTGCTCATA
+|||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||
+TTTAGCGCCGGTATGGGCACCTACTTCGTCTTCTTCTCGACGGCTCCCCGTGTGCTCATA
+
+GGCCAAGCGGAATATTCCGAGATCGGATTCAGCTTTGCCTTCGCCACTGTCGCGCTTGTA
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GGCCAAGCGGAATATTCCGAGATCGGATTCAGCTTTGCCTTCGCCACTGTCGCGCTTGTA
+
+ATGATCGTGACAACCCGTTTCGCGAAGTCCTTTGTCGCCAGATGGGGCATCGCAGGATGC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATGATCGTGACAACCCGTTTCGCGAAGTCCTTTGTCGCCAGATGGGGCATCGCAGGATGC
+
+GTGGCGCGTGGGATGGCGTTGCTTGTTTGCGGAGCGGTCCTGTTGGGGATCGGCGAACTT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GTGGCGCGTGGGATGGCGTTGCTTGTTTGCGGAGCGGTCCTGTTGGGGATCGGCGAACTT
+
+TACGGCTCGCCGTCATTCCTCACCTTCATCCTACCGATGTGGGTTGTCGCGGTCGGTATT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+TACGGCTCGCCGTCATTCCTCACCTTCATCCTACCGATGTGGGTTGTCGCGGTCGGTATT
+
+GTCTTCACGGTGTCCGTTACCGCGAACGGCGCTTTGGCAGAGTTCGACGACATCGCGGGA
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GTCTTCACGGTGTCCGTTACCGCGAACGGCGCTTTGGCAGAGTTCGACGACATCGCGGGA
+
+TCAGCGGTCGCGTTCTACTTCTGCATCCAAAGCCTGATAGTCAGTATCGTCGGGACATTG
+|||||||||||||||||||||||| | ||||||||||||||||| || ||||||||||||
+TCAGCGGTCGCGTTCTACTTCTGCGTTCAAAGCCTGATAGTCAGCATTGTCGGGACATTG
+
+GCGGTGACGCTGTTAAACGGCGATACAGCGTGGCCCGTGATTTGTTACGCCACGGCAATG
+|||||| | || |||||||  || ||||||||||||||||| |||||||||||||| |||
+GCGGTGGCACTTTTAAACGATGACACAGCGTGGCCCGTGATCTGTTACGCCACGGCGATG
+
+GCAGTGCTGGTGTCGTTGGGGCTGGCGCTCCTTCGATCCCGTGATGCTGCCACCGAGAAG
+|| || ||||| ||||||||||||| |||||||||   |||||  |||||||||||||||
+GCGGTACTGGTTTCGTTGGGGCTGGTGCTCCTTCGGCTCCGTGGGGCTGCCACCGAGAAG
+
+TCGCCAGTCGTCTAG
+|||||||||||||| 
+TCGCCAGTCGTCTAa
+
+

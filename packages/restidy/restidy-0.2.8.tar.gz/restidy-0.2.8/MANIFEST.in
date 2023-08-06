@@ -1,0 +1,5 @@
+include db/gene_db_mapping.tsv
+include gene_db_mapping.tsv
+include gene_drugs_mapping.tsv
+include db/gene_drugs_mapping.tsv
+recursive-include restidy *

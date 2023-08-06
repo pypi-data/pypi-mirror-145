@@ -1,0 +1,100 @@
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                           Aminoglycoside                                                                                           |
++-------------------+------------+--------------------------------+------------+-------------------------+----------------------+----------------------+---------------------------+-----------------+
+| Resistance gene   |   Identity | Alignment Length/Gene Length   |   Coverage | Position in reference   | Contig               | Position in contig   | Phenotype                 | Accession no.   |
+|-------------------+------------+--------------------------------+------------+-------------------------+----------------------+----------------------+---------------------------+-----------------|
+| aac(6')-Iaa       |    99.3151 | 438/438                        |        100 | 1..438                  | contig1|denovo|sdS58 | 164264..164701       | Aminoglycoside resistance | NC_003197       |
++-------------------+------------+--------------------------------+------------+-------------------------+----------------------+----------------------+---------------------------+-----------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                        Fluoroquinolone                                                                                         |
++-------------------+------------+--------------------------------+------------+-------------------------+-----------------------+----------------------+----------------------+-----------------+
+| Resistance gene   |   Identity | Alignment Length/Gene Length   |   Coverage | Position in reference   | Contig                | Position in contig   | Phenotype            | Accession no.   |
+|-------------------+------------+--------------------------------+------------+-------------------------+-----------------------+----------------------+----------------------+-----------------|
+| qnrS1             |        100 | 657/657                        |        100 | 1..657                  | contig26|denovo|sdS58 | 2168..2824           | Quinolone resistance | AB187515        |
++-------------------+------------+--------------------------------+------------+-------------------------+-----------------------+----------------------+----------------------+-----------------+
+
+##################### aminoglycoside #####################
+aac(6')-Iaa, ID: 99.32 %, Alignment Length/Gene Length: 438/438, Coverage: 100.0, Positions in reference: 1..438, Contig name: contig1|denovo|sdS58, Position: 164264..164701
+
+ATGGACATCAGGCAAATGAACAGAACCCATCTGGATCACTGGCGCGGATTGCGAAAACAG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATGGACATCAGGCAAATGAACAGAACCCATCTGGATCACTGGCGCGGATTGCGAAAACAG
+
+CTCTGGCCTGGTCACCCGGATGACGCCCATCTGGCGGACGGCGAAGAAATTCTGCAAGCC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CTCTGGCCTGGTCACCCGGATGACGCCCATCTGGCGGACGGCGAAGAAATTCTGCAAGCC
+
+GATCATCTGGCATCATTTATTGCGATGGCAGACGGGGTGGCGATTGGCTTTGCGGATGCC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GATCATCTGGCATCATTTATTGCGATGGCAGACGGGGTGGCGATTGGCTTTGCGGATGCC
+
+TCAATCCGCCACGATTATGTCAATGGCTGTGACAGTTCGCCCGTGGTTTTCCTTGAAGGT
+|||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||
+TCAATCCGCCACGATTATGTCAATGGCTGTGACAGTTCGCCCGTGGCTTTCCTTGAAGGT
+
+ATTTTTGTTCTCCCCTCATTCCGTCAACGCGGCGTAGCGAAACAATTGATTGCAGCGGTG
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATTTTTGTTCTCCCCTCATTCCGTCAACGCGGCGTAGCGAAACAATTGATTGCAGCGGTG
+
+CAACGATGGGGAACGAATAAAGGGTGTCGGGAAATGGCCTCCGATACCTCGCCGGAAAAT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CAACGATGGGGAACGAATAAAGGGTGTCGGGAAATGGCCTCCGATACCTCGCCGGAAAAT
+
+ACAATTTCCCAGAAAGTTCATCAGGCGTTAGGATTTGAGGAAACAGAGCGCGTCATTTTC
+|||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||
+ACAATTTCCCAGAAAGTTCACCAGGCGTTAGGATTTGAGGAAACAGAGCGCGTCATTTTC
+
+TACCGAAAGCGTTGTTGA
+||||| ||||||||||||
+TACCGGAAGCGTTGTTGA
+
+
+##################### quinolone #####################
+qnrS1, ID: 100.00 %, Alignment Length/Gene Length: 657/657, Coverage: 100.0, Positions in reference: 1..657, Contig name: contig26|denovo|sdS58, Position: 2168..2824
+
+ATGGAAACCTACAATCATACATATCGGCACCACAACTTTTCACATAAAGACTTAAGTGAT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ATGGAAACCTACAATCATACATATCGGCACCACAACTTTTCACATAAAGACTTAAGTGAT
+
+CTCACCTTCACCGCTTGCACATTCATTCGCAGCGACTTTCGACGTGCTAACTTGCGTGAT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CTCACCTTCACCGCTTGCACATTCATTCGCAGCGACTTTCGACGTGCTAACTTGCGTGAT
+
+ACGACATTCGTCAACTGCAAGTTCATTGAACAGGGTGATATCGAAGGCTGCCACTTTGAT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ACGACATTCGTCAACTGCAAGTTCATTGAACAGGGTGATATCGAAGGCTGCCACTTTGAT
+
+GTCGCAGATCTTCGTGATGCAAGTTTCCAACAATGCCAACTTGCGATGGCAAACTTCAGT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GTCGCAGATCTTCGTGATGCAAGTTTCCAACAATGCCAACTTGCGATGGCAAACTTCAGT
+
+AATGCCAATTGCTACGGTATAGAGTTCCGTGCGTGTGATTTAAAAGGTGCCAACTTTTCC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+AATGCCAATTGCTACGGTATAGAGTTCCGTGCGTGTGATTTAAAAGGTGCCAACTTTTCC
+
+CGAACAAACTTTGCCCATCAAGTGAGTAATCGTATGTACTTTTGCTCAGCATTTATTTCT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CGAACAAACTTTGCCCATCAAGTGAGTAATCGTATGTACTTTTGCTCAGCATTTATTTCT
+
+GGATGTAATCTTTCCTATGCCAATATGGAGAGGGTTTGTTTAGAAAAATGTGAGTTGTTT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GGATGTAATCTTTCCTATGCCAATATGGAGAGGGTTTGTTTAGAAAAATGTGAGTTGTTT
+
+GAAAATCGCTGGATAGGAACGAACCTAGCGGGTGCATCACTGAAAGAGTCAGACTTAAGT
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GAAAATCGCTGGATAGGAACGAACCTAGCGGGTGCATCACTGAAAGAGTCAGACTTAAGT
+
+CGAGGTGTTTTTTCCGAAGATGTCTGGGGGCAATTTAGCCTACAGGGTGCCAATTTATGC
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CGAGGTGTTTTTTCCGAAGATGTCTGGGGGCAATTTAGCCTACAGGGTGCCAATTTATGC
+
+CACGCCGAACTCGACGGTTTAGATCCCCGCAAAGTCGATACATCAGGTATCAAAATTGCA
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+CACGCCGAACTCGACGGTTTAGATCCCCGCAAAGTCGATACATCAGGTATCAAAATTGCA
+
+GCCTGGCAGCAAGAACTGATTCTCGAAGCACTGGGTATTGTTGTTTATCCTGACTAA
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+GCCTGGCAGCAAGAACTGATTCTCGAAGCACTGGGTATTGTTGTTTATCCTGACTAA
+
+
