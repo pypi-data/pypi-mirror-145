@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: iqa-torch
+Version: 0.1
+Summary: Image quality assessment toolbox for Pytorch.
+Home-page: https://github.com/cnstark/iqa-torch
+Author: Yuhao Wang
+Author-email: yuhaow97@gmail.com
+License: Apache License 2.0
+Keywords: image quality assessment,iqa,pytorch,deep learning
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Utilities
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch (>=1.7)
+Requires-Dist: torchvision
+Requires-Dist: numpy
+Requires-Dist: scipy
+
+# iqa-torch
+Image quality assessment toolbox for Pytorch
+
+
