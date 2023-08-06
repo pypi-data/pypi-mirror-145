@@ -1,0 +1,67 @@
+sudo: required
+dist: xenial
+services:
+  - xvfb
+
+language: python
+# ===== Linux ======
+
+python:
+  - 3.6
+  - 3.7
+  - 3.8
+  - 3.9
+matrix:
+  include:   
+    - name: "Python 3.8 on macOS 10.15.5"
+      os: osx
+      osx_image: xcode11.6  # Python 3.8 running on macOS 10.15.5
+      language: shell       # 'language: python' is an error on Travis CI macOS
+      before_install:
+        - python3 --version
+        - sleep 3 # give xvfb some time to start
+        - pip3 install --user pip
+        - pip3 install --user pytest>=3.6 pycodestyle python-coveralls pytest-cov>=2.5 coveralls
+        - pip3 install --user .
+        - wget -UseBasicParsing 'https://www.dropbox.com/s/kbkf6a6k0c4lk9n/DataDMC.zip?dl=1'
+        - mkdir data
+        - unzip DataDMC.zip?dl=1 -d data
+      script: python3 -m pytest -vv
+    - name: "Python 3.8.5 on Windows"
+      os: windows           # Windows 10.0.17134 N/A Build 17134
+      language: shell       # 'language: python' is an error on Travis CI Windows
+      before_install:
+        - choco install python --version 3.8.5
+        - python --version
+        - sleep 3 # give xvfb some time to start
+        - python -m pip install --upgrade pip
+        - pip3 install pytest>=3.6 pycodestyle python-coveralls pytest-cov>=2.5 coveralls
+        - python setup.py sdist
+        - pip3 install .
+        - curl -LO "https://www.dropbox.com/s/kbkf6a6k0c4lk9n/DataDMC.zip?dl=1"
+        - 7z e DataDMC.zip?dl=1 "-odata"
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH  
+      script: py.test test/ -vv
+before_install:
+  - pip install pytest>=3.6 pycodestyle python-coveralls pytest-cov>=2.5 coveralls
+  - pip install --upgrade pip
+  - pip install .
+  - wget 'https://www.dropbox.com/s/kbkf6a6k0c4lk9n/DataDMC.zip?dl=1' 
+  - mkdir data
+  - unzip DataDMC.zip?dl=1 -d data
+  
+
+#before_script:
+#  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then export DISPLAY=:99.0; sh -e /etc/init.d/xvfb start; sleep 3; fi
+
+script: 
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]]; then py.test test/ -vv --cov=test/; fi
+  - if [[ $TRAVIS_PYTHON_VERSION > 3.6 ]]; then py.test test/ -vv; fi
+
+after_success:
+  - if [[ $TRAVIS_PYTHON_VERSION == 3.6 ]];
+    then coveralls;
+    fi
+
+notifications:
+  email: false
