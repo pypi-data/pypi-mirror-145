@@ -1,0 +1,5 @@
+[avocado.plugins.resolver]
+robot = avocado_robot.robot:RobotResolver
+
+[console_scripts]
+avocado-runner-robot = avocado_robot.runner:main
