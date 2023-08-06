@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: httpunixsocketconnection
+Version: 1.0.1
+Summary: Really small Python class that extends native http.client.HTTPConnection allowing sending HTTP requests to Unix Sockets
+Home-page: https://github.com/marverix/HTTPUnixSocketConnection
+License: Apache-2.0
+Keywords: http,unix,sockets,socket,requests,connection
+Author: Marek Sierociński
+Author-email: mareksierocinski@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Project-URL: Repository, https://github.com/marverix/HTTPUnixSocketConnection
+Description-Content-Type: text/markdown
+
+# HTTPUnixSocketConnection
+
+Really small Python class that extends native http.client.HTTPConnection allowing sending HTTP requests to Unix Sockets
+
+## Installation
+
+### Poetry
+
+```sh
+poetry add httpunixsocketconnection
+```
+
+### pip
+
+```sh
+pip install httpunixsocketconnection
+```
+
+## Usage
+
+Because the class base is `http.client.HTTPConnection`, the API is almost the same.
+Only the constructor and `connect` method is different.
+With the rest please follow [the official docs](https://docs.python.org/3.8/library/http.client.html#http.client.HTTPConnection).
+
+```python
+from httpunixsocketconnection import HTTPUnixSocketConnection
+
+# Create a connection
+conn = HTTPUnixSocketConnection(
+    unix_socket="/var/run/some.unix.socket"
+    # timeout=Like in HTTPConnection
+    # blocksize=Like in HTTPConnection
+)
+```
+
+### Example: Getting list of Docker Containers
+
+```python
+from httpunixsocketconnection import HTTPUnixSocketConnection
+
+conn = HTTPUnixSocketConnection("/var/run/docker.sock")
+conn.request("GET", "/containers/json")
+
+res = conn.getresponse()
+print(res.status, res.reason)
+
+content = res.read().decode("utf-8")
+print(content)
+```
+
