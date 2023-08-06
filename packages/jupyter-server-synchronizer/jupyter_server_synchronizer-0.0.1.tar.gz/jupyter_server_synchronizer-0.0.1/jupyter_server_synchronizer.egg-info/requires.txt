@@ -1,0 +1,9 @@
+jupyter_server>=1.16.0
+
+[test]
+coverage
+pre-commit
+pytest-cov
+pytest-timeout
+pytest-tornasync
+pytest>=6.0
