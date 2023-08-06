@@ -1,0 +1,31 @@
+flask
+flask-cors
+flask-socketio
+markdown
+numpy
+pandas
+python-dotenv
+pytz
+simple-websocket
+tzlocal
+flask-talisman
+
+[:python_version < "3.9"]
+backports.zoneinfo
+
+[arrow]
+pyarrow>=7.0
+
+[image]
+
+[image:platform_system != "Windows"]
+python-magic
+
+[image:platform_system == "Windows"]
+python-magic-bin
+
+[ngrok]
+pyngrok>=5
+
+[rdp]
+rdp>=0.8
