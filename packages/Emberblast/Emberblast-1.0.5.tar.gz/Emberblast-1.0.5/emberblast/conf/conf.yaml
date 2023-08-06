@@ -1,0 +1,134 @@
+game:
+  dice_sides: 20
+  max_number_bots: 8
+  experience_earned_action:
+    attack: 30
+    kill: 60
+  level_up_attributes_increment:
+    health_points: 5
+    magic_points: 5
+    move_speed: 1
+    strength: 3
+    intelligence: 3
+    accuracy: 1
+    armour: 3
+    magic_resist: 3
+    will: 1
+  items_probabilities:
+    common: 0.6
+    uncommon: 0.2
+    rare: 0.15
+    legendary: 0.05
+  jobs:
+    Knight:
+      attack_type: melee
+      health_points: 10
+      magic_points: 0
+      move_speed: 1
+      strength: 5
+      intelligence: 0
+      accuracy: 2
+      armour: 5
+      magic_resist: 4
+      will: 1
+      damage_vector: strength
+    Wizard:
+      attack_type: ranged
+      health_points: 4
+      magic_points: 10
+      move_speed: 1
+      strength: 0
+      intelligence: 5
+      accuracy: 2
+      armour: 1
+      magic_resist: 3
+      will: 1
+      damage_vector: intelligence
+    Rogue:
+      attack_type: melee
+      health_points: 6
+      magic_points: 5
+      move_speed: 2
+      strength: 2
+      intelligence: 1
+      accuracy: 3
+      armour: 2
+      magic_resist: 2
+      will: 3
+      damage_vector: strength
+    Archer:
+      attack_type: ranged
+      health_points: 6
+      magic_points: 5
+      move_speed: 1
+      strength: 2
+      intelligence: 1
+      accuracy: 4
+      armour: 2
+      magic_resist: 3
+      will: 2
+      damage_vector: strength
+    Priest:
+      attack_type: ranged
+      health_points: 5
+      magic_points: 10
+      move_speed: 2
+      strength: 1
+      intelligence: 4
+      accuracy: 2
+      armour: 3
+      magic_resist: 3
+      will: 4
+      damage_vector: intelligence
+  races:
+    Human:
+      health_points: 1
+      magic_points: 1
+      move_speed: 1
+      strength: 1
+      intelligence: 1
+      accuracy: 1
+      armour: 1
+      magic_resist: 1
+      will: 1
+    Dwarf:
+      health_points: 1
+      magic_points: 1
+      move_speed: 0
+      strength: 2
+      intelligence: 1
+      accuracy: 0
+      armour: 1
+      magic_resist: 1
+      will: 0
+    Elf:
+      health_points: 1
+      magic_points: 1
+      move_speed: 1
+      strength: 1
+      intelligence: 2
+      accuracy: 2
+      armour: 0
+      magic_resist: 0
+      will: 1
+    Orc:
+      health_points: 1
+      magic_points: 1
+      move_speed: 0
+      strength: 2
+      intelligence: 0
+      accuracy: 2
+      armour: 2
+      magic_resist: 0
+      will: 0
+    Halflings:
+      health_points: 1
+      magic_points: 1
+      move_speed: 2
+      strength: 1
+      intelligence: 0
+      accuracy: 3
+      armour: 0
+      magic_resist: 0
+      will: 1
+
