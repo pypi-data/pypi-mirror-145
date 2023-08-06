@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: dockersh
+Version: 0.0.1
+Summary: A shell for Docker commands with autocomplete & command history
+Home-page: https://github.com/solamarpreet/dockersh
+Author: Amarpreet Singh
+Author-email: solamarpreet@protonmail.com
+License: MIT license
+Keywords: dockersh
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.8
+Requires-Dist: docker (>5.0.0)
+Requires-Dist: prompt-toolkit (>3.0.0)
+
+For detailed information visit https://github.com/solamarpreet/dockersh
+
+
