@@ -1,0 +1,12 @@
+lxml
+trimesh>=3.9.32
+numpy
+six
+
+[:python_version < "3.8"]
+importlib-metadata
+
+[testing]
+setuptools
+pytest
+pytest-cov
