@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: noaa-ftp
+Version: 0.1.11
+Summary: A python package to work with NOAA FTP
+Home-page: https://github.com/javad-rzvn/noaa_ftp
+Keywords: noaa,ftp
+Author: javad-rzvn
+Author-email: javad.rezvanpour@gmail.com
+Requires-Python: >=3.7,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: progressbar2 (>=4.0.0,<5.0.0)
+Project-URL: Repository, https://github.com/javad-rzvn/noaa_ftp
+Description-Content-Type: text/markdown
+
+# NOAA-FTP
+
+> I needed to work with data from NOAA, so I write a code in jupyter notebook and solved my problem for viewing and downloading data.
+> Then I decided to convert that code to a python package.
+
+My Personal Website: [Water Directory](https://waterdirectory.ir/).
+
+
+To import, use command below:
+
+```bash
+from noaa_ftp import NOAA
+```
+
+Available functions:
+- dir()
+- download()
+
+## Get list of files and folders
+
+```bash
+noaa_dir = NOAA("ftp.ncdc.noaa.gov", 'pub/data/ghcn/daily').dir()
+noaa_dir
+```
+
+## Download custom file from the directory
+
+```bash
+noaa = NOAA("ftp.ncdc.noaa.gov", 'pub/data/ghcn/daily').download('ghcnd-stations.txt')
+```
