@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: opensqli
+Version: 0.1.5
+Summary: OpenAPI SQLi Scanner
+Home-page: https://github.com/tz4678/openapi-sqli-scanner
+Author: Sergey M
+Author-email: tz4678@gmail.com
+Requires-Python: >=3.10,<4.0
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Requires-Dist: PyYAML (>=6.0,<7.0)
+Requires-Dist: aiodns (>=3.0.0,<4.0.0)
+Requires-Dist: aiohttp (>=3.8.1,<4.0.0)
+Requires-Dist: aiolimiter (>=1.0.0,<2.0.0)
+Requires-Dist: cchardet (>=2.1.7,<3.0.0)
+Project-URL: Repository, https://github.com/tz4678/openapi-sqli-scanner
