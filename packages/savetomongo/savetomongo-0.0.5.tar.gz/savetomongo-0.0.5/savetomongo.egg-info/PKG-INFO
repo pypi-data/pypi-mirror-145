@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: savetomongo
+Version: 0.0.5
+Summary: This is a module for importing dictionary or list data into mongodb database. Before importing, it will check for duplication. If it exists, it will not be imported. If it does not exist, it will be imported. The standard for checking whether there is duplication is a relatively unique key.
+Home-page: 
+Author: zhaoyun
+Author-email: 1246192877@qq.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Description
+>This is a module for importing dictionary or list data into mongodb database. Before importing, it will check for duplication. If it exists, it will not be imported. If it does not exist, it will be imported. The standard for checking whether there is duplication is a relatively unique key
+

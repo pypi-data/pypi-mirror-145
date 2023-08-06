@@ -1,0 +1,2 @@
+# Description
+>This is a module for importing dictionary or list data into mongodb database. Before importing, it will check for duplication. If it exists, it will not be imported. If it does not exist, it will be imported. The standard for checking whether there is duplication is a relatively unique key
