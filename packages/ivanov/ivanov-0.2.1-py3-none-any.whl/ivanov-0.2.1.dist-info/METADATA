@@ -1,0 +1,31 @@
+Metadata-Version: 2.1
+Name: ivanov
+Version: 0.2.1
+Summary: All sh*t in one place!
+Home-page: https://github.com/GenericUser3/ivanov
+Author: Yaroslav Ivanov
+Author-email: mr.yaroslav.ivanov@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: saspy
+
+# Ivanov
+##=====================
+##TL; DR:
+### All sh*t in one place!
+##=====================
+
+a
+##Example:
+from ivanov import SASMA
+sas = SASMA(user='polibius', password = 'megaboss')
+df_from_sas = sas.read_dataset(tablename='table1', libname='MYLIB')
+sas.write_dataset(df=df, tablename='table2', libname='MYLIB')
+sas.endsas()
+
+
