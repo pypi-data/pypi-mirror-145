@@ -1,0 +1,31 @@
+# This workflow runs all doctests using pytest
+
+name: Run Tests
+
+on:
+  push:
+  workflow_dispatch:
+
+
+jobs:
+  # This workflow contains two jobs called search and build
+  search:
+    name: Search Database
+    # search for differences to the origianl databases
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out the repository under $GITHUB_WORKSPACE, so our job can access it
+      - name: Checkout code
+        id: checkout_code
+        uses: actions/checkout@v2
+
+      # Installs python dependencies
+      - name: Python dependencies
+        id: python_dependencies
+        run: pip install sympy pytest
+
+      # Runs a python script searching for new changes in the database
+      - name: Run pytest
+        id: run_pytest
+        run: pytest
