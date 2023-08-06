@@ -1,0 +1,19 @@
+{% extends "admin/submit_line.html" %}
+
+{% block extra-actions %}
+
+{% if show_save and not add and not is_popup %}
+  {% if original.status == 'draft' %}
+  <div class="form-group">
+    <input type="submit" class="btn btn-outline-info form-control"
+           value="Publish" name="_publish"/>
+  </div>
+  {% else %}
+  <div class="form-group">
+    <input type="submit" class="btn btn-outline-danger form-control"
+           value="Unpublish" name="_unpublish"/>
+  </div>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

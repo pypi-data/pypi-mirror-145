@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load render_bundle from webpack_loader %}
+
+{% block page_extra_meta %}
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+        rel="stylesheet">
+{% endblock %}
+
+{% block head_trailing %}
+  {% render_bundle 'formative' 'css' %}
+{% endblock %}
+
+{% block body_attributes %} class="mdc-typography"{% endblock %}
+
+{% block body %}
+<header class="mdc-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section
+                    mdc-top-app-bar__section--align-start">
+      {% url 'program_index' as index_url %}
+      <a class="material-icons mdc-top-app-bar__navigation-icon
+                mdc-icon-button"
+       {% if program_form %}
+         href="{{ program_form.program.home_url|default:index_url }}"
+       {% else %}
+         href="{{ program.home_url|default:index_url }}"
+       {% endif %}>
+        home
+      </a>
+      <span class="mdc-top-app-bar__title">{{ program_form.name }}</span>
+    </section>
+  </div>  
+</header>
+<main class="mdc-top-app-bar--fixed-adjust">
+  {% block pre_layout %}{% endblock %}
+  <div class="mdc-layout-grid rp-maxwidth-grid markdown-body">
+    {% block content %}{% endblock %}
+  </div>
+  {% block post_layout %}{% endblock %}
+</main>
+{% render_bundle 'formative' 'js' %}
+{% endblock %}
