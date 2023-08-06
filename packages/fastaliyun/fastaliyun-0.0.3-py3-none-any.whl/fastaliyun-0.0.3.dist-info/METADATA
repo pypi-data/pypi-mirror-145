@@ -1,0 +1,48 @@
+Metadata-Version: 2.1
+Name: fastaliyun
+Version: 0.0.3
+Summary: make it easy to use aliyun sdk
+Home-page: https://gitee.com/ZeroSeeker/fastaliyun
+Author: ZeroSeeker
+Author-email: zeroseeker@foxmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: envx (==0.0.5)
+Requires-Dist: pydatahub (==2.17.2)
+Requires-Dist: showlog (==0.0.6)
+Requires-Dist: urllib3 (==1.26.8)
+
+# fastaliyun
+
+#### 介绍
+快捷使用阿里云模块
+
+#### 软件架构
+软件架构说明
+
+
+#### 安装教程
+
+1.  pip安装
+```shell script
+pip install fastaliyun
+```
+2.  pip安装（使用淘宝镜像加速）
+```shell script
+pip install fastaliyun -i https://mirrors.aliyun.com/pypi/simple
+```
+
+#### 使用说明
+
+1.  demo
+```python
+import fastaliyun
+res = fastaliyun.datahub.project_list()
+```
+
+
