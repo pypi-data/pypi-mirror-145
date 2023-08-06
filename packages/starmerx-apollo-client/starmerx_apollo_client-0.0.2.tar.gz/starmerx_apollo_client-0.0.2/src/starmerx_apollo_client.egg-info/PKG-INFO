@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: starmerx-apollo-client
+Version: 0.0.2
+Summary: starmerx apollo client
+Home-page: UNKNOWN
+Author: Wilson
+Author-email: chengwenxian@starmerx.com
+License: UNKNOWN
+Description: Starmerx Apollo Client
+        
+        
+        Demo:
+        
+        from starmerx_apollo_client.apollo_client import ApolloClient
+        from utils.env import env
+        
+        CONFIG_URL = env.get_value('APOLLO_CONFIG_URL', default='')
+        APP_ID = env.get_value('APOLLO_APP_ID', default='')
+        APP_SECRET = env.get_value('APOLLO_APP_SECRET', default='')
+        
+        a_client = ApolloClient(app_id=APP_ID, secret=APP_SECRET, config_url=CONFIG_URL)
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
