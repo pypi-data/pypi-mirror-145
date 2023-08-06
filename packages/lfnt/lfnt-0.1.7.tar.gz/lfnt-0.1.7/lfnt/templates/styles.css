@@ -1,0 +1,30 @@
+header {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  background-color:#ebebeb;
+}
+body {
+  background-color: linen;
+  margin: auto;
+  margin-top: auto;
+  margin-left: 10px;
+  width: 1024px;
+  padding: 40px;
+  background-color:#ededed;
+  font-size:14px;
+  font-family:Verdana;
+}
+h1 {
+  color: black;
+}
+th, td {
+  padding-top: 5px;
+  padding-left: 15px;
+  padding-right: 20px;
+}
+ul {
+  columns: 3;
+}
