@@ -1,0 +1,2 @@
+class AutoSiameseAuthenticator(object):
+    pass
