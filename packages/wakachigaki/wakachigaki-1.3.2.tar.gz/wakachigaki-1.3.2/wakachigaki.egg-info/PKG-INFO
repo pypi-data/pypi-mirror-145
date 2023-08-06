@@ -1,0 +1,42 @@
+Metadata-Version: 2.1
+Name: wakachigaki
+Version: 1.3.2
+Summary: 6.2Kbの軽量日本語分かち書きライブラリ
+Home-page: https://github.com/yuhsak/wakachigaki-py
+Author: Yuhsak Inoue
+Author-email: yuhsak.inoue@gmail.com
+Maintainer: Yuhsak Inoue
+Maintainer-email: yuhsak.inoue@gmail.com
+License: MIT
+Download-URL: https://github.com/yuhsak/wakachigaki-py
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# wakachigaki-py
+
+6.2Kb の軽量日本語分かち書きライブラリ
+
+[動作確認用のデモサイト](https://yuhsak.github.io/wakachigaki/)
+
+JS 向けに作成した同ライブラリ[`wakachigaki`](https://github.com/yuhsak/wakachigaki)の Python ポーティングです。
+
+詳しくは[こちら](https://github.com/yuhsak/wakachigaki))をご参照下さい。
+
+[https://github.com/yuhsak/wakachigaki)](https://github.com/yuhsak/wakachigaki))
+
+## 使い方
+
+```sh
+pip install wakachigaki
+```
+
+```python
+from wakachigaki import tokenize
+
+tokenize("非常に効果的な機械学習モデル")
+
+# => [ "非常", "に", "効果", "的", "な", "機械学習", "モデル" ]
+```
+
+
