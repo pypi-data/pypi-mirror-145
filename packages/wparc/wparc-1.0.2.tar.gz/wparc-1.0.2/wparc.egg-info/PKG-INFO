@@ -1,0 +1,119 @@
+Metadata-Version: 2.1
+Name: wparc
+Version: 1.0.2
+Summary: yspcrawler: a command-line tool to backup documents from Yandex.Disk public resources
+Home-page: https://github.com/ruarxive/wparc/
+Author: Ivan Begtin
+Author-email: ivan@begtin.tech
+License: MIT
+Download-URL: https://github.com/ruarxive/wparc/
+Keywords: backup archive wordpress
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: System Administrators
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Software Development
+Classifier: Topic :: System :: Networking
+Classifier: Topic :: Terminals
+Classifier: Topic :: Text Processing
+Classifier: Topic :: Utilities
+Provides-Extra: python_version == "3.0" or python_version == "3.1"
+License-File: LICENSE
+License-File: AUTHORS.rst
+
+wparc: a command-line tool to backup public data from Wordpress websites using Wordpress API
+########################################################################################################################
+
+wparc is a command line tool used to backup data from Wordpress based websites.
+It uses /wp-json/ API provided by default Wordpress installation and extracts all data and media files
+
+.. contents::
+
+.. section-numbering::
+
+
+
+Main features
+=============
+
+* Data extraction
+* Download all media files
+
+
+Installation
+============
+
+
+Any OS
+-------------
+
+A universal installation method (that works on Windows, Mac OS X, Linux, …,
+and always provides the latest version) is to use pip:
+
+
+.. code-block:: bash
+
+    # Make sure we have an up-to-date version of pip and setuptools:
+    $ pip install --upgrade pip setuptools
+
+    $ pip install --upgrade wparc
+
+
+(If ``pip`` installation fails for some reason, you can try
+``easy_install wparc`` as a fallback.)
+
+
+Python version
+--------------
+
+Python version 3.6 or greater is required.
+
+Usage
+=====
+
+
+Synopsis:
+
+.. code-block:: bash
+
+    $ wparc [command] [flags]
+
+
+See also ``python -m wparc`` and ``wparc [command] --help`` for help for each command.
+
+
+
+Commands
+========
+
+Dump command
+----------------
+Dumps all data routes listed in /wp-json/ API endpoint
+
+
+Dumps all data from "https://agentura.ru" website
+
+.. code-block:: bash
+
+    $ wparc dump --domain agentura.ru
+
+
+
+Getfiles command
+----------------
+Downloads all media file listed in "wp_v2_media.jsonl" file that should be dumped using command "dump"
+
+Downloads all media from "dissident.memo.ru" website 
+
+.. code-block:: bash
+
+    $ wparc getfiles --domain dissident.memo.ru
+
+
+
