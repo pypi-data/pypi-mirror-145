@@ -1,0 +1,120 @@
+Metadata-Version: 2.1
+Name: rpyc-mem
+Version: 1.0.1
+Summary: 'A light weight RPyC based shared memory for Python'
+Home-page: https://github.com/m0hithreddy/rpyc-mem
+Author: Mohith Reddy
+Author-email: dev.m0hithreddy@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/m0hithreddy/rpyc-mem/issues
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: System :: Distributed Computing
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.md
+Requires-Dist: rpyc (<6.0.0,>=5.0.0)
+
+# RPyC Mem
+**(RPyC) (Mem)ory**
+
+## Overview
+
+- RPyC-Mem is a light weight shared memory alternative for Python implemented using [``RPyC``](https://github.com/tomerfiliba-org/rpyc)
+- RPyC-Mem has a ready to run service, which hosts network based shared memory to be consumed by different processes.
+- RPyC-Mem has proxy classes to interact with the shared memory objects effectively.
+
+## Getting Started
+
+1. Install RPyC-Mem from [``pypi``](https://pypi.org/project/rpyc-mem)
+
+    ```shell
+    pip install rpyc-mem
+    ```
+
+2. Run the RPyC-Mem server
+
+   ```python
+   from rpyc_mem.service import RpycMemService
+   
+   rs = RpycMemService('localhost', 18813)
+   rs.run()
+   ```
+
+3. Share data between processes
+   
+   *Client 1:*
+
+   Using RPyC Memory Session
+
+   ```python
+   from rpyc_mem.session import RpycMemSession
+   
+   rses = RpycMemSession('localhost', 18813)
+   rm = rses.rmem('unique-key', robj_gen=lambda: rses.rmod().list([1, 2]))
+   
+   print(rm)    # [1, 2]
+   ```
+   *Client 2:*
+   
+   Using underlying RPyC Memory classes
+
+   ```python
+   from rpyc_mem.connect import RpycMemConnect
+   from rpyc_mem.client import RemoteModule, RpycMem
+   
+   rc = RpycMemConnect('localhost', 18813)
+   rp = RemoteModule(rc)
+   rm = RpycMem(rc, 'unique-key', robj_gen=lambda: rp().list([1, 2, 3]))
+   
+   print(rm)    # [1, 2]
+   rm.append(3)
+   ```
+   
+   *Client 1 continued... :*
+   
+   ```python
+   print(rm)    # [1, 2, 3]
+   ```
+
+4. For more details, check out the [API-Reference, User-Guide](http://rpyc-mem.readthedocs.io/)
+
+# ChangeLog
+
+### 1.0.1
+- Handle __bool__ in proxy objects
+- Other fixes
+
+### 1.0.0
+
+Breaking Changes:
+  - The remote object creation through ``RemoteModule`` has seen some changes.
+  - The visibility of few attributes are changed from protected to public.
+
+Add Ons:
+  - ``RpycMem`` and ``RemoteModule`` will accept callables for ``rmem_conn`` parameter
+  - Sessions are introduced through ``RpycMemSession`` class.
+
+### 0.0.1
+- Initial Release
+
+# Credits
+
+### Authors
+- Mohith Reddy <dev.m0hithreddy@gmail.com>
+
+
