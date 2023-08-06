@@ -1,0 +1,71 @@
+OSI PI Examples
+===============
+**Example 1: Get full list of points in the database**
+    #. Import ``OSIPI_WebAPI``
+
+        .. code-block:: python
+
+            from pynexusic import OSIPI_WebAPI as OSIPI
+
+    #. Initialize ``OSIPI_WebAPI`` class
+
+        .. code-block:: python
+
+            OSIPI_obj = OSIPI.OSIPI_WebAPI(piwebapi_uri, username, password)
+
+        *an example for* **piwebapi_uri** *is https://[domain].com/piwebapi*
+
+    #. Execute required function
+
+        .. code-block:: python
+
+            result, result_status_code = OSIPI_obj.getPointsList(pageSize=20000)
+
+        Output:
+
+        .. code-block:: python
+
+            result = [{'ServerName': 'xxxxxxxxxxx',
+                        'Points': [{'WebId': 'xxxxxxxxxx',
+                                    'Id': xxxxx,
+                                    ...}],
+                        'ResponseStatus': 200
+                      }]
+            result_status_code = None
+
+**Example 2: Get stream summary data**
+    #. Import ``OSIPI_WebAPI``
+
+        .. code-block:: python
+
+            from pynexusic import OSIPI_WebAPI as OSIPI
+
+    #. Initialize ``OSIPI_WebAPI`` class
+
+        .. code-block:: python
+
+            OSIPI_obj = OSIPI.OSIPI_WebAPI(piwebapi_uri, username, password)
+
+        *an example for* **piwebapi_uri** *is https://[domain].com/piwebapi*
+
+    #. Execute required function
+
+        .. code-block:: python
+
+            result, result_status_code = OSIPI_obj.getStreamDataSummary(webID, startTime='*-2mo', endTime='*-1mo', summaryType='Average')
+
+       *where* **webID** *is the required stream webID, for more details see OSI PI documentation*
+
+        Output:
+
+        .. code-block:: python
+
+            result = {'Links': {},
+                        'Items': [{'Type': 'Average',
+                                    'Value': {'Timestamp': 'xxxxxxxx',
+                                                'Value': xxxxxx,
+                                                ...}
+                                    }]
+                      }
+            result_status_code = 200
+
