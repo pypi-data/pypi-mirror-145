@@ -1,0 +1,70 @@
+Metadata-Version: 2.1
+Name: pyrulo
+Version: 0.2.7
+Summary: Python package to import modules at runtime.
+Home-page: https://github.com/mnicolas94/pyrulo
+Author: Miguel Nicolás-Díaz
+Author-email: miguelcok27@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Python runtime loader (pyrulo)
+Python library to import classes from script files at runtime.
+
+# Installation
+`pip install pyrulo`
+
+# Usage
+
+Lets say we have the following scripts
+```python
+# base.py script
+
+class Base:
+  pass
+```
+
+```python
+# a.py script
+from base import Base
+
+class A(Base):
+  pass
+```
+
+```python
+# b.py script
+from base import Base
+
+class B(Base):
+  pass
+```
+
+```python
+# c.py script
+from base import Base
+
+class C(Base):
+  pass
+```
+We can use pyrulo to retrieve all classes that inherits from `Base` in a given script path or folder
+```python
+from base import Base
+from pyrulo import class_imports
+
+script_path = "a.py"
+folder_path = "."
+
+script_classes = class_imports.import_classes_in_file(script_path, Base)  # returns [A]
+folder_classes = class_imports.import_classes_in_dir(folder_path, Base)  # returns [A, B, C]
+```
+
+
