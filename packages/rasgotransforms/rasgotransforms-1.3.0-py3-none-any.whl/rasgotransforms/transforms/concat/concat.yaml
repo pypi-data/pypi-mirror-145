@@ -1,0 +1,26 @@
+name: concat
+tags:
+  - column
+  - data_cleaning
+  - natural_language_processing
+
+description: |
+  This function creates a new column that concatenates fixed values and columns in your dataset.
+
+  Pass in a list named "concat_list", containing the names of the columns and the static string values to concatenate, in order.
+arguments:
+  concat_list:
+    type: mixed_list
+    description: A list representing each new column to be created.
+  alias:
+    type: value
+    is_optional: true
+    description: Name for the new column created by the concatenation.
+example_code: |
+  product = rasgo.get.dataset(75)
+  ds2 = product.concat(
+    concat_list=['PRODUCTKEY', 'PRODUCTALTERNATEKEY', "' hybridkey'"],
+    new_col_name='Hybrid Key'
+  )
+
+  ds2.preview()
