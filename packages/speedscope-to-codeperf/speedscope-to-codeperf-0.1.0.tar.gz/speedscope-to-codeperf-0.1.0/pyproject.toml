@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "speedscope-to-codeperf"
+version = "0.1.0"
+description = ""
+authors = ["filipecosta90 <filipecosta.90@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jsonschema = "^4.4.0"
+pandas = "^1.4.2"
+toml = "^0.10.2"
+GitPython = "^3.1.27"
+requests = "^2.27.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+tox = "^3.24.5"
+black = "^22.3.0"
+coverage = "^6.3.2"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+speedscope-to-codeperf = "speedscope_to_codeperf.cli:main"
