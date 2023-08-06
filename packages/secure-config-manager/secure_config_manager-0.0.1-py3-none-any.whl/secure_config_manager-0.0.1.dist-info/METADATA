@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: secure-config-manager
+Version: 0.0.1
+Summary: Secure config manager. Access app secrets easily without sharing them to public.
+Home-page: https://github.com/paulin-mipt/secure-config-manager
+Author: Polina Matavina
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/paulin-mipt/secure-config-manager/issues
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.0
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# secure-config-manager
+
+## Description
+Secure ConfigManager offers splitting your JSON config files into two parts.
+
+We suggest one main `config.json` file that can be safely checked out to version control system. This can contain default values or a sample config structure for reference. The second one would be `config_override.json`, containing secret tokens or environment-dependent values.
+
+Data in `config_override.json` is assumed to be more relevant, hence if the value is present in both configs, we choose config_override.
+
+## Usage
+```
+from secure_config_manager import ConfigManager
+
+config_manager = ConfigManager()
+config_manager.
+
+>>>
+```
+
+## Notes:
+* ConfigManager is a singleton class
+* ConfigManager is application-agnostic and can be used in any Python 3.x project of your choice
+
