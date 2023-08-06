@@ -1,0 +1,5 @@
+[build-system]
+requires = ['setuptools>=42',
+            'ase>=3.21.0',
+            'spglib']
+build-backend = "setuptools.build_meta"
