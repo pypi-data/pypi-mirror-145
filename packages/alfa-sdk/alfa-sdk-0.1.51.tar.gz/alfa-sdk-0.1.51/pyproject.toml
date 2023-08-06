@@ -1,0 +1,7 @@
+[tool.black]
+line-length = 100
+target-version = ["py36", "py37"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=alfa_sdk/ --cov-fail-under=70"
+testpaths = ["tests"]

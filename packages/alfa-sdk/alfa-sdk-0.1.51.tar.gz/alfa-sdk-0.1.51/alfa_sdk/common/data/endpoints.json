@@ -1,0 +1,102 @@
+{
+  "public": {
+    "hostname": "{protocol}://{host}.{domain}",
+    "domain": {
+      "dev": "widgetbrain.io",
+      "test": "widgetbrain.io",
+      "prod": "widgetbrain.io"
+    },
+    "services": {
+      "core": {
+        "dev": "wb-core-development",
+        "test": "wb-core-test",
+        "prod": "wb-core"
+      },
+      "baas": {
+        "dev": "baas-development",
+        "test": "baas-test-u",
+        "prod": "baas-u"
+      },
+      "release": {
+        "dev": "release-dev",
+        "test": "release-test",
+        "prod": "release"
+      },
+      "pythia": {
+        "dev": "pythia-dev",
+        "test": "pythia-test-u",
+        "prod": "pythia-u"
+      },
+      "meta": {
+        "dev": "meta-dev",
+        "test": "meta-test-u",
+        "prod": "meta-u"
+      },
+      "data": {
+        "dev": "data-dev",
+        "test": "data-test",
+        "prod": "data"
+      },
+      "watch": {
+        "dev": "watch-dev",
+        "test": "watch-test",
+        "prod": "watch"
+      },
+      "ais": {
+        "dev": "ais-dev",
+        "test": "ais-test",
+        "prod": "ais"
+      }
+    }
+  },
+  "quinyx": {
+    "hostname": "{protocol}://{host}-{region}.{domain}",
+    "domain": {
+      "dev": "web-test.quinyx.com",
+      "test": "web-staging.quinyx.com",
+      "prod": "web.quinyx.com"
+    },
+    "services": {
+      "core": {
+        "dev": "alfa-core",
+        "test": "alfa-core",
+        "prod": "alfa-core"
+      },
+      "baas": {
+        "dev": "alfa-baas",
+        "test": "alfa-baas",
+        "prod": "alfa-baas"
+      },
+      "release": {
+        "dev": "alfa-release",
+        "test": "alfa-release",
+        "prod": "alfa-release"
+      },
+      "pythia": {
+        "dev": "alfa-pythia",
+        "test": "alfa-pythia",
+        "prod": "alfa-pythia"
+      },
+      "meta": {
+        "dev": "alfa-meta",
+        "test": "alfa-meta",
+        "prod": "alfa-meta"
+      },
+      "data": {
+        "dev": "alfa-data",
+        "test": "alfa-data",
+        "prod": "alfa-data"
+      },
+      "watch": {
+        "dev": "alfa-watch",
+        "test": "alfa-watch",
+        "prod": "alfa-watch"
+      },
+      "ais": {
+        "dev": "alfa-ais",
+        "test": "alfa-ais",
+        "prod": "alfa-ais"
+      }
+    }
+  }
+}
