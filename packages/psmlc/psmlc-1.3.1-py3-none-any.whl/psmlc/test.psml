@@ -1,0 +1,44 @@
+command(html 5);
+input(button){
+    value:abc
+    br:true
+    word-wrap:true
+}
+button(button){
+    style:color: red
+    inner:[abc
+<br>
+bcd]
+    br:true
+    end:true
+    word-wrap:true
+}
+button{
+    onclick:[alert('abc')]
+    inner:abcdefg
+    br:true
+    end:true
+    word-wrap:true
+}
+a{
+    href:[javascript:alert('abcd')]
+    inner:abc
+    br:true
+    end:true
+    word-wrap:true
+}
+style{
+[
+    button{
+        color:red
+    }
+]
+}
+html{
+<button id="a">press me</button><br>
+}
+script{
+[    var a=document.getElementById("a")
+    a.innerHTML="<font color=\"blue\">hello</font>"]
+}
+
