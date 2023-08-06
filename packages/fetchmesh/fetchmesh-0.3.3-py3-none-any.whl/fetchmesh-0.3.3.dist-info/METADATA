@@ -1,0 +1,69 @@
+Metadata-Version: 2.1
+Name: fetchmesh
+Version: 0.3.3
+Summary: A Python library for working with the RIPE Atlas anchoring mesh.
+Home-page: https://github.com/SmartMonitoringSchemes/fetchmesh
+License: MIT
+Author: Maxime Mouchet
+Author-email: max@maxmouchet.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: appdirs (>=1.4.3,<2.0.0)
+Requires-Dist: cached-property (>=1.5.1,<2.0.0)
+Requires-Dist: click (>=8.0,<9.0)
+Requires-Dist: mbox[click] (>=0.1.10,<0.2.0)
+Requires-Dist: pandas (>=1.0.1,<2.0.0)
+Requires-Dist: psutil (>=5.7.0,<6.0.0)
+Requires-Dist: py-radix (>=0.10.0,<0.11.0)
+Requires-Dist: pytz (>=2021.1,<2022.0)
+Requires-Dist: requests (>=2.22.0,<3.0.0)
+Requires-Dist: rich (>=12.0,<13.0)
+Requires-Dist: tenacity (>=8.0.1,<9.0.0)
+Requires-Dist: tqdm (>=4.46.0,<5.0.0)
+Requires-Dist: zstandard (>=0.17.0,<0.18.0)
+Description-Content-Type: text/markdown
+
+<p align="center">
+  <img src="/docs/logo.png" height="150"><br/>
+  <i>A Python library for working with the RIPE Atlas anchoring mesh.</i><br/><br/>
+  <a href="https://codecov.io/gh/SmartMonitoringSchemes/fetchmesh">
+    <img src="https://img.shields.io/codecov/c/github/SmartMonitoringSchemes/fetchmesh?logo=codecov&logoColor=white">
+  </a>
+  <a href="https://github.com/SmartMonitoringSchemes/fetchmesh/raw/gh-pages/fetchmesh.pdf">
+    <img src="https://img.shields.io/badge/documentation-pdf-blue.svg?logo=readthedocs&logoColor=white&style=flat">
+  </a>
+  <a href="https://pypi.org/project/fetchmesh/">
+    <img src="https://img.shields.io/pypi/v/fetchmesh?color=blue&logo=pypi&logoColor=white">
+  </a>
+  <a href="https://github.com/SmartMonitoringSchemes/fetchmesh/actions">
+    <img src="https://img.shields.io/github/workflow/status/SmartMonitoringSchemes/fetchmesh/CI?logo=github&label=tests">
+  </a>
+</p>
+
+fetchmesh is a tool to simplify working with Atlas [anchoring mesh](https://atlas.ripe.net/about/anchors/) measurements. It can download results concurrently, process large files in streaming without requiring a large amount of memory, and clean measurement results. It uses Facebook [Zstandard](https://facebook.github.io/zstd/) algorithm for fast data compression.
+
+- [**Documentation**](https://github.com/SmartMonitoringSchemes/fetchmesh/raw/gh-pages/fetchmesh.pdf) — Consult the quick start guide and the documentation.
+- [**Issues**](https://github.com/SmartMonitoringSchemes/fetchmesh/issues) — See what is broken / currently not working.
+
+## :rocket: Quick Start
+
+```bash
+# Requires Python 3.7+
+pip install fetchmesh
+```
+
+```bash
+fetchmesh --help
+# Usage: fetchmesh [OPTIONS] COMMAND [ARGS]...
+# ...
+```
+
+See the [documentation](https://github.com/SmartMonitoringSchemes/fetchmesh/raw/gh-pages/fetchmesh.pdf) for more.
+
+*Logo: Pizza by Denis Shumaylov from the Noun Project (Creative Commons).*
+
