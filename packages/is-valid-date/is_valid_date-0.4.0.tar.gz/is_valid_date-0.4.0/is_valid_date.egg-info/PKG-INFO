@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: is-valid-date
+Version: 0.4.0
+Summary: Check if a date is valid
+Home-page: https://github.com/rogervila/python_is_valid_date
+Download-URL: https://github.com/rogervila/python_is_valid_date/archive/0.4.0.tar.gz
+Author: Roger Vilà
+Author-email: rogervila@me.com
+License: MIT
+Keywords: valid date,check date,validate date
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# Python is_valid_date
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rogervila_python_is_valid_date&metric=coverage)](https://sonarcloud.io/dashboard?id=rogervila_python_is_valid_date)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rogervila_python_is_valid_date&metric=alert_status)](https://sonarcloud.io/dashboard?id=rogervila_python_is_valid_date)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=rogervila_python_is_valid_date&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=rogervila_python_is_valid_date)
+
+
+Check if a date is valid
+
+```py
+from is_valid_date import check
+
+if check(mydate):
+    # mydate is a valid date
+    do_something()
+else:
+    # mydate could not be parsed as a date object
+    do_other_things()
+
+```
+
+
