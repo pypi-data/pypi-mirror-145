@@ -1,0 +1,26 @@
+Metadata-Version: 2.1
+Name: Event-Publisher
+Version: 0.0.1
+Summary: A small example package
+Home-page: https://storis.com
+Author: STORIS
+Author-email: author@example.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://storis.com
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+
+Build the project 
+	In the Visual Studio Search box type 'Terminal'.
+	Open the Terminal and navigate to the Project folder location 'cd project_path'
+	run 'py -m build'
+	This will update/crate 'dist' folder into the project location
+
+Run send script
+	In the project location open power shell 
+	run 'python C:\Git\Aries\Webhooks\U2Publisher\Storis.EventHub.Publisher\EventPublisher\EventPublisher.py 'Event A', 'Event B', ' Event C'
+
