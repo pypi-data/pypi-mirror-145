@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.1" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="7">
+ <tileset firstgid="1" name="moving_things" tilewidth="32" tileheight="32" tilecount="576" columns="32">
+  <image source="tileset.png" width="1024" height="577"/>
+ </tileset>
+ <layer id="1" name="background" width="32" height="24" opacity="0.46">
+  <data encoding="base64" compression="zlib">
+   eJzt1VWQl2UUB2CW3KVZlmaJXWqX7u5S6S4V7KC7FLCD7lLAAqU7lQ6lO5Uu6e56duDif+OMXsuZeeb9XbzvOTffmS9WrOf1vP6/FURs4hCXeMQnAcGEkJBEJCYJSUlGclIQSkrCSEVq0pCWdKQnAxkJJxOZyUJWIogkG9nJQU5yEUU0uclDXvKRnwIUpBCFKUJRilGcEpSkFKUpQ1nKUZ4KVKQSlalCVapRnU+DnnpJrkFNalGbOtSlHvVpQEMa0ZgmNKUZzWkR0O9VuSWtWPwvtaYNbWlHezrQkU50pgtd6UZ3etCTXvQOmN9H7ku//zC/PwMYyCAGM4ShDGM4IxjJKEYzhrGMY3zA/AnyRCb9w6zJTAm4P1WexnRmMJNZzGYOc5nHfBawkEXPei1hKcsC+i2XV7CSVaxmDWtZx3o2BNzfKG9iM1vYyja2s4Od7GI3e9jLPvZzgIMcCuh3WD7CUY5xnBOc5BSnOcPZZ2/OOc9zgYtc4jJXuMo1rnODm9ziNne4yz3u84CHPOIxMcsfRGziEJd4xCcBwYSQkEQkJglJSUZyUhBKSsJIRWrSkJZ0pCcDGQknE5nJQlYiiCQb2clBTnIRRTS5yUNe8pGfAhSkEIUpQlGKUZwSlKQUpSlDWcpRngpUpBKVqUJVqlGdF3gxZv+pQU1qUZs61KUe9WlAQxrRmCY0pRnNacHLvBKz/7SkFa/xOm/wJm/xNu/wLu/xPq1pQ1va0Z4OdKQTnelCV7rRnR70pBe9+YAP6UNf+vERH/NJ0NNv7TM+5wu+5Cu+pj8DGMggBjOEoQxjOCMYyShGM4axjGM83/AtE5jIJL7je37gR35iMlP4mV+YyjSmM4OZzGI2c5jLPOazgIUsYjFLWMoyfuU3lrOClaxiNWtYyzrWs4Hf+YONbGIzW9jKNrazg53sYjd72Ms+9nOAgxziT/7iMEc4yjGOc4KTnOI0ZzjL35zjPBe4yCUuc4WrXOM6N7jJLW5zh7vc4z4PeMgjHhPz4w8iNnGISzzik4BgQkhIIhKThKQkIzkpCCUlYaQiNWlISzrSk4GMhJOJzGQhKxFEko3s5CAnuYgimtzkIS/5yE8BClKIwhShKMUoTglKUorSlKEs5ShPBZ4A8akMqQ==
+  </data>
+ </layer>
+ <objectgroup id="4" name="actors">
+  <object id="5" name="Dizzy" x="239.308" y="274.709" width="101.954" height="143.018"/>
+ </objectgroup>
+ <objectgroup id="3" name="items">
+  <object id="1" name="Flare" x="951.568" y="320.021" width="59.473" height="94.8736"/>
+ </objectgroup>
+ <layer id="2" name="walls" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDAbQwkh/jG4/vf070PbjCw962T9QYNT+wWE/rfM1Ibtp6TdK1dDSHYMl/ke6/QONBxIMtP0ASVk9Tw==
+  </data>
+ </layer>
+</map>
