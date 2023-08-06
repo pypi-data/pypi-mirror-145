@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: prompt-wei
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+License: UNKNOWN
+Platform: UNKNOWN
+Description-Content-Type: text/markdown
+Requires-Dist: pynput (>=1.7.6)
+Requires-Dist: six (>=1.16.0)
+
+# Prompt-wei
+
+## Description
+Implementation a terminal selector component
+
+
+## Install
+```shell
+pip install prompt-wei
+```
+
+## Usage
+```python3
+Prompt('message',options:List[str]).selector()
+```
+
