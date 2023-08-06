@@ -1,0 +1,27 @@
+Metadata-Version: 2.1
+Name: arospy-Hugal31
+Version: 0.2.0
+Summary: An async wrapper around rospy
+Home-page: https://github.com/Hugal31/arospy
+Author: Hugo Laloge
+Author-email: hugo.laloge@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# arospy
+
+Async interface to rospy.
+
+## Dependencies
+
+This packages mainly depends on rospy, but due to how ROS is usually installed,
+it does not declare it as a dependency in setup.cfg. You have to install it by
+yourself.
+
+
