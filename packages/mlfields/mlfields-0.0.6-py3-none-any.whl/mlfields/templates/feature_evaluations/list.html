@@ -1,0 +1,49 @@
+{% extends 'projects/project_base.html' %}
+
+{% block title %} Feature evaliation list (for matrix {{ fm.name }}) {% endblock %}
+
+{% block nav2 %}
+<a href="{{ url_for('feature_matrices.list', project_id=project.project_id) }}"> Back to feature matrix list </a>
+{% endblock %}
+
+{% block content2 %}
+<h2> Evaluation for "{{ fm.name }}" (Matrix ID:{{ fm.fm_id }}) </h2>
+<table id="feature_evaluations" class="stripe hover row-border order-column cell-border">
+  <thead>
+    <tr>
+      <th>Feature ID</th>
+      <th>Name</th>
+      {% for metric in metrics %}
+        <th>{{ metric }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for i, row in eval_df.iterrows() %}
+      <tr>
+          <td><a href="{{ url_for('feature_evaluations_for_each_feature.list', project_id=project.project_id, feature_id=row['feature_id']) }}">{{ row["feature_id"] }}</a></td>
+        <td>{{ row["name"] }}</td>
+        {% for metric in metrics %}
+          <td>{{ row[metric] }}</td>
+        {% endfor %}
+      </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
+{% block scripts2 %}
+  <script>
+    $(document).ready(function () {
+      $('#feature_evaluations').DataTable({
+        columns: [
+            {className: 'dt-right'},
+            {className: 'dt-right'},
+            {% for metric in metrics %}
+            {className: 'dt-right'},
+            {% endfor %}
+        ],
+      });
+    });
+  </script>
+{% endblock %}
