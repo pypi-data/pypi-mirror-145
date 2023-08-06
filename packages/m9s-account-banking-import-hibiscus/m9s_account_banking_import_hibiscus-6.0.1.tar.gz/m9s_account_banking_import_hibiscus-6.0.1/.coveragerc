@@ -1,0 +1,5 @@
+[run]
+source = trytond.modules.account_banking_import_hibiscus
+
+[report]
+omit = */tests/*,*/setup.py

@@ -1,0 +1,62 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:banking.import.configuration,hibiscus_account:"
+msgid "Hibiscus Bank Account"
+msgstr "Hibiscus Bankkonto"
+
+msgctxt "field:banking.import.configuration,paypal:"
+msgid "Internal balance check"
+msgstr "Interne Saldenüberprüfung verwenden"
+
+msgctxt "field:banking.import.line,hibiscus_id:"
+msgid "Hibiscus ID"
+msgstr "Hibiscus ID"
+
+msgctxt "help:banking.import.configuration,paypal:"
+msgid ""
+"Activate this box if you want to use internal balance control instead of the"
+" balances provided by Hibiscus, e.g. if the Hibiscus account is a Paypal "
+"account provided by the hibiscus.mashup-Plugin (Richter)."
+msgstr ""
+"Aktivieren Sie dieses Feld um die interne Saldenkontrolle anstatt der von "
+"Hibiscus übermittelten Salden zu verwenden. Z.B. kann dies erforderlich "
+"sein, wenn das Hibiscus-Konto ein PayPal-Konto ist, das durch das "
+"hibiscus.mashup-Plugin (Richter) gepflegt wird."
+
+msgctxt "model:ir.message,text:connection_failed"
+msgid "The connection to the Hibiscus server failed with status code %s."
+msgstr "Die Verbindung zum Hibiscus Server schlug fehl mit dem Statuscode %s."
+
+msgctxt "model:ir.message,text:invalid_date"
+msgid "Invalid date (%s) on import line with Hibiscus ID %s."
+msgstr "Ungültiges Datum (%s) auf der Importzeile mit Hibiscus ID %s."
+
+msgctxt "model:ir.message,text:missing_configuration"
+msgid ""
+"Missing configuration for the Hibiscus server. Please configure it according"
+" to the documentation."
+msgstr ""
+"Fehlende Konfiguration für den Hibiscus Server. Bitte konfigurieren Sie ihn "
+"entsprechend der Dokumentation."
+
+msgctxt "model:ir.message,text:msg_wrong_entry_date"
+msgid "Hibiscus configurations require to set the 'Entry Date' to 'Date'."
+msgstr ""
+"Für Hibiscus Importkonfigurationen muss die Einstellung des Erfassungsdatum "
+"auf 'Datum' lauten."
+
+msgctxt "model:ir.message,text:unauthorized"
+msgid ""
+"Authorization to the Hibiscus server failed.\n"
+"\n"
+"Please check your credentials in the Tryton Server configuration."
+msgstr ""
+"Autorisierung am Hibiscus Server fehlgeschlagen.\n"
+"\n"
+"Bitte überprüfen Sie die Zugangsdaten in der Konfiguration des Tryton Servers."
+
+msgctxt "selection:banking.import.configuration,import_method:"
+msgid "Hibiscus"
+msgstr "Hibiscus"
