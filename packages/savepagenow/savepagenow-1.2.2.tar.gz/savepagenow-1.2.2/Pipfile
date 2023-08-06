@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "*"
+click = "*"
+
+[dev-packages]
+pytest = "*"
+pytest-vcr = "*"
+black = "*"
+twine = "*"
+Sphinx = "*"
+sphinx-autobuild = "*"
+myst-parser = "*"
+flake8 = "*"
+coverage = "*"
+flake8-docstrings = "*"
+setuptools-scm = "*"
+flake8-bugbear = "*"
+pre-commit = "*"
+sphinxcontrib-napoleon = "*"
+types-requests = "*"
+mypy = "*"
+typing-extensions = "*"
+sphinx-click = "*"
+
+[requires]
+python_version = "3.9"
