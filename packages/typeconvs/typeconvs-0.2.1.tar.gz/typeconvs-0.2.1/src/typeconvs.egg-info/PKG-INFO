@@ -1,0 +1,50 @@
+Metadata-Version: 2.1
+Name: typeconvs
+Version: 0.2.1
+Summary: Converters from str to another type.
+Home-page: https://andreas19.github.io/typeconvs/
+Author: Andreas Suhre
+Author-email: andreas19@posteo.eu
+License: BSD-3-Clause
+Project-URL: Source code, https://github.com/andreas19/typeconvs/
+Keywords: type converters
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# TypeConvs
+
+Converters from str to another type.
+
+For more information see the [documentation](https://andreas19.github.io/typeconvs/overview.html).
+
+History
+-------
+
+**2022-04-04 (0.2.1)**
+ - Add parameter separator to function range_conv
+
+**2021-05-27 (0.2.0)**
+ - Add overview table to API documentation
+ - All parameters but 'string' are now keyword-only
+ - Add functions sequence and range_conv
+ - Rename functions: boolean -> bool_conv, datetime -> datetime_conv,
+   date -> date_conv, time -> time_conv
+
+**2021-01-25 (0.1.1)**
+ - Bugfix: function duration now raises ValueError when hour, minute, or second
+   are negative or when minute or second are > 59
+ - Add parameter use_locale to function duration
+
+**2021-01-22 (0.1.0)**
+ - First public release
+
+
