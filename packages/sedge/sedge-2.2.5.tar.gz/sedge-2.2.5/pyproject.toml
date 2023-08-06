@@ -1,0 +1,62 @@
+[build-system]
+requires = ["poetry"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "sedge"
+version = "2.2.5"
+authors = ["Grahame Bowland <grahame@oreamnos.com.au>"]
+description = "Template and share OpenSSH ssh_config(5) files."
+readme = "README.md"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Intended Audience :: System Administrators",
+  "Topic :: System :: Networking",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX",
+]
+
+[tool.poetry.scripts]
+sedge = 'sedge.cli:cli'
+
+[tool.poetry.dependencies]
+python = ">=3.7,<4"
+click = "*"
+requests = "*"
+
+[tool.poetry.dev-dependencies]
+click = "*"
+requests = "*"
+tox = "*"
+pytest = "*"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist = py39
+isolated_build = True
+
+[testenv]
+deps=pytest
+commands=pytest
+"""
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tests/.*/setup.py
+)/
+'''
