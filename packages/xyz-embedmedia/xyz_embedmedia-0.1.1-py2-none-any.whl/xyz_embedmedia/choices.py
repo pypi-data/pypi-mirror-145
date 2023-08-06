@@ -1,0 +1,61 @@
+# -*- coding:utf-8 -*- 
+# author = 'denishuang'
+from __future__ import unicode_literals
+
+MEDIA_VIDEO = 1
+MEDIA_AUDIO = 2
+
+CHOICES_MEDIA = (
+    (MEDIA_VIDEO, '视频'),
+    (MEDIA_AUDIO, '音频'),
+)
+
+MODE_PC = 1
+MODE_MOBILE = 2
+
+CHOICES_MODE = (
+    (MODE_PC, '电脑'),
+    (MODE_MOBILE, '手机'),
+)
+
+
+ORIENTATION_HORIZONTAL = 1
+ORIENTATION_VERTICAL = 2
+
+CHOICES_ORIENTATION = (
+    (ORIENTATION_VERTICAL, '竖版'),
+    (ORIENTATION_HORIZONTAL, '横版'),
+)
+
+
+STATUS_READY = 1
+STATUS_POST = 2
+STATUS_LIKE_COUNT_LIMIT = 3
+STATUS_SOURCE_INVALID = 4
+STATUS_FAILED = 5
+STATUS_DUPLICATE = 6
+STATUS_VANISH = 13
+STATUS_DROPED = 14
+
+CHOICES_STATUS = (
+    (STATUS_READY, '待发'),
+    (STATUS_POST, '已发'),
+    (STATUS_LIKE_COUNT_LIMIT, '点赞数不够'),
+    (STATUS_SOURCE_INVALID, '解释失败'),
+    (STATUS_FAILED, '发贴失败'),
+    (STATUS_DUPLICATE, '资源ID重复'),
+    (STATUS_VANISH, '源地址失效'),
+    (STATUS_DROPED, '丢弃')
+)
+
+TASK_PENDING = 0
+TASK_RUNNING = 1
+TASK_SUCCESS = 2
+TASK_OBSOLETE = 4
+
+CHOICES_TASK = (
+    (TASK_PENDING, '等待'),
+    (TASK_RUNNING, '执行中'),
+    (TASK_SUCCESS, '成功'),
+    (TASK_OBSOLETE, '放弃'),
+)
