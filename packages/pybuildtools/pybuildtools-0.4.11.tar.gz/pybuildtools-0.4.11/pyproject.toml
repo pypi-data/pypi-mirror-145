@@ -1,0 +1,45 @@
+[tool.poetry]
+name = "pybuildtools"
+version = "0.4.11"
+description = "A set of tools for putting together buildscripts and other CLI applications"
+authors = ["Rob Nelson <nexisentertainment@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://gitlab.com/N3X15/python-build-tools"
+repository = "https://gitlab.com/N3X15/python-build-tools.git"
+packages = [
+    { include = 'buildtools' }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+colorama = "^0.4.4"
+Jinja2 = "3.0.3"
+psutil = "^5.9.0"
+lxml = "^4.8.0"
+pygit2 = "^1.9.1"
+requests = "^2.27.1"
+"ruamel.yaml" = "^0.17.21"
+six = "^1.16.0"
+toml = "^0.10.2"
+tqdm = "^4.64.0"
+Twisted = {version = "^22.2.0", optional = true}
+PyQt5 = {version = "^5.15.6", optional = true}
+Nuitka = {version = "^0.7.7", optional = true}
+
+[tool.poetry.dev-dependencies]
+build = "^0.7.0"
+isort = "^5.10.1"
+mypy = "^0.930"
+pytest = "^6.2.5"
+twine = "^3.8.0"
+poetryup = "^0.5.6"
+
+[tool.poetry.extras]
+twisted = ["Twisted"]
+pyqt5 = ["PyQt5"]
+nuitka = ["Nuitka"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
