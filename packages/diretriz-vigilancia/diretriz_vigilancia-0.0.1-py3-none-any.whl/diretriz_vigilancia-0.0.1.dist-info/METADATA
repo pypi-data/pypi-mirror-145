@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: diretriz-vigilancia
+Version: 0.0.1
+Summary: O projeto objetiva disponibilizar os parâmetros de qualidade em formato adequado para utilização em análises computacionais
+Home-page: https://github.com/gaemapiracicaba/norma_diretrizes_vigilancia
+Author: Michel Metran
+Author-email: michelmetran@gmail.com
+License: UNKNOWN
+Keywords: python,water,water-quality,water-resources
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Natural Language :: Portuguese
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: dash (>=1.12.0)
+Requires-Dist: decorator (>=4.4.0)
+Requires-Dist: gunicorn (>=20.0.4)
+Requires-Dist: pandas (>=1.0.3)
+Requires-Dist: plotly (>=4.8.0)
+Requires-Dist: openpyxl (>=3.0.0)
+Requires-Dist: open-geodata (>=22.3.54)
+
+# Diretrizes Vigilância
+
+<br>
+
+[Diretriz Nacional do Plano de Amostragem da Vigilância da Qualidade da Água para Consumo Humano](bvsms.saude.gov.br/bvs/publicacoes/diretriz_nacional_plano_amostragem_agua.pdf) que *"visa orientar a elaboração e a implementação dos planos de amostragem da vigilância da qualidade da água para consumo humano, abordando o quantitativo mínimo de amostras, a frequência de amostragem, os parâmetros a serem analisados, bem como as orientações para a seleção dos pontos de coleta"*.
+
+As diretrizes trazem informações sobre o número de amostras que devem ser realizadas.
+
+<br>
+
+
+```python
+pip install open-geodata --upgrade
+```
+
+
+
+<br>
+
+
+------
+
+### *TODO*
+
+1. ...
+2. ...
+3. ...
+
+
