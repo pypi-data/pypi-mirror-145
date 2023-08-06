@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: cda-downloader
+Version: 0.1.1
+Summary: CDA.PL Video downloader
+Home-page: https://github.com/sovereign527/cda_downloader
+License: Apache-2.0
+Keywords: CDA,api,downloader,video,python
+Author: sovereign527
+Author-email: sovereign527@protonmail.com
+Requires-Python: >=3.8,<4.0.0
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: beautifulsoup4 (>=4,<5)
+Requires-Dist: click (>=8.1.2,<9.0.0)
+Requires-Dist: html5lib (>=1.1,<2.0)
+Requires-Dist: random-user-agent (>=1.0.1,<2.0.0)
+Requires-Dist: requests (>=2.27,<3.0)
+Requires-Dist: rich (>=12.1.0,<13.0.0)
+Project-URL: Documentation, https://github.com/sovereign527/cda_downloader
+Project-URL: Repository, https://github.com/sovereign527/cda_downloader
+Description-Content-Type: text/markdown
+
+# CDA Downloader
+
+## Getting Started
+
+`pip install cda_downloader`
+
+## Basic usage
+
+Import CDA class from the package
+
+```
+from cda_downloader import CDA:
+```
+
+Create an instance. You can specify number of thread, api usage and progress bar:
+
+```
+cda = CDA(multithreading=0, use_api=True, progress_bar=True)
+```
+
+To download video use `download_video` method. You can provide string or Iterable of strings:
+
+```
+cda.download_videos(path="/download", urls="https://www.cda.pl/video/13617843")
+cda.download_videos(path="/download", urls=("https://www.cda.pl/video/13617843",))
+```
+
+You can also use `get_video_urls` method instead to get uls without a download:
+
+```
+cda.get_video_urls(path="/download", urls="https://www.cda.pl/video/13617843")
+cda.get_video_urls(path="/download", urls=("https://www.cda.pl/video/13617843",))
+```
