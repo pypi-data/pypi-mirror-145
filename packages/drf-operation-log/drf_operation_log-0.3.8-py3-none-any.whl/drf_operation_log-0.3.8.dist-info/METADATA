@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: drf-operation-log
+Version: 0.3.8
+Summary: Operation log for drf serializers.
+Home-page: https://github.com/anyidea/drf-operation-log
+License: Apache-2.0
+Keywords: django,restframework,operationlog
+Author: aiden_lu
+Author-email: aiden_lu@wochacha.com
+Requires-Python: >=3.8
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Dist: Django (>=3.2,<4.0)
+Requires-Dist: djangorestframework (>=3.13.1,<4.0.0)
+Project-URL: Repository, https://github.com/anyidea/drf-operation-log
