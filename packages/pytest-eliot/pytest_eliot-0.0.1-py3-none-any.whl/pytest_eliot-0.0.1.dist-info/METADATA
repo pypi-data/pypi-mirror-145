@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: pytest-eliot
+Version: 0.0.1
+Summary: An eliot plugin for pytest.
+Home-page: https://github.com/jsandovalc/pytest-eliot
+Author: Jonathan Sandoval
+Author-email: jsandoval@utp.edu.co
+Maintainer: Jonathan Sandoval
+Maintainer-email: jsandoval@utp.edu.co
+License: Apache Software License
+Project-URL: Source, https://github.com/jsandovalc/pytest-eliot
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Software Development :: Testing
+Classifier: Environment :: Plugins
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pytest (>=5.4.0)
+Requires-Dist: eliot (>=1.14.0)
+Provides-Extra: docs
+Requires-Dist: mkdocs ; extra == 'docs'
+Provides-Extra: testing
+Requires-Dist: eliot ; extra == 'testing'
+
+# Pytest-eliot
+
+Fixtures to use eliot from pytest.
+
+
