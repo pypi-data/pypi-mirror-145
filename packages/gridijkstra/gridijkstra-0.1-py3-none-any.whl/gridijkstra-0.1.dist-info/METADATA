@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: gridijkstra
+Version: 0.1
+Summary: Python package wrapping scipy.sparse.csgraph.dijkstra with a grid-based interface
+Home-page: https://github.com/vegardkv/gridijkstra
+Author: vegardkv
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# gridijkstra
+Python package wrapping scipy's dijkstra with a grid-based interface
+
+```python
+>>> import gridijkstra
+>>> import numpy as np
+>>> costs = np.ones((50, 60))
+>>> costs[10:15, :20] = 1e30  # np.inf also works, but is less convenient for plotting
+>>> costs[20:25, 25:55] = 1e30
+>>> costs[30:40, 30:40] = 1e30
+>>> start = (2, 2)
+>>> target = (48, 58)
+>>> total_cost, path = gridijkstra.plan(costs, start, target, return_path=True)
+>>> print(f'Full path length: {total_cost}')
+'Full path length: 102.0'
+```
+
+Three use cases are shown below. See scripts/examples.ipynb for a notebook with examples
+
+![](scripts/example1.svg)
+
+![](scripts/example2.svg)
+
+![](scripts/example3.svg)
+
+
