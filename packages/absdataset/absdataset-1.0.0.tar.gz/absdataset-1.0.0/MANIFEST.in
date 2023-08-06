@@ -1,0 +1,5 @@
+include requirements.txt
+include extra_requirements.txt
+include src/absdataset/pkg_data/*
+
+global-exclude *tempCodeRunnerFile.py

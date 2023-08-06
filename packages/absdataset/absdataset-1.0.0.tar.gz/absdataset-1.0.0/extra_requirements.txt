@@ -1,0 +1,11 @@
+# FORMAT
+# Put extra requirements here in the following format
+#
+# package[version_required]: tag1, tag2, ...
+
+build:                      dev
+twine>=3.7.1:               dev
+virtualenv>=20.13.0:        dev
+setuptools>=51.0.0:         dev
+wheel:                      dev
+pipx:                       dev
