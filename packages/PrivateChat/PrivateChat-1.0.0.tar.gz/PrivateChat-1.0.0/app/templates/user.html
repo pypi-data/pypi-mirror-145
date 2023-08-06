@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<head>
+		<h1 style="text-align: center;"><strong>WELCOME OP DE 2e BLADZIJDE</strong></h1>
+		</h1>
+		<hr />
+	</head>
+	<body>
+		<!-- Messages -->		
+		<div style="margin-right:25%">
+			<!--div style="width:75%"-->
+				<h2>Messages:</h2>
+				{% for message in messages %}
+				<p>{{  message  }}</p>
+				{% endfor %}
+				<form action="" method="post" novalidate>
+					{{ form.hidden_tag() }}
+					<p>
+						<br>
+						{{ form.message(size=32) }}
+					</p>
+					<p>{{ form.submit() }}</p>
+				</form>
+			<!--/div-->
+		</div>
+		<!-- Sidebar with users -->
+		<div style="margin-left:75%">
+			<!--div class="sidebar" style="width:25%"-->
+				<h2>Online gebruikers:</h2>
+				{% for user in users %}
+				<p><a href="{{ url_for('user', person=user.id) }}">{{  user.username  }}</a></p>
+				{% endfor %}
+			<!--/div-->
+		</div>
+	</body>
+{% endblock %}

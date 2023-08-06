@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<head>
+		<h1 style="text-align: center;"><strong>WELCOME TO THE ONLINE CHATSERVICE</strong></h1>
+		</h1>
+		<hr />
+	</head>
+	<body>	
+		<!-- Group creation -->	
+		<div style="margin-right:25%">
+			<h2>Groep maken:</h2>
+			Selecteer alle leden van de groep
+			<form action="" method="post" novalidate>
+				{{ forms.member }}<br><br>
+
+				{{ forms.name.label }}<br>
+				{{ forms.name }}<br><br>
+			<input type="submit">
+		</form>
+		</div>
+
+		<!-- online users -->
+		<div style="margin-left:75%">
+			<div class="sidebar" style="width:25%">
+				<h2>Online gebruikers en groepen:</h2>
+				{% for group in groups %}
+				<p><a href="{{ url_for('group', groupid=group.id) }}">{{ group.name }}</a></p>
+				{% endfor %}
+				{% for user in users %}
+				<p><a href="{{ url_for('user', person=user.id) }}">{{  user.username  }}</a></p>
+				{% endfor %}
+			</div>
+		</div>
+	</body>
+{% endblock %}
