@@ -1,0 +1,17 @@
+# format templates
+# WF 2022-06-03
+dblpseries:
+  format: https://dblp.org/db/conf/{value}/index.html
+
+dblprec:
+  format: https://dblp.org/rec/{value}
+
+dblpevent:
+  format: https://dblp.org/db/conf/{value}
+
+# Deutsche Nationalbibliothek DNB
+# https://d-nb.info/standards/elementset/
+dnbelement:
+  regexps:
+    - https://d-nb.info/standards/elementset/gnd#(?P<value>(.*))
+  format: https://d-nb.info/standards/elementset/gnd#{value} 

@@ -1,0 +1,124 @@
+#
+# Pre-configured Queries for Conference Corpus Scientific Event lookup database
+#
+# WF 2020-08-22
+'Count of Events grouped by source':
+    sql: |  
+        select 
+            source,count(*) as count 
+            from event
+            group by source
+        union 
+        select 
+            "TOTAL",count(*) as count
+            from event
+            order by count
+    sparql: |
+        PREFIX cr: <http://cr.bitplan.com/>
+        SELECT  ?source (COUNT(?source) AS ?sourcecount)
+        WHERE { 
+           ?event cr:Event_source ?source.
+        }
+        GROUP by ?source
+'Event View Schema':
+    sql: |
+        pragma table_info('event');
+'Event_CEURWS Schema':
+    sql: |
+        pragma table_info('event_CEURWS');        
+'Event_confref Schema':
+    sql: |
+        pragma table_info('event_confref');   
+'Event_dblp Schema':
+    sql: |
+        pragma table_info('event_dblp');                
+'Event_crossref Schema':
+    sql: |
+        pragma table_info('event_crossref');
+'Event_or Schema':
+    sql: |
+        pragma table_info('event_orclone');
+'Event_wikicfp Schema':
+    sql: |
+        pragma table_info('event_wikicfp');        
+'Event_wikidata Schema':
+    sql: |
+        pragma table_info('event_wikidata');        
+'Portuguese Anais with numbers':
+    sql: |
+        select number,title,url from event_crossref
+        where number is not null and title like '%Anais%'
+        order by number   
+'Crossref number usage':
+    sql: |
+        select count(*) as count,cast(number as integer) as enum,number from event_crossref
+        where number is not null
+        group by enum,number
+        having count>1
+        order by enum        
+'Crossref events with long numbers':
+    sql: |
+        select number,cast(number as integer) as enum,year,title 
+        from event_crossref
+        where  enum> 53 and enum<1952     
+'Confref country distribution':
+    sql: |
+        select count(*) as count,country 
+        from event_confref
+        group by country
+        order by 1 desc    
+'WikiCfP year distribution':
+    sql: |
+        select year,count(*) as count
+        from event_wikicfp
+        group by year
+        order by year      
+'OPENRESEARCH year distribution':
+    sql: |
+        select year,count(*) as count
+        from event_orclone
+        group by year
+        order by year     
+'Crossref top 50 locations':
+    sql: |
+        select count(*),location 
+        from event_crossref 
+        where location is not null
+        group by location
+        order by  1 desc
+        limit 50
+'WikiCFP conference durations':
+    sql: |
+        select count(*),endDate-startdate+1 as duration from 
+        event_wikicfp
+        where endDate is not Null and startDate is not Null
+        group by duration
+        order by 2 
+'OPENRESEARCH conference durations':
+    sql: |
+        select count(*),endDate-startdate+1 as duration from 
+        event_orclone
+        where endDate is not Null and startDate is not Null
+        group by duration
+        order by 2 
+'OPENRESEARCH country distribution':
+    sql: |
+        select count(*),countryIso 
+        from event_orclone
+        group by countryIso
+        order by 1 desc
+        limit 100
+'Ordinal distribution wikidata':
+    sql: |
+         SELECT count(*) as count,ordinal 
+         FROM event_wikidata
+         GROUP BY ordinal 
+         ORDER by cast(ordinal as integer)
+ 
+#'Ordinal distribution':
+# see 
+#    sql: |
+#        SELECT count(*),ordinal 
+#        FROM @event
+#        GROUP BY ordinal ORDER by 1
+
