@@ -1,0 +1,140 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool]
+
+[tool.black]
+line-length = 120
+exclude = "tests/fixtures"
+
+[tool.isort]
+line_length = 120
+multi_line_output = 3
+force_single_line = false
+balanced_wrapping = true
+default_section = "THIRDPARTY"
+known_first_party = "wizardwebssh"
+include_trailing_comma = true
+
+[tool.poetry]
+name = "wizardwebssh"
+version = "1.9.1"
+description = "Web based ssh client"
+authors = ["Michael Ramsey <mike@hackerdise.me>"]
+license = "MIT License"
+readme = "README.md"
+repository = "https://github.com/meramsey/wizardwebssh"
+homepage = "https://github.com/meramsey/wizardwebssh"
+keywords = ["ssh", "terminal", "web", "pyqt"]
+packages = [ { include = "wizardwebssh", from = "src" } ]
+
+[tool.poetry.dependencies]
+python = ">=3.6.2,<4.0"
+paramiko = "2.10.1"
+tornado = "6.1"
+tomlkit = "0.10.0"
+PyQt5 = "5.15.6"
+PyQt5-sip = "12.9.1"
+PyQt5-stubs = "5.14.2.2"
+PyQtWebEngine = "5.15.5"
+toml = "0.10.2"
+
+[tool.poetry.dev-dependencies]
+mypy = "0.931"
+pytest = "7.0.1"
+pytest-cov = "pytest-cov"
+pytest-randomly = "3.10.3"
+pytest-sugar = "0.9.4"
+pytest-xdist = "2.5.0"
+types-toml = "0.10.4"
+duty = "0.7.0"
+git-changelog = "0.5.0"
+httpx = "0.22.0"
+jinja2-cli = "0.8.1"
+toml = "0.10.2"
+pydocstyle = "6.1.1"
+wps-light = "0.15.3"
+mkdocs = "1.2.3"
+mkdocs-coverage = "0.2.5"
+mkdocs-macros-plugin = "0.6.4"
+mkdocs-material = "8.2.5"
+mkdocstrings = "0.17.0"
+types-mock = "4.0.11"
+types-paramiko = "2.8.13"
+types-cryptography = "3.3.15"
+types-ipaddress = "1.0.8"
+types-enum34 = "1.1.8"
+
+[tool.poetry.scripts]
+wssh = "wizardwebssh.main:main"
+
+[tool.pyprojectx]
+poetry = "poetry==1.1.12"
+black = "black"
+isort = "isort"
+pylint = "pylint"
+darglint = "darglint"
+pydocstyle = ">=6.1.1"
+pre-commit = "pre-commit"
+flake8 = """
+autoflake
+flake8
+flake8-bandit
+pep8-naming
+flake8-isort
+flake8-pytest-style
+flake8-bandit
+flake8-black
+flake8-bugbear
+flake8-builtins
+flake8-comprehensions
+flake8-docstrings
+flake8-pytest-style
+flake8-string-format
+flake8-tidy-imports
+flake8-variables-names"""
+
+[tool.pyprojectx.aliases]
+install = "poetry install"
+run = "poetry run"
+outdated = "poetry show --outdated"
+clean = """\
+rm -rf .coverage*
+rm -rf .mypy_cache
+rm -rf .pytest_cache
+rm -rf tests/.pytest_cache
+rm -rf build
+rm -rf dist
+rm -rf pip-wheel-metadata
+rm -rf site
+find . -type d -name __pycache__ | xargs rm -rf
+find . -name '*.rej' -delete
+rm -r .venv"""
+clean-all = "pw@ clean && rm -rf .pyprojectx"
+black = "black src tests duties.py docs/macros.py"
+isort = "isort src tests duties.py docs/macros.py"
+format = """\
+@flake8: autoflake -ir --exclude tests/fixtures --remove-all-unused-imports src tests duties.py docs/macros.py
+isort src tests duties.py docs/macros.py
+black src tests duties.py docs/macros.py
+"""
+test = "poetry run pytest -c config/pytest.ini tests"
+check-pylint = "pylint src tests docs/macros.py"
+check-black = "black src tests docs/macros.py --check"
+check = "pw@ check-black && pw@ check-pylint && pw@ test"
+check-all = "pw@ check_code_quality && pw@ check_types && pw@ check-docs && pw@ check_safety"
+check_types = "poetry run mypy --config-file config/mypy.ini src tests duties.py docs/macros.py"
+check_safety = "poetry export -f requirements.txt --without-hashes | safety check --stdin --full-report"
+check_code_quality = "flake8 --config=config/flake8.ini src tests duties.py docs/macros.py"
+check-docs = "poetry run duty check_docs"
+docs = "mkdocs build"
+docs_serve = "mkdocs serve -a 127.0.0.1:8000"
+docs_deploy = "mkdocs gh-deploy"
+change_log = "poetry run duty changelog"
+release = "poetry run duty release"
+build = "pw@ install && pw@ check-all && pw@ poetry build"
+
+[tool.pyprojectx.os.win.aliases]
+clean = "rmdir /s/q .venv & rmdir /s/q .pytest_cache & rmdir /s/q dist"
+clean-all = "pw@ clean & rmdir /s/q .pyprojectx"
