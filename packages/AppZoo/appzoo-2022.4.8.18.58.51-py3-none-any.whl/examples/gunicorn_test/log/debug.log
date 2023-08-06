@@ -1,0 +1,932 @@
+[2021-12-20 16:04:53 +0800] [73189] [DEBUG] Current configuration:
+  config: gun.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 8
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/yuanjie/Desktop/Projects/Python/AppZoo/examples/gunicorn_test
+  daemon: False
+  raw_env: []
+  pidfile: log/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: ./log/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: ./log/debug.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: flask_app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x11c318510>
+  on_reload: <function OnReload.on_reload at 0x11c318620>
+  when_ready: <function WhenReady.when_ready at 0x11c318730>
+  pre_fork: <function Prefork.pre_fork at 0x11c318840>
+  post_fork: <function Postfork.post_fork at 0x11c318950>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x11c318a60>
+  worker_int: <function WorkerInt.worker_int at 0x11c318b70>
+  worker_abort: <function WorkerAbort.worker_abort at 0x11c318c80>
+  pre_exec: <function PreExec.pre_exec at 0x11c318d90>
+  pre_request: <function PreRequest.pre_request at 0x11c318ea0>
+  post_request: <function PostRequest.post_request at 0x11c318f28>
+  child_exit: <function ChildExit.child_exit at 0x11c43a0d0>
+  worker_exit: <function WorkerExit.worker_exit at 0x11c43a1e0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x11c43a2f0>
+  on_exit: <function OnExit.on_exit at 0x11c43a400>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-12-20 16:04:53 +0800] [73189] [INFO] Starting gunicorn 20.1.0
+[2021-12-20 16:04:53 +0800] [73189] [DEBUG] Arbiter booted
+[2021-12-20 16:04:53 +0800] [73189] [INFO] Listening at: http://0.0.0.0:8000 (73189)
+[2021-12-20 16:04:53 +0800] [73189] [INFO] Using worker: gevent
+[2021-12-20 16:04:53 +0800] [73192] [INFO] Booting worker with pid: 73192
+[2021-12-20 16:04:53 +0800] [73193] [INFO] Booting worker with pid: 73193
+[2021-12-20 16:04:53 +0800] [73194] [INFO] Booting worker with pid: 73194
+[2021-12-20 16:04:54 +0800] [73195] [INFO] Booting worker with pid: 73195
+[2021-12-20 16:04:54 +0800] [73196] [INFO] Booting worker with pid: 73196
+[2021-12-20 16:04:54 +0800] [73197] [INFO] Booting worker with pid: 73197
+[2021-12-20 16:04:54 +0800] [73198] [INFO] Booting worker with pid: 73198
+[2021-12-20 16:04:54 +0800] [73199] [INFO] Booting worker with pid: 73199
+[2021-12-20 16:04:54 +0800] [73189] [DEBUG] 8 workers
+[2021-12-20 16:05:08 +0800] [73189] [INFO] Handling signal: int
+[2021-12-20 16:05:08 +0800] [73192] [INFO] Worker exiting (pid: 73192)
+[2021-12-20 16:05:08 +0800] [73196] [INFO] Worker exiting (pid: 73196)
+[2021-12-20 16:05:08 +0800] [73199] [INFO] Worker exiting (pid: 73199)
+[2021-12-20 16:05:08 +0800] [73197] [INFO] Worker exiting (pid: 73197)
+[2021-12-20 16:05:08 +0800] [73193] [INFO] Worker exiting (pid: 73193)
+[2021-12-20 16:05:08 +0800] [73198] [INFO] Worker exiting (pid: 73198)
+[2021-12-20 16:05:08 +0800] [73194] [INFO] Worker exiting (pid: 73194)
+[2021-12-20 16:05:08 +0800] [73195] [INFO] Worker exiting (pid: 73195)
+[2021-12-20 16:05:08 +0800] [73189] [INFO] Shutting down: Master
+[2021-12-20 16:05:30 +0800] [73301] [DEBUG] Current configuration:
+  config: gun.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 8
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/yuanjie/Desktop/Projects/Python/AppZoo/examples/gunicorn_test
+  daemon: False
+  raw_env: []
+  pidfile: log/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: ./log/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: ./log/debug.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: flask_app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x1093a7840>
+  on_reload: <function OnReload.on_reload at 0x1093a7950>
+  when_ready: <function WhenReady.when_ready at 0x1093a7a60>
+  pre_fork: <function Prefork.pre_fork at 0x1093a7b70>
+  post_fork: <function Postfork.post_fork at 0x1093a7c80>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x1093a7d90>
+  worker_int: <function WorkerInt.worker_int at 0x1093a7ea0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x1094cd048>
+  pre_exec: <function PreExec.pre_exec at 0x1094cd158>
+  pre_request: <function PreRequest.pre_request at 0x1094cd268>
+  post_request: <function PostRequest.post_request at 0x1094cd2f0>
+  child_exit: <function ChildExit.child_exit at 0x1094cd400>
+  worker_exit: <function WorkerExit.worker_exit at 0x1094cd510>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x1094cd620>
+  on_exit: <function OnExit.on_exit at 0x1094cd730>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-12-20 16:05:30 +0800] [73301] [INFO] Starting gunicorn 20.1.0
+[2021-12-20 16:05:30 +0800] [73301] [DEBUG] Arbiter booted
+[2021-12-20 16:05:30 +0800] [73301] [INFO] Listening at: http://0.0.0.0:8000 (73301)
+[2021-12-20 16:05:30 +0800] [73301] [INFO] Using worker: gevent
+[2021-12-20 16:05:30 +0800] [73306] [INFO] Booting worker with pid: 73306
+[2021-12-20 16:05:30 +0800] [73307] [INFO] Booting worker with pid: 73307
+[2021-12-20 16:05:30 +0800] [73308] [INFO] Booting worker with pid: 73308
+[2021-12-20 16:05:30 +0800] [73309] [INFO] Booting worker with pid: 73309
+[2021-12-20 16:05:30 +0800] [73310] [INFO] Booting worker with pid: 73310
+[2021-12-20 16:05:30 +0800] [73311] [INFO] Booting worker with pid: 73311
+[2021-12-20 16:05:30 +0800] [73312] [INFO] Booting worker with pid: 73312
+[2021-12-20 16:05:30 +0800] [73313] [INFO] Booting worker with pid: 73313
+[2021-12-20 16:05:30 +0800] [73301] [DEBUG] 8 workers
+[2021-12-20 16:06:14 +0800] [73311] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73313] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73312] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73308] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73301] [INFO] Handling signal: winch
+[2021-12-20 16:06:14 +0800] [73309] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73310] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73301] [DEBUG] SIGWINCH ignored. Not daemonized
+[2021-12-20 16:06:14 +0800] [73307] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73306] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73301] [INFO] Handling signal: winch
+[2021-12-20 16:06:14 +0800] [73301] [DEBUG] SIGWINCH ignored. Not daemonized
+[2021-12-20 16:06:14 +0800] [73311] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73312] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73313] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73309] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73308] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73310] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73307] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:14 +0800] [73306] [DEBUG] worker: SIGWINCH ignored.
+[2021-12-20 16:06:47 +0800] [73301] [INFO] Handling signal: hup
+[2021-12-20 16:06:47 +0800] [73301] [INFO] Hang up: Master
+[2021-12-20 16:06:47 +0800] [73301] [DEBUG] Current configuration:
+  config: gun.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 8
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/yuanjie/Desktop/Projects/Python/AppZoo/examples/gunicorn_test
+  daemon: False
+  raw_env: []
+  pidfile: log/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: ./log/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: ./log/debug.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: flask_app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x1093a7840>
+  on_reload: <function OnReload.on_reload at 0x1093a7950>
+  when_ready: <function WhenReady.when_ready at 0x1093a7a60>
+  pre_fork: <function Prefork.pre_fork at 0x1093a7b70>
+  post_fork: <function Postfork.post_fork at 0x1093a7c80>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x1093a7d90>
+  worker_int: <function WorkerInt.worker_int at 0x1093a7ea0>
+  worker_abort: <function WorkerAbort.worker_abort at 0x1094cd048>
+  pre_exec: <function PreExec.pre_exec at 0x1094cd158>
+  pre_request: <function PreRequest.pre_request at 0x1094cd268>
+  post_request: <function PostRequest.post_request at 0x1094cd2f0>
+  child_exit: <function ChildExit.child_exit at 0x1094cd400>
+  worker_exit: <function WorkerExit.worker_exit at 0x1094cd510>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x1094cd620>
+  on_exit: <function OnExit.on_exit at 0x1094cd730>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-12-20 16:06:47 +0800] [73377] [INFO] Booting worker with pid: 73377
+[2021-12-20 16:06:47 +0800] [73378] [INFO] Booting worker with pid: 73378
+[2021-12-20 16:06:47 +0800] [73379] [INFO] Booting worker with pid: 73379
+[2021-12-20 16:06:47 +0800] [73380] [INFO] Booting worker with pid: 73380
+[2021-12-20 16:06:47 +0800] [73381] [INFO] Booting worker with pid: 73381
+[2021-12-20 16:06:47 +0800] [73382] [INFO] Booting worker with pid: 73382
+[2021-12-20 16:06:47 +0800] [73383] [INFO] Booting worker with pid: 73383
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73313 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73384] [INFO] Booting worker with pid: 73384
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73312 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73311 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73310 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73309 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73308 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73307 was terminated due to signal 1
+[2021-12-20 16:06:47 +0800] [73301] [WARNING] Worker with pid 73306 was terminated due to signal 1
+[2021-12-20 16:06:57 +0800] [73423] [DEBUG] Current configuration:
+  config: gun.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 8
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/yuanjie/Desktop/Projects/Python/AppZoo/examples/gunicorn_test
+  daemon: False
+  raw_env: []
+  pidfile: log/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: ./log/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: ./log/debug.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: flask_app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x10c6488c8>
+  on_reload: <function OnReload.on_reload at 0x10c6489d8>
+  when_ready: <function WhenReady.when_ready at 0x10c648ae8>
+  pre_fork: <function Prefork.pre_fork at 0x10c648bf8>
+  post_fork: <function Postfork.post_fork at 0x10c648d08>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x10c648e18>
+  worker_int: <function WorkerInt.worker_int at 0x10c648f28>
+  worker_abort: <function WorkerAbort.worker_abort at 0x10c7af0d0>
+  pre_exec: <function PreExec.pre_exec at 0x10c7af1e0>
+  pre_request: <function PreRequest.pre_request at 0x10c7af2f0>
+  post_request: <function PostRequest.post_request at 0x10c7af378>
+  child_exit: <function ChildExit.child_exit at 0x10c7af488>
+  worker_exit: <function WorkerExit.worker_exit at 0x10c7af598>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x10c7af6a8>
+  on_exit: <function OnExit.on_exit at 0x10c7af7b8>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-12-20 16:06:57 +0800] [73423] [INFO] Starting gunicorn 20.1.0
+[2021-12-20 16:07:51 +0800] [73509] [DEBUG] Current configuration:
+  config: gun.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 8
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/yuanjie/Desktop/Projects/Python/AppZoo/examples/gunicorn_test
+  daemon: False
+  raw_env: []
+  pidfile: log/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: ./log/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: ./log/debug.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: flask_app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x10dacc8c8>
+  on_reload: <function OnReload.on_reload at 0x10dacc9d8>
+  when_ready: <function WhenReady.when_ready at 0x10daccae8>
+  pre_fork: <function Prefork.pre_fork at 0x10daccbf8>
+  post_fork: <function Postfork.post_fork at 0x10daccd08>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x10dacce18>
+  worker_int: <function WorkerInt.worker_int at 0x10daccf28>
+  worker_abort: <function WorkerAbort.worker_abort at 0x10dbf20d0>
+  pre_exec: <function PreExec.pre_exec at 0x10dbf21e0>
+  pre_request: <function PreRequest.pre_request at 0x10dbf22f0>
+  post_request: <function PostRequest.post_request at 0x10dbf2378>
+  child_exit: <function ChildExit.child_exit at 0x10dbf2488>
+  worker_exit: <function WorkerExit.worker_exit at 0x10dbf2598>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x10dbf26a8>
+  on_exit: <function OnExit.on_exit at 0x10dbf27b8>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-12-20 16:07:51 +0800] [73509] [INFO] Starting gunicorn 20.1.0
+[2021-12-20 16:07:51 +0800] [73509] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:07:51 +0800] [73509] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:07:51 +0800] [73509] [ERROR] Retrying in 1 second.
+[2021-12-20 16:07:52 +0800] [73509] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:07:52 +0800] [73509] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:07:52 +0800] [73509] [ERROR] Retrying in 1 second.
+[2021-12-20 16:07:53 +0800] [73509] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:07:53 +0800] [73509] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:07:53 +0800] [73509] [ERROR] Retrying in 1 second.
+[2021-12-20 16:07:54 +0800] [73509] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:07:54 +0800] [73509] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:07:54 +0800] [73509] [ERROR] Retrying in 1 second.
+[2021-12-20 16:07:55 +0800] [73509] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:07:55 +0800] [73509] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:07:55 +0800] [73509] [ERROR] Retrying in 1 second.
+[2021-12-20 16:07:56 +0800] [73509] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-12-20 16:08:24 +0800] [73531] [DEBUG] Current configuration:
+  config: gun.py
+  wsgi_app: None
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 8
+  worker_class: gevent
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/yuanjie/Desktop/Projects/Python/AppZoo/examples/gunicorn_test
+  daemon: False
+  raw_env: []
+  pidfile: log/gunicorn.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: ./log/access.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: ./log/debug.log
+  loglevel: debug
+  capture_output: False
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: flask_app:app
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x1109498c8>
+  on_reload: <function OnReload.on_reload at 0x1109499d8>
+  when_ready: <function WhenReady.when_ready at 0x110949ae8>
+  pre_fork: <function Prefork.pre_fork at 0x110949bf8>
+  post_fork: <function Postfork.post_fork at 0x110949d08>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x110949e18>
+  worker_int: <function WorkerInt.worker_int at 0x110949f28>
+  worker_abort: <function WorkerAbort.worker_abort at 0x110ab00d0>
+  pre_exec: <function PreExec.pre_exec at 0x110ab01e0>
+  pre_request: <function PreRequest.pre_request at 0x110ab02f0>
+  post_request: <function PostRequest.post_request at 0x110ab0378>
+  child_exit: <function ChildExit.child_exit at 0x110ab0488>
+  worker_exit: <function WorkerExit.worker_exit at 0x110ab0598>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x110ab06a8>
+  on_exit: <function OnExit.on_exit at 0x110ab07b8>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2021-12-20 16:08:24 +0800] [73531] [INFO] Starting gunicorn 20.1.0
+[2021-12-20 16:08:24 +0800] [73531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:08:24 +0800] [73531] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:08:24 +0800] [73531] [ERROR] Retrying in 1 second.
+[2021-12-20 16:08:25 +0800] [73531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:08:25 +0800] [73531] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:08:25 +0800] [73531] [ERROR] Retrying in 1 second.
+[2021-12-20 16:08:26 +0800] [73531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:08:26 +0800] [73531] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:08:26 +0800] [73531] [ERROR] Retrying in 1 second.
+[2021-12-20 16:08:27 +0800] [73531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:08:27 +0800] [73531] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:08:27 +0800] [73531] [ERROR] Retrying in 1 second.
+[2021-12-20 16:08:28 +0800] [73531] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2021-12-20 16:08:28 +0800] [73531] [DEBUG] connection to ('0.0.0.0', 8000) failed: [Errno 48] Address already in use
+[2021-12-20 16:08:28 +0800] [73531] [ERROR] Retrying in 1 second.
+[2021-12-20 16:08:29 +0800] [73531] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2021-12-20 20:01:35 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73377)
+[2021-12-20 20:01:35 +0800] [73377] [INFO] Worker exiting (pid: 73377)
+[2021-12-20 20:01:35 +0800] [85133] [INFO] Booting worker with pid: 85133
+[2021-12-20 21:52:44 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73378)
+[2021-12-20 21:52:45 +0800] [73378] [INFO] Worker exiting (pid: 73378)
+[2021-12-20 21:52:45 +0800] [85175] [INFO] Booting worker with pid: 85175
+[2021-12-20 22:07:50 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73379)
+[2021-12-20 22:07:50 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73380)
+[2021-12-20 22:07:50 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73384)
+[2021-12-20 22:07:50 +0800] [73384] [INFO] Worker exiting (pid: 73384)
+[2021-12-20 22:07:50 +0800] [73379] [INFO] Worker exiting (pid: 73379)
+[2021-12-20 22:07:50 +0800] [73380] [INFO] Worker exiting (pid: 73380)
+[2021-12-20 22:07:51 +0800] [85186] [INFO] Booting worker with pid: 85186
+[2021-12-20 22:07:51 +0800] [73301] [DEBUG] 6 workers
+[2021-12-20 22:07:51 +0800] [85187] [INFO] Booting worker with pid: 85187
+[2021-12-20 22:07:51 +0800] [85188] [INFO] Booting worker with pid: 85188
+[2021-12-20 22:07:51 +0800] [73301] [DEBUG] 8 workers
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73381)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73382)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:73383)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85133)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85175)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85186)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85187)
+[2021-12-20 22:52:49 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85188)
+[2021-12-20 22:52:49 +0800] [85188] [INFO] Worker exiting (pid: 85188)
+[2021-12-20 22:52:49 +0800] [85175] [INFO] Worker exiting (pid: 85175)
+[2021-12-20 22:52:49 +0800] [85133] [INFO] Worker exiting (pid: 85133)
+[2021-12-20 22:52:49 +0800] [73381] [INFO] Worker exiting (pid: 73381)
+[2021-12-20 22:52:49 +0800] [73383] [INFO] Worker exiting (pid: 73383)
+[2021-12-20 22:52:49 +0800] [85186] [INFO] Worker exiting (pid: 85186)
+[2021-12-20 22:52:49 +0800] [85187] [INFO] Worker exiting (pid: 85187)
+[2021-12-20 22:52:49 +0800] [73382] [INFO] Worker exiting (pid: 73382)
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 85175 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 85188 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 85186 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [85202] [INFO] Booting worker with pid: 85202
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 85133 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 73383 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 73382 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [73301] [WARNING] Worker with pid 73381 was terminated due to signal 9
+[2021-12-20 22:52:50 +0800] [73301] [DEBUG] 1 workers
+[2021-12-20 22:52:50 +0800] [85203] [INFO] Booting worker with pid: 85203
+[2021-12-20 22:52:50 +0800] [85204] [INFO] Booting worker with pid: 85204
+[2021-12-20 22:52:50 +0800] [85205] [INFO] Booting worker with pid: 85205
+[2021-12-20 22:52:50 +0800] [85206] [INFO] Booting worker with pid: 85206
+[2021-12-20 22:52:50 +0800] [85207] [INFO] Booting worker with pid: 85207
+[2021-12-20 22:52:50 +0800] [85208] [INFO] Booting worker with pid: 85208
+[2021-12-20 22:52:50 +0800] [85209] [INFO] Booting worker with pid: 85209
+[2021-12-20 22:52:50 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85202)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85203)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85204)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85205)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85206)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85207)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85208)
+[2021-12-21 00:53:00 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85209)
+[2021-12-21 00:53:00 +0800] [85209] [INFO] Worker exiting (pid: 85209)
+[2021-12-21 00:53:00 +0800] [85205] [INFO] Worker exiting (pid: 85205)
+[2021-12-21 00:53:00 +0800] [85204] [INFO] Worker exiting (pid: 85204)
+[2021-12-21 00:53:00 +0800] [85206] [INFO] Worker exiting (pid: 85206)
+[2021-12-21 00:53:00 +0800] [85202] [INFO] Worker exiting (pid: 85202)
+[2021-12-21 00:53:00 +0800] [85207] [INFO] Worker exiting (pid: 85207)
+[2021-12-21 00:53:00 +0800] [85203] [INFO] Worker exiting (pid: 85203)
+[2021-12-21 00:53:00 +0800] [85208] [INFO] Worker exiting (pid: 85208)
+[2021-12-21 00:53:01 +0800] [73301] [WARNING] Worker with pid 85206 was terminated due to signal 9
+[2021-12-21 00:53:01 +0800] [73301] [WARNING] Worker with pid 85209 was terminated due to signal 9
+[2021-12-21 00:53:01 +0800] [73301] [WARNING] Worker with pid 85207 was terminated due to signal 9
+[2021-12-21 00:53:01 +0800] [73301] [WARNING] Worker with pid 85205 was terminated due to signal 9
+[2021-12-21 00:53:01 +0800] [73301] [WARNING] Worker with pid 85204 was terminated due to signal 9
+[2021-12-21 00:53:01 +0800] [73301] [WARNING] Worker with pid 85203 was terminated due to signal 9
+[2021-12-21 00:53:01 +0800] [85220] [INFO] Booting worker with pid: 85220
+[2021-12-21 00:53:01 +0800] [73301] [DEBUG] 1 workers
+[2021-12-21 00:53:01 +0800] [85221] [INFO] Booting worker with pid: 85221
+[2021-12-21 00:53:01 +0800] [85222] [INFO] Booting worker with pid: 85222
+[2021-12-21 00:53:01 +0800] [85223] [INFO] Booting worker with pid: 85223
+[2021-12-21 00:53:01 +0800] [85224] [INFO] Booting worker with pid: 85224
+[2021-12-21 00:53:01 +0800] [85225] [INFO] Booting worker with pid: 85225
+[2021-12-21 00:53:01 +0800] [85226] [INFO] Booting worker with pid: 85226
+[2021-12-21 00:53:01 +0800] [85227] [INFO] Booting worker with pid: 85227
+[2021-12-21 00:53:01 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85220)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85221)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85222)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85223)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85224)
+[2021-12-21 01:52:54 +0800] [85221] [INFO] Worker exiting (pid: 85221)
+[2021-12-21 01:52:54 +0800] [85220] [INFO] Worker exiting (pid: 85220)
+[2021-12-21 01:52:54 +0800] [85223] [INFO] Worker exiting (pid: 85223)
+[2021-12-21 01:52:54 +0800] [85224] [INFO] Worker exiting (pid: 85224)
+[2021-12-21 01:52:54 +0800] [85222] [INFO] Worker exiting (pid: 85222)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85225)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85226)
+[2021-12-21 01:52:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85227)
+[2021-12-21 01:52:54 +0800] [85225] [INFO] Worker exiting (pid: 85225)
+[2021-12-21 01:52:54 +0800] [85227] [INFO] Worker exiting (pid: 85227)
+[2021-12-21 01:52:54 +0800] [85226] [INFO] Worker exiting (pid: 85226)
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85226 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85227 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85225 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85224 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [85236] [INFO] Booting worker with pid: 85236
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85223 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85222 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [73301] [WARNING] Worker with pid 85221 was terminated due to signal 9
+[2021-12-21 01:52:55 +0800] [73301] [DEBUG] 1 workers
+[2021-12-21 01:52:55 +0800] [85237] [INFO] Booting worker with pid: 85237
+[2021-12-21 01:52:55 +0800] [85238] [INFO] Booting worker with pid: 85238
+[2021-12-21 01:52:55 +0800] [85239] [INFO] Booting worker with pid: 85239
+[2021-12-21 01:52:55 +0800] [85240] [INFO] Booting worker with pid: 85240
+[2021-12-21 01:52:55 +0800] [85241] [INFO] Booting worker with pid: 85241
+[2021-12-21 01:52:55 +0800] [85242] [INFO] Booting worker with pid: 85242
+[2021-12-21 01:52:55 +0800] [85243] [INFO] Booting worker with pid: 85243
+[2021-12-21 01:52:55 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 03:53:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85236)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85237)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85238)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85239)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85240)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85241)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85242)
+[2021-12-21 03:53:05 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85243)
+[2021-12-21 03:53:05 +0800] [85238] [INFO] Worker exiting (pid: 85238)
+[2021-12-21 03:53:05 +0800] [85239] [INFO] Worker exiting (pid: 85239)
+[2021-12-21 03:53:05 +0800] [85240] [INFO] Worker exiting (pid: 85240)
+[2021-12-21 03:53:05 +0800] [85241] [INFO] Worker exiting (pid: 85241)
+[2021-12-21 03:53:05 +0800] [85243] [INFO] Worker exiting (pid: 85243)
+[2021-12-21 03:53:05 +0800] [85242] [INFO] Worker exiting (pid: 85242)
+[2021-12-21 03:53:05 +0800] [85236] [INFO] Worker exiting (pid: 85236)
+[2021-12-21 03:53:05 +0800] [85237] [INFO] Worker exiting (pid: 85237)
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85239 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85237 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85236 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85238 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85240 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85241 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [85254] [INFO] Booting worker with pid: 85254
+[2021-12-21 03:53:05 +0800] [73301] [WARNING] Worker with pid 85242 was terminated due to signal 9
+[2021-12-21 03:53:05 +0800] [73301] [DEBUG] 1 workers
+[2021-12-21 03:53:05 +0800] [85255] [INFO] Booting worker with pid: 85255
+[2021-12-21 03:53:05 +0800] [85256] [INFO] Booting worker with pid: 85256
+[2021-12-21 03:53:05 +0800] [85257] [INFO] Booting worker with pid: 85257
+[2021-12-21 03:53:05 +0800] [85258] [INFO] Booting worker with pid: 85258
+[2021-12-21 03:53:06 +0800] [85259] [INFO] Booting worker with pid: 85259
+[2021-12-21 03:53:06 +0800] [85260] [INFO] Booting worker with pid: 85260
+[2021-12-21 03:53:06 +0800] [85261] [INFO] Booting worker with pid: 85261
+[2021-12-21 03:53:06 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85254)
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85255)
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85257)
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85258)
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85259)
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85260)
+[2021-12-21 04:52:59 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85261)
+[2021-12-21 04:52:59 +0800] [85260] [INFO] Worker exiting (pid: 85260)
+[2021-12-21 04:52:59 +0800] [85255] [INFO] Worker exiting (pid: 85255)
+[2021-12-21 04:52:59 +0800] [85257] [INFO] Worker exiting (pid: 85257)
+[2021-12-21 04:52:59 +0800] [85258] [INFO] Worker exiting (pid: 85258)
+[2021-12-21 04:52:59 +0800] [85254] [INFO] Worker exiting (pid: 85254)
+[2021-12-21 04:52:59 +0800] [85259] [INFO] Worker exiting (pid: 85259)
+[2021-12-21 04:52:59 +0800] [85261] [INFO] Worker exiting (pid: 85261)
+[2021-12-21 04:52:59 +0800] [73301] [WARNING] Worker with pid 85261 was terminated due to signal 9
+[2021-12-21 04:52:59 +0800] [73301] [WARNING] Worker with pid 85259 was terminated due to signal 9
+[2021-12-21 04:52:59 +0800] [73301] [WARNING] Worker with pid 85257 was terminated due to signal 9
+[2021-12-21 04:52:59 +0800] [73301] [WARNING] Worker with pid 85255 was terminated due to signal 9
+[2021-12-21 04:52:59 +0800] [73301] [WARNING] Worker with pid 85258 was terminated due to signal 9
+[2021-12-21 04:52:59 +0800] [85305] [INFO] Booting worker with pid: 85305
+[2021-12-21 04:52:59 +0800] [73301] [WARNING] Worker with pid 85254 was terminated due to signal 9
+[2021-12-21 04:53:00 +0800] [73301] [DEBUG] 2 workers
+[2021-12-21 04:53:00 +0800] [85306] [INFO] Booting worker with pid: 85306
+[2021-12-21 04:53:00 +0800] [85307] [INFO] Booting worker with pid: 85307
+[2021-12-21 04:53:00 +0800] [85308] [INFO] Booting worker with pid: 85308
+[2021-12-21 04:53:00 +0800] [85309] [INFO] Booting worker with pid: 85309
+[2021-12-21 04:53:00 +0800] [85310] [INFO] Booting worker with pid: 85310
+[2021-12-21 04:53:00 +0800] [85311] [INFO] Booting worker with pid: 85311
+[2021-12-21 04:53:00 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85256)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85305)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85306)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85307)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85308)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85309)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85310)
+[2021-12-21 06:53:09 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85311)
+[2021-12-21 06:53:09 +0800] [85306] [INFO] Worker exiting (pid: 85306)
+[2021-12-21 06:53:09 +0800] [85256] [INFO] Worker exiting (pid: 85256)
+[2021-12-21 06:53:09 +0800] [85308] [INFO] Worker exiting (pid: 85308)
+[2021-12-21 06:53:09 +0800] [85305] [INFO] Worker exiting (pid: 85305)
+[2021-12-21 06:53:09 +0800] [85310] [INFO] Worker exiting (pid: 85310)
+[2021-12-21 06:53:09 +0800] [85311] [INFO] Worker exiting (pid: 85311)
+[2021-12-21 06:53:09 +0800] [85307] [INFO] Worker exiting (pid: 85307)
+[2021-12-21 06:53:09 +0800] [85309] [INFO] Worker exiting (pid: 85309)
+[2021-12-21 06:53:10 +0800] [73301] [WARNING] Worker with pid 85311 was terminated due to signal 9
+[2021-12-21 06:53:10 +0800] [73301] [WARNING] Worker with pid 85309 was terminated due to signal 9
+[2021-12-21 06:53:10 +0800] [73301] [WARNING] Worker with pid 85307 was terminated due to signal 9
+[2021-12-21 06:53:10 +0800] [73301] [WARNING] Worker with pid 85306 was terminated due to signal 9
+[2021-12-21 06:53:10 +0800] [73301] [WARNING] Worker with pid 85305 was terminated due to signal 9
+[2021-12-21 06:53:10 +0800] [73301] [WARNING] Worker with pid 85256 was terminated due to signal 9
+[2021-12-21 06:53:10 +0800] [85324] [INFO] Booting worker with pid: 85324
+[2021-12-21 06:53:10 +0800] [85325] [INFO] Booting worker with pid: 85325
+[2021-12-21 06:53:10 +0800] [73301] [DEBUG] 2 workers
+[2021-12-21 06:53:10 +0800] [85326] [INFO] Booting worker with pid: 85326
+[2021-12-21 06:53:10 +0800] [85327] [INFO] Booting worker with pid: 85327
+[2021-12-21 06:53:10 +0800] [85328] [INFO] Booting worker with pid: 85328
+[2021-12-21 06:53:10 +0800] [85329] [INFO] Booting worker with pid: 85329
+[2021-12-21 06:53:10 +0800] [85330] [INFO] Booting worker with pid: 85330
+[2021-12-21 06:53:10 +0800] [85331] [INFO] Booting worker with pid: 85331
+[2021-12-21 06:53:10 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85324)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85325)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85326)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85327)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85328)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85329)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85330)
+[2021-12-21 07:45:04 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85331)
+[2021-12-21 07:45:05 +0800] [85325] [INFO] Worker exiting (pid: 85325)
+[2021-12-21 07:45:05 +0800] [85327] [INFO] Worker exiting (pid: 85327)
+[2021-12-21 07:45:05 +0800] [85324] [INFO] Worker exiting (pid: 85324)
+[2021-12-21 07:45:05 +0800] [85331] [INFO] Worker exiting (pid: 85331)
+[2021-12-21 07:45:05 +0800] [85326] [INFO] Worker exiting (pid: 85326)
+[2021-12-21 07:45:05 +0800] [85330] [INFO] Worker exiting (pid: 85330)
+[2021-12-21 07:45:05 +0800] [85328] [INFO] Worker exiting (pid: 85328)
+[2021-12-21 07:45:05 +0800] [85329] [INFO] Worker exiting (pid: 85329)
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85331 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85328 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85326 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85325 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [85342] [INFO] Booting worker with pid: 85342
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85330 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85327 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [73301] [WARNING] Worker with pid 85324 was terminated due to signal 9
+[2021-12-21 07:45:06 +0800] [73301] [DEBUG] 1 workers
+[2021-12-21 07:45:06 +0800] [85343] [INFO] Booting worker with pid: 85343
+[2021-12-21 07:45:06 +0800] [85344] [INFO] Booting worker with pid: 85344
+[2021-12-21 07:45:06 +0800] [85345] [INFO] Booting worker with pid: 85345
+[2021-12-21 07:45:06 +0800] [85346] [INFO] Booting worker with pid: 85346
+[2021-12-21 07:45:06 +0800] [85347] [INFO] Booting worker with pid: 85347
+[2021-12-21 07:45:06 +0800] [85348] [INFO] Booting worker with pid: 85348
+[2021-12-21 07:45:06 +0800] [85349] [INFO] Booting worker with pid: 85349
+[2021-12-21 07:45:06 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85342)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85343)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85344)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85345)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85346)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85347)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85348)
+[2021-12-21 07:53:12 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85349)
+[2021-12-21 07:53:12 +0800] [85345] [INFO] Worker exiting (pid: 85345)
+[2021-12-21 07:53:12 +0800] [85342] [INFO] Worker exiting (pid: 85342)
+[2021-12-21 07:53:12 +0800] [85344] [INFO] Worker exiting (pid: 85344)
+[2021-12-21 07:53:12 +0800] [85343] [INFO] Worker exiting (pid: 85343)
+[2021-12-21 07:53:12 +0800] [85348] [INFO] Worker exiting (pid: 85348)
+[2021-12-21 07:53:12 +0800] [85349] [INFO] Worker exiting (pid: 85349)
+[2021-12-21 07:53:12 +0800] [85347] [INFO] Worker exiting (pid: 85347)
+[2021-12-21 07:53:12 +0800] [85346] [INFO] Worker exiting (pid: 85346)
+[2021-12-21 07:53:13 +0800] [73301] [WARNING] Worker with pid 85346 was terminated due to signal 9
+[2021-12-21 07:53:13 +0800] [85360] [INFO] Booting worker with pid: 85360
+[2021-12-21 07:53:13 +0800] [85361] [INFO] Booting worker with pid: 85361
+[2021-12-21 07:53:13 +0800] [85362] [INFO] Booting worker with pid: 85362
+[2021-12-21 07:53:13 +0800] [73301] [DEBUG] 3 workers
+[2021-12-21 07:53:13 +0800] [85363] [INFO] Booting worker with pid: 85363
+[2021-12-21 07:53:13 +0800] [85364] [INFO] Booting worker with pid: 85364
+[2021-12-21 07:53:13 +0800] [85365] [INFO] Booting worker with pid: 85365
+[2021-12-21 07:53:13 +0800] [85366] [INFO] Booting worker with pid: 85366
+[2021-12-21 07:53:13 +0800] [85367] [INFO] Booting worker with pid: 85367
+[2021-12-21 07:53:13 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85360)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85361)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85362)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85363)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85364)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85365)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85366)
+[2021-12-21 08:36:32 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85367)
+[2021-12-21 08:36:32 +0800] [85364] [INFO] Worker exiting (pid: 85364)
+[2021-12-21 08:36:32 +0800] [85367] [INFO] Worker exiting (pid: 85367)
+[2021-12-21 08:36:32 +0800] [85360] [INFO] Worker exiting (pid: 85360)
+[2021-12-21 08:36:32 +0800] [85362] [INFO] Worker exiting (pid: 85362)
+[2021-12-21 08:36:32 +0800] [85365] [INFO] Worker exiting (pid: 85365)
+[2021-12-21 08:36:32 +0800] [85361] [INFO] Worker exiting (pid: 85361)
+[2021-12-21 08:36:32 +0800] [85363] [INFO] Worker exiting (pid: 85363)
+[2021-12-21 08:36:32 +0800] [85366] [INFO] Worker exiting (pid: 85366)
+[2021-12-21 08:36:32 +0800] [73301] [WARNING] Worker with pid 85366 was terminated due to signal 9
+[2021-12-21 08:36:32 +0800] [73301] [WARNING] Worker with pid 85363 was terminated due to signal 9
+[2021-12-21 08:36:32 +0800] [73301] [WARNING] Worker with pid 85361 was terminated due to signal 9
+[2021-12-21 08:36:32 +0800] [85375] [INFO] Booting worker with pid: 85375
+[2021-12-21 08:36:32 +0800] [85377] [INFO] Booting worker with pid: 85377
+[2021-12-21 08:36:32 +0800] [85378] [INFO] Booting worker with pid: 85378
+[2021-12-21 08:36:32 +0800] [85379] [INFO] Booting worker with pid: 85379
+[2021-12-21 08:36:32 +0800] [73301] [DEBUG] 4 workers
+[2021-12-21 08:36:32 +0800] [85380] [INFO] Booting worker with pid: 85380
+[2021-12-21 08:36:32 +0800] [85381] [INFO] Booting worker with pid: 85381
+[2021-12-21 08:36:32 +0800] [85382] [INFO] Booting worker with pid: 85382
+[2021-12-21 08:36:32 +0800] [85383] [INFO] Booting worker with pid: 85383
+[2021-12-21 08:36:32 +0800] [73301] [DEBUG] 8 workers
+[2021-12-21 09:00:54 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85375)
+[2021-12-21 09:00:54 +0800] [85375] [INFO] Worker exiting (pid: 85375)
+[2021-12-21 09:00:54 +0800] [85906] [INFO] Booting worker with pid: 85906
+[2021-12-21 09:06:19 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85377)
+[2021-12-21 09:06:20 +0800] [85377] [INFO] Worker exiting (pid: 85377)
+[2021-12-21 09:06:20 +0800] [85922] [INFO] Booting worker with pid: 85922
+[2021-12-21 09:32:01 +0800] [73301] [CRITICAL] WORKER TIMEOUT (pid:85378)
+[2021-12-21 09:32:01 +0800] [85378] [INFO] Worker exiting (pid: 85378)
+[2021-12-21 09:32:01 +0800] [86761] [INFO] Booting worker with pid: 86761
