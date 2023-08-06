@@ -1,0 +1,40 @@
+#!/bin/sh
+# -*- coding: utf-8 -*-
+
+#  Copyright (C) 2022 David Arroyo Menéndez
+
+#  Author: David Arroyo Menéndez <davidam@gmail.com> 
+#  Maintainer: David Arroyo Menéndez <davidam@gmail.com> 
+#  This file is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 3, or (at your option)
+#  any later version.
+# 
+#  This file is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+# 
+#  You should have received a copy of the GNU General Public License
+#  along with Damegender; see the file GPL.txt.  If not, write to
+#  the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, 
+#  Boston, MA 02110-1301 USA,
+
+cd orig
+
+# COPY FROM HERE
+
+mkdir -p nisra
+cp ../nisra.py nisra
+cd nisra
+wget -c https://www.nisra.gov.uk/sites/nisra.gov.uk/files/publications/Full_Name_List_9718.xlsx
+
+ssconvert -S Full_Name_List_9718.xlsx Full_Name_List_9718.csv
+
+cp Full_Name_List_9718.csv.4 northireland.females.csv
+sed -i '1d' northireland.females.csv
+sed -i '1d' northireland.females.csv
+cp Full_Name_List_9718.csv.3 northireland.males.csv
+sed -i '1d' northireland.males.csv
+sed -i '1d' northireland.males.csv
+python3 nisra.py
