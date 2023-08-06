@@ -1,0 +1,34 @@
+import enum
+
+
+@enum.unique
+class PaymentMethodCodeEnum(enum.Enum):
+    ALL = 'ALL'
+    ALL_CARDS = 'CARD_ALL'
+    ALL_BANKS = 'BANK_ALL'
+
+    # CZ
+    BANK_CZ_AB = 'BANK_CZ_AB'
+    BANK_CZ_CSOB = 'BANK_CZ_CSOB'
+    BANK_CZ_EB = 'BANK_CZ_EB'
+    BANK_CZ_OTHER = 'BANK_CZ_OTHER'
+    BANK_CZ_RB = 'BANK_CZ_RB'
+    BANK_CZ_KB = 'BANK_CZ_KB'
+    BANK_CZ_GE = 'BANK_CZ_GE'
+    BANK_CZ_VB = 'BANK_CZ_VB'
+    BANK_CZ_FB = 'BANK_CZ_FB'
+    BANK_CZ_CS_P = 'BANK_CZ_CS_P'
+    BANK_CZ_MB_P = 'BANK_CZ_MB_P'
+    BANK_CZ_CSOB_P = 'BANK_CZ_CSOB_P'
+    BANK_CZ_PS_P = 'BANK_CZ_PS_P'
+    BANK_CZ_UC = 'BANK_CZ_UC'
+
+    # SK
+    BANK_SK_DEXIA = 'BANK_SK_DEXIA'
+    BANK_SK_FB = 'BANK_SK_FB'
+    BANK_SK_OTHER = 'BANK_SK_OTHER'
+    BANK_SK_SP = 'BANK_SK_SP'
+    BANK_SK_VUB = 'BANK_SK_VUB'
+    BANK_SK_TB = 'BANK_SK_TB'
+    BANK_SK_CSOB = 'BANK_SK_CSOB'
+    BANK_SK_PB = 'BANK_SK_PB'
