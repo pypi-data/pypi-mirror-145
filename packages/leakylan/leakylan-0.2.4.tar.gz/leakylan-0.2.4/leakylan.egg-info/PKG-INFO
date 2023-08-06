@@ -1,0 +1,53 @@
+Metadata-Version: 2.1
+Name: leakylan
+Version: 0.2.4
+Summary: Simple File sharing Service over LAN.
+Home-page: https://github.com/Anish-M-code/Leaky-LAN
+Author: Anish M
+Author-email: aneesh25861@gmail.com
+License: MIT License
+Keywords: File Sharing Service,student project
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Topic :: Communications :: File Sharing
+Description-Content-Type: text/markdown
+
+# Leaky-LAN
+
+It is a simple file sharing and HTTP server in LAN for windows and Linux systems which have python3 installed.
+
+Note: Files shared using this tool is available to each and every device 
+ connected to LAN. Don't use on public Networks!
+ 
+ ## Main Features
+ 
+ - Easy to use , setup and maintain
+ - 100% Open source
+ - No third party code only standard python libraries used.
+ - setup required only on one computer.
+ - Bidirectional sharing of files possible using new web interface.
+ 
+ 
+Quick Installation
+------------------
+
+To Install from [PyPI](https://pypi.org/project/leaky-lan/):
+
+Run the following commands in Linux terminal / Windows powershell / command prompt to install:-
+
+```
+pip install leakylan
+```
+Then simply type following command to get started:-
+
+```
+leakylan 
+```
+
+
