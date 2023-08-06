@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: shofash
+Version: 2
+Summary: A simple HTML compiler
+Home-page: https://www.intershed.co.uk/Free_software/shofash/Version_2/index.html
+Author: Frazer Melton
+Author-email: fmm@intershed.co.uk
+License: UNKNOWN
+Project-URL: Manual, https://www.intershed.co.uk/Free_software/shofash/Version_2/Manual/index.html
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# shofash.py 
+
+shofash.py is a simple HTML compiler written in python3 that converts .txt source files into linked static .html pages. It is designed to be served as fast as it is possible for ultra-high visitor number informational websites: all pages are static .html, no scripting, no databases. It is also possible to use shofash.py alongside scripts and databases as required. 
+
+
+
