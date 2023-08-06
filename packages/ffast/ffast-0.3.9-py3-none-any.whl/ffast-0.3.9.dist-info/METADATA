@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: ffast
+Version: 0.3.9
+Summary: FFAST: Fast Fourier Analysis for Sentence embeddings and Tokenisation
+Home-page: UNKNOWN
+Author: Mohammed Terry-Jack
+Author-email: <mohammedterryjack@gmail.com>
+License: UNKNOWN
+Keywords: python,embedding,tokenisation,fast fourier,nlp,nlu,poincare,wordnet,lite,fast,sentence encoder
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+Description-Content-Type: text/markdown
+Requires-Dist: nltk
+Requires-Dist: jellyfish
+Requires-Dist: Unidecode
+Requires-Dist: numpy
+Requires-Dist: scipy
+
+Fast and lightweight NLP pipeline for ML tasks: powerful tokeniser and (model-free) sentence embeddings using Fast Fourier transforms, power means, positional encoding and Wordnet or Poincare Embeddings
+
