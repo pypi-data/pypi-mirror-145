@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: cheesefactory-email
+Version: 0.6
+Summary: An easier way to send Email
+Home-page: https://bitbucket.org/hellsgrannies/cheesefactory-email
+Author: Todd Salazar
+Author-email: unixsal@yahoo.com
+License: UNKNOWN
+Keywords: cheesefactory mail email development
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+
+# cheesefactory-email
+
+-----------------
+
+#### An easier way to send an Email.
+[![PyPI Latest Release](https://img.shields.io/pypi/v/cheesefactory-email.svg)](https://pypi.org/project/cheesefactory-email/)
+[![PyPI status](https://img.shields.io/pypi/status/cheesefactory-email.svg)](https://pypi.python.org/pypi/cheesefactory-email/)
+[![PyPI download month](https://img.shields.io/pypi/dm/cheesefactory-email.svg)](https://pypi.python.org/pypi/cheesefactory-email/)
+[![PyPI download week](https://img.shields.io/pypi/dw/cheesefactory-email.svg)](https://pypi.python.org/pypi/cheesefactory-email/)
+[![PyPI download day](https://img.shields.io/pypi/dd/cheesefactory-email.svg)](https://pypi.python.org/pypi/cheesefactory-email/)
+
+
+### Features
+
+**Note:** _This package is still in beta status. As such, future versions may not be backwards compatible and features may change. Parts of it may even be broken._
+
+TODO
+
+### Create an Email object and send
+
+```python
+from cheesefactory_email import CfEmail
+
+mail = CfEmail(
+    host='localhost',
+    port='25',
+    username='emailuser',
+    password='emailpassword',
+    use_tls=False,
+    header_tags={'X-Barracuda-Encrypted': 'RJSE-RSA-AES256-SHA'},
+    debug=False
+)
+
+transfer_log = mail.send(
+    sender='tom@example.com',
+    recipients=['bob@example.com', 'mary@example2.com'],
+    cc_recipients=['carol@example.com', 'larry@example2.com'],
+    subject='Fishing trip',
+    body='Dear Bob,\nHow was the fishing trip?\n\nTom',
+    attachments=['/tmp/file1.txt', '/tmp/file2.txt']
+)
+```
+
