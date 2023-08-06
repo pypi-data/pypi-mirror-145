@@ -1,0 +1,91 @@
+# Markdown Manuscript Filters
+A set of python utilities for converting documents from markdown to pdf, especially with the aim of producing technical / research manuscripts.
+
+## Workflow
+The intended workflow is to write your manuscript in markdown, either from scratch or using [markdown-manuscript-template](https://github.com/awillats/markdown-manuscript-template).
+For live editing, use an editor (like Atom / VSCode) with a markdown preview plugin  *(I use [markdown-preview-enhanced](https://shd101wyy.github.io/markdown-preview-enhanced/#/))* ... 
+.. but to use [pandoc](https://pandoc.org/index.html) to produce a final document.
+
+  <details><summary>↪"why is this a good idea?"</summary>
+
+  - [Scientific Writing with Markdown](https://jaantollander.com/post/scientific-writing-with-markdown/) - Jaan Tollander de Balsch, [video](https://youtu.be/ltasA9RjbaE)
+  - [Technical Writing with Pandoc and Panflute](https://lee-phillips.org/panflute-gnuplot/#:~:text=Pandoc%20works%20by%20translating%20its,into%20the%20desired%20output%20format.) - Lee Philips
+  - [Technical writing using Markdown](https://pankajkarman.github.io/blog/markdown/) - Pankaj Kumar
+  </details>
+
+... however, I've found myself wanting to customize more of the final result, and automate several cleanup steps along the way. Built on top of pandoc and panflute, this repo adds several useful python functions which can do things like:
+- compile markdown files containing `@import` statements into a single document
+- remove to-do items and comments for a cleaner pdf output
+- convert several alternate LaTeX equation delimeters to a standard pandoc-friendly format 
+- chain these steps together to produce a single command to build your output files
+- _**and even**_ produce an audio transcript of your manuscript 🤯
+
+# Installation 
+- **option 1:** from PyPi - [pypi page](https://pypi.org/project/markdown-manuscript-filters/)
+`pip install markdown-manuscript-filters`
+
+- **option 2:** locally, in edittable form from git repo:
+  ```
+  git clone https://github.com/awillats/markdown-manuscript-filters
+  cd markdown-manuscript-filters
+  pip install --editable .
+  ```
+
+# Usage 
+
+```
+sage: compile_markdown.py [-h] [--dir DIR] [--aux AUX] [--out OUT] [-p] [-v] [-e] [-w] src_file
+
+Converts markdown with @import statements to all-in-one markdown file
+- then filters out common annotation
+- then converts to pdf with pandoc
+
+
+positional arguments:
+  src_file    source markdown file (with @imports)
+
+optional arguments:
+  -h, --help  show this help message and exit
+  --dir DIR   starting directory
+  --aux AUX   directory for auxiliary files
+  --out OUT   directory for outputs (i.e. pdf)
+  -p          open (p)df after successful compile
+  -v          (v)erbose
+  -e          halt execution if a step (e)rrors
+  -w          halt execution if any (w)arnings -- implies -e
+```
+
+for example:
+```
+python -m compile_markdown -pve manuscript_v1  --aux publish/aux/ --out publish/output
+```
+<details><summary>↪example terminal output</summary>
+
+```
+.. compiling @imports ..
+importing: 1_introduction.md
+importing: 2_methods.md
+importing: 3_results.md
+writing compiled file to : tests/publish/aux/mv1_out.md
+.. re-adding yaml ..
+.. re-adding yaml, again ..
+.. undoing line wrap ..
+☼☼ PDF export complete ☼☼
+☼☼ available at tests/publish/output/manuscript_v1.pdf ☼☼
+```
+</details>
+
+OR, from inside a python script:
+```python
+import markdown_manuscript_filters as mmf 
+mmf.unicode_to_latex_file('tests/simple_file.md','tests/simple_file_out.md',is_verbose=True)
+```
+OR 
+```shell 
+python -c "import markdown_manuscript_filters as mmf ; mmf.unicode_to_latex_file('tests/simple_file.md','tests/simple_file_out.md',is_verbose=True)"
+```
+---
+# Image Attribution:
+
+<img src="tests/Pan_flute.svg" height=50></img>
+By johnny_automatic - Open Clip Art Library image's page, CC0, https://commons.wikimedia.org/w/index.php?curid=11066062
