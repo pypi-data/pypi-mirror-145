@@ -1,0 +1,25 @@
+qtpy
+numpy
+scipy
+pyqtgraph>=0.12
+easydict
+pymodaq_plugins>=3.0.1
+simple_pid
+python-dateutil
+packaging
+toml
+pymodaq_plugin_manager>=0.0.17
+qdarkstyle
+multipledispatch
+docutils==0.17.1
+setuptools>=60
+pint
+
+[:python_version < "3.8"]
+importlib_metadata
+
+[:python_version < "3.9"]
+tables==3.6.1
+
+[:python_version > "3.8"]
+tables>=3.7.0
