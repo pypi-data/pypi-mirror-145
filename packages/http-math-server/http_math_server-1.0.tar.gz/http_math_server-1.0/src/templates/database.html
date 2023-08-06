@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MathServer</title>
+</head>
+<body>
+    <div>
+        ------------
+        {% for dict_item in result_list %}
+            {% for key, value in dict_item.items() %}
+                <p>{{key}}: {{value}}</p>
+            {% endfor %}
+            ------------
+        {% endfor %}
+    </div>
+</body>
+</html>
