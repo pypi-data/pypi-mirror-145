@@ -1,0 +1,20 @@
+?table_item: table_name
+	| table_item_aliased
+
+?table_name: simple_table_name
+    | explicit_table_name
+	| dbt_table_name
+
+table_item_aliased: table_name as_alias
+
+simple_table_name: CNAME
+explicit_table_name: "`" PROJECT_ID  "." DATASET_ID "." TABLE_ID "`"
+	| "`" PROJECT_ID  "`.`" DATASET_ID "`.`" TABLE_ID "`"
+
+PROJECT_ID: CNAME
+DATASET_ID: CNAME
+TABLE_ID: CNAME
+
+%import common.CNAME
+%import alias.as_alias
+%import jinja.dbt_table_name
