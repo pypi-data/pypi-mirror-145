@@ -1,0 +1,22 @@
+{% macro refresh_card(title=None,source=None,selector=None) %}
+<div class="card " 
+      {%if source%}data-card-widget="card-refresh" data-source="{{source}}"{%endif%}
+      {%if selector%}data-source-selector="{{selector}}"{%endif%}
+      data-load-in-content=FALSE
+      data-load-on-init=FALSE
+      >
+    <div class="card-header border-transparent">
+      <h3 class="card-title">{{title or source}}</h3>
+      <div class="card-tools">
+        {{ card_tools(self) }}
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        {#caller()#}
+    </div>
+    <!-- /.card-body -->
+    <!-- /.card-footer -->
+  </div>
+
+{%endmacro%}

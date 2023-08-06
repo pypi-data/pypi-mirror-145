@@ -1,0 +1,41 @@
+{% macro list_roles(roles) %}
+<div class="card collapsed-card">
+    <div class="card-header border-transparent">
+      <h3 class="card-title">User Groups</h3>
+      <div class="card-tools">
+        {{ card_tools(self) }}
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table m-0">
+          <thead>
+            <tr>
+              <th>Group</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+
+              {% for r in roles %}
+            <tr>
+              <td><a href="{{url_for('role.edit_view',id=r.id)}}">{{r.name}}</a></td>
+              <td>{{r.description}}</td>
+            </tr>
+              {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+      <a href="{{url_for('role.create_view',url=request.url)}}" class="btn btn-sm btn-info float-left">New Group</a>
+      <a href="{{url_for('role.index_view')}}" class="btn btn-sm btn-secondary float-right">View All {{pages|length}} Groups</a>
+    </div>
+    <!-- /.card-footer -->
+  </div>
+
+{%endmacro%}

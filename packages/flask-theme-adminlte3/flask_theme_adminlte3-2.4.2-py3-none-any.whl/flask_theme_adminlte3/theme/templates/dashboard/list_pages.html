@@ -1,0 +1,53 @@
+{% macro list_pages(pages) %}
+<div class="card collapsed-card">
+    <div class="card-header border-transparent">
+      <h3 class="card-title">Pages</h3>
+      <div class="card-tools">
+        {{ card_tools(self) }}
+      </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table m-0">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Route</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in pages %}
+            <tr>
+              <td><a href="{{url_for('page.edit_view',id=p.id)}}">{{p.title}}</a></td>
+              <td>{{p.description}}</td>
+              <td>
+                {%if p.draft%}
+                <span class="badge badge-warning">draft</span>
+                {%endif%}
+                {%if p.auth_required%}
+                <span class="badge badge-info">private</span>
+                {%endif%}
+                {%if not p.auth_required and not p.draft%}
+                <span class="badge badge-success">public</span>
+                {%endif%}
+              </td>
+              <td><a href="{{url_for('pages',route=p.route)}}">{{p.route}}</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer clearfix">
+      <a href="{{url_for('page.create_view',url=request.url)}}" class="btn btn-sm btn-info float-left">New Page</a>
+      <a href="{{url_for('page.index_view')}}" class="btn btn-sm btn-secondary float-right">View All {{pages|length}} Pages</a>
+    </div>
+    <!-- /.card-footer -->
+  </div>
+
+{%endmacro%}
