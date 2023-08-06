@@ -1,0 +1,49 @@
+Metadata-Version: 2.1
+Name: flit_scm
+Version: 1.4.1
+Summary: A PEP 518 build backend that uses setuptools_scm to generate a version file from your version control system, then flit to build the package.
+Keywords: flit,pep518,build,packaging,scm
+Author-email: Will Da Silva <will@willdasilva.xyz>
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Build Tools
+Requires-Dist: flit-core==3.5.0
+Requires-Dist: setuptools_scm==6.4.2
+Requires-Dist: toml==0.10.2
+Project-URL: documentation, https://gitlab.com/WillDaSilva/flit_scm
+Project-URL: homepage, https://gitlab.com/WillDaSilva/flit_scm
+Project-URL: repository, https://gitlab.com/WillDaSilva/flit_scm
+
+# flit_scm
+
+A PEP 518 build backend that uses [`setuptools_scm`](https://github.com/pypa/setuptools_scm) to generate a version file from your version control system, then [`flit_core`](https://flit.readthedocs.io/en/latest/index.html) to build the package.
+
+To use it, set the `build-system` table in your `pyproject.toml` to as follows:
+
+```toml
+[build-system]
+requires = ["flit_scm"]
+build-backend = "flit_scm:buildapi"
+```
+
+Flit and `setuptools_scm` can be configured as normal (refer to their documentation). Example:
+
+```toml
+[build-system]
+requires = ["flit_scm"]
+build-backend = "flit_scm:buildapi"
+
+[tool.flit.sdist]
+exclude = [".gitignore"]
+
+[tool.setuptools_scm]
+write_to = "src/_version.py"
+```
+
+
