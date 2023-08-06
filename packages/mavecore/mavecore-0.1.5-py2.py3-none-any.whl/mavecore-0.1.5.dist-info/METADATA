@@ -1,0 +1,41 @@
+Metadata-Version: 2.1
+Name: mavecore
+Version: 0.1.5
+Summary: MaveCore implements shared functionality for MaveTools and MaveDB.
+Home-page: https://github.com/VariantEffect/MaveCore/tree/release/0.1
+Author: MaveDB Developers
+Author-email: alan.rubin@wehi.edu.au
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Bio-Informatics
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: fqfa (>=1.2.1)
+Requires-Dist: mavehgvs (>=0.4.0)
+Requires-Dist: idutils (>=1.1.0)
+Requires-Dist: pandas (>=1.1.0)
+
+# MaveCore
+Shared MaveDB and MaveTools functionality
+
+## Contributing
+
+To contribute to MaveCore development, please install the additional requirements:
+```
+pip install -r requirements-dev.txt
+```
+
+To run the tests and generate an HTML coverage report use:
+```
+coverage run -m unittest && coverage html
+```
+
+By default, the coverage report will be located at `htmlcov/index.html`.
+Open this file in your browser to identify lines that have not been adequately covered by the test suite.
+
+
