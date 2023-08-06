@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: tokko-es-query-factory
+Version: 0.0.1
+Summary: Elasticsearch Query Factory
+Home-page: https://github.com/TokkoLabs/services-tokkobroker/libraries/tokko_es_query_factory
+Author: Navent
+Author-email: develper@navent.com
+License: BSD License
+Description: # Install
+        `
+        pip install tokko_es_query_factory
+        `
+        
+        ## Use
+        ```
+        from tokko_es_query_factory import filters
+        from tokko_es_query_factory.query_factory import QueryFactory
+        
+        
+        class FilterFactory(QueryFactory):
+            """" Filter Factory! """
+            CONFIG = {
+                "address": filters.ContainsTextFilter,
+                "age": filters.RangeIntFilter
+                }
+        ```
+        
+        ## Filter types
+        
+        * ComplexFilter
+        * AvailabilityFilter
+        * MultipleFilter
+        * OperationFilter
+        * NetworkFilter
+        * LocationFilter
+        * MultipleIntFilter
+        * MultipleMatch
+        * MultipleNoMatch
+        * PositiveIntFilter
+        * BooleanFilter
+        * StrFilter
+        * ContainsTextFilter
+        * RangeIntFilter
+        * RangeFloatFilter
+        * ChoiceIntFilter
+        * StatusFilter
+        * DispositionFilter
+        * CurrencyFilter
+        * PropertyConditionFilter
+        * PropertySituationFilter
+        
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Description-Content-Type: text/markdown
