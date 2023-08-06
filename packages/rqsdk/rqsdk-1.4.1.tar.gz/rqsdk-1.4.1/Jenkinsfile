@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+    stages {
+        stage("get GIT_COMMIT_NAME/GIT_COMMIT_EMAIL") {
+            agent any
+            steps {
+                checkout scm
+                script {
+                    // Git committer name
+                    GIT_COMMIT_NAME = sh (script: "git --no-pager show -s --format='%an' $GIT_COMMIT",returnStdout: true).trim()
+                    echo "Git committer name: ${GIT_COMMIT_NAME}"
+                    // Git committer email
+                    GIT_COMMIT_EMAIL = sh (script: "git --no-pager show -s --format='%ae' $GIT_COMMIT",returnStdout: true).trim()
+                    echo "Git committer email: ${GIT_COMMIT_EMAIL}"
+                }
+            }
+        }
+        stage("RQSDK 自动化测试") {
+            agent {
+                docker {
+                    image "ccr.ccs.tencentyun.com/ricequant/miniconda3-centos-builder:v1.0.8"
+                }
+            }
+            steps {
+                checkout scm
+                script {
+                    if (env.BRANCH_NAME == 'master') {
+                        sh "pip install --no-cache-dir --no-warn-script-location --user -U pytest"
+                        sh "pip install --no-cache-dir install --user --extra-index-url https://rquser:Ricequant8@pypi2.ricequant.com/simple/   .[rqalpha_plus]"
+                        sh "pytest  tests"
+                    } else if (env.BRANCH_NAME == 'develop') {
+                        sh "pip install --no-cache-dir --no-warn-script-location --user -U  pytest"
+                        sh "pip install --no-cache-dir install --user --extra-index-url https://ricequant:RiceQuant77@pypi.ricequant.com:8080/simple/  .[rqalpha_plus]"
+                        sh "pytest  tests"
+                    }
+                }
+            }
+        }
+    }
+    post {
+        success {
+            script {
+                mail to: "${env.git_commit_email}",
+                subject: "[Jenkins] SUCCESSFUL: ${env.appName} [${env.BUILD_NUMBER}]",
+                body: """成功构建: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'
+分支: ${env.BRANCH_NAME}
+JOB_NAME: ${env.JOB_NAME}
+提交人: ${env.git_commit_name}
+构建次数：${env.BUILD_NUMBER}
+console output：${env.BUILD_URL}
+                """
+            }
+        }
+        failure {
+             script {
+                mail to: "${env.git_commit_email}",
+                subject: "[Jenkins] FAILURE: ${env.appName} [${env.BUILD_NUMBER}]",
+                body: """<p>构建失败: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'
+分支: ${env.BRANCH_NAME}
+JOB_NAME: ${env.JOB_NAME}
+提交人: ${env.git_commit_name}
+构建次数：${env.BUILD_NUMBER}
+console output：${env.BUILD_URL}
+                """
+             }
+        }
+    }
+}
