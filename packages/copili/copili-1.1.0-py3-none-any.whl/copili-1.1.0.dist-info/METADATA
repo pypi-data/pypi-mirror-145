@@ -1,0 +1,453 @@
+Metadata-Version: 2.1
+Name: copili
+Version: 1.1.0
+Summary: Run a series of docker/podman containers, in a coordinated manner
+Home-page: https://git.connect.dzd-ev.de/dzdpythonmodules/copili
+Author: TB
+Author-email: tim.bleimehl@helmholtz-muenchen.de
+License: MIT
+Platform: UNKNOWN
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: linetimer
+Requires-Dist: docker
+Requires-Dist: schedule
+Requires-Dist: pyyaml
+Requires-Dist: python-dotenv
+Requires-Dist: expandvars
+
+# copili - container pipeline
+
+Run a series of containers, in a coordinated manner
+
+**Maintainer**: tim.bleimehl@dzd-ev.de
+
+**Licence**: MIT
+
+**issue tracker**: https://git.connect.dzd-ev.de/dzdtools/pythonmodules/-/issues?label_name%5B%5D=copili
+
+
+**HINT**: This Readme is WIP. Expect changes and additions!
+
+
+[[_TOC_]]
+
+## What?
+
+`copili` is a python tool to run a series of scripts that are wrapped into a docker container/image.
+
+You can create pipelines based on containers with central definitions. The pipeline definition supports yaml,json, python-dict.
+
+`copili` will manage the runs of docker containers;
+
+* manage dependencies
+* handle failed runs
+* manage periodic runs
+* manage log(-files)
+
+### Example Scenario & Background
+
+`copili` was created for developing a dataloading pipeline for the [Covid*Graph](https://covidgraph.org/), a Covid19 knowledge graph around a Neo4j database.
+
+In Covid*Graph we have contributions, from many developers in diverse programming languages, to load data into the database; So called **dataloaders**.
+
+To reproducable bootstrap the graph and create the needed environment for each dataloader we put all the dataloader scripts into docker images. 
+
+At the beginning we started the containers sequentially, but with a growing count of dataloaders and more complex dependencies among those dataloaders, a manual execution was not feasible anymore.
+
+Here comes `copili` into the game: 
+
+With `copili` we can define a sequence of containers and the dependencies among them. `copili` is the base library for [`motherlode`](https://git.connect.dzd-ev.de/dzdtools/motherlode)
+
+With `motherlode` we now can rebuild the graph from scratch. we just need to start `copili`/`motherlode` with our pipeline definition, which lives in a yaml file.
+
+Now everybody can easily get an overview how the graph is created or create a local copy of the graph. This is important for an open source community project to make lives of the the developers easier.
+
+Also we can now add new dataloaders with no effort.
+
+On top we can create "service" definitions which automatically update our knowledge graph. More on that in the docs... 
+
+# Usage
+
+## Install
+
+**Stable**
+
+`pip3 install copili`
+
+**Dev**
+
+`pip3 install git+https://git.connect.dzd-ev.de/dzdpythonmodules/copili.git`
+
+
+## Get started
+
+### Quick example
+
+See this short example to get an idea how copili works. After that we will go into more detail.
+
+```python
+import docker
+import schedule
+from copili import Pipeline
+
+
+d = docker.DockerClient(base_url="unix://var/run/docker.sock")
+
+# pipelindata - this could be also a path to a yaml-,json-file or just a python dict
+pipeline_description_yaml = """
+ExmaplePipeline:
+    - name: dataloader_02
+      image_repo: stakater/exit-container
+      dependencies: 
+        - dataloader_01
+      env_vars: 
+        EXIT_CODE: 0
+    - name: dataloader_01
+      image_repo: stakater/exit-container
+    - name: dataloader_03
+      image_repo: stakater/exit-container
+      dependencies: 
+        - dataloader_02
+        - dataloader_01
+    - name: servicecontainer01
+      image_repo: hello-world
+      is_service_container: true
+      dependencies: 
+        - dataloader_02
+"""
+
+
+p = Pipeline(description=pipeline_description_yaml, docker_client=d)
+# run all containers once
+p.run()
+
+# Optional define custom service schedule (https://schedule.readthedocs.io)
+# default is once a day at 00:00
+p.service_schedule = schedule.every(10).minutes.do(p.run_service_containers)
+
+# Step into service mode
+p.start_service_mode()
+
+# now servicecontainer01 will run every 10 minutes
+```
+
+## Pipeline description format
+
+A pipeline defintion consist of a name and an array of container descriptions. These container descriptions can have dependencies among each other.
+Container descriptions can be provided as python dict or as a json/yaml string or file.
+
+A pipeline description will be overhanded to copili via the `copili.Pipeline` - `description` parameter
+
+e.g.
+
+```python
+
+import copili
+
+p = Pipeline(description="path/to/my/pipelinefile.json")
+```
+
+### Container description properties
+
+One container description can have following properties
+
+#### name
+
+Name of the container description. Serves as identifier within copili.
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  |
+|---|---|---|---|
+| True  | string  |  `None`  | `MY_FIRST_PIPELINE_CONTAINER`  |
+
+#### info_link
+
+Link to the code repository or some other info about the pipeline member
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  |
+|---|---|---|---|
+| True  | string  |  `None`  | `https://github.com/me/myrepo`  |
+
+#### desc
+
+Short description of the pipeline member
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  |
+|---|---|---|---|
+| True  | string  |  `None`  | `Loads stuff into the database`  |
+
+#### image_repo
+
+Name of the repo where copili can download the image from. Usually a dockerhub repo. Custom repo urls are supported  
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| True  | string  |  `None`  |  `my-docker-namespace/my-container`, `my-own-registry.com:443/my-own-namespace/my-container`  |
+
+
+#### image_reg_username
+
+If we need to authorize to download the image from a certain registry, we can pass a username here (**SECURITY HINT**: Environment variables are supported as well and should be used here)
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False  | string  |  `None`  |  `my-username`, `${USERNAME-FROM-DOT-ENV_FILE}`  |
+
+#### image_reg_password
+
+If we need to authorize to download the image from a certain registry, we can pass a password here (**SECURITY HINT**: Environment variables are supported as well and should be used here)
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False  | string  |  `None`  |  `my-password`, `$PASSWORD-FROM-SYSTEM-ENV-VAR`  |
+
+
+#### tag
+
+The tag of the image
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False  |  string |  `latest` |  `stable`, `beta01`, `yetanothertag`  |
+
+
+#### is_service_container
+
+Does the container run once per pipeline run or should it run periodically (if the pipeline enters service mode). Sse[typed](#types) for more details
+
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | bool | `False` | `True` |
+
+
+#### env_vars
+
+Provide custom [environment variables](https://en.wikipedia.org/wiki/Environment_variable) per container
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | dict/json-object/record | `{}` | `{'MY_ENV_VAR':'value01',MY_OTHER_ENV_VAR:'val02'}` |
+
+#### labels
+
+Attach docker labels to the container.
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | dict/json-object/record | `{}` | `{'my-super-label':'my-super-value','stuff.company.com/enabled':"true"}` |
+
+
+
+#### dependencies
+
+Provide a list of copili container description **name*s which need to run successfull before this container is allowd to run
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | list of strings | `[]` | `['NAME_OF_OTHER_CONTAINER','NAME_OF_ANOTHER_CONTAINER']` |   |
+
+
+#### exlude_in_env
+
+Skip this container if we run in a certain environment. Set environment variable `ENV` to set the environment
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | list of strings | `[]` | `['PROD','QA']` |
+
+
+#### volumes
+
+A volumes desc. The format is given by the [python-docker-sdk](https://docker-py.readthedocs.io/en/stable/containers.html#module-docker.models.containers). See `volumes`-parameter
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | dict/json-object/record | `{}` | `{"/tmp/data": {"bind": "/data/", "mode": "rw"}`, `{'/home/user1/': {'bind': '/mnt/vol2', 'mode': 'rw'},'/var/www': {'bind': '/mnt/vol1', 'mode': 'ro'}}` |
+
+
+#### command
+
+Docker `command` list. Similar to [docker compose `command`](https://docs.docker.com/compose/compose-file/#command)
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | list of strings | `[]` | `['-p' ,'3000']` |
+
+#### sidecars
+
+Start helper containers with your container. E.g. if your container needs a redis database for caching
+
+| Mandatory | Type <br> (python/json/yaml)  | Default  | Example Value(s)  | 
+|---|---|---|---|
+| False | list of container descriptions | `[]` | `[{"name": "redis01", "image_repo": "redis"}]` |
+
+### json-Pipeline Description
+
+To provide a pipeline description via json, provide a json object starting with a name and the list of container descriptions
+
+```json
+{
+   "my-pipeline-name":[
+      {
+         "name":"my-first-container",
+         "repo":"hello-world"
+      }
+   ]
+}
+```
+This will run the container [`hello-world`](https://hub.docker.com/_/hello-world) once, when the pipeline is started.
+
+Now, lets add another dependecy that is only allowed to run, if our hello world container ran successfully:
+
+```json
+{
+   "my-pipeline-name":[
+      {
+         "name":"my-first-container",
+         "repo":"hello-world"
+      },
+      {
+         "name":"my-second-container",
+         "repo":"chentex/random-logger",
+         "dependency":[
+            "my-first-container"
+         ]
+      }
+   ]
+}
+```
+
+This again will run our [`hello-world`](https://hub.docker.com/_/hello-world) container and after that the [`chentex/random-logger`](https://hub.docker.com/r/chentex/random-logger) container.
+
+It should be noted, the order of the container desciptions in the list does not matter for the dependencies. copili figures our the needed sequence itself.
+
+
+Now, lets add a sidecar container to our second container
+
+```json
+{
+   "my-pipeline-name":[
+      {
+         "name":"my-first-container",
+         "repo":"hello-world"
+      },
+      {
+         "name":"my-second-container",
+         "repo":"chentex/random-logger",
+         "dependency":[
+            "my-first-container"
+         ],
+         "sidecars":[
+          {
+             "name": "redis01",
+             "repo": "redis"
+          }
+         ]
+      }
+   ]
+}
+```
+This again will run our [`hello-world`](https://hub.docker.com/_/hello-world) container and after that the [`chentex/random-logger`](https://hub.docker.com/r/chentex/random-logger) container.
+But additionally with the second container a [`redis`](https://hub.docker.com/_/redis) container will be started. This can be helpful for containers that need this as a caching database for example.
+
+### yaml-Pipeline Description
+
+Same rules apply for yaml pipeline descriptions as for [json](#json-pipeline-description). 
+
+Json follows the same structure as yaml and is just another way of formating the same informations. see https://www.json2yaml.com/
+
+Also have a look at the [quick start example](#quick-example), which is provided in yaml format
+
+
+
+### Container description types
+
+via the property [`is_service_container`](#is_service_container) we can define if a container is static or service container.
+
+- **static**
+    
+    A static container will run only once when pipeline is started. 
+    If you want to run the container only once on first pipeline run you have to set `copili.Pipeline.container_did_run_check_override_callback` and provide the information if a container already ran (e.g. from a database)
+
+- **service**
+
+    Container will run periodically
+
+
+
+### Environment Variable Support
+
+You can use (environment variables)[https://en.wikipedia.org/wiki/Environment_variable] in the pipeline description.
+
+Either just by setting system env vars (e.g. `EXPORT MYPASSWORD=hello123`) or by passing a .env file via 
+
+## Pipeline class
+
+[see code](https://git.connect.dzd-ev.de/dzdpythonmodules/copili/-/blob/master/copili/__init__.py#L27)
+
+Desc still missing... todo
+
+## ContainerManager class
+
+[see code](https://git.connect.dzd-ev.de/dzdpythonmodules/copili/-/blob/master/copili/container_manager.py#L14)
+
+**Attributes**
+
+* Image
+  Instance of [`docker.models.images.Image`](https://docker-py.readthedocs.io/en/stable/images.html#). The image the container will run on
+
+* Container
+  Instance of [`docker.models.containers.Container`](https://docker-py.readthedocs.io/en/stable/containers.html). The actual python representation of the docker container
+
+* exit_code
+  `None` as long the container did exited. `0`if the container run successfull. > 0 if the container failed to run
+
+..ToBeCompleted
+
+
+### Callback / Function overrides
+
+You can override these functions to modifiy the behaviour of your `copili` instance
+
+#### copili.Pipeline.container_pre_pull_callback(copili.ContainerManager)
+    
+    Will be called before the image for the container is pulled
+
+#### copili.Pipeline.container_pre_run_callback(copili.ContainerManager)
+    
+    Will be called before the containers is started
+
+#### copili.Pipeline.container_post_run_callback(copili.ContainerManager)
+
+    Will be called after the containers exited
+
+#### copili.Pipeline.container_did_run_check_override_callback(copili.ContainerRegistryItem) -> Bool
+
+    Will be called before the container is started. if functions returns 'False' container run will be skipped
+
+#### copili.Pipeline.container_dependency_check_override_callback(copili.ContainerManager, List[copili.ContainerManager]) -> Bool
+
+    Will be called before the container is started. if functions returns 'False' the current dependency branch will be stopped. Can be used for checking if all previously runned containers accomplish all dependencies.
+
+    If set to None `copili` checks the dependencies by recognizing that all containers which are in `copili.ContainerRegistryItem.dependencies` ran with exit code `0`. 
+    
+    If you need a more sophisticated dependency check, use this function. (e.g. a check which takes the state of previous pipeline runs in account and these state informations are stored in an external database)
+
+..ToBeCompleted
+
+
+# Developement
+
+`git clone ssh://git@git.connect.dzd-ev.de:22022/dzdpythonmodules/copili.git` 
+
+`pip install -e .`
+
+# ToDo:
+
+* Custom schedules per service container
+* Alternative to an docker image a git repo with Dockerfile can be provided which will be build and run
+* replace service-containers concept with a `max_age` attribute per container desc. when a container did not run a certain time its allowed to rerun. much more simple...
+
+
