@@ -1,0 +1,20 @@
+# Python build remnants
+*.pyc
+build/
+dist/
+*.egg-info/
+**/__pycache__
+channel/
+.eggs/
+docs/source/generated/
+
+# Editor configurations
+.ipynb_checkpoints
+.vscode/
+
+# macOS db files
+.DS_Store
+default.profraw
+
+# unused files
+dtu_conf/_version.py

@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--cov dtu_config --cov-report term-missing:skip-covered"
+norecursedirs = "dist build .tox"
+testpaths = ["test",]
+
+[tool.setuptools_scm]
+write_to = "dtu_config/_version.py"

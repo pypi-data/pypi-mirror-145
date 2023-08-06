@@ -1,0 +1,250 @@
+####################
+# Gitlab CI template
+####################
+
+########################################
+# Order of stages
+########################################
+stages:
+  - format
+  - test
+  - build
+  - deploy
+
+########################################
+# Variables
+########################################
+# Global variables:
+variables:
+  BUILD_PATH: channel
+  TEST_IMAGE: nedadtu/pywasp-ci:latest # Docker image that contains conda environment for testing
+  TEST_ENV: pywasp_env         	# Name of testing environment
+  PKG_NAME: dtu_conf             	# Name of python project
+
+# This script uses the following environmental variables
+# that need to be configured in gitlab CI/CD
+# DOCS_USER, DOCS_HOST, DOCS_SSH_KEY
+# CC_USER, CC_HOST, CC_SSH_KEY, CC_PORT
+# PYPI_INTERNAL_TOKEN
+
+########################################
+# Configurations and template modifiers
+########################################
+
+# SSH configuration for WAsP Docs:
+.ssh_config:
+  docs:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$DOCS_SSH_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  conda_channel:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$CC_SSH_KEY")
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+
+.default_rules:
+  mr_only:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: on_success
+    - when: never
+  deploy:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      when: manual
+      allow_failure: true
+    - if: '$CI_COMMIT_TAG'
+      when: on_success
+    - when: never
+
+#######################################
+# Stage: Format
+#######################################
+linux:all:format: # run formatter for all branches
+  # TODO: add caching ~/.cache/pre-commit so we don't reinit pre-commit each time
+  #       See e.g. https://gitlab.cern.ch/lhcb-core/nightly-builds/lb-nightly-configuration/-/blob/master/.gitlab-ci.yml
+  stage: format
+  script:
+    - echo `whoami`
+    - source activate $TEST_ENV
+    - pre-commit run --all-files
+  image: $TEST_IMAGE
+  tags:
+    - linux-docker
+  rules:
+    - !reference [.default_rules, mr_only]
+
+########################################
+# Stage: Test
+########################################
+
+# Test templates:
+.test_template:
+  # TODO: Cache the pip packages so we don't have to download all times
+  stage: test
+  coverage: '/TOTAL.+?(\d+)%/'
+  before_script:
+    - python -m venv .test_env
+    - source .test_env/bin/activate
+    - pip install . pytest pytest-cov --use-feature=in-tree-build
+  script:
+    - cd test
+    - pytest -v --cov-report term-missing:skip-covered --cov=$PKG_NAME
+  rules:
+    - !reference [.default_rules, mr_only]
+
+# All branches run tests:
+win:all:test:
+  needs: ["linux:all:format"]
+  extends: .test_template
+  tags:
+    - conda
+    - $TEST_ENV
+    - win10
+
+
+linux:all:test:
+  needs: ["linux:all:format"]
+  extends: .test_template
+  image: python:3.8-slim
+  tags:
+    - linux-docker
+
+# mac:all:test:
+#   needs: ["linux:all:format"]
+#   extends: .test_template
+#   <<: *mac
+
+
+########################################
+# Stage: Build
+########################################
+
+##### Conda ####
+linux:tag:build_conda:
+  stage: build
+  image: condaforge/mambaforge:latest
+  before_script:
+    - export VERSION=`grep 'version = ' dtu_conf/_version.py | cut -d \' -f 2`
+    - mamba install -y -q boa conda-verify
+    - mkdir $BUILD_PATH
+  script:
+    - conda mambabuild --output-folder $BUILD_PATH ./recipe
+  rules:
+    - !reference [.default_rules, deploy]
+  tags:
+    - linux-docker
+  artifacts:
+    paths: [$BUILD_PATH/]
+    expire_in: 3 hours
+
+#### Documentation ####
+linux:all:build_docs:
+  stage: build
+  before_script:
+    - !reference [.test_template, before_script]
+  script:
+    - cd docs; make html
+    - cd ../; mv docs/build/html public/
+  artifacts:
+    paths: [public]
+    expire_in: 1 week
+
+  extends: .docs_build_template
+  <<: *linux_test
+
+########################################
+# Stage: Build PyPi package
+########################################
+linux:tag:build_wheel:
+  stage: build
+  image: python:3.8-slim
+  script:
+    - pip install build
+    - python -m build --wheel
+  rules:
+    - !reference [.default_rules, deploy]
+  artifacts:
+    paths: [dist]
+    expire_in: 3 hours
+  tags:
+    - linux-docker
+
+########################################
+# Templates
+########################################
+# Deploy templates:
+.conda_deploy:
+  develop:
+    - scp -p -P $CC_PORT $BUILD_PATH/noarch/${PKG_NAME}*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/noarch/.
+    - ssh -p $CC_PORT "$CC_USER"@"$CC_HOST" "conda index /home/$CC_USER/repos/develop"
+
+.release_pckg_deploy_template:
+  stage: deploy
+  script:
+    - scp -p -P $CC_PORT $BUILD_PATH/osx-64/${PKG_NAME}*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/osx-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/linux-64/${PKG_NAME}*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/linux-64/.
+    - scp -p -P $CC_PORT $BUILD_PATH/win-64/${PKG_NAME}*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/develop/win-64/.
+    - ssh -p $CC_PORT "$CC_USER"@"$CC_HOST" "conda index /home/$CC_USER/repos/develop/"
+
+.release_docs_deploy_template:
+  stage: deploy
+  script:
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - scp -r public/* "$DOCS_USER"@"$DOCS_HOST":/www/wasp/$PKG_NAME
+
+
+########################################
+# Stage: Deploy
+########################################
+#### Conda ####
+linux:tag:conda_deploy:
+  stage: deploy
+  before_script:
+    - !reference [.ssh_config, conda_channel]
+  script:
+    - scp -p -P $CC_PORT $BUILD_PATH/noarch/${PKG_NAME}*.tar.bz2 "$CC_USER"@"$CC_HOST":/home/$CC_USER/repos/open/noarch/.
+    - ssh -p $CC_PORT "$CC_USER"@"$CC_HOST" "conda index /home/$CC_USER/repos/open
+  needs: ["linux:tag:build_conda"]
+  rules:
+    - !reference [.default_rules, build]
+
+#### Pypi ####
+mac:tag:pypi-internal:deploy:
+  needs: ["linux:tag:build_wheel"]
+  stage: deploy
+  script:
+    - TWINE_PASSWORD=${PYPI_INTERNAL_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload  --skip-existing  --repository-url https://gitlab-internal.windenergy.dtu.dk/api/v4/projects/${PYPI_INTERNAL_ID}/packages/pypi $BUILD_PATH/*
+  <<: *not_feat_branch
+  <<: *mac
+
+
+
+# # Documentation
+# linux:release:deploy_docs:
+#   extends: .release_docs_deploy_template
+#   needs: ["linux:all:build_docs"]
+#   <<: *ssh_config_docs
+#   <<: *rel_branches
+#   <<: *linux_test
+
+########################################
+# Stage: Deploy PyPi package
+########################################
+mac:nofeat:pypi-internal:deploy:
+  needs: ["mac:nofeat:pypi:build"]
+  stage: deploy
+  script:
+    - TWINE_PASSWORD=${PYPI_INTERNAL_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload  --skip-existing  --repository-url https://gitlab-internal.windenergy.dtu.dk/api/v4/projects/${PYPI_INTERNAL_ID}/packages/pypi $BUILD_PATH/*
+  <<: *not_feat_branch
+  <<: *mac
+
+mac:nofeat:pypi-external:deploy:
+  needs: ["mac:nofeat:pypi:build"]
+  stage: deploy
+  script:
+    - TWINE_PASSWORD=${PYPI_EXTERNAL_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload  --skip-existing  --repository-url https://gitlab.windenergy.dtu.dk/api/v4/projects/${PYPI_EXTERNAL_ID}/packages/pypi $BUILD_PATH/*
+  <<: *not_feat_branch
+  <<: *mac

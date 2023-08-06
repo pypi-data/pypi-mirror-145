@@ -1,0 +1,28 @@
+package:
+  name: dtu_config
+  version: {{ environ.get('VERSION', '0.0.0') }}
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script: pip install --no-deps .
+  skip: True # [py<38]
+  noarch: python
+
+requirements:
+  run:
+    - email-validator =1
+    - appdirs =1
+    - phonenumbers =8
+    - pydantic =1
+    - python
+
+  host:
+    - python
+    - setuptools >=45
+    - setuptools_scm >=6.2
+test:
+  imports:
+    - dtu_conf
