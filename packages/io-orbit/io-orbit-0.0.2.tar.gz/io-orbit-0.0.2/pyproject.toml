@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "io-orbit"
+version = "0.0.2"
+description = "Simple and flexible ML workflow engine"
+authors = ["laccuna <team@laccuna.io>"]
+# New attributes
+license = "Apache License"
+readme = "README.md"
+
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pika = "^1.2.0"
+requests = "^2.25.1"
+gcsfs = "^2022.1.0"
+firebase-admin = "^5.2.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+# New scripts
+[tool.poetry.scripts]
+io-orbit = 'io_orbit:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
