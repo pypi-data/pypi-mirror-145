@@ -1,0 +1,133 @@
+common_char:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/common_char_set.txt"
+  desc: "中文常用字符集(一些常用的汉字)"
+
+same_pinyin:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/same_pinyin.txt"
+  desc: "同音字,其内容：汉字	同音同调	同音异调 。 比如： 八	巴扒捌笆芭疤吧叭	爸靶霸把伯耙罢拔跋坝"
+
+same_stroke:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/same_stroke.txt"
+  desc: "形似字,其内容, 龚	龛	詟	垄	陇"
+
+person_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/person_name.txt"
+  desc: "人名词典140w format: 人名 性别 词频 ,刘德华 男	5086"
+
+english_chinese_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/english_chinese_name.txt"
+  desc: "外国人名中文译名46w"
+
+englisth_person_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/englisth_person_name.txt"
+  desc: "外国人名29k"
+
+japanese_chinese_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/japanese_chinese_name.txt"
+  desc: "日本人名中文译名18w"
+
+family_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/family_name.txt"
+  desc: "姓氏词表 format: 姓 词频 ,刘 5086"
+
+place_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/place_name.txt"
+  desc: "地名词典 format: 词语 词频 ,  酒店	201212"
+
+stop_words:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/stopwords.txt"
+  desc: " 哈工大停用词词库、四川大学机器学习智能实验室停用词库、百度停用词表及网上各种资源整理去重后得到，包括一些数字及字符"
+
+en_word_freq:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/en_word_freq.txt"
+  desc: "英文拼写词频文件"
+
+wechat_expression:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/wechat_expression.txt"
+  desc: "微信表情代码转文字"
+
+simple2traditional:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/simple2traditional.txt"
+  desc: "中文简体转繁体字"
+
+traditional2simple:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/traditional2simple.txt"
+  desc: "中文繁体转简体"
+
+zh2cn:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/zh2cn.txt"
+  desc: ""
+
+zh2sg:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/zh2sg.txt"
+  desc: ""
+
+zh2tw:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/zh2tw.txt"
+  desc: ""
+
+food:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/food.txt"
+  desc: "食物词 词库，包含8k多个食物词汇，格式：土豆	1777511"
+
+it:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/it.txt"
+  desc: "it 词库，包含16k个互联网计算机相关词汇，格式：数组 	 357924"
+
+
+company_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/company_name.txt"
+  desc: "公司名称(不包含缩写)词库480w，全称"
+
+company_short_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/company_short_name.txt"
+  desc: "公司名称(缩写)词库28w，缩写"
+
+organization_name:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/organization_name.txt"
+  desc: "组织机构名称108w"
+
+animal:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/animal.txt"
+  desc: "动物名称词库，17k"
+
+medical:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/medical.txt"
+  desc: "医疗领域词库，18k"
+
+legal:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/legal.txt"
+  desc: "法律领域词库，9k"
+
+professions:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/professions.txt"
+  desc: "职业名称词库，7k"
+
+finance:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/finance.txt"
+  desc: "金融领域词库，7k"
+
+idiom:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/idiom.txt"
+  desc: "中文成语词库，5.8W"
+
+poem:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/poem.txt"
+  desc: "唐诗宋词，按照类别归类，以|<==>|分隔"
+
+poem_subseq:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/poem_subseq.txt"
+  desc: "诗词短句词库如：一蓑烟雨任平生	62"
+
+car:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/car.txt"
+  desc: "汽车行业领域词库"
+
+antonym_word:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/antonym_word.txt"
+  desc: "反义词词库18k：谣言	事实,真话"
+
+words:
+  url: "https://datas-1257755739.cos.ap-beijing.myqcloud.com/datas/dictionary/words.txt"
+  desc: "分词词典：word,freq,pos_tag,pinyin.   eg:一刻不停	1	none	none"
+
