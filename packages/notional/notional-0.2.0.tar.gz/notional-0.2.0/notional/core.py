@@ -1,0 +1,241 @@
+"""Base classes for working with the Notion API."""
+
+import inspect
+import logging
+from datetime import date, datetime
+from enum import Enum
+from uuid import UUID
+
+from pydantic import BaseModel
+from pydantic.main import validate_model
+
+log = logging.getLogger(__name__)
+
+
+def make_api_safe(data):
+    """Recursively convert the given data to an API-safe form.
+
+    This is mostly to handle data types that will not directly serialize to JSON.
+    """
+
+    # https://github.com/samuelcolvin/pydantic/issues/1409#issuecomment-877175194
+
+    if isinstance(data, (date, datetime)):
+        return data.isoformat()
+
+    if isinstance(data, UUID):
+        return str(data)
+
+    if isinstance(data, Enum):
+        return data.value
+
+    if isinstance(data, dict):
+        return {name: make_api_safe(value) for name, value in data.items()}
+
+    if isinstance(data, list):
+        return [make_api_safe(value) for value in data]
+
+    if isinstance(data, tuple):
+        return [make_api_safe(value) for value in data]
+
+    return data
+
+
+class DataObject(BaseModel):
+    """The base for all API objects."""
+
+    # See https://github.com/samuelcolvin/pydantic/issues/1577
+    def __setattr__(self, name, value):
+        try:
+            super().__setattr__(name, value)
+        except ValueError as e:
+            setters = inspect.getmembers(
+                self.__class__,
+                predicate=lambda x: isinstance(x, property) and x.fset is not None,
+            )
+            for setter_name, _ in setters:
+                if setter_name == name:
+                    object.__setattr__(self, name, value)
+                    break
+            else:
+                raise e
+
+    @classmethod
+    def _modify_field_(cls, name, default=None):
+        setattr(cls, name, default)
+
+        cls.__fields__[name].default = default
+        cls.__fields__[name].required = default is None
+
+    # https://github.com/samuelcolvin/pydantic/discussions/3139
+    def refresh(__pydantic_self__, **data):
+        """Refresh the internal attributes with new data."""
+
+        values, fields, error = validate_model(__pydantic_self__.__class__, data)
+
+        if error:
+            raise error
+
+        for name in fields:
+            value = values[name]
+            log.debug("set object data -- %s => %s", name, value)
+            setattr(__pydantic_self__, name, value)
+
+        return __pydantic_self__
+
+    def to_api(self):
+        """Convert to a suitable representation for the Notion API."""
+
+        # the API doesn't like "undefined" values...
+
+        data = self.dict(exclude_none=True, by_alias=True)
+
+        # we need to convert "special" types to string forms to help the JSON encoder.
+        # there are efforts underway in pydantic to make this easier, but for now...
+
+        # XXX this method has promise, but converts the entire value to a single string
+        # return {name: json.dumps(value, default=str) for name, value in data.items()}
+
+        return make_api_safe(data)
+
+
+class NamedObject(DataObject):
+    """A Notion API object."""
+
+    # XXX should NamedObject have the same typing ability as TypedObject?
+
+    object: str
+
+    def __init_subclass__(cls, object=None, **kwargs):
+        super().__init_subclass__(**kwargs)
+
+        if object is not None:
+            cls._modify_field_("object", default=object)
+
+
+class TypedObject(DataObject):
+    """A type-referenced object.
+
+    Many objects in the Notion API follow a generic->specific pattern with a 'type'
+    parameter followed by additional data.  These objects must specify a `type`
+    attribute to ensure that the correct object is created.
+
+    Calling the object provides direct access to the data stored in `{type}`.
+    """
+
+    type: str
+
+    # modified from the methods described in this discussion:
+    # - https://github.com/samuelcolvin/pydantic/discussions/3091
+
+    def __init_subclass__(cls, type=None, **kwargs):
+        """Register the subtypes of the TypedObject subclass."""
+        super().__init_subclass__(**kwargs)
+
+        if type is not None:
+            sub_type = type
+
+        elif hasattr(cls, "__type__"):
+            sub_type = cls.__type__
+
+        else:
+            sub_type = cls.__name__
+
+        cls._modify_field_("type", default=sub_type)
+
+        # initialize a _subtypes_ map for each direct child of TypedObject
+
+        # this allows different class trees to have the same 'type' name
+        # but point to a different object (e.g. the 'date' type may have
+        # different implementations depending where it is used in the API)
+
+        # also, due to the order in which typed classes are defined, once
+        # the map is defined for a subclass of TypedObject, any further
+        # descendants of that class will have the new map via inheritance
+
+        if TypedObject in cls.__bases__ and not hasattr(cls, "_subtypes_"):
+            cls._subtypes_ = {}
+
+        if sub_type in cls._subtypes_:
+            raise ValueError(f"Duplicate subtype for class - {sub_type} :: {cls}")
+
+        log.debug("registered new subtype: %s => %s", sub_type, cls)
+
+        cls._subtypes_[sub_type] = cls
+
+    def __call__(self, field=None):
+        """Returns nested data from this Block.
+
+        If a field is provided, the contents of that field in the NestedData will be
+        returned.  Otherwise, the full contents of the NestedData will be returned.
+        """
+
+        type = getattr(self, "type", None)
+
+        if type is None:
+            raise AttributeError("type not specified")
+
+        nested = getattr(self, type)
+
+        if field is not None:
+            nested = getattr(nested, field)
+
+        return nested
+
+    @classmethod
+    def __get_validators__(cls):
+        yield cls._convert_to_real_type_
+
+    @classmethod
+    def parse_obj(cls, obj):
+        return cls._convert_to_real_type_(obj)
+
+    @classmethod
+    def _convert_to_real_type_(cls, data):
+        """Instantiate the correct object based on the 'type' field."""
+
+        if isinstance(data, cls):
+            return data
+
+        if not isinstance(data, dict):
+            raise ValueError("Invalid 'data' object")
+
+        data_type = data.get("type")
+
+        if data_type is None:
+            raise ValueError("Missing 'type' in TypedObject")
+
+        if not hasattr(cls, "_subtypes_"):
+            raise TypeError(f"Invalid TypedObject: {cls} - missing _subtypes_")
+
+        sub = cls._subtypes_.get(data_type)
+
+        if sub is None:
+            raise TypeError(f"Unsupport sub-type: {data_type}")
+
+        log.debug(
+            "initializing typed object %s :: %s => %s -- %s", cls, data_type, sub, data
+        )
+
+        return sub(**data)
+
+
+class NestedObject(DataObject):
+    """Represents an API object with nested data.
+
+    These objects require a 'type' property and a matching property of the same
+    name, which holds additional data.
+
+    For example, this contains a nested 'text' object:
+
+        data = {
+            type: "text",
+            ...
+            text: {
+                ...
+            }
+        }
+
+    Currently, this is a convenience class for clarity - it does not provide additional
+    functionality at this time.
+    """
