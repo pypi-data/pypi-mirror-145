@@ -1,0 +1,15 @@
+include *.py
+include */*.py
+recursive-include cubicweb_treeview *.py
+recursive-include cubicweb_treeview/data *.gif *.png *.ico *.css *.js
+recursive-include cubicweb_treeview/i18n *.po
+recursive-include cubicweb_treeview/wdoc *
+recursive-include test/data bootstrap_cubes *.py
+include *.ini
+include cubicweb-treeview.spec
+exclude .gitlab-ci.yml
+include README.rst
+exclude .yamllint
+exclude .cube-doctor.yml
+exclude .gitlab-ci-extended.yml
+exclude CHANGELOG.md
