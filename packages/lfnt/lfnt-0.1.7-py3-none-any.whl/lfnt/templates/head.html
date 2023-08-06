@@ -1,0 +1,24 @@
+<!doctype html>
+<head>
+  <style>
+    {% include "styles.css" %}
+  </style>
+</head>
+
+<header>
+    <span class="banner_h">
+      <nav>
+          <ul class="nav">
+              | <a href="/">Home</a></li> |
+              {% for key in data.keys() %}
+              | <a href="{{ key }}">{{ key | capitalize }}</a> |
+              {% endfor %}
+          </ul>
+      </nav>
+    </span>
+</header>
+
+<html>
+  <body>
+    <p></p>
+    <h1>LFNT</h1>
