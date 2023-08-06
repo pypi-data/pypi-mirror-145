@@ -1,0 +1,30 @@
+numpy
+pillow
+boto3
+click
+pathos
+humbug>=0.2.6
+tqdm
+numcodecs
+
+[all]
+google-cloud-storage~=1.42.0
+google-auth~=2.0.1
+miniaudio~=1.44
+google-auth-oauthlib~=0.4.5
+
+[all:python_version >= "3.7" or sys_platform != "win32"]
+av>=8.1.0
+
+[audio]
+miniaudio~=1.44
+
+[gcp]
+google-cloud-storage~=1.42.0
+google-auth~=2.0.1
+google-auth-oauthlib~=0.4.5
+
+[video]
+
+[video:python_version >= "3.7" or sys_platform != "win32"]
+av>=8.1.0
