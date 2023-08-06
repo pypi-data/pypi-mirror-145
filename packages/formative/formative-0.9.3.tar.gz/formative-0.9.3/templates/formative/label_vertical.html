@@ -1,0 +1,10 @@
+  <div class="rp-vertical-label-cell mdc-layout-grid__cell
+              mdc-layout-grid__cell--span-8-tablet
+              mdc-layout-grid__cell--span-9-desktop">
+    <label
+  {% if for_field %}
+      for="{{ for_field.id_for_label }}"
+  {% endif %}>
+      {{ label.display }}
+    </label>
+  </div>

@@ -1,0 +1,75 @@
+{% extends "admin/change_list.html" %}
+{% load i18n static admin_urls %}
+
+{% block extrajs %}
+  {{ block.super }}
+  
+  <script src="{% static "admin/js/jquery-ui.min.js" %}"></script>
+  
+  <script>
+    $(document).ready(function () {
+      $('select.search-filter').change(function () {
+        document.forms['changelist-search'].submit();
+      });
+      
+      $('#result_list tbody').sortable({
+        axis: 'y',
+        items: 'tr',
+        handle: 'i.sort-handle',
+        cursor: 'move',
+        update: function(e, ui) {
+          const tr = ui.item;
+          $(this).find('tr').each(function (index) {
+            if (tr.is(this)) $(this).find('td.field-_rank input').val(index+1);
+          });
+          const submitButton = document.querySelector('input[name="_save"]');
+          document.forms['changelist-form'].requestSubmit(submitButton);
+        }
+      });
+    });
+  </script>
+{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  
+  <style>
+    td.field-_rank {
+      text-align: center;
+      vertical-align: middle;
+      padding: 0.25rem;
+    }
+    input[name="_save"] {
+      visibility: hidden;
+    }
+  </style>
+{% endblock %}
+
+{% block content_title %}
+{% if form_id %}
+  {{ form_name }}  
+{% else %}
+  {{ cl.opts.verbose_name_plural|capfirst }}
+{% endif %}
+{% endblock %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb float-sm-right">
+<li class="breadcrumb-item">
+  <a href="{% url 'admin:index' %}">
+    <i class="fa fa-tachometer-alt"></i> {% trans 'Home' %}
+  </a>
+</li>
+<li class="breadcrumb-item">
+  <a href="{% url 'admin:app_list' app_label=opts.app_label %}">
+    {{ opts.app_config.verbose_name }}
+  </a>
+</li>
+<li class="breadcrumb-item">
+  <a href="{% url 'admin:formative_form_changelist' %}">Forms</a>
+</li>
+<li class="breadcrumb-item">
+  {{ form_name }}
+</li>
+</ol>
+{% endblock %}

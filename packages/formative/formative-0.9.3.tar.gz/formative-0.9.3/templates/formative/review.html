@@ -1,0 +1,146 @@
+{% extends 'formative/base.html' %}
+
+{% load form_block %}
+{% load form_signal %}
+{% load utils %}
+
+{% block page_title %}Review - {{ program_form.name }}{% endblock %}
+
+{% block pre_layout %}
+<form method="post">
+{% csrf_token %}
+{% endblock %}
+
+{% block content %}
+<div class="mdc-layout-grid__inner">
+  <div class="rp-review-pre mdc-layout-grid__cell
+              mdc-layout-grid__cell--span-4
+              mdc-layout-grid__cell--span-8-tablet
+              mdc-layout-grid__cell--span-8-desktop">
+  {% if not submitted %}
+    {% if form.non_field_errors %}
+    <div class="rp-review-error">
+      {{ form.non_field_errors }}
+    </div>
+    {% else %}
+      {{ program_form.review_pre }}
+      {% form_signal program_form 'formative.signals.submission_review_pre' %}
+    {% endif %}
+  {% else %}
+    {{ program_form.submitted_review_pre }}
+  {% endif %}
+  </div>
+</div>
+
+  {% for form_block in program_form.visible_blocks %}
+  {% if form_block.show_in_review %}
+    {% block_labels field_labels form_block as labels %}
+    
+    {% if form_block.block_type == 'custom' %}
+      {% block_field form form_block as field %}
+      {% if field %}
+  <div class="mdc-layout-grid__inner">
+        {% with types=form_block.InputType %}
+        {% if form_block.type == types.CHOICE %}
+          {% with clabel=labels|for_choice_value:field.value %}
+          {% include "./review_block.html" with value=clabel.display_inline %}
+          {% endwith %}
+        {% elif form_block.type == types.BOOLEAN %}
+          {% if field.value %}
+            {% include "./review_block.html" with value="Yes" %}
+          {% else %}
+            {% include "./review_block.html" with value="No" %}
+          {% endif %}
+        {% else %}
+          {% include "./review_block.html" %}
+        {% endif %}
+        {% endwith %}
+  </div>
+      {% endif %}
+    
+    {% elif form_block.block_type == 'collection' %}
+      {% if form_block.id in formsets %}
+        {% include "./review_collection.html" %}
+      {% endif %}
+      
+    {% else %}
+      {% if form_block.stock.field_names.0 in form.fields %}
+  <div class="mdc-layout-grid__inner">
+        {% include_stock_review form_block labels %}
+  </div>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+  {% endfor %}
+  
+  {% if program_form.review_post %}
+  <div class="mdc-layout-grid__inner">
+    <div class="rp-review-post mdc-layout-grid__cell
+                mdc-layout-grid__cell--span-4
+                mdc-layout-grid__cell--span-8-tablet
+                mdc-layout-grid__cell--span-8-desktop">
+      {{ program_form.review_post }}
+    </div>
+  </div>
+  {% endif %}
+  
+  {% form_signal program_form 'formative.signals.submission_review_post' as p %}
+  {% if p %}
+  <div class="mdc-layout-grid__inner">
+    <div class="rp-review-post mdc-layout-grid__cell
+                mdc-layout-grid__cell--span-4
+                mdc-layout-grid__cell--span-8-tablet
+                mdc-layout-grid__cell--span-8-desktop">
+      {{ p }}
+    </div>
+  </div>
+  {% endif %}
+  
+{% if not submitted %}
+<div class="mdc-layout-grid__inner">
+  {% with program_form as f %}
+  {% with submission|underscore:'id' as id %}
+  <a aria-describedby="previoustip" href="
+       {% if form.non_field_errors %}
+         {% url 'submission_review' f.program.slug f.slug id %}
+       {% else %}
+         {% if prev_page > 1 %}
+           {% url 'submission_page' f.program.slug f.slug id prev_page %}
+         {% else %}
+           {% url 'submission' f.program.slug f.slug id %}
+         {% endif %}
+       {% endif %}"
+     class="rp-prevpage-button mdc-icon-button material-icons"
+     data-mdc-ripple-is-unbounded>
+    <div class="mdc-icon-button__ripple"></div>
+    chevron_left
+  </a>
+  {% endwith %}
+
+  {% form_signal f 'formative.signals.submission_submit_control' submission=submission as sc %}
+  {% if sc %}
+    {{ sc }}
+  {% else %}
+    <button class="rp-continue-button rp-submit-button
+                   mdc-button mdc-button--raised mdc-layout-grid__cell
+                   mdc-layout-grid__cell--span-2
+                   mdc-layout-grid__cell--span-3-tablet
+                   mdc-layout-grid__cell--span-3-desktop"
+           type="submit" name="submit" value="submit">
+      <span class="mdc-button__ripple"></span>
+      <span class="mdc-button__focus-ring"></span>
+      <span class="mdc-button__label">{{ f.submit_button_label }}</span>
+    </button>
+  {% endif %}
+  {% endwith %}
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block post_layout %}
+</form>
+
+{% include "./tooltips.html" %}
+
+{% endblock %}
