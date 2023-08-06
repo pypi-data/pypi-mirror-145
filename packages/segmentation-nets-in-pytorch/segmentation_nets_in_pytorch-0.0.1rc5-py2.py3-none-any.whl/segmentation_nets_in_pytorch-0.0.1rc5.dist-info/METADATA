@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: segmentation-nets-in-pytorch
+Version: 0.0.1rc5
+Summary: A collection of neural networks for 2D and 3D image segmentation in PyTorch
+Home-page: https://github.com/alisterburt/segmentation-nets-in-pytorch
+Author: Alister Burt
+Author-email: alisterburt@gmail.com
+License: BSD license
+Project-URL: Source Code, https://github.com/alisterburt/segmentation-nets-in-pytorch
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch
+Provides-Extra: dev
+Requires-Dist: ipython ; extra == 'dev'
+Requires-Dist: jedi (<0.18.0) ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: flake8-docstrings ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: pydocstyle ; extra == 'dev'
+Requires-Dist: pytest ; extra == 'dev'
+Provides-Extra: testing
+Requires-Dist: pytest ; extra == 'testing'
+
+# segmentation-nets-in-pytorch
+
+[![License](https://img.shields.io/pypi/l/segmentation-nets-in-pytorch.svg?color=green)](https://github.com/alisterburt/segmentation-nets-in-pytorch/raw/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/segmentation-nets-in-pytorch.svg?color=green)](https://pypi.org/project/segmentation-nets-in-pytorch)
+[![Python Version](https://img.shields.io/pypi/pyversions/segmentation-nets-in-pytorch.svg?color=green)](https://python.org)
+[![CI](https://github.com/alisterburt/segmentation-nets-in-pytorch/actions/workflows/ci.yml/badge.svg)](https://github.com/alisterburt/segmentation-nets-in-pytorch/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/alisterburt/segmentation-nets-in-pytorch/branch/main/graph/badge.svg)](https://codecov.io/gh/alisterburt/segmentation-nets-in-pytorch)
+
+A collection of neural networks for 2D and 3D image segmentation in PyTorch.
+
+
+## Installation
+segmentation-nets-in-pytorch (package name `snip`) can be installed using pip
+
+```shell
+pip install snip
+```
+
+
+
