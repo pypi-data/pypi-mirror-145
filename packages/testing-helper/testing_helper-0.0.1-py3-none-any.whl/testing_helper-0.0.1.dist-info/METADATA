@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: testing-helper
+Version: 0.0.1
+Summary: Helpers for testing with pytest
+Home-page: https://github.com/kenjyco/testing-helper
+Download-URL: https://github.com/kenjyco/testing-helper/tarball/v0.0.1
+Author: Ken
+Author-email: kenjyco@gmail.com
+License: MIT
+Keywords: testing,pytest,test matrix,docker,pyenv,helper
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Intended Audience :: Developers
+License-File: LICENSE.txt
+Requires-Dist: bg-helper
+Requires-Dist: click (>=6.0)
+Requires-Dist: input-helper
+Requires-Dist: pipdeptree
+Requires-Dist: pytest
+Requires-Dist: pytest-cov
+Requires-Dist: settings-helper
+
+UNKNOWN
+
