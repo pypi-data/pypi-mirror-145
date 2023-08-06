@@ -1,0 +1,16 @@
+[project]
+requires-python = ">=3.7"
+
+[build-system]
+requires = [
+    "setuptools>=42.0.2",
+    "wheel>=0.29.0"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra --cov-config=.coveragerc --cov=cyclonedds --cov-report=xml --import-mode=importlib"
+required_plugins = "pytest-cov pytest-mock"
+testpaths = "tests"
+markers = ["fuzzing: run the fuzzing testsuite."]
