@@ -1,0 +1,40 @@
+Metadata-Version: 2.1
+Name: image-processing-vinicius
+Version: 0.0.1
+Summary: Image Processing Package using Skimage
+Home-page: https://github.com/vinicius-anp/image-processing-package
+Author: Vinicius
+License: UNKNOWN
+Platform: UNKNOWN
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+
+# image_processing
+
+Description. 
+The package image_processing is used to:
+	Processing:
+		- Histogram matching 
+		- Structural similarity
+		- Resize image
+	Utils:
+		- Read image
+		- Save image
+		- Plot image
+		- Plot result
+		- Plot histogram 
+
+## Installation
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install image-processing
+
+```bash
+pip install image_processing
+```
+
+## Author
+Vinicius, slightly modified version from Karina Kato
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
