@@ -1,0 +1,5 @@
+[console_scripts]
+fix_mmirs_exposure_time = mmtwfs.scripts.fix_mmirs_exposure_time:main
+fix_mmtwfs_csvs = mmtwfs.scripts.fix_csvs:main
+reanalyze = mmtwfs.scripts.reanalyze:main
+rename_mmirs_files = mmtwfs.scripts.rename_mmirs_files:main
