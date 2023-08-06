@@ -1,0 +1,39 @@
+Metadata-Version: 2.1
+Name: celigo-pipeline-core
+Version: 1.4.0
+Summary: Core algorithms for running Celigo pipeline
+Home-page: https://github.com/aics-int/Celigo-Code-Record
+Author: Brian Whitney
+Author-email: brian.whitney@alleninstitute.org
+License: Allen Institute Software License
+Description: # Blank
+        
+            This package provides utility functions for the Celigo pipeline to prepare single images for:
+        
+            1) Ilastik Processing
+        
+            2) Cell Profiler Processing
+        
+        ## Legal documents
+        
+        - [License](LICENSE.txt) _(Before you release the project publicly please check with your manager to ensure the license is appropriate and has been run through legal review as necessary.)_
+        - [Contribution Agreement](CONTRIBUTING.md) _(Additionally update the contribution agreement to reflect
+        the level of contribution you are expecting, and the level of support you intend to provide.)_
+        =======
+        # Celigo-Code-Record
+        temporary record of files
+        
+Keywords: celigo_pipeline_core
+Platform: UNKNOWN
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: Free for non-commercial use
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Provides-Extra: all
+Provides-Extra: dev
+Provides-Extra: setup
+Provides-Extra: test
