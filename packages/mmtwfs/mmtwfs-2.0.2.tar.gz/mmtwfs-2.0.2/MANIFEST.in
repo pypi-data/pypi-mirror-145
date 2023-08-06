@@ -1,0 +1,15 @@
+include pyproject.toml
+include README.md
+include CITATION.cff
+include LICENSE.rst
+include setup.cfg
+
+recursive-include mmtwfs *.pyx *.c *.pxd
+recursive-include mmtwfs/data *
+recursive-include notebooks *
+
+prune build
+prune docs/_build
+prune docs/api
+
+global-exclude *.pyc *.o
