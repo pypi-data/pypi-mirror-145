@@ -1,0 +1,5 @@
+[console_scripts]
+heimdallr = heimdallr.entry_points.cli:main
+heimdallr-publish = heimdallr.entry_points.publisher:main
+heimdallr-repl = heimdallr.entry_points.repl:main
+heimdallr-server = heimdallr.entry_points.server:main

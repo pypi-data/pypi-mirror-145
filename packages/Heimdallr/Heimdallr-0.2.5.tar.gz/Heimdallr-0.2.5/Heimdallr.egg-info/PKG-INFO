@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: Heimdallr
+Version: 0.2.5
+Summary: A package for hosting and connecting to a live dashboard
+Home-page: https://github.com/aivclab/heimdallr
+Download-URL: https://github.com/aivclab/heimdallr/releases
+Author: Christian Heider Nielsen
+Author-email: christian.heider@alexandra.dk
+Maintainer: Christian Heider Nielsen
+Maintainer-email: christian.heider@alexandra.dk
+License: Apache License, Version 2.0
+Keywords: python reinforcement-learning interface api
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Natural Language :: English
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: docs
+Provides-Extra: amd
+Provides-Extra: intel
+Provides-Extra: linu
+Provides-Extra: tests
+Provides-Extra: dev
+Provides-Extra: windows
+Provides-Extra: nvidia
+Provides-Extra: server
+Provides-Extra: all
+License-File: LICENSE.md
+
+<!--![horn](.github/images/horn.svg "horn")-->
+
+<p align="center">
+  <img src=".github/images/horn.svg" alt='horn' title="horn"/>
+</p>
+
+<h1 align="center">Heimdallr</h1>
+
+<!--# Heimdallr-->
+
+A package for live plotting lab relevant information directly in your browser
+
+<p align="center" width="100%">
+  <a href="https://alexandra.dk">
+    <img alt="Alexandra Instituttet"
+    src=".github/images/alexandra.png" height="40" align="left" title="Alexandra Instituttet"/>
+  </a>
+  <a href="http://python.org/">
+    <img alt="python" src=".github/images/python.svg" height="40" align="left" title="python"/>
+  </a>
+</p>
+
+<br/>
+
+## Demo
+
+![demo](.github/images/demo/demo.png "demo")
+
+## Usage
+
+- Setup MQTT broker connection information heimdallr mqtt_token
+- On computation machines run the publisher service. heimdallr publish
+- Run server service on the displaying machine. heimdallr serve
+
+
