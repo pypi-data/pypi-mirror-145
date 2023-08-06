@@ -1,0 +1,37 @@
+Metadata-Version: 2.1
+Name: mallgroup-python-lib
+Version: 0.0.9
+Summary: Official Mallgroup Library
+Home-page: UNKNOWN
+Author: Data Engineering Mallgroup
+Author-email: dataengineering@mallgroup.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENCE.txt
+
+The Mallgroup library is a collection of utilities.
+
+Utilities:  
+Heartbeat
+
+Contact:  
+dataengineering@mallgroup.com
+
+Authors:  
+Pressl Dan  
+Urban Aemilia  
+Hruban Jiří  
+
+#Heartbeat
+A class that is used to check the activity and healthiness of an application
+by checking for the time between last and current timestamp.
+
+#MongoDBDAO
+A class that is used for connecting to the MongoDB
+packed with utilities to work with the documents.
+
