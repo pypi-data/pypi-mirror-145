@@ -1,0 +1,63 @@
+Metadata-Version: 2.1
+Name: pytest-lsp
+Version: 0.0.5
+Summary: Pytest plugin for end-to-end testing of language servers
+Home-page: https://alcarney.github.io/lsp-devtools
+Author: Alex Carney
+Author-email: alcarneyme@gmail.com
+License: MIT
+Project-URL: Bug Tracker, https://github.com/alcarney/lsp-devtools/issues
+Project-URL: Source Code, https://github.com/alcarney/lsp-devtools
+Platform: any
+Classifier: Development Status :: 3 - Alpha
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Framework :: Pytest
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+License-File: LICENSE
+
+# pytest-lsp: End-to-end testing of language servers with pytest
+
+> This plugin is in **very** early development, it currently implements just enough to support the test suite of the [esbonio](https://github.com/swyddfa/esbonio) language server.
+
+`pytest-lsp` is a pytest plugin for writing end-to-end tests for language servers.
+
+It works by running the language server in a subprocess and communicating with it over stdio, just like a real language client. 
+This also means `pytest-lsp` can be used to test language servers written in any language - not just Python.
+
+`pytest-lsp` relies on the [`pygls`](https://github.com/openlawlibrary/pygls) library for its language server protocol implementation.
+
+```python
+import sys
+import pytest
+import pytest_lsp
+from pytest_lsp import ClientServerConfig
+
+
+@pytest_lsp.fixture(
+    scope='session', 
+    config=ClientServerConfig(
+        server_command=[sys.executable, "-m", "esbonio"],
+        root_uri="file:///path/to/test/project/root/"
+    ),
+)
+async def client():
+    pass  
+
+
+@pytest.mark.asyncio
+async def test_completion(client):
+    test_uri="file:///path/to/test/project/root/test_file.rst"
+    result = await client.completion_request(test_uri, line=5, character=23)
+
+    assert len(result.items) > 0
+```
+
