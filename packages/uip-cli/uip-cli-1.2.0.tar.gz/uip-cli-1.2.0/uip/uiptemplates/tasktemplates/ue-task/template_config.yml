@@ -1,0 +1,40 @@
+template_description: starter Extension with minimal code
+
+files_to_template:
+  - src/extension.py
+  - src/extension.yml
+  - src/templates/template.json
+
+resources_to_include:
+  - setupscripts/setup.cfg
+  - setupscripts/setup.py
+
+user_defined_variables:
+  - extension_name:
+      default: ue-task
+      description: Extension name
+  - extension_version:
+      default: "1.0.0"
+      description: Extension version
+  - extension_api_level:
+      default: "1.1.0"
+      description: Extension API level
+  - extension_requires_python:
+      default: ">=2.6"
+      description: Extension Python requirement
+  - owner_name:
+      default: Stonebranch
+      description: Extension owner's name
+  - owner_organization:
+      default: Stonebranch Inc.
+      description: Extension owner's organization
+  - universal_template_name:
+      default: UE Task
+      description: Universal Template name
+
+internal_variables:
+  - uuid_variables:
+      - action_field_uuid
+      - log_choice_field_uuid
+      - print_choice_field_uuid
+      - universal_template_uuid

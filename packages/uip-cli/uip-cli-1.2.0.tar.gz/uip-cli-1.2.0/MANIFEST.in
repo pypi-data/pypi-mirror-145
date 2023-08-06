@@ -1,0 +1,6 @@
+include *.py
+include LICENSE.txt
+exclude test_driver.py
+recursive-exclude test *
+recursive-include uip/config uip.yml
+recursive-include uip/uiptemplates *
