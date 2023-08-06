@@ -1,0 +1,80 @@
+Metadata-Version: 2.0
+Name: mmdet-add
+Version: 0.1.0
+Summary: MMDetection Add Toolbox
+Home-page: https://github.com/leeguandong/mmdetection_add.git
+Author: liguandong
+Author-email: leeguandong@gmail.com
+License: Apache License 2.0
+Keywords: computer vision,object detection
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: all
+Provides-Extra: tests
+Provides-Extra: build
+Provides-Extra: optional
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Requires-Dist: pycocotools
+Requires-Dist: six
+Requires-Dist: terminaltables
+Provides-Extra: all
+Requires-Dist: cython; extra == 'all'
+Requires-Dist: numpy; extra == 'all'
+Requires-Dist: cityscapesscripts; extra == 'all'
+Requires-Dist: imagecorruptions; extra == 'all'
+Requires-Dist: scipy; extra == 'all'
+Requires-Dist: sklearn; extra == 'all'
+Requires-Dist: timm; extra == 'all'
+Requires-Dist: matplotlib; extra == 'all'
+Requires-Dist: numpy; extra == 'all'
+Requires-Dist: pycocotools; extra == 'all'
+Requires-Dist: six; extra == 'all'
+Requires-Dist: terminaltables; extra == 'all'
+Requires-Dist: asynctest; extra == 'all'
+Requires-Dist: codecov; extra == 'all'
+Requires-Dist: flake8; extra == 'all'
+Requires-Dist: interrogate; extra == 'all'
+Requires-Dist: isort (==4.3.21); extra == 'all'
+Requires-Dist: kwarray; extra == 'all'
+Requires-Dist: mmtrack; extra == 'all'
+Requires-Dist: onnx (==1.7.0); extra == 'all'
+Requires-Dist: onnxruntime (>=1.8.0); extra == 'all'
+Requires-Dist: pytest; extra == 'all'
+Requires-Dist: ubelt; extra == 'all'
+Requires-Dist: xdoctest (>=0.10.0); extra == 'all'
+Requires-Dist: yapf; extra == 'all'
+Provides-Extra: build
+Requires-Dist: cython; extra == 'build'
+Requires-Dist: numpy; extra == 'build'
+Provides-Extra: optional
+Requires-Dist: cityscapesscripts; extra == 'optional'
+Requires-Dist: imagecorruptions; extra == 'optional'
+Requires-Dist: scipy; extra == 'optional'
+Requires-Dist: sklearn; extra == 'optional'
+Requires-Dist: timm; extra == 'optional'
+Provides-Extra: tests
+Requires-Dist: asynctest; extra == 'tests'
+Requires-Dist: codecov; extra == 'tests'
+Requires-Dist: flake8; extra == 'tests'
+Requires-Dist: interrogate; extra == 'tests'
+Requires-Dist: isort (==4.3.21); extra == 'tests'
+Requires-Dist: kwarray; extra == 'tests'
+Requires-Dist: mmtrack; extra == 'tests'
+Requires-Dist: onnx (==1.7.0); extra == 'tests'
+Requires-Dist: onnxruntime (>=1.8.0); extra == 'tests'
+Requires-Dist: pytest; extra == 'tests'
+Requires-Dist: ubelt; extra == 'tests'
+Requires-Dist: xdoctest (>=0.10.0); extra == 'tests'
+Requires-Dist: yapf; extra == 'tests'
+
+UNKNOWN
+
+
