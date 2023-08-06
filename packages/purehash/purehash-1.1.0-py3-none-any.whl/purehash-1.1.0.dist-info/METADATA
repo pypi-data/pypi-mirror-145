@@ -1,0 +1,60 @@
+Metadata-Version: 2.1
+Name: purehash
+Version: 1.1.0
+Summary: Pure Python implementations of common hashing algorithms.
+Home-page: https://github.com/oshawk/purehash
+Author: Oshawk
+License: UNKNOWN
+Keywords: hash,cryptography
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Provides-Extra: dev
+Requires-Dist: pre-commit ; extra == 'dev'
+Requires-Dist: black ; extra == 'dev'
+Requires-Dist: mypy ; extra == 'dev'
+Requires-Dist: twine ; extra == 'dev'
+Provides-Extra: test
+Requires-Dist: pytest ; extra == 'test'
+
+# PureHash
+
+Pure Python implementations of common hashing algorithms.
+
+## Installation
+
+```
+pip install purehash
+```
+
+## Usage
+
+Usage is similar to that of `hashlib`, for example:
+
+```python
+import purehash
+
+m = purehash.md5(b"The quick brown fox ")
+m.update(b"jumps over the lazy dog.")
+m.digest()  # b"\xe4\xd9\t\xc2\x90\xd0\xfb\x1c\xa0h\xff\xad\xdf"\xcb\xd0"
+m.hexdigest()  # "e4d909c290d0fb1ca068ffaddf22cbd0"
+```
+
+## Supported Hash Algorithms
+
+- MD5 (`md5`)
+- SHA-1 (`sha1`)
+- SHA-256 (`sha256`)
+- SHA-512 (`sha512`)
+
+
