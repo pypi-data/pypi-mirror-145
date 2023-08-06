@@ -1,0 +1,29 @@
+[tool.poetry]
+authors=["tizee"]
+description ="Help get utf-8 hex representation of a unicode value or character"
+homepage = "https://github.com/tizee/unicode2hex"
+repository = "https://github.com/tizee/unicode2hex"
+name="unicode2hex"
+version="0.0.1"
+keywords=["script","unicode","utf-8"]
+
+# https://pypi.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+  "Programming Language :: Python :: 3.7",
+  "Development Status :: 4 - Beta"
+]
+
+[tool.poetry.scripts]
+unicode2hex = 'unicode2hex.main:run'
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+flake8 = "*"
+pytest = "^5"
+
+[build-system]
+build-backend = "poetry.masonry.api"
+requires = ["poetry>=0.12"]
+
