@@ -1,0 +1,13 @@
+cmake
+cvxpy>=1.0
+matplotlib
+numpy>=1.16
+pandas
+seaborn
+solar-data-tools
+
+[dev]
+check-manifest
+
+[test]
+coverage
