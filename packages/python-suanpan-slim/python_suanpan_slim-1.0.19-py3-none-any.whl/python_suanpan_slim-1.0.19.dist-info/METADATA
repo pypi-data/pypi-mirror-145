@@ -1,0 +1,30 @@
+Metadata-Version: 2.1
+Name: python-suanpan-slim
+Version: 1.0.19
+Summary: Suanpan SDK
+Home-page: UNKNOWN
+Author: yanqinghao
+Author-email: woshiyanqinghao@gmail.com
+License: See License
+Platform: any
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Description-Content-Type: text/markdown
+Requires-Dist: pyyaml
+Requires-Dist: pandas (>=1.3.4)
+Requires-Dist: xlrd (>=2.0.1)
+Requires-Dist: oss2 (>=2.9.1)
+Requires-Dist: minio (==7.0.0)
+Requires-Dist: redis (>=3.2.0)
+Requires-Dist: gevent (>=20.5.0)
+Requires-Dist: python-socketio[client] (==5.4.0)
+Requires-Dist: gevent-websocket (>=0.10.1)
+
+# python-suanpan-slim
+
+
