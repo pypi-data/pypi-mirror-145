@@ -1,0 +1,25 @@
+Metadata-Version: 2.1
+Name: gdio
+Version: 0.2.6
+Summary: Gridded data io library
+Home-page: https://github.com/rodri90y/gdio
+Download-URL: https://github.com/rodri90y/gdio/archive/v0.2.6.tar.gz
+Author: Rodrigo Yamamoto
+Author-email: codes@rodrigoyamamoto.com
+License: MIT
+Keywords: gdio,grib,netcdf
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+Requires-Dist: numpy (>=1.21.5)
+Requires-Dist: netCDF4 (>=1.5.8)
+Requires-Dist: python-eccodes (>=1.4.0)
+Requires-Dist: eccodes (>=2.24.2)
+Requires-Dist: pyproj
+
+Gridded data io library. Grib and netcdf files handler, 
+
