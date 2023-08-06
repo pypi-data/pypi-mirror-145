@@ -1,0 +1,17 @@
+Metadata-Version: 2.1
+Name: sfdata-stream-parser
+Version: 0.4.0
+Summary: Loosely inspired by the Streaming API for XML (StAX), this library provides a Python iterator interface for working with tabular documents.
+License: MIT
+Author: Kaj Siebert
+Author-email: kaj@k-si.com
+Requires-Python: >=3.7,<4.0
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: openpyxl
+Requires-Dist: more-itertools (>=8.12.0,<9.0.0)
+Requires-Dist: openpyxl (>=3.0.9,<4.0.0); extra == "openpyxl"
