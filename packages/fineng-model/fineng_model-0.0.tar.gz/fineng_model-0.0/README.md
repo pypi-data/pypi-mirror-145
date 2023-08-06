@@ -1,0 +1,1 @@
+`fineng_model` is the abbreviation of Financial Engineering Model.
