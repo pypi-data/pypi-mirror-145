@@ -1,0 +1,9 @@
+__title__ = 'Meraki_Tools'
+__description__ = 'Meraki Tools for syncing configuration accross orginaztion, backing up networks and checking configuration compliance'
+__url__ = 'http://devnet.cisco.com'
+__download_url__ = 'https://devnet.cisco.com'
+__author__ = 'Josh Lipton'
+__author_email__ = 'jolipton@cisco.com'
+__copyright__ = "Copyright (c) 2021 Cisco Systems, Inc."
+__license__ = "MIT"
+__version__='1.300'
