@@ -1,0 +1,14 @@
+---
+
+postfix-service-group:
+  hosts:
+    postfix-host:
+
+icinga-service-group:
+  hosts:
+    bind-host:
+
+gitea-service-group:
+  hosts:
+    gitea-host:
+      ansible_port: 2222
