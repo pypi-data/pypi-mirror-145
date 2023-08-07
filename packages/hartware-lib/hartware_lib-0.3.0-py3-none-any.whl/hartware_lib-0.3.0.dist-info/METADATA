@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: hartware-lib
+Version: 0.3.0
+Summary: Core helper lib for Hartware codes.
+Home-page: https://gitlab.com/ludwig778/python-lib
+License: GPLv3
+Author: Laurent Arthur
+Author-email: laurent.arthur75@gmail.com
+Requires-Python: >=3.8,<4.0
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: License :: Other/Proprietary License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Provides-Extra: all
+Provides-Extra: pydantic
+Provides-Extra: slack
+Requires-Dist: pydantic (>=1.9.0,<2.0.0); extra == "all" or extra == "pydantic"
+Requires-Dist: slack-sdk (>=3.11.2,<4.0.0); extra == "all" or extra == "slack"
+Project-URL: Repository, https://gitlab.com/ludwig778/python-lib
+Description-Content-Type: text/markdown
+
+# Hartware Lib
+
